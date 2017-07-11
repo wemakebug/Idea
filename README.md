@@ -1,2 +1,2 @@
 # Idea
-we help you find the you really want
+we help you find the man you really want
