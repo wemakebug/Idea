@@ -1,7 +1,390 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c74e160-7be6-4151-8031-7c939cccd23a" name="Default" comment="" />
+    <list default="true" id="3c74e160-7be6-4151-8031-7c939cccd23a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/数据库备份.psc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admina/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/urls.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/admina/static/css/css.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/admina/static/imgs/creation/django-logo-negative.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/admina/static/imgs/project/django-logo-negative.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/admina/static/imgs/user/django-logo-negative.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/admina/static/js/js.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap.min.css" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/DT_bootstrap.css" afterPath="$PROJECT_DIR$/admina/static/css/DT_bootstrap.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/about-us.css" afterPath="$PROJECT_DIR$/admina/static/css/about-us.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/animate.css" afterPath="$PROJECT_DIR$/admina/static/css/animate.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/blog.css" afterPath="$PROJECT_DIR$/admina/static/css/blog.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/blue.css" afterPath="$PROJECT_DIR$/admina/static/css/blue.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap-fileupload.css" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap-fileupload.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap-modal.css" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap-modal.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap-responsive.min.css" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap-responsive.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap-responsive1.min.css" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap-responsive1.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap-tag.css" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap-tag.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap-toggle-buttons.css" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap-toggle-buttons.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap-tree.css" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap-tree.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/bootstrap-wysihtml5.css" afterPath="$PROJECT_DIR$/admina/static/css/bootstrap-wysihtml5.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/brown.css" afterPath="$PROJECT_DIR$/admina/static/css/brown.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/chosen.css" afterPath="$PROJECT_DIR$/admina/static/css/chosen.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/clockface.css" afterPath="$PROJECT_DIR$/admina/static/css/clockface.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/colorpicker.css" afterPath="$PROJECT_DIR$/admina/static/css/colorpicker.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/coming-soon.css" afterPath="$PROJECT_DIR$/admina/static/css/coming-soon.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/datepicker.css" afterPath="$PROJECT_DIR$/admina/static/css/datepicker.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/daterangepicker.css" afterPath="$PROJECT_DIR$/admina/static/css/daterangepicker.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/datetimepicker.css" afterPath="$PROJECT_DIR$/admina/static/css/datetimepicker.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/default.css" afterPath="$PROJECT_DIR$/admina/static/css/default.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/dropzone.css" afterPath="$PROJECT_DIR$/admina/static/css/dropzone.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/email.css" afterPath="$PROJECT_DIR$/admina/static/css/email.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/error.css" afterPath="$PROJECT_DIR$/admina/static/css/error.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/font-awesome.css" afterPath="$PROJECT_DIR$/admina/static/css/font-awesome.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/admina/static/css/font-awesome.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/fullcalendar.css" afterPath="$PROJECT_DIR$/admina/static/css/fullcalendar.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/glyphicons.css" afterPath="$PROJECT_DIR$/admina/static/css/glyphicons.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/grey.css" afterPath="$PROJECT_DIR$/admina/static/css/grey.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/halflings.css" afterPath="$PROJECT_DIR$/admina/static/css/halflings.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/inbox.css" afterPath="$PROJECT_DIR$/admina/static/css/inbox.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/invoice.css" afterPath="$PROJECT_DIR$/admina/static/css/invoice.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jquery-ui-1.10.1.custom.min.css" afterPath="$PROJECT_DIR$/admina/static/css/jquery-ui-1.10.1.custom.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jquery.easy-pie-chart.css" afterPath="$PROJECT_DIR$/admina/static/css/jquery.easy-pie-chart.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jquery.fancybox.css" afterPath="$PROJECT_DIR$/admina/static/css/jquery.fancybox.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jquery.fileupload-ui.css" afterPath="$PROJECT_DIR$/admina/static/css/jquery.fileupload-ui.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jquery.gritter.css" afterPath="$PROJECT_DIR$/admina/static/css/jquery.gritter.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jquery.nestable.css" afterPath="$PROJECT_DIR$/admina/static/css/jquery.nestable.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jquery.tagsinput.css" afterPath="$PROJECT_DIR$/admina/static/css/jquery.tagsinput.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jquery.ui.slider.css" afterPath="$PROJECT_DIR$/admina/static/css/jquery.ui.slider.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/jqvmap.css" afterPath="$PROJECT_DIR$/admina/static/css/jqvmap.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/light.css" afterPath="$PROJECT_DIR$/admina/static/css/light.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/lock.css" afterPath="$PROJECT_DIR$/admina/static/css/lock.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/login-soft.css" afterPath="$PROJECT_DIR$/admina/static/css/login-soft.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/login.css" afterPath="$PROJECT_DIR$/admina/static/css/login.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/multi-select-metro.css" afterPath="$PROJECT_DIR$/admina/static/css/multi-select-metro.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/news.css" afterPath="$PROJECT_DIR$/admina/static/css/news.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/pricing-tables.css" afterPath="$PROJECT_DIR$/admina/static/css/pricing-tables.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/print.css" afterPath="$PROJECT_DIR$/admina/static/css/print.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/profile.css" afterPath="$PROJECT_DIR$/admina/static/css/profile.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/promo.css" afterPath="$PROJECT_DIR$/admina/static/css/promo.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/purple.css" afterPath="$PROJECT_DIR$/admina/static/css/purple.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/search.css" afterPath="$PROJECT_DIR$/admina/static/css/search.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/select2_metro.css" afterPath="$PROJECT_DIR$/admina/static/css/select2_metro.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/style-metro.css" afterPath="$PROJECT_DIR$/admina/static/css/style-metro.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/style-non-responsive.css" afterPath="$PROJECT_DIR$/admina/static/css/style-non-responsive.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/style-responsive.css" afterPath="$PROJECT_DIR$/admina/static/css/style-responsive.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/style.css" afterPath="$PROJECT_DIR$/admina/static/css/style.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/timeline.css" afterPath="$PROJECT_DIR$/admina/static/css/timeline.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/timepicker.css" afterPath="$PROJECT_DIR$/admina/static/css/timepicker.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/css/uniform.default.css" afterPath="$PROJECT_DIR$/admina/static/css/uniform.default.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/1.jpg" afterPath="$PROJECT_DIR$/admina/static/image/1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/10.jpg" afterPath="$PROJECT_DIR$/admina/static/image/10.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/11.jpg" afterPath="$PROJECT_DIR$/admina/static/image/11.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/2.jpg" afterPath="$PROJECT_DIR$/admina/static/image/2.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/3.jpg" afterPath="$PROJECT_DIR$/admina/static/image/3.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/4.jpg" afterPath="$PROJECT_DIR$/admina/static/image/4.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/5.jpg" afterPath="$PROJECT_DIR$/admina/static/image/5.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/6.jpg" afterPath="$PROJECT_DIR$/admina/static/image/6.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/7.jpg" afterPath="$PROJECT_DIR$/admina/static/image/7.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/8.jpg" afterPath="$PROJECT_DIR$/admina/static/image/8.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/9.jpg" afterPath="$PROJECT_DIR$/admina/static/image/9.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/KwPYo.jpg" afterPath="$PROJECT_DIR$/admina/static/image/KwPYo.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/alpha.png" afterPath="$PROJECT_DIR$/admina/static/image/alpha.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/amazon.png" afterPath="$PROJECT_DIR$/admina/static/image/amazon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/animated-overlay.gif" afterPath="$PROJECT_DIR$/admina/static/image/animated-overlay.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/avatar.png" afterPath="$PROJECT_DIR$/admina/static/image/avatar.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/avatar1.jpg" afterPath="$PROJECT_DIR$/admina/static/image/avatar1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/avatar1_small.jpg" afterPath="$PROJECT_DIR$/admina/static/image/avatar1_small.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/avatar2.jpg" afterPath="$PROJECT_DIR$/admina/static/image/avatar2.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/avatar3.jpg" afterPath="$PROJECT_DIR$/admina/static/image/avatar3.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/behance.png" afterPath="$PROJECT_DIR$/admina/static/image/behance.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bg-input-focus.png" afterPath="$PROJECT_DIR$/admina/static/image/bg-input-focus.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bg-input.png" afterPath="$PROJECT_DIR$/admina/static/image/bg-input.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bg-opacity.png" afterPath="$PROJECT_DIR$/admina/static/image/bg-opacity.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bg-white-lock.png" afterPath="$PROJECT_DIR$/admina/static/image/bg-white-lock.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bg/1.jpg" afterPath="$PROJECT_DIR$/admina/static/image/bg/1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bg/2.jpg" afterPath="$PROJECT_DIR$/admina/static/image/bg/2.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bg/3.jpg" afterPath="$PROJECT_DIR$/admina/static/image/bg/3.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bg/4.jpg" afterPath="$PROJECT_DIR$/admina/static/image/bg/4.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/blank.gif" afterPath="$PROJECT_DIR$/admina/static/image/blank.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/blogger.png" afterPath="$PROJECT_DIR$/admina/static/image/blogger.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/bstree-halflings.png" afterPath="$PROJECT_DIR$/admina/static/image/bstree-halflings.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/chosen-sprite.png" afterPath="$PROJECT_DIR$/admina/static/image/chosen-sprite.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/css" afterPath="$PROJECT_DIR$/admina/static/image/css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/datatable-row-openclose.png" afterPath="$PROJECT_DIR$/admina/static/image/datatable-row-openclose.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/deviantart.png" afterPath="$PROJECT_DIR$/admina/static/image/deviantart.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/dribbble.png" afterPath="$PROJECT_DIR$/admina/static/image/dribbble.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/dropbox.png" afterPath="$PROJECT_DIR$/admina/static/image/dropbox.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/earth.jpg" afterPath="$PROJECT_DIR$/admina/static/image/earth.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/evernote.png" afterPath="$PROJECT_DIR$/admina/static/image/evernote.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/facebook.png" afterPath="$PROJECT_DIR$/admina/static/image/facebook.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/fancybox_loading.gif" afterPath="$PROJECT_DIR$/admina/static/image/fancybox_loading.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/fancybox_overlay.png" afterPath="$PROJECT_DIR$/admina/static/image/fancybox_overlay.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/fancybox_sprite.png" afterPath="$PROJECT_DIR$/admina/static/image/fancybox_sprite.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/favicon.ico" afterPath="$PROJECT_DIR$/admina/static/image/favicon.ico" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/admina/static/image/fontawesome-webfont.eot" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/admina/static/image/fontawesome-webfont.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/admina/static/image/fontawesome-webfont.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/admina/static/image/fontawesome-webfont.woff" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/forrst.png" afterPath="$PROJECT_DIR$/admina/static/image/forrst.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/github.png" afterPath="$PROJECT_DIR$/admina/static/image/github.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons-halflings-white.png" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons-halflings-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons-halflings.png" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons-halflings.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons-regular.eot" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons-regular.eot" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons-regular.svg" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons-regular.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons-regular.ttf" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons-regular.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons-regular.woff" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons-regular.woff" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons-white.png" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons-white.svg" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons-white.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons.png" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons_halflings-white.png" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons_halflings-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons_halflings-white.svg" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons_halflings-white.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons_halflings.png" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons_halflings.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphicons_halflings.svg" afterPath="$PROJECT_DIR$/admina/static/image/glyphicons_halflings.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphiconshalflings-regular.eot" afterPath="$PROJECT_DIR$/admina/static/image/glyphiconshalflings-regular.eot" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphiconshalflings-regular.svg" afterPath="$PROJECT_DIR$/admina/static/image/glyphiconshalflings-regular.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphiconshalflings-regular.ttf" afterPath="$PROJECT_DIR$/admina/static/image/glyphiconshalflings-regular.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/glyphiconshalflings-regular.woff" afterPath="$PROJECT_DIR$/admina/static/image/glyphiconshalflings-regular.woff" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/googleplus.png" afterPath="$PROJECT_DIR$/admina/static/image/googleplus.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/gritter-light.png" afterPath="$PROJECT_DIR$/admina/static/image/gritter-light.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/gritter.png" afterPath="$PROJECT_DIR$/admina/static/image/gritter.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/hor-menu-search-close-white.png" afterPath="$PROJECT_DIR$/admina/static/image/hor-menu-search-close-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/hor-menu-search-close.png" afterPath="$PROJECT_DIR$/admina/static/image/hor-menu-search-close.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/hor-menu-search.png" afterPath="$PROJECT_DIR$/admina/static/image/hor-menu-search.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/hue.png" afterPath="$PROJECT_DIR$/admina/static/image/hue.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/icon-color-close.png" afterPath="$PROJECT_DIR$/admina/static/image/icon-color-close.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/icon-color.png" afterPath="$PROJECT_DIR$/admina/static/image/icon-color.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/icon-img-down.png" afterPath="$PROJECT_DIR$/admina/static/image/icon-img-down.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/icon-img-up.png" afterPath="$PROJECT_DIR$/admina/static/image/icon-img-up.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ie-spacer.gif" afterPath="$PROJECT_DIR$/admina/static/image/ie-spacer.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/image1.jpg" afterPath="$PROJECT_DIR$/admina/static/image/image1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/image2.jpg" afterPath="$PROJECT_DIR$/admina/static/image/image2.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/image3.jpg" afterPath="$PROJECT_DIR$/admina/static/image/image3.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/image4.jpg" afterPath="$PROJECT_DIR$/admina/static/image/image4.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/image5.jpg" afterPath="$PROJECT_DIR$/admina/static/image/image5.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/img1.png" afterPath="$PROJECT_DIR$/admina/static/image/img1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/img1_2.png" afterPath="$PROJECT_DIR$/admina/static/image/img1_2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/img2.png" afterPath="$PROJECT_DIR$/admina/static/image/img2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/img3.png" afterPath="$PROJECT_DIR$/admina/static/image/img3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/img4.png" afterPath="$PROJECT_DIR$/admina/static/image/img4.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/inbox-nav-arrow-blue.png" afterPath="$PROJECT_DIR$/admina/static/image/inbox-nav-arrow-blue.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/instagram.png" afterPath="$PROJECT_DIR$/admina/static/image/instagram.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/iphone.png" afterPath="$PROJECT_DIR$/admina/static/image/iphone.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/item_img.jpg" afterPath="$PROJECT_DIR$/admina/static/image/item_img.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/item_img1.jpg" afterPath="$PROJECT_DIR$/admina/static/image/item_img1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/jolicloud.png" afterPath="$PROJECT_DIR$/admina/static/image/jolicloud.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/js" afterPath="$PROJECT_DIR$/admina/static/image/js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/last-fm.png" afterPath="$PROJECT_DIR$/admina/static/image/last-fm.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/linkedin.png" afterPath="$PROJECT_DIR$/admina/static/image/linkedin.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/loading.gif" afterPath="$PROJECT_DIR$/admina/static/image/loading.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/logo-big.png" afterPath="$PROJECT_DIR$/admina/static/image/logo-big.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/logo.png" afterPath="$PROJECT_DIR$/admina/static/image/logo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/logo_azteca.jpg" afterPath="$PROJECT_DIR$/admina/static/image/logo_azteca.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/logo_conquer.jpg" afterPath="$PROJECT_DIR$/admina/static/image/logo_conquer.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/logo_metronic.jpg" afterPath="$PROJECT_DIR$/admina/static/image/logo_metronic.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/menu-toggler.png" afterPath="$PROJECT_DIR$/admina/static/image/menu-toggler.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/overlay-icon.png" afterPath="$PROJECT_DIR$/admina/static/image/overlay-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/photo1.jpg" afterPath="$PROJECT_DIR$/admina/static/image/photo1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/photo2.jpg" afterPath="$PROJECT_DIR$/admina/static/image/photo2.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/photo3.jpg" afterPath="$PROJECT_DIR$/admina/static/image/photo3.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/photo4.jpg" afterPath="$PROJECT_DIR$/admina/static/image/photo4.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/photo5.jpg" afterPath="$PROJECT_DIR$/admina/static/image/photo5.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/photo6.jpg" afterPath="$PROJECT_DIR$/admina/static/image/photo6.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/picasa.png" afterPath="$PROJECT_DIR$/admina/static/image/picasa.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/pintrest.png" afterPath="$PROJECT_DIR$/admina/static/image/pintrest.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-collapse-icon-white.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-collapse-icon-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-collapse-icon.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-collapse-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-config-icon-white.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-config-icon-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-config-icon.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-config-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-expand-icon-white.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-expand-icon-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-expand-icon.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-expand-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-reload-icon-white.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-reload-icon-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-reload-icon.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-reload-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-remove-icon-white.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-remove-icon-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/portlet-remove-icon.png" afterPath="$PROJECT_DIR$/admina/static/image/portlet-remove-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_02.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_02.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_03.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_03.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_04.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_04.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_05.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_05.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_06.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_06.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_07.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_07.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_08.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_08.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_09.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_09.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_10.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_10.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_11.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_11.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_12.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_12.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_13.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_13.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_14.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_14.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_15.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_15.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_16.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_16.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/preview_17.png" afterPath="$PROJECT_DIR$/admina/static/image/preview_17.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/profile-img.png" afterPath="$PROJECT_DIR$/admina/static/image/profile-img.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/profile.jpg" afterPath="$PROJECT_DIR$/admina/static/image/profile.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/progressbar.gif" afterPath="$PROJECT_DIR$/admina/static/image/progressbar.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/remove-icon-small.png" afterPath="$PROJECT_DIR$/admina/static/image/remove-icon-small.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/rss.png" afterPath="$PROJECT_DIR$/admina/static/image/rss.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/saturation.png" afterPath="$PROJECT_DIR$/admina/static/image/saturation.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/search-icon.png" afterPath="$PROJECT_DIR$/admina/static/image/search-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/select2-spinner.gif" afterPath="$PROJECT_DIR$/admina/static/image/select2-spinner.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/select2.png" afterPath="$PROJECT_DIR$/admina/static/image/select2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/select2x2.png" afterPath="$PROJECT_DIR$/admina/static/image/select2x2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sidebar-menu-arrow.png" afterPath="$PROJECT_DIR$/admina/static/image/sidebar-menu-arrow.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sidebar-search-close.png" afterPath="$PROJECT_DIR$/admina/static/image/sidebar-search-close.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sidebar-toggler.jpg" afterPath="$PROJECT_DIR$/admina/static/image/sidebar-toggler.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/skype.png" afterPath="$PROJECT_DIR$/admina/static/image/skype.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/social_facebook.png" afterPath="$PROJECT_DIR$/admina/static/image/social_facebook.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/social_googleplus.png" afterPath="$PROJECT_DIR$/admina/static/image/social_googleplus.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/social_linkedin.png" afterPath="$PROJECT_DIR$/admina/static/image/social_linkedin.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/social_rss.png" afterPath="$PROJECT_DIR$/admina/static/image/social_rss.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/social_twitter.png" afterPath="$PROJECT_DIR$/admina/static/image/social_twitter.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sort_asc.png" afterPath="$PROJECT_DIR$/admina/static/image/sort_asc.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sort_asc_disabled.png" afterPath="$PROJECT_DIR$/admina/static/image/sort_asc_disabled.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sort_both.png" afterPath="$PROJECT_DIR$/admina/static/image/sort_both.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sort_desc.png" afterPath="$PROJECT_DIR$/admina/static/image/sort_desc.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sort_desc_disabled.png" afterPath="$PROJECT_DIR$/admina/static/image/sort_desc_disabled.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/spotify.png" afterPath="$PROJECT_DIR$/admina/static/image/spotify.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/sprite.png" afterPath="$PROJECT_DIR$/admina/static/image/sprite.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/spritemap.png" afterPath="$PROJECT_DIR$/admina/static/image/spritemap.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/spritemap@2x.png" afterPath="$PROJECT_DIR$/admina/static/image/spritemap@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/stumbleupon.png" afterPath="$PROJECT_DIR$/admina/static/image/stumbleupon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/switch.png" afterPath="$PROJECT_DIR$/admina/static/image/switch.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/syncfusion-icons-white.png" afterPath="$PROJECT_DIR$/admina/static/image/syncfusion-icons-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/syncfusion-icons.png" afterPath="$PROJECT_DIR$/admina/static/image/syncfusion-icons.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/tumblr.png" afterPath="$PROJECT_DIR$/admina/static/image/tumblr.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/twitter.png" afterPath="$PROJECT_DIR$/admina/static/image/twitter.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_diagonals-thick_18_b81900_40x40.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_diagonals-thick_18_b81900_40x40.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_diagonals-thick_20_666666_40x40.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_diagonals-thick_20_666666_40x40.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_flat_10_000000_40x100.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_flat_10_000000_40x100.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_glass_100_f6f6f6_1x400.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_glass_100_f6f6f6_1x400.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_glass_100_fdf5ce_1x400.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_glass_100_fdf5ce_1x400.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_glass_65_ffffff_1x400.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_glass_65_ffffff_1x400.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_gloss-wave_35_f6a828_500x100.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_highlight-soft_100_eeeeee_1x100.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-bg_highlight-soft_75_ffe45c_1x100.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-icons_222222_256x240.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-icons_222222_256x240.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-icons_228ef1_256x240.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-icons_228ef1_256x240.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-icons_888888_256x240.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-icons_888888_256x240.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-icons_ef8c08_256x240.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-icons_ef8c08_256x240.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-icons_ffd27a_256x240.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-icons_ffd27a_256x240.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/ui-icons_ffffff_256x240.png" afterPath="$PROJECT_DIR$/admina/static/image/ui-icons_ffffff_256x240.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/vimeo.png" afterPath="$PROJECT_DIR$/admina/static/image/vimeo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/vk.png" afterPath="$PROJECT_DIR$/admina/static/image/vk.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/walmart.png" afterPath="$PROJECT_DIR$/admina/static/image/walmart.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/wordpress.png" afterPath="$PROJECT_DIR$/admina/static/image/wordpress.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/xing.png" afterPath="$PROJECT_DIR$/admina/static/image/xing.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/yahoo.png" afterPath="$PROJECT_DIR$/admina/static/image/yahoo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/image/youtube.png" afterPath="$PROJECT_DIR$/admina/static/image/youtube.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/DT_bootstrap.js" afterPath="$PROJECT_DIR$/admina/static/js/DT_bootstrap.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/additional-methods.min.js" afterPath="$PROJECT_DIR$/admina/static/js/additional-methods.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/app.js" afterPath="$PROJECT_DIR$/admina/static/js/app.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-colorpicker.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-colorpicker.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-datepicker.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-datepicker.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-datetimepicker.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-datetimepicker.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-fileupload.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-fileupload.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-modal.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-modal.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-modalmanager.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-modalmanager.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-rtl.min.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-rtl.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-tag.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-tag.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-timepicker.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-timepicker.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-tree.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-tree.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap-wysihtml5.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap-wysihtml5.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/admina/static/js/bootstrap.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/breakpoints.js" afterPath="$PROJECT_DIR$/admina/static/js/breakpoints.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/breakpoints.min.js" afterPath="$PROJECT_DIR$/admina/static/js/breakpoints.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/calendar.js" afterPath="$PROJECT_DIR$/admina/static/js/calendar.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/canvas-to-blob.min.js" afterPath="$PROJECT_DIR$/admina/static/js/canvas-to-blob.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/charts.js" afterPath="$PROJECT_DIR$/admina/static/js/charts.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/chosen.jquery.min.js" afterPath="$PROJECT_DIR$/admina/static/js/chosen.jquery.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/ckeditor.js" afterPath="$PROJECT_DIR$/admina/static/js/ckeditor.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/clockface.js" afterPath="$PROJECT_DIR$/admina/static/js/clockface.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/coming-soon.js" afterPath="$PROJECT_DIR$/admina/static/js/coming-soon.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/contact-us.js" afterPath="$PROJECT_DIR$/admina/static/js/contact-us.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/date.js" afterPath="$PROJECT_DIR$/admina/static/js/date.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/daterangepicker.js" afterPath="$PROJECT_DIR$/admina/static/js/daterangepicker.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/dropzone.js" afterPath="$PROJECT_DIR$/admina/static/js/dropzone.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/excanvas.js" afterPath="$PROJECT_DIR$/admina/static/js/excanvas.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/excanvas.min.js" afterPath="$PROJECT_DIR$/admina/static/js/excanvas.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/form-components.js" afterPath="$PROJECT_DIR$/admina/static/js/form-components.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/form-fileupload.js" afterPath="$PROJECT_DIR$/admina/static/js/form-fileupload.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/form-samples.js" afterPath="$PROJECT_DIR$/admina/static/js/form-samples.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/form-validation.js" afterPath="$PROJECT_DIR$/admina/static/js/form-validation.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/form-wizard.js" afterPath="$PROJECT_DIR$/admina/static/js/form-wizard.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/fullcalendar.min.js" afterPath="$PROJECT_DIR$/admina/static/js/fullcalendar.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/gallery.js" afterPath="$PROJECT_DIR$/admina/static/js/gallery.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/gmaps.js" afterPath="$PROJECT_DIR$/admina/static/js/gmaps.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/inbox.js" afterPath="$PROJECT_DIR$/admina/static/js/inbox.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/index.js" afterPath="$PROJECT_DIR$/admina/static/js/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery-1.10.1.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery-1.10.1.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery-1.8.3.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery-1.8.3.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery-migrate-1.2.1.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery-migrate-1.2.1.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery-ui-1.10.1.custom.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery-ui-1.10.1.custom.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.backstretch.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.backstretch.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.blockui.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.blockui.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.bootpag.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.bootpag.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.bootstrap.wizard.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.bootstrap.wizard.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.cookie.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.cookie.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.countdown.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.countdown.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.dataTables.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.dataTables.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.dataTables.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.dataTables.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.easy-pie-chart.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.easy-pie-chart.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.fancybox.pack.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.fancybox.pack.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.fileupload-fp.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.fileupload-fp.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.fileupload-ui.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.fileupload-ui.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.fileupload.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.fileupload.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.flot.crosshair.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.flot.crosshair.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.flot.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.flot.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.flot.pie.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.flot.pie.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.flot.resize.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.flot.resize.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.flot.stack.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.flot.stack.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.gritter.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.gritter.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.iframe-transport.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.iframe-transport.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.input-ip-address-control-1.0.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.input-ip-address-control-1.0.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.inputmask.bundle.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.inputmask.bundle.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.knob.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.knob.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.multi-select.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.multi-select.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.nestable.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.nestable.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.pulsate.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.pulsate.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.slimscroll.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.slimscroll.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.sparkline.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.sparkline.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.tagsinput.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.tagsinput.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.toggle.buttons.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.toggle.buttons.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.ui.widget.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.ui.widget.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.uniform.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.uniform.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.validate.min.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.validate.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.vmap.europe.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.vmap.europe.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.vmap.germany.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.vmap.germany.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.vmap.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.vmap.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.vmap.russia.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.vmap.russia.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.vmap.sampledata.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.vmap.sampledata.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.vmap.usa.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.vmap.usa.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.vmap.world.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.vmap.world.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/jquery.xdr-transport.js" afterPath="$PROJECT_DIR$/admina/static/js/jquery.xdr-transport.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/load-image.min.js" afterPath="$PROJECT_DIR$/admina/static/js/load-image.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/lock.js" afterPath="$PROJECT_DIR$/admina/static/js/lock.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/login-soft.js" afterPath="$PROJECT_DIR$/admina/static/js/login-soft.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/login.js" afterPath="$PROJECT_DIR$/admina/static/js/login.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/maps-google.js" afterPath="$PROJECT_DIR$/admina/static/js/maps-google.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/maps-vector.js" afterPath="$PROJECT_DIR$/admina/static/js/maps-vector.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/portlet-draggable.js" afterPath="$PROJECT_DIR$/admina/static/js/portlet-draggable.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/respond.js" afterPath="$PROJECT_DIR$/admina/static/js/respond.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/respond.min.js" afterPath="$PROJECT_DIR$/admina/static/js/respond.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/search.js" afterPath="$PROJECT_DIR$/admina/static/js/search.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/select2.min.js" afterPath="$PROJECT_DIR$/admina/static/js/select2.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/table-advanced.js" afterPath="$PROJECT_DIR$/admina/static/js/table-advanced.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/table-editable.js" afterPath="$PROJECT_DIR$/admina/static/js/table-editable.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/table-managed.js" afterPath="$PROJECT_DIR$/admina/static/js/table-managed.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/tmpl.min.js" afterPath="$PROJECT_DIR$/admina/static/js/tmpl.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/ui-general.js" afterPath="$PROJECT_DIR$/admina/static/js/ui-general.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/ui-jqueryui.js" afterPath="$PROJECT_DIR$/admina/static/js/ui-jqueryui.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/ui-modals.js" afterPath="$PROJECT_DIR$/admina/static/js/ui-modals.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/ui-nestable.js" afterPath="$PROJECT_DIR$/admina/static/js/ui-nestable.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/ui-sliders.js" afterPath="$PROJECT_DIR$/admina/static/js/ui-sliders.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/ui-tree.js" afterPath="$PROJECT_DIR$/admina/static/js/ui-tree.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/admina/templates/media/js/wysihtml5-0.3.0.js" afterPath="$PROJECT_DIR$/admina/static/js/wysihtml5-0.3.0.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Idea/settings.py" afterPath="$PROJECT_DIR$/Idea/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Idea/urls.py" afterPath="$PROJECT_DIR$/Idea/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admina/templates/index.html" afterPath="$PROJECT_DIR$/admina/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admina/templates/login.html" afterPath="$PROJECT_DIR$/admina/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admina/views.py" afterPath="$PROJECT_DIR$/admina/views.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +401,74 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Idea/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="68" column="10" lean-forward="false" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+            <state relative-caret-position="360">
+              <caret line="40" column="10" lean-forward="false" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="finders.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/site-packages/django/contrib/staticfiles/finders.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admina/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+              <folding>
+                <element signature="e#6603#6609#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admina/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="488">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#638#670#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admina/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+              <folding>
+                <element signature="e#24#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/idear/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admina/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1158">
+              <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -38,14 +487,22 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Idea/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="200">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>media</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>static</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,6 +513,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/Idea/urls.py" />
+        <option value="$PROJECT_DIR$/idear/urls.py" />
+        <option value="$PROJECT_DIR$/admina/urls.py" />
+        <option value="$PROJECT_DIR$/admina/views.py" />
+        <option value="$PROJECT_DIR$/admina/templates/login.html" />
         <option value="$PROJECT_DIR$/Idea/settings.py" />
       </list>
     </option>
@@ -67,10 +529,13 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="735" />
-    <option name="y" value="56" />
-    <option name="width" value="1918" />
-    <option name="height" value="1092" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -139,6 +604,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="admina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -152,7 +653,13 @@
     <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ChrisProsise\Desktop\idea\code\Idea\idear" />
+      <recent name="C:\Users\ChrisProsise\Desktop\idea\code\Idea\admina" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ChrisProsise\Desktop\idea\code\Idea\admina\static" />
+      <recent name="C:\Users\ChrisProsise\Desktop\idea\code\Idea\admina\templates" />
       <recent name="C:\Users\ChrisProsise\Desktop\idea\code\Idea" />
     </key>
   </component>
@@ -441,7 +948,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="735" y="56" width="1918" height="1092" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -449,10 +956,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988626" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.328934" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973711" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24739583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -478,7 +985,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="添加数据库备份文件" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -490,18 +999,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admina/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1158">
+          <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admina/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#638#670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Idea/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admina/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admina/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding>
+            <element signature="e#6603#6609#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/staticfiles/finders.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Idea/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="68" column="10" lean-forward="false" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+        <state relative-caret-position="360">
+          <caret line="40" column="10" lean-forward="false" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
           <folding />
         </state>
       </provider>
