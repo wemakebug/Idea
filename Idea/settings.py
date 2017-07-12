@@ -25,7 +25,7 @@ SECRET_KEY = '7sc_2#f_(0%$+ol_lc23h=p79@08l&b9*j-#e$-$45e_rt#dxu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.contrib.staticfiles'
 ]
 
 ROOT_URLCONF = 'Idea.urls'
@@ -82,7 +83,7 @@ DATABASES = {
         'USER': 'root',
         'NAME': 'Idea',
         'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
+        'HOST': '123.207.72.192',
         'PORT': '3306'
     }
 }
@@ -106,11 +107,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'Zh-hans'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -124,4 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+STATIC_ROOT = os.path.join(os.path.dirname(__file__),'admina/').replace('\\','/')
