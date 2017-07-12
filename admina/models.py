@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from django.contrib import admin
 # Create your models here.
 '''
 外键 首单词小写，
@@ -14,6 +14,7 @@ class User(models.Model):
         0 学生
         1 教师
         2 团队
+        3 管理员
     2.性别表示
         0 男
         1 女
@@ -28,7 +29,7 @@ class User(models.Model):
     Score = models.PositiveIntegerField(default=0, null=False)
     RegistTime = models.DateField(auto_now_add=True)
     Phone = models.CharField(max_length=12, null=False, )
-    Img = models.ImageField(upload_to='photos/user', null=True)
+    Img = models.ImageField(upload_to='photos/%Y/%m/%d/user', null=True)
     Introduction = models.TextField(null=True, max_length=200)
     School = models.CharField(null=True, max_length=20)
     Institude = models.CharField(null=True, max_length=20)
@@ -50,7 +51,7 @@ class Project(models.Model):
     EndTime = models.DateField(null=False, )
     Statue = models.PositiveIntegerField(default=0)
     Number = models.PositiveIntegerField(default=1)
-    Img = models.ImageField(upload_to='photos/project')
+    Img = models.ImageField(upload_to='photos/%Y/%m/%d/project', null=True)
     Summary = models.TextField(null=True, max_length=200)
     Progress = models.TextField(null=True, max_length=200)
 
@@ -115,7 +116,7 @@ class Creation(models.Model):
     Describe = models.TextField(max_length=200, null=True)
     Name = models.CharField(max_length=20, null=False)
     IsUse = models.BooleanField(default=True)
-    Img = models.ImageField(upload_to='photos/creation')
+    Img = models.ImageField(upload_to='photos/%Y/%m/%d/creation')
 
 class Recruit(models.Model):
     '''
@@ -177,6 +178,9 @@ class Comment(models.Model):
     Content = models.TextField(max_length=200)
     IsUse = models.BooleanField(default=True)
 
+    def __unicode__(self):
+        return self.user
+
 class Follow(models.Model):
     '''
     关注表
@@ -187,6 +191,8 @@ class Follow(models.Model):
     user = models.ForeignKey(User, related_name='Follow_User_set', null=False)
     Follower = models.ForeignKey(User, related_name='Follow_Follower_set', null=False)
 
+    def __unicode__(self):
+        return self.user
 class Report(models.Model):
     '''
     举报表
@@ -201,6 +207,9 @@ class Report(models.Model):
     DealTime = models.DateField(null=True)
     State = models.PositiveIntegerField(default=0)
 
+    def __unicode__(self):
+        return self.comment
+
 class Score(models.Model):
     '''
     分值等级表
@@ -209,6 +218,9 @@ class Score(models.Model):
     Id = models.AutoField(primary_key=True)
     Level = models.PositiveIntegerField(default=0)
     Value = models.IntegerField(null=False, default=0)
+
+    def __unicode__(self):
+        return self.Level
 
 class ScoreChange(models.Model):
     '''
@@ -219,3 +231,27 @@ class ScoreChange(models.Model):
     score = models.ForeignKey(Score, related_name='ScoreChange_Score_set', null=False)
     Event = models.CharField(null=True,max_length=30)
     Date = models.DateField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.user
+'''
+将数据库字段注册到Django自带后台，方便数据添加测试
+后台账号为admin 密码adminadmin
+'''
+admin.site.register(User)
+admin.site.register(UserLabel)
+admin.site.register(User2UserLabel)
+admin.site.register(Project)
+admin.site.register(ProjectLabel)
+admin.site.register(Project2ProjectLabel)
+admin.site.register(ProjectUser)
+admin.site.register(Creation)
+admin.site.register(Recruit)
+admin.site.register(Praise)
+admin.site.register(Apply)
+admin.site.register(Message)
+admin.site.register(Comment)
+admin.site.register(Follow)
+admin.site.register(Report)
+admin.site.register(Score)
+admin.site.register(ScoreChange)

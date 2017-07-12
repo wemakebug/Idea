@@ -48,14 +48,29 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "index.html";
+	                username = $("input[name='username']").value;
+	                password = $("input[name='password']").value;
+	                $.post("login", {
+	                	'username':username,
+						'password':password,
+					},function (result) {
+						if (result.logStatue == 1){
+							$.cookie('username',result.name);
+							alert("登陆成功");
+						}else if(result.logStetue == 0){
+							alert("用户名或密码不正确");
+						}
+						else {
+							alert("服务器异常")
+						}
+                    })
 	            }
 	        });
 
 	        $('.login-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "index.html";
+	                    window.location.href = "index.html"
 	                }
 	                return false;
 	            }
