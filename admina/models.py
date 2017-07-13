@@ -105,6 +105,9 @@ class ProjectUser(models.Model):
     Identity = models.PositiveIntegerField(default=0)
     Evaluate = models.TextField(max_length=200)
 
+    def __unicode__(self):
+        return self.project
+
 class Creation(models.Model):
     '''
     创意表
@@ -118,6 +121,8 @@ class Creation(models.Model):
     IsUse = models.BooleanField(default=True)
     Img = models.ImageField(upload_to='photos/%Y/%m/%d/creation')
 
+    def __unicode__(self):
+        return self.Name
 class Recruit(models.Model):
     '''
     招募表
@@ -140,6 +145,9 @@ class Praise(models.Model):
     user = models.ForeignKey(User, related_name='Praise_User_set', null=True)
     creation = models.ForeignKey(Creation, related_name='Praise_Creation_set', null=True)
     project = models.ForeignKey(Project, related_name='Praise_Project_set', null=True)
+
+    def __unicode__(self):
+        return self.Id
 
 class Apply(models.Model):
     '''

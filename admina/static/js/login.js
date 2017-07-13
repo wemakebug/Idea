@@ -1,5 +1,4 @@
 var Login = function () {
-    
     return {
         //main function to initiate the module
         init: function () {
@@ -48,20 +47,29 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                username = $("input[name='username']").value;
-	                password = $("input[name='password']").value;
-	                $.post("login", {
-	                	'username':username,
-						'password':password,
-					},function (result) {
-						if (result.logStatue == 1){
-							$.cookie('username',result.name);
+	                account = $("input[name='username']").val();
+	                password = $("input[name='password']").val();
+	                data = {
+	                	account:account,
+						password:password,
+					};
+                    $.post("login",data
+                    ,function (result) {
+						if (result.status == 1){
+							$.cookie('username',result.username);
+							$.cookie('account',result.account);
 							alert("登陆成功");
-						}else if(result.logStetue == 0){
-							alert("用户名或密码不正确");
+						}else if(result.status == 2){
+							alert("无权登陆");
 						}
-						else {
-							alert("服务器异常")
+						else if(result.status == 3){
+
+												alert("用户名或密码错误");
+						}
+						else if(result.status == 4){
+							alert("用户名或密码错误");
+						}else{
+							alert("服务器异常");
 						}
                     })
 	            }
@@ -207,3 +215,4 @@ var Login = function () {
     };
 
 }();
+//
