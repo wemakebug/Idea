@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render,HttpResponse,Http404
-
 # Create your views here.
 
 def login(req):
