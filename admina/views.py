@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from admina import models
 import json
+from django.shortcuts import render,HttpResponse,Http404
+
 # Create your views here.
 
 @csrf_exempt
