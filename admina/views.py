@@ -50,9 +50,7 @@ def login(req):
         except:
             result['status'] = 0
             return HttpResponse(json.dumps(result), content_type="application/json")
-@csrf_exempt
-def index(req):
-    return render_to_response('index.html')
+
 
 
 @csrf_exempt
@@ -66,5 +64,4 @@ def UserManager(req):
         OneUser["RegistTime"] = str(user.RegistTime)
         OneUser["Score"] = user.Score
         UsersList.append(OneUser)
-    print UsersList
     return HttpResponse(json.dumps(UsersList))
