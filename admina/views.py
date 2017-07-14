@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
 from admina import models
+from models import User
 import json
-from django.shortcuts import render,HttpResponse,render_to_response
 from django.core.paginator import Paginator
+from django.shortcuts import render,HttpResponse,Http404,render_to_response
 
 # Create your views here.
 
@@ -113,3 +114,17 @@ def test(req):
         users = page.page(1).object_list
         print users
         return render_to_response('test.html', {'users':users})
+
+
+@csrf_exempt
+def UserManager(req):
+    Users = models.User.objects.all()
+    UsersList = []
+    for user in Users:
+        OneUser = {}
+        OneUser["UserName"] = user.UserName
+        OneUser["Sex"] = user.Sex
+        OneUser["RegistTime"] = str(user.RegistTime)
+        OneUser["Score"] = user.Score
+        UsersList.append(OneUser)
+    return HttpResponse(json.dumps(UsersList))
