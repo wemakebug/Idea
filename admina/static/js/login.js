@@ -59,6 +59,7 @@ var Login = function () {
 							$.cookie('username',result.username);
 							$.cookie('account',result.account);
 							alert("登陆成功");
+							window.location.href = 'index'
 						}else if(result.status == 2){
 							alert("无权登陆");
 						}
