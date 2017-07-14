@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.views.decorators.csrf import csrf_exempt
 from admina import models
 import json
-from django.shortcuts import render,HttpResponse,Http404
+from django.shortcuts import render,HttpResponse,Http404,render_to_response
 
 # Create your views here.
 
@@ -49,3 +49,10 @@ def login(req):
         except:
             result['status'] = 0
             return HttpResponse(json.dumps(result), content_type="application/json")
+@csrf_exempt
+def index(req):
+    return render_to_response('index.html')
+
+
+# @csrf_exempt
+# def UserManager(req):

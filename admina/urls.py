@@ -17,5 +17,6 @@ from django.conf.urls import url
 from admina import views as views
 urlpatterns = [
     url(r'login$', views.login),
+    url(r'index$', views.index),
 
 ]
