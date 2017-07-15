@@ -243,6 +243,7 @@ class Score(models.Model):
 class ScoreChange(models.Model):
     '''
     分值变动记录表
+
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='ScoreChange_User_set', null=False)
