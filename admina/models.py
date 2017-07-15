@@ -63,8 +63,7 @@ class ProjectLabel(models.Model):
     项目标签表
     '''
     Id = models.AutoField(primary_key=True)
-    project = models.ForeignKey(Project, related_name='ProjectLabel_Project_set')
-    ProjectLabelName = models.CharField(max_length=20, null=False)
+    ProjectLabelName = models.CharField(max_length=20, null=False, unique=True)
     IsUse = models.BooleanField(default=True)
 
 class Project2ProjectLabel(models.Model):
@@ -81,7 +80,7 @@ class UserLabel(models.Model):
     用户标签表
     '''
     Id = models.AutoField(primary_key=True)
-    project = models.ForeignKey(Project, related_name='UserLabel_Project_set')
+    projectLabel = models.ForeignKey(Project, related_name='UserLabel_Project_set')
     IsUse = models.BooleanField(default=True)
     Name = models.CharField(null=False, max_length=20, unique=True)
 
@@ -123,6 +122,16 @@ class Creation(models.Model):
 
     def __unicode__(self):
         return self.Name
+
+class Creation2ProjectLabel(models.Model):
+    Id = models.AutoField(primary_key=True)
+    creation = models.ForeignKey(Creation,related_name='Creation2ProjectLabel_Creation_set', null=False)
+    projectLabel = models.ForeignKey(ProjectLabel, related_name='Creation2ProjectLabel_ProjectLabel_set', null=False)
+
+    def __unicode__(self):
+        return self.creation
+
+
 class Recruit(models.Model):
     '''
     招募表
@@ -211,6 +220,7 @@ class Report(models.Model):
     project = models.ForeignKey(Project, related_name='Report_Project_set', null=True)
     creation = models.ForeignKey(Creation, related_name='Report_Creation_set', null=True)
     comment = models.ForeignKey(Comment, related_name='Report_Comment_set', null=True)
+    Reason = models.TextField(max_length=200)
     ReportDate = models.DateField(auto_now_add=True)
     DealTime = models.DateField(null=True)
     State = models.PositiveIntegerField(default=0)
@@ -263,3 +273,4 @@ admin.site.register(Follow)
 admin.site.register(Report)
 admin.site.register(Score)
 admin.site.register(ScoreChange)
+admin.site.register(Creation2ProjectLabel)
