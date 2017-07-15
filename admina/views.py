@@ -52,19 +52,6 @@ def login(req):
             result['status'] = 0
             return HttpResponse(json.dumps(result), content_type="application/json")
 
-@csrf_exempt
-def base(req):
-    if req.method == "GET":
-        return render(req,'Base.html')
-    if req.method == "POST":
-        pass
-
-@csrf_exempt
-def index(req):
-    if req.method == "GET":
-        return  render(req,'index.html')
-    if req.method == "POST":
-        pass
 
 @csrf_exempt
 def score(req):
@@ -80,7 +67,7 @@ def score_rank(req):
         scoreRank = models.Score.objects.all()
         page = Paginator(scoreRank, 6)
         scoreRank = page.page(currentpage).object_list
-        return render_to_response('Score_rank.html', {'ScoreRank':scoreRank})
+        return render_to_response('second/Score_rank.html', {'ScoreRank':scoreRank})
     if req.method == "POST":
         pass
 
@@ -91,7 +78,7 @@ def score_user(req):
         scoreUser = models.User.objects.all()
         page = Paginator(scoreUser, 6)
         scoreUser = page.page(currentpage).object_list
-        return render_to_response('Score_user.html', {'ScoreUser':scoreUser})
+        return render_to_response('second/Score_user.html', {'ScoreUser':scoreUser})
     if req.method == "POST":
         pass
 
@@ -103,7 +90,7 @@ def score_record(req):
         scoreChanges = models.ScoreChange.objects.all()
         page = Paginator(scoreChanges, 6)
         scoreChanges = page.page(currentpage).object_list
-        return render_to_response('Score_record.html', {'ScoreChanges':scoreChanges})
+        return render_to_response('second/Score_record.html', {'ScoreChanges':scoreChanges})
     if req.method == "POST":
         pass
 

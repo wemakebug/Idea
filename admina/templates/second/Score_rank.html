@@ -1,4 +1,4 @@
-{%extends "Score.html"%}
+{%extends "include/Base.html"%}
 {% block title %}用户管理{% endblock %}
 {%block content %}
 
@@ -12,7 +12,7 @@
 
 								<div class="portlet-title">
 
-									<div class="caption"><i class="icon-globe"></i>用户表单</div>
+									<div class="caption"><i class="icon-globe"></i>分值等级表单</div>
 
 
 								</div>
@@ -27,31 +27,23 @@
 
 												<th>序号</th>
 
-												<th>用户</th>
+												<th>等级</th>
 
-												<th class="hidden-480">等级</th>
-
-												<th class="hidden-480">变动时间</th>
-
-												<th class="hidden-480">变动事件</th>
+												<th class="hidden-480">分值</th>
 
 											</tr>
 
 										</thead>
 
 										<tbody>
-                                            {% for ScoreChange in ScoreChanges %}
+                                            {% for Score in Scores %}
 											<tr>
 
-												<td>{{ ScoreChange.Id }}</td>
+												<td>{{ Score.Id }}</td>
 
-												<td>{{ ScoreChange.user }}</td>
+												<td>{{ Score.Level }}</td>
 
-												<td class="hidden-480">{{ ScoreChange.score }}</td>
-
-												<td class="hidden-480">{{ ScoreChange.Event }}</td>
-
-												<td class="hidden-480">{{ ScoreChange.Date }}</td>
+												<td class="hidden-480">{{ Score.Value }}</td>
 
 											</tr>
                                             {% endfor %}
