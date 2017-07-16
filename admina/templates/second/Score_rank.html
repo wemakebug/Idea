@@ -1,0 +1,70 @@
+{%extends "include/Base.html"%}
+{% block title %}用户管理{% endblock %}
+{%block content %}
+
+<div class="row-fluid">
+
+						<div class="span12">
+
+							<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+							<div class="portlet box green">
+
+								<div class="portlet-title">
+
+									<div class="caption"><i class="icon-globe"></i>分值等级表单</div>
+
+
+								</div>
+
+								<div class="portlet-body">
+
+									<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+
+										<thead>
+
+											<tr>
+
+												<th>序号</th>
+
+												<th>等级</th>
+
+												<th class="hidden-480">分值</th>
+
+											</tr>
+
+										</thead>
+
+										<tbody>
+                                            {% for Score in Scores %}
+											<tr>
+
+												<td>{{ Score.Id }}</td>
+
+												<td>{{ Score.Level }}</td>
+
+												<td class="hidden-480">{{ Score.Value }}</td>
+
+											</tr>
+                                            {% endfor %}
+
+
+										</tbody>
+
+									</table>
+
+								</div>
+
+							</div>
+
+							<!-- END EXAMPLE TABLE PORTLET-->
+
+							<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+
+							<!-- END EXAMPLE TABLE PORTLET-->
+
+						</div>
+
+					</div>
+{% endblock %}

@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from admina import views as views
+from admina import views as views,reload
 urlpatterns = [
     url(r'login$', views.login),
+    url(r'score$', views.score),
+    url(r'score_rank$', views.score_rank),
+    url(r'score_record$', views.score_record,),
+    url(r'score_user', views.score_user),
+    url(r'test$', views.test),
+    url(r'index$', reload.index),
+    url(r'UserManager$', views.UserManager),
 
 ]
