@@ -38,7 +38,7 @@ def login(req):
                     result['username'] = user.UserName
                     result['account'] = user.Account
                     result['status'] = 1
-                    return HttpResponse(json.dumps(result),content_type="application/json")
+                    return HttpResponse(json.dumps(result), content_type="application/json")
                 elif user.Identity != 3 and user.PassWord == password:
                     result['status'] = 2
                     return HttpResponse(json.dumps(result), content_type="application/json")
@@ -53,13 +53,6 @@ def login(req):
             return HttpResponse(json.dumps(result), content_type="application/json")
 
 
-@csrf_exempt
-def score(req):
-    if req.method == "GET":
-        currentpage =1
-        return render(req, 'Score.html')
-    if req.method == "POST":
-        pass
 @csrf_exempt
 def score_rank(req):
     if req.method == "GET":
@@ -93,15 +86,6 @@ def score_record(req):
         return render_to_response('second/Score_record.html', {'ScoreChanges':scoreChanges})
     if req.method == "POST":
         pass
-
-def test(req):
-    if req.method == "GET":
-        users = models.User.objects.all()
-        page = Paginator(users, 6)
-        users = page.page(1).object_list
-        print users
-        return render_to_response('test.html', {'users':users})
-
 
 @csrf_exempt
 def UserManager(req):
