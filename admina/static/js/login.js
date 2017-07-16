@@ -1,9 +1,8 @@
 var Login = function () {
-    
     return {
         //main function to initiate the module
         init: function () {
-        	
+
            $('.login-form').validate({
 	            errorElement: 'label', //default input error message container
 	            errorClass: 'help-inline', // default input error message class
@@ -29,7 +28,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 	                $('.alert-error', $('.login-form')).show();
 	            },
 
@@ -48,14 +47,43 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "index.html";
+	                account = $("input[name='username']").val();
+	                password = $("input[name='password']").val();
+	                data = {
+	                	account:account,
+						password:password,
+					};
+                    $.post("login",data
+                    ,function (result) {
+						if (result.status == 1){
+							$.cookie('username',result.username);
+							$.cookie('account',result.account);
+							alert("登陆成功");
+							window.location.href = 'index'
+						}else if(result.status == 2){
+							alert("无权登陆");
+							window.location.reload();
+						}
+						else if(result.status == 3){
+
+							alert("用户名或密码错误");
+							window.location.reload();
+						}
+						else if(result.status == 4){
+							alert("用户名或密码错误");
+							window.location.reload();
+						}else{
+							alert("服务器异常");
+							window.location.reload();
+						}
+                    })
 	            }
 	        });
 
 	        $('.login-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "index.html";
+	                    window.location.href = "index.html"
 	                }
 	                return false;
 	            }
@@ -79,7 +107,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 
 	            },
 
@@ -151,7 +179,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 
 	            },
 
@@ -166,7 +194,7 @@ var Login = function () {
 	            },
 
 	            errorPlacement: function (error, element) {
-	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
+	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container
 	                    error.addClass('help-small no-left-padding').insertAfter($('#register_tnc_error'));
 	                } else {
 	                    error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
@@ -192,3 +220,4 @@ var Login = function () {
     };
 
 }();
+//
