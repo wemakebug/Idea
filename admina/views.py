@@ -21,11 +21,11 @@ def login(req):
                 if user.UserName == username:
                     return render(req, 'index.html')
                 else:
-                    return render(req, 'login.html')
+                    return render(req, 'first/login.html')
             except:
-                return render(req, 'login.html')
+                return render(req, 'first/login.html')
         except:
-            return render(req, 'login.html')
+            return render(req, 'first/login.html')
     if req.method == "POST":
         result = {
         }
