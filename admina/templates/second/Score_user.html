@@ -1,5 +1,5 @@
 {%extends "include/Base.html"%}
-{% block title %}用户管理{% endblock %}
+{% block title %}分值管理{% endblock %}
 {%block content %}
 
 <div class="row-fluid">
@@ -22,42 +22,42 @@
 									<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
 
 										<thead>
-                                            {% for user in users %}
+
 
 											<tr>
 
-												<th>{{ user.Id }}</th>
+												<th>序号</th>
 
-												<th>{{ user.UserName }}</th>
+												<th>姓名</th>
 
-												<th class="hidden-480">{{ user.Score }}</th>
+												<th class="hidden-480">分值</th>
 
-												<th class="hidden-480">{{ user.Score }}</th>
+												<th class="hidden-480">等级</th>
 
-												<th class="hidden-480">{{ user.Identity }}</th>
+												<th class="hidden-480">身份</th>
+
+											</tr>
+
+
+										</thead>
+
+										<tbody>
+                                            {% for user in users %}
+											<tr>
+
+												<td>{{ user.Id }}</td>
+
+												<td>{{ user.UserName }}</td>
+
+												<td class="hidden-480">{{ user.Score }}</td>
+
+												<td class="hidden-480">{{ user.Score }}</td>
+
+												<td class="hidden-480">{{ user.Identity }}</td>
 
 											</tr>
 
                                             {% endfor %}
-										</thead>
-
-										<tbody>
-
-											<tr>
-
-												<td>01</td>
-
-												<td>郝一擎</td>
-
-												<td class="hidden-480">200</td>
-
-												<td class="hidden-480">2</td>
-
-												<td class="hidden-480">学生</td>
-
-											</tr>
-
-
 
 										</tbody>
 
