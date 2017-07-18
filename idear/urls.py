@@ -20,4 +20,7 @@ urlpatterns = [
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
+    url(r'apply$', views.apply),
+    url(r'recruit$', views.recruit),
+    url(r'redetails$', views.redetails),
 ]
