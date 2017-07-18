@@ -36,3 +36,11 @@ def team(req):
         return render(req, 'team.html')
     if req.method == 'POST':
         pass
+'''
+创意页面
+'''
+def creation(req):
+    if req.method == 'GET':
+        return render(req, 'creation/index.html')
+    if req.method == "POST":
+        pass
