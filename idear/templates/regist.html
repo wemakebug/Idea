@@ -4,58 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../static/css/regist.css">
-    <script type="text/javascript" src="../static/js/regist.js"></script>
     <script type="text/javascript" src="../static/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../static/js/regist.js"></script>
     <title>注册页面</title>
 </head>
 <body>
-    <div class="register">
-        <div class="register1-1">
-            <div class="center1-1" style="margin-top: 40px;">
-                <span class="register1-3">用户名：</span>
-                <input type="text" name="name" value="{{name}}" size="30" class="input1-1">
-            </div>
-            <div class="center1-1">
-                <span class="register1-4">账号：</span>
-                <input type="text" name="account" value="{{account}}" size="30" placeholder="请输您的学号或工号" class="input1-1">
-            </div>
-            <div class="center1-1">
-                <span class="register1-4">密码：</span>
-                <input type="password" name="password" value="{{password}}" size="30" class="input1-1">
-            </div>
-            <div class="center1-1">
-                <span class="register1-5">确认密码：</span>
-                <input type="password" name="ConfirmPassword" value="{{ConfirmPassword}}" size="30" class="input1-1">
-            </div>
-            <div class="center1-1">
-                <span class="register1-5">所在学校：</span>
-                <input type="text" name="school" value="{{school}}" size="30" class="input1-1">
-            </div>
-            <div class="center1-1">
-                <span class="register1-5">用户身份：</span>
-                <select name="identity" value="{{identity}}" style="width: 260px;"  class="input1-1">
-                <option value="student" selected>学生</option>
-                <option value="teacher">教师</option>
-                <option value="team">团队</option>
-                </select>
-            </div>
-            <div class="center1-1">
-                <span class="register1-4">邮箱：</span>
-                <input type="text" name="email" value="{{email}}" size="30" placeholder="请填写您的邮箱" class="input1-1">
-            </div>
-            <div class="center1-1" >
-                <input type="checkbox" name="opinion" value="{{opinion}}" class="input1-1">
-                <a href="#" class="register1-6">我已阅读并同意《用户协议》</a>
-            </div>
-            <div class="center1-1" >
-                <input type="button" value="注册" name="submit" class="input1-1">
-                <input type="button" value="重置" name="reset" class="input1-1">
-
-            </div>
-            <div class="center1-1" >
-                已有账号，点击<a href="login.html" class="register1-6">登录</a>
-            </div>
+{#    <div class="register">#}
+{#        <div class="register1-1">#}
+{#            <div class="center1-1" style="margin-top: 40px;">#}
+{#                <span class="register1-3">用户名：</span>#}
+{#                <input type="text" name="name" value="{{name}}" size="30" class="input1-1">#}
+{#            </div>#}
+{#            <div class="center1-1">#}
+{#                <span class="register1-4">账号：</span>#}
+{#                <input type="text" name="account" value="{{account}}" size="30" placeholder="请输您的学号或工号" class="input1-1">#}
+{#            </div>#}
+{#             <div class="center1-1">#}
+{#                <span class="register1-4">邮箱：</span>#}
+{#                <input type="text" name="email" value="{{email}}" size="30" placeholder="请填写您的邮箱" class="input1-1">#}
+{#            </div>#}
+{#            <div class="center1-1">#}
+{#                <span class="register1-4">密码：</span>#}
+{#                <input type="password" name="password" value="{{password}}" size="30" class="input1-1">#}
+{#            </div>#}
+{#            <div class="center1-1">#}
+{#                <span class="register1-5">确认密码：</span>#}
+{#                <input type="password" name="ConfirmPassword" value="{{ConfirmPassword}}" size="30" class="input1-1">#}
+{#            </div>#}
+{#            <div class="center1-1" >#}
+{#                <input type="checkbox" name="opinion" value="{{opinion}}" class="input1-1">#}
+{#                <a href="#" class="register1-6">我已阅读并同意《用户协议》</a>#}
+{#            </div>#}
+{#            <div class="center1-1" >#}
+{#                <input type="button" value="注册" name="submit" class="input1-1">#}
+{#                <input type="button" value="重置" name="reset" class="input1-1">#}
+{##}
+{#            </div>#}
+{#            <div class="center1-1" >#}
+{#                已有账号，点击<a href="login.html" class="register1-6">登录</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+<div class="wrap">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <img class="div-top-img" src="../static/imgs/logo1.png">
+    <div class="register1-1">
+        <div class="center1-1" style="margin-top: 50px;">
+        <span class="register1-3">用户名：</span>
+        <input type="text" name="name" value="{{name}}" size="30" class="input1-1">
+        </div>
+        <div class="center1-1">
+            <span class="register1-4">账号：</span>
+            <input type="text" name="account" value="{{account}}" size="30" placeholder="请输您的学号或工号" class="input1-1">
+        </div>
+         <div class="center1-1">
+            <span class="register1-4">邮箱：</span>
+            <input type="text" name="email" value="{{email}}" size="30" placeholder="请填写您的邮箱" class="input1-1">
+        </div>
+        <div class="center1-1">
+            <span class="register1-4">密码：</span>
+            <input type="password" name="password" value="{{password}}" size="30" class="input1-1">
+        </div>
+        <div class="center1-1">
+            <span class="register1-5">确认密码：</span>
+            <input type="password" name="ConfirmPassword" value="{{ConfirmPassword}}" size="30" class="input1-1">
+        </div>
+        <div class="center1-4" >
+            <input type="checkbox" name="opinion" value="{{opinion}}" class="input1-1">
+            <a href="#" class="register1-6">我已阅读并同意《用户协议》</a>
+        </div>
+        <div class="center1-2" >
+            <input type="button" value="注册" name="submit" id="submit"  class="input1-2">
+        </div>
+        <div class="center1-2" >
+            <input type="button" value="重置" name="reset" id="reset" class="input1-3">
+        </div>
+        <div class="center1-1" style="clear: both" >
+            已有账号，点击<a href="login.html" style="color: rgb(85, 107 ,47);text-decoration-color :rgb(0, 0 ,0);font-size: 20px;">登录</a>
         </div>
     </div>
+</div>
 </body>
 </html>
