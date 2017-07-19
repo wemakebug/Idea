@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'apply$', views.apply),
     url(r'recruit$', views.recruit),
     url(r'redetails$', views.redetails),
+    url(r'creations$', views.creations),
 ]

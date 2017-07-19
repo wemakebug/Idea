@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
+from admina.models import Creation
+from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
+
 # Create your views here.
 
 
@@ -67,3 +70,15 @@ def apply(req):
         return render(req, 'project/apply.html')
     if req.method == 'POST':
         pass
+
+
+'''
+创意灵感一级界面
+'''
+def creations(req):
+    if req.method == 'GET':
+        creations = Creation.objects.all()
+        return HttpResponse(creations)   
+    else:
+        creations = Creation.objects.all()
+        return HttpResponse(creations)   
