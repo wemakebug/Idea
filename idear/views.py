@@ -11,7 +11,7 @@ from django.shortcuts import render
 '''
 def index(req):
     if req.method == "GET":
-        return render(req, 'idea/index.html')
+        return render(req, 'index.html')
     if req.method == "POST":
         pass
 '''
@@ -19,7 +19,7 @@ def index(req):
 '''
 def login(req):
     if req.method == "GET":
-        return render(req, 'idea/login.html')
+        return render(req, 'login.html')
     if req.method == "POST":
         pass
 '''
@@ -27,7 +27,7 @@ def login(req):
 '''
 def regist(req):
     if req.method == 'GET':
-        return render(req, 'idea/regist.html')
+        return render(req, 'regist.html')
     if req.method == "POST":
         pass
 '''
@@ -35,7 +35,7 @@ def regist(req):
 '''
 def team(req):
     if req.method == 'GET':
-        return render(req, 'team/team.html')
+        return render(req, 'team.html')
     if req.method == 'POST':
         pass
 '''
