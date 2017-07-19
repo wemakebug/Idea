@@ -14,5 +14,7 @@ from django.shortcuts import HttpResponse,Http404,render_to_response,HttpRespons
 def projects(req):
 	if req.method == "GET":
 		return render_to_response('project/projects.html')
+	else:
+		return render_to_response('project/projects.html')
 		# projects = Project.objects.all()
 		# return HttpResponse(projects)
