@@ -28,7 +28,7 @@
             <div  class="line_1" ></div>
             <div class="textbox">
                 邮  箱:
-                <span><input type="text"  class="input_1" id="account"/></span>
+                <span><input type="email"  class="input_1" id="account"/></span>
                 <a href="javascript:void(0)" title="提示" class="warning" id="warn1">*</a>
             </div>
             <div class="line"></div>
@@ -62,10 +62,9 @@
     </div>
     <script type="text/javascript">
         function login() {
-            var school=document.getElementById("school").value;
             var account=document.getElementById("account").value;
             var password=document.getElementById("password").value;
-            if(school!=""&account!=""&password!=""){
+            if(account!=""&password!=""){
                 alert("登录成功!!!" +
                     "正在跳转...")
             }else {
