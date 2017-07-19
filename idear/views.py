@@ -72,13 +72,5 @@ def apply(req):
         pass
 
 
-'''
-创意灵感一级界面
-'''
-def creations(req):
-    if req.method == 'GET':
-        creations = Creation.objects.all()
-        return HttpResponse(creations)   
-    else:
-        creations = Creation.objects.all()
-        return HttpResponse(creations)   
+
+  
