@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
+    url(r'forgetPassword$', views.forgetPassword),
 ]
