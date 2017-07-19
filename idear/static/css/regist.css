@@ -13,7 +13,7 @@ body,html{
     height: 100%;
     padding: 40px 0;
     position: fixed;
-    margin-top:0px;
+    margin-top:-40px;
     opacity: 0.8;
     background: linear-gradient(to bottom right,rgba(28, 134, 238,0.3),rgba(99 ,184 ,255,0.6));
     background: -webkit-linear-gradient(to bottom right,rgba(28, 134, 238,0.3),rgba(99 ,184 ,255,0.6));
@@ -162,7 +162,9 @@ body,html{
 .div-top-img{
 	width: 8%;
 	height: 80px;
-	position: relative;
+	position: fixed;
+    margin-left: 65%;
+    margin-top: 50px;
 	animation-name: myfirst;
 	animation-duration: 2s;
 	animation-timing-function: linear;
@@ -190,7 +192,7 @@ body,html{
 	min-height:500px;
     float: left;
     margin-left: 30%;
-    margin-top: 4%;
+    margin-top: 8%;
     border-radius: 50px;
     background-color: rgba(253,245,230,0.3);
     -webkit-box-shadow: 16px 18px 16px rgba(30,144,255,0.2);
@@ -282,4 +284,15 @@ body,html{
 .register1-6{
     text-decoration: none;
     color: rgb(0, 0 ,0);
+}
+.pop-up{
+    display: none;
+    min-width:50%;
+	min-height:550px;
+    float: left;
+    margin-left: 25%;
+    margin-top: 4%;
+    border-radius: 50px;
+    background: linear-gradient(to bottom right,rgba(181 ,181 ,181,0.4),rgba(207, 207 ,207,0.6));
+    background: -webkit-linear-gradient(to bottom right,rgba(181 ,181 ,181,0.4),rgba(207, 207 ,207,0.6));
 }
