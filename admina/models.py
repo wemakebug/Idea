@@ -3,10 +3,18 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib import admin
+from django.utils import timezone
 # Create your models here.
 '''
 外键 首单词小写，
 '''
+
+class Admin(models.Model):
+    Id = models.AutoField(primary_key=True)
+    Account = models.CharField(null=False, blank=False, unique=True, max_length=25)
+    Password = models.CharField(null=False, blank=False, max_length=25)
+    DateTime = models.DateField(auto_now_add=True)
+
 class User(models.Model):
     '''
     用户表
@@ -117,11 +125,10 @@ class Creation(models.Model):
     Id = models.AutoField(primary_key=True)
     Date = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, related_name='Creation_User_set')
-    projectlabel = models.ForeignKey(ProjectLabel, related_name='Creation_ProjectLabel_set', null=False)
     Describe = models.TextField(max_length=200, null=True)
     Name = models.CharField(max_length=20, null=False)
     IsUse = models.BooleanField(default=True)
-    Img = models.ImageField(upload_to='photos/%Y/%m/%d/creation')
+    Img = models.ImageField(upload_to='photos/creation/%Y/%m/%d')
 
     def __unicode__(self):
         return self.Name
@@ -197,6 +204,7 @@ class Comment(models.Model):
     Date = models.DateField(auto_now_add=True)
     Content = models.TextField(max_length=200)
     IsUse = models.BooleanField(default=True)
+    IsAdopt = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.user
@@ -239,7 +247,6 @@ class Score(models.Model):
     Id = models.AutoField(primary_key=True)
     Level = models.PositiveIntegerField(default=0)
     Value = models.IntegerField(null=False, default=0)
-
     def __unicode__(self):
         return self.Level
 
@@ -256,10 +263,26 @@ class ScoreChange(models.Model):
 
     def __unicode__(self):
         return self.user
+
+class HelpApplication(models.Model):
+    Id = models.AutoField(primary_key=True)
+    Applier = models.ForeignKey(User, related_name='Help_App_Applier')
+    AppliedTeam = models.ForeignKey(User, related_name='Help_App_Team')
+    DateTime = models.DateField(auto_now_add=True)
+    Reply = models.TextField(blank=True, null=True)
+    Describe = models.TextField(null=True, blank=True)
+    WhatWant = models.TextField(null=True,blank=True)
+    Email = models.EmailField(null=False)
+    IsReplied = models.BooleanField(default=False, blank=True)
+
+    def __unicode__(self):
+        return self.Id
+
 '''
 将数据库字段注册到Django自带后台，方便数据添加测试
 后台账号为admin 密码adminadmin
 '''
+admin.site.register(Admin)
 admin.site.register(User)
 admin.site.register(UserLabel)
 admin.site.register(User2UserLabel)

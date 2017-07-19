@@ -8,22 +8,24 @@ def index(req):
     return render_to_response('first/index.html')
 
 @csrf_exempt
-def user_label(req):
+def label_user(req):
     if req.method == "GET":
         currentpage = 1
         userlabel = models.UserLabel.objects.all().order_by('Id')
         page = Paginator(userlabel, 6)
         userLabel = page.page(currentpage).object_list
+        print userLabel
         return render_to_response('second/Label_User.html', {'UserLabel': userLabel})
     if req.method == "POST":
         pass
 
-def user_project(req):
+def label_project(req):
     if req.method == "GET":
         currentpage = 1
         projectlabel = models.ProjectLabel.objects.all().order_by('Id')
         page = Paginator(projectlabel, 6)
         projectLabel = page.page(currentpage).object_list
+        print projectLabel
         return render_to_response('second/Label_Project.html', {'ProjectLabel ': projectLabel})
     if req.method == "POST":
         pass
