@@ -1,5 +1,5 @@
 {%extends "include/Base.html"%}
-{% block title %}分值管理{% endblock %}
+{% block title %}个人标签{% endblock %}
 {%block content %}
 
 <div class="row-fluid">
@@ -12,7 +12,7 @@
 
 								<div class="portlet-title">
 
-									<div class="caption"><i class="icon-circle"></i>用户表单</div>
+									<div class="caption"><i class="icon-globe"></i>个人标签表单</div>
 
 
 								</div>
@@ -23,44 +23,35 @@
 
 										<thead>
 
-
 											<tr>
 
 												<th>序号</th>
 
-												<th>姓名</th>
+												<th>名称</th>
 
-												<th class="hidden-480">分值</th>
+                                                <th>对应项目标签</th>
 
-												<th class="hidden-480">等级</th>
-
-												<th class="hidden-480">身份</th>
-
-                                                <th>操作</th>
+                                                <th >是否可用</th>
 
 											</tr>
-
 
 										</thead>
 
 										<tbody>
-                                            {% for user in ScoreUser %}
+                                            {% for Labe in UserLabel %}
 											<tr>
 
-												<td>{{ user.Id }}</td>
+												<td>{{ Label.Id }}</td>
 
-												<td>{{ user.UserName }}</td>
+												<td>{{ Label.Name }}</td>
 
-												<td class="hidden-480">{{ user.Score }}</td>
+												<td>{{ Label.projectLabel }}</td>
 
-												<td class="hidden-480">{{ user.Score }}</td>
+                                                <td>{{ Labe.IsUse }}</td>
 
-												<td class="hidden-480">{{ user.Identity }}</td>
-
-                                                <td><input type="button" id="delete_btn"></td>
 											</tr>
-
                                             {% endfor %}
+
 
 										</tbody>
 

@@ -21,4 +21,7 @@ urlpatterns = [
     url(r'score_record$', views.score_record,),
     url(r'score_user', views.score_user),
     url(r'index$', reload.index),
+    url(r'UserManager$', views.UserManager),
+    url(r'label_user$', reload.user_label),
+    url(r'label_project$', reload.user_project),
 ]
