@@ -11,7 +11,7 @@ from django.shortcuts import render
 '''
 def index(req):
     if req.method == "GET":
-        return render(req, 'index.html')
+        return render(req, 'idea/index.html')
     if req.method == "POST":
         pass
 '''
@@ -19,7 +19,7 @@ def index(req):
 '''
 def login(req):
     if req.method == "GET":
-        return render(req, 'login.html')
+        return render(req, 'idea/login.html')
     if req.method == "POST":
         pass
 '''
@@ -27,12 +27,39 @@ def login(req):
 '''
 def regist(req):
     if req.method == 'GET':
-        return render(req, 'regist.html')
+        return render(req, 'idea/regist.html')
     if req.method == "POST":
         pass
-
+'''
+团队页面
+'''
 def team(req):
     if req.method == 'GET':
-        return render(req, 'team.html')
+        return render(req, 'team/team.html')
+    if req.method == 'POST':
+        pass
+'''
+招募项目
+'''
+def recruit(req):
+    if req.method == 'GET':
+        return render(req, 'project/recruit.html')
+    if req.method == 'POST':
+        pass
+'''
+招募项目详情
+'''
+def redetails(req):
+    if req.method == 'GET':
+        return render(req, 'project/redetails.html')
+    if req.method == 'POST':
+        pass
+'''
+招募项目详情
+'''
+
+def apply(req):
+    if req.method == 'GET':
+        return render(req, 'project/apply.html')
     if req.method == 'POST':
         pass

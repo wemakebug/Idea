@@ -1,0 +1,166 @@
+<html>
+<head>
+    <meta http-equiv=content-type content="text/html;charset=utf-8">
+	<title></title>
+	<style type="text/css">
+	body,div
+	{
+		margin:0;
+		padding:0;
+	}
+	a
+	{   color:black;
+		text-decoration: none;
+	}
+	ul li
+	{
+        list-style: none;
+	}
+	.head{
+		width: 100%;
+		height: 80px;
+		border:1px solid #FFFFFF;
+		position:fixed;
+        top:0px;
+        _position:absolute;
+        _top:expression(documentElement.scrollTop + "px");
+        z-index:9999;
+        text-align:left;
+
+	}
+	.nav-bottom{
+		width: 100%;
+		height: 5px;
+	}
+	.bottom-left{
+		width: 30%;
+		height:5px;
+		background: #66B3FF;
+		float: left;
+	}
+	.bottom-right{
+		width: 70%;
+		height:5px;
+		background: #66B3FF;
+		float: right;
+	}
+	.nav{
+		width: 100%;
+		height:75px;
+		background: #F0F0F0;
+	}
+	.logo{
+	    float:left;
+	    margin-left:5%;
+        width:10%;
+        height:75px;
+        background:url('../static/imgs/LOGO.png') ;
+        background-size:100% 100%;
+	}
+	.mainnav{
+		float: left;
+		width: 35%;
+		height: 75px;
+		background: #F0F0F0;
+	}
+	.mainnav ul{
+		width: 85%;
+		height: 50px;
+		border: 1px solid #F0F0F0;
+	}
+	.mainnav ul li{
+		float: left;
+		padding:10px 25px;
+	}
+	.search{
+
+	}
+	.sidebar{
+	    float: left;
+		width: 10%;
+		height: 75px;
+		background: #F0F0F0;
+	}
+	.sidebar ul li{
+        float: left;
+        padding:10px 15px;
+	}
+	.middle{
+		width:100%;
+		height:2000px;
+	}
+	.footer {
+        width:100%;
+        height:70px;
+        background-color:  #E1F5F2;
+        text-align: center;
+        padding:20px 0;
+	}
+	.footer ul li{
+		display: inline-block;
+    }
+    .footer ul li a{
+        display: inline-block;
+        text-decoration:none;
+        color:#000 ;
+        font-size: 1em;
+        margin: 7px 10px 0 0;
+    }
+    .footer ul li a:hover{
+        color:#79D1C3;
+    }
+	</style>
+</head>
+<body>
+	<div class="head">
+    	<div class="nav">
+			<div class="logo">
+				<!--<img src="../static/imgs/LOGO.png">-->
+			</div>
+    		<div class="mainnav">
+   				<ul>
+					<li><a href="">首页</a></li>
+					<li><a href="">招募项目</a></li>
+					<li><a href="">开发项目</a></li>
+					<li><a href="">常驻团队</a></li>
+					<li><a href="">创意灵感</a></li>
+   				</ul>
+    		</div>
+			<div class="search">
+
+			</div>
+            <div class="sidebar">
+                <ul>
+					<li><a href="">登录</a></li>
+					<li><a href="">注册</a></li>
+                </ul>
+            </div>
+    	</div>
+		<div class="nav-bottom">
+			<div class="bottom-left"></div>
+			<div class="bottom-right"></div>
+	    </div>
+	</div>
+	<div class="middle">
+        
+	</div>
+    {% block content %} {% endblock %}
+
+
+
+	<div class="footer">
+     <div class="container">
+        <ul>
+            <li><a href="" >关于我们 </a> </li>
+            <li><a href="" >服务规则  </a> </li>
+            <li><a href="" >隐私条款</a></li>
+            <li><a href="" >提出建议 </a></li>
+            <li><a href="" >联系我们 </a></li>
+            <div class="clearfix"> </div>
+        </ul>
+        <p>  创享 © 2017. All Rights Reserved.</p>
+     </div>
+
+</body>
+</html>
+
