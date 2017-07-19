@@ -36,13 +36,15 @@
 
 												<th class="hidden-480">身份</th>
 
+                                                <th>操作</th>
+
 											</tr>
 
 
 										</thead>
 
 										<tbody>
-                                            {% for user in users %}
+                                            {% for user in ScoreUser %}
 											<tr>
 
 												<td>{{ user.Id }}</td>
@@ -55,6 +57,7 @@
 
 												<td class="hidden-480">{{ user.Identity }}</td>
 
+                                                <td><input type="button" id="delete_btn"></td>
 											</tr>
 
                                             {% endfor %}

@@ -18,9 +18,11 @@ class User(models.Model):
     2.性别表示
         0 男
         1 女
+    3.UUID用作登陆状态验证
     '''
     Id = models.AutoField(primary_key=True)
     UserName = models.CharField(max_length=10, null=False, unique=True)
+    Account = models.CharField(max_length=20, null=False, unique=True)
     Account = models.CharField(max_length=20, null=False, unique=True)
     PassWord = models.CharField(max_length=20, null=False)
     Identity = models.PositiveSmallIntegerField(default=0, null=False)
@@ -29,11 +31,12 @@ class User(models.Model):
     Score = models.PositiveIntegerField(default=0, null=False)
     RegistTime = models.DateField(auto_now_add=True)
     Phone = models.CharField(max_length=12, null=False, )
-    Img = models.ImageField(upload_to='photos/%Y/%m/%d/user', null=True)
+    Img = models.ImageField(upload_to='photos/%Y/%m/%d/user', null=True, blank=True)
     Introduction = models.TextField(null=True, max_length=200)
     School = models.CharField(null=True, max_length=20)
     Institude = models.CharField(null=True, max_length=20)
     Major = models.CharField(null=True, max_length=20)
+    Uuid = models.UUIDField(null=True)
 
     def __unicode__(self):
         return self.UserName
