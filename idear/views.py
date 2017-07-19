@@ -38,7 +38,7 @@ def team(req):
         return render(req, 'team.html')
     if req.method == 'POST':
         pass
-
+# 忘记密码
 def forgetPassword(req):
     if req.method == 'GET':
         return render(req, 'forgetPassword.html')
