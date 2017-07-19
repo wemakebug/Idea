@@ -30,7 +30,9 @@ def regist(req):
         return render(req, 'regist.html')
     if req.method == "POST":
         pass
-
+'''
+团队页面
+'''
 def team(req):
     if req.method == 'GET':
         return render(req, 'team.html')
@@ -40,5 +42,28 @@ def team(req):
 def forgetPassword(req):
     if req.method == 'GET':
         return render(req, 'forgetPassword.html')
+'''
+招募项目
+'''
+def recruit(req):
+    if req.method == 'GET':
+        return render(req, 'project/recruit.html')
+    if req.method == 'POST':
+        pass
+'''
+招募项目详情
+'''
+def redetails(req):
+    if req.method == 'GET':
+        return render(req, 'project/redetails.html')
+    if req.method == 'POST':
+        pass
+'''
+招募项目详情
+'''
+
+def apply(req):
+    if req.method == 'GET':
+        return render(req, 'project/apply.html')
     if req.method == 'POST':
         pass
