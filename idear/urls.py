@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from idear import views as views
+from idear import creations
+from idear import projects
 urlpatterns = [
     url(r'index$', views.index),
     url(r'login$', views.login),
@@ -24,5 +26,6 @@ urlpatterns = [
     url(r'apply$', views.apply),
     url(r'recruit$', views.recruit),
     url(r'redetails$', views.redetails),
-    url(r'creations$', views.creations),
+    url(r'creations$', creations.creations),
+    url(r'projects$', projects.projects),
 ]
