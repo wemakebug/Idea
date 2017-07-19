@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>申请表</title>
+    <link rel="stylesheet" href="../../static/project/css/style.css">
 </head>
 <body>
+    <div class="bg">
+    <form>
+        <div class="bdiv_left">
 
+            <div class="headimg"></div>
+                <p class="FixText1">用户昵称：</p><input type="text" name="UserName" value="张三" readonly="readonly" class="VariableText1"/>
+                <p class="FixText2">用户身份：</p><input type="text" name="Identity" value="学生" readonly="readonly" class="VariableText2"/>
+                <p class="FixText2">用户等级：</p><input type="text" name="Score" value="一颗星" readonly="readonly" class="VariableText2"/>
+                <p class="FixText2">个人标签：</p><input type="text" name="Name" value="#IT" readonly="readonly" class="VariableText2"/>
+                <p class="FixText2">学校：</p><input type="text" name="School" value="华北理工大学" readonly="readonly" class="VariableText2 LongText"/>
+                <p class="FixText2">学院：</p><input type="text" name="Institude" value="化学工程学院" readonly="readonly" class="VariableText2 LongText"/>
+                <p class="FixText2">专业：</p><input type="text" name="Major" value="化学工程与工艺" readonly="readonly" class="VariableText2 LongText"/>
+        </div>
+        <div class="bdiv_right">
+            <p class="FormTitle">申请表</p>
+            <p class="FixText3">项目参与历史：</p><br><textarea rows="10" cols="30" class="VariableText3" autofocus="autofocus"></textarea>
+            <p class="FixText4">申请理由：</p><br><textarea rows="10" cols="30" class="VariableText3" autofocus="autofocus"></textarea>
+            <input type="submit" value="提交" class="FixButton" onclick="">
+        </div>
+    </form>
+    </div>
 </body>
 </html>
