@@ -8,30 +8,44 @@
 <link rel="stylesheet" href="../static/idea/css/project.css">
 {%endblock%}
 
+{% block content %}
 
-{%block content%} 
+{%for project in projects%}
+<div style="background-color:#FFF;height:300px;width:300px;margin-top:10px;margin-left:30px;border-style: solid; border-width: 5px 5px 5px 5px;">
+  <br>
+    项目名称：
+    {{project.ProjectName}}
+    <br>
+    项目描述：
+    {{project.Description}}
+    <br>
+    项目开始时间：
+    {{project.StartTime}}
+    <br>
+    人数：
+    {{project.Number}}
+    <br>
+    总结：
+    {{project.Summary}}
+    <br>
+    进度：
+    {{project.Progress}}
+    <br>
+    照片：
+    <img src="../../static/project/imgs/HeadImg.png" height="100" width="150" />
+    <img src="../../photos/2017/07/19/project/wife.jpg ">
+</div>
+{%endfor%}
 
-这个是项目的一级界面ddd
-
-{%endblock%}
-
+{% endblock %}
 
 
 
 {% block script %}
 
  <script type="text/javascript">
-	$(function(){
-
-	alert("这个是项目的一级界面")
-
-	})
 
  </script>
 
 
 {% endblock %}
-
-
-
-
