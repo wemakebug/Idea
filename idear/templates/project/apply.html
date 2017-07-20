@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>申请表</title>
-    <link rel="stylesheet" href="../../static/project/css/style.css">
-</head>
-<body>
+{% extends 'idea/Base.html'%}
+	{%block CSS%}
+        <link rel="stylesheet" href="../../static/project/css/style.css">
+        <link rel="stylesheet" href="../../static/idea/css/index.css">
+	{%endblock%}
+{%block title%}<title>申请表</title>{%endblock%}
+{%block content%}
     <div class="bg">
     <form>
         <div class="bdiv_left">
@@ -27,5 +26,4 @@
         </div>
     </form>
     </div>
-</body>
-</html>
+{% endblock %}
