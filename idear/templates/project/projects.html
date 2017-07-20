@@ -11,7 +11,7 @@
 {% block content %}
 
 {%for project in projects%}
-<div style="background-color:#FFF;height:300px;width:300px;margin-top:10px">
+<div style="background-color:#FFF;height:300px;width:300px;margin-top:10px;margin-left:30px;border-style: solid; border-width: 5px 5px 5px 5px;">
   <br>
     项目名称：
     {{project.ProjectName}}
@@ -32,7 +32,8 @@
     {{project.Progress}}
     <br>
     照片：
-    <img src="/Idea/{{project.Img}}">
+    <img src="../../static/project/imgs/HeadImg.png" height="100" width="150" />
+    <img src="../../photos/2017/07/19/project/wife.jpg ">
 </div>
 {%endfor%}
 
@@ -43,19 +44,6 @@
 {% block script %}
 
  <script type="text/javascript">
-	// $(function(){
-
-	// $.post('projects',function(data){
-	// 	alert(data)
-
-
-
-
-
-
-	// })
-
-	// })
 
  </script>
 
