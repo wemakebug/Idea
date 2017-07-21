@@ -17,11 +17,15 @@ from django.conf.urls import url
 from idear import views as views
 from idear import creations
 from idear import projects
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     url(r'index$', views.index),
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
+    url(r'creation$', views.creation),
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),
     url(r'recruit$', views.projects),
@@ -29,3 +33,4 @@ urlpatterns = [
     url(r'creations$', creations.creations),
     # url(r'projects$', projects.projects),
 ]
+

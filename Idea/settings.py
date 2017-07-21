@@ -134,3 +134,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(os.path.dirname(__file__),'admina/').replace('\\','/')
+
+
+MEDIA_URL = 'photos/'
+
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'../photos').replace('\\','/')

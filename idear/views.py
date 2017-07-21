@@ -99,6 +99,25 @@ def forgetPassword(req):
     if req.method == 'GET':
         return render(req, 'idea/forgetPassword.html')
 '''
+<<<<<<< HEAD
+=======
+招募项目
+'''
+def recruit(req):
+    if req.method == 'GET':
+        return render(req, 'project/recruit.html')
+    if req.method == 'POST':
+        pass
+'''
+创意页面
+'''
+def creation(req):
+    if req.method == 'GET':
+        return render(req, 'creation/index.html')
+    if req.method == "POST":
+        pass
+'''
+>>>>>>> bb37e520425d2923fb3279ea292370b906a1d758
 招募项目详情
 '''
 def redetails(req):
