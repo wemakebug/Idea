@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../../static/idea/css/index.css">
 {%endblock%}
 {%block content%}
+
+{%for project in projects%}
 <div class="bg_all">
     <div class="bg_left">
         <div class="project_top_1 project_top">
@@ -19,7 +21,7 @@
                 </div>
                 <div class="project_top_1_right">
                     <h5>项目名称</h5>
-                    <p class="project_top_1_text">实验项目实验项目实验项目实验项目实验项目实验项实验项目实验项目实验项目实验项目实验项目实验项
+                    <p class="project_top_1_text">{{project.Description}}
                     </p>
                 </div>
             </a>
@@ -28,16 +30,17 @@
                     <p class="FixText">项目名称：</p>
                     <p class="FixText">招募人数：</p>
                     <p class="FixText">招募状态：</p>
-                    <p class="FixText">时间：</p>
+                    <p class="FixText">时间：{{project.ProjectName}}</p>
                 </div>
                  <div class="project_bottom_right">
-                     <input type="text" name="ProjectName" value="张三" readonly="readonly" class="VariableText"/>
-                     <input type="text" name="Number" value="200人" readonly="readonly" class="VariableText"/>
+                     <input id="ProjectName" type="text" name="ProjectName" value="233" readonly="readonly" class="VariableText"/>
+                     <input type="text" name="Number" value="{{project.Number}}" readonly="readonly" class="VariableText"/>
                      <input type="text" name="State" value="正在进行" readonly="readonly" class="VariableText"/>
-                     <input type="text" name="UserName" value="2017.7.19-2017.12.30" readonly="readonly" class="VariableText"/>
+                     <input type="text" name="UserName" value="{{project.StartTime}}" readonly="readonly" class="VariableText"/>
                  </div>
             </div>
         </div>
+{%endfor%}
         <div class="project_top_1 project_top">
             <a href="redetails.html">
                 <div class="project_top_1_left">
@@ -56,7 +59,7 @@
                     <p  class="FixText">项目名称：</p>
                     <p class="FixText">招募人数：</p>
                     <p class="FixText">招募状态：</p>
-                    <p class="FixText">时间：</p>
+                    <p class="FixText">时间：{{project.ProjectName}}</p>
                 </div>
                  <div class="project_bottom_right">
                      <input type="text" name="ProjectName" value="张三" readonly="readonly" class="VariableText"/>
@@ -196,3 +199,4 @@
     </div>
 </div>
 {% endblock %}
+
