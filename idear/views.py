@@ -100,11 +100,11 @@ def team(req):
 '''
 创意页面
 '''
-def creation(req):
-    if req.method == 'GET':
-        return render(req, 'creation/index.html')
-    if req.method == "POST":
-        pass
+# def creation(req):
+#     if req.method == 'GET':
+#         return render(req, 'creation/index.html')
+#     if req.method == "POST":
+#         pass
 
 # 忘记密码
 def forgetPassword(req):

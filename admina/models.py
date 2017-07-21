@@ -15,7 +15,6 @@ class Admin(models.Model):
     Account = models.CharField(null=False, blank=False, unique=True, max_length=25)
     Password = models.CharField(null=False, blank=False, max_length=25)
     DateTime = models.DateField(auto_now_add=True)
-    UserName = models.CharField(null=True, max_length=20, unique=True)
 
 class User(models.Model):
     '''
@@ -201,15 +200,15 @@ class Comment(models.Model):
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='Comment_User_set', null=False)
-    creation = models.ForeignKey(Creation, related_name='Comment_Creation_set', null=True)
-    project = models.ForeignKey(Project, related_name='Comment_Project_set', null=True)
+    creation = models.ForeignKey(Creation, related_name='Comment_Creation_set', null=True, blank=True)
+    project = models.ForeignKey(Project, related_name='Comment_Project_set', null=True, blank=True)
     Date = models.DateField(auto_now_add=True)
     Content = models.TextField(max_length=200)
     IsUse = models.BooleanField(default=True)
     IsAdopt = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return self.user
+        return unicode(self.user)
 
 class Follow(models.Model):
     '''
