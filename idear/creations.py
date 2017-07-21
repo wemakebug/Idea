@@ -1,29 +1,30 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from admina import models
+
 from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
 
+from admina.models import Project2ProjectLabel, Creation, ProjectLabel, Comment, User
 # Create your views here.
 from idear.views import Check_User_Cookie
 
-'''
-获取表中全部Creation对象
-'''
-def Get_creation(req):
-     if True:    #
-        try:
-            creations = models.Creation.objects.all().order_by('Id')
-            for creation in creations:
-                userName = creation.user.UserName
-                userimg = creation.user.Img
-                description = creation.Describe
 
-            return HttpResponse('Well')
-        except:
-            return HttpResponse('Bad')
 def creations(req):
+    '''
+    创意灵感一级二级页面项目显示
+    '''
     if req.method == 'GET':
-        creations = models.Creation.objects.all()
-        return render_to_response('creations/index.html',{'creations':creations})
+        sign = req.GET['sign']
+        if sign != "":
+            Creation2ProjectLabelObj = Project2ProjectLabel.objects.get( projectLabel = sign)
+            creations = Creation2ProjectLabelObj.Creation2ProjectLabel_Creation_set.all()
+        else:
+            creations = Creation.objects.all()
+            projectLabels = ProjectLabel.objects.all()
+        return render_to_response('creations/index.html',{'creations':creations,'projectLabels':projectLabels})
     else:
-        pass 
+        id = req.POST['creationId']
+        creations = Creation.objects.fitler(id = id)
+        comments = Comment.objects.fitler(creation = id).order_by('Date')
+        user = Creation.objects.get(id = id).user
+        return render_to_response('creations/sec_creations.html',{'creations':creations,'comments':comments})
+
