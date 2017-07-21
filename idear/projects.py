@@ -40,9 +40,9 @@ def projects(req):
 		if req.method == "GET":
 			projects = Project.objects.all()
 			print projects
-			return render_to_response('project/projects.html', {'projects': projects})
+			return render_to_response('project/recruit.html', {'projects': projects})
 		else:
 			# return render_to_response('project/projects.html')
 			projects = Project.objects.all()
-			return render_to_response('project/projects.html', {'projects': projects})
+			return render_to_response('project/recruit.html', {'projects': projects})
 

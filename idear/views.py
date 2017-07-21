@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import json
 from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
 from admina import models
+from admina.models import Project
 import uuid
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
@@ -98,14 +99,6 @@ def forgetPassword(req):
     if req.method == 'GET':
         return render(req, 'idea/forgetPassword.html')
 '''
-招募项目
-'''
-def recruit(req):
-    if req.method == 'GET':
-        return render(req, 'project/recruit.html')
-    if req.method == 'POST':
-        pass
-'''
 招募项目详情
 '''
 def redetails(req):
@@ -114,7 +107,7 @@ def redetails(req):
     if req.method == 'POST':
         pass
 '''
-招募项目详情
+招募项目申请表
 '''
 
 def apply(req):
@@ -122,7 +115,16 @@ def apply(req):
         return render(req, 'project/apply.html')
     if req.method == 'POST':
         pass
-
-
-
-  
+'''
+招募项目
+'''
+@csrf_exempt
+def projects(req):
+		if req.method == "GET":
+			projects = Project.objects.all()
+			print projects
+			return render_to_response('project/recruit.html', {'projects': projects})
+		else:
+			# return render_to_response('project/projects.html')
+			projects = Project.objects.all()
+			return render_to_response('project/recruit.html', {'projects': projects})
