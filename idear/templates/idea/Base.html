@@ -4,8 +4,9 @@
 	{%block title%} {%endblock%}
 	<link rel="stylesheet" href="../../static/idea/css/index.css">
 	{%block CSS%}{%endblock%}
+	<title>首页</title>
 </head>
-<body>
+<body >
 	<div class="head">
     	<div class="header">
 			<div class="logo">
@@ -36,9 +37,12 @@
 		<div class="nav-bottom">
 		</div>
 	</div>
+
 	    {% block content %}
 
 	    {% endblock %}
+
+
 	<div class="footer">
 		<div class="container">
 			<ul>
@@ -56,4 +60,3 @@
 {%endblock%}
 </body>
 </html>
-

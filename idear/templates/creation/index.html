@@ -1,17 +1,22 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>创意灵感</title>
    <link href="../static/creation/css/index.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
 
-<div class="header">
-</div>
+</head>
+<body bgcolor="#f1f1f1" >-->
+{% extends 'idea/Base.html'%}
+{%block CSS%}
+<link rel="stylesheet" href="../../static/idea/css/index.css">
+<link rel="stylesheet" href="../static/creation/css/index.css">
+{%endblock%}
+{% block content %}
+<div class="container">
 <div class="home">
   <div class="block1">
-    <div class="head">
+    <div class="block-head">
       <a class="ava" href="#">
         <img src="../static/creation/imgs/ava.png" style="width:40px;height:40px">
       </a>
@@ -19,7 +24,7 @@
       <span>用户名</span>
       </a>
       <a class="follow" href="#">
-      <span>关注</span>
+      <span style="color:#6892d5">关注</span>
       </a>
       <div class="level">
         <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
@@ -47,7 +52,7 @@
     </div>
   </div>
   <div class="block2">
-   <div class="head">
+   <div class="block-head">
       <a class="ava" href="#">
         <img src="../static/creation/imgs/ava.png" style="width:40px;height:40px">
       </a>
@@ -55,7 +60,7 @@
       <span>用户名</span>
       </a>
       <a class="follow" href="#">
-      <span>关注</span>
+      <span style="color:#6892d5">关注</span>
       </a>
       <div class="level">
         <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
@@ -83,7 +88,7 @@
     </div>
   </div>
   <div class="block3">
-   <div class="head">
+   <div class="block-head">
       <a class="ava" href="#">
         <img src="../static/creation/imgs/ava.png" style="width:40px;height:40px">
       </a>
@@ -91,7 +96,7 @@
       <span>用户名</span>
       </a>
       <a class="follow" href="#">
-      <span>关注</span>
+      <span style="color:#6892d5">关注</span>
       </a>
       <div class="level">
         <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
@@ -119,7 +124,7 @@
     </div>
   </div>
   <div class="block4">
-   <div class="head">
+   <div class="block-head">
       <a class="ava" href="#">
         <img src="../static/creation/imgs/ava.png" style="width:40px;height:40px">
       </a>
@@ -127,7 +132,7 @@
       <span>用户名</span>
       </a>
       <a class="follow" href="#">
-      <span>关注</span>
+      <span style="color:#6892d5">关注</span>
       </a>
       <div class="level">
         <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
@@ -155,7 +160,7 @@
     </div>
   </div>
   <div class="block5">
-   <div class="head">
+   <div class="block-head">
       <a class="ava" href="#">
         <img src="../static/creation/imgs/ava.png" style="width:40px;height:40px">
       </a>
@@ -163,7 +168,7 @@
       <span>用户名</span>
       </a>
       <a class="follow" href="#">
-      <span>关注</span>
+      <span style="color:#6892d5">关注</span>
       </a>
       <div class="level">
         <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
@@ -191,7 +196,7 @@
     </div>
   </div>
   <div class="block6">
-   <div class="head">
+   <div class="block-head">
       <a class="ava" href="#">
         <img src="../static/creation/imgs/ava.png" style="width:40px;height:40px">
       </a>
@@ -199,7 +204,7 @@
       <span>用户名</span>
       </a>
       <a class="follow" href="#">
-      <span>关注</span>
+      <span style="color:#6892d5">关注</span>
       </a>
       <div class="level">
         <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
@@ -227,7 +232,7 @@
     </div>
   </div>
   <div class="block7">
-   <div class="head">
+   <div class="block-head">
       <a class="ava" href="#">
         <img src="../static/creation/imgs/ava.png" style="width:40px;height:40px">
       </a>
@@ -235,7 +240,7 @@
       <span>用户名</span>
       </a>
       <a class="follow" href="#">
-      <span>关注</span>
+      <span style="color:#6892d5">关注</span>
       </a>
       <div class="level">
         <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
@@ -263,7 +268,7 @@
     </div>
   </div>
   <div class="block8">
-   <div class="head">
+   <div class="block-head">
       <a class="ava" href="#">
         <img src="../static/creation/imgs/ava.png" style="width:40px;height:40px">
       </a>
@@ -271,7 +276,7 @@
       <span>用户名</span>
       </a>
       <a class="follow" href="#">
-      <span>关注</span>
+      <span style="color:#6892d5">关注</span>
       </a>
       <div class="level">
         <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
@@ -303,11 +308,12 @@
 <div class="intro">
 <img src="../static/creation/imgs/idea.png" style="width:40px;height:40px;margin:20px 0px 0px 0px">
 <span>创意灵感</span>
-  <a><p>这是一段文字</p></a>
-  <a><p>这是一段文字</p></a>
-  <a><p>这是一段文字</p></a>
-  <a><p>这是一段文字</p></a>
+  <p>这是一段文字</p>
+  <p>这是一段文字</p>
+  <p>这是一段文字</p>
+  <p>这是一段文字</p>
 </div>
+<button class="add">添加创意</button>
 <div class="tag">
 <img src="../static/creation/imgs/tag.png" style="width:20px;height:20px;margin:10px 0px 0px 10px">
 <span>标签分类</span>
@@ -323,8 +329,10 @@
 <a class="more" href="#">
 <span>更多…</span>
 </a>
+
+
 </div>
-<div class="footer">
-</div>
+{% endblock %}
+<!--
 </body>
-</html>
+</html>-->
