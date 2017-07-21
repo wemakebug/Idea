@@ -1,0 +1,17 @@
+{%extends 'idea/Base.html'%}
+{%block title%}
+   <title>团队详情</title>
+{%endblock%}
+{%block CSS%}
+<link rel="stylesheet" href="../../static/team/css/teamdetails.css">
+{%endblock%}
+{%block content%}
+<div class="teamdetail">
+    <div class="teamdetaillandscape"></div>
+    <div class="teamdetailfilter"></div>
+    <canvas id="canvas"></canvas>
+</div>
+{% endblock %}
+{%block script%}
+    <script type="text/javascript" src="../../static/team/js/teambg.js"></script>
+{% endblock %}
