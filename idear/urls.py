@@ -17,6 +17,9 @@ from django.conf.urls import url
 from idear import views as views
 from idear import creations
 from idear import projects
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     url(r'index$', views.index),
     url(r'login$', views.login),
@@ -28,4 +31,4 @@ urlpatterns = [
     url(r'redetails$', views.redetails),
     url(r'creations$', creations.creations),
     url(r'projects$', projects.projects),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
