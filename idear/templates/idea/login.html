@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+    <link rel="stylesheet" href="../static/idea/css/login1.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+        <div class="border_1">
+            <div style="height: 2px"></div>
+            <div  class="line_1" ></div>
+            <div class="textbox">
+                邮  箱:
+                <span><input type="email"  class="input_1" id="account"/></span>
+                <a href="javascript:void(0)" title="提示" id="warn1">*</a>
+            </div>
+            <div class="line"></div>
+            <div class="textbox">
+                密  码:
+                <span><input  type="password" class="input_1" id="password"/></span>
+                <a href="javascript:void(0)" title="提示" id="warn2">*</a>
+            </div>
+            <div class="line"></div>
+            <div class="remember_password">
+                <input  type="checkbox" value="" />记住密码
+            </div>
+            <div class="forget_password">
+                    <a  style="color: #0e0e0e" href="forgetPassword">忘记密码？</a>
+            </div>
+            <div>
+                <input type="button" value="登录" class="login_input" onclick="login()" />
+            </div>
+            <div>
+                <input type="button" onclick="window.location.href='regist'"  value="注册" class="login_register" />
+            </div>
+        </div>
+        <div class="border" >
+        </div>
+        <div class="headPortrait">
+            <img src="../static/idea/imgs/user1.png" alt="">
+        </div>
+        <div  class="logo">
+            <img src="../static/idea/imgs/logo.png" alt="">
+        </div>
+    </div>
+    <script src="../static/idea/js/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="../static/idea/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="../static/idea/js/login.js" type="text/javascript"></script>
+</body>>
+</html>

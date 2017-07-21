@@ -36,25 +36,28 @@
 
 												<th class="hidden-480">身份</th>
 
+                                                <th>操作</th>
+
 											</tr>
 
 
 										</thead>
 
 										<tbody>
-                                            {% for user in users %}
+                                            {% for user in ScoreUser %}
 											<tr>
 
 												<td>{{ user.Id }}</td>
 
 												<td>{{ user.UserName }}</td>
 
-												<td class="hidden-480">{{ user.Score }}</td>
+												<td>{{ user.Score }}</td>
 
-												<td class="hidden-480">{{ user.Score }}</td>
+												<td>{{ user.Score }}</td>
 
-												<td class="hidden-480">{{ user.Identity }}</td>
+												<td>{{ user.Identity }}</td>
 
+                                                <td><i class="icon-remove">&nbsp;&nbsp;&nbsp;<i class="icon-edit"></i></i> </td>
 											</tr>
 
                                             {% endfor %}
