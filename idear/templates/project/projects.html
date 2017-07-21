@@ -1,0 +1,63 @@
+{% extends 'idea/Base.html' %}
+
+
+{%block title%}<title>项目</title>{%endblock%}
+
+{%block CSS%}
+
+<link rel="stylesheet" href="../static/idea/css/project.css">
+{%endblock%}
+
+{% block content %}
+
+{%for project in projects%}
+<div style="background-color:#FFF;height:300px;width:300px;margin-top:10px">
+  <br>
+    项目名称：
+    {{project.ProjectName}}
+    <br>
+    项目描述：
+    {{project.Description}}
+    <br>
+    项目开始时间：
+    {{project.StartTime}}
+    <br>
+    人数：
+    {{project.Number}}
+    <br>
+    总结：
+    {{project.Summary}}
+    <br>
+    进度：
+    {{project.Progress}}
+    <br>
+    照片：
+    <img src="/Idea/{{project.Img}}">
+</div>
+{%endfor%}
+
+{% endblock %}
+
+
+
+{% block script %}
+
+ <script type="text/javascript">
+	// $(function(){
+
+	// $.post('projects',function(data){
+	// 	alert(data)
+
+
+
+
+
+
+	// })
+
+	// })
+
+ </script>
+
+
+{% endblock %}
