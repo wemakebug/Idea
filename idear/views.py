@@ -92,7 +92,7 @@ def regist(req):
 '''
 def team(req):
     if req.method == 'GET':
-        return render(req, 'idea/team.html')
+        return render(req, 'team/team.html')
     if req.method == 'POST':
         pass
 
