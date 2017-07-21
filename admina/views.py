@@ -10,27 +10,6 @@ from django.shortcuts import render,HttpResponse,Http404,render_to_response,Http
 import uuid
 
 # Create your views here.
-'''
-登陆验证函数，如需登陆，调此函数即可
-@:return 状态值，可通过为true
-@:COOKIE name = User_acconunt
-@:COOKIE name = UUID
-'''
-@csrf_exempt
-def Check_User_Cookie(req):
-    loginStatus = False
-    try:
-        user_cookie = req.COOKIES["User_account"]
-        user_uuid_code = req.COOKIES["UUID"]
-        try:
-            user = User.objects.get(Account=user_cookie)
-            if str(user.Uuid) == user_uuid_code:
-                loginStatus = True
-                return loginStatus
-        except:
-            return loginStatus
-    except:
-        return loginStatus
 
 
 @csrf_exempt
@@ -38,9 +17,9 @@ def login(req):
     if req.method == "GET":
         try:
             account = req.COOKIES.get('account')
-            username = req.COOKIES.get('account')
+            username = req.COOKIES.get('username')
             try:
-                user = models.User.objects.get(Account=account)
+                user = models.Admin.objects.get(Account=account)
                 if user.UserName == username:
                     return render(req, 'index.html')
                 else:

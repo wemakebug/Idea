@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib import admin
+import uuid
 from django.utils import timezone
 # Create your models here.
 '''
@@ -301,3 +302,4 @@ admin.site.register(Report)
 admin.site.register(Score)
 admin.site.register(ScoreChange)
 admin.site.register(Creation2ProjectLabel)
+admin.site.register(HelpApplication)
