@@ -26,4 +26,4 @@ def creations(req):
         creations = models.Creation.objects.all()
         return render_to_response('creations/index.html',{'creations':creations})
     else:
-        pass 
+        pass
