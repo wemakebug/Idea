@@ -78,6 +78,9 @@ class ProjectLabel(models.Model):
     ProjectLabelName = models.CharField(max_length=20, null=False, unique=True)
     IsUse = models.BooleanField(default=True)
 
+    def __unicode__(self):
+        return unicode(self.ProjectLabelName)
+
 class Project2ProjectLabel(models.Model):
     '''
     项目-项目标签表
@@ -140,7 +143,7 @@ class Creation2ProjectLabel(models.Model):
     projectLabel = models.ForeignKey(ProjectLabel, related_name='Creation2ProjectLabel_ProjectLabel_set', null=False)
 
     def __unicode__(self):
-        return self.creation
+        return unicode(self.creation)
 
 
 class Recruit(models.Model):

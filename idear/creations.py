@@ -14,17 +14,17 @@ def creations(req):
     '''
     if req.method == 'GET':
         sign = req.GET['sign']
-        if sign != "":
-            Creation2ProjectLabelObj = Project2ProjectLabel.objects.get( projectLabel = sign)
-            creations = Creation2ProjectLabelObj.Creation2ProjectLabel_Creation_set.all()
-        else:
+        if sign == "all":
             creations = Creation.objects.all()
             projectLabels = ProjectLabel.objects.all()
-        return render_to_response('creations/index.html',{'creations':creations,'projectLabels':projectLabels})
+        else:
+            Creation2ProjectLabelObj = Project2ProjectLabel.objects.get( projectLabel = sign)
+            creations = Creation2ProjectLabelObj.Creation2ProjectLabel_Creation_set.all()
+
+        return render_to_response('creation/index.html',{'creations':creations,'projectLabels':projectLabels})
     else:
         id = req.POST['creationId']
         creations = Creation.objects.fitler(id = id)
         comments = Comment.objects.fitler(creation = id).order_by('Date')
         user = Creation.objects.get(id = id).user
         return render_to_response('creations/sec_creations.html',{'creations':creations,'comments':comments})
-
