@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'idea/Base.html'%}
+{%block title%}
+    <title>常驻团队</title>
+{%endblock%}
+{%block CSS%}
+    <link rel="stylesheet" href="../../static/team/css/team.css">
+{%endblock%}
+{%block content%}
+    <div class="first" style="margin-top: 76px">
+        <div class="landscape"></div>
+        <div class="filter"></div>
+        <canvas id="canvas"></canvas>
+    </div>
+{% endblock %}
+{%block script%}
+    <script src="../../static/team/js/teambg.js" type="text/javascript"></script>
+{%endblock%}
