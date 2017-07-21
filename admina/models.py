@@ -15,6 +15,7 @@ class Admin(models.Model):
     Account = models.CharField(null=False, blank=False, unique=True, max_length=25)
     Password = models.CharField(null=False, blank=False, max_length=25)
     DateTime = models.DateField(auto_now_add=True)
+    UserName = models.CharField(null=True, max_length=20, unique=True)
 
 class User(models.Model):
     '''
