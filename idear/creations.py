@@ -21,3 +21,9 @@ def Get_creation(req):
             return HttpResponse('Well')
         except:
             return HttpResponse('Bad')
+def creations(req):
+    if req.method == 'GET':
+        creations = models.Creation.objects.all()
+        return render_to_response('creations/index.html',{'creations':creations})
+    else:
+        pass 
