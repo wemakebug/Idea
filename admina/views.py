@@ -21,7 +21,7 @@ def login(req):
             try:
                 user = models.Admin.objects.get(Account=account)
                 if user.UserName == username:
-                    return render(req, 'index.html')
+                    return render(req, 'first/index.html')
                 else:
                     return render(req, 'first/login.html')
             except:

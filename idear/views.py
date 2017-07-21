@@ -78,6 +78,7 @@ def login(req):
             result['status'] = 0
             result['message'] = '服务器数据获取异常'
             return HttpResponse(json.dumps(result))
+
 '''
 注册页面
 '''
@@ -146,12 +147,12 @@ def apply(req):
 '''
 @csrf_exempt
 def projects(req):
-		if req.method == "GET":
-			projects = Project.objects.all()
-			print projects
-			return render_to_response('project/recruit.html', {'projects': projects})
-		else:
-			# return render_to_response('project/projects.html')
-			projects = Project.objects.all()
-			return render_to_response('project/recruit.html', {'projects': projects})
+    if req.method == "GET":
+	    projects = Project.objects.all()
+	    print projects
+	    return render_to_response('project/recruit.html', {'projects': projects})
+    else:
+	    # return render_to_response('project/projects.html')
+	    projects = Project.objects.all()
+	    return render_to_response('project/recruit.html', {'projects': projects})
 

@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from admina.models import Creation
-
+from admina import models
 from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
 
 # Create your views here.
+from idear.views import Check_User_Cookie
 
 
 def creations(req):
