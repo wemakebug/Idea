@@ -14,6 +14,6 @@ from django.shortcuts import render,HttpResponse,Http404,render_to_response,Http
 def creations(req):
     if req.method == 'GET':
         creations = Creation.objects.all()
-        return HttpResponse(creations)   
+        return render_to_response('creation/index.html',{'creations':creations})
     else:
         pass 
