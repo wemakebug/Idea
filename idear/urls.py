@@ -32,13 +32,10 @@ urlpatterns = [
     url(r'recruit$', views.projects),
     url(r'redetails$', views.redetails),
     url(r'projects$', projects.projects),
-<<<<<<< HEAD
-    url(r'zan$', views.zan),
-=======
     # url(r'test$', creations.Get_creation),
-
     # url(r'test$', creations.Get_creation)
->>>>>>> 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+    # url(r'test$', creations.Get_creation),
+    # url(r'test$', creations.Get_creation)
     # url(r'projects$', projects.projects),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
