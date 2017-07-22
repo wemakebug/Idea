@@ -83,7 +83,7 @@ DATABASES = {
         'USER': 'root',
         'NAME': 'Idea',
         'PASSWORD': '123456',
-        'HOST': '123.207.72.192',
+        'HOST': '127.0.0.1',
         'PORT': '3306'
     }
 }
@@ -128,6 +128,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
