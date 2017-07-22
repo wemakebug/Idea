@@ -1,155 +1,60 @@
+.container-a {
+      width: 100%;
+      height:1000px;
+      margin: 0 auto;
+      margin-top:76px;
+      background-color:#f1f1f1;
+    }
 
-    .header{
-            margin:auto;
-            width: 100%;
-            height: 100px;
-            background-color: #9999;
-        }
     .home{
       width:62.5%;
-      height:800px;
+      height:760px;
       margin-left: 11%;
       margin-top: 0.5%;
       float:left;
-
     }
     .intro{
       width:13%;
-      height:300px;
+      height:280px;
       float:right;
       margin-right: 13%;
       margin-top: 2%;
-     border:1px solid #999;
-     border-top-left-radius: 5px;
+      background-color:#8bcfcc;
+      border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
+      box-shadow: 2px 2px 2px 2px #bdc3c7;
       text-align: center;
     }
     .tag{
-      width:7%;
+      width:6%;
       height:400px;
       float:right;
-      margin-right: 19%;
+      margin-right: 20%;
       margin-top: 2%;
       text-align: center;
-
     }
 
-    .block1{
-      width:21%;
-      height:44%;
+    .block{
+      width:22%;
+      height:45%;
       float:left;
       margin-top: 2%;
       margin-left:2%;
-      border:1px solid #999;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
-    }
-    .block2{
-      width:21%;
-      height:44%;
-      float:left;
-      margin-left: 3%;
-      margin-top: 2%;
-      border:1px solid #999;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
-    }
-    .block3{
-      width:21%;
-      height:44%;
-      float:left;
-      margin-left: 3%;
-      margin-top: 2%;
-     border:1px solid #999;
-     border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
-    }
-    .block4{
-       width:21%;
-      height:44%;
-      float:left;
-      margin-left: 3%;
-      margin-top: 2%;
-      border:1px solid #999;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
+      background-color:white;
+      box-shadow: 2px 2px 2px 2px #bdc3c7;
+
     }
 
-    .block5{
-      width:21%;
-      height:44%;
-      float:right;
-      margin-right: 4.3%;
-      margin-top: 3%;
-      border:1px solid #999;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
-    }
-    .block6{
-      width:21%;
-      height:44%;
-       float:right;
-      margin-right: 3%;
-      margin-top: 3%;
-      border:1px solid #999;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
-    }
-    .block7{
-      width:21%;
-      height:44%;
-      float:right;
-      margin-right: 3%;
-      margin-top: 3%;
-      border:1px solid #999;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
-    }
-    .block8{
-       width:21%;
-      height:44%;
-       float:right;
-      margin-right: 3%;
-      margin-top: 3%;
-      border:1px solid #999;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-      box-shadow: 1px 1px 1px 1px #9999;
-    }
-    .head{
+    .block-head{
       width:100%;
       height:18%;
-     border-bottom:1px solid #9999
+      border-bottom:1px solid #eae7ed
     }
       .ava{
-        width: 40px;
-        height: 40px;
+       /* width: 40px;
+        height: 40px;*/
         float: left;
         margin: 10px 10px 15px 10px;
       }
@@ -158,60 +63,75 @@
         float:left;
         width:90px;
         height:20px;
-        overflow:hidden;
-        white-space:nowrap;
-        text-overflow:ellipsis;
       }
       a{
-
         text-decoration: none;
         color: #444;
         margin-top:10px;
       }
+       h5{
+        float: left;
+
+        font-size: 22px;
+        font-family: 宋体;
+
+        margin:15px 6% 10px 6%;
+       }
       .follow{
         float:right;
         width:50px;
         height:25px;
         margin:13px 10px 10px 10px;
-        border:1px solid #999;
+        border:1px solid #539092;
         text-align: center;
         border-top-left-radius: 3px;
-      border-top-right-radius: 3px;
-      border-bottom-left-radius: 3px;
-      border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
       }
       .level{
         float:left;
+        width:100px;
+        height:30px;
       }
 
     .abstract{
       width:100%;
-      height:64%;
-
+      height:68%;
     }
       .text{
-        margin-left: 30px;
+       margin-left: 30px;
+      }
 
+      .text-x{
+         float:left;
+         margin:5px 25px 0 25px;
+         width: 80%;
+         height: 107px;
+         display: -webkit-box;
+         -webkit-box-orient: vertical;
+         -webkit-line-clamp: 5;
+         overflow: hidden;
       }
     .evaluate{
       width:100%;
-      height:18%;
-      border-top:1px solid #9999;
+      height:14%;
+      border-top:1px solid #eae7ed;
     }
       .collection{
         float:right;
         margin-right: 5px;
-        margin-top: 20px;
+        margin-top: 15px;
       }
       .comments{
         float:right;
         margin-right: 5px;
-        margin-top: 20px;
+        margin-top: 15px;
       }
       .like{
         float:right;
         margin-right: 5px;
-        margin-top: 20px;
+        margin-top: 15px;
       }
       .more{
         width:59%;
@@ -219,16 +139,24 @@
         text-align: center;
         float:left;
         margin-left:12%;
-        border:1px solid #999;
+        background-color:white;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
+        box-shadow: 2px 2px 2px 2px #bdc3c7;
       }
-      .footer{
-        width:100%;
-        height:100px;
-        float:left;
-        margin-top: 8%;
-        background-color: #9999;
-      }
+
+      .add{
+       float:left;
+       margin: 20px 0px 0px 30px;
+       background-color: #11999e;
+       color: #eeeeee;
+       border:none;
+       width:80px;
+       height:35px;
+       border-top-left-radius: 3px;
+       border-top-right-radius: 3px;
+       border-bottom-left-radius: 3px;
+       border-bottom-right-radius: 3px;
+       }

@@ -29,11 +29,13 @@
 
 												<th>性别</th>
 
-												<th class="hidden-480">等级</th>
+												<th>等级</th>
 
-												<th class="hidden-480">注册时间</th>
+												<th>注册时间</th>
 
-												<th class="hidden-480">是否可用</th>
+												<th>是否可用</th>
+
+                                                <th>操作</th>
 
 											</tr>
 
@@ -69,7 +71,7 @@ $(function(){
 	  var UserDate=$.parseJSON(data);
 	  var table="";
 		for (var user in UserDate){
-			table+="<tr><td>"+UserDate[user].UserName+"</td><td>"+UserDate[user].Sex+"</td><td class='hidden-480'>"+UserDate[user].RegistTime+"</td><td class='hidden-480'>"+UserDate[user].Score+"</td><td class='hidden-480'>"+UserDate[user].UserName+"</td></tr>"
+			table+="<tr><td>"+UserDate[user].UserName+"</td><td>"+UserDate[user].Sex+"</td><td>"+UserDate[user].RegistTime+"</td><td>"+UserDate[user].Score+"</td><td>"+UserDate[user].UserName+"</td>"+'<td><i class="icon-remove">&nbsp;&nbsp;&nbsp;<i class="icon-edit"></i></i> </td></tr>'
 		}
 		$("#UserTable").append(table)
 	})

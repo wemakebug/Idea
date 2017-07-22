@@ -2,3 +2,9 @@
 .gitignore
 /admina/migrations/
 /.idea/
+.idea/workspace.xml
+*.xml
+*.docx
+
+*.xml
+*.xml
