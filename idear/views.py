@@ -152,3 +152,5 @@ def projects(req):
 	    projects = Project.objects.all()
 	    return render_to_response('project/recruit.html', {'projects': projects})
 
+
+
