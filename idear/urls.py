@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
+    url(r'teamdetails$', views.teamdetails),
     url(r'creations$', creations.creations),
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),

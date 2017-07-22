@@ -96,6 +96,11 @@ def team(req):
     if req.method == 'POST':
         pass
 
+def teamdetails(req):
+    if req.method == 'GET':
+        return render(req, 'team/teamdetails.html')
+    if req.method == 'POST':
+        pass
 
 # 忘记密码
 def forgetPassword(req):
