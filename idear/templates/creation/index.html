@@ -69,14 +69,10 @@
     <div class="tag">
         <img src="../static/creation/imgs/tag.png" style="width:20px;height:20px;margin:10px 0px 0px 10px">
         <span>标签分类</span>
-        <a href="#"><p>标签一</p>
-            <a href="#"><p>标签二</p>
-                <a href="#"><p>标签三</p>
-                    <a href="#"><p>标签四</p>
-                        <a href="#"><p>标签五</p>
-                            <a href="#"><p>标签六</p>
-                            </a>
-    </div>
+        <a href="creations?sign=all">所有</a>
+        {%for obj in projectLabels%}
+        <a href="creations?sign={{obj.Id}}"><p>{{obj.ProjectLabelName}}</p></a>
+        {%endfor%}
     <div class="more">
         <a>加载更多</a>
     </div>
