@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'redetails$', views.redetails),
     url(r'creations$', creations.creations),
     url(r'projects$', projects.projects),
+    url(r'zan$', views.zan),
     # url(r'projects$', projects.projects),
 ]
 

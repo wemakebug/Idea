@@ -155,3 +155,10 @@ def projects(req):
 			projects = Project.objects.all()
 			return render_to_response('project/recruit.html', {'projects': projects})
 
+
+def zan(req):
+    if req.method == 'GET':
+        return render(req, 'project/zan.html')
+    if req.method == 'POST':
+        pass
+
