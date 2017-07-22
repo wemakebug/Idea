@@ -19,17 +19,15 @@ def creations(req):
     creations = Creation.objects.all()
     if req.method == 'GET':
         sign = req.GET['sign']
-        more = int(req.GET['more'])
         #如果是所有项目
         if sign == "all":
-            creations = creations[:8+more*8]
+            creations = creations
         #如果有特殊标签
         else:
             CreationLabelObjs = Creation2ProjectLabel.objects.filter( projectLabel = sign)
             creations = Creation.objects.filter(Img = "null")
             for obj in CreationLabelObjs:
                 creations = chain(creations,Creation.objects.filter(Id = int(obj.creation.Id)))
-                creations = islice(creations,0, 8+more*8)
         return render_to_response('creation/index.html',{'creations':creations,'projectLabels':projectLabels})
     else:
         id = req.POST['creationId']
