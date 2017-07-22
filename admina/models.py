@@ -166,11 +166,11 @@ class Praise(models.Model):
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='Praise_User_set', null=True)
-    creation = models.ForeignKey(Creation, related_name='Praise_Creation_set', null=True)
-    project = models.ForeignKey(Project, related_name='Praise_Project_set', null=True)
+    creation = models.ForeignKey(Creation, related_name='Praise_Creation_set', null=True, blank=True)
+    project = models.ForeignKey(Project, related_name='Praise_Project_set', null=True, blank=True)
 
     def __unicode__(self):
-        return self.Id
+        return unicode(self.Id)
 
 class Apply(models.Model):
     '''
