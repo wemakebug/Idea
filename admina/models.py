@@ -143,7 +143,7 @@ class Creation2ProjectLabel(models.Model):
     projectLabel = models.ForeignKey(ProjectLabel, related_name='Creation2ProjectLabel_ProjectLabel_set', null=False)
 
     def __unicode__(self):
-        return unicode(self.creation)
+        return unicode(self.projectLabel)
 
 
 class Recruit(models.Model):
