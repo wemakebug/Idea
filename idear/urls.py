@@ -25,14 +25,21 @@ urlpatterns = [
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
-    url(r'creation$', views.creation),
+    url(r'teamdetails$', views.teamdetails),
+    url(r'creations$', creations.creations),
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),
     url(r'recruit$', views.projects),
     url(r'redetails$', views.redetails),
-    url(r'creations$', creations.creations),
     url(r'projects$', projects.projects),
+<<<<<<< HEAD
     url(r'zan$', views.zan),
+=======
+    # url(r'test$', creations.Get_creation),
+
+    # url(r'test$', creations.Get_creation)
+>>>>>>> 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
     # url(r'projects$', projects.projects),
-]
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

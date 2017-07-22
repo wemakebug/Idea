@@ -78,6 +78,9 @@ class ProjectLabel(models.Model):
     ProjectLabelName = models.CharField(max_length=20, null=False, unique=True)
     IsUse = models.BooleanField(default=True)
 
+    def __unicode__(self):
+        return unicode(self.ProjectLabelName)
+
 class Project2ProjectLabel(models.Model):
     '''
     项目-项目标签表
@@ -140,7 +143,7 @@ class Creation2ProjectLabel(models.Model):
     projectLabel = models.ForeignKey(ProjectLabel, related_name='Creation2ProjectLabel_ProjectLabel_set', null=False)
 
     def __unicode__(self):
-        return self.creation
+        return unicode(self.projectLabel)
 
 
 class Recruit(models.Model):
@@ -163,11 +166,11 @@ class Praise(models.Model):
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='Praise_User_set', null=True)
-    creation = models.ForeignKey(Creation, related_name='Praise_Creation_set', null=True)
-    project = models.ForeignKey(Project, related_name='Praise_Project_set', null=True)
+    creation = models.ForeignKey(Creation, related_name='Praise_Creation_set', null=True, blank=True)
+    project = models.ForeignKey(Project, related_name='Praise_Project_set', null=True, blank=True)
 
     def __unicode__(self):
-        return self.Id
+        return unicode(self.Id)
 
 class Apply(models.Model):
     '''
@@ -200,15 +203,15 @@ class Comment(models.Model):
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='Comment_User_set', null=False)
-    creation = models.ForeignKey(Creation, related_name='Comment_Creation_set', null=True)
-    project = models.ForeignKey(Project, related_name='Comment_Project_set', null=True)
+    creation = models.ForeignKey(Creation, related_name='Comment_Creation_set', null=True, blank=True)
+    project = models.ForeignKey(Project, related_name='Comment_Project_set', null=True, blank=True)
     Date = models.DateField(auto_now_add=True)
     Content = models.TextField(max_length=200)
     IsUse = models.BooleanField(default=True)
     IsAdopt = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return self.user
+        return unicode(self.user)
 
 class Follow(models.Model):
     '''
