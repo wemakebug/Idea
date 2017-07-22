@@ -1,6 +1,6 @@
 .container-a {
       width: 100%;
-      height:1000px;
+      height:1200px;
       margin: 0 auto;
       margin-top:76px;
       background-color:#f1f1f1;
@@ -71,11 +71,11 @@
       }
        h5{
         float: left;
-
         font-size: 22px;
         font-family: 宋体;
-
-        margin:15px 6% 10px 6%;
+        margin: 15px 2% 10px 2%;
+        width: 96%;
+        text-align: center;
        }
       .follow{
         float:right;
