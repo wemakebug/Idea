@@ -31,8 +31,6 @@ def Check_User_Cookie(req):
     except:
         return loginStatus
 
-
-
 '''
 首页
 '''
@@ -78,6 +76,7 @@ def login(req):
             result['status'] = 0
             result['message'] = '服务器数据获取异常'
             return HttpResponse(json.dumps(result))
+
 '''
 注册页面
 '''
@@ -86,23 +85,20 @@ def regist(req):
         return render(req, 'idea/regist.html')
     if req.method == "POST":
         pass
+
 '''
 团队页面
 '''
 def team(req):
     if req.method == 'GET':
-        return render(req, 'idea/team.html')
+        return render(req, 'team/team.html')
     if req.method == 'POST':
         pass
 
-
-'''
-创意页面
-'''
-def creation(req):
+def teamdetails(req):
     if req.method == 'GET':
-        return render(req, 'creation/index.html')
-    if req.method == "POST":
+        return render(req, 'team/teamdetails.html')
+    if req.method == 'POST':
         pass
 
 # 忘记密码
@@ -140,18 +136,3 @@ def apply(req):
 
 
   
-
-'''
-招募项目
-'''
-@csrf_exempt
-def projects(req):
-		if req.method == "GET":
-			projects = Project.objects.all()
-			print projects
-			return render_to_response('project/recruit.html', {'projects': projects})
-		else:
-			# return render_to_response('project/projects.html')
-			projects = Project.objects.all()
-			return render_to_response('project/recruit.html', {'projects': projects})
-

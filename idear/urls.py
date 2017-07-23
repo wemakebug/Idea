@@ -25,13 +25,18 @@ urlpatterns = [
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
-    url(r'creation$', views.creation),
+    url(r'teamdetails$', views.teamdetails),
+    url(r'creations$', creations.creations),
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),
-    url(r'recruit$', views.projects),
+    url(r'recruit$', projects.projects),
     url(r'redetails$', views.redetails),
-    url(r'creations$', creations.creations),
     url(r'projects$', projects.projects),
-    # url(r'projects$', projects.projects),
-]
+                  # url(r'projects$', projects.projects),
+
+    url(r'star$', creations.star),
+    url(r'attend$', creations.attend),
+
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
