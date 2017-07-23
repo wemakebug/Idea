@@ -1,16 +1,22 @@
 $(function () {
 
+$.cookie("user",1)
 
-$(".allsign").click(function(){
-	$("#moreNum").val(0)
-	$("#signNum").val($(this).attr("sign"))
+userId = $.cookie("user")
+
+$(".follow").click(function(){
+   Id = $(this).attr("creation")
+   alert(Id)
+   $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
+    if(data == 1)
+    	alert("点赞成功");
+    else
+    	alert("操作失败")
+
+
 })
 
-$(".more").click(function(){
 
-	$.get("creations/")
 })
-
-
 
 })
