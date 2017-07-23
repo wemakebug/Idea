@@ -218,13 +218,15 @@ class Follow(models.Model):
     关注表
     '''
     Id = models.AutoField(primary_key=True)
-    project = models.ForeignKey(Project, related_name='Follow_Project_set', null=True)
-    creation = models.ForeignKey(Creation, related_name='Follow_Creation_set', null=True)
-    user = models.ForeignKey(User, related_name='Follow_User_set', null=False)
-    Follower = models.ForeignKey(User, related_name='Follow_Follower_set', null=False)
+    user = models.ForeignKey(User, related_name='Follow_User_set', null=False) 
+    project = models.ForeignKey(Project, related_name='Follow_Project_set', null=True, blank=True)
+    creation = models.ForeignKey(Creation, related_name='Follow_Creation_set', null=True, blank=True)
+    Follower = models.ForeignKey(User, related_name='Follow_Follower_set', null=True, blank=True)
+
 
     def __unicode__(self):
-        return self.user
+        return unicode(self.user)
+
 class Report(models.Model):
     '''
     举报表

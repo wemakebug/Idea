@@ -1,18 +1,22 @@
 $(function () {
 
 $.cookie("user",1)
-alert("ee")
-// $(".follow").click(function(){
-//    $.post("star",{userId:"$.cookie().get("user")",starType:"1",Id:$("this").attr("creation")},function(data){
-//     if data==0
-//     	alert("操作失败");
-//     else
-//     	alert("点赞成功")
+
+userId = $.cookie("user")
+
+$(".follow").click(function(){
+   Id = $(this).attr("creation")
+   alert(Id)
+   $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
+    if(data == 1)
+    	alert("点赞成功");
+    else
+    	alert("操作失败")
 
 
-// })
+})
 
 
-// })
+})
 
 })
