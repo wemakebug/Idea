@@ -1,3 +1,39 @@
-/**
- * Created by root on 17-7-11.
- */
+
+ $(function () {
+            $(".block").slice(0, 12).show();
+            $(".more").on('click', function (e) {
+              
+              if ($(".block:hidden").length == 0) {
+               $(".more").css('display', 'none');
+              }
+                e.preventDefault();
+                $(".block:hidden").slice(0, 4).slideDown();
+                if ($(".block:hidden").length == 0) {
+                    $(".more").fadeOut('slow');
+                }
+            });
+        });
+
+$(function () {
+
+$.cookie("user",1)
+
+userId = $.cookie("user")
+
+$(".follow").click(function(){
+   Id = $(this).attr("creation")
+   alert(Id)
+   $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
+    if(data == 1)
+    	alert("点赞成功");
+    else
+    	alert("操作失败")
+
+
+})
+
+
+})
+
+})
+
