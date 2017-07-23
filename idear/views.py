@@ -85,6 +85,7 @@ def regist(req):
         return render(req, 'idea/regist.html')
     if req.method == "POST":
         pass
+
 '''
 团队页面
 '''

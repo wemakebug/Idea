@@ -32,7 +32,11 @@ urlpatterns = [
     url(r'recruit$', projects.projects),
     url(r'redetails$', views.redetails),
     url(r'projects$', projects.projects),
-    url(r'star$', creations.star)
+                  # url(r'projects$', projects.projects),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'star$', creations.star),
+    url(r'attend$', creations.attend),
+
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
