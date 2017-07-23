@@ -4,14 +4,9 @@
 		padding:0;
 		width:100%;
 	}
-	 /* @media only screen and (min-width: 641px) and (max-width: 789px) {
-        div{
-            width: 200px;
-            height: 200px;
-        }
-    }*/
 	a{   color:black;
 		text-decoration: none;
+
 	}
 	ul li{
         list-style: none;
@@ -30,13 +25,14 @@
 		width: 100%;
 		height:75px;
         background:#539092;
+        /*background:#70ACB1;*/
 	}
 	.logo{
 	    float:left;
 	    margin-left:10%;
         width:10%;
         height:75px;
-        background-image: url('../imgs/logo.png');
+        background-image: url('../imgs/idea_logo.png');
         background-size:100% 100%;
 	}
 	.nav{
@@ -44,11 +40,11 @@
 		margin-left:4%;
 		width: 34%;
 		height: 75px;
-
 	}
 	.nav a{
 	    font-size:1rem;
 	    color:white;
+        display:block;
 	}
 	.mainnav{
 	    float:left;
@@ -58,8 +54,6 @@
 	    line-height:75px;
 	}
 	.mainnav:hover{
-       /* width:17%;
-        height:10%;*/
         background:#295E6A;
 	}
 	.search1{
@@ -73,6 +67,7 @@
         float: left;
         margin-left: 10%;
     }
+
     #search-left {
         width: 80%;
         height: 75%;
@@ -83,7 +78,7 @@
         position: relative;
         transition: .3s linear;
         float:right;
-        font-size:1%;
+        font-size:0.8em;
     }
     #search-left:focus {
         width: 100%;
@@ -104,15 +99,25 @@
 	    float: right;
 		width: 16%;
 		height: 100%;
-
+        text-align:center;
+	    line-height:75px;
 	}
 	.sidebar a{
 	    font-size:1em;
 	    color:white;
 	}
-	.sidebar ul li{
-        float: left;
-        padding:10px 15px;
+	.rlogin{
+	    width:20%;
+	    height:100%;
+        background:#295E6A;
+	    float:left;
+	}
+	.rregsiter{
+	    width:20%;
+	    height:100%;
+	    float:left;
+	    margin-left:1%;
+	     background:#295E6A;
 	}
 	.nav-bottom{
 		width: 100%;
@@ -121,20 +126,19 @@
 	}
 	.middle{
 		width:100%;
-		height:2000px;
+		height:2500px;
 		margin-top:76px;
         background:#F1F1F1;
 	}
 	.content{
 	    width:60%;
-	    height:2000px;
+	    height:2500px;
 	    margin-left:20%;
 	    background:#FFFFFF;
 	}
 	.top-content{
 	    width:100%;
 	    height:20%;
-	    /*border:1px solid #ccc;*/
 	}
 	.top-content-information{
 	    width:100%;
@@ -145,49 +149,235 @@
 	.top-name{
 	    width:100%;
 	    height:20%;
-	    /*border:1px solid #FFFFFF;*/
 	    margin-top:8%;
 	}
 	.top-name p{
 	    width:100%;
 	    height:10px;
+	    color:#7A8B8B;
 	    text-shadow: 0 1px 1px #123;
 	}
 	.content-information{
 	    width:100%;
-	    height:60%;
+	    height:58%;
 	}
 	.introduce{
 	    width:60%;
-	    height:100%;
+	    /*height:80%；*/
 	}
-    .introduce-line{
-        width:90%;
-        height:1px;
-        background:#ccc;
+	.introduce p{
+	    font-family:STLiti;
+	    font-size:1.2em;
+	    color:#C1CDC1;
+	}
+    .decoration{
+        width:100%;
+        height:20%;
+        margin-top:5.5%;
+    }
+    .decoration div {
+        height: 10px;
     }
 	.main-content{
 	    width:100%;
-	    height:80%;
-	   /* border:1px solid #ccc;*/
-	    box-shadow:0px 0px 5px #ccc;
+	    height:79.9%;
+	    box-shadow:0px 1px 5px 1px #ccc;
 	}
-    .mainprocess{
+    .main-box{
+        width:90%;
+        height:20%;
+        border:1px solid #FFFFFF;
+    }
+     .box-one-left h2{
+		line-height: 1;
+		font-weight: lighter;
+		/*color: rgb(51, 51, 51);*/
+		letter-spacing: 3px;
+		font-size:2.3em;
+		font-family:JosefinSans-Light;
+	}
+	small {
+		font-size: 50%;
+		/*font-family:;*/
+	}
+    .box-one-left{
+        width:100%;
+        height:12%;
+    }
+    .usage{
+        width:100%;
+        height:100%;
+    }
+    .usage_one{
+        width:21%;
+        height:100%;
+        float:left;
+        margin-left:3%;
+    }
+	.usage_icon{
+        width:25%;
+        height:13%;
+        background-image: url('../imgs/recruit.png');
+        background-size:100% 100%;
+        margin-top:20%;
+    }
+	 .usage_icon2{
+       width:25%;
+        height:13%;
+        background-image: url('../imgs/start.png');
+        background-size:100% 100%;
+        margin-top:20%;
+    }
+     .usage_icon3{
+        width:25%;
+        height:13%;
+        background-image: url('../imgs/creative.png');
+        background-size:100% 100%;
+        margin-top:20%;
+    }
+    .usage_icon4{
+        width:25%;
+        height:13%;
+        background-image: url('../imgs/team.png');
+        background-size:100% 100%;
+        margin-top:20%;
+    }
+     .usage_details{
+        width:100%;
+        height:50%;
+        border:1px solid #FFFFFF;
+        margin-top:5%;
+    }
+    .detail-name{
+        width:80%;
+        height:20%;
+        border:1px solid #FFFFFF;
+        text-align:center;
+    }
+    .detail-name p{
+       font-size:1.1em;
+        font-family:幼圆;
+        color:#045757;
+    }
+    .detail{
+        width:80%;
+        height:50%;
+        border:1px solid #FFFFFF;
+    }
+    .detail p{
+        width:100%;
+        height:70%;
+        margin-top:14%;
+        font-size:0.98em;
+        font-family:幼圆;
+        color:gray;
+    }
+    .mainbox_two{
+        width:100%;
+        height:12%;
+        background-image:url('../imgs/figure.png');
+        background-size:100% 100%;
+    }
+    #main-box-two{
+        width:85%;
+        height:20%;
+        margin-top:3%;
+        border:1px solid #ccc;
+    }
+    .mainbox_four{
+        width:90%;
+        height:15%;
+        margin-top:3%;
+    }
+    .mainbox_four_left{
+        width:50%;
+        height:100%;
+        float:left;
+    }
+    .mainbox_four_right{
+        width:49%;
+        height:100%;
+        float:right;
+        border:1px solid #FFFFFF;
+    }
+    .mainbox_forward{
+        width:70%;
+        height:40%;
+        margin-top:22%;
+    }
+    #picture{
+        width:8.5%;
+        height:25%;
+        float:left;
+        margin-left:10%;
+        margin-top:10%;
+    }
+    .picture-1{
+        background-image:url('../imgs/facebook.png');
+        background-size:100% 100%;
+    }
+    .picture-2{
+        background-image:url('../imgs/microblogging.png');
+        background-size:100% 100%;
+    }
+    .picture-3{
+        background-image:url('../imgs/micro .png');
+        background-size:100% 100%;
+    }
+    .main_open{
         width:80%;
         height:90%;
-        /*border:1px solid #ccc;*/
+        margin-top:4%;
     }
-    .mainprocess-name{
-        width:10%;
-        height:40px;
-        font-size:1.4em;
+    .open_content{
+        width:98%;
+        height:100%;
+    }
+    #open_arrangement{
+        float:left;
+    }
+    .open_top{
+        width:80%;
+        height:40%;
+        margin-top:4%;
+    }
+    .open_writer{
+        width:80%;
+        height:80%;
+        border:1px solid #FFFFFF;
+    }
+    .open_writer h2{
+        line-height: 1.2;
+		font-weight: lighter;
+		letter-spacing: 3px;
+		font-size:2.3em;
+		font-family:JosefinSans-Light;
+    }
+    .open_bottom{
+        width:20%;
+        height:10%;
+        border:1px solid #000;
+    }
+    .open_button{
+        width:50%;
+        height:50%;
+        margin-top:5%;
+        font-family:幼圆;
+        font-size:2em;
         text-align:center;
-        margin-left:20%;
-        position:absolute;
-        margin-top:20px;
     }
-    .Usage{
-
+    #gotop{
+        display:block;
+        width:40px;
+        height:50px;
+        position:fixed;
+        bottom:50px;
+        right:40px;
+        border-radius:10px 10px 10px 10px;
+        text-decoration:none;
+        display:none;
+        background-image:url('../imgs/top.png');
+        background-size:100% 100%;
     }
 	.footer {
         width:100%;
