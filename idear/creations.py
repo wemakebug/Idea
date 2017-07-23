@@ -17,6 +17,7 @@ def creations(req):
     projectLabels = ProjectLabel.objects.all()
     if req.method == 'GET':
         sign = req.GET['sign']
+        
         if sign == "all":
             creations = Creation.objects.all()
         else:

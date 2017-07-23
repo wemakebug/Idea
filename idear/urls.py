@@ -33,7 +33,8 @@ urlpatterns = [
     url(r'redetails$', views.redetails),
     url(r'projects$', projects.projects),
     # url(r'test$', creations.Get_creation),
-
+    # url(r'test$', creations.Get_creation)
+    # url(r'test$', creations.Get_creation),
     # url(r'test$', creations.Get_creation)
     # url(r'projects$', projects.projects),
 
