@@ -4,7 +4,7 @@
    <title>招募项目</title>
 {%endblock%}
 {%block CSS%}
-    <link rel="stylesheet" href="../../static/project/css/style1.css">
+    <link rel="stylesheet" href="../../static/project/css/recruit.css">
     <link rel="stylesheet" href="../../static/idea/css/index.css">
 {%endblock%}
 {%block content%}
@@ -13,7 +13,6 @@
     <div class="bg_left">
        {%for project in projects%}
         <div class="project_top_1 project_top">
-
             <a href="redetails.html">
                 <div class="project_top_1_left">
                     <img src="../../static/project/imgs/HeadImg.png">
@@ -29,29 +28,69 @@
 {#                    <p class="FixText">项目名称：</p>#}
                     <p class="FixText">招募人数：</p>
                     <p class="FixText">招募状态：</p>
+                    <p class="FixText">项目标签：</p>
                     <p class="FixText">时间：</p>
                 </div>
                  <div class="project_bottom_right">
-{#                     <input id="ProjectName" type="text" name="ProjectName" value="{{project.ProjectName}}" readonly="readonly" class="VariableText"/>#}
+
+{#                   <input id="ProjectName" type="text" name="ProjectName" value="{{project.ProjectName}}" readonly="readonly" class="VariableText"/>#}
                      <input type="text" name="Number" value="{{project.Number}}" readonly="readonly" class="VariableText"/>
+                     <input type="text" name="State" value="正在进行" readonly="readonly" class="VariableText"/>
                      <input type="text" name="State" value="正在进行" readonly="readonly" class="VariableText"/>
                      <input type="text" name="UserName" value="{{project.StartTime}}" readonly="readonly" class="VariableText"/>
                  </div>
+{#                <div class="feed" id="feed1">#}
+{#                         <div class="heart " id="like1" rel="like"></div>#}
+{#                       <div class="likeCount" id="likeCount1">14</div>#}
+{#                </div>#}
             </div>
+
         </div>
 {% endfor %}
     </div>
-
     <div class="bg_border"></div>
     <div class="bg_right">
         <div class="explain">
-            <p class="explain_text">板块说明<br>
-                块说明板块说明板块说明</p>
-            <input class="New_project" value="发布我的项目" type=button onclick="window.location.href('redetails.html')">
+
+            <p class="explain_title">板块说明</p>
+            <p class="explain_text">&nbsp;&nbsp;&nbsp;&nbsp;块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明</p>
+            <p class="explain_new_project"><a target="_blank" href="redetails.html">发布新项目</a></p>
         </div>
 
-        <div class="AllTag"></div>
+        <div class="AllTag">
+            <p>按标签显示</p>
+            <p>#IT</p>
+            <p>#设计</p>
+        </div>
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function() {
+$('body').on("click",'.heart',function(){
+    var A=$(this).attr("id");
+    var B=A.split("like");
+    var messageID=B[1];
+    var C=parseInt($("#likeCount"+messageID).html());
+    var D=$(this).attr("rel");//如果为Like则执行动画
+    if(D =='like')
+    {
+            $("#likeCount"+messageID).html(C+1);
+            $(this).addClass("heartAnimation").attr("rel","unlike");
+        $(this).css("background-position","right");
+                //不加这句有bug，动画最后又会到了起点，点击后强制使图片停在最右边，
+    }
+    else
+    {
+            $("#likeCount"+messageID).html(C-1);
+            $(this).removeClass("heartAnimation").attr("rel","like");
+            $(this).css("background-position","left");
+               //点击后强制使红心变黑，否则显示悬停状态的红色的心
+    }
+});
+});
+</script>
 {% endblock %}
 

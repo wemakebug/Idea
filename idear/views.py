@@ -103,15 +103,6 @@ def teamdetails(req):
     if req.method == 'POST':
         pass
 
-'''
-创意页面
-'''
-# def creation(req):
-#     if req.method == 'GET':
-#         return render(req, 'creation/index.html')
-#     if req.method == "POST":
-#         pass
-
 # 忘记密码
 def forgetPassword(req):
     if req.method == 'GET':
@@ -161,4 +152,6 @@ def projects(req):
 	    # return render_to_response('project/projects.html')
 	    projects = Project.objects.all()
 	    return render_to_response('project/recruit.html', {'projects': projects})
+
+
 
