@@ -92,12 +92,30 @@
 	margin: 2% 52%;
 	z-index: 99;
 }
+.content_1{
+	font-size: 15px;
+	position:absolute;
+	height: 150px;
+	width: 95%;
+	margin: 2% 1%;
+	z-index: 99;
+}
 .more{
 	position:absolute;
 	font-size: 12px;
-	margin: 35% 82%;
+	margin: 200px 82%;
 	width:17%;
 	height: 22px;
 	cursor:pointer;
 	z-index: 99;
+}
+.referral{
+	position:absolute;
+	 height: 148px;
+	 width: 35%;
+	 margin: 19% 0;
+	 background-color:rgba(253, 245, 230, 0.6);
+}
+.referral_0{
+	margin-left: 5%;
 }
