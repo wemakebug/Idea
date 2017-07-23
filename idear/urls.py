@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'creations$', creations.creations),
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),
-    url(r'recruit$', views.projects),
+    url(r'recruit$', projects.projects),
     url(r'redetails$', views.redetails),
     url(r'projects$', projects.projects),
     url(r'star$', creations.star)
