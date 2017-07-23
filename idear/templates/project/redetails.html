@@ -1,10 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+ {% extends 'idea/Base.html'%}
 
-</body>
-</html>
+{%block title%}
+   <title>招募项目详情</title>
+{%endblock%}
+{%block CSS%}
+    <link rel="stylesheet" href="../../static/project/css/redetails.css">
+    <link rel="stylesheet" href="../../static/idea/css/index.css">
+    <!--<link rel="stylesheet" href="../../static/project/css/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="../../static/project/css/font/css/font-awesome.min.css">
+{%endblock%}
+{%block content%}
+
+	 <div class="main">
+		<div class="content-all">
+              <div class="content-nav">
+                <a href="recruit">项目招募>></a> 项目详情
+              </div>
+              <div class="main-left">
+                  <div class="content-top">
+                   <!--此处为项目名称-->
+
+                      <div class="ribbon1"><span>标签</span></div>
+                      <div class="ribbon1"><span>标签</span></div>
+                      <div class="ribbon1"><span>标签</span></div>
+
+                      <div class="title">项目名称</div>
+                      <div class="ptime">创建日期:<span>2017-06-06</span></div>
+                  </div>
+
+
+                  <div class="content-header">
+                       <!--此处为项目描述-->
+
+                       <div class="description">
+                            <!--<textarea class="des" cols="30" rows="5" readonly="readonly"></textarea>-->
+                       </div>
+
+                  </div>
+                  <div class="content-middle">
+                      <!--此处为招募帖详细内容-->
+                      <p>招募帖</p>
+                      <div class="">
+                      </div>
+                  </div>
+                  <div class="content-footer">
+
+	              </div>
+            </div>
+
+
+             <div class="main-right">
+                  <div class="person">
+                    <!--此处为个人信息-->
+                      <div class="person-one">
+                          <div class="person-one-img">
+                           <img src=" " alt="">
+                          </div>
+                      </div>
+                      <div class="person-two">
+                         <div class="person-header">
+                            <a  class="pname" href="">用户名称aaaaa</a>
+                        </div>
+                        <div class="person-middle">
+                            <div class="pscore"><img src="../../static/project/imgs/score.svg">1000</div>
+                            <div class="pid">项目负责人</div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="comment">
+                    <!--此处为项目评论-->
+                    <p>项目评论</p>
+                  </div>
+             </div>
+        </div>
+     </div>
+
+
+ {% endblock %}
