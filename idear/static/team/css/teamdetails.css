@@ -82,7 +82,15 @@
 	height: 50px;
 	font-size: 20px;
 	line-height: 50px;
-	margin-left: 10%;
+	float: right;
+	text-indent: 2em;
+}
+.teamdetailsynopsis1-7{
+	width:45%;
+	height: 50px;
+	font-size: 20px;
+	line-height: 50px;
+	float: right;
 }
 .details{
 	width: 80%;

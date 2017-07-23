@@ -1,6 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+
+    <list default="true" id="3c74e160-7be6-4151-8031-7c939cccd23a" name="Default" comment="">
+
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/creative.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/facebook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/figure.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/idea_logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/login.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/micro .png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/microblogging.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/recruit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/regsiter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/start.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/team.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/imgs/top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/idear/static/idea/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/static/idea/css/index.css" afterPath="$PROJECT_DIR$/idear/static/idea/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/templates/idea/Base.html" afterPath="$PROJECT_DIR$/idear/templates/idea/Base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/templates/idea/index.html" afterPath="$PROJECT_DIR$/idear/templates/idea/index.html" />
+
+      <change type="DELETED" beforePath="$PROJECT_DIR$/idear/static/project/js/js.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/idear/static/project/css/style.css" afterPath="$PROJECT_DIR$/idear/static/project/css/apply.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/idear/static/project/css/style1.css" afterPath="$PROJECT_DIR$/idear/static/project/css/recruit.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/static/idea/css/index.css" afterPath="$PROJECT_DIR$/idear/static/idea/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/templates/idea/Base.html" afterPath="$PROJECT_DIR$/idear/templates/idea/Base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/templates/project/apply.html" afterPath="$PROJECT_DIR$/idear/templates/project/apply.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/templates/project/recruit.html" afterPath="$PROJECT_DIR$/idear/templates/project/recruit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/urls.py" afterPath="$PROJECT_DIR$/idear/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/views.py" afterPath="$PROJECT_DIR$/idear/views.py" />
+
+    <list default="true" id="126cd065-bb47-4499-a6eb-8001826e65e0" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/static/creation/css/index.css" afterPath="$PROJECT_DIR$/idear/static/creation/css/index.css" />
+
+     <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/static/creation/js/js.js" afterPath="$PROJECT_DIR$/idear/static/creation/js/js.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/static/idea/css/index.css" afterPath="$PROJECT_DIR$/idear/static/idea/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/templates/creation/index.html" afterPath="$PROJECT_DIR$/idear/templates/creation/index.html" />
+ 	13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+	 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+ 	16c4576f596f9ddc6555b080da9a4017cc456e5d
+=======
 <<<<<<< HEAD
     <list default="true" id="126cd065-bb47-4499-a6eb-8001826e65e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -17,6 +61,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/urls.py" afterPath="$PROJECT_DIR$/idear/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/idear/views.py" afterPath="$PROJECT_DIR$/idear/views.py" />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,13 +71,62 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+<<<<<<< HEAD
+    <SUITE FILE_PATH="coverage/Idea$manage.coverage" NAME="manage Coverage Results" MODIFIED="1500703401364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+=======
     <SUITE FILE_PATH="coverage/Idea$manage.coverage" NAME="manage Coverage Results" MODIFIED="1500811623037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
+<<<<<<< HEAD
+
+    <splitter split-orientation="horizontal" split-proportion="0.63744783">
+
+
+    <splitter split-orientation="horizontal" split-proportion="0.45625">
+	 16c4576f596f9ddc6555b080da9a4017cc456e5d
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="recruit.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/idear/templates/project/recruit.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="500">
+                  <caret line="62" column="18" lean-forward="false" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+                  <folding>
+                    <element signature="e#2330#2336#0#HTML" expanded="true" />
+                    <element signature="e#2336#2342#0#HTML" expanded="true" />
+                    <element signature="e#2342#2348#0#HTML" expanded="true" />
+                    <element signature="e#2348#2354#0#HTML" expanded="true" />
+                  </folding>
+
+    <splitter split-orientation="horizontal" split-proportion="0.56666666">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/idear/templates/creation/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="489">
+                  <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="19" />
+                  <folding>
+                    <element signature="n#style#0;n#span#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#img#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Idea/settings.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="325">
+                  <caret line="85" column="28" lean-forward="false" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+                  <folding />
+=======
 <<<<<<< HEAD
     <splitter split-orientation="horizontal" split-proportion="0.52552086">
       <split-first>
@@ -68,10 +162,45 @@
                   <folding>
                     <marker date="1500811383670" expanded="true" signature="270:302" ph="{...}" />
                   </folding>
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
+
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/idear/templates/idea/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2487">
+                  <caret line="117" column="42" lean-forward="false" selection-start-line="117" selection-start-column="42" selection-end-line="117" selection-end-column="42" />
+                  <folding>
+                    <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+
+          <file leaf-file-name="Base.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/idear/templates/idea/Base.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="380">
+                  <caret line="57" column="16" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="84" />
+                  <folding>
+                    <marker date="1500704826128" expanded="true" signature="714:939" ph="..." />
+                    <marker date="1500704826128" expanded="true" signature="742:926" ph="..." />
+                    <marker date="1500704826128" expanded="true" signature="769:864" ph="..." />
+                    <marker date="1500704826128" expanded="true" signature="964:1057" ph="..." />
+                    <marker date="1500704826128" expanded="true" signature="973:1047" ph="..." />
+                    <marker date="1500704826128" expanded="true" signature="1093:1102" ph="..." />
+                    <marker date="1500704826128" expanded="true" signature="1181:1425" ph="..." />
+                    <marker date="1500704826128" expanded="true" signature="1207:1417" ph="..." />
+                    <marker date="1500704826128" expanded="true" signature="1215:1366" ph="..." />
+	 16c4576f596f9ddc6555b080da9a4017cc456e5d
+                  </folding>
+=======
           <file leaf-file-name="teamhelpapplication.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/idear/templates/team/teamhelpapplication.html">
               <provider selected="true" editor-type-id="text-editor">
@@ -79,10 +208,26 @@
                   <caret line="50" column="14" lean-forward="false" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
                   <folding />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
+
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/idear/static/idea/js/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+
+          <file leaf-file-name="creations.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/idear/creations.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="567">
+                  <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+=======
 <<<<<<< HEAD
           <file leaf-file-name="reload.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/admina/reload.py">
@@ -98,12 +243,29 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="635">
                   <caret line="117" column="1" lean-forward="false" selection-start-line="117" selection-start-column="1" selection-end-line="117" selection-end-column="1" />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
                   <folding />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
                 </state>
               </provider>
             </entry>
           </file>
+<<<<<<< HEAD
+
+          <file leaf-file-name="Base.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/idear/templates/idea/Base.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1410">
+                  <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+
+          <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/admina/models.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="351">
+                  <caret line="126" column="7" lean-forward="true" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
+                  <folding />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+=======
 <<<<<<< HEAD
           <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/admina/models.py">
@@ -137,18 +299,82 @@
                   <caret line="50" column="14" lean-forward="false" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
                   <folding />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
                 </state>
               </provider>
             </entry>
           </file>
 <<<<<<< HEAD
+
         </leaf>
       </split-first>
       <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="recruit.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/idear/static/project/css/recruit.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="325">
+                  <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+
+          <file leaf-file-name="projects.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/idear/projects.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="485">
+                  <caret line="42" column="83" lean-forward="false" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="83" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/idear/views.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="852">
+                  <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/idear/urls.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="972">
+                  <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+=======
+<<<<<<< HEAD
+        </leaf>
+      </split-first>
+      <split-second>
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
         <leaf>
           <file leaf-file-name="index.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/idear/static/creation/css/index.css">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+
+                <state relative-caret-position="334">
+                  <caret line="349" column="24" lean-forward="false" selection-start-line="349" selection-start-column="24" selection-end-line="349" selection-end-column="24" />
+
+
+                <state relative-caret-position="54">
+                  <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+
+                <state relative-caret-position="513">
+                  <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+=======
                 <state relative-caret-position="288">
                   <caret line="39" column="16" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
 =======
@@ -206,6 +432,7 @@
                 <state relative-caret-position="345">
                   <caret line="105" column="52" lean-forward="false" selection-start-line="105" selection-start-column="52" selection-end-line="105" selection-end-column="52" />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
                   <folding />
                 </state>
               </provider>
@@ -220,6 +447,7 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -233,6 +461,7 @@
       <find>login</find>
       <find>input1-1</find>
       <find>center1-1</find>
+      <find>anim-icon</find>
     </findStrings>
     <replaceStrings>
       <replace>static</replace>
@@ -250,7 +479,6 @@
       <list>
         <option value="$PROJECT_DIR$/Idea/urls.py" />
         <option value="$PROJECT_DIR$/admina/urls.py" />
-        <option value="$PROJECT_DIR$/Idea/settings.py" />
         <option value="$PROJECT_DIR$/admina/templates/index.html" />
         <option value="$PROJECT_DIR$/admina/static/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/admina/static/js/login-soft.js" />
@@ -269,10 +497,50 @@
         <option value="$PROJECT_DIR$/idear/templates/regist.html" />
         <option value="$PROJECT_DIR$/idear/static/creation/css/css.css" />
         <option value="$PROJECT_DIR$/manage.py" />
+<<<<<<< HEAD
+
+        <option value="$PROJECT_DIR$/idear/urls.py" />
+        <option value="$PROJECT_DIR$/idear/views.py" />
+=======
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
         <option value="$PROJECT_DIR$/idear/static/idea/js/index.js" />
         <option value="$PROJECT_DIR$/idear/templates/idea/Base.html" />
         <option value="$PROJECT_DIR$/idear/templates/idea/index.html" />
         <option value="$PROJECT_DIR$/idear/static/idea/css/index.css" />
+<<<<<<< HEAD
+
+        <option value="$PROJECT_DIR$/idear/templates/idea/index.html" />
+
+        <option value="$PROJECT_DIR$/idear/templates/project/apply.html" />
+
+        <option value="$PROJECT_DIR$/idear/templates/idea/Base.html" />
+
+
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+        <option value="$PROJECT_DIR$/idear/static/idea/css/index.css" />
+        <option value="$PROJECT_DIR$/idear/static/creation/js/js.js" />
+        <option value="$PROJECT_DIR$/idear/templates/creation/cdetails.html" />
+        <option value="$PROJECT_DIR$/idear/urls.py" />
+        <option value="$PROJECT_DIR$/idear/views.py" />
+
+        <option value="$PROJECT_DIR$/idear/creations.py" />
+        <option value="$PROJECT_DIR$/idear/templates/creation/index.html" />
+        <option value="$PROJECT_DIR$/Idea/settings.py" />
+        <option value="$PROJECT_DIR$/idear/static/creation/css/index.css" />
+
+
+        <option value="$PROJECT_DIR$/idear/static/project/css/zzsc-demo.css" />
+        <option value="$PROJECT_DIR$/idear/static/project/css/icons.css" />
+        <option value="$PROJECT_DIR$/idear/templates/project/zan.html" />
+        <option value="$PROJECT_DIR$/idear/templates/idea/Base.html" />
+        <option value="$PROJECT_DIR$/idear/static/project/css/recruit.css" />
+        <option value="$PROJECT_DIR$/idear/templates/project/recruit.html" />
+
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+=======
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/idear/templates/creation/index.html" />
         <option value="$PROJECT_DIR$/idear/static/creation/css/index.css" />
@@ -285,6 +553,7 @@
         <option value="$PROJECT_DIR$/idear/urls.py" />
         <option value="$PROJECT_DIR$/idear/views.py" />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       </list>
     </option>
   </component>
@@ -298,12 +567,22 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
 <<<<<<< HEAD
+
+    <option name="width" value="1456" />
+    <option name="height" value="876" />
+
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+=======
+<<<<<<< HEAD
     <option name="width" value="1936" />
     <option name="height" value="1056" />
 =======
     <option name="width" value="1456" />
     <option name="height" value="876" />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -339,6 +618,21 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+
+      <pane id="Scope" />
+      <pane id="Scratches" />
+
+
+      <pane id="Scratches" />
+      <pane id="Scope" />
+
+      <pane id="Scope" />
+      <pane id="Scratches" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+=======
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -451,6 +745,51 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+
+
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+=======
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
+              <option name="myItemId" value="idear" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="idea" />
+=======
+              <option name="myItemId" value="creation" />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="idear" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -526,16 +865,124 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< HEAD
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="idear" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="idea" />
+=======
+<<<<<<< HEAD
               <option name="myItemId" value="creation" />
 =======
               <option name="myItemId" value="team" />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="idear" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="creation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+
+
+            <PATH_ELEMENT>
+              <option name="myItemId" value="creation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+
+
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admina" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -563,10 +1010,16 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/Idea/.gitignore" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+
       <recent name="C:\Users\zhanglingxue\Desktop\Idea\idear\static\idea\imgs" />
+
+      <recent name="C:\Users\gyx\Desktop\Idea\idear\static\creation\css" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
       <recent name="C:\Users\gyx\Desktop\Idea\idear\static\creation\imgs" />
       <recent name="C:\Users\admin\Desktop\Idea\idear\static\js" />
       <recent name="C:\Users\admin\Desktop\Idea\idear\static\imgs" />
@@ -672,6 +1125,8 @@
       <module name="Idea" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="ADDITIONAL_ARGS" value="" />
+<<<<<<< HEAD
+=======
       <method />
     </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
@@ -737,6 +1192,85 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
+      <method />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python27\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Idea" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+<<<<<<< HEAD
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+=======
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module name="Idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -750,6 +1284,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Idea" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+<<<<<<< HEAD
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
@@ -787,6 +1322,8 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Idea" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+=======
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;.&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
@@ -899,6 +1436,25 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
+
+
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
+
+
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23888889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23045821" sideWeight="0.50287354" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19869281" sideWeight="0.49712643" order="2" side_tool="false" content_ui="tabs" />
+=======
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
@@ -920,25 +1476,112 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23045821" sideWeight="0.50287354" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18733154" sideWeight="0.49712643" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18835978" sideWeight="0.49712643" order="2" side_tool="false" content_ui="tabs" />
+
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+=======
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+=======
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
 <<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
 =======
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+
+      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2509804" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15052083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11322752" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+
+      <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23045821" sideWeight="0.50287354" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19869281" sideWeight="0.49712643" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23888889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+<<<<<<< HEAD
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2509804" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+
+
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+=======
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884097" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -963,6 +1606,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -983,75 +1627,19 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
+
+    <entry file="file://$PROJECT_DIR$/idear/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/admina/.gitignore" />
+=======
+<<<<<<< HEAD
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
     <entry file="file://$PROJECT_DIR$/Idea/.gitignore" />
     <entry file="file://$PROJECT_DIR$/admina/migrations/0002_auto_20170711_2139.py" />
     <entry file="file://$PROJECT_DIR$/admina/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-=======
->>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+
+
     <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admina/static/js/jquery-1.10.1.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="42" column="3" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="42" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admina/static/js/table-managed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admina/static/js/csrf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="38" column="3" lean-forward="false" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admina/static/js/select2.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admina/templates/login.html" />
-    <entry file="file://$PROJECT_DIR$/admina/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4644">
-          <caret line="183" column="36" lean-forward="false" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
-          <folding>
-            <marker date="1500790661253" expanded="true" signature="7571:8082" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="8110:8786" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="8115:8150" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1500790661253" expanded="true" signature="8758:8786" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="8814:9059" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="8819:8856" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1500790661253" expanded="true" signature="9033:9059" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="9093:9491" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="9098:9122" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1500790661253" expanded="true" signature="9466:9491" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="9529:10084" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="10061:10084" ph="..." />
-            <marker date="1500790661253" expanded="true" signature="10086:10146" ph="'''...'''" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+
     <entry file="file://$PROJECT_DIR$/admina/static/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
@@ -1059,6 +1647,7 @@
         </state>
       </provider>
     </entry>
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
     <entry file="file://$PROJECT_DIR$/admina/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1083,11 +1672,17 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/idear/static/js/jquery-1.8.3.min.js" />
     <entry file="file://$PROJECT_DIR$/idear/static/js/regist.js" />
     <entry file="file://$PROJECT_DIR$/idear/static/css/regist.css" />
     <entry file="file://$PROJECT_DIR$/idear/static/css/css.css" />
     <entry file="file://$PROJECT_DIR$/idear/static/user/css/css.css">
+=======
+=======
+>>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1098,13 +1693,6 @@
     <entry file="file://$PROJECT_DIR$/idear/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/idear/templates/login.html" />
     <entry file="file://$PROJECT_DIR$/idear/templates/regist.html" />
-    <entry file="file://$PROJECT_DIR$/idear/templates/project/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admina/templates/first/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -1126,6 +1714,265 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/imgs/logo1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/imgs/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/idea/index.html">
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/apply.html">
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+=======
+        <state relative-caret-position="4644">
+          <caret line="183" column="36" lean-forward="false" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
+          <folding>
+            <marker date="1500790661253" expanded="true" signature="7571:8082" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="8110:8786" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="8115:8150" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1500790661253" expanded="true" signature="8758:8786" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="8814:9059" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="8819:8856" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1500790661253" expanded="true" signature="9033:9059" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="9093:9491" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="9098:9122" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1500790661253" expanded="true" signature="9466:9491" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="9529:10084" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="10061:10084" ph="..." />
+            <marker date="1500790661253" expanded="true" signature="10086:10146" ph="'''...'''" />
+          </folding>
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/css/css.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/project/css/style1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="86" column="2" lean-forward="false" selection-start-line="86" selection-start-column="2" selection-end-line="89" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/project/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2406">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/project/css/css.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="93" column="17" lean-forward="true" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/redetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/js/regist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/js/js.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/js/jquery-1.8.3.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/js/jquery.cookie.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/recruit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1010">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/project/js/js.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/idear/templates/team.html" />
+    <entry file="file://$PROJECT_DIR$/idear/templates/index.html" />
+    <entry file="file://$PROJECT_DIR$/idear/templates/login.html" />
+    <entry file="file://$PROJECT_DIR$/idear/templates/regist.html" />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/projects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="58" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+
+    <entry file="file://$PROJECT_DIR$/idear/static/project/css/apply.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1950">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/redetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/css/login1.css">
+
+    <entry file="file://$PROJECT_DIR$/idear/projects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="42" column="83" lean-forward="false" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="83" />
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/idea/Base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="57" column="16" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="84" />
+          <folding>
+            <marker date="1500704826128" expanded="true" signature="714:939" ph="..." />
+            <marker date="1500704826128" expanded="true" signature="742:926" ph="..." />
+            <marker date="1500704826128" expanded="true" signature="769:864" ph="..." />
+            <marker date="1500704826128" expanded="true" signature="964:1057" ph="..." />
+            <marker date="1500704826128" expanded="true" signature="973:1047" ph="..." />
+            <marker date="1500704826128" expanded="true" signature="1093:1102" ph="..." />
+            <marker date="1500704826128" expanded="true" signature="1181:1425" ph="..." />
+            <marker date="1500704826128" expanded="true" signature="1207:1417" ph="..." />
+            <marker date="1500704826128" expanded="true" signature="1215:1366" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/creation/js/js.js">
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+=======
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/imgs/search.svg">
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+
+    <entry file="file://$PROJECT_DIR$/idear/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+=======
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
     <entry file="file://$PROJECT_DIR$/idear/static/idea/imgs/login.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1154,11 +2001,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/css/regist.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="955">
+          <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+
+    <entry file="file://$PROJECT_DIR$/idear/static/project/css/apply.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+
+    <entry file="file://$PROJECT_DIR$/idear/templates/creation/cdetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/creation/css/cdetails.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Idea/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="85" column="28" lean-forward="false" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/creation/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/creation/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="32" column="19" lean-forward="false" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="19" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/idear/templates/idea/login.html">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -1216,11 +2137,95 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+<<<<<<< HEAD
+
+        <state relative-caret-position="972">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+
+        <state relative-caret-position="372">
+          <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+
+        <state relative-caret-position="513">
+          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/idea/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="46" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/project/css/zzsc-demo.css" />
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/zan.html" />
+    <entry file="file://$PROJECT_DIR$/idear/static/project/css/icons.css">
+      <provider selected="true" editor-type-id="text-editor">
+
+        <state relative-caret-position="852">
+          <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
+
+        <state relative-caret-position="50">
+          <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+
+        <state relative-caret-position="484">
+          <caret line="121" column="0" lean-forward="true" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+          <folding />
+        </state>
+      </provider>
+    </entry>
+
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/projects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="18" />
+          <folding />
+=======
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/js/jquery-1.8.3.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/idear/templates/idea/Base.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+
+        <state relative-caret-position="1410">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+
+        <state relative-caret-position="850">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+          <folding />
+        </state>
+      </provider>
+    </entry>
+
+    <entry file="file://$PROJECT_DIR$/idear/static/idea/imgs/start.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+=======
         <state relative-caret-position="635">
           <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
         </state>
@@ -1232,6 +2237,7 @@
           <caret line="117" column="1" lean-forward="false" selection-start-line="117" selection-start-column="1" selection-end-line="117" selection-end-column="1" />
           <folding />
         </state>
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/idear/templates/team/teamhelpapplication.html">
@@ -1247,15 +2253,41 @@
 <<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+
+    <entry file="file://$PROJECT_DIR$/idear/projects.py">
+
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="42" column="83" lean-forward="false" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="83" />
+
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
+    <entry file="file://$PROJECT_DIR$/idear/creations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+=======
 =======
         <state relative-caret-position="161">
           <caret line="7" column="79" lean-forward="false" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
           <folding />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+
+    <entry file="file://$PROJECT_DIR$/idear/templates/idea/index.html">
+=======
     <entry file="file://$PROJECT_DIR$/idear/static/team/css/teamdetails.css">
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
         <state relative-caret-position="2487">
@@ -1273,6 +2305,25 @@
 <<<<<<< HEAD
         <state relative-caret-position="334">
           <caret line="349" column="24" lean-forward="false" selection-start-line="349" selection-start-column="24" selection-end-line="349" selection-end-column="24" />
+<<<<<<< HEAD
+
+    <entry file="file://$PROJECT_DIR$/idear/creations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/apply.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+
+    <entry file="file://$PROJECT_DIR$/idear/static/creation/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
+=======
         </state>
       </provider>
     </entry>
@@ -1299,10 +2350,25 @@
         <state relative-caret-position="253">
           <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+
+    <entry file="file://$PROJECT_DIR$/admina/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="126" column="7" lean-forward="true" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
+ 16c4576f596f9ddc6555b080da9a4017cc456e5d
+          <folding />
+
+    <entry file="file://$PROJECT_DIR$/idear/static/project/css/recruit.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+=======
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/idear/templates/creation/index.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -1335,7 +2401,30 @@
         <state relative-caret-position="345">
           <caret line="105" column="52" lean-forward="false" selection-start-line="105" selection-start-column="52" selection-end-line="105" selection-end-column="52" />
 >>>>>>> 04a0bf63cb1a32c56a8109af2ad6dd54eeee9294
+>>>>>>> 53c6af9af3677d22b86b5c38e2643c9f43d25e4c
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/idear/templates/project/recruit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="62" column="18" lean-forward="false" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+          <folding>
+            <element signature="e#2330#2336#0#HTML" expanded="true" />
+            <element signature="e#2336#2342#0#HTML" expanded="true" />
+            <element signature="e#2342#2348#0#HTML" expanded="true" />
+            <element signature="e#2348#2354#0#HTML" expanded="true" />
+
+    <entry file="file://$PROJECT_DIR$/idear/templates/creation/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="75" column="46" lean-forward="true" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#a#2;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+ 13b695a4f8ee945347777d1ae56c0e6d685e2ad2
+          </folding>
+ 66c9c4f077f4dbe49c1b040110cb6a28e07e6a2f
         </state>
       </provider>
     </entry>
