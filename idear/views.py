@@ -85,6 +85,7 @@ def regist(req):
         return render(req, 'idea/regist.html')
     if req.method == "POST":
         pass
+
 '''
 团队页面
 '''
@@ -135,19 +136,3 @@ def apply(req):
 
 
   
-
-'''
-招募项目
-'''
-@csrf_exempt
-def projects(req):
-    if req.method == "GET":
-	    projects = Project.objects.all()
-	    return render_to_response('project/recruit.html', {'projects': projects})
-    else:
-	    # return render_to_response('project/projects.html')
-	    projects = Project.objects.all()
-	    return render_to_response('project/recruit.html', {'projects': projects})
-
-
-
