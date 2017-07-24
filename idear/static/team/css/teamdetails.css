@@ -3,6 +3,7 @@
 	overflow:hidden;
 	width:100%;
 	height:100%;
+	font-family: kaiti;
     background-color: rgba(127,255,212,0.2);
 	background:linear-gradient(to bottom, rgba(99,184,255,0.2)0%,rgba(127,255,212,0.2)100%);
 }
@@ -81,7 +82,15 @@
 	height: 50px;
 	font-size: 20px;
 	line-height: 50px;
-	margin-left: 10%;
+	float: right;
+	text-indent: 2em;
+}
+.teamdetailsynopsis1-7{
+	width:45%;
+	height: 50px;
+	font-size: 20px;
+	line-height: 50px;
+	float: right;
 }
 .details{
 	width: 80%;
@@ -116,7 +125,7 @@
 .details1-4{
 	border: 1px solid rgba(54, 54 ,54,0.9);
     width: 100px;
-    font-size: 0.75em;
+    font-size: 1em;
     padding: .25em .5em .3125em;
     color: rgb(54,54,54);
     border-radius: .25em;
@@ -125,8 +134,21 @@
     -webkit-transition: all .100s;
     transition: all .100s;
 	font-family: kaiti;
-	float: right;
+	margin-left: 82%;
 	margin-top: 6px;
+	position: absolute;
+	z-index: 99;
+}
+.detailsinput1-1{
+	border: 0 solid rgba(54, 54 ,54,0.9);
+    font-size: 1em;
+    padding: -0.25em .5em .3125em;
+    color: #5E6C77;
+    border-radius: .25em;
+    background: transparent;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    font-family: kaiti;
 }
 #canvas{
 	margin-top: -520px;

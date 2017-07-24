@@ -60,8 +60,10 @@
         </div>
         <div class="AllTag">
             <p>按标签显示</p>
-            <p>#IT</p>
-            <p>#设计</p>
+        <a href="recruit?sign=all" sign="all" class="project_sign" ><p>所有</p></a>
+        {%for obj in projectLabels%}
+        <a href="recruit?sign={{obj.Id}}" sign="{{obj.Id}}" class="project_sign"><p>{{obj.ProjectLabelName}}</p></a>
+        {%endfor%}
         </div>
     </div>
 </div>
