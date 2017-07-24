@@ -34,10 +34,10 @@ urlpatterns = [
     url(r'redetails$', views.redetails),
     url(r'projects$', projects.projects),
 
-                  # url(r'projects$', projects.projects),
-
     url(r'star$', creations.star),
     url(r'attend$', creations.attend),
+
+    url(r'test$', views.test)
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

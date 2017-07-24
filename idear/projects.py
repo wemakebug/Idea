@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from admina.models import Project,Project2ProjectLabel
+from admina.models import Project,Project2ProjectLabel,ProjectUser
 from django.shortcuts import HttpResponse,Http404,render_to_response,HttpResponseRedirect
 
 from django.views.decorators.csrf import csrf_exempt
@@ -129,5 +129,17 @@ def attend(req):
 
 
 
+def get_projects(req):
+    if req.method == "GET":
+        return Http404()
+    if req.method == "POST":
+        projects = Project.objects.all().order_by('Id').filter()
+        account = req.COOKIES.get('account')
+        user = User.objects.filter(Account=account)
+        if account:
+            projects = ProjectUser.objects.get(user=user)
+            return render_to_response('project/recruit.html', {'projects': projects})
+        else:
+            return render_to_response('project/recruit.html', {'projects': projects})
 
 

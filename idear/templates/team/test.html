@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取后台数据接口</title>
+</head>
+<body>
+
+{% for team in teams %}
+    <p>
+    {{ team.Id }}<br>
+    {{ team.Img }}<br>
+    {{ team.UserName }}<br>
+    </p>
+{% endfor %}
+</body>
+</html>

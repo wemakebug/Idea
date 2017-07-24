@@ -33,19 +33,20 @@ function login() {
 // 判断用户邮箱或密码是否正确
 $("input[class='login_input']").click(function () {
     if ($("#account").val() != "" && $("#password").val() != "") {
-        account = $("input[id='account']").val()
+        account = $("input[id='account']").val();
         $.post("login", {
             "account": account,
             "password": $("input[id='password']").val()
         }, function (result) {
-            if (result.status == 0) {
-                alert(result.message);
+            result =JSON.parse(result);
+            if (result["status"] === 0) {
+                alert(result["message"]);
                 window.location.reload();
-            } else if (result.status == 1) {
-                $.cookie('username', result.username);
-                $.cookie('uuid', result.UUID);
+            } else if (result["status"] === 1) {
+                $.cookie('username', result["username"]);
+                $.cookie('uuid', result["UUID"]);
                 $.cookie('account', account);
-                alert(result.message);
+                alert(result["message"]);
                 window.location.href = 'index'
             } else {
                 alert('服务器异常');
