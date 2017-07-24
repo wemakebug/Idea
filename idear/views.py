@@ -19,7 +19,7 @@ from django.views.decorators.csrf import csrf_exempt
 def Check_User_Cookie(req):
     loginStatus = False
     try:
-        user_cookie = req.COOKIES["account"]
+        user_cookie = req.COOKIES["email"]
         user_uuid_code = req.COOKIES["uuid"]
         try:
             user = models.User.objects.get(Account=user_cookie)
@@ -53,7 +53,7 @@ def login(req):
         result['username'] = None
         result['UUID'] = None
         try:
-            account = req.POST['account']
+            account = req.POST['email']
             password = req.POST['password']
             try:
                 user = models.User.objects.get(Account=account)
@@ -80,11 +80,47 @@ def login(req):
 '''
 注册页面
 '''
+@csrf_exempt
 def regist(req):
     if req.method == 'GET':
         return render(req, 'idea/regist.html')
     if req.method == "POST":
-        pass
+        result = {}
+        try:
+            username = req.POST['name']
+            account= req.POST['account']
+            email = req.POST['email']
+            password = req.POST['password']
+            if models.User.objects.filter(Account=account):
+                result['status'] = 0
+                result['message'] = '学号已经被注册'
+                print '学号已经被注册'
+                return HttpResponse(json.dumps(result))
+            elif models.User.objects.get(Email=email):
+                result['status'] = 0
+                result['message'] = '邮箱已经被注册'
+                print '邮箱已经被注册'
+                return HttpResponse(json.dumps(result))
+            elif models.User.objects.get(Email=email):
+                result['status'] = 0
+                result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
+            else:
+                models.User.objects.create(Account=account, Email=email, UserName=username, PassWord=password,Uuid=uuid.uuid1())
+                user = models.User.objects.get(Account=account)
+                result['username'] = username
+                result['UUID'] = user.Uuid
+                result['message'] = '注册成功，正在调转'
+                result['status'] = 1
+                print '注册成功，正在调转'
+                return HttpResponse(json.dumps(result))
+        except:
+            result = {
+                "message": '服务器状态异常',
+                "status": 0
+            }
+            print '服务器状态异常'
+            return HttpResponse(json.dumps(result))
 
 '''
 团队页面

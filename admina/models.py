@@ -16,6 +16,9 @@ class Admin(models.Model):
     Password = models.CharField(null=False, blank=False, max_length=25)
     DateTime = models.DateField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.Account
+
 class User(models.Model):
     '''
     用户表
@@ -32,14 +35,13 @@ class User(models.Model):
     Id = models.AutoField(primary_key=True)
     UserName = models.CharField(max_length=10, null=False, unique=True)
     Account = models.CharField(max_length=20, null=False, unique=True)
-    Account = models.CharField(max_length=20, null=False, unique=True)
     PassWord = models.CharField(max_length=20, null=False)
     Identity = models.PositiveSmallIntegerField(default=0, null=False)
     Sex = models.PositiveSmallIntegerField(default=0, null=False)
     Email = models.EmailField(null=False, max_length=32, unique=True)
     Score = models.PositiveIntegerField(default=0, null=False)
     RegistTime = models.DateField(auto_now_add=True)
-    Phone = models.CharField(max_length=12, null=False, )
+    Phone = models.CharField(max_length=12, null=True, )
     Img = models.ImageField(upload_to='photos/%Y/%m/%d/user', null=True, blank=True)
     Introduction = models.TextField(null=True, max_length=200)
     School = models.CharField(null=True, max_length=20)

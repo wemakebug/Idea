@@ -15,19 +15,7 @@ import uuid
 @csrf_exempt
 def login(req):
     if req.method == "GET":
-        try:
-            account = req.COOKIES.get('account')
-            username = req.COOKIES.get('username')
-            try:
-                user = models.Admin.objects.get(Account=account)
-                if user.UserName == username:
-                    return render(req, 'first/index.html')
-                else:
-                    return render(req, 'first/login.html')
-            except:
-                return render(req, 'first/login.html')
-        except:
-            return render(req, 'first/login.html')
+        return render(req, 'first/login.html')
     if req.method == "POST":
         result = {
         }
@@ -35,7 +23,7 @@ def login(req):
             account = req.POST["account"]
             password = req.POST["password"]
             try:
-                user = models.User.objects.get(Account=account)
+                user = models.Admin.objects.get(Account=account)
                 if user.Identity == 3 and user.PassWord == password:
                     result['username'] = user.UserName
                     result['account'] = user.Account
