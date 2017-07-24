@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import json
 from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
 from admina import models
-from admina.models import Project
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 import uuid
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
@@ -171,4 +171,10 @@ def apply(req):
 
 
 
-  
+def test(req):
+    if req.method == "GET":
+        teams = models.User.objects.all().filter(Identity=2)
+        print teams
+        return render_to_response('team/test.html', {'teams': teams})
+
+

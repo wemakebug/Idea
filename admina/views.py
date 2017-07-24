@@ -3,11 +3,10 @@ from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
 from admina import models
-from models import User
 import json
-from django.core.paginator import Paginator
 from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
 import uuid
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
 # Create your views here.
 
