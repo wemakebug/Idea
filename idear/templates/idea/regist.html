@@ -76,7 +76,26 @@
     var opinion=document.getElementById("registopinion");
     if(name!=""&account!=""&email!=""&password!=""&ConfirmPassword!=""&opinion.checked==true){
         if(password===ConfirmPassword){
-        alert("注册成功！")
+            $.post('regist',
+                {
+                'name':name,
+                'account':account,
+                'email':email,
+                'password':password
+
+                },function (result) {
+                    result = JSON.parse(result);
+               if(result.status == 1){
+                   $.cookie('username',result["username"]);
+                   $.cookie('UUID',result["UUID"]);
+                   alert('well');
+                   alert(result["message"]);
+                   window.location.href = 'index'
+               } else {
+                   alert(result["status"]);
+                   alert(result["message"]);
+               }
+            });
         }
         else {
         alert("两次密码不一致！")
