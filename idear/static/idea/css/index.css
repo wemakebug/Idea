@@ -7,7 +7,7 @@
 	body{
 	    min-width:1200px;
         max-width:2000px;
-        width:expression_r( Math.max(1200, Math.min(2000, document.body.offsetWidth*0.99))+"px" );
+
         overflow-x: hidden;
         /*background-position:center 0;
         background-repeat:repeat-x;*/
