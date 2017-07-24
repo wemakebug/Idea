@@ -73,7 +73,7 @@
 	 margin: 4% 42%;
 	 background-color:rgba(253, 245, 230, 0.6);
  }
-.photo{
+.photo_0{
 	position:absolute;
 	height: 200px;
 	width: 45%;
@@ -83,7 +83,53 @@
 	z-index: 99;
 
 }
-.intro{
+.intro_0{
+	font-weight: bold;
+	font-size: 17px;
+	position:absolute;
+	height: 200px;
+	width: 45%;
+	margin: 2% 52%;
+	z-index: 99;
+}
+.content_0{
+	font-size: 15px;
+	position:absolute;
+	height: 150px;
+	width: 95%;
+	margin: 2% 1%;
+	z-index: 99;
+}
+.more_0{
+	position:absolute;
+	font-size: 12px;
+	margin: 200px 82%;
+	width:17%;
+	height: 25px;
+	cursor:pointer;
+	z-index: 99;
+}
+.referral{
+	position:absolute;
+	 height: 148px;
+	 width: 35%;
+	 margin: 300px 0;
+	 background-color:rgba(253, 245, 230, 0.6);
+}
+.referral_0{
+	margin-left: 5%;
+}
+.photo_1{
+	position:absolute;
+	height: 200px;
+	width: 45%;
+	margin: 2% 5%;
+	background-color:rgba(255, 255, 255, 0.6);
+	box-shadow: 5px 5px 5px 3px rgba(69 ,139 ,116, 0.2);
+	z-index: 99;
+
+}
+.intro_1{
 	font-weight: bold;
 	font-size: 17px;
 	position:absolute;
@@ -100,22 +146,12 @@
 	margin: 2% 1%;
 	z-index: 99;
 }
-.more{
+.more_0{
 	position:absolute;
 	font-size: 12px;
 	margin: 200px 82%;
 	width:17%;
-	height: 22px;
+	height: 25px;
 	cursor:pointer;
 	z-index: 99;
-}
-.referral{
-	position:absolute;
-	 height: 148px;
-	 width: 35%;
-	 margin: 19% 0;
-	 background-color:rgba(253, 245, 230, 0.6);
-}
-.referral_0{
-	margin-left: 5%;
 }
