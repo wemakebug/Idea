@@ -23,19 +23,18 @@
         height:950px;
         background:;
     }
-    .content-top{
-    width:80%;
-    height:10%;
+
+   .content-top{
+    width:100%;
+    height:15%;
     background-color:;
     display: inline-block;
     position: relative;
     float: left;
-    /*margin-bottom: 30px;
-  /*background: url(../snow-road.jpg);*/
     background-size: cover;
     text-transform: uppercase;
     color: white;
-   /* border-bottom:1px solid #539092;*/
+
 }
     .ribbon:nth-child(even) {margin-right: 4%;}
     @media (max-width: 500px) {
@@ -44,7 +43,7 @@
     }
     .ribbon1 {
 
-       top: -6px;
+       top: -8px;
         right: 10px;
 
     }
@@ -56,10 +55,11 @@
         text-align: center;
         background:  #539092;
         font-size: 14px;
-        line-height: 1;
+        line-height: 1px;
         padding: 12px 8px 10px;
         border-top-right-radius: 8px;
-        width: 8%;
+        width: 10%;
+
     }
     .ribbon1 span:before, .ribbon1 span:after {
         position: absolute;
@@ -81,26 +81,35 @@
         left: -8px;
         top: 0;
     }
+    .pimg{
+        width:110px;
+        height:110px;
+
+        float:left;
+
+        margin-top:3%;
+        margin-left:5%;
+   }
    .title{
-        width:auto;
+        width:60%;
         height:50%;
         float:left;
-        margin-top:5%;
+        margin-left:5%;
+        margin-top:3%;
         color:black;
         font-size:2em;
+        text-align:center;
    }
    .ptime{
         width: auto;
-        height: 30%;
+        height: 10%;
         color:black;
         float:right;
-        margin-top:4%;
         background-color:;
-        margin-left:50%;
    }
    .content-header{
         width:100%;
-        height:35%;
+        height:30%;
         background:;
         float:left;
 
@@ -121,13 +130,14 @@
 
    .content-middle{
         width:80%;
-        height: 40%;
-        background:pink;
+        height: 35%;
+        background:;
         float:left;
+        font-size:2em;
    }
    .content-footer{
         width:100%;
-        height: 15%;
+        height: 20%;
         float:left;
    }
     .main-right{
@@ -148,12 +158,13 @@
     background-color:#539092;
     }
     .person-one-img{
-    width:30%;
-    height:75%;
+    width:80px;
+    height:80px;
     float:left;
     margin-left:35%;
     overflow:hidden;
     margin-top:20%;
+    border-radius:50%;
     }
     .person-one-img img{
       width:100%;
@@ -187,14 +198,13 @@
      height:100%;
      font-size:1em;
      float:left;
-     margin-left:20%;
+
     }
     .pscore img{
-     width:auto;
+     width:20%;
      height:100%;
-     vertical-align:middle;
-     float:left;
     }
+
     .pid{
       width: auto;
       height:100%;
@@ -202,5 +212,5 @@
     .comment{
        width:70%;
        height:60%;
-       background:pink;
+       background:;
     }
