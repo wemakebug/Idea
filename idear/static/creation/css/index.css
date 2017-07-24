@@ -38,6 +38,7 @@ margin:0px;
       border-bottom-right-radius: 5px;
       box-shadow: 2px 2px 2px 2px #bdc3c7;
       text-align: center;
+      opacity:0.8;
     }
     .tag{
       width:50%;
