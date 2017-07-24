@@ -22,7 +22,7 @@ margin:0px;
     }
     .intro{
       width:13%;
-      height:280px;
+      height:240px;
       float:right;
       margin-right: 13%;
       margin-top: 2%;
@@ -37,9 +37,9 @@ margin:0px;
     .tag{
       width:6%;
       height:400px;
-      float:right;
-      margin-right: 20%;
-      margin-top: 2%;
+      float:left;
+      margin-left: 74%;
+      margin-top: 1%;
       text-align: center;
     }
     .intro p{
@@ -82,7 +82,7 @@ margin:0px;
       a{
         text-decoration: none;
         color: #444;
-        margin-top:10px;
+
       }
        h5{
         float: left;
@@ -162,8 +162,10 @@ margin:0px;
       }
 
       .add{
-       float:left;
-       margin: 20px 0px 0px 30px;
+       float:right;
+       margin: 20px 380px 0 30px;
+       margin-top:1.5%;
+       margin-right:20%;
        background-color: #11999e;
        color: #eeeeee;
        border:none;

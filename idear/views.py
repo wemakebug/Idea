@@ -137,6 +137,11 @@ def teamdetails(req):
     if req.method == 'POST':
         pass
 
+def teamhelpapplication(req):
+    if req.method == 'GET':
+        return render(req, 'team/teamhelpapplication.html')
+    if req.method == 'POST':
+        pass
 # 忘记密码
 def forgetPassword(req):
     if req.method == 'GET':
