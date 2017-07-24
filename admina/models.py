@@ -26,7 +26,6 @@ class User(models.Model):
         0 学生
         1 教师
         2 团队
-        3 管理员
     2.性别表示
         0 男
         1 女
@@ -47,7 +46,7 @@ class User(models.Model):
     School = models.CharField(null=True, max_length=20)
     Institude = models.CharField(null=True, max_length=20)
     Major = models.CharField(null=True, max_length=20)
-    Uuid = models.UUIDField(null=True)
+    Uuid = models.UUIDField(null=True, blank=True)
 
     def __unicode__(self):
         return self.UserName
