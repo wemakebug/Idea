@@ -53,10 +53,10 @@ def login(req):
         result['username'] = None
         result['UUID'] = None
         try:
-            account = req.POST['email']
+            email = req.POST['email']
             password = req.POST['password']
             try:
-                user = models.User.objects.get(Account=account)
+                user = models.User.objects.get(Email=email)
                 user.Uuid = uuid.uuid1()
                 if user.PassWord == password:
                     result['status'] = 1
@@ -86,41 +86,36 @@ def regist(req):
         return render(req, 'idea/regist.html')
     if req.method == "POST":
         result = {}
-        try:
-            username = req.POST['name']
-            account= req.POST['account']
-            email = req.POST['email']
-            password = req.POST['password']
-            if models.User.objects.filter(Account=account):
-                result['status'] = 0
-                result['message'] = '学号已经被注册'
-                print '学号已经被注册'
-                return HttpResponse(json.dumps(result))
-            elif models.User.objects.get(Email=email):
-                result['status'] = 0
-                result['message'] = '邮箱已经被注册'
-                print '邮箱已经被注册'
-                return HttpResponse(json.dumps(result))
-            elif models.User.objects.get(Email=email):
-                result['status'] = 0
-                result['message'] = '姓名已被注册'
-                return HttpResponse(json.dumps(result))
-            else:
-                models.User.objects.create(Account=account, Email=email, UserName=username, PassWord=password,Uuid=uuid.uuid1())
-                user = models.User.objects.get(Account=account)
+        username = req.POST['name']
+        email = req.POST['email']
+        password = req.POST['password']
+        if models.User.objects.filter(Email=email):
+            result['status'] = 0
+            result['message'] = '邮箱已经被注册'
+            print '邮箱已经被注册'
+            return HttpResponse(json.dumps(result))
+
+        elif models.User.objects.filter(UserName=username):
+            result['status'] = 0
+            result['message'] = '姓名已被注册'
+            print '姓名已被注册'
+            return HttpResponse(json.dumps(result))
+        else:
+            try:
+                models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid1())
+                user = models.User.objects.get(Email=email)
                 result['username'] = username
-                result['UUID'] = user.Uuid
+                result['UUID'] = str(user.Uuid)
                 result['message'] = '注册成功，正在调转'
                 result['status'] = 1
                 print '注册成功，正在调转'
                 return HttpResponse(json.dumps(result))
-        except:
-            result = {
-                "message": '服务器状态异常',
-                "status": 0
-            }
-            print '服务器状态异常'
-            return HttpResponse(json.dumps(result))
+            except:
+                result = {
+                    "message": '服务器状态异常',
+                    "status": 0
+                }
+                return HttpResponse(json.dumps(result))
 
 '''
 团队页面
