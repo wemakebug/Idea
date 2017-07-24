@@ -72,10 +72,24 @@ def score_user(req):
         scoreUser = models.User.objects.all().order_by('Id')
         page = Paginator(scoreUser, 6)
         scoreUser = page.page(currentpage).object_list
-        print scoreUser[1].Id
         return render_to_response('second/Score_user.html', {'ScoreUser': scoreUser})
     if req.method == "POST":
-        pass
+        result = {}
+        try:
+            id = req.POST['id']
+            confirmed = req.POST['confirm']
+            if confirmed:
+                try:
+                    user = models.User.objects.get(Id=id)
+                    user.delete()
+                except:
+                    result['message'] = '用户不存在'
+                    result["status"] = 0
+                    return HttpResponse(json.dumps(result))
+        except:
+            result['message'] = '服务器异常'
+            result["status"] = 0
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
@@ -87,7 +101,23 @@ def score_record(req):
         scoreChanges = page.page(currentpage).object_list
         return render_to_response('second/Score_record.html', {'ScoreChanges': scoreChanges})
     if req.method == "POST":
-        pass
+        result = {}
+        try:
+            id = req.POST['id']
+            confirmed = req.POST['confirm']
+            if confirmed:
+                try:
+                    user = models.User.objects.get(Id=id)
+                    user.delete()
+                except:
+                    result['message'] = '用户不存在'
+                    result["status"] = 0
+                    return HttpResponse(json.dumps(result))
+        except:
+            result['message'] = '服务器异常'
+            result["status"] = 0
+            return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def UserManager(req):
