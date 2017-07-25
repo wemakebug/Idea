@@ -4,10 +4,24 @@
         <link rel="stylesheet" href="../../static/idea/css/index.css">
 	{%endblock%}
 {%block title%}<title>申请表</title>{%endblock%}
+{%block script %}
+<script>
+    function checkApply(){
+           var Project_History = document.getElementById("Project_History").value;
+           var Apply_reason= document.getElementById("Apply_reason").value;
+           if(Apply_reason == ""  ){
+            alert("申请理由不能为空");
+             return false;
+           }else{
+           return true;
+           }
+        }
+</script>
+{% endblock %}
 {%block content%}
     <div class="bg_all">
     <div class="bg">
-    <form>
+    <form id="Apply_Form" method = 'post'  action = '' onsubmit = "return checkApply()">
         <div class="bdiv_left">
 
             <div class="headimg"></div>
@@ -21,10 +35,11 @@
         </div>
         <div class="bdiv_right">
             <p class="FormTitle">申请表</p>
-            <p class="FixText3">项目参与历史：</p><br><textarea rows="10" cols="30" class="VariableText3" autofocus="autofocus"></textarea>
-            <p class="FixText4">申请理由：</p><br><textarea rows="10" cols="30" class="VariableText3" autofocus="autofocus"></textarea>
-            <input type="submit" value="提交" class="FixButton" onclick="">
+            <p class="FixText3">项目参与历史：</p><br><textarea id="Project_History" rows="10" cols="30" class="VariableText3" autofocus="autofocus" form="Apply_Form"></textarea>
+            <p class="FixText4">申请理由：</p><br><textarea id="Apply_reason" rows="10" cols="30" class="VariableText3" autofocus="autofocus" required="required" form="Apply_Form" ></textarea>
+            <button class="FixButton" onclick="checkUser()">提交</button>
         </div>
+        {% csrf_token %}
     </form>
     </div>
     </div>
