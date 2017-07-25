@@ -1,7 +1,6 @@
  {%extends "include/Base.html"%}
 {% block title %}分值管理{% endblock %}
 {%block content %}
-
 <div class="row-fluid">
 
 						<div class="span12">
@@ -57,7 +56,7 @@
 
 												<td>{{ user.Identity }}</td>
 
-                                                <td><i class="icon-remove">&nbsp;&nbsp;&nbsp;<i class="icon-edit"></i></i> </td>
+                                                <td><i class="icon-remove" name="removbtn">&nbsp;&nbsp;&nbsp;<i class="icon-edit" id="editbtn"></i></i> </td>
 											</tr>
 
                                             {% endfor %}
@@ -65,7 +64,9 @@
 										</tbody>
 
 									</table>
-
+                                    <script type="text/javascript" src="../static/js/jquery.tagsinput.min.js"></script>
+                                    <script type="text/javascript" src="../static/js/jquery-1.10.1.min.js"></script>
+                                    <script type="text/javascript" src="../static/js/option.js"></script>
 								</div>
 
 							</div>
@@ -80,4 +81,5 @@
 						</div>
 
 					</div>
+
 {% endblock %}

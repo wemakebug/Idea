@@ -1,4 +1,5 @@
 .first {
+	font-family: kaiti;
 	margin-top: 76px;
 	overflow:hidden;
 	width:100%;
@@ -6,11 +7,19 @@
     background-color: rgba(127,255,212,0.2);
 	background:linear-gradient(to bottom, rgba(99,184,255,0.2)0%,rgba(127,255,212,0.2)100%);
 }
+.second{
+	margin:0 12%;
+	overflow:hidden;
+	width:100%;
+	height:100%;
+	position:absolute;
+
+}
 .filter {
 	width:100%;
 	height:100%;
 	position:absolute;
-	top:0;
+	top: 76px;;
 	left:0;
 	background-color: rgba(99,184,255,0.2);
 	animation:colorChange 30s ease-in-out infinite;
@@ -30,4 +39,83 @@
 	left:0;
 	width:100%;
 	height:100%;
+}
+
+ .line_0{
+	 position:absolute;
+	 height:1px;
+	 width: 35%;
+	 margin: 3% 0  ;
+   	 background-color:rgba(0 ,0 ,0, 0.5);
+	 overflow:hidden;
+}
+ .line_1{
+	 position:absolute;
+   	 height:1px;
+	 width: 35%;
+	 margin: 3% 42% ;
+	 float: left;
+   	 background-color:rgba(0 ,0 ,0, 0.5);
+	 overflow:hidden;
+}
+ .border_0{
+	 position:absolute;
+	 height: 225px;
+	 width: 35%;
+	 margin: 4% 0;
+	 background-color:rgba(253, 245, 230, 0.6);
+ }
+  .border_1{
+	 float: left;
+	 position:absolute;
+	 height: 220px;
+	 width: 35%;
+	 margin: 4% 42%;
+	 background-color:rgba(253, 245, 230, 0.6);
+ }
+.photo{
+	position:absolute;
+	height: 200px;
+	width: 45%;
+	margin: 2% 5%;
+	background-color:rgba(255, 255, 255, 0.6);
+	box-shadow: 5px 5px 5px 3px rgba(69 ,139 ,116, 0.2);
+	z-index: 99;
+
+}
+.intro{
+	font-weight: bold;
+	font-size: 17px;
+	position:absolute;
+	height: 200px;
+	width: 45%;
+	margin: 2% 52%;
+	z-index: 99;
+}
+.content_1{
+	font-size: 15px;
+	position:absolute;
+	height: 150px;
+	width: 95%;
+	margin: 2% 1%;
+	z-index: 99;
+}
+.more{
+	position:absolute;
+	font-size: 12px;
+	margin: 200px 82%;
+	width:17%;
+	height: 22px;
+	cursor:pointer;
+	z-index: 99;
+}
+.referral{
+	position:absolute;
+	 height: 148px;
+	 width: 35%;
+	 margin: 19% 0;
+	 background-color:rgba(253, 245, 230, 0.6);
+}
+.referral_0{
+	margin-left: 5%;
 }

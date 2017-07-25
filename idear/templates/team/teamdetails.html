@@ -7,26 +7,62 @@
 {%endblock%}
 {%block content%}
 <div class="teamdetail">
-    <div class="teamdetaillandscape"></div>
-    <div class="teamdetailfilter"></div>
     <div class="teamdetailsynopsis">
         <div class="teamdetailsynopsis1-1"><strong>团队简介：</strong></div>
-        <div class="teamdetailsynopsis1-2">所属学院：</div>
-        <div class="teamdetailsynopsis1-3">团队名称：</div>
-        <div class="teamdetailsynopsis1-4">联系方式：</div>
-        <div class="teamdetailsynopsis1-5">团队标签：</div>
-        <div class="teamdetailsynopsis1-6">团队分数：</div>
+        <div class="teamdetailsynopsis1-2">
+            所属学院：
+            <input type="text" class="detailsinput1-1">
+        </div>
+        <div class="teamdetailsynopsis1-3">
+            团队名称：
+            <input type="text" class="detailsinput1-1">
+        </div>
+        <div class="teamdetailsynopsis1-4">
+            注册时间：
+            <input type="text" class="detailsinput1-1">
+        </div>
+        <div class="teamdetailsynopsis1-5">
+            团队标签：
+            <input type="text" class="detailsinput1-1">
+        </div>
+        <div class="teamdetailsynopsis1-6">
+            邮箱：
+            <input type="text" class="detailsinput1-1">
+        </div>
+         <div class="teamdetailsynopsis1-7">
+            团队分数：
+            <input type="text" class="detailsinput1-1">
+        </div>
     </div>
     <div class="details">
         <div class="details1-1"><strong>团队详情：</strong></div>
         <div class="details1-2">
             <textarea name="details" class="details1-3"></textarea>
-            <input type="button" value="申请帮助" class="details1-4" id="petitionhelp">
+        </div>
+        <input type="button" value="申请帮助" class="details1-4" id="petitionhelp">
+    </div>
+    <div class="comment">
+        <div class="comment1-1"><strong>评论专区：</strong></div>
+        <div class="comment1-2"></div>
+        <div class="comment11-1">
+            <div class="comment11-2">
+                <div class="comment11-3">
+                    <div class="comment11-img"></div>
+                </div>
+                <div class="comment11-4"></div>
+            </div>
+        </div>
+        <div class="comment1-3">
+            <input type="text" name="comment" class="comment1-4" placeholder="评论...">
+            <input type="button" value="评论" class="comment1-5">
         </div>
     </div>
+    <div class="teamdetaillandscape"></div>
+    <div class="teamdetailfilter"></div>
     <canvas id="canvas"></canvas>
 </div>
 {% endblock %}
 {%block script%}
     <script type="text/javascript" src="../../static/team/js/teambg.js"></script>
+    <script type="text/javascript" src="../../static/team/js/teamdetails.js"></script>
 {% endblock %}

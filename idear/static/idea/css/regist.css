@@ -6,7 +6,7 @@
 body,html{
 	width:100%;
 	height:100%;
-	overflow-y:hidden;
+	/*overflow-y:hidden;*/
     font-family: kaiti;
 }
 .wrap {
@@ -322,18 +322,19 @@ body,html{
 }
 .pop-up{
     display: none;
-    min-width:60%;
-	min-height:500px;
-    margin-top: 4%;
-    border-radius: 50px;
+    width:60%;
+    border-radius: 100px;
+    margin-top: 2%;
     background: linear-gradient(to bottom right,rgba(135 ,206, 235,0.3),rgba(176, 224 ,230,0.6));
     background: -webkit-linear-gradient(to bottom right,rgba(135 ,206, 235,0.3),rgba(176, 224 ,230,0.6));
     padding: 40px;
+    margin-left: 18%;
+    margin-right: 22%;
 }
 .pop-up1{
     text-align: center;
     width: 100%;
     height: 50px;
     line-height: 50px;
-    margin-top: 430px;
+    margin-top: 500px;
 }

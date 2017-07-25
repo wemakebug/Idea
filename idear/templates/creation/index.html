@@ -7,6 +7,7 @@
 
 </head>
 <body bgcolor="#f1f1f1" >-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 {% extends 'idea/Base.html'%}
 {%block title%}<title>创意灵感</title>{%endblock%}
 {%block CSS%}
@@ -21,9 +22,9 @@
 <div class="block">
     <div class="block-head">
        <a class="ava" href="#">
-        <img src="photos/{{creation.Img}}" style="width:40px;height:40px">
+        <img src="photos/{{creation.Img}}" style="width:35px;height:35px">
        </a>
-       <a class="name" href="#">
+       <a class="name" style="margin-top:2%" href="#">
            <span>{{creation.user}}</span>
        </a>
        <a class="follow" creation={{creation.Id}}>
@@ -58,6 +59,7 @@
        {% endfor %}
 
    </div>
+    <div class="home-right">
     <div class="intro">
         <img src="../static/creation/imgs/idea.png" style="width:40px;height:40px;margin:20px 0px 0px 0px">
         <span>创享</span>
@@ -68,11 +70,12 @@
         <img src="../static/creation/imgs/tag.png" style="width:20px;height:20px;margin:10px 0px 0px 10px">
         <span>标签分类</span>
 
-        <a href="creations?sign=all" sign="all" class="allsign">所有</a>
+        <a href="creations?sign=all" sign="all" class="allsign"><p>所有</p></a>
 
         {%for obj in projectLabels%}
         <a href="creations?sign={{obj.Id}}" sign="{{obj.Id}}" class="allsign"><p>{{obj.ProjectLabelName}}</p></a>
         {%endfor%}
+    </div>
     </div>
     <a class="more">加载更多</a>
 
