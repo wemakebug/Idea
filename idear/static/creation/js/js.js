@@ -1,20 +1,20 @@
- $(function () {
-            $(".block").slice(0, 12).show();
-           if($(".block").length <= 12) {
-           $(".more").hide();
-           }
-            $(".more").on('click', function (e) {
+ // $(function () {
+ //            $(".block").slice(0, 12).show();
+ //           if($(".block").length <= 12) {
+ //           $(".more").hide();
+ //           }
+ //            $(".more").on('click', function (e) {
               
-              if ($(".block:hidden").length == 0) {
-               $(".more").css('display', 'none');
-              }
-                e.preventDefault();
-                $(".block:hidden").slice(0, 4).slideDown();
-                if ($(".block:hidden").length == 0) {
-                    $(".more").fadeOut('slow');
-                }
-            });
-        });
+ //              if ($(".block:hidden").length == 0) {
+ //               $(".more").css('display', 'none');
+ //              }
+ //                e.preventDefault();
+ //                $(".block:hidden").slice(0, 4).slideDown();
+ //                if ($(".block:hidden").length == 0) {
+ //                    $(".more").fadeOut('slow');
+ //                }
+ //            });
+ //        });
 
 
 $(function () {

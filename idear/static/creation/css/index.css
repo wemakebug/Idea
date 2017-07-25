@@ -97,7 +97,7 @@ margin:0px;
         width: 96%;
         text-align: center;
        }
-      .follow{
+      .usedfollow{
         float:right;
         width:50px;
         height:25px;
@@ -138,7 +138,7 @@ margin:0px;
       height:14%;
       border-top:1px solid #eae7ed;
     }
-      .collection{
+      .follow{
         float:right;
         margin-right: 5px;
         margin-top: 15px;
