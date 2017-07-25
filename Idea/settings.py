@@ -87,11 +87,11 @@ DATABASES = {
         # 'HOST': '127.0.0.1',
         # 'PORT': '3306',
 
-        # 'USER': 'mysqlroot',
-        # 'NAME': 'Idea',
-        # 'PASSWORD': 'chuangxin2624',
-        # 'HOST': '172.22.80.30',
-        # 'PORT': '5002'
+        'USER': 'mysqlroot',
+        'NAME': 'Idea',
+        'PASSWORD': 'chuangxin2624',
+        'HOST': '172.22.80.30',
+        'PORT': '5002'
     }
 }
 
