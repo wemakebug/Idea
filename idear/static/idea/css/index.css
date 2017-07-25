@@ -5,7 +5,7 @@
 		width:100%;
 	}
 	body{
-	    min-width:1400px;
+	    F-width:1400px;
         max-width:2000px;
         width:expression_r( Math.max(1400, Math.min(2000, document.body.offsetWidth*0.99))+"px" );
 	}
