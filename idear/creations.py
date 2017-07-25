@@ -59,20 +59,20 @@ def star(req):
     状态值：0为失败，1为成功
     '''
     status = 0
-    # try:
-    Id = req.POST["Id"]
-    userId = req.POST["userId"]
-    starType = int(req.POST["starType"])
-    if starType == 1:
-        p = Praise.objects.get_or_create(creation_id = Id, user_id = userId)
-        status = 1
+    try:
+        Id = req.POST["Id"]
+        userId = req.POST["userId"]
+        starType = int(req.POST["starType"])
+        if starType == 1:
+            p = Praise.objects.get_or_create(creation_id = Id, user_id = userId)
+            status = 1
+            return HttpResponse(status)
+        else:
+            p = Praise.objects.get_or_create(project_id = Id, user_id = userId)
+            status = 1
+            return HttpResponse(status)
+    except:
         return HttpResponse(status)
-    else:
-        p = Praise.objects.get_or_create(project_id = Id, user_id = userId)
-        status = 1
-        return HttpResponse(status)
-    # except:
-    #     return HttpResponse(status)
     
 
 
