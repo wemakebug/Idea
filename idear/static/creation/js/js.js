@@ -1,5 +1,8 @@
  $(function () {
             $(".block").slice(0, 12).show();
+           if($(".block").length <= 12) {
+           $(".more").hide();
+           }
             $(".more").on('click', function (e) {
               
               if ($(".block:hidden").length == 0) {
