@@ -1,20 +1,20 @@
- // $(function () {
- //            $(".block").slice(0, 12).show();
- //           if($(".block").length <= 12) {
- //           $(".more").hide();
- //           }
- //            $(".more").on('click', function (e) {
+ $(function () {
+            $(".block").slice(0, 12).show();
+           if($(".block").length <= 12) {
+           $(".more").hide();
+           }
+            $(".more").on('click', function (e) {
               
- //              if ($(".block:hidden").length == 0) {
- //               $(".more").css('display', 'none');
- //              }
- //                e.preventDefault();
- //                $(".block:hidden").slice(0, 4).slideDown();
- //                if ($(".block:hidden").length == 0) {
- //                    $(".more").fadeOut('slow');
- //                }
- //            });
- //        });
+              if ($(".block:hidden").length == 0) {
+               $(".more").css('display', 'none');
+              }
+                e.preventDefault();
+                $(".block:hidden").slice(0, 4).slideDown();
+                if ($(".block:hidden").length == 0) {
+                    $(".more").fadeOut('slow');
+                }
+            });
+        });
 
 
 $(function () {
@@ -33,6 +33,20 @@ $(".follow").click(function(){
 })
 
 })
+
+
+$(".like").click(function(){
+   Id = $(this).attr("creation")
+   $.post("star",{userId:userId,starType:"1",Id:Id},function(data){
+    if(data == 1)
+    	alert("点赞成功")
+    else
+    	alert("点赞失败")
+})
+
+})
+
+
 
 })
 

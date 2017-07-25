@@ -39,8 +39,8 @@
         <a class="follow" creation={{creation.Id}}>
               <img src="../static/creation/imgs/collection.png" style="width:18px;height:18px;">
 
-           {%for praise in praises%}
-              {% if praise.user_id == userId and praise.creation_id == creation.Id %}
+           {%for follow in follows%}
+              {% if follow.user_id == userId and follow.creation_id == creation.Id %}
               <img src="../static/creation/imgs/collections.png" style="width:18px;height:18px;margin-left: -23px " >
               {% endif %}
           {%endfor%}
@@ -51,8 +51,13 @@
             <img src="../static/creation/imgs/comments.png" style="width:18px;height:18px;">
             <span>{{creation.Comment_Creation_set.count}}</span>
         </a>
-        <a class="like" href="#">
+        <a class="like" creation={{creation.Id}}>
             <img src="../static/creation/imgs/like.png" style="width:18px;height:18px;">
+            {%for praise in praises%}
+              {% if praise.user_id == userId and praise.creation_id == creation.Id %}
+              <img src="../static/creation/imgs/likes.png" style="width:18px;height:18px;margin-left: -23px " >
+              {% endif %}
+            {%endfor%}
             <span>{{creation.Praise_Creation_set.count}}</span>
         </a>
     </div>

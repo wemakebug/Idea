@@ -80,11 +80,18 @@ WSGI_APPLICATION = 'Idea.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'mysqlroot',
+
+        'USER': 'root',
         'NAME': 'Idea',
-        'PASSWORD': 'chuangxin2624',
-        'HOST': '172.22.80.30',
-        'PORT': '5002'
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+
+        # 'USER': 'mysqlroot',
+        # 'NAME': 'Idea',
+        # 'PASSWORD': 'chuangxin2624',
+        # 'HOST': '172.22.80.30',
+        # 'PORT': '5002'
     }
 }
 
