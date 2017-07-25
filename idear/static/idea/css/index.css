@@ -5,7 +5,10 @@
 		width:100%;
 	}
 	body{
+	    F-width:1400px;
+
 	    min-width:1200px;
+
         max-width:2000px;
 
         overflow-x: hidden;
