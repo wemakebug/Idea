@@ -28,11 +28,23 @@
            <span>{{creation.user}}</span>
        </a>
        <a class="follow" creation={{creation.Id}}>
-           <span style="color:#539092">关注</span>
+
+ <span style="color:#539092" id="starId">
+           {%for praise in praises%}
+              {% if praise.user_id == userId and praise.creation_id == creation.Id %}
+                 取消
+              {% endif %}
+          {%endfor%}
+
+
+关注</span>
+  
+
+
        </a>
        <div class="level">
            <img src="../static/creation/imgs/level.png" style="width:15px;height:15px">
-           <span>{{User.Score}}</span>
+           <span>{{creation.user.Score}}</span>
        </div>
     </div>
     <div class="abstract">
@@ -44,15 +56,15 @@
     <div class="evaluate">
         <a class="collection" href="#">
             <img src="../static/creation/imgs/collection.png" style="width:18px;height:18px">
-            <span>0</span>
+            <span>{{creation.Follow_Creation_set.count}}</span>
         </a>
         <a class="comments" href="#">
             <img src="../static/creation/imgs/comments.png" style="width:18px;height:18px">
-            <span>0</span>
+            <span>{{creation.Comment_Creation_set.count}}</span>
         </a>
         <a class="like" href="#">
             <img src="../static/creation/imgs/like.png" style="width:18px;height:18px">
-            <span>0</span>
+            <span>{{creation.Praise_Creation_set.count}}</span>
         </a>
     </div>
 </div>

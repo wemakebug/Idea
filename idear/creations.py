@@ -21,28 +21,32 @@ def creations(req):
     '''
     projectLabels = ProjectLabel.objects.all()
     creations = Creation.objects.all()
-    try:
-        if req.method == 'GET':
-            sign = req.GET['sign']
-            #如果是所有项目
-            if sign == "all":
-                creations = creations
-        #如果有特殊标签
-            else:
-                CreationLabelObjs = Creation2ProjectLabel.objects.filter( projectLabel = sign)
-                creations = Creation.objects.filter(Img = "null")
-                for obj in CreationLabelObjs:
-                    creations = chain(creations,Creation.objects.filter(Id = int(obj.creation.Id)))
-            return render_to_response('creation/index.html',{'creations':creations,'projectLabels':projectLabels})
+    praises = Praise.objects.all()
+    follows = Follow.objects.all()
+    userId = int(req.COOKIES.get('user'))
 
+    # try:
+    if req.method == 'GET':
+        sign = req.GET['sign']
+        #如果是所有项目
+        if sign == "all":
+            creations = creations
+    #如果有特殊标签
         else:
-            id = req.POST['creationId']
-            creation = get_object_or_404(Creation,pk = id)
-            comments = Comment.objects.fitler(creation = id).order_by('Date')
-            user = creation.user
-            return render_to_response('creations/sec_creations.html',{'creation':creation,'comments':comments,'user':user})
-    except:
-         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+            CreationLabelObjs = Creation2ProjectLabel.objects.filter( projectLabel = sign)
+            creations = Creation.objects.filter(Img = "null")
+            for obj in CreationLabelObjs:
+                creations = chain(creations,Creation.objects.filter(Id = int(obj.creation.Id)))
+        return render_to_response('creation/index.html',{'creations':creations,'projectLabels':projectLabels,'userId':userId,'follows':follows,'praises':praises})
+
+    else:
+        id = req.POST['creationId']
+        creation = get_object_or_404(Creation,pk = id)
+        comments = Comment.objects.fitler(creation = id).order_by('Date')
+        user = creation.user
+        return render_to_response('creations/sec_creations.html',{'creation':creation,'comments':comments,'user':user})
+    # except:
+    #      return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 
 @csrf_exempt
@@ -86,24 +90,24 @@ def attend(req):
     状态值：0为失败，1为成功
     '''
     status = 0
-    # try:
-    Id = req.POST['Id']
-    userId = req.POST['userId']
-    attendType = int(req.POST['attendType'])
-    if attendType == 1:
-        p = Follow.objects.create(creation_id = Id, user_id = userId)
-        status = 1
+    try:
+        Id = req.POST['Id']
+        userId = req.POST['userId']
+        attendType = int(req.POST['attendType'])
+        if attendType == 1:
+            p = Follow.objects.get_or_create(creation_id = Id, user_id = userId)
+            status = 1
+            return HttpResponse(status)
+        elif attendType == 2:
+            p = Follow.objects.get_or_create(project_id = Id, user_id = userId)
+            status = 1
+            return HttpResponse(status)
+        elif attendType == 3:
+            F = Follow.objects.get_or_create(Follower_id = Id, user_id = userId)
+            status = 1
+            return HttpResponse(status)
+    except:
         return HttpResponse(status)
-    elif attendType == 2:
-        p = Follow.objects.create(project_id = Id, user_id = userId)
-        status = 1
-        return HttpResponse(status)
-    elif attendType == 3:
-        F = Follow.objects.create(Follower_id = Id, user_id = userId)
-        status = 1
-        return HttpResponse(status)
-    # except:
-    #     return HttpResponse(status)
 
 
 
