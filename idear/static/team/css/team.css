@@ -1,119 +1,98 @@
 .first {
 	font-family: kaiti;
 	margin-top: 76px;
-	overflow:hidden;
 	width:100%;
-	height:100%;
+	height: auto;
     background-color: rgba(127,255,212,0.2);
 	background:linear-gradient(to bottom, rgba(99,184,255,0.2)0%,rgba(127,255,212,0.2)100%);
 }
+.clear{ clear:both;
+}
 .second{
-	margin:0 12%;
-	overflow:hidden;
-	width:100%;
-	height:100%;
-	position:absolute;
-
+	margin: 50px 40px;
+	float: left;
+	width: 40%;
+	height: 300px;
 }
-.filter {
-	width:100%;
-	height:100%;
-	position:absolute;
-	top: 76px;;
-	left:0;
-	background-color: rgba(99,184,255,0.2);
-	animation:colorChange 30s ease-in-out infinite;
-	animation-fill-mode:both;
-	mix-blend-mode:overlay;
-}
-@keyframes colorChange {
-	0%,100% {
-	opacity:0;
-}
-50% {
-	opacity:.9;
-}
-}.landscape {
-	position:absolute;
-	bottom:0px;
-	left:0;
-	width:100%;
-	height:100%;
-}
+/*.filter {*/
+	/*width:100%;*/
+	/*height:auto;*/
+	/*position:absolute;*/
+	/*top: 76px;;*/
+	/*left:0;*/
+	/*background-color: rgba(99,184,255,0.2);*/
+	/*animation:colorChange 30s ease-in-out infinite;*/
+	/*animation-fill-mode:both;*/
+	/*mix-blend-mode:overlay;*/
+/*}*/
+/*@keyframes colorChange {*/
+	/*0%,100% {*/
+	/*opacity:0;*/
+/*}*/
+/*50% {*/
+	/*opacity:.9;*/
+/*}*/
+/*}.landscape {*/
+	/*position:absolute;*/
+	/*bottom:0px;*/
+	/*left:0;*/
+	/*width:100%;*/
+	/*height: auto;*/
+/*}*/
 
  .line_0{
-	 position:absolute;
-	 height:1px;
-	 width: 35%;
-	 margin: 3% 0  ;
-   	 background-color:rgba(0 ,0 ,0, 0.5);
-	 overflow:hidden;
-}
- .line_1{
-	 position:absolute;
-   	 height:1px;
-	 width: 35%;
-	 margin: 3% 42% ;
 	 float: left;
+	 height:1px;
+	 width: 100%;
+	 margin: -6px 0.5px ;
    	 background-color:rgba(0 ,0 ,0, 0.5);
-	 overflow:hidden;
 }
  .border_0{
-	 position:absolute;
-	 height: 225px;
-	 width: 35%;
-	 margin: 4% 0;
-	 background-color:rgba(253, 245, 230, 0.6);
- }
-  .border_1{
 	 float: left;
-	 position:absolute;
-	 height: 220px;
-	 width: 35%;
-	 margin: 4% 42%;
+	 height: 225px;
+	 width: 100%;
+	 margin: 10px 10%;
 	 background-color:rgba(253, 245, 230, 0.6);
  }
-.photo{
-	position:absolute;
+
+.photo_0{
 	height: 200px;
 	width: 45%;
-	margin: 2% 5%;
+	margin: 10px 5%;
 	background-color:rgba(255, 255, 255, 0.6);
 	box-shadow: 5px 5px 5px 3px rgba(69 ,139 ,116, 0.2);
 	z-index: 99;
 
 }
-.intro{
+.intro_0{
+	float: left;
 	font-weight: bold;
 	font-size: 17px;
-	position:absolute;
 	height: 200px;
 	width: 45%;
-	margin: 2% 52%;
+	margin: -210px 52%;
 	z-index: 99;
 }
 .content_1{
 	font-size: 15px;
-	position:absolute;
 	height: 150px;
 	width: 95%;
 	margin: 2% 1%;
 	z-index: 99;
 }
-.more{
-	position:absolute;
+.more_0{
+	position: relative;
 	font-size: 12px;
-	margin: 200px 82%;
-	width:17%;
-	height: 22px;
+	margin:-2% 83%;
+	width:18%;
+	height: 25px;
 	cursor:pointer;
 	z-index: 99;
 }
 .referral{
-	position:absolute;
-	 height: 148px;
-	 width: 35%;
-	 margin: 19% 0;
+	 height: 128px;
+	 width: 100%;
+	 margin:253px 10%;
 	 background-color:rgba(253, 245, 230, 0.6);
 }
 .referral_0{
