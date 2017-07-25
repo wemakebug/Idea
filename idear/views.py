@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 '''
-登陆验证函数，如需登陆，调此函数即可
+登陆验证函数，如需登陆，调此函数即可，仍需调试
 @:return 状态值，可通过为true
 @:COOKIE name = User_acconunt
 @:COOKIE name = UUID
@@ -22,7 +22,7 @@ def Check_User_Cookie(req):
         user_cookie = req.COOKIES["email"]
         user_uuid_code = req.COOKIES["uuid"]
         try:
-            user = models.User.objects.get(Account=user_cookie)
+            user = models.User.objects.get(Email=user_cookie)
             if user_uuid_code == user_uuid_code:
                 loginStatus = True
                 return loginStatus
@@ -123,13 +123,19 @@ def regist(req):
 def team(req):
     if req.method == 'GET':
         teams = models.User.objects.all().filter(Identity=2)
+
         return render_to_response('team/team.html', {'teams': teams})
     if req.method == 'POST':
         pass
 
-def teamdetails(req):
+def teamdetails(req,teamId):
     if req.method == 'GET':
-        return render(req, 'team/teamdetails.html')
+        print teamId
+        try:
+            Team = models.User.objects.get(Id=teamId)
+            return render_to_response('team/teamdetails.html', {'team': Team})
+        except:
+            return Http404
     if req.method == 'POST':
         pass
 
@@ -171,10 +177,18 @@ def apply(req):
         pass
 
 
-
-def test(req):
+''''
+测试页面
+'''
+@csrf_exempt
+def test(req,param):
     if req.method == "GET":
+        print param
         teams = models.User.objects.all().filter(Identity=2)
         return render_to_response('team/test.html', {'teams': teams})
+    if req.method == "POST":
+        data = req.POST["data"]
+        print data
+        return HttpResponse(data)
 
 

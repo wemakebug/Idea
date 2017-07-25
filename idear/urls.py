@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'star$', creations.star),
     url(r'attend$', creations.attend),
 
-    url(r'test$', views.test)
+    url(r'test/?(\d+)$', views.test)
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

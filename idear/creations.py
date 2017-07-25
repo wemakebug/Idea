@@ -91,15 +91,15 @@ def attend(req):
     userId = req.POST['userId']
     attendType = int(req.POST['attendType'])
     if attendType == 1:
-        p = Follow.objects.create(creation_id = Id, user_id = userId)
+        p = Follow.objects.get_or_create(creation_id = Id, user_id = userId)
         status = 1
         return HttpResponse(status)
     elif attendType == 2:
-        p = Follow.objects.create(project_id = Id, user_id = userId)
+        p = Follow.objects.get_or_create(project_id = Id, user_id = userId)
         status = 1
         return HttpResponse(status)
     elif attendType == 3:
-        F = Follow.objects.create(Follower_id = Id, user_id = userId)
+        F = Follow.objects.get_or_create(Follower_id = Id, user_id = userId)
         status = 1
         return HttpResponse(status)
     # except:
