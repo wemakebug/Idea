@@ -120,7 +120,8 @@ def regist(req):
 def team(req):
     if req.method == 'GET':
         teams = models.User.objects.all().filter(Identity=2)
-        return render_to_response('team/test.html', {'teams': teams})
+
+        return render_to_response('team/team.html', {'teams': teams})
     if req.method == 'POST':
         pass
 
@@ -181,7 +182,6 @@ def test(req,param):
     if req.method == "GET":
         print param
         teams = models.User.objects.all().filter(Identity=2)
-        print teams
         return render_to_response('team/test.html', {'teams': teams})
     if req.method == "POST":
         data = req.POST["data"]

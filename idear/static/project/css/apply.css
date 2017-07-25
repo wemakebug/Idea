@@ -36,6 +36,10 @@ body,html{
     top:150px;
     position:absolute;
 }
+.User_Info{
+    height: 400px;
+    width: 100%;
+}
 .bdiv_left{
     float: left;
     width: 35%;
