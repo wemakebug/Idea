@@ -206,6 +206,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, related_name='Comment_User_set', null=False)
     creation = models.ForeignKey(Creation, related_name='Comment_Creation_set', null=True, blank=True)
     project = models.ForeignKey(Project, related_name='Comment_Project_set', null=True, blank=True)
+    commited_user = models.ForeignKey(User, related_name='commited_user_set',null=True,blank=True)
     Date = models.DateField(auto_now_add=True)
     Content = models.TextField(max_length=200)
     IsUse = models.BooleanField(default=True)
