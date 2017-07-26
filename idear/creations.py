@@ -23,7 +23,8 @@ def creations(req):
     creations = Creation.objects.all()
     praises = Praise.objects.all()
     follows = Follow.objects.all()
-    userId = int(req.COOKIES.get('user'))
+    # userId = int(req.COOKIES.get('user'))
+    userId = 3
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
@@ -56,7 +57,7 @@ def star(req):
     2为项目
 
     status
-    状态值：0为失败，1为成功
+    状态值：0为失败，1为关注成功, 2为取消关注成功
     '''
     status = 0
     try:
@@ -64,12 +65,20 @@ def star(req):
         userId = req.POST["userId"]
         starType = int(req.POST["starType"])
         if starType == 1:
-            p = Praise.objects.get_or_create(creation_id = Id, user_id = userId)
-            status = 1
+            try:
+                p = Praise.objects.get(creation_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Praise.objects.create(creation_id = Id, user_id = userId)
+                status = 1
             return HttpResponse(status)
         else:
-            p = Praise.objects.get_or_create(project_id = Id, user_id = userId)
-            status = 1
+            try:
+                p = Praise.objects.get(project_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Praise.objects.create(project_id = Id, user_id = userId)
+                status = 1
             return HttpResponse(status)
     except:
         return HttpResponse(status)
@@ -84,9 +93,8 @@ def attend(req):
     2为被关注项目
     3为被关注用户
 
- 
     status
-    状态值：0为失败，1为成功
+    状态值：0为操作失败，1为关注成功，2 为取消关注成功
     '''
     status = 0
     try:
@@ -94,8 +102,12 @@ def attend(req):
         userId = req.POST['userId']
         attendType = int(req.POST['attendType'])
         if attendType == 1:
-            p = Follow.objects.get_or_create(creation_id = Id, user_id = userId)
-            status = 1
+            try:
+                p = Follow.objects.get(creation_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Follow.objects.create(creation_id = Id, user_id = userId)
+                status = 1
             return HttpResponse(status)
         elif attendType == 2:
             p = Follow.objects.get_or_create(project_id = Id, user_id = userId)

@@ -28,8 +28,12 @@ $(".follow").click(function(){
    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
     if(data == 1)
     	alert("关注成功")
-    else
+    else if(data == 0)
     	alert("操作失败")
+    else
+      alert("取消关注")
+    location.reload()
+
 })
 
 })
@@ -40,8 +44,11 @@ $(".like").click(function(){
    $.post("star",{userId:userId,starType:"1",Id:Id},function(data){
     if(data == 1)
     	alert("点赞成功")
-    else
-    	alert("点赞失败")
+    else if(data == 0)
+    	alert("操作失败")
+    else 
+      alert("取消点赞")
+    location.reload()
 })
 
 })
