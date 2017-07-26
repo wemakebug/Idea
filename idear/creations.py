@@ -110,12 +110,20 @@ def attend(req):
                 status = 1
             return HttpResponse(status)
         elif attendType == 2:
-            p = Follow.objects.get_or_create(project_id = Id, user_id = userId)
-            status = 1
+            try:
+                p = Follow.objects.get(project_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Follow.objects.create(project_id = Id, user_id = userId)
+                status = 1
             return HttpResponse(status)
         elif attendType == 3:
-            F = Follow.objects.get_or_create(Follower_id = Id, user_id = userId)
-            status = 1
+            try:
+                F = Follow.objects.get(Follower_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Follow.objects.create(Follower_id = Id, user_id = userId)
+                status = 1               
             return HttpResponse(status)
     except:
         return HttpResponse(status)

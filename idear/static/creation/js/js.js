@@ -27,7 +27,7 @@ $(".follow").click(function(){
    Id = $(this).attr("creation")
    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
     if(data == 1)
-    	alert("关注成功")
+    	alert("感谢关注")
     else if(data == 0)
     	alert("操作失败")
     else
@@ -43,7 +43,7 @@ $(".like").click(function(){
    Id = $(this).attr("creation")
    $.post("star",{userId:userId,starType:"1",Id:Id},function(data){
     if(data == 1)
-    	alert("点赞成功")
+    	alert("感谢您的点赞")
     else if(data == 0)
     	alert("操作失败")
     else 
