@@ -21,23 +21,21 @@
                     </div>
                 </div>
                 <div class="more_0">
-                    <a href="/">
+                    <a href="teamdetails">
                         <u>点击查看更多...
                         </u>
                     </a>
                 </div>
             </div>
             <div class="referral">
+                <br>
                 <p class="referral_0">团队名称： {{ team.UserName }}</p>
                 <p class="referral_0">团队标签：</p>
                 <p class="referral_0">所属学院：{{ tbeam.Identity }}</p>
             </div>
         </div>
         {% endfor %}
-        <br class="clear">
-        <br class="clear">
-        <br class="clear">
-        <br class="clear">
+       <div class="clear"></div>
     </div>
 {% endblock %}
 {%block script%}
