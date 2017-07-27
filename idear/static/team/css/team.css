@@ -1,12 +1,11 @@
 html{
-
+	height:auto;
 }
 .first {
 	font-family: kaiti;
 	margin: 76px 0 0;
 	width:100%;
-	height: auto;
-    background-color: rgba(127,255,212,0.2);
+	background-color: rgba(127,255,212,0.2);
 	background:linear-gradient(to bottom, rgba(99,184,255,0.2)0%,rgba(127,255,212,0.2)100%);
 }
 .clear{
@@ -100,7 +99,7 @@ html{
 .referral{
 	 height: 128px;
 	 width: 100%;
-	 margin:243px 10%;
+	margin: 250px 10% 0;
 	 background-color:rgba(255, 255, 255, 0.6);
 }
 .referral_0{
