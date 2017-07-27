@@ -72,9 +72,10 @@ def score_user(req):
         scoreUser = models.User.objects.all().order_by('Id')
         page = Paginator(scoreUser, 6)
         scoreUser = page.page(currentpage).object_list
-        return render_to_response('second/Score_user.html', {'ScoreUser': scoreUser})
+        return render_to_response('second/User_score.html', {'ScoreUser': scoreUser})
     if req.method == "POST":
         result = {}
+
         try:
             id = req.POST['id']
             confirmed = req.POST['confirm']

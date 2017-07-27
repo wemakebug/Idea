@@ -52,30 +52,27 @@ def login(req):
         result['message'] = ''
         result['username'] = None
         result['UUID'] = None
-        try:
-            email = req.POST['email']
-            password = req.POST['password']
-            try:
-                user = models.User.objects.get(Email=email)
-                user.Uuid = uuid.uuid1()
-                if user.PassWord == password:
-                    result['status'] = 1
-                    result['username'] = user.UserName
-                    result['UUID'] = user.Uuid
-                    result['message'] = '登陆成功'
-                    return HttpResponse(json.dumps(result))
-                elif user.PassWord != password:
-                    result['status'] = 0
-                    result['message'] = '用户名或密码错误'
-                    return HttpResponse(json.dumps(result))
-            except:
+        email = req.POST['email']
+        password = req.POST['password']
+        if email in models.User.objects.all().values('Email'):
+            user = models.User.objects.get(Email=email)
+            user.Uuid = uuid.uuid1()
+            if user.PassWord == password:
+                result['status'] = 1
+                result['username'] = user.UserName
+                result['UUID'] = user.Uuid
+                result['message'] = '登陆成功'
+                return HttpResponse(json.dumps(result))
+            elif user.PassWord != password:
                 result['status'] = 0
                 result['message'] = '用户名或密码错误'
                 return HttpResponse(json.dumps(result))
-        except:
+        else:
             result['status'] = 0
-            result['message'] = '服务器数据获取异常'
+            result['message'] = '用户名或密码错误'
             return HttpResponse(json.dumps(result))
+
+
 
 '''
 注册页面

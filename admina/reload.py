@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 
 @csrf_exempt
 def index(req):
-    return render_to_response('first/index.html')
+    return render_to_response('second/User_detail.html')
 
 @csrf_exempt
 def label_user(req):
@@ -29,3 +29,28 @@ def label_project(req):
         return render_to_response('second/Label_Project.html', {'ProjectLabel ': projectLabel})
     if req.method == "POST":
         pass
+
+
+def index(req):
+    if req.method == "GET":
+        return render(req, 'include/Base.html')
+    if req.method == "POST":
+        pass
+
+def user_detail(req):
+    if req.method == "GET":
+        return render(req, 'second/User_detail.html')
+
+def util1(req):
+    if req.method == "GET":
+        return render(req, 'util/form_layout.html')
+
+def util2(req):
+    if req.method == "GET":
+        return render(req, 'util/form_samples.html')
+
+def util3(req):
+    if req.method == "GET":
+        return render(req, 'util/ui_modals.html')
+
+
