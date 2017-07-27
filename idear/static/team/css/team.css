@@ -1,3 +1,6 @@
+div{
+	height: 100%;
+}
 .first {
 	font-family: kaiti;
 	margin-top: 76px;
@@ -9,9 +12,9 @@
 .clear{ clear:both;
 }
 .second{
-	margin: 50px 40px;
+	margin: 60px 55px;
 	float: left;
-	width: 40%;
+	width: 38%;
 	height: 300px;
 }
 /*.filter {*/
@@ -52,7 +55,7 @@
 	 height: 225px;
 	 width: 100%;
 	 margin: 10px 10%;
-	 background-color:rgba(253, 245, 230, 0.6);
+	 background-color:rgba(255, 255, 255, 0.6);
  }
 
 .photo_0{
@@ -73,7 +76,7 @@
 	margin: -210px 52%;
 	z-index: 99;
 }
-.content_1{
+.content_0{
 	font-size: 15px;
 	height: 150px;
 	width: 95%;
@@ -92,9 +95,10 @@
 .referral{
 	 height: 128px;
 	 width: 100%;
-	 margin:253px 10%;
-	 background-color:rgba(253, 245, 230, 0.6);
+	 margin:248px 10%;
+	 background-color:rgba(255, 255, 255, 0.6);
 }
 .referral_0{
+	font-weight: bold;
 	margin-left: 5%;
 }
