@@ -31,4 +31,7 @@ urlpatterns = [
     url(r'util2$', reload.util2),
     url(r'util3$', reload.util3),
 
+    # this url should always in the last
+    url(r'$', reload.index),
+
 ]
