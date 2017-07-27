@@ -125,12 +125,10 @@ def team(req):
     if req.method == 'POST':
         pass
 
-def teamdetails(req,teamId):
+def teamdetails(req):
     if req.method == 'GET':
-        print teamId
         try:
-            Team = models.User.objects.get(Id=teamId)
-            return render_to_response('team/teamdetails.html', {'team': Team})
+            return render_to_response('team/teamdetails.html')
         except:
             return Http404
     if req.method == 'POST':
