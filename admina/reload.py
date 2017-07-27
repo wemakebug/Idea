@@ -53,4 +53,8 @@ def util3(req):
     if req.method == "GET":
         return render(req, 'util/ui_modals.html')
 
+def util4(req):
+    if req.method == "GET":
+        return render(req, 'util/table_editable.html')
+
 

@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'util1$', reload.util1),
     url(r'util2$', reload.util2),
     url(r'util3$', reload.util3),
+    url(r'util4$', reload.util4),
 
     # this url should always in the last
     url(r'$', reload.index),
