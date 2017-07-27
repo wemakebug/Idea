@@ -21,19 +21,23 @@ def creations(req):
     '''
     projectLabels = ProjectLabel.objects.all()
     creations = Creation.objects.all()
+    praises = Praise.objects.all()
+    follows = Follow.objects.all()
+    # userId = int(req.COOKIES.get('user'))
+    userId = 3
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
             #如果是所有项目
             if sign == "all":
                 creations = creations
-        #如果有特殊标签
+            #如果有特殊标签
             else:
                 CreationLabelObjs = Creation2ProjectLabel.objects.filter( projectLabel = sign)
                 creations = Creation.objects.filter(Img = "null")
                 for obj in CreationLabelObjs:
                     creations = chain(creations,Creation.objects.filter(Id = int(obj.creation.Id)))
-            return render_to_response('creation/index.html',{'creations':creations,'projectLabels':projectLabels})
+            return render_to_response('creation/index.html',{'creations':creations,'projectLabels':projectLabels,'userId':userId,'follows':follows,'praises':praises})
 
         else:
             id = req.POST['creationId']
@@ -53,7 +57,7 @@ def star(req):
     2为项目
 
     status
-    状态值：0为失败，1为成功
+    状态值：0为失败，1为关注成功, 2为取消关注成功
     '''
     status = 0
     try:
@@ -61,12 +65,20 @@ def star(req):
         userId = req.POST["userId"]
         starType = int(req.POST["starType"])
         if starType == 1:
-            p = Praise.objects.get_or_create(creation_id = Id, user_id = userId)
-            status = 1
+            try:
+                p = Praise.objects.get(creation_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Praise.objects.create(creation_id = Id, user_id = userId)
+                status = 1
             return HttpResponse(status)
         else:
-            p = Praise.objects.get_or_create(project_id = Id, user_id = userId)
-            status = 1
+            try:
+                p = Praise.objects.get(project_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Praise.objects.create(project_id = Id, user_id = userId)
+                status = 1
             return HttpResponse(status)
     except:
         return HttpResponse(status)
@@ -81,29 +93,40 @@ def attend(req):
     2为被关注项目
     3为被关注用户
 
- 
     status
-    状态值：0为失败，1为成功
+    状态值：0为操作失败，1为关注成功，2 为取消关注成功
     '''
     status = 0
-    # try:
-    Id = req.POST['Id']
-    userId = req.POST['userId']
-    attendType = int(req.POST['attendType'])
-    if attendType == 1:
-        p = Follow.objects.get_or_create(creation_id = Id, user_id = userId)
-        status = 1
+    try:
+        Id = req.POST['Id']
+        userId = req.POST['userId']
+        attendType = int(req.POST['attendType'])
+        if attendType == 1:
+            try:
+                p = Follow.objects.get(creation_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Follow.objects.create(creation_id = Id, user_id = userId)
+                status = 1
+            return HttpResponse(status)
+        elif attendType == 2:
+            try:
+                p = Follow.objects.get(project_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Follow.objects.create(project_id = Id, user_id = userId)
+                status = 1
+            return HttpResponse(status)
+        elif attendType == 3:
+            try:
+                F = Follow.objects.get(Follower_id = Id, user_id = userId).delete()
+                status = 2
+            except:
+                p = Follow.objects.create(Follower_id = Id, user_id = userId)
+                status = 1               
+            return HttpResponse(status)
+    except:
         return HttpResponse(status)
-    elif attendType == 2:
-        p = Follow.objects.get_or_create(project_id = Id, user_id = userId)
-        status = 1
-        return HttpResponse(status)
-    elif attendType == 3:
-        F = Follow.objects.get_or_create(Follower_id = Id, user_id = userId)
-        status = 1
-        return HttpResponse(status)
-    # except:
-    #     return HttpResponse(status)
 
 
 

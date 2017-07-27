@@ -86,6 +86,8 @@
                     result = JSON.parse(result);
                if(result["status"] === 1){
                    $.cookie('username',result['username']);
+
+
                    $.cookie('UUID',result["UUID"]);
                    alert(result["message"]);
                    window.location.href = 'index'
@@ -134,5 +136,3 @@
 
 
 
-
->
