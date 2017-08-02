@@ -55,21 +55,18 @@ var Login = function () {
 					};
                     $.post("login",data
                     ,function (result) {
-						if (result.status == 1){
+                    	result = json.parse(result);
+						if (result['status'] === 1){
 							$.cookie('username',result.username);
 							$.cookie('account',result.account);
 							alert("登陆成功");
 							window.location.href = 'index'
-						}else if(result.status == 2){
-							alert("无权登陆");
-							window.location.reload();
 						}
-						else if(result.status == 3){
-
+						else if(result['status']  === 3){
 							alert("用户名或密码错误");
 							window.location.reload();
 						}
-						else if(result.status == 4){
+						else if(result['status']  === 4){
 							alert("用户名或密码错误");
 							window.location.reload();
 						}else{
@@ -83,7 +80,7 @@ var Login = function () {
 	        $('.login-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "index.html"
+	                    window.location.href = "User_detail.html"
 	                }
 	                return false;
 	            }
@@ -126,14 +123,14 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "index.html";
+	                window.location.href = "User_detail.html";
 	            }
 	        });
 
 	        $('.forget-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.forget-form').validate().form()) {
-	                    window.location.href = "index.html";
+	                    window.location.href = "User_detail.html";
 	                }
 	                return false;
 	            }
@@ -202,7 +199,7 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "index.html";
+	                window.location.href = "User_detail.html";
 	            }
 	        });
 

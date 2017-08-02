@@ -6,6 +6,8 @@
 {%block CSS%}
     <link rel="stylesheet" href="../../static/project/css/recruit.css">
     <link rel="stylesheet" href="../../static/idea/css/index.css">
+    <link rel="stylesheet" href="../../static/project/css/buttons.css">
+    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 {%endblock%}
 {%block content%}
 <div class="bg_all">
@@ -18,7 +20,7 @@
                     <img src="../../static/project/imgs/HeadImg.png">
                 </div>
                 <div class="project_top_1_right">
-                    <h5>项目名称</h5>
+                    <h5>{{project.ProjectName}}</h5>
                     <p class="project_top_1_text">{{project.Description}}
                     </p>
                 </div>
@@ -37,8 +39,9 @@
                      <input type="text" name="Number" value="{{project.Number}}" readonly="readonly" class="VariableText"/>
                      <input type="text" name="State" value="正在进行" readonly="readonly" class="VariableText"/>
                      <input type="text" name="State" value="正在进行" readonly="readonly" class="VariableText"/>
-                     <input type="text" name="UserName" value="{{project.StartTime}}" readonly="readonly" class="VariableText"/>
+                     <input type="text" name="UserName" value="{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}" readonly="readonly" class="VariableText"/>
                  </div>
+{#                <button class="button button-3d button-action button-circle button-tiny"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>#}
 {#                <div class="feed" id="feed1">#}
 {#                         <div class="heart " id="like1" rel="like"></div>#}
 {#                       <div class="likeCount" id="likeCount1">14</div>#}
@@ -51,16 +54,16 @@
     <div class="bg_border"></div>
     <div class="bg_right">
         <div class="explain">
-
             <p class="explain_title">板块说明</p>
             <p class="explain_text">&nbsp;&nbsp;&nbsp;&nbsp;块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明</p>
             <p class="explain_new_project"><a target="_blank" href="redetails.html">发布新项目</a></p>
         </div>
-
         <div class="AllTag">
             <p>按标签显示</p>
-            <p>#IT</p>
-            <p>#设计</p>
+        <a href="recruit?sign=all" sign="all" class="project_sign" ><p>所有</p></a>
+        {%for obj in projectLabels%}
+        <a href="recruit?sign={{obj.Id}}" sign="{{obj.Id}}" class="project_sign"><p>{{obj.ProjectLabelName}}</p></a>
+        {%endfor%}
         </div>
     </div>
 </div>

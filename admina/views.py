@@ -3,11 +3,10 @@ from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
 from admina import models
-from models import User
 import json
-from django.core.paginator import Paginator
 from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
 import uuid
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
 # Create your views here.
 
@@ -15,19 +14,7 @@ import uuid
 @csrf_exempt
 def login(req):
     if req.method == "GET":
-        try:
-            account = req.COOKIES.get('account')
-            username = req.COOKIES.get('username')
-            try:
-                user = models.Admin.objects.get(Account=account)
-                if user.UserName == username:
-                    return render(req, 'first/index.html')
-                else:
-                    return render(req, 'first/login.html')
-            except:
-                return render(req, 'first/login.html')
-        except:
-            return render(req, 'first/login.html')
+        return render(req, 'first/login.html')
     if req.method == "POST":
         result = {
         }
@@ -35,7 +22,7 @@ def login(req):
             account = req.POST["account"]
             password = req.POST["password"]
             try:
-                user = models.User.objects.get(Account=account)
+                user = models.Admin.objects.get(Account=account)
                 if user.Identity == 3 and user.PassWord == password:
                     result['username'] = user.UserName
                     result['account'] = user.Account
@@ -85,10 +72,25 @@ def score_user(req):
         scoreUser = models.User.objects.all().order_by('Id')
         page = Paginator(scoreUser, 6)
         scoreUser = page.page(currentpage).object_list
-        print scoreUser[1].Id
-        return render_to_response('second/Score_user.html', {'ScoreUser': scoreUser})
+        return render_to_response('second/User_score.html', {'ScoreUser': scoreUser})
     if req.method == "POST":
-        pass
+        result = {}
+
+        try:
+            id = req.POST['id']
+            confirmed = req.POST['confirm']
+            if confirmed:
+                try:
+                    user = models.User.objects.get(Id=id)
+                    user.delete()
+                except:
+                    result['message'] = '用户不存在'
+                    result["status"] = 0
+                    return HttpResponse(json.dumps(result))
+        except:
+            result['message'] = '服务器异常'
+            result["status"] = 0
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
@@ -100,7 +102,23 @@ def score_record(req):
         scoreChanges = page.page(currentpage).object_list
         return render_to_response('second/Score_record.html', {'ScoreChanges': scoreChanges})
     if req.method == "POST":
-        pass
+        result = {}
+        try:
+            id = req.POST['id']
+            confirmed = req.POST['confirm']
+            if confirmed:
+                try:
+                    user = models.User.objects.get(Id=id)
+                    user.delete()
+                except:
+                    result['message'] = '用户不存在'
+                    result["status"] = 0
+                    return HttpResponse(json.dumps(result))
+        except:
+            result['message'] = '服务器异常'
+            result["status"] = 0
+            return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def UserManager(req):

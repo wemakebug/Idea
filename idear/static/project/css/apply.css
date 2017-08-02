@@ -18,7 +18,11 @@ body,html{
 }
 .bg{
 	margin: auto;
+<<<<<<< HEAD
 	height: 675px;
+=======
+	height: 600px;
+>>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
 	width: 75%;
 	margin-top:110px;
     border-radius:15px;
@@ -35,6 +39,10 @@ body,html{
     margin-left:65px;
     top:150px;
     position:absolute;
+}
+.User_Info{
+    height: 400px;
+    width: 100%;
 }
 .bdiv_left{
     float: left;

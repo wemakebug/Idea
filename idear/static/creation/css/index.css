@@ -1,6 +1,13 @@
+
+html,body{
+height:100%;
+margin:0px;
+}
+
 .container-a {
       width: 100%;
-      height:1000px;
+      height:auto;
+      overflow:hidden;
       margin: 0 auto;
       margin-top:76px;
       background-color:#f1f1f1;
@@ -8,16 +15,21 @@
 
     .home{
       width:62.5%;
-      height:760px;
       margin-left: 11%;
       margin-top: 0.5%;
       float:left;
     }
+    .home-right{
+    width:15%;
+    float:right;
+    margin-top:1.5%;
+    margin-right:11%
+    }
     .intro{
-      width:13%;
-      height:280px;
+      width:90%;
+      height:240px;
       float:right;
-      margin-right: 13%;
+      margin-right: 11%;
       margin-top: 2%;
       background-color:#8bcfcc;
       border-top-left-radius: 5px;
@@ -26,22 +38,30 @@
       border-bottom-right-radius: 5px;
       box-shadow: 2px 2px 2px 2px #bdc3c7;
       text-align: center;
+      opacity:0.8;
     }
     .tag{
-      width:6%;
+      width:50%;
       height:400px;
       float:right;
-      margin-right: 20%;
-      margin-top: 2%;
+      margin-right:60%;
+      margin-top:10%;
       text-align: center;
     }
-
+    .intro p{
+    width:86%;
+    float:left;
+    margin-left:8%;
+    text-align:left;
+    }
     .block{
+      display:none;
       width:22%;
-      height:45%;
+      height:300px;
       float:left;
       margin-top: 2%;
       margin-left:2%;
+      margin-bottom:0.5%;
       background-color:white;
       box-shadow: 2px 2px 2px 2px #bdc3c7;
 
@@ -53,35 +73,35 @@
       border-bottom:1px solid #eae7ed
     }
       .ava{
-       /* width: 40px;
-        height: 40px;*/
         float: left;
-        margin: 10px 10px 15px 10px;
+        padding: 10px;
       }
-
+      .ava span{
+      margin-top:2%;
+      }
       .name{
         float:left;
-        width:90px;
+        width:75px;
         height:20px;
       }
       a{
         text-decoration: none;
         color: #444;
-        margin-top:10px;
+
       }
        h5{
         float: left;
-
         font-size: 22px;
         font-family: 宋体;
-
-        margin:15px 6% 10px 6%;
+        margin: 15px 2% 10px 2%;
+        width: 96%;
+        text-align: center;
        }
-      .follow{
+      .usedfollow{
         float:right;
         width:50px;
         height:25px;
-        margin:13px 10px 10px 10px;
+        margin:5% 5% 0 0;
         border:1px solid #539092;
         text-align: center;
         border-top-left-radius: 3px;
@@ -91,7 +111,7 @@
       }
       .level{
         float:left;
-        width:100px;
+        width:75px;
         height:30px;
       }
 
@@ -118,7 +138,7 @@
       height:14%;
       border-top:1px solid #eae7ed;
     }
-      .collection{
+      .follow{
         float:right;
         margin-right: 5px;
         margin-top: 15px;
@@ -138,18 +158,18 @@
         height:30px;
         text-align: center;
         float:left;
-        margin-left:12%;
+        margin-top:1%;
+        margin-left:12.1%;
+        margin-bottom:2%;
         background-color:white;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
+        border-radius: 3px;
         box-shadow: 2px 2px 2px 2px #bdc3c7;
       }
 
       .add{
        float:left;
-       margin: 20px 0px 0px 30px;
+       margin-top:12%;
+       margin-left:10%;
        background-color: #11999e;
        color: #eeeeee;
        border:none;
