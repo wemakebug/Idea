@@ -11,10 +11,16 @@ from django.utils import timezone
 '''
 
 class Admin(models.Model):
+    '''
+    管理员表， 用作后台管理
+    '''
     Id = models.AutoField(primary_key=True)
     Account = models.CharField(null=False, blank=False, unique=True, max_length=25)
     Password = models.CharField(null=False, blank=False, max_length=25)
     DateTime = models.DateField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.Account
 
 class User(models.Model):
     '''

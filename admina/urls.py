@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from admina import views as views, reload as reload
 urlpatterns = [
+    url(r'logout$', views.logout),
     url(r'login$', views.login),
     url(r'score_rank$', views.score_rank),
     url(r'score_record$', views.score_record,),
@@ -24,4 +25,5 @@ urlpatterns = [
     url(r'UserManager$', views.UserManager),
     url(r'label_user$', reload.label_user),
     url(r'label_project$', reload.label_project),
+    url(r'$', views.login),
 ]

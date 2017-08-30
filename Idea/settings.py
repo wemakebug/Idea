@@ -80,11 +80,18 @@ WSGI_APPLICATION = 'Idea.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
+        # 'USER': 'root',
+        # 'NAME': 'Idea',
+        # 'PASSWORD': '123456',
+        # 'HOST': '123.207.72.192',
+        # 'PORT': '3306',
+
+        'USER': 'mysqlroot',
         'NAME': 'Idea',
-        'PASSWORD': '123456',
-        'HOST': '123.207.72.192',
-        'PORT': '3306'
+        'PASSWORD': 'chuangxin2624',
+        'HOST': '172.22.80.30',
+        'PORT': '5002',
+
     }
 }
 
@@ -134,9 +141,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-STATIC_ROOT = os.path.join(os.path.dirname(__file__),'admina/').replace('\\','/')
+STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'admina/').replace('\\', '/')
 
 
 MEDIA_URL = 'photos/'
 
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'../photos').replace('\\','/')
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../photos').replace('\\', '/')
