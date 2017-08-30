@@ -14,45 +14,51 @@ from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 @csrf_exempt
 def login(req):
     if req.method == "GET":
-        return render(req, 'first/login.html')
+        if req.session.get('account') == None:
+            return render(req, 'first/login.html')
+        else:
+            return render(req, 'second/User_detail.html')
     if req.method == "POST":
         result = {
         }
-        try:
-            account = req.POST["account"]
-            password = req.POST["password"]
-            try:
-                user = models.Admin.objects.get(Account=account)
-                if user.Identity == 3 and user.PassWord == password:
-                    result['username'] = user.UserName
-                    result['account'] = user.Account
-                    result['status'] = 1
-                    return HttpResponse(json.dumps(result), content_type="application/json")
-                elif user.Identity != 3 and user.PassWord == password:
-                    result['status'] = 2
-                    return HttpResponse(json.dumps(result), content_type="application/json")
-                elif user.Identity == 3 and user.PassWord != password:
-                    result['status'] = 3
-                    return HttpResponse(json.dumps(result), content_type="application/json")
-            except:
-                result['status'] = 4
+        account = req.POST["account"].lower().strip()
+        password = req.POST["password"]
+
+        if models.Admin.objects.filter(Account=account):
+            user = models.Admin.objects.get(Account=account)
+            if user.Password == password:
+                result['status'] = 1
+                req.session['account'] = account
+                result['account'] = account
+                result['message'] = '登陆成功'
                 return HttpResponse(json.dumps(result), content_type="application/json")
-        except:
+            elif user.Password != password:
+                result['status'] = 0
+                result['message'] = '用户名或密码错误'
+                return HttpResponse(json.dumps(result), content_type="application/json")
+        else:
             result['status'] = 0
+            result['message'] = '用户名或密码错误'
             return HttpResponse(json.dumps(result), content_type="application/json")
 '''
 退出登陆函数，删除相应的cookie并且跳转到指定页面
 '''
 def logout(req):
+    '''
+    注销
+    :param req: 
+    :return: login.html
+    '''
     if req.method == "GET":
-        try:
-            response = HttpResponseRedirect('login')
-            response.delete_cookie('User')
-            response.delete_cookie('UUID')
-            response.delete_cookie('currentpage')
-            return response
-        except:
-            return HttpResponseRedirect('index')
+        if req.session.get('account') == None:
+            pass
+        else:
+            del req.session['account']
+        for cookie in req.COOKIES:
+            del cookie
+        return render(req, 'first/login.html')
+    if req.method == "POST":
+        pass
 
 @csrf_exempt
 def score_rank(req):

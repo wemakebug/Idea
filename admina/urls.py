@@ -17,6 +17,7 @@ from django.conf.urls import url
 from admina import views as views, reload as reload
 urlpatterns = [
     url(r'login$', views.login),
+    url(r'logout$', views.logout),
     url(r'score_rank$', views.score_rank),
     url(r'score_record$', views.score_record,),
     url(r'user_score', views.score_user),
@@ -33,6 +34,6 @@ urlpatterns = [
     url(r'util4$', reload.util4),
 
     # this url should always in the last
-    url(r'$', reload.index),
+    url(r'$', views.login),
 
 ]

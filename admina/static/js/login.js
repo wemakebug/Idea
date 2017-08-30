@@ -51,28 +51,19 @@ var Login = function () {
 	                password = $("input[name='password']").val();
 	                data = {
 	                	account:account,
-						password:password,
+						password:password
 					};
                     $.post("login",data
                     ,function (result) {
-                    	result = json.parse(result);
-						if (result['status'] === 1){
-							$.cookie('username',result.username);
+						if (result.status === 1){
 							$.cookie('account',result.account);
-							alert("登陆成功");
-							window.location.href = 'index'
+							window.location.href = 'login';
 						}
-						else if(result['status']  === 3){
-							alert("用户名或密码错误");
-							window.location.reload();
-						}
-						else if(result['status']  === 4){
-							alert("用户名或密码错误");
-							window.location.reload();
-						}else{
-							alert("服务器异常");
-							window.location.reload();
-						}
+						else if(result.status === 0){
+						    alert(result.message);
+                            window.location.href = 'login';
+                        }
+
                     })
 	            }
 	        });
@@ -80,7 +71,7 @@ var Login = function () {
 	        $('.login-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "User_detail.html"
+	                    window.location.href = "index.html"
 	                }
 	                return false;
 	            }
@@ -123,14 +114,14 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "User_detail.html";
+	                window.location.href = "index.html";
 	            }
 	        });
 
 	        $('.forget-form input').keypress(function (e) {
 	            if (e.which == 13) {
 	                if ($('.forget-form').validate().form()) {
-	                    window.location.href = "User_detail.html";
+	                    window.location.href = "index.html";
 	                }
 	                return false;
 	            }
@@ -199,7 +190,7 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                window.location.href = "User_detail.html";
+	                window.location.href = "index.html";
 	            }
 	        });
 
