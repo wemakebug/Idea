@@ -30,13 +30,6 @@ def label_project(req):
     if req.method == "POST":
         pass
 
-
-def index(req):
-    if req.method == "GET":
-        return render(req, 'include/Base.html')
-    if req.method == "POST":
-        pass
-
 def user_detail(req):
     if req.method == "GET":
         return render(req, 'second/User_detail.html')

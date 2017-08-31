@@ -25,7 +25,6 @@ urlpatterns = [
     url(r'UserManager$', views.UserManager),
     url(r'label_user$', reload.label_user),
     url(r'label_project$', reload.label_project),
-    url(r'index$', reload.index),
 
     # test urls  deleted  enable
     url(r'util1$', reload.util1),
@@ -34,6 +33,6 @@ urlpatterns = [
     url(r'util4$', reload.util4),
 
     # this url should always in the last
-    url(r'$', views.login),
+    url(r'', views.login),
 
 ]

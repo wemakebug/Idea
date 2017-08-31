@@ -40,9 +40,7 @@ def login(req):
             result['status'] = 0
             result['message'] = '用户名或密码错误'
             return HttpResponse(json.dumps(result), content_type="application/json")
-'''
-退出登陆函数，删除相应的cookie并且跳转到指定页面
-'''
+
 def logout(req):
     '''
     注销
@@ -54,8 +52,11 @@ def logout(req):
             pass
         else:
             del req.session['account']
-        for cookie in req.COOKIES:
-            del cookie
+        response = render(req, 'first/login.html')
+        if req.COOKIES.get('account'):
+            response.delete_cookie('account')
+        else:
+            pass
         return render(req, 'first/login.html')
     if req.method == "POST":
         pass
