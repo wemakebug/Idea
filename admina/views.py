@@ -65,8 +65,9 @@ def logout(req):
 def score_rank(req):
     if req.method == "GET":
         currentpage = 1
+        dataperpage = 6
         scoreRank = models.Score.objects.all().order_by('Id')
-        page = Paginator(scoreRank, 6)
+        page = Paginator(scoreRank, dataperpage)
         scoreRank = page.page(currentpage).object_list
         return render_to_response('second/Score_rank.html', {'ScoreRank': scoreRank})
     if req.method == "POST":
@@ -82,7 +83,6 @@ def score_user(req):
         return render_to_response('second/User_score.html', {'ScoreUser': scoreUser})
     if req.method == "POST":
         result = {}
-
         try:
             id = req.POST['id']
             confirmed = req.POST['confirm']

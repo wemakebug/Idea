@@ -21,7 +21,6 @@ $(document).ready(function () {
 
 //删除项
 $("i[name='removbtn']").on('click',function () {
-    alert("ok");
     var current_url = window.location.pathname;
     current_url = current_url.substr(current_url.lastIndexOf("/")).replace('/','');
     var id = $(this).parents("tr").children("td").eq(0).text();

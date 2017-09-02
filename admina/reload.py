@@ -49,5 +49,11 @@ def util3(req):
 def util4(req):
     if req.method == "GET":
         return render(req, 'util/table_editable.html')
+    else:
+        pass
+
+def util5(req):
+    if req.method == "GET":
+        return render(req, 'util/table_advanced.html')
 
 
