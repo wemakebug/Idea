@@ -1,12 +1,13 @@
 <html>
 <head>
     <meta http-equiv=content-type content="text/html;charset=utf-8">
-
+    {% load static %}
 	{%block title%} {%endblock%}
-	<link rel="stylesheet" href="../../static/idea/css/index.css">
+	<link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
+
 	{%block CSS%}{%endblock%}
-    <script type="text/javascript" src="../../static/idea/js/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="../../static/idea/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js'%}"></script>
 	<title>首页</title>
 </head>
 <body >
@@ -16,9 +17,7 @@
 				<!--<img src="../static/imgs/LOGO.png">-->
 			</div>
 				<div class="nav">
-
 					<div class="mainnav"><a href="index">首页</a></div>
-
 					<div class="mainnav"><a href="">招募项目</a></div>
 					<div class="mainnav"><a href="">开发项目</a></div>
 					<div class="mainnav"><a href="creations?sign=all">创意灵感</a></div>
@@ -42,6 +41,14 @@
 					<!--<div class="regsiter-img"></div>-->
 				</a>
 			</div>
+            <div class="btn_hidden">
+                <a href="#">
+					<div class="user_figure">
+                        <img src="{% static 'idea/imgs/team.png'%}" style="width: 100%;height: 100%;">
+                    </div>
+				</a>
+					<button class="login_out" href="#" onclick="getout()"><p>注销</p></button>
+            </div>
 		</div>
 		<div class="nav-bottom">
 		</div>
@@ -62,8 +69,8 @@
 			<p>创享 © 2017. All Rights Reserved.</p>
 		</div>
 	</div>
-<script type="text/javascript" src="../../static/idea/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="../../static/idea/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js'%}"></script>
 
 {%block script%}
 

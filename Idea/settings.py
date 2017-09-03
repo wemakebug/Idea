@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'django.contrib.staticfiles'
+
 ]
 
 ROOT_URLCONF = 'Idea.urls'
@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.contrib.staticfiles',
             ],
         },
     },
@@ -141,9 +142,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'admina/').replace('\\','/')
+STATIC_ROOT = os.path.join(os.path.dirname(__file__), '/admina/').replace('\\', '/')
 
 
 MEDIA_URL = 'photos/'
 
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../photos').replace('\\','/')
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../photos').replace('\\', '/')

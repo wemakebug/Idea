@@ -1,11 +1,12 @@
 {%extends 'idea/Base.html'%}
+{% load static %}
 {%block title%}
    <title>团队详情</title>
 {%endblock%}
 {%block CSS%}
-<link rel="stylesheet" href="../../static/team/css/teamdetails.css">
-<link rel="stylesheet" href="../../static/team/css/commentstyle.css">
-<link rel="stylesheet" href="../../static/team/css/comment.css">
+<link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
+<link rel="stylesheet" href="{% static 'team/css/commentstyle.css'%}">
+<link rel="stylesheet" href="{% static 'team/css/comment.css'%}">
 {%endblock%}
 {%block content%}
 <div class="teamdetail">
@@ -59,7 +60,7 @@
              <!--回复区域 begin-->
             <div class="comment-show">
                 <div class="comment-show-con clearfix">
-                    <div class="comment-show-con-img pull-left"><a style="text-decoration: none;position: relative;" href="#"><img style="width:100%;height:100%;" src="../../static/team/imgs/django-logo-negative.png" alt=""></a></div>
+                    <div class="comment-show-con-img pull-left"><a style="text-decoration: none;position: relative;" href="#"><img style="width:100%;height:100%;" src="{% static 'team/imgs/django-logo-negative.png'%}" alt=""></a></div>
                     <div class="comment-show-con-list pull-left clearfix">
                         <div class="pl-text clearfix">
                             <a href="#" class="comment-size-name">张三 : </a>
@@ -87,10 +88,11 @@
 </div>
 {% endblock %}
 {%block script%}
-    <script type="text/javascript" src="../../static/team/js/teambg.js"></script>
-    <script type="text/javascript" src="../../static/team/js/teamdetails.js"></script>
-    <script type="text/javascript" src="../../../admina/static/js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="../../static/team/js/jquery.flexText.js"></script>
+    <script type="text/javascript" src="{% static 'team/js/teambg.js'%}"></script>
+    <script type="text/javascript" src="{% static 'team/js/teamdetails.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
+{#    不懂#}
+    <script type="text/javascript" src="{% static 'team/js/jquery.flexText.js'%}"></script>
     <!--textarea高度自适应-->
 <script type="text/javascript">
     $(function () {
@@ -126,7 +128,7 @@
         var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
         console.log(oSize);
         //动态创建评论模块
-        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><a style="text-decoration: none;position: relative;" href="#"><img src="../../static/team/imgs/header-img-comment_03.png" alt=""></a></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">David Beckham : </a> <span class="my-pl-con">&nbsp;'+ oSize +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
+        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><a style="text-decoration: none;position: relative;" href="#"><img src="{% static 'team/imgs/header-img-comment_03.png'%}" alt=""></a></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">David Beckham : </a> <span class="my-pl-con">&nbsp;'+ oSize +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
         if(oSize.replace(/(^\s*)|(\s*$)/g, "") != ''){
             $(this).parents('.reviewArea ').siblings('.comment-show').prepend(oHtml);
             $(this).siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');

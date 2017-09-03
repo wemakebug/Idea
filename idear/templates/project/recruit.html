@@ -1,12 +1,12 @@
-{% extends 'idea/Base.html'%}
-
+idea/css/index.css{% extends 'idea/Base.html'%}
+{% load static %}
 {%block title%}
    <title>招募项目</title>
 {%endblock%}
 {%block CSS%}
-    <link rel="stylesheet" href="../../static/project/css/recruit.css">
-    <link rel="stylesheet" href="../../static/idea/css/index.css">
-    <link rel="stylesheet" href="../../static/project/css/buttons.css">
+    <link rel="stylesheet" href="{% static 'project/css/recruit.css'%}">
+    <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
+    <link rel="stylesheet" href="{% static 'project/css/buttons.css'%}">
     <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 {%endblock%}
 {%block content%}
@@ -17,7 +17,7 @@
         <div class="project_top_1 project_top">
             <a href="redetails.html">
                 <div class="project_top_1_left">
-                    <img src="../../static/project/imgs/HeadImg.png">
+                    <img src="{% static 'project/imgs/HeadImg.png'%}">
                 </div>
                 <div class="project_top_1_right">
                     <h5>{{project.ProjectName}}</h5>

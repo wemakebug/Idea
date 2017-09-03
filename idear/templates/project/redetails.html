@@ -1,15 +1,15 @@
  {% extends 'idea/Base.html'%}
-
+{% load static %}
 {%block title%}
    <title>招募项目详情</title>
 {%endblock%}
 {%block CSS%}
 
 
-{#    <link rel="stylesheet" href="../../static/project/css/bootstrap/css/bootstrap.min.css">#}
-    <link rel="stylesheet" href="../../static/idea/css/index.css">
-    <link rel="stylesheet" href="../../static/project/css/redetails.css">
-    <link rel="stylesheet" href="../../static/project/css/font/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'project/css/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
+    <link rel="stylesheet" href="{% static 'project/css/redetails.css'%}">
+    <link rel="stylesheet" href="{% static 'project/css/font/css/font-awesome.min.css'%}">
 {%endblock%}
 {%block content%}
 
@@ -54,7 +54,7 @@
                            </div>
                           <div class="rm-middle">
                                  <div class="rm-nav">
-                                  <img class="rimg" src="../../static/project/imgs/require.svg">招募要求:
+                                  <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
                                  </div>
                                  <div class="rcontent">
 
@@ -84,8 +84,8 @@
                                <a  class="pname" href="">用户名称aaaaa</a>
                           </div>
                           <div class="person-middle">
-                              <div class="pscore"><img class="pimg" src="../../static/project/imgs/score.svg">1000</div>
-                              <div class="pid"><img class="pimg" src="../../static/project/imgs/id.svg">身份</div>
+                              <div class="pscore"><img class="pimg" src="{% static 'project/imgs/score.svg'%}">1000</div>
+                              <div class="pid"><img class="pimg" src="{% static 'project/imgs/id.svg'%}">身份</div>
                           </div>
                           <div class="person-footer">
                               标签：IT/美工/前端

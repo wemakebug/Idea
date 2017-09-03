@@ -1,7 +1,8 @@
 {% extends 'idea/Base.html'%}
 	{%block CSS%}
-        <link rel="stylesheet" href="../../static/project/css/apply.css">
-        <link rel="stylesheet" href="../../static/idea/css/index.css">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'project/css/apply.css'%}">
+        <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
 	{%endblock%}
 {%block title%}<title>申请表</title>{%endblock%}
 {%block script %}
