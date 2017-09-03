@@ -20,7 +20,7 @@ urlpatterns = [
     url(r'logout$', views.logout),
     url(r'score_rank$', views.score_rank),
     url(r'score_record$', views.score_record,),
-    url(r'user_score', views.score_user),
+    url(r'user_score/(?P<page>\d+)$', views.score_user),
     url(r'user_detail$', reload.user_detail),
     url(r'UserManager$', views.UserManager),
     url(r'label_user$', reload.label_user),
@@ -34,6 +34,6 @@ urlpatterns = [
     url(r'util5$', reload.util5),
 
     # this url should always in the last
-    url(r'', views.login),
+    url(r'index', views.login),
 
 ]

@@ -10,6 +10,16 @@ from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
 # Create your views here.
 
+def loginCheck(req):
+    '''
+    登陆状态验证
+    :param req: 
+    :return: 验证失败直接调转登陆界面，成功则返回true
+    '''
+    if req.session.get('account') == None:
+        return render(req, 'first/login.html')
+    else:
+        pass
 
 @csrf_exempt
 def login(req):
@@ -74,8 +84,9 @@ def score_rank(req):
         pass
 
 @csrf_exempt
-def score_user(req):
+def score_user(req, page):
     if req.method == "GET":
+        print page
         currentpage = 1
         scoreUser = models.User.objects.all().order_by('Id')
         page = Paginator(scoreUser, 6)
