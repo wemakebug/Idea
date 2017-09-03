@@ -86,12 +86,16 @@ def score_rank(req):
 @csrf_exempt
 def score_user(req, page):
     if req.method == "GET":
-        print page
-        currentpage = 1
+        currentpage = int(page)
+        try:
+            record_per_page = int(req.COOKIES.get('record_per_page'))
+        except:
+            record_per_page = 6
         scoreUser = models.User.objects.all().order_by('Id')
-        page = Paginator(scoreUser, 6)
+        scoreUser_count = models.User.objects.count()
+        page = Paginator(scoreUser, record_per_page)
         scoreUser = page.page(currentpage).object_list
-        return render_to_response('second/User_score.html', {'ScoreUser': scoreUser})
+        return render_to_response('second/User_score.html', {'ScoreUser': scoreUser, 'count': scoreUser_count})
     if req.method == "POST":
         result = {}
         try:

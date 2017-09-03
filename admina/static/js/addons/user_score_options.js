@@ -18,6 +18,63 @@ $(document).ready(function () {
 
 });
 
+//分页处理
+var current_url = window.location.pathname;
+var currentPage = parseInt(current_url.substr(current_url.lastIndexOf("/")).replace('/',''));
+var record_prepage = parseInt($.cookie('record_per_page'));
+var maxRecord = parseInt(document.getElementById('max_record').textContent);
+if(currentPage*record_prepage <= maxRecord){
+    document.getElementById('record_per_page').textContent = '第 '+((currentPage-1)*record_prepage+1)+ '到 ' +(currentPage*record_prepage) +'共';
+}else {
+    document.getElementById('record_per_page').textContent = '第 '+((currentPage-1)*record_prepage+1)+ '到 ' + maxRecord +'共';
+}
+
+// 分页器 初始化
+var pages = Math.ceil(maxRecord / record_prepage);
+var next_page_btn = document.getElementById("next_page_btn");
+var before_page_btn = document.getElementById("before_page_btn");
+var page_controler = document.getElementById('page_controler');
+
+var next_btn_child = next_page_btn.firstChild;
+if(next_btn_child.tagName === undefined){
+    next_btn_child = next_btn_child.nextSibling;
+}
+next_btn_child.setAttribute('href',currentPage+1);
+var before_btn_child = before_page_btn.firstChild;
+if(before_btn_child.tagName === undefined){
+    before_btn_child = before_btn_child.nextSibling;
+}
+before_btn_child.setAttribute('href',currentPage-1);
+
+if(currentPage === 1){
+    before_page_btn.className='prev disabled';
+    before_btn_child.setAttribute('href','#');
+}else {
+    before_page_btn.className='prev';
+}
+if(currentPage === pages){
+    next_page_btn.className ='next disabled';
+    next_btn_child.setAttribute('href','#');
+}else {
+    next_page_btn.className ='next'
+}
+
+if(pages <= 5){
+    for(var page=1; page <= pages; page++){
+        var newli = document.createElement('li');
+        var newa = document.createElement('a');
+        newa.setAttribute('href',page);
+        newa.textContent = page;
+        newli.appendChild(newa);
+        if(currentPage === page){
+        newli.className = 'active';
+        }
+        page_controler.insertBefore(newli,next_page_btn);
+    }
+}else {
+
+}
+
 
 //删除项
 $("i[name='removbtn']").on('click',function () {

@@ -145,38 +145,29 @@
                 <div class="row-fluid">
         <div class="span6">
         <div class="dataTables_info" id="sample_editable_1_info">
-            Showing 1 to 5 of 6 entries
+            <em id="record_per_page">第 1 到 5 共</em> <em id="max_record">{{ count }}</em> 条记录
         </div>
     </div>
         <div class="span6">
         <div class="dataTables_paginate paging_bootstrap pagination">
-            <ul>
-                <li class="prev disabled">
-                    <a href="#">← <span class="hidden-480">Prev</span></a>
+            <ul id="page_controler">
+                <li class="prev disabled" id="before_page_btn">
+                    <a href="#">← <span class="hidden-480">前页</span></a>
                 </li>
 
-                <li class="active">
-                <a href="#">1</a>
-                </li>
-
-                <li>
-                <a href="#">2</a>
-                </li>
-
-                <li class="next">
-                <a href="#">
-                <span class="hidden-480">Next</span> → </a>
+                <li class="next"  id="next_page_btn">
+                <a href="#"><span class="hidden-480">后页</span> → </a>
                 </li>
             </ul>
         </div>
     </div>
                 </div>
-                
-                <script type="text/javascript" src="{% static 'js/addons/user_score_options.js' %}"></script>
                 <script src="{% static 'js/bootstrap-modal.js' %}" type="text/javascript" ></script>
                 <script src="{% static 'js/bootstrap-modalmanager.js' %}" type="text/javascript" ></script>
                 <script src="{% static 'js/app.js' %}"></script>
                 <script src="{% static 'js/form-samples.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/jquery.cookie.min.js' %}"></script>
+                <script type="text/javascript" src="{% static 'js/addons/user_score_options.js' %}"></script>
                 <script type="text/javascript" src="{% static 'js/select2.min.js' %}"></script>
                 <script type="text/javascript" src="{% static 'js/jquery.tagsinput.min.js' %}"></script>
                 <script type="text/javascript" src="{% static 'js/select2.min.js' %}"></script>
