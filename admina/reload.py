@@ -32,28 +32,28 @@ def label_project(req):
 
 def user_detail(req):
     if req.method == "GET":
-        return render(req, 'second/User_detail.html')
+        return render_to_response('second/User_detail.html')
 
 def util1(req):
     if req.method == "GET":
-        return render(req, 'util/form_layout.html')
+        return render_to_response('util/form_layout.html')
 
 def util2(req):
     if req.method == "GET":
-        return render(req, 'util/form_samples.html')
+        return render_to_response('util/form_samples.html')
 
 def util3(req):
     if req.method == "GET":
-        return render(req, 'util/ui_modals.html')
+        return render_to_response('util/ui_modals.html')
 
 def util4(req):
     if req.method == "GET":
-        return render(req, 'util/table_editable.html')
+        return render_to_response('util/table_editable.html')
     else:
         pass
 
 def util5(req):
     if req.method == "GET":
-        return render(req, 'util/table_advanced.html')
+        return render_to_response('util/table_advanced.html')
 
 

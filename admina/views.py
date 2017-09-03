@@ -14,7 +14,7 @@ def loginCheck(req):
     '''
     登陆状态验证
     :param req: 
-    :return: 验证失败直接调转登陆界面，成功则返回true
+    :return: 验证失败直接调转登陆界面，成功则继续执行
     '''
     if req.session.get('account') == None:
         return render(req, 'first/login.html')
@@ -25,9 +25,9 @@ def loginCheck(req):
 def login(req):
     if req.method == "GET":
         if req.session.get('account') == None:
-            return render(req, 'first/login.html')
+            return render_to_response('first/login.html')
         else:
-            return render(req, 'second/User_detail.html')
+            return render_to_response('second/User_detail.html')
     if req.method == "POST":
         result = {
         }
@@ -62,12 +62,12 @@ def logout(req):
             pass
         else:
             del req.session['account']
-        response = render(req, 'first/login.html')
+        response = render_to_response('first/login.html')
         if req.COOKIES.get('account'):
             response.delete_cookie('account')
         else:
             pass
-        return render(req, 'first/login.html')
+        return render_to_response('first/login.html')
     if req.method == "POST":
         pass
 
