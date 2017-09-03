@@ -14,7 +14,7 @@
     </p>
 {% endfor %}
 <button value="测试" name="testbutton">测试</button>
- <script type="text/javascript" src="../../static/idea/js/jquery-1.8.3.min.js"></script>
+ <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js'%}"></script>
 <script type="text/javascript">
     $("button[name='testbutton']").click(function () {
         $.post('/test/22',{
