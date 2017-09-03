@@ -36,7 +36,7 @@ def Check_User_Cookie(req):
 '''
 def index(req):
     if req.method == "GET":
-        return render(req, 'idea/index.html')
+        return render_to_response('idea/index.html')
     if req.method == "POST":
         pass
 '''
@@ -45,7 +45,7 @@ def index(req):
 @csrf_exempt
 def login(req):
     if req.method == "GET":
-        return render(req, 'idea/login.html')
+        return render_to_response('idea/login.html')
     if req.method == "POST":
         result = {}
         result['status'] = None
@@ -80,7 +80,7 @@ def login(req):
 @csrf_exempt
 def regist(req):
     if req.method == 'GET':
-        return render(req, 'idea/regist.html')
+        return render_to_response('idea/regist.html')
     if req.method == "POST":
         result = {}
         username = req.POST['name']
@@ -136,20 +136,20 @@ def teamdetails(req):
 
 def teamhelpapplication(req):
     if req.method == 'GET':
-        return render(req, 'team/teamhelpapplication.html')
+        return render_to_response('team/teamhelpapplication.html')
     if req.method == 'POST':
         pass
 # 忘记密码
 def forgetPassword(req):
     if req.method == 'GET':
-        return render(req, 'idea/forgetPassword.html')
+        return render_to_response('idea/forgetPassword.html')
 
 '''
 创意页面
 '''
 def creation(req):
     if req.method == 'GET':
-        return render(req, 'creation/index.html')
+        return render_to_response('creation/index.html')
     if req.method == "POST":
         pass
 '''
@@ -158,7 +158,7 @@ def creation(req):
 '''
 def redetails(req):
     if req.method == 'GET':
-        return render(req, 'project/redetails.html')
+        return render_to_response('project/redetails.html')
     if req.method == 'POST':
         pass
 '''
@@ -167,7 +167,7 @@ def redetails(req):
 
 def apply(req):
     if req.method == 'GET':
-        return render(req, 'project/apply.html')
+        return render_to_response('project/apply.html')
     if req.method == 'POST':
         pass
 
