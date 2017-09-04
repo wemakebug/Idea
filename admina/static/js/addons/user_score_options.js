@@ -58,8 +58,8 @@ if (currentPage === pages) {
 } else {
     next_page_btn.className = 'next'
 }
-
-if (pages <= 5) {
+var max_page_per_bar = 6; //每页可以显示的 最多的页数
+if (pages <= max_page_per_bar && pages > 0) {
     for (var page = 1; page <= pages; page++) {
         var newli = document.createElement('li');
         var newa = document.createElement('a');
@@ -71,8 +71,98 @@ if (pages <= 5) {
         }
         page_controler.insertBefore(newli, next_page_btn);
     }
-} else {
-
+} else if(pages > max_page_per_bar){
+    // 页数过多的时候显示的情况
+    if (currentPage < max_page_per_bar && currentPage > 0) {
+        for (var page = 1; page <= max_page_per_bar+2; page++) {
+            var newli = document.createElement('li');
+            var newa = document.createElement('a');
+            newa.setAttribute('href', page);
+            newa.textContent = page;
+            newli.appendChild(newa);
+            if (currentPage === page) {
+                newli.className = 'active';
+            }
+            else if(page === max_page_per_bar + 1){
+                newa.textContent = '...';
+            }else if(page === max_page_per_bar + 2){
+                newa.setAttribute('href', pages);
+                newa.textContent = pages;
+            }
+            page_controler.insertBefore(newli, next_page_btn);
+        }
+    }else if(currentPage > max_page_per_bar && currentPage < pages - 3){
+        for(var page =1 ; page <= 7; page++){
+            var newli = document.createElement('li');
+            var newa = document.createElement('a');
+            newli.appendChild(newa);
+            if(page = 1){
+                newa.setAttribute('href', '1');
+                 newa.textContent = '1';
+            }else if(page = 2){
+                newa.setAttribute('href', str(currentPage - 2));
+                newa.textContent = '...';
+            }else if(page = 3){
+                newa.setAttribute('href', str(currentPage - 1));
+                newa.textContent = str(currentPage-1);
+            }else if(page = 4){
+                newa.setAttribute('href', str(currentPage));
+                newa.textContent = str(currentPage);
+                newli.className = 'active';
+            }else if(page = 5){
+                newa.setAttribute('href', str(currentPage + 1));
+                newa.textContent = str(currentPage);
+            }else if(page = 6){
+                newa.setAttribute('href', str(currentPage + 2));
+                newa.textContent = '...';
+            }else  if(page = 7){
+                newa.setAttribute('href', str(pages));
+                newa.textContent = str(pages);
+            }
+            page_controler.insertBefore(newli, next_page_btn);
+        }
+    } else if (currentPage > max_page_per_bar && currentPage >=pages - 3) {
+        for (var page = 1; page <= 7; page++) {
+            var newli = document.createElement('li');
+            var newa = document.createElement('a');
+            newli.appendChild(newa);
+             if(page = 1){
+                newa.setAttribute('href', '1');
+                 newa.textContent = '1';
+            }else if(page = 2){
+                newa.setAttribute('href', str(pages - 5));
+                newa.textContent = '...';
+            }else if(page = 3){
+                newa.setAttribute('href', str(pages - 4));
+                newa.textContent = str(pages - 4);
+            }else if(page = 4){
+                newa.setAttribute('href', str(pages - 3));
+                newa.textContent = str(pages - 3);
+                if(currentPage === pages - 3){
+                    newli.className = 'active';
+                }
+            }else if(page = 5){
+                newa.setAttribute('href', str(pages - 2));
+                newa.textContent = str(pages - 2);
+                if(currentPage === pages - 2){
+                    newli.className = 'active';
+                }
+            }else if(page = 6){
+                newa.setAttribute('href', str(pages - 1));
+                newa.textContent = str(pages - 1);
+                 if(currentPage === pages - 1 ){
+                    newli.className = 'active';
+                }
+            }else if(page = 7){
+                newa.setAttribute('href', str(pages));
+                newa.textContent = str(pages);
+                if(currentPage === pages ){
+                    newli.className = 'active';
+                }
+            }
+            page_controler.insertBefore(newli, next_page_btn);
+        }
+    }
 }
 
 
@@ -125,5 +215,14 @@ $("i[name='editbtn']").on('click', function () {
     // $("input[name='identity']").removeAttr("checked");
     $("#Identity_radio0").prop("checked", "checked");
     $("button[name='sub_btn']").on('click', function () {
+
+
     })
+});
+
+// 查询项
+$('#search_user_score').on('click',function () {
+    var search_input = document.getElementById('search_user_score_input');
+    var search_text = search_input.value;
+    alert(search_text);
 });

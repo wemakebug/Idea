@@ -21,7 +21,7 @@
 
                             <div class="span6">
                                 <div class="btn-group">
-                                    <button class="btn green">
+                                    <button class="btn red">
                                         添加记录
                                         <i class="icon-plus">
 
@@ -29,14 +29,20 @@
                                     </button>
                                 </div>
                             </div>
-
+                             {# 搜索开始 #}
                             <div class="span6">
                                 <div class="dataTables_filter" id="sample_1_filter">
-                                    <label>Search: <input type="text" aria-controls="sample_1" class="m-wrap small">
+                                    <label>
+                                        <input type="text" aria-controls="sample_1" class="m-wrap small" id="search_user_score_input">
+                                        <div class="btn-group">
+                                            <button class="btn blue" id="search_user_score">
+                                                搜索
+                                            </button>
+                                        </div>
                                     </label>
                                 </div>
                             </div>
-                            {# 搜索开始 #}
+
                         </div>
 
                         <thead>
