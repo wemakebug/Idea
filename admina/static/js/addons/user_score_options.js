@@ -224,5 +224,12 @@ $("i[name='editbtn']").on('click', function () {
 $('#search_user_score').on('click',function () {
     var search_input = document.getElementById('search_user_score_input');
     var search_text = search_input.value;
-    alert(search_text);
+    var current_url = window.location.pathname;
+    current_url = current_url.substr(current_url.lastIndexOf("/")).replace('/', '')
+    var post_data = {};
+    post_data['search_text'] = search_text;
+    post_data['search'] = true ;
+    $.post(current_url,post_data,function (result) {
+        alert(result);
+    });
 });
