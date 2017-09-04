@@ -4,9 +4,10 @@ from __future__ import unicode_literals
 from django.views.decorators.csrf import csrf_exempt
 from admina import models
 import json
-from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, Http404, render_to_response, HttpResponseRedirect
 import uuid
-from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 
 # Create your views here.
 
@@ -20,6 +21,7 @@ def loginCheck(req):
         return render(req, 'first/login.html')
     else:
         pass
+
 
 @csrf_exempt
 def login(req):
@@ -51,6 +53,7 @@ def login(req):
             result['message'] = '用户名或密码错误'
             return HttpResponse(json.dumps(result), content_type="application/json")
 
+
 def logout(req):
     '''
     注销
@@ -71,6 +74,7 @@ def logout(req):
     if req.method == "POST":
         pass
 
+
 @csrf_exempt
 def score_rank(req):
     if req.method == "GET":
@@ -82,6 +86,7 @@ def score_rank(req):
         return render_to_response('second/Score_rank.html', {'ScoreRank': scoreRank})
     if req.method == "POST":
         pass
+
 
 @csrf_exempt
 def score_user(req, page):
