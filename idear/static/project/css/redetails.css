@@ -1,0 +1,97 @@
+
+	 .main{
+		width:100%;
+		height:1500px;
+	}
+	.content-all{
+	    width:80%;
+	    height:2000px;
+	    /*margin-top:100px;*/
+	    margin-left:10%;
+	    background:#FFFFFF;
+	    /*border:1px solid #ccc;*/
+	}
+    .content-nav{
+    	margin-top:80px;
+    	width:100%;
+    	height:40px;
+    	background:;
+    }
+    .main-left{
+        float:left;
+        width:70%;
+        height: 900px;
+        background:;
+    }
+    .content-header{
+        width:70%;
+        height:300px;
+        background:red;
+    }
+    .description{
+        width:100%;
+        height:200px;
+        background:;
+    }
+    .focus-one{
+        width:10%；
+        height:20px;
+        float:right;
+        background:red;
+    }
+    .content-middle{
+        width:80%;
+        height:400px;
+        background:pink;
+    }
+    .main-right{
+        float:left;
+        width:30%;
+        height:900px;
+        background: ;
+    }
+    .main-right-top{
+        width:100%;
+        height:250px;
+        background:pink;
+    }
+    .main-right-footer{
+       width:100%;
+       height:500px;
+       background:pink;
+    }
+    .content:{
+        width:
+    }
+  /*  .grid {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	padding: 0;
+	list-style: none;
+	max-width: 60em;
+	margin: 3em auto 0;
+}
+
+.grid__item {
+	position: relative;
+	text-align: center;
+	margin: 0 0 5em;
+	width: 15%;
+	min-height: 5em;
+	display: -ms-flexbox;
+	-ms-flex-pack: center;
+	-ms-flex-align: center;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-align-content: center;
+	align-content: center;
+}*/
+
