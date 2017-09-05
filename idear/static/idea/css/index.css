@@ -5,14 +5,7 @@
 		width:100%;
 	}
 	body{
-<<<<<<< HEAD
 	    min-width:1200px;
-=======
-	    F-width:1400px;
-
-	    min-width:1200px;
-
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
         max-width:2000px;
 
         overflow-x: hidden;
@@ -67,11 +60,7 @@
 	}
 	.mainnav{
 	    float:left;
-<<<<<<< HEAD
 	    width:20%;
-=======
-	    width:17%;
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
 	    /*max-width:109.98px;*/
 	    /*min-width:109.98px;*/
 	    height:100%;
@@ -98,7 +87,6 @@
         float: left;
         margin-left: 10%;
     }
-
     #search-left {
         width: 80%;
         height: 52%;
@@ -132,8 +120,6 @@
 	    float: right;
 		width: 16%;
 		height: 100%;
-        text-align:center;
-	    line-height:75px;
 	}
 	.rlogin{
 	    width: 20%;
@@ -144,7 +130,6 @@
         overflow: hidden;
         border-radius: 3px;
 	}
-<<<<<<< HEAD
     .rlogin p{
         width:100%;
 	    height:100%;
@@ -182,21 +167,11 @@
         width: 22.1%;
         height: 90%;
         margin-top: 1%;
-        background-images:url();
+        /*background-images:url();*/
         float: left;
         overflow: hidden;
         border-radius: 60px;
         border: 1px solid #ccc;
-    }
-    .user_figure img{
-       /* width: 22.1%;
-        height: 90%;
-        margin-top: 1%;
-        background-images:url();
-        float: left;
-        overflow: hidden;
-        border-radius: 60px;
-        border: 1px solid #ccc;*/
     }
 
     .login_out{
@@ -224,24 +199,6 @@
 
 
 
-=======
-
-	.rlogin{
-	    width:20%;
-	    height:100%;
-        background:#295E6A;
-	    float:left;
-	    overflow:hidden;
-	}
-	.rregsiter{
-	    width:20%;
-	    height:100%;
-	    float:left;
-	    margin-left:1%;
-	    background:#295E6A;
-	    overflow:hidden;
-	}
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
@@ -295,21 +252,13 @@
 	}
 	.introduce p{
 	    font-family:STLiti;
-<<<<<<< HEAD
-	    font-size:1.2em
-=======
 	    font-size:1.2em;
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
 	    color:#C1CDC1;
 	}
     .decoration{
         width:100%;
         height:20%;
-<<<<<<< HEAD
         margin-top:8%;
-=======
-        margin-top:5.5%;
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
     }
     .decoration div {
         height: 10px;
@@ -317,21 +266,13 @@
 	.main-content{
 	    width:100%;
 	    height:79.9%;
-<<<<<<< HEAD
 	    box-shadow:0 1px 5px 1px #ccc;
         border:1px solid #FFFFFF;
-=======
-	    box-shadow:0px 1px 5px 1px #ccc;
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
 	}
     .main-box{
         width:90%;
         height:20%;
-<<<<<<< HEAD
         /*border:1px solid #FFFFFF;*/
-=======
-        border:1px solid #FFFFFF;
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
     }
      .box-one-left h2{
 		line-height: 1;
@@ -351,11 +292,7 @@
     }
     .usage{
         width:100%;
-<<<<<<< HEAD
         height:80%;
-=======
-        height:100%;
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
     }
     .usage_one{
         width:21%;
@@ -386,7 +323,6 @@
     }
     .usage_icon4{
         width:25%;
-<<<<<<< HEAD
         height:15%;
         background-image: url('../imgs/team.png');
         background-size:100% 100%;
@@ -394,17 +330,7 @@
     }
      .usage_details{
         width:100%;
-        height:%;
-=======
-        height:13%;
-        background-image: url('../imgs/team.png');
-        background-size:100% 100%;
-        margin-top:20%;
-    }
-     .usage_details{
-        width:100%;
-        height:50%;
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
+        /*height:%;*/
         border:1px solid #FFFFFF;
         margin-top:5%;
     }
@@ -421,11 +347,7 @@
     }
     .detail{
         width:80%;
-<<<<<<< HEAD
         height:45%;
-=======
-        height:50%;
->>>>>>> 8a062a12fcee931d8b8a692d08ea30cdc4bb037f
         border:1px solid #FFFFFF;
     }
     .detail p{
