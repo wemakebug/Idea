@@ -168,7 +168,7 @@
         width: 22.1%;
         height: 90%;
         margin-top: 1%;
-        background-images:url();
+        /*background-images:url();*/
         float: left;
         overflow: hidden;
         border-radius: 60px;
@@ -253,7 +253,7 @@
 	}
 	.introduce p{
 	    font-family:STLiti;
-	    font-size:1.2em
+	    font-size:1.2em;
 	    color:#C1CDC1;
 	}
     .decoration{
@@ -331,7 +331,7 @@
     }
      .usage_details{
         width:100%;
-        height:%;
+        /*height:%;*/
         border:1px solid #FFFFFF;
         margin-top:5%;
     }
