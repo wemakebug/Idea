@@ -18,7 +18,7 @@ body,html{
 }
 .bg{
 	margin: auto;
-	height: 600px;
+	height: 675px;
 	width: 75%;
 	margin-top:110px;
     border-radius:15px;
@@ -35,6 +35,10 @@ body,html{
     margin-left:65px;
     top:150px;
     position:absolute;
+}
+.User_Info{
+    height: 400px;
+    width: 100%;
 }
 .bdiv_left{
     float: left;

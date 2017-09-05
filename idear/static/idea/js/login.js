@@ -1,16 +1,16 @@
 $(function () {
-    $("input[id='account']").val("");
+    $("input[id='email']").val("");
     $("input[id='password']").val("");
 
-})
+});
 // 判断信息是否填写完整
 function login() {
-    var account=document.getElementById("account").value;
+    var email=document.getElementById("email").value;
     var password=document.getElementById("password").value;
     var warn1=document.getElementById("warn1");
     var warn2=document.getElementById("warn2");
-    if(account==""||account==undefined||account==null){
-        if(password==""||password==undefined||password==null){
+    if(email===""||email===undefined||email===null){
+        if(password===""||password===undefined||password ===null){
             document.getElementById("warn1").style.display="block";
             document.getElementById("warn2").style.display="block";
             alert("请填写完整的信息!");
@@ -20,7 +20,7 @@ function login() {
             alert("请填写完整的信息!");
         }
     }else {
-        if(password==""||password==undefined||password==null){
+        if(password===""||password===undefined||password===null){
             document.getElementById("warn1").style.display="none";
             document.getElementById("warn2").style.display="block";
             alert("请填写完整的信息!");
@@ -32,10 +32,10 @@ function login() {
 }
 // 判断用户邮箱或密码是否正确
 $("input[class='login_input']").click(function () {
-    if ($("#account").val() != "" && $("#password").val() != "") {
-        account = $("input[id='account']").val();
+    if ($("#email").val() !== "" && $("#password").val() !== "") {
+        email = $("input[id='email']").val();
         $.post("login", {
-            "account": account,
+            "email": email,
             "password": $("input[id='password']").val()
         }, function (result) {
             result =JSON.parse(result);
@@ -45,7 +45,7 @@ $("input[class='login_input']").click(function () {
             } else if (result["status"] === 1) {
                 $.cookie('username', result["username"]);
                 $.cookie('uuid', result["UUID"]);
-                $.cookie('account', account);
+                $.cookie('email', email);
                 alert(result["message"]);
                 window.location.href = 'index'
             } else {
@@ -54,4 +54,4 @@ $("input[class='login_input']").click(function () {
             }
         });
     }
-})
+});

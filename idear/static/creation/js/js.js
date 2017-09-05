@@ -1,4 +1,3 @@
-
  $(function () {
             $(".block").slice(0, 12).show();
            if($(".block").length <= 12) {
@@ -17,26 +16,44 @@
             });
         });
 
+
 $(function () {
 
-$.cookie("user",1)
+$.cookie("user",3)
 
 userId = $.cookie("user")
-
+		
 $(".follow").click(function(){
    Id = $(this).attr("creation")
-   alert(Id)
    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
     if(data == 1)
-    	alert("点赞成功");
-    else
+    	alert("感谢关注")
+    else if(data == 0)
     	alert("操作失败")
+    else
+      alert("取消关注")
+    location.reload()
 
+})
 
 })
 
 
+$(".like").click(function(){
+   Id = $(this).attr("creation")
+   $.post("star",{userId:userId,starType:"1",Id:Id},function(data){
+    if(data == 1)
+    	alert("感谢您的点赞")
+    else if(data == 0)
+    	alert("操作失败")
+    else 
+      alert("取消点赞")
+    location.reload()
 })
+
+})
+
+
 
 })
 
