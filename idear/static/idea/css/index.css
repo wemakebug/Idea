@@ -50,7 +50,7 @@
 	.nav{
 		float: left;
 		margin-left:4%;
-		width: 34%;
+		width: 30%;
 		height: 75px;
 	}
 	.nav a{
@@ -60,7 +60,7 @@
 	}
 	.mainnav{
 	    float:left;
-	    width:17%;
+	    width:20%;
 	    /*max-width:109.98px;*/
 	    /*min-width:109.98px;*/
 	    height:100%;
@@ -73,21 +73,26 @@
 	}
 	.search1{
 		float:left;
-		width:25%;
-		margin-top:18px;
-		height:50px;
+		width:30%;
+		/*margin-top:1.1%;*/
+		height:75px;
 	}
+    .searchbar{
+        width:60%;
+        height:100%;
+    }
     .searchbar form {
-        width: 60%;
+        width: 80%;
+        height:100%;
         float: left;
         margin-left: 10%;
     }
-
     #search-left {
         width: 80%;
-        height: 75%;
-        padding-left: 20%;
-        border-radius: 42px;
+        height: 52%;
+        margin-top: 7.5%;
+        padding-left: 15%;
+        border-radius: 10px;
         border: 0.3px solid #54A4AF;
         outline: none;
         position: relative;
@@ -100,12 +105,13 @@
     }
     #search{
         width:2.5%;
-        height:75%;
+        height:52%;
+         margin-top: 6.8%;
         background-image: url('../imgs/search.svg');
         background-size: 100% 100%;
         float:left;
         position: relative;
-        left:-5%;
+        left:-8%;
         background-color:transparent;
         border:none;
         outline:none;
@@ -114,29 +120,86 @@
 	    float: right;
 		width: 16%;
 		height: 100%;
-        text-align:center;
-	    line-height:75px;
-	}
-	.sidebar a{
-	    font-size:1em;
-	    color:white;
-	}
 
+	}
 	.rlogin{
-	    width:20%;
-	    height:100%;
-        background:#295E6A;
-	    float:left;
-	    overflow:hidden;
+	    width: 20%;
+        height: 40%;
+        margin-top: 8%;
+        background:#295E6A ;
+        float: left;
+        overflow: hidden;
+        border-radius: 3px;
 	}
-	.rregsiter{
-	    width:20%;
+    .rlogin p{
+        width:100%;
 	    height:100%;
-	    float:left;
-	    margin-left:1%;
-	    background:#295E6A;
-	    overflow:hidden;
-	}
+        text-align: center;
+        line-height: 30px;
+        margin: 0 auto;
+        font-size:1em;
+	    color:white;
+    }
+	.rregsiter {
+        width: 20%;
+        height: 40%;
+        margin-top: 8%;
+        background: white;
+        float: left;
+        margin-left: 2%;
+        overflow: hidden;
+        border-radius: 3px;
+    }
+    .rregsiter p{
+        width:100%;
+	    height:100%;
+        text-align: center;
+        line-height: 30px;
+        margin: 0 auto;
+        font-size:1em;
+	    color:#295E6A;
+    }
+    .btn_hidden{
+        float: right;
+		width: 16%;
+		height: 100%;
+    }
+    .user_figure{
+        width: 22.1%;
+        height: 90%;
+        margin-top: 1%;
+        background-images:url();
+        float: left;
+        overflow: hidden;
+        border-radius: 60px;
+        border: 1px solid #ccc;
+    }
+
+    .login_out{
+        width: 20%;
+        height: 40%;
+        margin-top: 8%;
+        background: #CCCCCC;
+        float: left;
+        margin-left: 2%;
+        overflow: hidden;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+    .login_out p{
+        width:100%;
+	    height:100%;
+        text-align: center;
+        line-height: 30px;
+        margin: 0 auto;
+        font-size:1em;
+	    color:#295E6A;
+    }
+
+
+
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
@@ -190,13 +253,13 @@
 	}
 	.introduce p{
 	    font-family:STLiti;
-	    font-size:1.2em;
+	    font-size:1.2em
 	    color:#C1CDC1;
 	}
     .decoration{
         width:100%;
         height:20%;
-        margin-top:5.5%;
+        margin-top:8%;
     }
     .decoration div {
         height: 10px;
@@ -204,12 +267,13 @@
 	.main-content{
 	    width:100%;
 	    height:79.9%;
-	    box-shadow:0px 1px 5px 1px #ccc;
+	    box-shadow:0 1px 5px 1px #ccc;
+        border:1px solid #FFFFFF;
 	}
     .main-box{
         width:90%;
         height:20%;
-        border:1px solid #FFFFFF;
+        /*border:1px solid #FFFFFF;*/
     }
      .box-one-left h2{
 		line-height: 1;
@@ -229,7 +293,7 @@
     }
     .usage{
         width:100%;
-        height:100%;
+        height:80%;
     }
     .usage_one{
         width:21%;
@@ -260,14 +324,14 @@
     }
     .usage_icon4{
         width:25%;
-        height:13%;
+        height:15%;
         background-image: url('../imgs/team.png');
         background-size:100% 100%;
-        margin-top:20%;
+        margin-top:18%;
     }
      .usage_details{
         width:100%;
-        height:50%;
+        height:%;
         border:1px solid #FFFFFF;
         margin-top:5%;
     }
@@ -284,7 +348,7 @@
     }
     .detail{
         width:80%;
-        height:50%;
+        height:45%;
         border:1px solid #FFFFFF;
     }
     .detail p{
