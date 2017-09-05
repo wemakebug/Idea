@@ -1,0 +1,72 @@
+{%extends 'idea/Base.html'%}
+{% load static %}
+{%block title%}
+   <title>申请团队帮助表</title>
+{%endblock%}
+{%block CSS%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'team/css/teamhelpapplication.css'%}">
+{%endblock%}
+{%block content%}
+<div class="teamhelpapplication">
+    <div class="application1-1"><strong>团队帮助申请表</strong></div>
+    <div class="application1-2"></div>
+    <div class="application1-3"></div>
+    <div class="application1-4">
+        <div class="application1-5">
+            <strong>
+                个人信息：
+            </strong>
+        </div>
+        <div class="application1-6">
+            学院：
+            <input type="text" class="applicationinput1-1">
+        </div>
+        <div class="application1-7">
+            申请人：
+            <input type="text" class="applicationinput1-1">
+        </div>
+        <div class="application1-8">
+            专业：
+            <input type="text" class="applicationinput1-1">
+        </div>
+        <div class="application1-9">
+            个人分数：
+            <input type="text" class="applicationinput1-1">
+        </div>
+        <div class="application1-10">
+            联系方式：
+            <input type="text" class="applicationinput1-1">
+        </div>
+    </div>
+    <div class="requestdetails">
+        <div class="requestdetails1-1">
+            <strong>
+                请求详情：
+            </strong>
+        </div>
+        <div class="requestdetails1-2">
+            <div class="requestdetails1-5">问题描述：</div>
+            <div class="requestdetails1-3">
+                <textarea name="request" class="requestdetails1-4"></textarea>
+            </div>
+        </div>
+        <div class="needhelp">
+            <div class="needhelp1-1">所需帮助：</div>
+            <div class="needhelp1-2">
+                <textarea name="help" class="needhelp1-3"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="submithelp1-1">
+        <input type="button" value="提交申请" class="submithelp1-2" id="submithelp">
+    </div>
+    <div class="applicationlandscape"></div>
+    <div class="applicationfilter"></div>
+    <canvas id="canvas" class="teamhelpapplicationcanvas"></canvas>
+</div>
+{% endblock %}
+{%block script%}
+    <script type="text/javascript" src="{% static 'team/js/teambg.js'%}"></script>
+    <script type="text/javascript" src="{% static 'team/js/teamhelpapplication.js'%}"></script>
+{% endblock %}

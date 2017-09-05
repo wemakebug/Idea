@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../static/idea/css/regist.css">
-    <script type="text/javascript" src="../static/idea/js/regist.js"></script>
-    <script type="text/javascript" src="../static/idea/js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'idea/css/regist.css'%}">
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/regist.js'%}"></script>
+        <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js'%}"></script>
     <title>注册页面</title>
 </head>
 <body>
@@ -21,18 +23,18 @@
         <li></li>
         <li></li>
         <li></li>
-        <img class="div-top-img" src="../static/idea/imgs/logo1.png">
+        <img class="div-top-img" src="{% static 'idea/imgs/logo1.png'%}">
     </ul>
-        
+
     <div class="register1-1">
         <div class="center1-1" style="margin-top: 50px;">
         <span class="register1-3">用户名：</span>
         <input type="text" name="name" value="{{name}}" id="registname" size="30" class="input1-1">
         </div>
-        <div class="center1-1">
-            <span class="register1-4">账号：</span>
-            <input type="text" name="account" value="{{account}}" id="registaccount" size="30" placeholder="请输您的学号或工号" class="input1-1">
-        </div>
+{#        <div class="center1-1">#}
+{#            <span class="register1-4">账号：</span>#}
+{#            <input type="text" name="account" value="{{account}}" id="registaccount" size="30" placeholder="请输您的学号或工号" class="input1-1">#}
+{#        </div>#}
          <div class="center1-1">
             <span class="register1-4">邮箱：</span>
             <input type="text" name="email" value="{{email}}" id="registemail" size="30" placeholder="请填写您的邮箱" class="input1-1">
@@ -47,58 +49,91 @@
         </div>
         <div class="center1-4" >
             <input type="checkbox" name="opinion" value="{{opinion}}" id="registopinion" class="input1-1">
-            <a href="#" class="register1-6">我已阅读并同意《用户协议》</a>
+            <input type="button" value="我已阅读并同意《用户协议》"  id="agreeing" class="input1-4">
         </div>
         <div class="center1-2" >
             <input type="button" value="注册" name="submit" onclick="verify()"  class="input1-2">
         </div>
         <div class="center1-2" >
-            <input type="button" value="重置" name="reset" class="input1-3">
+            <input type="button" value="重置" name="reset"  id="reset" class="input1-3">
         </div>
         <div class="center1-1" style="clear: both" >
-            已有账号，点击<a href="login.html" style="color: rgb(85, 107 ,47);text-decoration-color :rgb(0, 0 ,0);font-size: 20px;">登录</a>
+            已有账号，点击<a href="login" style="color: rgb(85, 107 ,47);text-decoration-color :rgb(0, 0 ,0);font-size: 20px;">登录</a>
         </div>
     </div>
 </div>
 <div class="pop-up">
     1. 重要须知： 腾讯在此特别提醒，用户（您）欲访问和使用QQ网站，必须事先认真阅读本服务条款中各条款， 包括免除或者限制腾讯责任的免责条款及对用户的权利限制。请您审阅并接受或不接受本服务条款（未成年人审阅时应得到法定监护人的陪同）。如您不同意本服务条款及/或随时对其的修改，您应不使用或主动取消腾讯公司提供的服务。您的使用行为将被视为您对本服务条款全部的完全接受，包括接受腾讯对服务条款随时所做的任何修改。
+    <div class="pop-up1">
+       <input type="button" value="关闭" id="closing" class="input1-5">
+    </div>
 </div>
 <script type="text/javascript">
     function verify() {
     var name=document.getElementById("registname").value;
-    var account=document.getElementById("registaccount").value;
     var email=document.getElementById("registemail").value;
     var password=document.getElementById("registpassword").value;
     var ConfirmPassword=document.getElementById("ConfirmPassword").value;
-    var opinion=document.getElementById("registopinion").value;
-    if(name!=""&account!=""&email!=""&password!=""&ConfirmPassword!=""&opinion!=""){
-        if(account==Number){
-            alert("注册成功！")
+    var opinion=document.getElementById("registopinion");
+    if(name!=""&email!=""&password!=""&ConfirmPassword!=""&opinion.checked==true){
+        if(password===ConfirmPassword){
+            $.post('regist',
+                {
+                'name':name,
+                'email':email,
+                'password':password
+
+                },function (result) {
+                    result = JSON.parse(result);
+               if(result["status"] === 1){
+                   $.cookie('username',result['username']);
+
+
+                   $.cookie('UUID',result["UUID"]);
+                   alert(result["message"]);
+                   window.location.href = 'index'
+               } else {
+                   alert(result["message"]);
+                   window.location.reload()
+               }
+            });
         }
-        else{
-            alert("请检查你的信息！")
+        else {
+        alert("两次密码不一致！")
         }
     }
-    else {
-        if(name==""){
+    else if(name==""){
         alert("请输入用户名！")
         }
-        if(account==""){
-        alert("请输入账号！")
-        }
-        if(email==""){
+    else if(email==""){
         alert("请输入邮箱！")
         }
-        if(password==""){
+    else if(password==""){
         alert("请输入密码！")
         }
-        if(ConfirmPassword==""){
+    else if(ConfirmPassword==""){
         alert("请再次输入密码！")
         }
-        if(opinion==""){
+    else if(opinion.checked==false){
         alert("请同意《用户协议》！")
         }
-}}
+    };
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

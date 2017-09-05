@@ -3,113 +3,122 @@ from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
 from admina import models
-from models import User
 import json
-from django.core.paginator import Paginator
-from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, Http404, render_to_response, HttpResponseRedirect
 import uuid
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 
 # Create your views here.
-'''
-登陆验证函数，如需登陆，调此函数即可
-@:return 状态值，可通过为true
-@:COOKIE name = User_acconunt
-@:COOKIE name = UUID
-'''
-@csrf_exempt
-def Check_User_Cookie(req):
-    loginStatus = False
-    try:
-        user_cookie = req.COOKIES["User_account"]
-        user_uuid_code = req.COOKIES["UUID"]
-        try:
-            user = User.objects.get(Account=user_cookie)
-            if str(user.Uuid) == user_uuid_code:
-                loginStatus = True
-                return loginStatus
-        except:
-            return loginStatus
-    except:
-        return loginStatus
+
+def loginCheck(req):
+    '''
+    登陆状态验证
+    :param req: 
+    :return: 验证失败直接调转登陆界面，成功则继续执行
+    '''
+    if req.session.get('account') == None:
+        return render(req, 'first/login.html')
+    else:
+        pass
 
 
 @csrf_exempt
 def login(req):
     if req.method == "GET":
-        try:
-            account = req.COOKIES.get('account')
-            username = req.COOKIES.get('account')
-            try:
-                user = models.User.objects.get(Account=account)
-                if user.UserName == username:
-                    return render(req, 'index.html')
-                else:
-                    return render(req, 'first/login.html')
-            except:
-                return render(req, 'first/login.html')
-        except:
-            return render(req, 'first/login.html')
+        if req.session.get('account') == None:
+            return render_to_response('first/login.html')
+        else:
+            return render_to_response('second/User_detail.html')
     if req.method == "POST":
-        result = {
-        }
-        try:
-            account = req.POST["account"]
-            password = req.POST["password"]
-            try:
-                user = models.User.objects.get(Account=account)
-                if user.Identity == 3 and user.PassWord == password:
-                    result['username'] = user.UserName
-                    result['account'] = user.Account
-                    result['status'] = 1
-                    return HttpResponse(json.dumps(result), content_type="application/json")
-                elif user.Identity != 3 and user.PassWord == password:
-                    result['status'] = 2
-                    return HttpResponse(json.dumps(result), content_type="application/json")
-                elif user.Identity == 3 and user.PassWord != password:
-                    result['status'] = 3
-                    return HttpResponse(json.dumps(result), content_type="application/json")
-            except:
-                result['status'] = 4
+        result = {}
+        account = req.POST["account"].lower().strip()
+        password = req.POST["password"]
+
+        if models.Admin.objects.filter(Account=account):
+            user = models.Admin.objects.get(Account=account)
+            if user.Password == password:
+                result['status'] = 1
+                req.session['account'] = account
+                result['account'] = account
+                result['message'] = '登陆成功'
                 return HttpResponse(json.dumps(result), content_type="application/json")
-        except:
+            elif user.Password != password:
+                result['status'] = 0
+                result['message'] = '用户名或密码错误'
+                return HttpResponse(json.dumps(result), content_type="application/json")
+        else:
             result['status'] = 0
+            result['message'] = '用户名或密码错误'
             return HttpResponse(json.dumps(result), content_type="application/json")
-'''
-退出登陆函数，删除相应的cookie并且跳转到指定页面
-'''
+
+
 def logout(req):
+    '''
+    注销
+    :param req: 
+    :return: login.html
+    '''
     if req.method == "GET":
-        try:
-            response = HttpResponseRedirect('login')
-            response.delete_cookie('User')
-            response.delete_cookie('UUID')
-            response.delete_cookie('currentpage')
-            return response
-        except:
-            return HttpResponseRedirect('index')
+        if req.session.get('account') == None:
+            pass
+        else:
+            del req.session['account']
+        response = render_to_response('first/login.html')
+        if req.COOKIES.get('account'):
+            response.delete_cookie('account')
+        else:
+            pass
+        return render_to_response('first/login.html')
+    if req.method == "POST":
+        pass
+
 
 @csrf_exempt
 def score_rank(req):
     if req.method == "GET":
         currentpage = 1
+        dataperpage = 6
         scoreRank = models.Score.objects.all().order_by('Id')
-        page = Paginator(scoreRank, 6)
+        page = Paginator(scoreRank, dataperpage)
         scoreRank = page.page(currentpage).object_list
         return render_to_response('second/Score_rank.html', {'ScoreRank': scoreRank})
     if req.method == "POST":
         pass
 
+
 @csrf_exempt
-def score_user(req):
+def score_user(req, page):
     if req.method == "GET":
-        currentpage = 1
+        currentpage = int(page)
+        try:
+            record_per_page = int(req.COOKIES.get('record_per_page'))
+        except:
+            record_per_page = 6
         scoreUser = models.User.objects.all().order_by('Id')
-        page = Paginator(scoreUser, 6)
+        scoreUser_count = models.User.objects.count()
+        page = Paginator(scoreUser, record_per_page)
         scoreUser = page.page(currentpage).object_list
-        print scoreUser[1].Id
-        return render_to_response('second/Score_user.html', {'ScoreUser': scoreUser})
+        return render_to_response('second/User_score.html', {'ScoreUser': scoreUser, 'count': scoreUser_count})
     if req.method == "POST":
-        pass
+        result = {}
+        if req.session.get('account') == None:
+            result['message'] = '无权访问'
+            return HttpResponse(result['message'])
+        else:
+            try:
+                data = req.POST
+
+            except:
+                result['message'] = '获取数据异常'
+                return HttpResponse(result)
+            else:
+                if data['search']:
+                    return HttpResponse(data['search'])
+                else:
+                    return HttpResponse('Baddata')
+
+
 
 
 @csrf_exempt
@@ -121,7 +130,23 @@ def score_record(req):
         scoreChanges = page.page(currentpage).object_list
         return render_to_response('second/Score_record.html', {'ScoreChanges': scoreChanges})
     if req.method == "POST":
-        pass
+        result = {}
+        try:
+            id = req.POST['id']
+            confirmed = req.POST['confirm']
+            if confirmed:
+                try:
+                    user = models.User.objects.get(Id=id)
+                    user.delete()
+                except:
+                    result['message'] = '用户不存在'
+                    result["status"] = 0
+                    return HttpResponse(json.dumps(result))
+        except:
+            result['message'] = '服务器异常'
+            result["status"] = 0
+            return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def UserManager(req):

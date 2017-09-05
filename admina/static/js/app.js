@@ -215,7 +215,7 @@ var App = function () {
                         App.initUniform(); // initialize uniform elements
                     });
             });
-    }
+    };
 
     var _calculateFixedSidebarViewportHeight = function () {
         var sidebarHeight = $(window).height() - $('.header').height() + 1;
@@ -224,7 +224,7 @@ var App = function () {
         }
 
         return sidebarHeight; 
-    }
+    };
 
     var handleFixedSidebar = function () {
         var menu = $('.page-sidebar-menu');

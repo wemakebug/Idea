@@ -20,7 +20,7 @@ var Inbox = function () {
             App.fixContentHeight();
             App.initUniform();
         });
-    }
+    };
 
     var loadMessage = function (name, resetMenu) {
         var url = 'inbox_view.html';
@@ -55,13 +55,13 @@ var Inbox = function () {
                     'Support <support@demo.com>']
             }
         });
-    }
+    };
 
     var initWysihtml5 = function () {
         $('.inbox-wysihtml5').wysihtml5({
             "stylesheets": ["assets/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
         });
-    }
+    };
 
     var initFileupload = function () {
 
@@ -80,11 +80,11 @@ var Inbox = function () {
             }).fail(function () {
                 $('<span class="alert alert-error"/>')
                     .text('Upload server currently unavailable - ' +
-                    new Date())
+                        new Date())
                     .appendTo('#fileupload');
             });
         }
-    }
+    };
 
     var loadCompose = function () {
         var url = 'inbox_compose.html';
@@ -108,7 +108,7 @@ var Inbox = function () {
             App.fixContentHeight();
             App.initUniform();
         });
-    }
+    };
 
     var loadReply = function () {
         var url = 'inbox_reply.html';
@@ -133,7 +133,7 @@ var Inbox = function () {
             App.fixContentHeight();
             App.initUniform();
         });
-    }
+    };
 
     var loadSearchResults = function () {
         var url = 'inbox_search_result.html';
@@ -150,7 +150,7 @@ var Inbox = function () {
             App.fixContentHeight();
             App.initUniform();
         });
-    }
+    };
 
     var handleCCInput = function () {
         var the = $('.inbox-compose .mail-to .inbox-cc');
@@ -162,7 +162,7 @@ var Inbox = function () {
             input.hide();
             the.show();
         });
-    }
+    };
 
     var handleBCCInput = function () {
 
@@ -175,7 +175,7 @@ var Inbox = function () {
             input.hide();
             the.show();
         });
-    }
+    };
 
     return {
         //main function to initiate the module

@@ -1,48 +1,57 @@
 {% extends 'idea/Base.html' %}
+{% load static %}
 
 
 {%block title%}<title>项目</title>{%endblock%}
 
 {%block CSS%}
-
-<link rel="stylesheet" href="../static/idea/css/project.css">
+    <link rel="stylesheet" href="{% static 'project/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
 {%endblock%}
 
 {% block content %}
 
 {%for project in projects%}
-<div style="background-color:#FFF;height:300px;width:300px;margin-top:10px;margin-left:30px;border-style: solid; border-width: 5px 5px 5px 5px;">
-  <br>
-    项目名称：
-    {{project.ProjectName}}
-    <br>
-    项目描述：
-    {{project.Description}}
-    <br>
-    项目开始时间：
-    {{project.StartTime}}
-    <br>
-    人数：
-    {{project.Number}}
-    <br>
-    总结：
-    {{project.Summary}}
-    <br>
-    进度：
-    {{project.Progress}}
-    <br>
-    照片：
-    <img src="../../static/project/imgs/HeadImg.png" height="100" width="150" />
-    <img src="../photos/2017/07/19/project/wife.jpg ">
+<div class="bg_all">
+    <div class="bg_left">
+        <div class="project_top_1 project_top">
+
+            <a href="redetails.html">
+                <div class="project_top_1_left">
+
+                    <img src="{% static 'project/imgs/HeadImg.png'%}">
+
+                </div>
+                <div class="project_top_1_right">
+                    <h5>项目名称</h5>
+                    <p class="project_top_1_text">{{project.Description}}
+                    </p>
+                </div>
+            </a>
+            <div class="project_bottom_top">
+                <div class="project_bottom_left">
+                    <p class="FixText">项目名称：</p>
+                    <p class="FixText">招募人数：</p>
+                    <p class="FixText">招募状态：</p>
+                    <p class="FixText">时间:</p>
+                </div>
+                 <div class="project_bottom_right">
+                     <input  type="text"  value="{{project.Number}}" readonly="readonly" class="VariableText"/>
+                     <input id="Number"type="text"  value="{{project.Number}}" readonly="readonly" class="VariableText"/>
+                     <input type="text" id="State" value="{{project.Number}}" readonly="readonly" class="VariableText"/>
+                     <input type="text" id="UserName" value="{{project.StartTime}}" readonly="readonly" class="VariableText"/>
+                 </div>
+            </div>
+        </div>
+    </div>
 </div>
 {%endfor%}
 
 {% endblock %}
 
 
-
 {% block script %}
-
+{#<script>alert(project.Description)</script>#}
  <script type="text/javascript">
 
  </script>
