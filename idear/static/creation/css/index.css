@@ -1,4 +1,3 @@
-
 html,body{
 height:100%;
 margin:0px;
@@ -149,12 +148,16 @@ margin:0px;
       .comments{
         float:right;
         margin-right: 5px;
+
         margin-top: 10px;
+
       }
       .like{
         float:right;
         margin-right: 5px;
+
         margin-top: 10px;
+
       }
       .more{
         width:59%;

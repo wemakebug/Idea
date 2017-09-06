@@ -57,6 +57,7 @@ var Login = function () {
                     ,function (result) {
 						if (result.status === 1){
 							 $.cookie('account',result.account);
+							 var t = $.cookie('record_per_page', 6);
 							 window.location.href = 'login';
 						}
 						else if(result.status === 0){

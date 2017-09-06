@@ -127,10 +127,7 @@ def team(req):
 
 def teamdetails(req):
     if req.method == 'GET':
-        try:
             return render_to_response('team/teamdetails.html')
-        except:
-            return Http404
     if req.method == 'POST':
         pass
 

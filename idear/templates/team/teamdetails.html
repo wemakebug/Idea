@@ -4,11 +4,13 @@
    <title>团队详情</title>
 {%endblock%}
 {%block CSS%}
+{% load static %}
 <link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
 <link rel="stylesheet" href="{% static 'team/css/commentstyle.css'%}">
 <link rel="stylesheet" href="{% static 'team/css/comment.css'%}">
 {%endblock%}
 {%block content%}
+    {% load static %}
 <div class="teamdetail">
     <div class="teamdetailsynopsis">
         <div class="teamdetailsynopsis1-1"><strong>团队简介：</strong></div>
