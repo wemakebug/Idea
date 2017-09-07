@@ -12,9 +12,9 @@
 <div class="block">
     <div class="block-head">
        <a class="ava" href="#">
-        <img src="photos/{{creation.Img}}" style="width:35px;height:35px">
+        <img src="photos/{{creation.Img}}" style="width:50px;height:50px">
        </a>
-       <a class="name" style="margin-top:2%" href="#">
+       <a class="name" style="margin-top:5px" href="#">
            <span>{{creation.user}}</span>
        </a>
 <!--        <a class="follow" creation={{creation.Id}}>
@@ -36,8 +36,9 @@
         </a>
     </div>
     <div class="evaluate">
+        
         <a class="follow" creation={{creation.Id}}>
-              <img src="../static/creation/imgs/collection.png" style="width:18px;height:18px;">
+            <img src="../static/creation/imgs/collection.png" style="width:18px;height:18px;" class="followimg">
 
            {%for follow in follows%}
               {% if follow.user_id == userId and follow.creation_id == creation.Id %}
@@ -45,8 +46,9 @@
               {% endif %}
           {%endfor%}
 
-            <span>{{creation.Follow_Creation_set.count}}</span>
+            <span class="followspan">{{creation.Follow_Creation_set.count}}</span>
         </a>
+        
         <a class="comments" href="#">
             <img src="../static/creation/imgs/comments.png" style="width:18px;height:18px;">
             <span>{{creation.Comment_Creation_set.count}}</span>

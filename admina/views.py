@@ -31,8 +31,7 @@ def login(req):
         else:
             return render_to_response('second/User_detail.html')
     if req.method == "POST":
-        result = {
-        }
+        result = {}
         account = req.POST["account"].lower().strip()
         password = req.POST["password"]
 
@@ -103,21 +102,23 @@ def score_user(req, page):
         return render_to_response('second/User_score.html', {'ScoreUser': scoreUser, 'count': scoreUser_count})
     if req.method == "POST":
         result = {}
-        try:
-            id = req.POST['id']
-            confirmed = req.POST['confirm']
-            if confirmed:
-                try:
-                    user = models.User.objects.get(Id=id)
-                    user.delete()
-                except:
-                    result['message'] = '用户不存在'
-                    result["status"] = 0
-                    return HttpResponse(json.dumps(result))
-        except:
-            result['message'] = '服务器异常'
-            result["status"] = 0
-            return HttpResponse(json.dumps(result))
+        if req.session.get('account') == None:
+            result['message'] = '无权访问'
+            return HttpResponse(result['message'])
+        else:
+            try:
+                data = req.POST
+
+            except:
+                result['message'] = '获取数据异常'
+                return HttpResponse(result)
+            else:
+                if data['search']:
+                    return HttpResponse(data['search'])
+                else:
+                    return HttpResponse('Baddata')
+
+
 
 
 @csrf_exempt
