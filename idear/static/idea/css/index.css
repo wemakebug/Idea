@@ -21,7 +21,7 @@
 	}
 	.head{
 		width: 100%;
-		height: 76px;
+		height: 66px;
 		position:fixed;
         top:0px;
         _position:absolute;
@@ -36,22 +36,22 @@
 	}
 	.header{
 		width: 100%;
-		height:75px;
+		height:66px;
         background:#539092;
 	}
 	.logo{
 	    float:left;
-	    margin-left:10%;
-        width:10%;
-        height:75px;
+	    margin-left:9%;
+        width:8%;
+        height:65px;
         background-image: url('../imgs/idea_logo.png');
         background-size:100% 100%;
 	}
 	.nav{
 		float: left;
-		margin-left:4%;
+		margin-left:0%;
 		width: 30%;
-		height: 75px;
+		height: 65px;
 	}
 	.nav a{
 	    font-size:1rem;
@@ -60,12 +60,12 @@
 	}
 	.mainnav{
 	    float:left;
-	    width:20%;
+	    width:17%;
 	    /*max-width:109.98px;*/
 	    /*min-width:109.98px;*/
 	    height:100%;
 	    text-align:center;
-	    line-height:75px;
+	    line-height:65px;
 	    overflow:hidden;
 	}
 	.mainnav:hover{
@@ -74,12 +74,13 @@
 	.search1{
 		float:left;
 		width:30%;
-		/*margin-top:1.1%;*/
-		height:75px;
+		margin-left:5%;/*后加*/
+		height:66px;
 	}
     .searchbar{
         width:60%;
         height:100%;
+        margin-left: 45%;/*后加*/
     }
     .searchbar form {
         width: 80%;
@@ -90,7 +91,7 @@
     #search-left {
         width: 80%;
         height: 52%;
-        margin-top: 7.5%;
+        margin-top: 6.5%;
         padding-left: 15%;
         border-radius: 10px;
         border: 0.3px solid #54A4AF;
@@ -104,9 +105,9 @@
         width: 100%;
     }
     #search{
-        width:2.5%;
-        height:52%;
-         margin-top: 6.8%;
+        width:1.5%;
+        height:50%;
+         margin-top: 5.8%;
         background-image: url('../imgs/search.svg');
         background-size: 100% 100%;
         float:left;
@@ -120,21 +121,23 @@
 	    float: right;
 		width: 16%;
 		height: 100%;
+        margin-right: 0.6%;/*后加*/
 	}
 	.rlogin{
 	    width: 20%;
         height: 40%;
-        margin-top: 8%;
+        margin-top: 7.5%;
         background:#295E6A ;
         float: left;
         overflow: hidden;
         border-radius: 3px;
+
 	}
     .rlogin p{
         width:100%;
 	    height:100%;
         text-align: center;
-        line-height: 30px;
+        line-height: 25px;
         margin: 0 auto;
         font-size:1em;
 	    color:white;
@@ -142,7 +145,7 @@
 	.rregsiter {
         width: 20%;
         height: 40%;
-        margin-top: 8%;
+        margin-top: 7.5%;
         background: white;
         float: left;
         margin-left: 2%;
@@ -153,7 +156,7 @@
         width:100%;
 	    height:100%;
         text-align: center;
-        line-height: 30px;
+        line-height: 25px;
         margin: 0 auto;
         font-size:1em;
 	    color:#295E6A;
@@ -162,11 +165,13 @@
         float: right;
 		width: 16%;
 		height: 100%;
+        margin-right: 0.6%;/*后加*/
+        display:none;
     }
     .user_figure{
-        width: 22.1%;
-        height: 90%;
-        margin-top: 1%;
+        width: 16%;
+        height: 73%;
+        margin-top: 3%;
         /*background-images:url();*/
         float: left;
         overflow: hidden;
@@ -178,27 +183,24 @@
         width: 20%;
         height: 40%;
         margin-top: 8%;
-        background: #CCCCCC;
+        background: #295E6A;
         float: left;
-        margin-left: 2%;
-        overflow: hidden;
+        margin-left: 5%;
+        /*overflow: hidden;*/
         border-radius: 3px;
-        border: none;
+        /*border: none;
         outline: none;
-        cursor: pointer;
+        cursor: pointer;*/
     }
     .login_out p{
         width:100%;
 	    height:100%;
         text-align: center;
-        line-height: 30px;
+        line-height: 27px;
         margin: 0 auto;
         font-size:1em;
-	    color:#295E6A;
+	    color:white;
     }
-
-
-
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
@@ -212,13 +214,14 @@
 	.middle{
 		width:100%;
 		height:2500px;
-		margin-top:76px;
-        background:#F1F1F1;
+		margin-top:44px;
+        background:#F0F0F0;
+
 	}
 	.content{
-	    width:60%;
+	    width:80%;
 	    height:2500px;
-	    margin-left:20%;
+	    margin-left:10%;
 	    background:#FFFFFF;
 	}
 	.top-content{
@@ -233,18 +236,18 @@
 	}
 	.top-name{
 	    width:100%;
-	    height:20%;
+	    height:13%;
 	    margin-top:8%;
 	}
 	.top-name p{
 	    width:100%;
-	    height:10px;
+	    height:11px;
 	    color:#7A8B8B;
 	    text-shadow: 0 1px 1px #123;
 	}
 	.content-information{
 	    width:100%;
-	    height:58%;
+	    height:59%;
 	}
 	.introduce{
 	    width:60%;
@@ -258,7 +261,7 @@
     .decoration{
         width:100%;
         height:20%;
-        margin-top:8%;
+        margin-top:4%;
     }
     .decoration div {
         height: 10px;
@@ -392,10 +395,10 @@
         margin-top:22%;
     }
     #picture{
-        width:8.5%;
+        width:6.5%;
         height:25%;
         float:left;
-        margin-left:10%;
+        margin-left:5%;
         margin-top:10%;
     }
     .picture-1{
@@ -461,7 +464,7 @@
     #gotop{
         display:block;
         width:40px;
-        height:50px;
+        height:45px;
         position:fixed;
         bottom:50px;
         right:40px;
@@ -477,20 +480,55 @@
         background:#F1F1F1;
         padding:10px 0 ;
         text-align: center;
+        line-height:45px;
 	}
-	.footer ul li{
-		display: inline-block;
+    .container{
+        width:25%;
+        height:100%;
+        float: left;
+        margin-left: 23%;
+
     }
-    .footer ul li a{
+	.container ul li{
+		display: inline-block;
+
+    }
+    .container ul li a{
         display: inline-block;
         text-decoration:none;
-        color:#000 ;
+        color:gray;
         font-size: 0.85em;
         margin: 0px 30px 0px 0;
     }
-    .footer p{
-        font-size:0.8em;
-    }
-    .footer ul li a:hover{
+     .container ul li a:hover{
         color:#539092;
     }
+    .main_logo{
+        width:8%;
+        height:100%;
+        float: left;
+    }
+    .main_logo_graph{
+        width:38%;
+        height:80%;
+        margin-left: 31%;
+        margin-top: 2%;
+        overflow: hidden;
+        border-radius: 60px;
+        border: 1px solid #ccc;
+    }
+    .right_sentence{
+        width:20%;
+        height:100%;
+        float: left;
+    }
+    .right_sentence p{
+        font-size:0.8em;
+        color:gray;
+    }
+    /*.actived {
+        background: #539092;
+    }
+    .noactive {
+        background:#295E6A;
+    }*/
