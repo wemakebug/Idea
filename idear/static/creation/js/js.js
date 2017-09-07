@@ -25,14 +25,24 @@ userId = $.cookie("user")
 		
 $(".follow").click(function(){
    Id = $(this).attr("creation")
+   follow = $(this)
+
+
+
+
    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
     if(data == 1)
-    	alert("感谢关注")
+        {
+          follow.children().attr("src","../static/creation/imgs/collections.png")
+          follow.children(".followspan").html(parseInt(follow.children(".followspan").html())+1)
+      }
     else if(data == 0)
     	alert("操作失败")
     else
-      alert("取消关注")
-    location.reload()
+      {
+        follow.children().attr("src","../static/creation/imgs/collection.png")
+        follow.children(".followspan").html(parseInt(follow.children(".followspan").html())-1)
+      }
 
 })
 

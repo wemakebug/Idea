@@ -5,9 +5,9 @@
 		width:100%;
 	}
 	body{
+
 	    min-width:1200px;
         max-width:2000px;
-
         overflow-x: hidden;
         /*background-position:center 0;
         background-repeat:repeat-x;*/
@@ -261,7 +261,7 @@
     .decoration{
         width:100%;
         height:20%;
-        margin-top:4%;
+        margin-top:5.5%;
     }
     .decoration div {
         height: 10px;
@@ -269,25 +269,24 @@
 	.main-content{
 	    width:100%;
 	    height:79.9%;
-	    box-shadow:0 1px 5px 1px #ccc;
         border:1px solid #FFFFFF;
+        box-shadow:0px 1px 5px 1px #ccc;
+
 	}
     .main-box{
         width:90%;
         height:20%;
-        /*border:1px solid #FFFFFF;*/
+        border:1px solid #FFFFFF;
     }
      .box-one-left h2{
 		line-height: 1;
 		font-weight: lighter;
-		/*color: rgb(51, 51, 51);*/
 		letter-spacing: 3px;
 		font-size:2.3em;
 		font-family:JosefinSans-Light;
 	}
 	small {
 		font-size: 50%;
-		/*font-family:;*/
 	}
     .box-one-left{
         width:100%;
@@ -295,7 +294,7 @@
     }
     .usage{
         width:100%;
-        height:80%;
+    height:80%;
     }
     .usage_one{
         width:21%;
@@ -333,7 +332,14 @@
     }
      .usage_details{
         width:100%;
-        /*height:%;*/
+        height:13%;
+        background-image: url('../imgs/team.png');
+        background-size:100% 100%;
+        margin-top:20%;
+    }
+     .usage_details{
+        width:100%;
+        height:50%;
         border:1px solid #FFFFFF;
         margin-top:5%;
     }

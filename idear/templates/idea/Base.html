@@ -4,7 +4,6 @@
     {% load static %}f
 	{%block title%} {%endblock%}
 	<link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
-
 	{%block CSS%}{%endblock%}
     <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js'%}"></script>
@@ -77,11 +76,6 @@
 {%block script%}
 
 {%endblock%}
-{% comment %}<script>
-            $('.mainnav').click(function () {
-                var f = this;
-                $('.mainnav').each(function () {  this.className = this == f ? 'actived' : 'noactive'   });
-            });
-    </script>{% endcomment %}
+
 </body>
 </html>
