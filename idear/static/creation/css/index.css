@@ -11,42 +11,77 @@ margin:0px;
       margin-top:76px;
       background-color:#f1f1f1;
     }
-
     .home{
-      width:62.5%;
-      margin-left: 11%;
-      margin-top: 0.5%;
+    width:1400px;
+    height:auto;
+    }
+    .home-left{
+      width:75%;
       float:left;
     }
     .home-right{
-    width:15%;
+    width:20%;
     float:right;
-    margin-top:1.5%;
-    margin-right:11%
+    margin-right:2.5%;
     }
     .intro{
       width:100%;
-      height:240px;
+      height:250px;
       float:right;
-      margin-right: 11%;
-      margin-top: 2%;
+      margin-top: 30px;
       background-color:#8bcfcc;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
       box-shadow: 2px 2px 2px 2px #bdc3c7;
-      text-align: center;
       opacity:0.8;
     }
     .tag{
-      width:60%;
-      height:400px;
+      width: 100%;
+      height:auto;
       float:right;
-      margin-right:50%;
-      margin-top:10%;
-      text-align: center;
     }
+    .tag hr{
+    border: 0;
+    border-top: 1px solid #c0c5cd;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    position: relative;
+}
+    .tag hr:before{
+     content: '';
+    width: 60px;
+    height: 4px;
+    background-color: #79d1c3;
+    position: absolute;
+    bottom: 0;
+}
+
+
+.tag a{
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.tag span{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+ .allsign{
+   border: 1px solid #c0c5cd;
+   background-color: #eeeeee;
+   border-radius: 5px;
+   padding: 6px 15px;
+   color: #a9b1b5;
+}
+
+.allsign:hover{
+     color: #fff;
+     background-color: #79d1c3;
+}
+
     .intro p{
     width:86%;
     float:left;
@@ -55,11 +90,11 @@ margin:0px;
     }
     .block{
       display:none;
-      width:22%;
-      height:300px;
+      width:29%;
+      height:330px;
       float:left;
-      margin-top: 2%;
-      margin-left:2%;
+      margin-top: 30px;
+      margin-left:3.2%;
       margin-bottom:0.5%;
       background-color:white;
       box-shadow: 2px 2px 2px 2px #bdc3c7;
@@ -69,18 +104,17 @@ margin:0px;
     .block-head{
       width:100%;
       height:18%;
-      border-bottom:1px solid #eae7ed
     }
       .ava{
         float: left;
-        padding: 0 10px 5px 5px;
+        padding: 10px 10px 5px 30px;
       }
       .ava span{
       margin-top:2%;
       }
       .name{
         float:left;
-        width:75px;
+        width:100px;
         height:20px;
       }
       a{
@@ -92,9 +126,15 @@ margin:0px;
         float: left;
         font-size: 22px;
         font-family: 宋体;
-        margin: 15px 2% 10px 2%;
-        width: 96%;
+        margin: 30px 0 10px;
         text-align: center;
+        width: 100%;
+       }
+       .block-hot{
+       width:100px;
+       height:80px;
+       float:left;
+       margin-left:70px;
        }
       .usedfollow{
         float:right;
@@ -109,14 +149,20 @@ margin:0px;
         border-bottom-right-radius: 3px;
       }
       .level{
-        width: 75px;
-        height: 20px;
-        margin-top: 6px;
-        margin-left: 60px;
-
-
+        width: 70px;
+        height: 18px;
+        margin: 0 28px;
+        float:left;
+        background: #2994b2 ;
+        color: #fff;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 1px 1px 1px 1px #777777;
       }
-
+    .level span{
+    font-size:12px;}
     .abstract{
       width:100%;
       height:68%;
@@ -127,7 +173,7 @@ margin:0px;
 
       .text-x{
          float:left;
-         margin:5px 25px 0 25px;
+         margin:0 30px;
          width: 80%;
          height: 107px;
          display: -webkit-box;
@@ -135,28 +181,15 @@ margin:0px;
          -webkit-line-clamp: 5;
          overflow: hidden;
       }
-    .evaluate{
-      width:100%;
-      height:14%;
-      border-top:1px solid #eae7ed;
-    }
+
       .follow{
         float:right;
         margin-right: 5px;
-        margin-top: 10px;
       }
-      .comments{
-        float:right;
-        margin-right: 5px;
 
-        margin-top: 10px;
-
-      }
       .like{
         float:right;
         margin-right: 5px;
-
-        margin-top: 10px;
 
       }
       .more{
@@ -174,13 +207,12 @@ margin:0px;
 
       .add{
        float:left;
-       margin-top:12%;
-       margin-left:10%;
+       margin-left:180px;
        background-color: #11999e;
        color: #eeeeee;
        border:none;
-       width:80px;
-       height:35px;
+       width:70px;
+       height:33px;
        border-top-left-radius: 3px;
        border-top-right-radius: 3px;
        border-bottom-left-radius: 3px;
