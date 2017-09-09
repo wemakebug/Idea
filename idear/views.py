@@ -2,9 +2,12 @@
 from __future__ import unicode_literals
 import json
 from django.shortcuts import render,HttpResponse,Http404,render_to_response,HttpResponseRedirect
+from django.db.models import Q
 from admina import models
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 import uuid
+import re,base64
+from idear.Idea_util.ImgVerification import generate_verify_image
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
@@ -39,11 +42,14 @@ def index(req):
         return render_to_response('idea/index.html')
     if req.method == "POST":
         pass
-'''
-登陆页面
-'''
+
 @csrf_exempt
 def login(req):
+    '''
+    登陆界面的处理
+    :param req: 
+    :return: 
+    '''
     if req.method == "GET":
         return render_to_response('idea/login.html')
     if req.method == "POST":
@@ -54,13 +60,13 @@ def login(req):
         result['UUID'] = None
         email = req.POST['email']
         password = req.POST['password']
-        if email in models.User.objects.all().values('Email'):
+        if models.User.objects.filter(Q(Email=email)):
             user = models.User.objects.get(Email=email)
-            user.Uuid = uuid.uuid1()
             if user.PassWord == password:
+                user.Uuid = uuid.uuid1()
                 result['status'] = 1
                 result['username'] = user.UserName
-                result['UUID'] = user.Uuid
+                req.session['uuid'] = user.Uuid
                 result['message'] = '登陆成功'
                 return HttpResponse(json.dumps(result))
             elif user.PassWord != password:
@@ -74,50 +80,82 @@ def login(req):
 
 
 
-'''
-注册页面
-'''
+def varidate_char(str, max_length=20):
+    '''
+    非法字符验证
+    :param sql: 
+    :param max_length: 
+    :return: False  表示字符串中含有非法字符    True 表示字符串中不含有非法字符
+    '''
+    if len(str) > max_length:
+        return False
+    dirty_stuff = ["\"", "\\", "/", "*", "'", "=", "-", "#", ";", "<", ">", "+", "%", "$", "(", ")", "%", "@","!"]
+    for char in str:
+        if char in dirty_stuff:
+            return False
+    return True
+
+def varidate_emial(str,max_length=20):
+    if len(str) > max_length:
+        return False
+    if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", str) != None:
+        return True
+    else:
+        return False
+
 @csrf_exempt
 def regist(req):
+    '''
+    注册页面
+    :param req: 
+    :return: 在客户端留下username 和 email 的cookie 以及uuid session
+    '''
     if req.method == 'GET':
         return render_to_response('idea/regist.html')
     if req.method == "POST":
-        result = {}
-        username = req.POST['name']
-        email = req.POST['email']
-        password = req.POST['password']
-        if models.User.objects.filter(Email=email):
+        result = {
+            'message': None,
+            'status': 0,
+            'username': None,
+            'account': None,
+            'uuid': None
+        }
+        username = req.POST['UserName']
+        email = req.POST['Email']
+        password = req.POST['Passwd']
+        print('well')
+        if not (varidate_char(username) and varidate_emial(email)):
+            result['message'] = '输入非法字符'
+            result['status'] = 0
+            return HttpResponse(json.dumps(result))
+        elif models.User.objects.filter(Email=email):
             result['status'] = 0
             result['message'] = '邮箱已经被注册'
-            print '邮箱已经被注册'
             return HttpResponse(json.dumps(result))
-
         elif models.User.objects.filter(UserName=username):
             result['status'] = 0
             result['message'] = '姓名已被注册'
-            print '姓名已被注册'
             return HttpResponse(json.dumps(result))
         else:
             try:
                 models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid1())
                 user = models.User.objects.get(Email=email)
+                req.session['uuid'] = user.Uuid
                 result['username'] = username
-                result['UUID'] = str(user.Uuid)
+                result['account'] = email
                 result['message'] = '注册成功，正在调转'
                 result['status'] = 1
-                print '注册成功，正在调转'
                 return HttpResponse(json.dumps(result))
             except:
-                result = {
-                    "message": '服务器状态异常',
-                    "status": 0
-                }
+                result['status'] = 0
+                result['message'] = '服务器异常'
                 return HttpResponse(json.dumps(result))
 
-'''
-团队页面
-'''
+
 def team(req):
+    '''
+    团队页面
+    '''
     if req.method == 'GET':
         teams = models.User.objects.all().filter(Identity=2)
 
@@ -139,7 +177,9 @@ def teamhelpapplication(req):
 # 忘记密码
 def forgetPassword(req):
     if req.method == 'GET':
-        return render_to_response('idea/forgetPassword.html')
+        stream, strs = generate_verify_image(save_img=False)
+        stream = base64.b64encode(stream.getvalue()).encode('ascii')
+        return render_to_response('idea/forgetPassword.html',{'img': stream})
 
 '''
 创意页面

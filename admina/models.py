@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
 from django.contrib import admin
 import uuid
@@ -80,7 +79,7 @@ class ProjectLabel(models.Model):
     IsUse = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return unicode(self.ProjectLabelName)
+        return unicode_literals(self.ProjectLabelName)
 
 class Project2ProjectLabel(models.Model):
     '''
@@ -144,7 +143,7 @@ class Creation2ProjectLabel(models.Model):
     projectLabel = models.ForeignKey(ProjectLabel, related_name='Creation2ProjectLabel_ProjectLabel_set', null=False)
 
     def __unicode__(self):
-        return unicode(self.projectLabel)
+        return self.projectLabel
 
 
 class Recruit(models.Model):
@@ -171,7 +170,7 @@ class Praise(models.Model):
     project = models.ForeignKey(Project, related_name='Praise_Project_set', null=True, blank=True)
 
     def __unicode__(self):
-        return unicode(self.Id)
+        return self.Id
 
 class Apply(models.Model):
     '''
@@ -213,7 +212,7 @@ class Comment(models.Model):
     IsAdopt = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return unicode(self.user)
+        return self.user
 
 class Follow(models.Model):
     '''
@@ -227,7 +226,7 @@ class Follow(models.Model):
 
 
     def __unicode__(self):
-        return unicode(self.user)
+        return self.user
 
 class Report(models.Model):
     '''
