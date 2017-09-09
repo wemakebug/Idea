@@ -15,6 +15,7 @@ $(document).ready(function () {
             $(this).parents("tr").children("td").eq(4).text('团队');
         }
     });
+
 });
 
 //分页处理

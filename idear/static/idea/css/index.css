@@ -5,13 +5,14 @@
 		width:100%;
 
 	}
-
+    *{
+        margin:0 ;
+		padding:0;
+    }
 	body{
-
 	    min-width:1500px;
         max-width:2000px;
         overflow-x: hidden;
-
 	}
 	a{
 	    color:black;
@@ -24,14 +25,12 @@
 		width: 100%;
 		height: 66px;
 		position:fixed;
-        top:0px;
         _position:absolute;
-        /*_top:expression(documentElement.scrollTop + "px");*/
         z-index:9999;
+        top:0px;
         text-align:left;
         min-width:1500px;
         max-width:2000px;
-
 	}
 	.header{
 		width: 100%;
@@ -64,37 +63,33 @@
     .nav ul li{
         width:17%;
         height:100%;
-    }
-	.mainnav{
-	    float:left;
-	    width:17%;
-	    height:100%;
-	    text-align:center;
+        float:left;
+        text-align:center;
 	    line-height:65px;
 	    overflow:hidden;
-	}
-	.mainnav:hover{
+    }
+	.nav ul li:hover{
         background:#295E6A;
 	}
 	.search1{
 		float:left;
 		width:30%;
-		margin-left:5%;/*后加*/
+		margin-left:6%;/*后加*/
 		height:66px;
+
 	}
     .searchbar{
         width:60%;
         height:100%;
-        margin-left: 45%;/*后加*/
-
+        margin-left: 40%;/*后加*/
     }
     .searchbar form {
         width: 80%;
         height:100%;
         float: left;
-        margin-left: 10%;
-
+        margin-left: 12%;
     }
+
     #search-left {
         width: 80%;
         height: 52%;
@@ -108,20 +103,19 @@
         float:right;
         font-size:0.8em;
 
-
     }
     #search-left:focus {
         width: 100%;
     }
     #search{
-        width:1.5%;
+        width:3.5%;
         height:50%;
         margin-top: 5.8%;
         background-image: url('../imgs/search.svg');
         background-size: 100% 100%;
         float:left;
         position: relative;
-        left:-8%;
+        left:-7%;
         background-color:transparent;
         border:none;
         outline:none;
@@ -178,14 +172,15 @@
         /*display:none;*/
     }
     .user_figure{
-        width: 16%;
-        height: 73%;
-        margin-top: 3%;
+        width: 14%;
+        height: 65%;
+        margin-top: 4%;
         /*background-images:url();*/
         float: left;
         overflow: hidden;
         border-radius: 60px;
         border: 1px solid #ccc;
+        margin-left:2.5%;
     }
 
     .login_out{
@@ -223,7 +218,7 @@
 	.middle{
 		width:100%;
 		height:2500px;
-		margin-top:44px;
+		margin-top:65px;
         background:#F0F0F0;
          /*margin:0px;*/
 
@@ -251,16 +246,17 @@
 	}
 	.top-name p{
 	    width:100%;
-	    height:11px;
+	    height:27px;
 	    color:#7A8B8B;
 	    text-shadow: 0 1px 1px #123;
 	}
 	.content-information{
 	    width:100%;
-	    height:59%;
+	    height:62%;
 	}
 	.introduce{
-	    width:60%;
+	    width:100%;
+        height:85%;
 	    /*height:80%；*/
 	}
 	.introduce p{
@@ -271,7 +267,7 @@
     .decoration{
         width:100%;
         height:20%;
-        margin-top:5.5%;
+        /*margin-top:5.5%;*/
     }
     .decoration div {
         height: 10px;
@@ -489,16 +485,21 @@
         width:100%;
         height:70px;
         background:#F1F1F1;
-        padding:10px 0 ;
+        padding:10px 0;
         text-align: center;
-        line-height:45px;
+        line-height:70px;
 	}
     .container{
         width:25%;
         height:100%;
         float: left;
-        margin-left: 23%;
-
+        margin-left: 21%;
+        display:block;
+    }
+    .container ul{
+        width: 100%;
+        height:100%;
+        display: block;
     }
 	.container ul li{
 		display: inline-block;
@@ -520,10 +521,10 @@
         float: left;
     }
     .main_logo_graph{
-        width:38%;
-        height:80%;
+        width:30%;
+        height:65%;
         margin-left: 31%;
-        margin-top: 2%;
+        margin-top: 10%;
         overflow: hidden;
         border-radius: 60px;
         border: 1px solid #ccc;
