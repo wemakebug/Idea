@@ -3,20 +3,20 @@
 	width:100%;
 	/*height:100%;*/
 	font-family: kaiti;
-    background-color: rgba(127,255,212,0.2);
-	background:linear-gradient(to bottom, rgba(99,184,255,0.2)0%,rgba(127,255,212,0.2)100%);
+    background-color: rgba(205, 201, 201,0.1);
+	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
 }
-.teamdetailfilter {
-	width:100%;
-	height:auto;
-	position:relative;
-	top:76px;
-	left:0;
-	background-color: rgba(99,184,255,0.2);
-	animation:colorChange 30s ease-in-out infinite;
-	animation-fill-mode:both;
-	mix-blend-mode:overlay;
-}
+/*.teamdetailfilter {*/
+	/*width:100%;*/
+	/*height:auto;*/
+	/*position:relative;*/
+	/*top:76px;*/
+	/*left:0;*/
+	/*background-color: rgba(99,184,255,0.2);*/
+	/*animation:colorChange 30s ease-in-out infinite;*/
+	/*animation-fill-mode:both;*/
+	/*mix-blend-mode:overlay;*/
+/*}*/
 @keyframes colorChange {
 	0%,100% {
 	opacity:0;
@@ -25,20 +25,20 @@
 	opacity:.9;
 }
 }
-.teamdetaillandscape{
-	position:relative;
-	bottom:0px;
-	left:0;
-	width:100%;
-	height:auto;
-}
+/*.teamdetaillandscape{*/
+	/*position:relative;*/
+	/*bottom:0px;*/
+	/*left:0;*/
+	/*width:100%;*/
+	/*height:auto;*/
+/*}*/
 .teamdetailsynopsis{
 	width: 80%;
 	height:230px;
 	/*background-color: rgba(127,255,212,0.1);*/
-	-webkit-box-shadow: -10px 0px 10px rgba(30,144,255,0.1),10px 0px 10px rgba(30,144,255,0.1),0px 10px 10px rgba(30,144,255,0.1);
-    -moz-box-shadow: -10px 0px 10px rgba(30,144,255,0.1),10px 0px 10px rgba(30,144,255,0.1),0px 10px 10px rgba(30,144,255,0.1);
-    box-shadow: -10px 0px 10px rgba(30,144,255,0.1),10px 0px 10px rgba(30,144,255,0.1),0px 10px 10px rgba(30,144,255,0.1);
+	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
+    -moz-box-shadow:-10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
+    box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
 	border-radius: 10px;
 	padding: 5px;
 	/*position: relative;*/
@@ -97,9 +97,9 @@
 .details{
 	width: 80%;
 	height:230px;
-	-webkit-box-shadow: -10px 0px 10px rgba(30,144,255,0.1),10px 0px 10px rgba(30,144,255,0.1),0px 10px 10px rgba(30,144,255,0.1);
-    -moz-box-shadow: -10px 0px 10px rgba(30,144,255,0.1),10px 0px 10px rgba(30,144,255,0.1),0px 10px 10px rgba(30,144,255,0.1);
-    box-shadow: -10px 0px 10px rgba(30,144,255,0.1),10px 0px 10px rgba(30,144,255,0.1),0px 10px 10px rgba(30,144,255,0.1);
+	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
+    -moz-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
+    box-shadow:-10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
 	border-radius: 10px;
 	padding: 5px;
 	margin-top: 30px;
