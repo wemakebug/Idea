@@ -3,19 +3,15 @@
 		margin:0 auto;
 		padding:0;
 		width:100%;
+
 	}
+
 	body{
 
-	    min-width:1200px;
-	    F-width:1400px;
-	    min-width:1200px;
-
-	    min-width:1200px;
-
+	    min-width:1500px;
         max-width:2000px;
         overflow-x: hidden;
-        /*background-position:center 0;
-        background-repeat:repeat-x;*/
+
 	}
 	a{
 	    color:black;
@@ -26,54 +22,55 @@
 	}
 	.head{
 		width: 100%;
-		height: 76px;
+		height: 66px;
 		position:fixed;
         top:0px;
         _position:absolute;
         /*_top:expression(documentElement.scrollTop + "px");*/
         z-index:9999;
         text-align:left;
-        min-width:1200px;
+        min-width:1500px;
         max-width:2000px;
-/*
-        width:expression_r( Math.max(1200, Math.min(2000, document.body.offsetWidth*0.99))+"px" );
-*/
+
 	}
 	.header{
 		width: 100%;
-		height:75px;
+		height:66px;
         background:#539092;
 	}
 	.logo{
 	    float:left;
-	    margin-left:10%;
-        width:10%;
-        height:75px;
+	    margin-left:9%;
+        width:8%;
+        height:65px;
         background-image: url('../imgs/idea_logo.png');
         background-size:100% 100%;
 	}
 	.nav{
 		float: left;
-		margin-left:4%;
 		width: 30%;
-		height: 75px;
+		height: 100%;
 	}
 	.nav a{
 	    font-size:1rem;
 	    color:white;
         display:block;
 	}
+    .nav ul{
+        width:100%;
+        height:100%;
+        margin:0px;
+    }
+    .nav ul li{
+        width:17%;
+        height:100%;
+    }
 	.mainnav{
 	    float:left;
-	    width:20%;
-
 	    width:17%;
-
-	    /*max-width:109.98px;*/
-	    /*min-width:109.98px;*/
 	    height:100%;
 	    text-align:center;
-	    line-height:75px;
+	    line-height:65px;
 	    overflow:hidden;
 	}
 	.mainnav:hover{
@@ -82,23 +79,26 @@
 	.search1{
 		float:left;
 		width:30%;
-		/*margin-top:1.1%;*/
-		height:75px;
+		margin-left:5%;/*后加*/
+		height:66px;
 	}
     .searchbar{
         width:60%;
         height:100%;
+        margin-left: 45%;/*后加*/
+
     }
     .searchbar form {
         width: 80%;
         height:100%;
         float: left;
         margin-left: 10%;
+
     }
     #search-left {
         width: 80%;
         height: 52%;
-        margin-top: 7.5%;
+        margin-top: 6.5%;
         padding-left: 15%;
         border-radius: 10px;
         border: 0.3px solid #54A4AF;
@@ -107,14 +107,16 @@
         transition: .3s linear;
         float:right;
         font-size:0.8em;
+
+
     }
     #search-left:focus {
         width: 100%;
     }
     #search{
-        width:2.5%;
-        height:52%;
-         margin-top: 6.8%;
+        width:1.5%;
+        height:50%;
+        margin-top: 5.8%;
         background-image: url('../imgs/search.svg');
         background-size: 100% 100%;
         float:left;
@@ -128,21 +130,23 @@
 	    float: right;
 		width: 16%;
 		height: 100%;
+        margin-right: 0.6%;/*后加*/
 	}
 	.rlogin{
 	    width: 20%;
         height: 40%;
-        margin-top: 8%;
+        margin-top: 7.5%;
         background:#295E6A ;
         float: left;
         overflow: hidden;
         border-radius: 3px;
+
 	}
     .rlogin p{
         width:100%;
 	    height:100%;
         text-align: center;
-        line-height: 30px;
+        line-height: 25px;
         margin: 0 auto;
         font-size:1em;
 	    color:white;
@@ -150,7 +154,7 @@
 	.rregsiter {
         width: 20%;
         height: 40%;
-        margin-top: 8%;
+        margin-top: 7.5%;
         background: white;
         float: left;
         margin-left: 2%;
@@ -161,7 +165,7 @@
         width:100%;
 	    height:100%;
         text-align: center;
-        line-height: 30px;
+        line-height: 25px;
         margin: 0 auto;
         font-size:1em;
 	    color:#295E6A;
@@ -170,11 +174,13 @@
         float: right;
 		width: 16%;
 		height: 100%;
+        margin-right: 0.6%;/*后加*/
+        /*display:none;*/
     }
     .user_figure{
-        width: 22.1%;
-        height: 90%;
-        margin-top: 1%;
+        width: 16%;
+        height: 73%;
+        margin-top: 3%;
         /*background-images:url();*/
         float: left;
         overflow: hidden;
@@ -186,45 +192,24 @@
         width: 20%;
         height: 40%;
         margin-top: 8%;
-        background: #CCCCCC;
+        background: #295E6A;
         float: left;
-        margin-left: 2%;
-        overflow: hidden;
+        margin-left: 5%;
+        /*overflow: hidden;*/
         border-radius: 3px;
-        border: none;
+        /*border: none;
         outline: none;
-        cursor: pointer;
+        cursor: pointer;*/
     }
     .login_out p{
         width:100%;
 	    height:100%;
         text-align: center;
-        line-height: 30px;
+        line-height: 27px;
         margin: 0 auto;
         font-size:1em;
-	    color:#295E6A;
+	    color:white;
     }
-
-
-
-
-	.rlogin{
-	    width:20%;
-	    height:100%;
-        background:#295E6A;
-	    float:left;
-	    overflow:hidden;
-	}
-	.rregsiter{
-	    width:20%;
-	    height:100%;
-	    float:left;
-	    margin-left:1%;
-	    background:#295E6A;
-	    overflow:hidden;
-	}
-
-
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
@@ -238,13 +223,15 @@
 	.middle{
 		width:100%;
 		height:2500px;
-		margin-top:76px;
-        background:#F1F1F1;
+		margin-top:44px;
+        background:#F0F0F0;
+         /*margin:0px;*/
+
 	}
 	.content{
-	    width:60%;
+	    width:80%;
 	    height:2500px;
-	    margin-left:20%;
+	    margin-left:10%;
 	    background:#FFFFFF;
 	}
 	.top-content{
@@ -259,18 +246,18 @@
 	}
 	.top-name{
 	    width:100%;
-	    height:20%;
+	    height:13%;
 	    margin-top:8%;
 	}
 	.top-name p{
 	    width:100%;
-	    height:10px;
+	    height:11px;
 	    color:#7A8B8B;
 	    text-shadow: 0 1px 1px #123;
 	}
 	.content-information{
 	    width:100%;
-	    height:58%;
+	    height:59%;
 	}
 	.introduce{
 	    width:60%;
@@ -278,29 +265,13 @@
 	}
 	.introduce p{
 	    font-family:STLiti;
-
-
-	    font-size:1.2em
-
 	    font-size:1.2em;
-
-
-	    font-size:1.2em;
-
 	    color:#C1CDC1;
 	}
     .decoration{
         width:100%;
         height:20%;
-
-
-        margin-top:8%;
-
         margin-top:5.5%;
-
-
-        margin-top:8%;
-
     }
     .decoration div {
         height: 10px;
@@ -308,41 +279,25 @@
 	.main-content{
 	    width:100%;
 	    height:79.9%;
-
-
-	    box-shadow:0 1px 5px 1px #ccc;
         border:1px solid #FFFFFF;
-
-	    box-shadow:0px 1px 5px 1px #ccc;
-
-
-	    box-shadow:0 1px 5px 1px #ccc;
-        border:1px solid #FFFFFF;
+        box-shadow:0px 1px 5px 1px #ccc;
 
 	}
     .main-box{
         width:90%;
         height:20%;
-
-        /*border:1px solid #FFFFFF;*/
-
         border:1px solid #FFFFFF;
-
-
-        /*border:1px solid #FFFFFF;*/
-
+        margin-top:2%;
     }
      .box-one-left h2{
 		line-height: 1;
 		font-weight: lighter;
-		/*color: rgb(51, 51, 51);*/
 		letter-spacing: 3px;
 		font-size:2.3em;
 		font-family:JosefinSans-Light;
 	}
 	small {
 		font-size: 50%;
-		/*font-family:;*/
 	}
     .box-one-left{
         width:100%;
@@ -350,15 +305,7 @@
     }
     .usage{
         width:100%;
-
-
-        height:80%;
-
-        height:100%;
-
-
-        height:80%;
-
+    height:80%;
     }
     .usage_one{
         width:21%;
@@ -389,30 +336,15 @@
     }
     .usage_icon4{
         width:25%;
-
-
         height:15%;
         background-image: url('../imgs/team.png');
         background-size:100% 100%;
         margin-top:18%;
     }
-     .usage_details{
-        width:100%;
 
-        height:%;
-
-        height:13%;
-        background-image: url('../imgs/team.png');
-        background-size:100% 100%;
-        margin-top:20%;
-    }
      .usage_details{
         width:100%;
         height:50%;
-
-
-        /*height:%;*/
-
         border:1px solid #FFFFFF;
         margin-top:5%;
     }
@@ -429,15 +361,7 @@
     }
     .detail{
         width:80%;
-
-
         height:45%;
-
-        height:50%;
-
-
-        height:45%;
-
         border:1px solid #FFFFFF;
     }
     .detail p{
@@ -482,10 +406,10 @@
         margin-top:22%;
     }
     #picture{
-        width:8.5%;
+        width:6.5%;
         height:25%;
         float:left;
-        margin-left:10%;
+        margin-left:5%;
         margin-top:10%;
     }
     .picture-1{
@@ -551,7 +475,7 @@
     #gotop{
         display:block;
         width:40px;
-        height:50px;
+        height:45px;
         position:fixed;
         bottom:50px;
         right:40px;
@@ -567,20 +491,55 @@
         background:#F1F1F1;
         padding:10px 0 ;
         text-align: center;
+        line-height:45px;
 	}
-	.footer ul li{
-		display: inline-block;
+    .container{
+        width:25%;
+        height:100%;
+        float: left;
+        margin-left: 23%;
+
     }
-    .footer ul li a{
+	.container ul li{
+		display: inline-block;
+
+    }
+    .container ul li a{
         display: inline-block;
         text-decoration:none;
-        color:#000 ;
+        color:gray;
         font-size: 0.85em;
         margin: 0px 30px 0px 0;
     }
-    .footer p{
-        font-size:0.8em;
-    }
-    .footer ul li a:hover{
+     .container ul li a:hover{
         color:#539092;
     }
+    .main_logo{
+        width:8%;
+        height:100%;
+        float: left;
+    }
+    .main_logo_graph{
+        width:38%;
+        height:80%;
+        margin-left: 31%;
+        margin-top: 2%;
+        overflow: hidden;
+        border-radius: 60px;
+        border: 1px solid #ccc;
+    }
+    .right_sentence{
+        width:20%;
+        height:100%;
+        float: left;
+    }
+    .right_sentence p{
+        font-size:0.8em;
+        color:gray;
+    }
+    /*.actived {
+        background: #539092;
+    }
+    .noactive {
+        background:#295E6A;
+    }*/
