@@ -4,8 +4,8 @@ html{
 }
 .first {
 	position: relative;
-	font-family: kaiti;
-	margin: 76px 68px 0;
+	font-family: 宋体;
+	margin: 66px 68px 0;
 	width:90%;
 
 }
@@ -33,43 +33,40 @@ html{
  }
 
 .photo_0{
-	height: 180px;
-	width: 45%;
-	margin: 13px 4%;
+	height: 130px;
+	width: 35%;
+	margin: 13px 10%;
 	background-color:rgba(255, 255, 255, 0.6);
 	z-index: 99;
 
 }
 .intro_0{
-	float: left;
 	font-weight: bold;
-	font-size: 17px;
-	height: 180px;
-	width: 45%;
-	margin: -172px 52%;
+	font-size: 15px;
+	width: 85%;
+	margin: 30px 10% 0;
 	z-index: 99;
 }
 .content_0{
-	font-size: 15px;
+	font-size: 13px;
 	height: 150px;
-	width: 95%;
-	margin: 2% 1%;
+	width: 85%;
+	margin: 3px 2%;
 	z-index: 99;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 .referral{
-	 height: 128px;
-	 width: 100%;
-	margin: 230px 10% 0;
-	background-color:rgba(255, 255, 255, 1);
-	box-shadow: 0 5px 5px 0 rgba(211, 211, 211, 0.8);
+	float: left;
+	width: 50%;
+	margin: -140px 45% 0;
 }
 .referral_0{
 	font-weight: bold;
-	margin: 5px 5%;
+	margin: 15px 7%;
 }
+
 .broadSide{
 	float: right;
 	width: 23%;
@@ -89,12 +86,6 @@ html{
 	float: right;
     margin: 75px 154px;
     position: fixed;
-}
-.label-1{
-	height: 80px;
-    margin: 280px -42px;
-    width: 130px;
-	opacity:0.8;
 }
 .intro_1{
 	width: 62%;

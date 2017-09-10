@@ -11,17 +11,19 @@
         {% for team in teams %}
         <div class="second">
             <div class="border_0">
-                <div class="photo_0">
+                <div class="photo_0" href="">
                     <img src="{% static 'team/imgs/team.jpg'%}"
-                         style="width: 100% ;height: 100%" alt="">
+                         style="width: 100% ;height: 100%"  alt="">
                 </div>
-                <div class="intro_0">简介：
-                    <div class="content_0">
-                        {{ team.Introduction }}
-                    </div>
+                <div class="referral">
+                    <div class="referral_0">{{ team.UserName }}</div>
+                    <div class="referral_0"style="font-size: 13px;">团队分类：</div>
+                    <p>{{ UserLabel.Name }}</p>
                 </div>
-                <div class="referral_0">团队名称： {{ team.UserName }}</div>
-                <div class="referral_0">团队标签：{{ UserLabel.Name }}</div>
+                <p class="intro_0">简介：</p>
+                <div class="content_0">
+                       &nbsp;&nbsp; {{ team.Introduction }}
+                </div>
             </div>
 
         </div>
@@ -36,7 +38,6 @@
             <button class="add">添加创意</button>
         </div>
         <div class="classify">
-            <img src="../../static/team/imgs/label.png"  class="label-1" alt="">
         </div>
     </div>
 {% endblock %}
