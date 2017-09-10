@@ -25,7 +25,6 @@ def label_project(req):
         projectlabel = models.ProjectLabel.objects.all().order_by('Id')
         page = Paginator(projectlabel, 6)
         projectLabel = page.page(currentpage).object_list
-        print projectLabel
         return render_to_response('second/Label_Project.html', {'ProjectLabel ': projectLabel})
     if req.method == "POST":
         pass

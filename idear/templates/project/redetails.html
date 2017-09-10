@@ -6,7 +6,6 @@
 {%block CSS%}
 
 
-
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css'%}">
     <link rel="stylesheet" href="{% static 'project/css/font/css/font-awesome.min.css'%}">
@@ -21,12 +20,13 @@
               <div class="main-left">
                   <div class="content-top">
                    <!--此处为项目名称-->
-
+                      {#此处应为for循环           #}
                       <div class="tags"><span>标签</span></div>
                       <div class="tags"><span>标签</span></div>
                       <div class="tags"><span>标签</span></div>
-                      <div class="pimg"><img src=""> </div>
-                      <div class="title">项目名称项目名称</div>
+                     {# 项目logo #}
+                      <div class="plogo">  </div>
+                      <div class="title"><h5>项目名称项目名称</h5></div>
 
                   </div>
 
@@ -42,6 +42,11 @@
                   </div>
                   <div class="content-middle">
 
+                         <div class="tip">
+                             <button>举报</button>
+                         </div>
+
+
 	              </div>
                   <div class="content-footer">
                       <!--此处为招募帖详细内容-->
@@ -54,7 +59,7 @@
                            </div>
                           <div class="rm-middle">
                                  <div class="rm-nav">
-                                  <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
+                                      <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
                                  </div>
                                  <div class="rcontent">
 
@@ -62,8 +67,8 @@
                           </div>
                       </div>
                       <div class="rfooter">
-                            <div class="rbutton">
-                                 <a href="apply" class="button">申请加入</a>
+                            <div class="rfcontent">
+                                 <a href="apply" class="rbutton">申请加入</a>
                             </div>
                       </div>
                   </div>
@@ -84,11 +89,16 @@
                                <a  class="pname" href="">用户名称aaaaa</a>
                           </div>
                           <div class="person-middle">
-                              <div class="pscore"><img class="pimg" src="{% static 'project/imgs/score.svg'%}">1000</div>
-                              <div class="pid"><img class="pimg" src="{% static 'project/imgs/id.svg'%}">身份</div>
+                              <div class="pscore">
+                                  <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
+                                  <span>1000</span>
+                              </div>
+                              <div class="pid"><img class="pimg" src="{% static 'project/imgs/id.svg'%}">
+                                  <span>身份</span>
+                              </div>
                           </div>
                           <div class="person-footer">
-                              标签：IT/美工/前端{#此标签格式呢通过后台  #}
+                              标签：<span>IT/美工/前端</span>{#此标签格式呢通过后台  #}
                           </div>
                           <div class="pbutton"><button>关注</button></div>
                      </div>
@@ -99,13 +109,17 @@
                       <div class="ctitle"><p>项目评论</p></div>
                       <div class="cmain">
                            <div class="c-all">
-
+                               <a class="cname" href="">用户姓名</a><span class="c-content"></span>
+                               <div class="ctime"></div>
+                               <div class="ctip"></div>
                            </div>
+                      </div>
+                      <div class="cfooter">
+                                  页码
                       </div>
                   </div>
              </div>
         </div>
      </div>
-
 
  {% endblock %}

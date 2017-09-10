@@ -52,9 +52,11 @@ $("input[class='login_input']").click(function () {
                     alert(result["message"]);
                     window.location.reload();
                 } else if (result["status"] === 1) {
-                    $.cookie('username', result["username"]);
-                    $.cookie('email', result['email']);
-                    alert(result["message"]);
+                    alert(result['username']);
+                   var username =  $.cookie('username', result["username"]);
+                    alert(username);
+                    var email = $.cookie('email', result['email']);
+
                     window.location.href = 'index'
                 } else {
                     alert('服务器异常');
