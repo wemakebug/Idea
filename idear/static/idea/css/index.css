@@ -68,6 +68,9 @@
 	    line-height:65px;
 	    overflow:hidden;
     }
+    .active{
+        background: #295E6A;
+    }
 	.nav ul li:hover{
         background:#295E6A;
 	}
@@ -89,7 +92,6 @@
         float: left;
         margin-left: 12%;
     }
-
     #search-left {
         width: 80%;
         height: 52%;
@@ -125,6 +127,7 @@
 		width: 16%;
 		height: 100%;
         margin-right: 0.6%;/*后加*/
+
 	}
 	.rlogin{
 	    width: 20%;
@@ -166,32 +169,30 @@
     }
     .btn_hidden{
         float: right;
-		width: 16%;
+		width: 14.5%;/**/
 		height: 100%;
         margin-right: 0.6%;/*后加*/
-        /*display:none;*/
     }
     .user_figure{
-        width: 14%;
-        height: 65%;
-        margin-top: 4%;
+        width: 40px;
+        height: 40px;/**/
+        margin-top: 4.8%;/**/
         /*background-images:url();*/
         float: left;
         overflow: hidden;
-        border-radius: 60px;
+        border-radius: 40px;
         border: 1px solid #ccc;
         margin-left:2.5%;
     }
-
     .login_out{
         width: 20%;
         height: 40%;
-        margin-top: 8%;
-        background: #295E6A;
+        margin-top: 7%;/**/
+        /*background: #295E6A;*/
         float: left;
-        margin-left: 5%;
+        margin-left: 0%;
         /*overflow: hidden;*/
-        border-radius: 3px;
+        /*border-radius: 3px;*/
         /*border: none;
         outline: none;
         cursor: pointer;*/
@@ -208,7 +209,6 @@
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
-
 	}
 	.nav-bottom{
 		width: 100%;
@@ -221,7 +221,6 @@
 		margin-top:65px;
         background:#F0F0F0;
          /*margin:0px;*/
-
 	}
 	.content{
 	    width:80%;
@@ -257,7 +256,6 @@
 	.introduce{
 	    width:100%;
         height:85%;
-	    /*height:80%；*/
 	}
 	.introduce p{
 	    font-family:STLiti;
@@ -277,7 +275,6 @@
 	    height:79.9%;
         border:1px solid #FFFFFF;
         box-shadow:0px 1px 5px 1px #ccc;
-
 	}
     .main-box{
         width:90%;
@@ -337,7 +334,6 @@
         background-size:100% 100%;
         margin-top:18%;
     }
-
      .usage_details{
         width:100%;
         height:50%;
@@ -503,7 +499,6 @@
     }
 	.container ul li{
 		display: inline-block;
-
     }
     .container ul li a{
         display: inline-block;
@@ -538,9 +533,3 @@
         font-size:0.8em;
         color:gray;
     }
-    /*.actived {
-        background: #539092;
-    }
-    .noactive {
-        background:#295E6A;
-    }*/
