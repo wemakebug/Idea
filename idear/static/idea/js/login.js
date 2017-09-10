@@ -53,7 +53,7 @@ $("input[class='login_input']").click(function () {
                     window.location.reload();
                 } else if (result["status"] === 1) {
                     $.cookie('username', result["username"]);
-                    $.cookie('email', email);
+                    $.cookie('email', result['email']);
                     alert(result["message"]);
                     window.location.href = 'index'
                 } else {
