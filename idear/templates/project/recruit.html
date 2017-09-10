@@ -56,14 +56,14 @@ idea/css/index.css{% extends 'idea/Base.html'%}
         <div class="explain">
             <p class="explain_title">板块说明</p>
             <p class="explain_text">&nbsp;&nbsp;&nbsp;&nbsp;块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明</p>
-            <p class="explain_new_project"><a target="_blank" href="redetails.html">发布新项目</a></p>
+            <a target="_blank" href="redetails.html"><p class="explain_new_project">发布新项目</p></a>
         </div>
-        <div class="AllTag">
-            <p>按标签显示</p>
-        <a href="recruit?sign=all" sign="all" class="project_sign" ><p>所有</p></a>
-        {%for obj in projectLabels%}
-        <a href="recruit?sign={{obj.Id}}" sign="{{obj.Id}}" class="project_sign"><p>{{obj.ProjectLabelName}}</p></a>
-        {%endfor%}
+        <div class="Tag_All">
+            <div class="Tag_Text">按标签显示</div>
+                <a href="recruit?sign=all" sign="all" class="project_sign" ><span class="Sign">所有</span></a>
+                {%for obj in projectLabels%}
+                <a href="recruit?sign={{obj.Id}}" sign="{{obj.Id}}" class="project_sign"><span class="Sign">{{obj.ProjectLabelName}}</span></a>
+                {%endfor%}
         </div>
     </div>
 </div>
