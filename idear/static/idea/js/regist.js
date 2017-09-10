@@ -24,7 +24,6 @@ $(document).ready(function () {
         $(".wrap").fadeToggle(500);
         $(".pop-up").fadeToggle(500);
     });
-
 });
 
 // 判断是否为字母和数字构成的内容
@@ -69,17 +68,16 @@ $('#submit_btn').click(function () {
             'Passwd': Passwd,
             'Email': Email
         };
-        alert('well');
 
         $.post('regist', data, function (result) {
             result =JSON.parse(result);
-            if (result.status === 0) {
-                alert(result.message);
+            if (result.status == 0) {
+                alert(result['message']);
                 window.location.reload();
-            } else if (result.status === 1) {
-                $.cookie('email', Email);
-                $.cookie('username', UserName);
-                alert(result.message);
+            } else if (result.status == 1) {
+                $.cookie('email', result['email']);
+                $.cookie('username', result['username']);
+                alert(result['message']);
                 window.location.href = 'index'
             }
             else {
