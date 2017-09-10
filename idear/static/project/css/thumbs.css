@@ -1,3 +1,7 @@
+.feed{
+    float:left;
+    margin-left: 40%;
+}
 .heart {
         background: url(../imgs/fuck.png);
         background-position: left;
@@ -6,18 +10,19 @@
         width: 100px;
         cursor: pointer;
         position: absolute;
-        left:-14px;
-           background-size:2900%;
+        /*left:-14px;*/
+         /*background-size:2900%;*/
    }
   .heart:hover, .heart:focus{
            background-position: right;
     }
  .likeCount{
             font-family: 'Georgia', Times, Times New Roman, serif;
-            margin-top: 32px;
-            margin-left: 68px;
+            /*margin-top: 32px;*/
+            /*margin-left: 68px;*/
             font-size: 25px;
-           color: #999999
+            color: #999999
+            float:left;
 }
 @-webkit-keyframes heartBlast {
     0% {
