@@ -5,7 +5,7 @@ html{
 .first {
 	position: relative;
 	font-family: kaiti;
-	margin: 76px 85px 0;
+	margin: 76px 68px 0;
 	width:90%;
 
 }
@@ -16,7 +16,7 @@ html{
 
 }
 .second{
-	margin: 60px 50px 0;
+	margin: 60px 40px 0;
 	padding: 0;
 	float: left;
 	width: 30%;
@@ -46,7 +46,7 @@ html{
 	font-size: 17px;
 	height: 180px;
 	width: 45%;
-	margin: -192px 52%;
+	margin: -172px 52%;
 	z-index: 99;
 }
 .content_0{
@@ -72,9 +72,9 @@ html{
 }
 .broadSide{
 	float: right;
-	width: 35%;
+	width: 23%;
 	position:absolute;
-	margin: -1720px 920px;
+	margin: -1720px 1084px;
 }
 
 .fish-1{
@@ -87,7 +87,7 @@ html{
 }
 .classify{
 	float: right;
-    margin: -152px 289px;
+    margin: 75px 154px;
     position: fixed;
 }
 .label-1{
@@ -95,4 +95,32 @@ html{
     margin: 280px -42px;
     width: 130px;
 	opacity:0.8;
+}
+.intro_1{
+	width: 62%;
+	height: 260px;
+	margin: 99px 50px ;
+	background-color:#8bcfcc;
+    border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	box-shadow: 2px 2px 2px 2px #bdc3c7;
+	opacity:0.8;
+}
+.intro_1 p {
+	float: left;
+	margin-left: 8%;
+	text-align: left;
+	width: 86%;
+}
+.add {
+    background-color: #11999e;
+    border: medium none;
+    border-radius: 3px;
+    color: #eeeeee;
+    float: left;
+    height: 30px;
+    margin-left: 120px;
+    width: 70px;
 }
