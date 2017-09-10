@@ -2,32 +2,70 @@
 <head>
     <meta http-equiv=content-type content="text/html;charset=utf-8">
     {% load static %}
-    {% block title %} {% endblock %}
-    <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
-    {% block CSS %}{% endblock %}
-    <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
-    <title>首页</title>
+	{%block title%} {%endblock%}
+	<link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
+	{%block CSS%}{%endblock%}
+    <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js'%}"></script>
+	<title>首页</title>
 </head>
-<body>
-<div class="head">
-    <div class="header">
-        <div class="logo">
+<body >
+	<div class="head">
+    	<div class="header">
+			<div class="logo">
+			</div>
+				<div class="nav">
+                    <ul id="Menu">
+                        <li ><a href="index"  >首页</a></li>
+                        <li ><a href="" >招募项目</a></li>
+                        <li ><a href="" >开发项目</a></li>
+                        <li ><a href="creations?sign=all" >创意灵感</a></li>
+                        <li ><a href="team" >常驻团队</a></li>
+                    </ul>
+				</div>
+            <div class="search1">
+				<div class="searchbar">
+                    <form>
+      				    <input id="search-left" type="text" placeholder="搜索从这里开始...">
+    			    </form>
+					<input id="search" type="submit" value="">
+			    </div>
+		    </div>
+			<div class="sidebar">
+				<a href="login">
+					<div class="rlogin"><p>登录</p></div>
+				</a>
+				<a href="regist">
+					<div class="rregsiter"><p>注册</p></div>
+				</a>
+			</div>
+            <div class="btn_hidden">
+                <a href="#">
+					<div class="user_figure">
+                        <img src="{% static 'idea/imgs/Experiment .jpg'%}" style="width: 100%;height: 100%;">
+                    </div>
+				</a>
+                <div class="login_out" href="#" onclick="getout()"><p>注销</p></div>
+            </div>
+		</div>
+		<div class="nav-bottom">
+		</div>
+	</div>
+ {% block content %}
 
-        </div>
-        <div class="nav">
-            <div class="mainnav"><a href="index">首页</a></div>
-            <div class="mainnav"><a href="">招募项目</a></div>
-            <div class="mainnav"><a href="">开发项目</a></div>
-            <div class="mainnav"><a href="creations?sign=all">创意灵感</a></div>
-            <div class="mainnav"><a href="team">常驻团队</a></div>
-        </div>
-        <div class="search1">
-            <div class="searchbar">
-                <form>
-                    <input id="search-left" type="text" placeholder="搜索从这里开始...">
-                </form>
-                <input id="search" type="submit" value="">
+{% endblock %}
+	<div class="footer">
+		<div class="container">
+			<ul>
+				<li><a href="" >关于我们 </a> </li>
+				<li><a href="" >服务规则  </a> </li>
+				<li><a href="" >隐私条款</a></li>
+				<li><a href="" >提出建议 </a></li>
+			</ul>
+		</div>
+        <div class="main_logo">
+            <div class="main_logo_graph">
+                <img src="{% static 'idea/imgs/Experiment .jpg'%}" style="width: 100%;height: 100%;">
             </div>
         </div>
         <div class="sidebar">
@@ -76,6 +114,5 @@
 <script type="text/javascript" src="{% static 'base/js/base.js' %}" ></script>
 {% block script %}
 {%endblock%}
-
 </body>
 </html>
