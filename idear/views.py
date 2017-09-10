@@ -6,20 +6,26 @@ from django.db.models import Q
 from admina import models
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 import uuid
-import re,base64
+import re, base64
+try:
+    import cStringIO as StringIO
+except ImportError:
+    import StringIO
+
 from idear.Idea_util.ImgVerification import generate_verify_image
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
-'''
-登陆验证函数，如需登陆，调此函数即可，仍需调试
-@:return 状态值，可通过为true
-@:COOKIE name = User_acconunt
-@:COOKIE name = UUID
-'''
+
 @csrf_exempt
 def Check_User_Cookie(req):
+    '''
+    登陆验证函数，如需登陆，调此函数即可，仍需调试
+    @:return 状态值，可通过为true
+    @:COOKIE name = User_acconunt
+    @:COOKIE name = UUID
+    '''
     loginStatus = False
     try:
         user_cookie = req.COOKIES["email"]
@@ -34,14 +40,48 @@ def Check_User_Cookie(req):
     except:
         return loginStatus
 
-'''
-首页
-'''
+
 def index(req):
+    '''
+    返回首页页面
+    :param req: 
+    :return: 
+    '''
     if req.method == "GET":
         return render_to_response('idea/index.html')
     if req.method == "POST":
         pass
+
+
+
+def varidate_char(str, max_length=20):
+    '''
+    非法字符验证
+    :param sql: 
+    :param max_length: 
+    :return: False  表示字符串中含有非法字符    True 表示字符串中不含有非法字符
+    '''
+    if len(str) > max_length:
+        return False
+    dirty_stuff = ["\"", "\\", "/", "*", "'", "=", "-", "#", ";", "<", ">", "+", "%", "$", "(", ")", "%", "@","!"]
+    for char in str:
+        if char in dirty_stuff:
+            return False
+    return True
+
+def varidate_emial(str,max_length=20):
+    '''
+    邮箱格式验证
+    :param str: 
+    :param max_length: 
+    :return: 
+    '''
+    if len(str) > max_length:
+        return False
+    if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", str) != None:
+        return True
+    else:
+        return False
 
 @csrf_exempt
 def login(req):
@@ -67,48 +107,33 @@ def login(req):
             result['message'] = '获取信息失败'
             return HttpResponse(json.dumps(result))
         else:
-            if models.User.objects.filter(Q(Email=email)):
-                user = models.User.objects.get(Email=email)
-                if user.PassWord == password:
-                    user.Uuid = uuid.uuid1()
-                    result['status'] = 1
-                    result['username'] = user.UserName
-                    req.session['uuid'] = str(user.Uuid)
-                    result['message'] = '登陆成功'
-                    return HttpResponse(json.dumps(result))
-                elif user.PassWord != password:
+            if varidate_emial(email):
+                if models.User.objects.filter(Q(Email=email)):
+                    user = models.User.objects.get(Email=email)
+                    if user.PassWord == password:
+                        user.Uuid = uuid.uuid1()
+                        result['status'] = 1
+                        result['username'] = user.UserName
+                        result['email'] = email
+                        req.session['uuid'] = str(user.Uuid)
+                        result['message'] = '登陆成功'
+                        return HttpResponse(json.dumps(result))
+                    elif user.PassWord != password:
+                        result['status'] = 0
+                        result['message'] = '用户名或密码错误'
+                        return HttpResponse(json.dumps(result))
+                else:
                     result['status'] = 0
                     result['message'] = '用户名或密码错误'
                     return HttpResponse(json.dumps(result))
             else:
                 result['status'] = 0
-                result['message'] = '用户名或密码错误'
+                result['message'] = '帐号格式不正确'
                 return HttpResponse(json.dumps(result))
 
 
 
-def varidate_char(str, max_length=20):
-    '''
-    非法字符验证
-    :param sql: 
-    :param max_length: 
-    :return: False  表示字符串中含有非法字符    True 表示字符串中不含有非法字符
-    '''
-    if len(str) > max_length:
-        return False
-    dirty_stuff = ["\"", "\\", "/", "*", "'", "=", "-", "#", ";", "<", ">", "+", "%", "$", "(", ")", "%", "@","!"]
-    for char in str:
-        if char in dirty_stuff:
-            return False
-    return True
 
-def varidate_emial(str,max_length=20):
-    if len(str) > max_length:
-        return False
-    if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", str) != None:
-        return True
-    else:
-        return False
 
 @csrf_exempt
 def regist(req):
@@ -162,6 +187,51 @@ def regist(req):
                     result['status'] = 0
                     result['message'] = '服务器异常!!' + e
                     return HttpResponse(json.dumps(result))
+@csrf_exempt
+def get_user_img(req):
+    if req.method == "GET":
+        # user = models.User.objects.get(Email='chris156@123.com')
+        # if user.Img :
+        #     print 'yes'
+        # else:
+        #     print 'No'
+        # return HttpResponse('NO img')
+        return Http404
+    elif req.method == "POST":
+        result = {
+            'status': 0,
+            'message': None,
+            'img_path': None
+        }
+        try:
+            email = req.COOKIES.get('email')
+            username = req.COOKIES.get('username')
+        except:
+            result['status'] = 0
+            result['message'] = '尚未登陆'
+            return HttpResponse(json.dumps(result))
+        else:
+            try:
+                user = models.User.objects.filter(Email=email)
+            except:
+                result['status'] = 0
+                result['message'] ='获取数据异常'
+                return HttpResponse(json.dumps(result))
+            else:
+                try:
+                    img_path =user.Img
+                    result['status'] = 1
+                    result['message'] = '路径获取成功'
+                    result['img_path'] = img_path
+                except:
+                    img_path = 'photos/2017/09/10/user/None_e1xHMz3.png'
+                    result['status'] = 1
+                    result['message'] = '用户暂未上传图片'
+                    result['img_path'] = img_path
+                finally:
+                    return HttpResponse(json.dumps(result))
+
+
 
 
 def team(req):
@@ -191,7 +261,7 @@ def forgetPassword(req):
     if req.method == 'GET':
         stream, strs = generate_verify_image(save_img=False)
         stream = base64.b64encode(stream.getvalue()).encode('ascii')
-        return render_to_response('idea/forgetPassword.html',{'img': stream})
+        return render_to_response('idea/forgetPassword.html', {'img': stream})
 
 '''
 创意页面

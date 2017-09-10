@@ -37,8 +37,9 @@ urlpatterns = [
     url(r'star$', creations.star),
     url(r'attend$', creations.attend),
 
-    url(r'test/?(\d+)$', views.test)
+    url(r'test/?(\d+)$', views.test),
 
+    url(r'getimg', views.get_user_img)
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
