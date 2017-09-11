@@ -2,6 +2,8 @@
  * Created by root on 17-9-8.
  */
 
+
+
 function getCookie(name) {
     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
 
@@ -14,6 +16,13 @@ function getCookie(name) {
 
 
 $(document).ready(function () {
+
+        $(".nav li a").each(function(){
+        $this = $(this);
+        if($(this)[0].href==String(window.location)) {
+            $(this).addClass('active');
+        }
+    });
     var user_img = document.getElementById('user_img');
     var username = getCookie('username');
     if (username === null) {
@@ -43,5 +52,6 @@ $(document).ready(function () {
         }
 
     });
+
 
 });

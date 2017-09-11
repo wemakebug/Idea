@@ -1,29 +1,25 @@
 .main{
     width:100%;
     height:1100px;
-
 	}
 .content-all{
-    margin-top:76px;
-    width:75%;
+    margin-top:70px;
+    width:80%;
     height:1000px;
-	    /*margin-top:100px;*/
-    margin-left:17%;
+    margin-left:10%;
     background:#FFFFFF;
-	    /*border:1px solid #ccc;*/
 	}
 .content-nav{
-    	width:100%;
-    	height: 5%;
-    	font-size:1em;
+    width:100%;
+    height: 5%;
+    font-size:1em;
     }
 .main-left{
     float:left;
     width:60%;
     height:1000px;
-
     }
-
+/*左上项目详情*/
 .content-top{
     width:100%;
     height:15%;
@@ -33,7 +29,7 @@
     background-size: cover;
     text-transform: uppercase;
     color: white;
-
+    border: 1px solid black;
 }
 .tags {
     top: -8px;
@@ -48,7 +44,7 @@
     background:  #539092;
     font-size: 14px;
     line-height: 1px;
-    padding: 12px 8px 15px;
+    padding: 18px 8px 15px;
     border-top-right-radius: 8px;
     width: 8%;
     top:-2px;
@@ -71,14 +67,15 @@
     width: 8px;
     border-radius: 8px 8px 0 0;
     left: -8px;
-     top:0;
+    top:0;
 }
-.pimg{
+.plogo{
     width:110px;
     height:110px;
     float:left;
     margin-top:3%;
     margin-left:5%;
+    border:1px solid black;
 }
 .title{
     width:60%;
@@ -100,10 +97,11 @@
     width:100%;
     height:35%;
     float:left;
+    border: 1px solid black;
     }
 .description{
-    width:80%;
-    height:85%;
+    width:100%;
+    height:75%;
     float:left;
     margin-top:5%;
     }
@@ -117,13 +115,20 @@
     width:100%;
     height: 10%;
     float:left;
+    border: 1px solid black;
+}
+.tip{
+    width:10%;
+    height:25%;
+    float:right;
 }
 .content-footer{
     width:100%;
-    height: 45%;
+    height: 44%;
     float:left;
-
+    border: 1px solid black;
 }
+/*左下招募帖*/
 .rtitle{
     width:100%;
     height:12%;
@@ -137,7 +142,7 @@
     font-size:15px;
 }
 .rm-header{
-    width:96%;
+    width:100%;
     height:12%;
     border-bottom:1px solid #DDDDDD;
     line-height: 50px;
@@ -171,58 +176,59 @@
 .rcontent{
     width:95%;
     height:73%;
+    border: 1px solid black;
 }
-.rbutton{
+.rfcontent{
     margin-top:1%;
-    width:18%;
-    height:50%;
+    width:16%;
+    height:75%;
 }
-a.button {
+a.rbutton {
+            height:80%;
 			position: relative;
 			color: rgba(255,255,255,1);
 			text-decoration: none;
-			background-color: #539092 ;
+			background-color: rgb(83, 144, 146);
 			font-family: 'Yanone Kaffeesatz';
 			font-weight: 700;
 			font-size: 25px;
 			display: block;
 			-webkit-border-radius: 8px;
 			-moz-border-radius: 8px;
-			border-radius: 8px;
-			-webkit-box-shadow: 0px 9px 0px   #539092, 0px 9px 25px   #539092;
-			-moz-box-shadow: 0px 9px 0px   #539092, 0px 9px 25px  #539092;
-			box-shadow: 0px 9px 0px   #539092, 0px 9px 25px   #539092;
-			/*margin: 100px auto;*/
-			/*width: 160px;*/
+			border-radius: 5px;
+			-webkit-box-shadow: 0px 9px 0px rgb(83, 130, 146), 0px 9px 25px rgba(0,0,0,.7);
+			-moz-box-shadow: 0px 9px 0px rgb(83, 130, 146), 0px 9px 25px rgba(0,0,0,.7);
+			box-shadow: 0px 9px 0px rgb(83, 130, 146), 0px 9px 25px rgba(0,0,0,.7);
 			text-align: center;
 			-webkit-transition: all .1s ease;
 			-moz-transition: all .1s ease;
 			-ms-transition: all .1s ease;
 			-o-transition: all .1s ease;
 			transition: all .1s ease;
-		}
-a.button:active {
-			-webkit-box-shadow: 0px 3px 0px   #539092, 0px 3px 6px   #539092;
-			-moz-box-shadow: 0px 3px 0px   #539092, 0px 3px 6px rgba  #539092;
-			box-shadow: 0px 3px 0px   #539092, 0px 3px 6px   #539092;
+}
 
-		}
+/*单击按键后变化*/
+a.rbutton:active {
+    -webkit-box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
+    -moz-box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
+    box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
+}
 .rfooter{
     width:100%;
     height:15%;
-
 }
-
 .main-right{
     float:left;
     width:30%;
     height:900px;
-    }
+}
+/*右上*/
 .person{
     /*margin-top:10%;*/
     width:60%;
     height:35%;
     border: 1px solid black;
+
 }
 .person-one{
     width:100%;
@@ -239,12 +245,12 @@ a.button:active {
     border-radius:50%;
     }
 .person-one-img img{
-      width:100%;
-      height:100%;
+    width:100%;
+    height:100%;
    }
 .person-two{
     width:100%;
-    height:60%;
+    height:65%;
     }
 .person-header{
     width:100%;
@@ -252,7 +258,6 @@ a.button:active {
     display:inline-block;
     margin-top:5%;
     text-align:center;
-    margin-top:7%;
     }
 .pname{
     display:inline-block;
@@ -270,8 +275,8 @@ a.button:active {
     height:100%;
     font-size:1em;
     float:left;
-    margin-left:20%;
-    font-size:15px;
+    margin-left:25%;
+    /*font-size:15px;*/
 }
 .pimg{
     width:20px;
@@ -285,26 +290,71 @@ a.button:active {
 }
 .person-footer{
     width:100%;
-    height:20%;
+    height:15%;
     text-align:center;
     margin-top:7%;
 }
 .pbutton{
-    width:30%;
+    width:40%;
 }
+/*右下评论*/
 .comment{
-    width:70%;
-    height:68%;
+    width:90%;
+    height:75%;
     border: 1px solid black;
     margin-top:10%;
+
 }
 .ctitle{
-    width:80%;
-    height:6%;
-    border-bottom:1px solid #DDDDDD;
+    width:100%;
+    height:8%;
 }
 .cmain{
     width:100%;
+    height:75%;
+    border-bottom:1px solid #DDDDDD;
+}
+.c-all{
+    width:100%;
     height:15%;
-    background-color: skyblue;
+    border-bottom:1px solid #DDDDDD;
+}
+.cimg{
+    width:40px;
+    height:40px;
+    vertical-align:middle;
+}
+.cname{
+    display:block;
+
+}
+.cfooter{
+    width:100%;
+    height:15%;
+}
+.cmore{
+    width:20%;
+    height:30%;
+}
+.w-input{
+    width:90%;
+    height:30%;
+    margin-left:5%;
+    overflow:hidden;
+    resize:none;
+    border:1px solid black;
+
+}
+.tocomment{
+    width:15%;
+    height:25%;
+    color:#fff;
+    margin-top:2%;
+    background-color:#539092 ;
+    display:block;
+    float:right;
+    margin-right:5%;
+    border-radius:5px;
+    text-align: center;
+
 }
