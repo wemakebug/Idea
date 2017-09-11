@@ -1,227 +1,11 @@
 
-	body,div{
-		margin:0 auto;
-		padding:0;
-		width:100%;
 
-	}
-    *{
-        margin:0 ;
-		padding:0;
-    }
-	body{
-	    min-width:1500px;
-        max-width:2000px;
-        overflow-x: hidden;
-	}
-	a{
-	    color:black;
-		text-decoration: none;
-	}
-	ul li{
-        list-style: none;
-	}
-	.head{
-		width: 100%;
-		height: 66px;
-		position:fixed;
-        _position:absolute;
-        z-index:9999;
-        top:0px;
-        text-align:left;
-        min-width:1500px;
-        max-width:2000px;
-	}
-	.header{
-		width: 100%;
-		height:66px;
-        background:#539092;
-	}
-	.logo{
-	    float:left;
-	    margin-left:9%;
-        width:8%;
-        height:65px;
-        background-image: url('../imgs/idea_logo.png');
-        background-size:100% 100%;
-	}
-	.nav{
-		float: left;
-		width: 30%;
-		height: 100%;
-	}
-	.nav a{
-	    font-size:1rem;
-	    color:white;
-        display:block;
-	}
-    .nav ul{
-        width:100%;
-        height:100%;
-        margin:0px;
-    }
-    .nav ul li{
-        width:17%;
-        height:100%;
-        float:left;
-        text-align:center;
-	    line-height:65px;
-	    overflow:hidden;
-    }
-	.nav ul li:hover{
-        background:#295E6A;
-	}
-	.search1{
-		float:left;
-		width:30%;
-		margin-left:6%;/*后加*/
-		height:66px;
-
-	}
-    .searchbar{
-        width:60%;
-        height:100%;
-        margin-left: 40%;/*后加*/
-    }
-    .searchbar form {
-        width: 80%;
-        height:100%;
-        float: left;
-        margin-left: 12%;
-    }
-
-    #search-left {
-        width: 80%;
-        height: 52%;
-        margin-top: 6.5%;
-        padding-left: 15%;
-        border-radius: 10px;
-        border: 0.3px solid #54A4AF;
-        outline: none;
-        position: relative;
-        transition: .3s linear;
-        float:right;
-        font-size:0.8em;
-
-    }
-    #search-left:focus {
-        width: 100%;
-    }
-    #search{
-        width:3.5%;
-        height:50%;
-        margin-top: 5.8%;
-        background-image: url('../imgs/search.svg');
-        background-size: 100% 100%;
-        float:left;
-        position: relative;
-        left:-7%;
-        background-color:transparent;
-        border:none;
-        outline:none;
-    }
-	.sidebar{
-	    float: right;
-		width: 16%;
-		height: 100%;
-        margin-right: 0.6%;/*后加*/
-	}
-	.rlogin{
-	    width: 20%;
-        height: 40%;
-        margin-top: 7.5%;
-        background:#295E6A ;
-        float: left;
-        overflow: hidden;
-        border-radius: 3px;
-
-	}
-    .rlogin p{
-        width:100%;
-	    height:100%;
-        text-align: center;
-        line-height: 25px;
-        margin: 0 auto;
-        font-size:1em;
-	    color:white;
-    }
-	.rregsiter {
-        width: 20%;
-        height: 40%;
-        margin-top: 7.5%;
-        background: white;
-        float: left;
-        margin-left: 2%;
-        overflow: hidden;
-        border-radius: 3px;
-    }
-    .rregsiter p{
-        width:100%;
-	    height:100%;
-        text-align: center;
-        line-height: 25px;
-        margin: 0 auto;
-        font-size:1em;
-	    color:#295E6A;
-    }
-    .btn_hidden{
-        float: right;
-		width: 16%;
-		height: 100%;
-        margin-right: 0.6%;/*后加*/
-        /*display:none;*/
-    }
-    .user_figure{
-        width: 14%;
-        height: 65%;
-        margin-top: 4%;
-        /*background-images:url();*/
-        float: left;
-        overflow: hidden;
-        border-radius: 60px;
-        border: 1px solid #ccc;
-        margin-left:2.5%;
-    }
-
-    .login_out{
-        width: 20%;
-        height: 40%;
-        margin-top: 8%;
-        background: #295E6A;
-        float: left;
-        margin-left: 5%;
-        /*overflow: hidden;*/
-        border-radius: 3px;
-        /*border: none;
-        outline: none;
-        cursor: pointer;*/
-    }
-    .login_out p{
-        width:100%;
-	    height:100%;
-        text-align: center;
-        line-height: 27px;
-        margin: 0 auto;
-        font-size:1em;
-	    color:white;
-    }
-	.sidebar ul li{
-        float: left;
-        padding:12% 15px;
-
-	}
-	.nav-bottom{
-		width: 100%;
-		height: 1px;
-		background: #ccc;
-	}
 	.middle{
 		width:100%;
 		height:2500px;
 		margin-top:65px;
         background:#F0F0F0;
          /*margin:0px;*/
-
 	}
 	.content{
 	    width:80%;
@@ -257,7 +41,6 @@
 	.introduce{
 	    width:100%;
         height:85%;
-	    /*height:80%；*/
 	}
 	.introduce p{
 	    font-family:STLiti;
@@ -277,7 +60,6 @@
 	    height:79.9%;
         border:1px solid #FFFFFF;
         box-shadow:0px 1px 5px 1px #ccc;
-
 	}
     .main-box{
         width:90%;
@@ -337,7 +119,6 @@
         background-size:100% 100%;
         margin-top:18%;
     }
-
      .usage_details{
         width:100%;
         height:50%;
@@ -481,66 +262,4 @@
         background-image:url('../imgs/top.png');
         background-size:100% 100%;
     }
-	.footer {
-        width:100%;
-        height:70px;
-        background:#F1F1F1;
-        padding:10px 0;
-        text-align: center;
-        line-height:70px;
-	}
-    .container{
-        width:25%;
-        height:100%;
-        float: left;
-        margin-left: 21%;
-        display:block;
-    }
-    .container ul{
-        width: 100%;
-        height:100%;
-        display: block;
-    }
-	.container ul li{
-		display: inline-block;
 
-    }
-    .container ul li a{
-        display: inline-block;
-        text-decoration:none;
-        color:gray;
-        font-size: 0.85em;
-        margin: 0px 30px 0px 0;
-    }
-     .container ul li a:hover{
-        color:#539092;
-    }
-    .main_logo{
-        width:8%;
-        height:100%;
-        float: left;
-    }
-    .main_logo_graph{
-        width:30%;
-        height:65%;
-        margin-left: 31%;
-        margin-top: 10%;
-        overflow: hidden;
-        border-radius: 60px;
-        border: 1px solid #ccc;
-    }
-    .right_sentence{
-        width:20%;
-        height:100%;
-        float: left;
-    }
-    .right_sentence p{
-        font-size:0.8em;
-        color:gray;
-    }
-    /*.actived {
-        background: #539092;
-    }
-    .noactive {
-        background:#295E6A;
-    }*/
