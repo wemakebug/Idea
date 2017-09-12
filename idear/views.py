@@ -259,9 +259,9 @@ def teamhelpapplication(req):
 # 忘记密码
 def forgetPassword(req):
     if req.method == 'GET':
-        # stream, strs = generate_verify_image(save_img=False)
-        # stream = base64.b64encode(stream.getvalue()).encode('ascii')
-        return render_to_response('idea/forgetPassword.html')
+        stream, strs = generate_verify_image(save_img=False)
+        stream = base64.b64encode(stream.getvalue()).encode('ascii')
+        return render_to_response('idea/forgetPassword.html',{'img':stream})
 
 '''
 创意页面
