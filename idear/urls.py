@@ -36,7 +36,7 @@ urlpatterns = [
     url(r'redetail$', views.redetail),
     url(r'star$', creations.star),
     url(r'attend$', creations.attend),
-
+    url(r'logout$', views.logout),
     url(r'test/?(\d+)$', views.test),
 
     url(r'getimg', views.get_user_img)
