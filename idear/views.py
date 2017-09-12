@@ -272,6 +272,15 @@ def creation(req):
     if req.method == "POST":
         pass
 '''
+创意页面详情
+'''
+
+def redetail(req):
+    if req.method == 'GET':
+        return render_to_response('creation/redetail.html')
+    if req.method == "POST":
+        pass
+'''
 
 招募项目详情
 '''
