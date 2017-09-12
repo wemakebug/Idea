@@ -10,7 +10,9 @@
 <body bgcolor="#f1f1f1">
   <div class="container_b">
       <div class="home_b">
-          <button class="tag">标签</button>
+          <div class="tags">
+              <span>标签</span>
+          </div>
           <div class="text">
             <h1>创意题目</h1>
             <p>创意详情创意详情创意详情创意详情</p>
@@ -21,24 +23,36 @@
             <p>创意详情创意详情创意详情创意详情</p>
           </div>
       </div>
-      <div class="user">
-          <div class="user-head">
-              <div class="user-head-text">创意发起人</div>
+      <div class="main-right">
+      <div class="person">
+                    <!--此处为个人信息-->
+          <div class="person-one">
+              <div class="person-one-img">
+                  <img src="{% static '/creation/imgs/ava.png' %}">
               </div>
-          <div class="user-ava">
-            <img src="ava.png" style="width:60px;height:60px">
           </div>
-          <div class="user-name">
-            <span>用户名称</span>
-          </div>
-          <div class="user-score">
-            <span>用户积分</span>
-          </div>
-          <div class="user-identity">
-            <span>用户身份</span>
+          <div class="person-two">
+              <div class="person-header">
+                  <a  class="pname" href="">用户名称aaaaa</a>
+              </div>
+              <div class="person-middle">
+                  <div class="pscore">
+                      <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
+                      <span>1000</span>
+                  </div>
+                  <div class="pid"><img class="pimg" src="{% static 'project/imgs/id.svg'%}">
+                      <span>身份</span>
+                  </div>
+              </div>
+              <div class="person-footer">
+                  标签：<span>IT/美工/前端</span>{#此标签格式呢通过后台  #}
+              </div>
+              <button class="pbutton">关注</button>
           </div>
       </div>
+
       <div class="comment">
+      </div>
       </div>
       <div class="share">
       </div>
