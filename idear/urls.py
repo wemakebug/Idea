@@ -33,10 +33,8 @@ urlpatterns = [
     url(r'recruit$', projects.projects),
     url(r'redetails$', views.redetails),
     url(r'projects$', projects.projects),
-
     url(r'star$', creations.star),
     url(r'attend$', creations.attend),
-
     url(r'test/?(\d+)$', views.test),
 
     url(r'getimg', views.get_user_img)
