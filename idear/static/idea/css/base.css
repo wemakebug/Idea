@@ -124,7 +124,7 @@ body,div{
 		width: 16%;
 		height: 100%;
         margin-right: 0.6%;/*后加*/
-        display: none;
+        /*display: none;*/
 	}
 	.rlogin{
 	    width: 20%;
