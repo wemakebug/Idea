@@ -12,7 +12,8 @@ _letter_cases = "abcdefghjkmnpqrstuvwxy"  # 小写字母
 _upper_cases = "ABCDEFGHJKLMNPQRSTUVWXY"  # 大写字母
 _numbers = "1234567890"  # 数字
 init_chars = ''.join((_letter_cases, _upper_cases, _numbers))  # 生成允许的字符集合
-default_font = "DejaVuSans.ttf"  # 验证码字体
+# default_font = "C:\\Windows\\Fonts\\Arial.ttf"  # 验证码字体 windwos
+default_font = "./DejaVuSans.ttf"   # linux 下专用字体
 
 
 # 生成验证码接口
