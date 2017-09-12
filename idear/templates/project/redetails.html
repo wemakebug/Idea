@@ -15,7 +15,7 @@
 	 <div class="main">
 		<div class="content-all">
               <div class="content-nav">
-                <a href="recruit">项目招募</a> 项目详情
+                <a href="recruit">项目招募</a>>> 项目详情
               </div>
               <div class="main-left">
                   <div class="content-top">
@@ -102,16 +102,22 @@
 
                   <div class="comment">
                     <!--此处为项目评论-->
-                      <div class="ctitle"><p>项目评论</p></div>
+                      <div class="ctitle"><h2>项目评论</h2></div>
                       <div class="cmain">
                            <div class="c-all">
-                               <a class="cname" href="">用户姓名</a><span class="c-content"></span>
-                               <div class="ctime"></div>
-                               <div class="ctip"></div>
+                               <img class="cimg" src="{% static 'project/imgs/user.svg'%}">
+                               <div class="cright">
+                                    <a class="cname" href="">用户姓名</a><span class="c-content"></span>
+                                    <div class="ctime"></div>
+                                    <div class="ctip"></div>
+                               </div>
                            </div>
                       </div>
                       <div class="cfooter">
-                                  页码
+                            <div class="cmore">加载更多</div >
+                            <textarea class="w-input"></textarea>
+                            <a href="javascript:;" class="tocomment">评论</a>
+
                       </div>
                   </div>
              </div>

@@ -33,6 +33,10 @@ urlpatterns = [
     url(r'recruit$', projects.projects),
     url(r'redetails$', views.redetails),
     url(r'projects$', projects.projects),
+<<<<<<< HEAD
+=======
+    url(r'redetail$', views.redetail),
+>>>>>>> 1f32d73269f790d4dad48601b421600599035857
     url(r'star$', creations.star),
     url(r'attend$', creations.attend),
     url(r'test/?(\d+)$', views.test),

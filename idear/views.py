@@ -261,7 +261,7 @@ def forgetPassword(req):
     if req.method == 'GET':
         stream, strs = generate_verify_image(save_img=False)
         stream = base64.b64encode(stream.getvalue()).encode('ascii')
-        return render_to_response('idea/forgetPassword.html', {'img': stream})
+        return render_to_response('idea/forgetPassword.html',{'img':stream})
 
 '''
 创意页面
@@ -269,6 +269,15 @@ def forgetPassword(req):
 def creation(req):
     if req.method == 'GET':
         return render_to_response('creation/index.html')
+    if req.method == "POST":
+        pass
+'''
+创意页面详情
+'''
+
+def redetail(req):
+    if req.method == 'GET':
+        return render_to_response('creation/redetail.html')
     if req.method == "POST":
         pass
 '''
