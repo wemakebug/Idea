@@ -16,10 +16,9 @@ function getCookie(name) {
 
 
 $(document).ready(function () {
-
-        $(".nav li a").each(function(){
+    $(".nav li a").each(function () {
         $this = $(this);
-        if($(this)[0].href==String(window.location)) {
+        if ($(this)[0].href == String(window.location)) {
             $(this).addClass('active');
         }
     });
@@ -31,27 +30,29 @@ $(document).ready(function () {
     } else {
         var hidden_item = document.getElementById('login_status_false');
         hidden_item.style.display = 'none';
-    }
-    var email = $.cookie('email');
+         var email = $.cookie('email');
     var username = $.cookie('username');
-    var data ={
-        'email' : email,
-        'username' : username
+    var data = {
+        'email': email,
+        'username': username
     };
     $.post('getimg', {}, function (result) {
         result = JSON.parse(result);
-        if(result['status'] === 1){
-            var img_path = result['img_path'] ;
+        if (result['status'] === 1) {
+            alert(result['message']);
+            var img_path = result['img_path'];
             var message = result['message'];
-            user_img.src = '../photos/' +img_path;
-         }else if(result['status'] === 0){
+            user_img.src = '../photos/' + img_path;
+        } else if (result['status'] === 0) {
             var message = result['message'];
             alert(message);
-        }else {
+        } else {
 
         }
 
     });
+    }
+
 
 
 });
