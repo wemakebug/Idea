@@ -272,9 +272,13 @@ def forgetPassword(req):
         stream, strs = generate_verify_image(save_img=False)
         req.sessions['verifycode'] = strs
         stream = base64.b64encode(stream.getvalue()).encode('ascii')
+<<<<<<< HEAD
         return render_to_response('idea/forgetPassword.html', {'img': stream})
     if req.method == "POST":
         return Http404
+=======
+        return render_to_response('idea/forgetPassword.html',{'img':stream})
+>>>>>>> 6799ce052b30414fd93f3d9159b779de8fd2271b
 
 '''
 创意页面

@@ -91,7 +91,7 @@ body{
     margin-top:-12px;
 }
 .input_1{
-    background-color:white;
+    background: transparent;
     border-radius: 5px;
     width: 240px;
     height: 32px;
