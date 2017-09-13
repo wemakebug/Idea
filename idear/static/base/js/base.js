@@ -16,12 +16,13 @@ function getCookie(name) {
 
 
 $(document).ready(function () {
-    $(".nav li a").each(function () {
+    $('.nav li a').each(function () {
         $this = $(this);
-        if ($(this)[0].href == String(window.location)) {
+        if ($(this)[0].href == String(window.open)) {
             $(this).addClass('active');
         }
     });
+
     var user_img = document.getElementById('user_img');
     var username = getCookie('username');
     if (username === null) {

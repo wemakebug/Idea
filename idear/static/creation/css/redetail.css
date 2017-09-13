@@ -6,8 +6,7 @@
     margin-top:66px;
     background-color:#f1f1f1;
     }
-
-    .home_b{
+    .home_b {
       width:37%;
       height:550px;
       margin-left: 19%;
@@ -56,7 +55,7 @@
     .user{
       width:24%;
       height:350px;
-      float；right;
+      float:right;
       margin-left: 57%;
       margin-top: 0.8%;
       box-shadow: 1px 1px 1px 1px #9999;

@@ -1,6 +1,7 @@
 <html>
 <head>
     <meta http-equiv=content-type content="text/html;charset=utf-8">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
     {% load static %}
     {% block title %} {% endblock %}
     <link rel="stylesheet" href="{% static 'idea/css/base.css' %}">
@@ -16,7 +17,7 @@
                 <ul id="Menu">
                     <li><a href="index"  >首页</a></li>
                     <li class="index_recruit"><a href="recruit?sign=all" >招募项目</a></li>
-                    <li class=""><a href="redetails" >开发项目</a></li>
+                    <li class=""><a href="#" >开发项目</a></li>
                     <li class="index_creations"><a href="creations?sign=all" >创意灵感</a></li>
                     <li class="index_team"><a href="team" >常驻团队</a></li>
                 </ul>
@@ -65,10 +66,10 @@
 <div class="footer">
     <div class="container">
         <ul>
-            <li><a href="">关于我们 </a></li>
-            <li><a href="">服务规则 </a></li>
-            <li><a href="">隐私条款</a></li>
-            <li><a href="">提出建议 </a></li>
+            <li class="about"><a href="team">关于我们</a></li>
+            <li class="service"><a href="service">服务规则</a></li>
+            <li class="ordinance"><a href="ordinance">隐私条款</a></li>
+            <li class="advice"><a href="#">提出建议 </a></li>
         </ul>
     </div>
     <div class="main_logo">

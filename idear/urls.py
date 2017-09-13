@@ -36,6 +36,8 @@ urlpatterns = [
     url(r'redetail$', views.redetail),
     url(r'star$', creations.star),
     url(r'attend$', creations.attend),
+    url(r'ordinance$', views.ordinance),
+    url(r'service$', views.service),
 
     url(r'test/?(\d+)$', views.test),
 
