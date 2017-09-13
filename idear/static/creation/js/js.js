@@ -1,3 +1,4 @@
+ //加载更多
  $(function () {
             $(".block").slice(0, 12).show();
            if($(".block").length <= 12) {
@@ -62,8 +63,6 @@ $(".like").click(function(){
 })
 
 })
-
-
 
 })
 
