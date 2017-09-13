@@ -38,7 +38,7 @@ urlpatterns = [
     url(r'attend$', creations.attend),
     url(r'ordinance$', views.ordinance),
     url(r'service$', views.service),
-
+    url(r'logout$', views.logout),
     url(r'test/?(\d+)$', views.test),
 
     url(r'getimg', views.get_user_img)
