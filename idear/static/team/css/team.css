@@ -8,6 +8,7 @@ html{
 	margin: 66px 68px 0;
 	width:90%;
 
+
 }
 .clear{
 	clear:both;
@@ -27,7 +28,7 @@ html{
 	 float: left;
 	 height: 350px;
 	 width: 100%;
-	 margin: 10px 10%;
+	 margin: 0px 10%;
 	 background-color:rgba(255, 255, 255, 1);
 	 box-shadow: 0 5px 5px 0 rgba(211, 211, 211, 0.8);
  }
@@ -38,7 +39,7 @@ html{
 	margin: 13px 10%;
 	background-color:rgba(255, 255, 255, 0.6);
 	z-index: 99;
-
+	cursor:pointer;
 }
 .intro_0{
 	font-weight: bold;
@@ -49,13 +50,14 @@ html{
 }
 .content_0{
 	font-size: 13px;
-	height: 150px;
+	height: 120px;
 	width: 85%;
 	margin: 3px 2%;
 	z-index: 99;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	cursor:pointer;
 }
 .referral{
 	float: left;
@@ -71,7 +73,7 @@ html{
 	float: right;
 	width: 23%;
 	position:absolute;
-	margin: -1720px 1084px;
+	margin: -1720px 78%;
 }
 
 .fish-1{
@@ -90,7 +92,7 @@ html{
 .intro_1{
 	width: 62%;
 	height: 260px;
-	margin: 99px 50px ;
+	margin: 99px 13% ;
 	background-color:#8bcfcc;
     border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -101,7 +103,7 @@ html{
 }
 .intro_1 p {
 	float: left;
-	margin-left: 8%;
+	margin-left: 11%;
 	text-align: left;
 	width: 86%;
 }
@@ -112,6 +114,9 @@ html{
     color: #eeeeee;
     float: left;
     height: 30px;
-    margin-left: 120px;
+    margin-left: 113px;
     width: 70px;
+}
+.feature{
+	margin: 0px 85%;
 }
