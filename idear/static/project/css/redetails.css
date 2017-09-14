@@ -240,7 +240,7 @@ a.rbutton:active {
 .person-one{
     width:100%;
     height:30%;
-    background-color:lightskyblue;
+    background-color:#E2EFF1;
     border-bottom:8px solid #539092;
 }
 .person-one-img{
@@ -296,6 +296,14 @@ a.rbutton:active {
     width: 40%;
     height:100%;
     float:left;
+}
+.allsign{
+    padding:5px 20px;
+    border: 1px solid #c0c5cd;
+    background-color: #eeeeee;
+    border-radius: 5px;
+
+    color: #a9b1b5;
 }
 .person-footer{
     width:100%;
