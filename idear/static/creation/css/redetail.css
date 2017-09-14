@@ -1,5 +1,9 @@
+ html,body{
+    height:100%;
+    margin:0px;
+  }
 .container_b {
-      width: 100%;
+    width: 100%;
     height:auto;
     overflow:hidden;
     margin: 0 auto;
@@ -8,36 +12,67 @@
     }
 
     .home_b{
-      width:37%;
+      background-color:white;
+      width:45%;
       height:550px;
-      margin-left: 19%;
-      margin-top: 0.8%;
+      margin-left: 15%;
+      margin-top: 30px;
       float:left;
-
       box-shadow: 1px 1px 1px 1px #9999;
-      background-color: white;
     }
-    .tag{
-      float:left;
-      margin: 10px 0px 0px 10px;
-      background-color: #6892d5;
-      color: #eeeeee;
-      border:none;
-      width:80px;
-      height:35px;
-      border-top-left-radius: 3px;
-      border-top-right-radius: 3px;
-      border-bottom-left-radius: 3px;
-      border-bottom-right-radius: 3px;
+    .tags{
+      float:right;
+      margin:-3px 10px 0px 0px;
+
     }
+    .tags span::before {
+    background: #539092 none repeat scroll 0 0;
+    height: 4px;
+    left: -6px;
+    top: 0;
+    width: 6px;
+}
+.tags span::before, .tags span::after {
+    content: "";
+    display: block;
+    position: absolute;
+}
+.tags span::after {
+    background: #205d67 none repeat scroll 0 0;
+    border-radius: 8px 8px 0 0;
+    height: 4px;
+    left: -8px;
+    top: 0;
+    width: 8px;
+}
+.tags span::before, .tags span::after {
+    content: "";
+    display: block;
+    position: absolute;
+}
+.tags span {
+    background: #539092 none repeat scroll 0 0;
+    border-top-right-radius: 8px;
+    display: inline-block;
+    float: right;
+    font-size: 14px;
+    line-height: 1px;
+    margin-left: 2%;
+    padding: 18px 8px 15px;
+    position: relative;
+    text-align: center;
+    top: -2px;
+    width: 8%;
+}
     .text{
       width: 70%;
       height: 85%;
       float: left;
-      margin-left: 20px;
+      margin-left: 15%;
       text-align: center;
     }
-    h1{
+    .text h1{
+      margin-top:50px;
       font-family:宋体;
       font-size: 30px;
     }
@@ -53,10 +88,11 @@
       box-shadow: 1px 1px 1px 1px #9999;
       background-color: white;
     }
+
     .user{
       width:24%;
       height:350px;
-      float；right;
+      float:right;
       margin-left: 57%;
       margin-top: 0.8%;
       box-shadow: 1px 1px 1px 1px #9999;
@@ -77,44 +113,110 @@
       font-family: 宋体;
       text-align: center;
     }
-    .user-ava{
-      float:left;
-      margin: 20px 0 0 43.5%;
+    .user-ava {
+        float: left;
+        margin: 20px 0 0 43.5%;
     }
-    .user-name{
-      width: 180px;
-      height: 30px;
-      float: right;
-      border:1px solid #999;
-      margin-right: 136px;
-      margin-top: 30px;
-      text-align: center;
-
-
+    .main-right{
+    float:left;
+    width:23%;
+    margin-top:30px;
+    margin-left:3%;
+}
+    .person{
+    /*margin-top:10%;*/
+    background-color:white;
+    width:100%;
+    height:42%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #9999;
+}
+.person-one{
+    width:100%;
+    height:35%;
+    background-color:#79d1c3;
+    border-bottom: 8px solid #68c0b2;
+}
+.person-one-img{
+    width:60px;
+    height:60px;
+    float:left;
+    margin-left:40%;
+    overflow:hidden;
+    margin-top:100px;
+    border-radius:50%;
+    border: 8px solid #68c0b2;
     }
-    .user-score{
-      width: 180px;
-      height: 30px;
-      float: right;
-      border:1px solid #999;
-      margin-right: 136px;
-      margin-top: 10px;
-      text-align: center;
+.person-one-img img{
+    width:100%;
+    height:100%;
+   }
+.person-two{
+    width:100%;
+    height:65%;
     }
-    .user-identity{
-      width: 180px;
-      height: 30px;
-      float: right;
-      border:1px solid #999;
-      margin-right: 136px;
-      margin-top: 10px;
-      text-align: center;
+.person-header{
+    width:100%;
+    height:15%;
+    display:inline-block;
+    margin-top:5%;
+    text-align:center;
     }
+.pname{
+    display:inline-block;
+    width:auto;
+    height:80%;
+    text-align:center;
+}
+.person-middle{
+    width:100%;
+    height:15%;
+    margin-top:2%;
+    }
+.pscore{
+    width:25%;
+    height:100%;
+    font-size:1em;
+    float:left;
+    margin-left:31%;
+    /*font-size:15px;*/
+}
+.pimg{
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+}
+.pid{
+    width: 40%;
+    height:100%;
+    float:left;
+}
+.person-footer{
+    width:100%;
+    height:15%;
+    text-align:center;
+    margin-top:2%;
+}
+.pbutton{
+      background-color: #70cac1;
+      color: #eeeeee;
+      font-family:幼圆;
+      font-weight:bold;
+      font-size:15px;
+      border:none;
+      width:90px;
+      height:30px;
+      border-radius: 3px;
+      margin-left:39%;
+      margin-top:2%;
+}
+.pbutton:hover{
+      background-color:#63bdb4;
+}
     .comment{
-      width:24%;
+      width:100%;
       height:500px;
       float:right;
-      margin-right: 19%;
       margin-top:15px;
       box-shadow: 1px 1px 1px 1px #9999;
       background-color: white;

@@ -152,6 +152,6 @@ STATIC_ROOT = os.path.join(os.path.dirname(__file__), '/admina/').replace('\\', 
 
 MEDIA_URL = '/photos/'
 MEDIAFILES_DIRS =[
-    os.path.join(BASE_DIR, "photos"),
+    os.path.join(BASE_DIR, "idear/static/photos"),
 ]
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../photos/').replace('\\', '/')
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../idear/static/photos/').replace('\\', '/')

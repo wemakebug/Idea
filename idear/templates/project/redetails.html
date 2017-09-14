@@ -26,7 +26,7 @@
                       <div class="tags"><span>标签</span></div>
                      {# 项目logo #}
                       <div class="plogo">  </div>
-                      <div class="title"><h5>项目名称项目名称</h5></div>
+                      <div class="title"><h5>{{project.ProjectName}}</h5></div>
 
                   </div>
 
@@ -38,16 +38,9 @@
                        <div class="description">
                             <!--<textarea class="des" cols="30" rows="5" readonly="readonly"></textarea>-->
                        </div>
-
                   </div>
-                  <div class="content-middle">
-
-                         <div class="tip">
-                             <button>举报</button>
-                         </div>
 
 
-	              </div>
                   <div class="content-footer">
                       <!--此处为招募帖详细内容-->
                       <div class="rtitle">招募帖</div>
@@ -81,7 +74,7 @@
                     <!--此处为个人信息-->
                       <div class="person-one">
                           <div class="person-one-img">
-                           <img src=" " alt="">
+                            <img class="pimg" src="{% static 'project/imgs/user.svg'%}">
                           </div>
                       </div>
                       <div class="person-two">
@@ -111,7 +104,7 @@
                            <div class="c-all">
                                <img class="cimg" src="{% static 'project/imgs/user.svg'%}">
                                <div class="cright">
-                                    <a class="cname" href="">用户姓名</a><span class="c-content"></span>
+                                   <a class="cname" href="">用户姓名</a>  <span class="c-content">2017.8.8</span>
                                     <div class="ctime"></div>
                                     <div class="ctip"></div>
                                </div>
