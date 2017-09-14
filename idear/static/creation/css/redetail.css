@@ -95,7 +95,7 @@
       float:right;
       margin-left: 57%;
       margin-top: 0.8%;
-      box-shadow: 1px 1px 1px 1px #9999;
+      box-shadow: 0 2px 8px -2px gray;
       background-color: white;
     }
     .user-head{
@@ -128,24 +128,25 @@
     background-color:white;
     width:100%;
     height:42%;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 1px 1px 1px 1px #9999;
 }
 .person-one{
     width:100%;
-    height:35%;
-    background-color:#79d1c3;
-    border-bottom: 8px solid #68c0b2;
+    height:42%;
+    border-bottom: 8px solid #539092;
+    background:url(background0.jpg) no-repeat center;
+    background-size:100% 100%
 }
 .person-one-img{
-    width:60px;
-    height:60px;
+    width:80px;
+    height:80px;
     float:left;
-    margin-left:40%;
+    margin-left:36%;
     overflow:hidden;
-    margin-top:100px;
+    margin-top:83px;
     border-radius:50%;
-    border: 8px solid #68c0b2;
+    border: 8px solid #539092;
     }
 .person-one-img img{
     width:100%;
@@ -153,7 +154,7 @@
    }
 .person-two{
     width:100%;
-    height:65%;
+    height:60%;
     }
 .person-header{
     width:100%;
@@ -163,10 +164,13 @@
     text-align:center;
     }
 .pname{
-    display:inline-block;
-    width:auto;
-    height:80%;
-    text-align:center;
+    display: inline-block;
+    font-family: 幼圆;
+    font-size: 25px;
+    font-weight: bold;
+    height: 80%;
+    text-align: center;
+    width: auto;
 }
 .person-middle{
     width:100%;
@@ -174,21 +178,22 @@
     margin-top:2%;
     }
 .pscore{
-    width:25%;
+    width:21%;
     height:100%;
-    font-size:1em;
+    font-size:13px;
     float:left;
-    margin-left:31%;
+    margin-left:32%;
     /*font-size:15px;*/
 }
 .pimg{
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
     vertical-align:middle;
 }
 .pid{
-    width: 40%;
+    width: 25%;
     height:100%;
+    font-size:13px;
     float:left;
 }
 .person-footer{
@@ -198,20 +203,20 @@
     margin-top:2%;
 }
 .pbutton{
-      background-color: #70cac1;
+      background-color: #4f9fa0;
       color: #eeeeee;
       font-family:幼圆;
       font-weight:bold;
       font-size:15px;
       border:none;
-      width:90px;
+      width:60px;
       height:30px;
       border-radius: 3px;
-      margin-left:39%;
-      margin-top:2%;
+      margin-left:80%;
+      margin-top:3%;
 }
 .pbutton:hover{
-      background-color:#63bdb4;
+      background-color:#59b3aa;
 }
     .comment{
       width:100%;
@@ -221,3 +226,37 @@
       box-shadow: 1px 1px 1px 1px #9999;
       background-color: white;
     }
+
+.user-tag {
+  background: #37aead none repeat scroll 0 0;
+    border-radius: 15px;
+    display: inline-block;
+    font-size: 15px;
+    height: 26px;
+    line-height: 27px;
+    margin: 15px 0 0 2px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.2s ease 0s;
+    width: 30px;
+    color:white;
+}
+
+.user-tag::before {
+  background: white;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+
+
+.user-tag:hover {
+  background-color: #29a09f;
+  color: white;
+}
