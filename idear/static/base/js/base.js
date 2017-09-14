@@ -15,11 +15,12 @@ function getCookie(name) {
 }
 
 
+
 $(document).ready(function () {
     $('.nav li a').each(function () {
         $this = $(this);
-        if ($(this)[0].href == String(window.open)) {
-            $(this).addClass('active');
+        if ($this[0].href == String(window.location.href)) {
+            $this.addClass('active');
         }
     });
 
