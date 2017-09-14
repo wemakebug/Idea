@@ -25,7 +25,7 @@
         <li></li>
     </ul>
     <div class="border_1">
-        <div style="height: 2px"></div>
+{#        <div style="height: 2px"></div>#}
         <div class="line_1"></div>
         <div class="textbox">
             邮 箱:
@@ -51,12 +51,12 @@
         <div>
             <input type="button" onclick="window.location.href='regist'" value="注册" class="login_register"/>
         </div>
-        <div>
-            <a href="javascript:history.back(-1)" class="back">返回</a>
+        <div class="back">
+            <input type="button" value="返回" class="back1-1"  onclick="javascript:history.back(-1);">
         </div>
     </div>
-    <div class="border">
-    </div>
+{#    <div class="border">#}
+{#    </div>#}
     <div class="headPortrait">
         <img src="{% static 'idea/imgs/user1.png' %}" alt="">
     </div>

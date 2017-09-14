@@ -279,7 +279,13 @@ body,div{
     }
      .container ul li a:hover{
         color:#539092;
-    }
+     }
+     .container ul li a:visited{
+        color:#539092;
+     }
+      .container ul li a:active{
+        color:#539092;
+     }
     .main_logo{
         width:8%;
         height:100%;

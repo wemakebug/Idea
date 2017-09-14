@@ -294,6 +294,24 @@ def redetail(req):
         pass
 '''
 
+隐私条例页面详情
+'''
+def ordinance(req):
+    if req.method == 'GET':
+        return render_to_response('idea/ordinance.html')
+    if req.method == "POST":
+        pass
+'''
+
+服务条款页面详情
+'''
+def service(req):
+    if req.method == 'GET':
+        return render_to_response('idea/service.html')
+    if req.method == "POST":
+        pass
+'''
+
 招募项目详情
 '''
 def redetails(req):

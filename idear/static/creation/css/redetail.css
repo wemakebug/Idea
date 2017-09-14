@@ -88,6 +88,35 @@
       box-shadow: 1px 1px 1px 1px #9999;
       background-color: white;
     }
+
+    .user{
+      width:24%;
+      height:350px;
+      float:right;
+      margin-left: 57%;
+      margin-top: 0.8%;
+      box-shadow: 1px 1px 1px 1px #9999;
+      background-color: white;
+    }
+    .user-head{
+      width:100%;
+      height:40px;
+      float:left;
+      background-color: #eeeeee;
+    }
+    .user-head-text{
+      width: 150px;
+      height: 30px;
+      font-size: 23px;
+      margin: 0 auto;
+      margin-top: 5px;
+      font-family: 宋体;
+      text-align: center;
+    }
+    .user-ava {
+        float: left;
+        margin: 20px 0 0 43.5%;
+    }
     .main-right{
     float:left;
     width:23%;
