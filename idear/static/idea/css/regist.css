@@ -344,3 +344,31 @@ body,html{
     line-height: 50px;
     margin-top: 500px;
 }
+.back{
+    width: 100%;
+    height: 50px;
+    text-align: right;
+}
+.back1-1{
+    /*border: 1px solid rgba(224,238,224	,0.8);*/
+    width: 100px;
+    font-size: 1em;
+    padding: .25em .5em .3125em;
+    color: rgb(54,54,54);
+    border-radius: .25em;
+    background: transparent;
+    /*background-color: rgba(230,230,250,0.8);*/
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    font-family: kaiti;
+    cursor: pointer;
+    font-weight: bold;
+}
+/*.line111{*/
+    /*background: -webkit-linear-gradient(-90deg,  #0000ff,#fff);*/
+    /*background: -o-linear-gradient(-90deg,  #0000ff,#fff);*/
+    /*background: -moz-linear-gradient(-90deg,  #0000ff,#fff);*/
+    /*background: linear-gradient(-90deg,  #0000ff,#fff);*/
+    /*opacity: 0.4;*/
+    /*float: left;*/
+/*}*/
