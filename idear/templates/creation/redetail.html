@@ -4,6 +4,8 @@
     {% load static %}
     <link rel="stylesheet" href="{%  static '/idea/css/index.css'%}">
     <link rel="stylesheet" href="{% static '/creation/css/redetail.css' %}">
+
+
 {% endblock %}
 {% block content %}
     {% load static %}
@@ -27,8 +29,10 @@
       <div class="person">
                     <!--此处为个人信息-->
           <div class="person-one">
+
+              <button class="pbutton">关注</button>
               <div class="person-one-img">
-                  <img src="{% static '/creation/imgs/ava.png' %}">
+                  <img src="{% static '/creation/imgs/tx.jpg' %}">
               </div>
           </div>
           <div class="person-two">
@@ -45,9 +49,10 @@
                   </div>
               </div>
               <div class="person-footer">
-                  标签：<span>IT/美工/前端</span>{#此标签格式呢通过后台  #}
-              </div>
-              <button class="pbutton">关注</button>
+              <div class="user-tag">前端</div>
+              <div class="user-tag">美工</div>
+              <div class="user-tag">IT</div>
+            </div>
           </div>
       </div>
 

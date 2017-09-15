@@ -9,7 +9,7 @@
 	}
 	.content{
 	    width:70%;
-	    height:100%;
+	    height:99%;
 	    margin-left:15%;
 	    background:#FFFFFF;
 	}
@@ -88,7 +88,7 @@
     }
     .usage{
         width:100%;
-    height:80%;
+        height:80%;
     }
     .usage_one{
         width:21%;
@@ -163,8 +163,8 @@
     #main-box-two{
         width:85%;
         height:20%;
-        margin-top:3%;
-        border:0px solid #ccc;
+        margin-top:4%;
+        border:1px solid transparent;
     }
     .dividing_line{
         width: 30%;
@@ -174,14 +174,44 @@
     }
     .dividing_middle{
         width: 100%;
-        height:100%;
+        height:90%;
+        margin-top: 1%;
+        border: 1px solid transparent;
+    }
+    .dividing_middle ul{
+        width: 100%;
+        height: 100%;
+    }
+    .dividing_middle ul li{
+        width: 30%;
+        height: 100%;
+        margin-left: 2.5%;
+        float:left;
+        border:1px solid #295E6A;
     }
     .dividing_line2{
         width: 30%;
         height: 0.5%;
         background: #295E6A;
         float: right;
+        margin-top: 1%;
     }
+    .three_left{
+        width:45%;
+        height: 100%;
+        border: 1px solid #295E6A;
+        float:left;
+        margin-left: 3%;
+    }
+     .three_right{
+        width:45%;
+        height: 100%;
+        border: 1px solid #295E6A;
+        float:right;
+         margin-right: 2%;
+
+    }
+
     .mainbox_four{
         width:90%;
         height:15%;
