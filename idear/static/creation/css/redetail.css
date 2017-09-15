@@ -2,7 +2,7 @@
     height:100%;
     margin:0px;
   }
-.container_b {
+.container-b {
     width: 100%;
     height:auto;
     overflow:hidden;
@@ -11,7 +11,7 @@
     background-color:#f1f1f1;
     }
 
-    .home_b{
+    .home-b{
       background-color:white;
       width:45%;
       height:550px;
@@ -20,9 +20,14 @@
       float:left;
       box-shadow: 1px 1px 1px 1px #9999;
     }
+    .home-b-tags{
+      width:100%;
+      height:7%;
+    }
     .tags{
       float:right;
-      margin:-3px 10px 0px 0px;
+      margin:-2px 25px 0 0;
+      width: 40px;
 
     }
     .tags span::before {
@@ -57,19 +62,64 @@
     float: right;
     font-size: 14px;
     line-height: 1px;
-    margin-left: 2%;
+    margin-right: -8px;
     padding: 18px 8px 15px;
     position: relative;
     text-align: center;
-    top: -2px;
-    width: 8%;
+    margin-top: -2px;
+    width: 100%;
 }
+
+    .home-b-head{
+      width:100%;
+      height:100px;
+      margin-left:0px;
+    }
+    .home-b-logo{
+      float:left;
+      margin-left:3%;
+      width:100px;
+    }
+    .home-b-title{
+      float:left;
+      margin-top: -85px;
+      width:100%;
+    }
+    .home-b-title h1{
+      text-align:center;
+      font-family:幼圆;
+      font-size:30px;
+      font-weight:bold;
+    }
+    .home-b-ts{
+      text-align:center;
+    }
+    .home-b-time{
+      width:150px;
+      float:left;
+      margin-top:-35px;
+      margin-left:29%;
+    }
+    .home-b-time h4{
+    font-family:幼圆;
+    font-weight:lighter;
+    color:gray;
+    }
+    .home-b-time p{
+      width:5px;
+    }
+    .home-b-share{
+      width:200px;
+      float:left;
+      margin-left:52%;
+      margin-top:-35px;
+    }
     .text{
-      width: 70%;
-      height: 85%;
       float: left;
-      margin-left: 15%;
-      text-align: center;
+      height: auto;
+      margin-left: 8%;
+      margin-top: 3%;
+      width: 85%;
     }
     .text h1{
       margin-top:50px;
@@ -142,9 +192,9 @@
     width:80px;
     height:80px;
     float:left;
-    margin-left:36%;
+    margin-left:37%;
     overflow:hidden;
-    margin-top:83px;
+    margin-top:118px;
     border-radius:50%;
     border: 8px solid #539092;
     }
@@ -178,11 +228,11 @@
     margin-top:2%;
     }
 .pscore{
-    width:21%;
+    width:18%;
     height:100%;
     font-size:13px;
     float:left;
-    margin-left:32%;
+    margin-left:36%;
     /*font-size:15px;*/
 }
 .pimg{
@@ -191,7 +241,7 @@
     vertical-align:middle;
 }
 .pid{
-    width: 25%;
+    width: 18%;
     height:100%;
     font-size:13px;
     float:left;
@@ -203,21 +253,22 @@
     margin-top:2%;
 }
 .pbutton{
-      background-color: #4f9fa0;
-      color: #eeeeee;
-      font-family:幼圆;
-      font-weight:bold;
-      font-size:15px;
-      border:none;
-      width:60px;
-      height:30px;
-      border-radius: 3px;
-      margin-left:80%;
-      margin-top:3%;
+    border: 2px solid;
+    border-radius: 20px;
+    color: white;
+    display: inline-block;
+    float: right;
+    font-family: 幼圆;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 12px 12px 0 0;
+    padding: 4px 20px;
+
 }
 .pbutton:hover{
-      background-color:#59b3aa;
+    color:#29a09f;
 }
+
     .comment{
       width:100%;
       height:500px;
@@ -227,13 +278,13 @@
       background-color: white;
     }
 
-.user-tag {
+.user-tag{
   background: #37aead none repeat scroll 0 0;
-    border-radius: 15px;
+    border-radius: 3px 15px 15px 3px;
     display: inline-block;
     font-size: 15px;
     height: 26px;
-    line-height: 27px;
+    line-height: 24px;
     margin: 15px 0 0 2px;
     padding: 0 20px 0 23px;
     position: relative;
