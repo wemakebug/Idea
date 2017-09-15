@@ -254,15 +254,32 @@ def team(req):
     if req.method == 'POST':
         pass
 
-def teamdetails(req):
+
+def teamdetails(req, teamid):
     if req.method == 'GET':
-            return render_to_response('team/teamdetails.html')
+        try:
+            team = models.User.objects.get(Id=teamid)
+        except:
+            return HttpResponse('404')
+        else:
+            if int(team.Identity) == 2:
+                return render_to_response('team/teamdetails.html', {'team': team})
+            else:
+                return HttpResponse('404')
     if req.method == 'POST':
         pass
 
-def teamhelpapplication(req):
+def teamhelpapplication(req,teamhelpid):
     if req.method == 'GET':
-        return render_to_response('team/teamhelpapplication.html')
+        try:
+            teamhelp = models.User.objects.get(Id=teamhelpid)
+        except:
+            return HttpResponse('404')
+        else:
+            if int(teamhelp.Identity) == 2:
+                return render_to_response('team/teamhelpapplication.html', {'teamhelp': teamhelp})
+            else:
+                return HttpResponse('404')
     if req.method == 'POST':
         pass
 # 忘记密码
