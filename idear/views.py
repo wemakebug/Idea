@@ -187,16 +187,25 @@ def regist(req):
                     result['status'] = 0
                     result['message'] = '服务器异常!!' + e
                     return HttpResponse(json.dumps(result))
+def logout(req):
+    if req.method == "GET":
+        response = render(req, 'idea/login.html')
+        response.set_cookie('username', None)
+        response.set_cookie('email', None)
+        try:
+            del req.session['uuid']
+            del req.session['verficode']
+        except:
+            pass
+        return render_to_response('idea/index.html')
+
 @csrf_exempt
 def get_user_img(req):
     if req.method == "GET":
-        # user = models.User.objects.get(Email='chris156@123.com')
-        # if user.Img :
-        #     print 'yes'
-        # else:
-        #     print 'No'
-        # return HttpResponse('NO img')
-        return Http404
+        user = models.User.objects.get(Email='chris156@123.com')
+        img = str(user.Img)
+        print img
+        return HttpResponse('ok')
     elif req.method == "POST":
         result = {
             'status': 0,
@@ -224,7 +233,7 @@ def get_user_img(req):
                     result['message'] = '路径获取成功'
                     result['img_path'] = img_path
                 except:
-                    img_path = 'photos/2017/09/10/user/None_e1xHMz3.png'
+                    img_path = 'photos/2017/09/12/user/None_OJaSqy5.png'
                     result['status'] = 1
                     result['message'] = '用户暂未上传图片'
                     result['img_path'] = img_path
@@ -245,23 +254,43 @@ def team(req):
     if req.method == 'POST':
         pass
 
-def teamdetails(req):
+
+def teamdetails(req, teamid):
     if req.method == 'GET':
-            return render_to_response('team/teamdetails.html')
+        try:
+            team = models.User.objects.get(Id=teamid)
+        except:
+            return HttpResponse('404')
+        else:
+            if int(team.Identity) == 2:
+                return render_to_response('team/teamdetails.html', {'team': team})
+            else:
+                return HttpResponse('404')
     if req.method == 'POST':
         pass
 
-def teamhelpapplication(req):
+def teamhelpapplication(req,teamhelpid):
     if req.method == 'GET':
-        return render_to_response('team/teamhelpapplication.html')
+        try:
+            teamhelp = models.User.objects.get(Id=teamhelpid)
+        except:
+            return HttpResponse('404')
+        else:
+            if int(teamhelp.Identity) == 2:
+                return render_to_response('team/teamhelpapplication.html', {'teamhelp': teamhelp})
+            else:
+                return HttpResponse('404')
     if req.method == 'POST':
         pass
 # 忘记密码
 def forgetPassword(req):
     if req.method == 'GET':
+
         stream, strs = generate_verify_image(save_img=False)
+        req.sessions['verifycode'] = strs
         stream = base64.b64encode(stream.getvalue()).encode('ascii')
         return render_to_response('idea/forgetPassword.html',{'img':stream})
+
 
 '''
 创意页面
@@ -278,6 +307,24 @@ def creation(req):
 def redetail(req):
     if req.method == 'GET':
         return render_to_response('creation/redetail.html')
+    if req.method == "POST":
+        pass
+'''
+
+隐私条例页面详情
+'''
+def ordinance(req):
+    if req.method == 'GET':
+        return render_to_response('idea/ordinance.html')
+    if req.method == "POST":
+        pass
+'''
+
+服务条款页面详情
+'''
+def service(req):
+    if req.method == 'GET':
+        return render_to_response('idea/service.html')
     if req.method == "POST":
         pass
 '''

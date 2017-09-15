@@ -16,35 +16,45 @@
         <div class="teamdetailsynopsis1-1"><strong>团队简介：</strong></div>
         <div class="teamdetailsynopsis1-2">
             所属学院：
-            <input type="text" class="detailsinput1-1">
+            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Institude }}>
         </div>
         <div class="teamdetailsynopsis1-3">
             团队名称：
-            <input type="text" class="detailsinput1-1">
+            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.UserName }}>
         </div>
         <div class="teamdetailsynopsis1-4">
             注册时间：
-            <input type="text" class="detailsinput1-1">
+            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.RegistTime }}>
         </div>
-        <div class="teamdetailsynopsis1-5">
-            团队标签：
-            <input type="text" class="detailsinput1-1">
+        <div class="teamdetailsynopsis1-7">
+            团队分数：
+            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Score }}>
         </div>
         <div class="teamdetailsynopsis1-6">
             邮箱：
-            <input type="text" class="detailsinput1-1">
-        </div>
-         <div class="teamdetailsynopsis1-7">
-            团队分数：
-            <input type="text" class="detailsinput1-1">
+            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Email }}>
         </div>
     </div>
     <div class="details">
         <div class="details1-1"><strong>团队详情：</strong></div>
         <div class="details1-2">
-            <textarea name="details" class="details1-3"></textarea>
+            <textarea name="details" disabled="disabled" class="details1-3"></textarea>
         </div>
-        <input type="button" value="申请帮助" class="details1-4" id="petitionhelp">
+        <div class="teamdetailadddiv">
+            <input type="button" value="申请帮助" class="details1-4" id="petitionhelp">
+        </div>
+    </div>
+    <div class="teamlable">
+        <div class="teamlable1-1"><strong>团队标签</strong></div>
+        <div class="teamlable1-2"></div>
+        <div class="teamlable1-3">
+            <span class="teamlable1-4">css</span>
+            <span class="teamlable1-4">html</span>
+            <span class="teamlable1-4">css</span>
+            <span class="teamlable1-4">html</span>
+            <span class="teamlable1-4">css</span>
+            <span class="teamlable1-4">html</span>
+        </div>
     </div>
     <div class="comment">
         <div class="comment1-1"><strong>评论专区：</strong></div>
@@ -90,15 +100,15 @@
 </div>
 {% endblock %}
 {%block script%}
-    <script type="text/javascript" src="{% static 'team/js/jquery.flexText.js'%}"></script>
-    <script type="text/javascript" src="{% static 'team/js/jquery-1.12.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'team/js/teamdetails.js'%}"></script>
-{#    <script type="text/javascript" src="{% static 'team/js/teambg.js'%}"></script>#}
+    <script type="text/javascript" src="{% static 'team/js/teambg.js'%}"></script>
 {#    不懂#}
+    <script type="text/javascript" src="{% static 'team/js/jquery.flexText.js'%}"></script>
     <!--textarea高度自适应-->
 <script type="text/javascript">
-    $(function () {
-        $('.content').flexText();
+     jQuery(document).ready(function ($){
+        $('.content1').flexText();
     });
 </script>
 <!--textarea限制字数-->

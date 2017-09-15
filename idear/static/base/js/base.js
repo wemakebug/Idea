@@ -15,13 +15,15 @@ function getCookie(name) {
 }
 
 
+
 $(document).ready(function () {
-    $(".nav li a").each(function () {
+    $('.nav li a').each(function () {
         $this = $(this);
-        if ($(this)[0].href == String(window.location)) {
-            $(this).addClass('active');
+        if ($this[0].href == String(window.location.href)) {
+            $this.addClass('active');
         }
     });
+
     var user_img = document.getElementById('user_img');
     var username = getCookie('username');
     if (username === null) {
@@ -39,13 +41,13 @@ $(document).ready(function () {
     $.post('getimg', {}, function (result) {
         result = JSON.parse(result);
         if (result['status'] === 1) {
-            alert(result['message']);
+            // alert(result['message']);
             var img_path = result['img_path'];
             var message = result['message'];
-            user_img.src = '../photos/' + img_path;
+            user_img.src = 'static/photos/' + img_path;
         } else if (result['status'] === 0) {
-            var message = result['message'];
-            alert(message);
+            // var message = result['message'];
+            // alert(message);
         } else {
 
         }

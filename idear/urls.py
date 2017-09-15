@@ -25,8 +25,8 @@ urlpatterns = [
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
-    url(r'teamdetails$', views.teamdetails),
-    url(r'teamhelpapplication$', views.teamhelpapplication),
+    url(r'teamdetails/?(\d+)$', views.teamdetails),
+    url(r'teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'creations$', creations.creations),
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),
@@ -36,7 +36,9 @@ urlpatterns = [
     url(r'redetail$', views.redetail),
     url(r'star$', creations.star),
     url(r'attend$', creations.attend),
-
+    url(r'ordinance$', views.ordinance),
+    url(r'service$', views.service),
+    url(r'logout$', views.logout),
     url(r'test/?(\d+)$', views.test),
 
     url(r'getimg', views.get_user_img)

@@ -1,14 +1,12 @@
 .main{
     width:100%;
-    height:1100px;
+    height:1200px;
 	}
-.index_recruit{
-    background-color: #295E6A;
-}
+
 .content-all{
     margin-top:70px;
     width:80%;
-    height:1100px;
+    height:1200px;
     margin-left:10%;
     background:#FFFFFF;
     border: 1px solid black;
@@ -21,7 +19,8 @@
 .main-left{
     float:left;
     width:60%;
-    height:1000px;
+    height:1100px;
+
     }
 /*左上项目详情*/
 .content-top{
@@ -38,6 +37,7 @@
 .tags {
     top: -8px;
     right: 10px;
+    margin:-3px 10px 0 0;
     }
 .tags span {
     float:right;
@@ -224,30 +224,32 @@ a.rbutton:active {
 .main-right{
     float:left;
     width:30%;
-    height:1000px;
-    border: 1px solid black;
+    height:1100px;
+
 }
 /*右上*/
 .person{
     /*margin-top:10%;*/
     width:60%;
-    height:35%;
+    height:28%;
     border: 1px solid black;
 
 }
 .person-one{
     width:100%;
-    height:35%;
-    background-color:#539092;
+    height:30%;
+    background-color:#E2EFF1;
+    border-bottom:8px solid #539092;
 }
 .person-one-img{
-    width:80px;
-    height:80px;
+    width:60px;
+    height:60px;
     float:left;
     margin-left:35%;
     overflow:hidden;
     margin-top:20%;
     border-radius:50%;
+    border:8px solid #539092;
     }
 .person-one-img img{
     width:100%;
@@ -293,6 +295,14 @@ a.rbutton:active {
     height:100%;
     float:left;
 }
+.allsign{
+    padding:5px 20px;
+    border: 1px solid #c0c5cd;
+    background-color: #eeeeee;
+    border-radius: 5px;
+
+    color: #a9b1b5;
+}
 .person-footer{
     width:100%;
     height:15%;
@@ -305,7 +315,7 @@ a.rbutton:active {
 /*右下评论*/
 .comment{
     width:90%;
-    height:60%;
+    height:65%;
     border: 1px solid black;
     margin-top:10%;
 
@@ -313,10 +323,11 @@ a.rbutton:active {
 .ctitle{
     width:100%;
     height:8%;
+    text-align: center;
 }
 .cmain{
     width:100%;
-    height:75%;
+    height:78%;
     border-bottom:1px solid #DDDDDD;
 }
 .c-all{
@@ -329,13 +340,19 @@ a.rbutton:active {
     height:40px;
     vertical-align:middle;
 }
+.cright{
+    width:85%;
+    height:65%;
+    float:right;
+    background-color: #3a87ad;
+}
 .cname{
-    display:block;
+
 
 }
 .cfooter{
     width:100%;
-    height:15%;
+    height:14%;
 }
 .cmore{
     width:20%;
