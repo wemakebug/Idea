@@ -79,7 +79,7 @@ class ProjectLabel(models.Model):
     IsUse = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return unicode_literals(self.ProjectLabelName)
+        return self.ProjectLabelName
 
 class Project2ProjectLabel(models.Model):
     '''
@@ -95,9 +95,12 @@ class UserLabel(models.Model):
     用户标签表
     '''
     Id = models.AutoField(primary_key=True)
-    projectLabel = models.ForeignKey(Project, related_name='UserLabel_Project_set')
+    projectLabel = models.ForeignKey(ProjectLabel, related_name='UserLabel_Project_set')
     IsUse = models.BooleanField(default=True)
     Name = models.CharField(null=False, max_length=20, unique=True)
+
+    def __unicode__(self):
+        return self.Name
 
 class User2UserLabel(models.Model):
     '''
@@ -107,6 +110,8 @@ class User2UserLabel(models.Model):
     user = models.ForeignKey(User, related_name='User2UserLabel_User_set')
     userLabel = models.ForeignKey(UserLabel, related_name='User2UserLabel_UserLabel_set', null=False)
 
+    def __unicode__(self):
+        return self.user.__unicode__() + '  '+self.userLabel.__unicode__()
 
 class ProjectUser(models.Model):
     '''

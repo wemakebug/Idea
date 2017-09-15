@@ -152,6 +152,7 @@
 	scrollbar-highlight-color:transparent;
     position: absolute;
     z-index: 99;
+    resize: none;
 }
 .requestdetails1-5{
     width: 15%;
@@ -196,6 +197,7 @@
 	scrollbar-highlight-color:transparent;
     position: absolute;
     z-index: 99;
+    resize: none;
 }
 .submithelp1-1{
     width:90%;
@@ -204,30 +206,52 @@
     position: relative;
 }
 .submithelp1-2{
-    border: 1px solid rgba(54, 54 ,54,0.9);
+    /*border: 1px solid rgba(54, 54 ,54,0.9);*/
     width: 100px;
     font-size: 1em;
     padding: .25em .5em .3125em;
     color: rgb(54,54,54);
     border-radius: .25em;
 	cursor:pointer;
-    background: transparent;
+    background: -webkit-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
+    background: -o-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
+    background: -moz-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
+    background: linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
+    opacity: 0.7;
     -webkit-transition: all .100s;
     transition: all .100s;
 	font-family: kaiti;
 }
+.submithelp1-2:hover{
+    background: -webkit-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
+    background: -o-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
+    background: -moz-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
+    background: linear-gradient(-90deg,   #F0FFFF,#E0EEEE);
+	opacity: 0.9;
+}
 .submithelp1-3{
-    border: 1px solid rgba(54, 54 ,54,0.9);
+    /*border: 1px solid rgba(54, 54 ,54,0.9);*/
     width: 100px;
     font-size: 1em;
     padding: .25em .5em .3125em;
     color: rgb(54,54,54);
     border-radius: .25em;
 	cursor:pointer;
-    background: transparent;
+    background: -webkit-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
+    background: -o-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
+    background: -moz-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
+    background: linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
+    opacity: 0.7;
     -webkit-transition: all .100s;
     transition: all .100s;
 	font-family: kaiti;
+}
+.submithelp1-3:hover{
+    background: -webkit-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
+    background: -o-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
+    background: -moz-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
+    background: linear-gradient(-90deg,   #F0FFFF,#E0EEEE);
+	opacity: 0.9;
 }
 .submithelp1-4{
     width: 33%;
@@ -242,7 +266,7 @@
 }
 .bigbox{
     width: 68%;
-    float: left;
+    margin-left: 10%;
 }
 .smallbox{
     margin-top: 200px;
