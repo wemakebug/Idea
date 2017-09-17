@@ -106,7 +106,8 @@ $('#submit_btn').click(function () {
                     text:"非常抱歉，获取信息失败",
                     type:"error",
                     timer: 2000,
-                    showConfirmButton: false
+                    showConfirmButton: false,
+                    inputAutoTrim:true
                  });
                 // window.location.reload();
             } else if (result.status == 1) {
@@ -115,8 +116,8 @@ $('#submit_btn').click(function () {
                 swal({
                     title:"注册成功，正在调转!",
                     text:"恭喜你，注册成功！",
-                    timer: 3500,
                     type:"success",
+                    timer: 3500,
                     showConfirmButton: false
                  });
                 window.location.href = 'index'

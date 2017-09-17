@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),
     url(r'recruit$', projects.projects),
-    url(r'redetails$', views.redetails),
+    url(r'redetails/(?P<projectID>.*)$', views.redetails),
     url(r'projects$', projects.projects),
     url(r'redetail$', views.redetail),
     url(r'star$', creations.star),
@@ -40,7 +40,6 @@ urlpatterns = [
     url(r'service$', views.service),
     url(r'logout$', views.logout),
     url(r'test/?(\d+)$', views.test),
-
     url(r'getimg', views.get_user_img)
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
