@@ -331,15 +331,9 @@ def service(req):
 
 招募项目详情
 '''
-def redetails(req, projectID):
+def redetails(req):
     if req.method == 'GET':
-        print projectID
-        try:
-            project = models.Project.objects.get(Id=projectID)
-        except:
-            return HttpResponse('404')
-        else:
-            return render_to_response('project/redetails/', {'project':project})
+        return render_to_response('project/redetails.html')
     if req.method == 'POST':
         pass
 '''
