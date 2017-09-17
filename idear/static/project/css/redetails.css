@@ -9,7 +9,7 @@
     height:1200px;
     margin-left:10%;
     background:#FFFFFF;
-    border: 1px solid black;
+
 	}
 .content-nav{
     width:100%;
@@ -18,7 +18,7 @@
     }
 .main-left{
     float:left;
-    width:60%;
+    width:55%;
     height:1100px;
 
     }
@@ -32,7 +32,7 @@
     background-size: cover;
     text-transform: uppercase;
     color: white;
-    border: 1px solid black;
+
 }
 .tags {
     top: -8px;
@@ -101,7 +101,7 @@
     width:100%;
     height:35%;
     float:left;
-    border: 1px solid black;
+
     }
 .description{
     width:100%;
@@ -119,7 +119,7 @@
     width:100%;
     height: 10%;
     float:left;
-    border: 1px solid black;
+
 }
 .tip{
     width:10%;
@@ -130,7 +130,7 @@
     width:100%;
     height: 44%;
     float:left;
-    border: 1px solid black;
+
 }
 /*左下招募帖*/
 .rtitle{
@@ -223,33 +223,36 @@ a.rbutton:active {
 }
 .main-right{
     float:left;
-    width:30%;
+    width:35%;
     height:1100px;
 
 }
 /*右上*/
-.person{
+ .person{
     /*margin-top:10%;*/
+    background-color:white;
     width:60%;
-    height:28%;
-    border: 1px solid black;
-
+    height:32%;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px #9999;
+    margin-left: 27%;
 }
 .person-one{
     width:100%;
-    height:30%;
-    background-color:#E2EFF1;
-    border-bottom:8px solid #539092;
+    height:42%;
+    border-bottom: 8px solid #539092;
+    background:url(background0.jpg) no-repeat center;
+    background-size:100% 100%
 }
 .person-one-img{
-    width:60px;
-    height:60px;
+    width:80px;
+    height:80px;
     float:left;
-    margin-left:35%;
+    margin-left:37%;
     overflow:hidden;
-    margin-top:20%;
+    margin-top:100px;
     border-radius:50%;
-    border:8px solid #539092;
+    border: 8px solid #539092;
     }
 .person-one-img img{
     width:100%;
@@ -257,7 +260,7 @@ a.rbutton:active {
    }
 .person-two{
     width:100%;
-    height:65%;
+    height:60%;
     }
 .person-header{
     width:100%;
@@ -267,92 +270,185 @@ a.rbutton:active {
     text-align:center;
     }
 .pname{
-    display:inline-block;
-    width:auto;
-    height:80%;
-    text-align:center;
+    display: inline-block;
+    font-family: 幼圆;
+    font-size: 25px;
+    font-weight: bold;
+    height: 80%;
+    text-align: center;
+    width: auto;
 }
 .person-middle{
     width:100%;
     height:15%;
-    margin-top:7%;
+    margin-top:2%;
     }
 .pscore{
-    width:25%;
+    width:18%;
     height:100%;
-    font-size:1em;
+    font-size:13px;
     float:left;
-    margin-left:25%;
+    margin-left:36%;
     /*font-size:15px;*/
 }
 .pimg{
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
     vertical-align:middle;
 }
 .pid{
-    width: 40%;
+    width: 18%;
     height:100%;
+    font-size:13px;
     float:left;
-}
-.allsign{
-    padding:5px 20px;
-    border: 1px solid #c0c5cd;
-    background-color: #eeeeee;
-    border-radius: 5px;
-
-    color: #a9b1b5;
 }
 .person-footer{
     width:100%;
     height:15%;
     text-align:center;
-    margin-top:7%;
+    margin-top:2%;
+}
+.user-tag{
+  background: #37aead none repeat scroll 0 0;
+    border-radius: 3px 15px 15px 3px;
+    display: inline-block;
+    font-size: 15px;
+    height: 26px;
+    line-height: 24px;
+    margin: 15px 0 0 2px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.2s ease 0s;
+    width: 30px;
+    color:white;
+}
+
+.user-tag::before {
+  background: white;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
 }
 .pbutton{
-    width:40%;
+    border: 2px solid;
+    border-radius: 20px;
+    color: white;
+    display: inline-block;
+    float: right;
+    font-family: 幼圆;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 12px 12px 0 0;
+    padding: 4px 20px;
+
 }
+.pbutton:hover{
+    color:#29a09f;
+}
+
 /*右下评论*/
 .comment{
     width:90%;
-    height:65%;
-    border: 1px solid black;
-    margin-top:10%;
-
+    height:70%;
 }
 .ctitle{
     width:100%;
     height:8%;
     text-align: center;
+    line-height: 50px;
 }
-.cmain{
-    width:100%;
-    height:78%;
-    border-bottom:1px solid #DDDDDD;
-}
+
 .c-all{
     width:100%;
-    height:15%;
-    border-bottom:1px solid #DDDDDD;
+    height:80%;
+}
+.cmain{
+    height:19%;
 }
 .cimg{
-    width:40px;
-    height:40px;
-    vertical-align:middle;
+    display:block;
+    width:50px;
+    height:50px;
+    margin:2% 2%;
+    float:left;
 }
-.cright{
-    width:85%;
-    height:65%;
-    float:right;
-    background-color: #3a87ad;
+.comment-box {
+    width:  80%;
+    float: right;
+	position: relative;
 }
-.cname{
+
+.comment-box:before,  .comment-box:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	border-color: transparent  #8BCFCC;
+	top: 20px;
+	left: -11px;
+}
+ .comment-box:before {
+	border-width: 11px 13px 11px 0;
+	border-color: transparent rgba(0,0,0,0.05);
+	left: -12px;
+}
 
 
+.comment-head {
+
+	height:40%;
+	width:100%;
+    margin-top:5px;
+	border-bottom: 2px solid #E5E5E5;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+    background-color:  #8BCFCC;
+}
+
+
+.comment-name {
+	color: #283035;
+	font-size: 14px;
+	font-weight: 700;
+	float: left;
+	margin: 10px 0 10px 5px;
+}
+
+.comment-name a {
+	color: #283035;
+}
+
+.comment-head span {
+	float: left;
+	color: #999;
+	font-size: 13px;
+	margin: 10px 0 10px 20px;
+
+}
+.comment-content {
+	width:100%;
+	height: 55%;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+    background-color:  #8BCFCC;
 }
 .cfooter{
     width:100%;
-    height:14%;
+    height:12%;
 }
 .cmore{
     width:20%;
