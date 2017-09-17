@@ -3,10 +3,10 @@ html{
 	background: #f1f1f1 none repeat scroll 0 0;
 }
 .first {
-	position: relative;
+	/*position: relative;*/
 	font-family: 宋体;
-	margin: 66px 135px 0;
-	width:63%;
+	margin: 66px 13% 0;
+	width:80%;
 
 
 }
@@ -17,10 +17,10 @@ html{
 
 }
 .second{
-	margin: 40px 30px 0;
+	margin: 40px 2% 0;
 	padding: 0;
 	float: left;
-	width: 43%;
+	width: 32%;
 	height: 290px;
 
 }
@@ -69,23 +69,10 @@ html{
 }
 
 .broadSide{
-	float: right;
-	width: 22%;
-	position:absolute;
-	margin: -1428px 1100px;
-}
-
-.fish-1{
-	height: 20%;
+	float: left;
 	width: 20%;
-	margin: 2% 19%;
-    -webkit-transform:skew(17deg);
-    -moz-transform:skew(17deg) ;
-    -o-transform:skew(17deg) ;
-}
-.classify{
-	float: right;
-    margin: -80px -27px;
+	/*position:absolute;*/
+	margin: -1428px 75%;
 }
 .intro_1{
 	width: 73%;
@@ -105,16 +92,60 @@ html{
 	text-align: left;
 	width: 86%;
 }
-.add {
-    background-color: #11999e;
-    border: medium none;
-    border-radius: 3px;
-    color: #eeeeee;
-    float: left;
-    height: 30px;
-    margin:30px 147px;
-    width: 70px;
-}
 .feature{
 	margin: 0px 85%;
+}
+
+.classify{
+	float: right;
+    margin: -80px -27px;
+}
+ .tag hr {
+	 border: 0;
+	 border-top: 1px solid #c0c5cd;
+	 margin-bottom: 15px;
+	 position: relative;
+ }
+ .tag hr:before{
+    content: '';
+    width: 60px;
+    height: 4px;
+    background-color: #57cecd;
+    position: absolute;
+    bottom: 0;
+ }
+ .tag a{
+    font-size: 15px;
+    text-decoration: none;
+ }
+  .tag span{
+    display: inline-block;
+    margin-bottom: 8px;
+    font-family:幼圆;
+ }
+
+ .allsign{
+    border: 1px solid #c0c5cd;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    padding: 6px 15px;
+    color: #a9b1b5;
+}
+
+.allsign:hover{
+     color: #fff;
+     background-color: #57cecd;
+}
+
+.more{
+	width:918px;
+	height:30px;
+	text-align: center;
+	float:left;
+	margin-top:30px;
+	margin-left:65px;
+	margin-bottom:2%;
+	background-color:white;
+	border-radius: 3px;
+	box-shadow: 2px 2px 2px 2px #bdc3c7;
 }
