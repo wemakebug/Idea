@@ -21,23 +21,23 @@
             </div>
             <div class="application1-6">
                 学院：
-                <input type="text" class="applicationinput1-1">
+                <input type="text" class="applicationinput1-1" value={{ teamhelp.Institude }}>
             </div>
             <div class="application1-7">
                 申请人：
-                <input type="text" class="applicationinput1-1">
+                <input type="text" class="applicationinput1-1" value={{ teamhelp.UserName }}>
             </div>
             <div class="application1-8">
                 专业：
-                <input type="text" class="applicationinput1-1">
+                <input type="text" class="applicationinput1-1" value={{ teamhelp.Major }}>
             </div>
             <div class="application1-9">
                 个人分数：
-                <input type="text" class="applicationinput1-1">
+                <input type="text" class="applicationinput1-1" value={{ teamhelp.Score }}>
             </div>
             <div class="application1-10">
                 联系方式：
-                <input type="text" class="applicationinput1-1">
+                <input type="text" class="applicationinput1-1" value={{ teamhelp.Phone }}>
             </div>
         </div>
         <div class="requestdetails">
@@ -68,17 +68,17 @@
             </div>
         </div>
     </div>
-    <div class="smallbox">
-        <div class="images">
-            <img style="width: 100%;height: 100%;" src="{% static 'team/imgs/django-logo-negative.png'%}">
-        </div>
-        <div class="images1-1">
-            团队名称：
-        </div>
-        <div class="images1-1">
-            团队标签：
-        </div>
-    </div>
+{#    <div class="smallbox">#}
+{#        <div class="images">#}
+{#            <img style="width: 100%;height: 100%;" src="{% static 'team/imgs/django-logo-negative.png'%}">#}
+{#        </div>#}
+{#        <div class="images1-1">#}
+{#            团队名称：#}
+{#        </div>#}
+{#        <div class="images1-1">#}
+{#            团队标签：#}
+{#        </div>#}
+{#    </div>#}
 {#    <div class="applicationlandscape"></div>#}
 {#    <div class="applicationfilter"></div>#}
     <canvas id="canvas" class="teamhelpapplicationcanvas"></canvas>

@@ -191,7 +191,7 @@ body{
     margin: 0;
     *padding-bottom: 0!important;
     margin-bottom: 25px;
-    line-height: 1.7;
+    line-height: 0.7;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 6px 15px;
     border: 1px solid #c6c8ce;
@@ -210,21 +210,22 @@ body{
     -webkit-transition-duration: 300ms;
     -moz-transition-duration: 300ms;
     -o-transition-duration: 300ms;
-    -ms-transition-duration: 300ms;
+    /*-ms-transition-duration: 300ms;*/
     transition-duration: 300ms;
     -webkit-transition-easing: ease-in-out;
     -moz-transition-easing: ease-in-out;
     -o-transition-easing: ease-in-out;
-    -ms-transition-easing: ease-in-out;
+    /*-ms-transition-easing: ease-in-out;*/
     transition-easing: ease-in-out;
-    -webkit-transition-property: border-color, -webkit-box-shadow;
-    -webkit-transition-property: border-color, box-shadow;
-    -moz-transition-property: border-color, -moz-box-shadow;
-    -moz-transition-property: border-color, box-shadow;
+    /*-webkit-transition-property: border-color, -webkit-box-shadow;*/
+    /*-webkit-transition-property: border-color, box-shadow;*/
+    /*-moz-transition-property: border-color, -moz-box-shadow;*/
+    /*-moz-transition-property: border-color, box-shadow;*/
     -o-transition-property: border-color, box-shadow;
-    -ms-transition-property: border-color, box-shadow;
+    /*-ms-transition-property: border-color, box-shadow;*/
     transition-property: border-color, box-shadow;
     position: relative;
+    resize: none;
 }
 .all-pl-con {
     width: 96%;

@@ -4,31 +4,57 @@
     {% load static %}
     <link rel="stylesheet" href="{%  static '/idea/css/index.css'%}">
     <link rel="stylesheet" href="{% static '/creation/css/redetail.css' %}">
+
+
 {% endblock %}
 {% block content %}
     {% load static %}
 <body bgcolor="#f1f1f1">
-  <div class="container_b">
-      <div class="home_b">
+  <div class="container-b">
+      <div class="main">
+      <div class="main-left">
+      <div class="home-b-all">
+          <div class="home-b-tags">
           <div class="tags">
-              <span>标签</span>
+              <span>标签1</span>
+          </div>
+          <div class="tags">
+              <span>标签2</span>
+          </div>
+          <div class="tags">
+              <span>标签3</span>
+          </div>
+          </div>
+          <div class="home-b-head">
+              <div class="home-b-logo">
+                  <img src="{% static '/creation/imgs/tx.jpg' %}" style="width:90px;height:90px;">
+              </div>
+              <div class="home-b-title">
+                  <h1>创意题目噜啦噜</h1>
+
+                  <p>2017.04.20 23:33&nbsp;&nbsp;|&nbsp;&nbsp;<a href="www.github.com">www.github.com</a></p>
+              </div>
           </div>
           <div class="text">
-            <h1>创意题目</h1>
-            <p>创意详情创意详情创意详情创意详情</p>
-            <p>创意详情创意详情创意详情创意详情</p>
-            <p>创意详情创意详情创意详情创意详情</p>
-            <p>创意详情创意详情创意详情创意详情</p>
-            <p>创意详情创意详情创意详情创意详情</p>
-            <p>创意详情创意详情创意详情创意详情</p>
+            <p>创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情</p>
+              <p>创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情</p>
           </div>
+          <div class="home-b-share">
+              <a href="#" class="share-buttons"></a>
+              <a href="#" class="share-buttons"></a>
+              <a href="#" class="share-buttons"></a>
+              <a href="#" class="share-buttons"></a>
+          </div>
+      </div>
       </div>
       <div class="main-right">
       <div class="person">
                     <!--此处为个人信息-->
           <div class="person-one">
+
+              <a href="#"><span class="pbutton">关注</span></a>
               <div class="person-one-img">
-                  <img src="{% static '/creation/imgs/ava.png' %}">
+                  <img src="{% static '/creation/imgs/tx.jpg' %}">
               </div>
           </div>
           <div class="person-two">
@@ -45,16 +71,16 @@
                   </div>
               </div>
               <div class="person-footer">
-                  标签：<span>IT/美工/前端</span>{#此标签格式呢通过后台  #}
-              </div>
-              <button class="pbutton">关注</button>
+              <a href="#"><span class="user-tag">前端</a>
+              <a href="#"><span class="user-tag">美工</a>
+              <a href="#"><span class="user-tag">IT</a>
+            </div>
           </div>
       </div>
 
       <div class="comment">
       </div>
       </div>
-      <div class="share">
       </div>
   </div>
 {% endblock %}
