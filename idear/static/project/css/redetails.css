@@ -1,12 +1,14 @@
+body{
+    background-color: #f2f2f2;
+}
 .main{
     width:100%;
     height:1200px;
-    background-color: #f2f2f2;
 	}
 
 .content-all{
     margin-top:70px;
-    width:80%;
+    width:1400px;
     height:1200px;
     margin-left:10%;
 	}
@@ -122,12 +124,41 @@
     width:90%;
     font-size: 40px;
     border-top:1px solid #205D67;
+    color:black;
 }
 .option{
     width:100%;
     height:11%;
     border-top:1px solid #205D67;
 }
+.likebutton{
+    display: inline-block;
+    width:13%;
+    height:80%;
+    margin:11px 0 0 50px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #8590a6;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgb(204, 216, 225);
+    border-radius: 10px;
+    background-color:  #7ECBA1 ;
+    border-color: #539092 ;
+}
+.likebutton:hover{
+    background-color: #ffffff;
+
+}
+.plike{
+    width:30%;
+    height:80%;
+    float:left;
+    margin-left:10%;
+    color: #8590a6;
+}
+
 .prcontent{
     font-size: 20px;
 }
@@ -446,7 +477,6 @@ a.rbutton:active {
 	border-color: transparent rgba(0,0,0,0.05);
 	left: -12px;
 }
-
 
 .comment-head {
 	height:40%;
