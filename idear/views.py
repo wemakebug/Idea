@@ -287,7 +287,7 @@ def forgetPassword(req):
     if req.method == 'GET':
 
         stream, strs = generate_verify_image(save_img=False)
-        req.sessions['verifycode'] = strs
+        # req.sessions['verifycode'] = strs
         stream = base64.b64encode(stream.getvalue()).encode('ascii')
         return render_to_response('idea/forgetPassword.html',{'img':stream})
 
