@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),
     url(r'recruit$', projects.projects),
-    url(r'redetails/(?P<projectID>.*)$', views.redetails),
+    url(r'redetails$', views.redetails),
     url(r'projects$', projects.projects),
     url(r'redetail$', views.redetail),
     url(r'star$', creations.star),
