@@ -39,7 +39,7 @@ $(document).ready(function () {
             // alert(result['message']);
             var img_path = result['img_path'];
             var message = result['message'];
-            user_img.src = 'static/photos/' + img_path;
+            user_img.src = '../static/photos/' + img_path;
         } else if (result['status'] === 0) {
             // var message = result['message'];
             // alert(message);

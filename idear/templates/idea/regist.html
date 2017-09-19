@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'idea/css/regist.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'idea/css/sweet-alert.css' %}">
     <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/sweet-alert.min.js' %}"></script>
     <title>注册页面</title>
 </head>
 <body>
@@ -25,7 +27,12 @@
     </ul>
 
     <div class="register1-1">
-        <div class="center1-1" style="margin-top: 50px;">
+        <div class="line_1">
+            <img src="{% static 'idea/imgs/logogo1.png' %}" style="padding-top: 50px;" >
+{#            <p>好的创意应该大家分享</p>#}
+{#            <p>这里是大家的舞台，可以随意施展自己才华</p>#}
+        </div>
+        <div class="center1-1" style="margin-top: 8px;">
             <span class="register1-3">用户名：</span>
             <input type="text" name="name" value="{{ name }}" id="registname"  class="input1-1">
         </div>
@@ -70,7 +77,7 @@
     1. 重要须知： 腾讯在此特别提醒，用户（您）欲访问和使用QQ网站，必须事先认真阅读本服务条款中各条款，
     包括免除或者限制腾讯责任的免责条款及对用户的权利限制。请您审阅并接受或不接受本服务条款（未成年人审阅时应得到法定监护人的陪同）。如您不同意本服务条款及/或随时对其的修改，您应不使用或主动取消腾讯公司提供的服务。您的使用行为将被视为您对本服务条款全部的完全接受，包括接受腾讯对服务条款随时所做的任何修改。
     <div class="pop-up1">
-        <input type="button" value="关闭" id="closing" class="input1-5">
+        <input type="button" value="关闭" id="closing" class="pop-up1input">
     </div>
 </div>
 <script src="{% static 'base/js/jquery.cookie.js' %}" type="text/javascript"></script>

@@ -15,7 +15,8 @@ idea/css/index.css{% extends 'idea/Base.html'%}
     <div class="bg_left">
        {%for project in projects%}
         <div class="project_top_1 project_top">
-            <a href="redetails?sign={{obj.Id}}" sign="{{obj.Id}}">
+        <div style="display: none;width:100%;height: 100% " onclick="getProjectID()">{{project.Id}}</div>
+            <a href="redetails/">
                 <div class="project_top_1_left">
                     <img src="{% static 'project/imgs/HeadImg.png'%}">
                 </div>
@@ -41,6 +42,11 @@ idea/css/index.css{% extends 'idea/Base.html'%}
                      <input type="text" name="State" value="正在进行" readonly="readonly" class="VariableText"/>
                      <input type="text" name="UserName" value="{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}" readonly="readonly" class="VariableText"/>
                  </div>
+                <script>
+                    function getProjectID() {
+                        var projectID=1;
+                    }
+                </script>
 {#                <button class="button button-3d button-action button-circle button-tiny"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>#}
 {#                <div class="feed" id="feed1">#}
 {#                         <div class="heart " id="like1" rel="like"></div>#}

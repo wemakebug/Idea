@@ -48,20 +48,49 @@ $('#submit_btn').click(function () {
     var ConfirmPassword = document.getElementById("ConfirmPassword").value;
     var Option = document.getElementById("registopinion");
 
-    if (Option.checked === false) {
-        alert('请同意用户协议');
-    } else if (UserName === '' || UserName === null || UserName === undefined) {
-        alert('请填写用户名');
+
+    if (UserName === '' || UserName === null || UserName === undefined) {
+        swal({
+            title:"请输入用户名",
+            text:"按确定建后添加完整信息",
+            type:"warning"
+        });
     } else if (Email === '' || Email === null || Email === undefined) {
-        alert('请填写邮箱');
+        swal({
+            title:"请输入邮箱",
+            text:"按确定建后添加完整信息",
+            type:"warning"
+        });
     } else if (Passwd === '' || Passwd === null || Passwd === undefined) {
-        alert('请填写密码');
+        swal({
+            title:"请输入密码",
+            text:"按确定建后添加完整信息",
+            type:"warning"
+        });
     } else if (Passwd !== ConfirmPassword) {
-        alert('两次密码不一致');
+        swal({
+            title:"两次密码不一致",
+            text:"按确定建后添加完整信息",
+            type:"warning"
+        });
+    } else if  (Option.checked === false) {
+         swal({
+            title:"请同意用户协议",
+            text:"按确定建后添加完整信息",
+            type:"warning"
+        });
     } else if (!isemail(Email)) {
-        alert('邮箱格式不正确');
+         swal({
+            title:"邮箱格式不正确",
+            text:"按确定建后添加完整信息",
+            type:"warning"
+        });
     } else if (!isalphanumber(UserName)) {
-        alert('用户名包含非法字符');
+         swal({
+            title:"用户包含非法字符",
+            text:"按确定建后添加完整信息",
+            type:"warning"
+        });
     } else {
         var data = {
             'UserName': UserName,
@@ -72,16 +101,32 @@ $('#submit_btn').click(function () {
         $.post('regist', data, function (result) {
             result =JSON.parse(result);
             if (result.status == 0) {
-                alert(result['message']);
-                window.location.reload();
+                swal({
+                    title:"获取信息失败",
+                    text:"非常抱歉，获取信息失败",
+                    type:"error",
+                    timer: 2000,
+                    showConfirmButton: false,
+                    inputAutoTrim:true
+                 })
+                // window.location.reload();
             } else if (result.status == 1) {
                 $.cookie('email', result['email']);
                 $.cookie('username', result['username']);
-                alert(result['message']);
+                swal({
+                    title:"注册成功，正在调转!",
+                    text:"恭喜你，注册成功！",
+                    type:"success",
+                    timer: 3500,
+                    showConfirmButton: false
+                 });
                 window.location.href = 'index'
             }
             else {
-                alert('服务器异常！请稍后重试');
+                 swal({
+                    title:"服务器异常！请稍后重试",
+                    type:"warning"
+                 });
             }
         });
     }
