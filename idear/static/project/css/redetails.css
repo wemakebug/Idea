@@ -3,21 +3,16 @@ body{
 }
 .main{
     width:100%;
-    height:1200px;
+    height:1150px;
 	}
 
 .content-all{
-    margin-top:70px;
+    margin-top:100px;
     width:1400px;
-    height:1200px;
+    height:1100px;
     margin-left:10%;
 	}
-.content-nav{
-    width:100%;
-    height: 5%;
-    font-size:1em;
-    background-color: #f2f2f2;
-    }
+
 .main-left{
     float:left;
     width:55%;
@@ -129,7 +124,6 @@ body{
 .option{
     width:100%;
     height:11%;
-    border-top:1px solid #205D67;
 }
 .likebutton{
     display: inline-block;
@@ -158,6 +152,77 @@ body{
     margin-left:10%;
     color: #8590a6;
 }
+.home-b-collection{
+    float:right;
+    width:62px;
+    margin-top:3%;
+    font-size:15px;
+}
+.home-b-report{
+    float:right;
+    width:62px;
+    margin-top:3%;
+    font-size:15px;
+}
+.home-b-share {
+	width:60px;
+	float:right;
+    margin-top:-11.8%;
+	font-size:15px;
+}
+.share-icon{
+    margin:20px auto 0;
+}
+.share-buttons {
+	border-radius: 50%;
+	display: block;
+	position: relative;
+	font-size:15px;
+	-webkit-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+}
+.share-buttons:active,
+.share-buttons:focus,
+.share-buttons:hover {
+	box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+}
+.share-buttons:not(:last-child) {
+	width: 25px;
+	height: 25px;
+	margin: 10px auto 10px;
+	opacity: 0;
+	-webkit-transform: translateY(50px);
+	-ms-transform: translateY(50px);
+	transform: translateY(50px);
+}
+.home-b-share:hover
+.share-buttons:not(:last-child) {
+	opacity: 1;
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+/* Unessential styling for sliding up buttons at differnt speeds*/
+
+.share-buttons:not(:last-child):nth-last-child(2) {
+	-webkit-transition-delay: 50ms;
+	transition-delay: 20ms;
+	background-image: url(weibo.png);
+	background-size: contain;
+}
+.share-buttons:not(:last-child):nth-last-child(3) {
+	-webkit-transition-delay: 75ms;
+	transition-delay: 40ms;
+	background-image: url(weixin.png);
+	background-size: contain;
+}
+.share-buttons:not(:last-child):nth-last-child(4) {
+	-webkit-transition-delay: 100ms;
+	transition-delay: 60ms;
+	background-image: url(qq.png);
+	background-size: contain;
+}
+
 
 .prcontent{
     font-size: 20px;
@@ -272,7 +337,7 @@ a.rbutton:active {
 .main-right{
     float:left;
     width:35%;
-    margin-left:2%;
+    margin-left:7%;
     height:1150px;
 }
 /*右上*/
