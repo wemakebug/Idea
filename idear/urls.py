@@ -15,32 +15,31 @@ Including another URLconf
 """
 from django.conf.urls import url
 from idear import views as views
-from idear import creations
-from idear import projects
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'index$', views.index),
+    url(r'logout$',views.logout),
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
     url(r'teamdetails/?(\d+)$', views.teamdetails),
     url(r'teamhelpapplication/?(\d+)$', views.teamhelpapplication),
-    url(r'creations$', creations.creations),
+    url(r'creations$', views.creations),
     url(r'forgetPassword$', views.forgetPassword),
     url(r'apply$', views.apply),
-    url(r'recruit$', projects.projects),
+    url(r'recruit$', views.projects),
     url(r'redetails$', views.redetails),
-    url(r'projects$', projects.projects),
+    url(r'projects$', views.projects),
     url(r'redetail$', views.redetail),
-    url(r'star$', creations.star),
-    url(r'attend$', creations.attend),
+    url(r'star$', views.star),
+    url(r'attend$', views.attend),
     url(r'ordinance$', views.ordinance),
     url(r'service$', views.service),
     url(r'logout$', views.logout),
     url(r'test/?(\d+)$', views.test),
-    url(r'getimg', views.get_user_img)
+    url(r'getimg', views.get_user_img),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
