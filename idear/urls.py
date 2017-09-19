@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'attend$', creations.attend),
     url(r'ordinance$', views.ordinance),
     url(r'service$', views.service),
+    url(r'advice$', views.advice),
     url(r'logout$', views.logout),
     url(r'test/?(\d+)$', views.test),
 

@@ -5,7 +5,7 @@
 {%endblock%}
 {%block CSS%}
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
-    <link rel="stylesheet" href="{% static 'idea/css/base.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
 {%endblock%}
 {%block script%}
 
@@ -13,18 +13,16 @@
 {%block content%}
 <div class="middle">
 	<div class="content">
-		<div class="top-content">
-			<div class="top-content-information">
-				<div class="top-name">
-                    <div class="center_act">
-                        <div id="slogan" data-text="Maybe we'll be stronger">
-                        </div>
+        <div class="top-content-information">
+            <div class="top-name">
+                <div class="center_act">
+                    <div id="slogan" data-text="我们不完美">
                     </div>
-				</div>
-            </div>
-            <div class="content-information">
-                <div class="introduce">
                 </div>
+            </div>
+        </div>
+		<div class="top-content">
+            <div class="content-information">
                 <div class="decoration">
                     <div style='background-color:#E1F3EA;'></div>
                     <div style='background-color:#9CCAC6;'></div>
@@ -34,7 +32,6 @@
                 </div>
             </div>
         </div>
-
 		<div class="main-content">
 			<div class="main-box">
 				<div class="box-one-left">
@@ -96,8 +93,46 @@
 				</div>
 			</div>
 			<div class="mainbox_two" >
+                {% comment %}<div class="about_ours"><p>关于我们</p></div>{% endcomment %}
+                <div class="line_one"></div>
+                <div class="box-one-left">
+					<h2>ABOUT<small>us</small></h2>
+				</div>
 			</div>
+
+
 			<div class="mainbox_three" id="main-box-two">
+                <div id="three_left">
+                    <div class="example"></div>
+                </div>
+                <div class="three_right">
+                    <div class="example_content">
+                        <p class="title_content">出类拔萃的人才质量</p>
+                        <p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们对于每一位候选人都会进行严格审核，只有达到一定标准的人才，才会引荐给您。现阶段 GuruDigger 引荐的人才，平均创业前薪水为 25,000 人民币 / 月。
+                        </p>
+                    </div>
+                </div>
+			</div>
+            <div class="new_add">
+                <div id="three_left">
+                    <div class="add_left">
+                        <p class="add_title">出类拔萃的人才质量</p>
+                        <p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们对于每一位候选人都会进行严格审核，只有达到一定标准的人才，才会引荐给您。现阶段 GuruDigger 引荐的人才，平均创业前薪水为 25,000 人民币 / 月。
+                        </p>
+                    </div>
+                </div>
+                <div class="exam_t">
+                    <div class="exam_img">
+                    </div>
+                </div>
+            </div>
+            <div class="new_add">
+
+            </div>
+
+            <div class="mainbox_three" id="main-box-two">
                 <div class=" dividing_line "></div>
                 <div class=" dividing_middle">
                     <ul>
@@ -106,16 +141,9 @@
                         <li></li>
                     </ul>
                 </div>
-                <div class=" dividing_line2"></div>
+               {% comment %} <div class=" dividing_line2"></div>{% endcomment %}
 			</div>
-			<div class="mainbox_three" id="main-box-two">
-                <div class="three_left">
-                    <p>图</p>
-                </div>
-                <div class="three_right">
-                    <p>介绍</p>
-                </div>
-			</div>
+
 			<div class="mainbox_four">
 				<div class="mainbox_four_left">
 					<div class="main_open">
@@ -133,9 +161,7 @@
 				</div>
 				<div class="mainbox_four_right">
 					<div class="mainbox_forward">
-						<a href="#" ><div class="picture-1" id="picture"></div></a>
-						<a href="#" ><div class="picture-2" id="picture"></div></a>
-						<a href="#" ><div class="picture-3" id="picture"></div></a>
+
 					</div>
 				</div>
 			</div>
@@ -145,8 +171,6 @@
 </div>
     <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'idea/js/index.js'%}"></script>
-
-
 {% endblock %}
 
 

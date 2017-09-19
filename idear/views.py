@@ -329,6 +329,16 @@ def service(req):
         pass
 '''
 
+
+提出建议页面详情
+'''
+def advice(req):
+    if req.method == 'GET':
+        return render_to_response('idea/advice.html')
+    if req.method == "POST":
+        pass
+'''
+
 招募项目详情
 '''
 def redetails(req):
