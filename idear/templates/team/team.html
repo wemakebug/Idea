@@ -26,8 +26,9 @@
                        &nbsp;&nbsp; {{ team.Introduction }}
                 </div>
                 <div class="feature">
-                    <div class="praise">
+                    <div class="praise" team="{{ team.Id }}">
                         <span id="praise"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /></span>
+                        {% for praise.user_id == %}
                         <span id="praise-txt">{{Praise.project}}</span>
                         <span id="add-num"><em>+1</em></span>
                     </div>
