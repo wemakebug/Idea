@@ -143,6 +143,17 @@ body{
 }
 .likebutton:hover{
     background-color: #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+.likebutton::after{
+    content:"1111";
+}
+
+.likebutton:active{
+    background-color: #ffffff;
+    border-radius: 10px;
 
 }
 .plike{
@@ -207,19 +218,19 @@ body{
 .share-buttons:not(:last-child):nth-last-child(2) {
 	-webkit-transition-delay: 50ms;
 	transition-delay: 20ms;
-	background-image: url(weibo.png);
+	background-image: url(../imgs/weibo.png);
 	background-size: contain;
 }
 .share-buttons:not(:last-child):nth-last-child(3) {
 	-webkit-transition-delay: 75ms;
 	transition-delay: 40ms;
-	background-image: url(weixin.png);
+	background-image: url(../imgs/weixin.png);
 	background-size: contain;
 }
 .share-buttons:not(:last-child):nth-last-child(4) {
 	-webkit-transition-delay: 100ms;
 	transition-delay: 60ms;
-	background-image: url(qq.png);
+	background-image: url(../imgs/qq.png);
 	background-size: contain;
 }
 
@@ -576,11 +587,19 @@ a.rbutton:active {
 	margin: 10px 0 10px 20px;
 
 }
-.clike{
+.c-like{
     width:25px;
     height:25px;
     float:right;
-    margin:8px 50px;
+    margin:8px 10px;
+}
+.creport{
+    width:20px;
+    height:20px;
+    float:right;
+    margin:10px 10px;
+
+
 }
 .comment-content {
 	width:100%;

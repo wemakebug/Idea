@@ -55,7 +55,7 @@ $("input[class='login_input']").click(function () {
                    var username =  $.cookie('username', result["username"]);
                     var email = $.cookie('email', result['email']);
 
-                    window.location.href = 'index'
+                    window.location.href =  '/idear/index'
                 } else {
                     alert('服务器异常');
                     window.location.reload()

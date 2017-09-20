@@ -89,10 +89,11 @@ def get_user_img(req):
     :return: 
     '''
     if req.method == "GET":
-        user = models.User.objects.get(Email='chris156@123.com')
-        img = str(user.Img)
-        print img
-        return HttpResponse('ok')
+        # user = models.User.objects.get(Email='chris156@123.com')
+        # img = str(user.Img)
+        # print img
+        # return HttpResponse('ok')
+        return Http404
     elif req.method == "POST":
         result = {
             'status': 0,
@@ -124,6 +125,7 @@ def get_user_img(req):
                     result['status'] = 1
                     result['message'] = '用户暂未上传图片'
                     result['img_path'] = img_path
+                    return HttpResponse(json.dumps(result))
                 else:
                     return HttpResponse(json.dumps(result))
 
@@ -261,15 +263,17 @@ def logout(req):
     :return: 
     '''
     if req.method == "GET":
-        response = render(req, 'idea/login.html')
+        response = render(req, 'idea/index.html')
         response.delete_cookie('username')
+        print req.COOKIES.get('username')
         response.delete_cookie('email')
+        print req.COOKIES.get('email')
         try:
             del req.session['uuid']
             del req.session['verficode']
         except:
             pass
-        return render_to_response('idea/login.html')
+        return response
 
 def forgetPassword(req):
     '''
@@ -317,21 +321,24 @@ def team(req):
 
 def teamdetails(req, teamid):
     '''
-    团队详情页面
+    团队详情页面 所有team 按照创建时间排序
     :param req: 
     :param teamid: 
     :return: 
     '''
     if req.method == 'GET':
-        try:
-            team = models.User.objects.get(Id=teamid)
-        except:
-            return HttpResponse('404')
-        else:
-            if int(team.Identity) == 2:
-                return render_to_response('team/teamdetails.html', {'team': team})
-            else:
-                return HttpResponse('404')
+
+        # try:
+        #     team = models.User.objects.get(Id=teamid)
+        # except:
+        #     return HttpResponse('404')
+        # else:
+        #     if int(team.Identity) == 2:
+        #         return render_to_response('team/teamdetails.html', {'team': team})
+        #     else:
+        #         return HttpResponse('404')
+
+        return render_to_response('team/teamdetails.html')
     if req.method == 'POST':
         pass
 
@@ -407,17 +414,6 @@ def service(req):
 
 ''' 创意灵感 页面相关部分开始'''
 
-def creation(req):
-    '''
-    创意页面
-    :param req: 
-    :return: 
-    '''
-    if req.method == 'GET':
-        return render_to_response('creation/index.html')
-    if req.method == "POST":
-        pass
-
 def redetail(req):
     '''
     创意详情
@@ -430,11 +426,10 @@ def redetail(req):
         pass
 
 
-
 @csrf_exempt
 def creations(req):
     '''
-    创意灵感一级二级页面项目显示
+    创意灵感一级二级页面项目显示  
     '''
     projectLabels = ProjectLabel.objects.all()
     creations = Creation.objects.all()
@@ -463,7 +458,7 @@ def creations(req):
             creation = get_object_or_404(Creation, pk=id)
             comments = Comment.objects.fitler(creation=id).order_by('Date')
             user = creation.user
-            return render_to_response('creations/sec_creations.html',
+            return render_to_response('/creation/sec_creations.html',
                                       {'creation': creation, 'comments': comments, 'user': user})
     except:
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
@@ -576,7 +571,6 @@ def attend(req):
 
 
 
-
 ''' 招募项目 相关页面开始'''
 def apply(req):
     '''
@@ -586,6 +580,20 @@ def apply(req):
         return render_to_response('project/apply.html')
     if req.method == 'POST':
         pass
+
+'''
+
+提出建议页面详情
+'''
+def advice(req):
+    if req.method == 'GET':
+        return render_to_response('idea/advice.html')
+    if req.method == "POST":
+        pass
+'''
+
+招募项目详情
+'''
 
 def redetails(req):
     '''
@@ -700,6 +708,5 @@ def get_projects(req):
             return render_to_response('project/recruit.html', {'projects': projects})
         else:
             return render_to_response('project/recruit.html', {'projects': projects})
-
 
 ''' 招募项目相关页面结束'''
