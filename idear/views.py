@@ -89,10 +89,11 @@ def get_user_img(req):
     :return: 
     '''
     if req.method == "GET":
-        user = models.User.objects.get(Email='chris156@123.com')
-        img = str(user.Img)
-        print img
-        return HttpResponse('ok')
+        # user = models.User.objects.get(Email='chris156@123.com')
+        # img = str(user.Img)
+        # print img
+        # return HttpResponse('ok')
+        return Http404
     elif req.method == "POST":
         result = {
             'status': 0,
@@ -463,7 +464,7 @@ def creations(req):
             creation = get_object_or_404(Creation, pk=id)
             comments = Comment.objects.fitler(creation=id).order_by('Date')
             user = creation.user
-            return render_to_response('creations/sec_creations.html',
+            return render_to_response('/creation/sec_creations.html',
                                       {'creation': creation, 'comments': comments, 'user': user})
     except:
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
@@ -549,7 +550,6 @@ def attend(req):
 
 
 ''' 创意灵感 页面相关部分结束'''
-
 
 
 
@@ -700,6 +700,5 @@ def get_projects(req):
             return render_to_response('project/recruit.html', {'projects': projects})
         else:
             return render_to_response('project/recruit.html', {'projects': projects})
-
 
 ''' 招募项目相关页面结束'''
