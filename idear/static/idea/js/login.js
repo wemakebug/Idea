@@ -68,3 +68,10 @@ $("input[class='login_input']").click(function () {
 
     }
 });
+//回车键
+function KeyDown() {
+    if (event.keyCode == 13) {
+        document.getElementById("#backjian").click(
+        )
+    }
+}
