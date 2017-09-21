@@ -10,7 +10,7 @@
 
     </style>
 </head>
-<body>
+<body onkeydown="keyLogin();">
 <div class="wrap">
     <ul>-
         <li></li>
@@ -51,7 +51,7 @@
             <a style="color: #0e0e0e" href="forgetPassword">忘记密码？</a>
         </div>
         <div>
-            <input type="button" value="登录" class="login_input" onclick="login()"/>
+            <input type="button" value="登录" class="login_input" id="backjian" onclick="login()"/>
         </div>
         <div>
             <input type="button" onclick="window.location.href='regist'" value="注册" class="login_register"/>
