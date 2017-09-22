@@ -1,8 +1,8 @@
 {% extends 'idea/Base.html' %}
-{% block title %}<title>创意灵感</title>{% endblock %}
+{% block title %}<title>创意详情</title>{% endblock %}
 {% block CSS %}
     {% load static %}
-    <link rel="stylesheet" href="{%  static '/idea/css/index.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
     <link rel="stylesheet" href="{% static '/creation/css/redetail.css' %}">
 
 
@@ -10,79 +10,84 @@
 {% block content %}
     {% load static %}
 <body bgcolor="#f1f1f1">
-  <div class="container-b">
-      <div class="main">
-      <div class="main-left">
-      <div class="home-b-all">
-          <div class="home-b-tags">
-          <div class="tags">
-              <span>标签1</span>
-          </div>
-          <div class="tags">
-              <span>标签2</span>
-          </div>
-          <div class="tags">
-              <span>标签3</span>
-          </div>
-          </div>
-          <div class="home-b-head">
-              <div class="home-b-logo">
-                  <img src="{% static '/creation/imgs/tx.jpg' %}" style="width:90px;height:90px;">
-              </div>
-              <div class="home-b-title">
-                  <h1>创意题目噜啦噜</h1>
+    <div class="container-b">
+        <div class="main">
+            <div class="main-left">
+                <div class="home-b-all">
+                    <div class="home-b-tags">
+                        <div class="tags">
+                            <span>标签1</span>
+                        </div>
+                        <div class="tags">
+                            <span>标签2</span>
+                        </div>
+                        <div class="tags">
+                            <span>标签3</span>
+                        </div>
+                    </div>
+                    <div class="home-b-head">
+                        <div class="home-b-title">
+                            <h1>创意题目噜啦噜</h1>
+                            <p>2017.04.20 23:33&nbsp;&nbsp;|&nbsp;&nbsp;<a href="www.github.com">www.github.com</a></p></div>
+                    </div>
+                    <div class="text">
+                        <p>创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情</p>
+                        <p>创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情</p>
+                    </div>
+                    <div class="home-b-share">
+                        <a href="#" class="share-buttons"></a>
+                        <a href="#" class="share-buttons"></a>
+                        <a href="#" class="share-buttons"></a>
+                        <a href="#" class="share-icon"><img src="{% static '/creation/imgs/share.png' %}" style="width:16px;
+    height:16px;">分享</a>
+                    </div>
+                    <div class="home-b-report">
+                        <img src="{% static '/creation/imgs/report.png' %}" style="width:16px;
+    height:16px;">
+                        <a>举报</a>
+                    </div>
+                    <div class="home-b-collection">
+                        <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;
+    height:16px;">
+                        <a>收藏</a>
 
-                  <p>2017.04.20 23:33&nbsp;&nbsp;|&nbsp;&nbsp;<a href="www.github.com">www.github.com</a></p>
-              </div>
-          </div>
-          <div class="text">
-            <p>创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情</p>
-              <p>创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情创意详情</p>
-          </div>
-          <div class="home-b-share">
-              <a href="#" class="share-buttons"></a>
-              <a href="#" class="share-buttons"></a>
-              <a href="#" class="share-buttons"></a>
-              <a href="#" class="share-buttons"></a>
-          </div>
-      </div>
-      </div>
-      <div class="main-right">
-      <div class="person">
-                    <!--此处为个人信息-->
-          <div class="person-one">
-
-              <a href="#"><span class="pbutton">关注</span></a>
-              <div class="person-one-img">
-                  <img src="{% static '/creation/imgs/tx.jpg' %}">
-              </div>
-          </div>
-          <div class="person-two">
-              <div class="person-header">
-                  <a  class="pname" href="">用户名称aaaaa</a>
-              </div>
-              <div class="person-middle">
-                  <div class="pscore">
-                      <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
-                      <span>1000</span>
-                  </div>
-                  <div class="pid"><img class="pimg" src="{% static 'project/imgs/id.svg'%}">
-                      <span>身份</span>
-                  </div>
-              </div>
-              <div class="person-footer">
-              <a href="#"><span class="user-tag">前端</a>
-              <a href="#"><span class="user-tag">美工</a>
-              <a href="#"><span class="user-tag">IT</a>
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
+            <div class="main-right">
+                <div class="person">
+                    <div class="person-one">
+                        <a href="#"><span class="pbutton">关注</span></a>
+                        <div class="person-one-img">
+                            <img src="{% static '/creation/imgs/tx.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="person-two">
+                        <div class="person-header">
+                            <a  class="pname" href="">用户名称aaaaa</a>
+                        </div>
+                        <div class="person-middle">
+                            <div class="pscore">
+                                <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
+                                <span>1000</span>
+                            </div>
+                            <div class="pid"><img class="pimg" src="{% static 'project/imgs/id.svg'%}">
+                                <span>身份</span>
+                            </div>
+                        </div>
+                        <div class="person-footer">
+                            <a href="#"><span class="user-tag">前端</span></a>
+                            <a href="#"><span class="user-tag">美工</span></a>
+                            <a href="#"><span class="user-tag">IT</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
 
-      <div class="comment">
-      </div>
-      </div>
-      </div>
-  </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 {% block script %}
 

@@ -55,7 +55,7 @@ $("input[class='login_input']").click(function () {
                    var username =  $.cookie('username', result["username"]);
                     var email = $.cookie('email', result['email']);
 
-                    window.location.href = 'index'
+                    window.location.href =  '/idear/index'
                 } else {
                     alert('服务器异常');
                     window.location.reload()
@@ -68,3 +68,11 @@ $("input[class='login_input']").click(function () {
 
     }
 });
+
+//回车键实现登录
+function keyLogin(){
+   if (event.keyCode==13){  //回车键的键值为13
+        document.getElementById("backjian").click(); //调用登录按钮的登录事件
+    }
+}
+

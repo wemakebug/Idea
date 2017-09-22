@@ -108,7 +108,7 @@ $('#submit_btn').click(function () {
                     timer: 2000,
                     showConfirmButton: false,
                     inputAutoTrim:true
-                 });
+                 })
                 // window.location.reload();
             } else if (result.status == 1) {
                 $.cookie('email', result['email']);

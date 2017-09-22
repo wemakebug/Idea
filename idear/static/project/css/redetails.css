@@ -1,21 +1,18 @@
+body{
+    background-color: #f2f2f2;
+}
 .main{
     width:100%;
-    height:1200px;
-    background-color: #f2f2f2;
+    height:1150px;
 	}
 
 .content-all{
-    margin-top:70px;
-    width:80%;
-    height:1200px;
+    margin-top:100px;
+    width:1400px;
+    height:1100px;
     margin-left:10%;
 	}
-.content-nav{
-    width:100%;
-    height: 5%;
-    font-size:1em;
-    background-color: #f2f2f2;
-    }
+
 .main-left{
     float:left;
     width:55%;
@@ -122,12 +119,122 @@
     width:90%;
     font-size: 40px;
     border-top:1px solid #205D67;
+    color:black;
 }
 .option{
     width:100%;
     height:11%;
-    border-top:1px solid #205D67;
 }
+.likebutton{
+    display: inline-block;
+    width:13%;
+    height:80%;
+    margin:11px 0 0 50px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #8590a6;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgb(204, 216, 225);
+    border-radius: 10px;
+    background-color:  #7ECBA1 ;
+    border-color: #539092 ;
+}
+.likebutton:hover{
+    background-color: #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+.likebutton::after{
+    content:"1111";
+}
+
+.likebutton:active{
+    background-color: #ffffff;
+    border-radius: 10px;
+
+}
+.plike{
+    width:30%;
+    height:80%;
+    float:left;
+    margin-left:10%;
+    color: #8590a6;
+}
+.home-b-collection{
+    float:right;
+    width:62px;
+    margin-top:3%;
+    font-size:15px;
+}
+.home-b-report{
+    float:right;
+    width:62px;
+    margin-top:3%;
+    font-size:15px;
+}
+.home-b-share {
+	width:60px;
+	float:right;
+    margin-top:-11.8%;
+	font-size:15px;
+}
+.share-icon{
+    margin:20px auto 0;
+}
+.share-buttons {
+	border-radius: 50%;
+	display: block;
+	position: relative;
+	font-size:15px;
+	-webkit-transition: all .1s ease-out;
+	transition: all .1s ease-out;
+}
+.share-buttons:active,
+.share-buttons:focus,
+.share-buttons:hover {
+	box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+}
+.share-buttons:not(:last-child) {
+	width: 25px;
+	height: 25px;
+	margin: 10px auto 10px;
+	opacity: 0;
+	-webkit-transform: translateY(50px);
+	-ms-transform: translateY(50px);
+	transform: translateY(50px);
+}
+.home-b-share:hover
+.share-buttons:not(:last-child) {
+	opacity: 1;
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+/* Unessential styling for sliding up buttons at differnt speeds*/
+
+.share-buttons:not(:last-child):nth-last-child(2) {
+	-webkit-transition-delay: 50ms;
+	transition-delay: 20ms;
+	background-image: url(../imgs/weibo.png);
+	background-size: contain;
+}
+.share-buttons:not(:last-child):nth-last-child(3) {
+	-webkit-transition-delay: 75ms;
+	transition-delay: 40ms;
+	background-image: url(../imgs/weixin.png);
+	background-size: contain;
+}
+.share-buttons:not(:last-child):nth-last-child(4) {
+	-webkit-transition-delay: 100ms;
+	transition-delay: 60ms;
+	background-image: url(../imgs/qq.png);
+	background-size: contain;
+}
+
+
 .prcontent{
     font-size: 20px;
 }
@@ -241,7 +348,7 @@ a.rbutton:active {
 .main-right{
     float:left;
     width:35%;
-    margin-left:2%;
+    margin-left:7%;
     height:1150px;
 }
 /*右上*/
@@ -447,7 +554,6 @@ a.rbutton:active {
 	left: -12px;
 }
 
-
 .comment-head {
 	height:40%;
 	width:100%;
@@ -481,11 +587,19 @@ a.rbutton:active {
 	margin: 10px 0 10px 20px;
 
 }
-.clike{
+.c-like{
     width:25px;
     height:25px;
     float:right;
-    margin:8px 50px;
+    margin:8px 10px;
+}
+.creport{
+    width:20px;
+    height:20px;
+    float:right;
+    margin:10px 10px;
+
+
 }
 .comment-content {
 	width:100%;

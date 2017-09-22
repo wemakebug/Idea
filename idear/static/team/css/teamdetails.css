@@ -1,10 +1,11 @@
 .teamdetail {
-	margin-top: 76px;
+	margin-top: 0;
 	width:100%;
 	/*height:100%;*/
 	font-family: kaiti;
     background-color: rgba(205, 201, 201,0.1);
 	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
+	overflow: hidden;
 }
 /*.teamdetailfilter {*/
 	/*width:100%;*/
@@ -33,7 +34,7 @@
 	/*height:auto;*/
 /*}*/
 .teamdetailsynopsis{
-	width: 65%;
+	width: 48%;
 	height:230px;
 	/*background-color: rgba(127,255,212,0.1);*/
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -42,8 +43,7 @@
 	border-radius: 10px;
 	padding: 5px;
 	/*position: relative;*/
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 17%;
 	margin-top: 6%;
 }
 .teamdetailsynopsis1-1{
@@ -97,7 +97,7 @@
 	float: right;
 }
 .details{
-	width: 65%;
+	width: 48%;
 	height:230px;
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     -moz-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -106,8 +106,7 @@
 	padding: 5px;
 	margin-top: 30px;
 	/*position:relative;*/
-	margin-right: 10%;
-	margin-left: 10%;
+	margin-left: 17%;
 }
 .details1-1{
 	width:100%;
@@ -183,9 +182,9 @@
 	width: 100%;
 }
 .comment{
-	width: 80%;
+	width: 65%;
 	height: auto;
-	margin-left: 10%;
+	margin-left: 17%;
 	margin-right: 10%;
 	margin-top: 5%;
 }
@@ -202,12 +201,28 @@
 	height: 4px;
 	background-color: rgba(95,158,160,0.6);
 }
+.headimage{
+	width: 13%;
+	height: 235px;
+	float: right;
+	margin-right: 19%;
+	margin-top: -510px;
+}
+#headimgss:hover{
+	width: 12%;
+	height: 210px;
+	float: right;
+	margin-right: 19.5%;
+	margin-top: -495px;
+	border:3px solid rgba(132,112,255,0.5);
+	cursor: pointer;
+}
 .teamlable{
 	width: 13%;
-	height: 500px;
+	height: 250px;
 	float: right;
-	margin-right: 9%;
-	margin-top: -500px;
+	margin-right: 19%;
+	margin-top: -250px;
 }
 .teamlable1-1{
 	width: 100%;
