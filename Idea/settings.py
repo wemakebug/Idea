@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 """
 Django settings for Idea project.
 
@@ -87,11 +89,24 @@ DATABASES = {
         # 'HOST': '127.0.0.1',
         # 'PORT': '3306',
 
-        'USER': 'mysqlroot',
-        'NAME': 'Idea',
-        'PASSWORD': 'chuangxin2624',
-        'HOST': '172.22.80.30',
-        'PORT': '5002'
+        # 'USER': 'mysqlroot',
+        # 'NAME': 'Idea',
+        # 'PASSWORD': 'chuangxin2624',
+        #     'HOST': '172.22.80.30',
+        # 'PORT': '5002'
+
+        # 'USER': 'root',  #腾讯云服务器 可用 速度较慢
+        # 'NAME': 'idea',
+        # 'PASSWORD': '123456',
+        # 'HOST': '123.207.72.192',
+        # 'PORT': '3306',
+
+        'USER': 'root',  #实验室主机,内存较小,不一定够用
+        'NAME': 'idea',
+        'PASSWORD': '123456',
+        'HOST': '123.207.72.192',
+        'PORT': '3306'
+
     }
 }
 

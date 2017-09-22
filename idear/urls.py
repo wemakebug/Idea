@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'index$', views.index),
-    url(r'logout$',views.logout),
+    url(r'logout$', views.logout),
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
