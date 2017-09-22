@@ -22,11 +22,11 @@ $(document).ready(function () {
     var user_img = document.getElementById('user_img');
     var username = getCookie('username');
     if (username === null) {
-        var hidden_item = document.getElementById('login_status_true');
-        hidden_item.style.display = 'none';
-    } else {
         var hidden_item = document.getElementById('login_status_false');
-        hidden_item.style.display = 'none';
+        hidden_item.style.display = '';
+    } else {
+        var hidden_item = document.getElementById('login_status_true');
+        hidden_item.style.display = '';
          var email = $.cookie('email');
     var username = $.cookie('username');
     var data = {
@@ -39,7 +39,7 @@ $(document).ready(function () {
             // alert(result['message']);
             var img_path = result['img_path'];
             var message = result['message'];
-            user_img.src = '../static/photos/' + img_path;
+            user_img.src = '/static/photos/' + img_path;
         } else if (result['status'] === 0) {
             // var message = result['message'];
             // alert(message);
@@ -124,10 +124,10 @@ $(document).ready(function () {
             }, defaults.speed)
         });
     }
-})(jQuery)
+})(jQuery);
 $(function(){
   $('#slogan').typer({
     search: '不完美',
     replace: ['在努力完美', '等着你']
   })
-})
+});

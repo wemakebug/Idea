@@ -314,12 +314,11 @@ def team(req):
     '''
     if req.method == 'GET':
         teams = models.User.objects.all().filter(Identity=2)
-
         return render_to_response('team/team.html', {'teams': teams})
     if req.method == 'POST':
         pass
 
-def teamdetails(req, teamid):
+def teamdetails(req, ranking):
     '''
     团队详情页面 所有team 按照创建时间排序
     :param req: 
@@ -337,7 +336,7 @@ def teamdetails(req, teamid):
         #         return render_to_response('team/teamdetails.html', {'team': team})
         #     else:
         #         return HttpResponse('404')
-
+        teams = models.User.objects.filter('')
         return render_to_response('team/teamdetails.html')
     if req.method == 'POST':
         pass
@@ -386,18 +385,7 @@ def service(req):
 
 
 
-''' 团队页面相关视图结束'''
-
-
-
-
-
-
-
-
-
-
-
+''' 团队页面相关视图结束  '''
 
 
 
@@ -432,7 +420,10 @@ def creations(req):
     创意灵感一级二级页面项目显示  
     '''
     projectLabels = ProjectLabel.objects.all()
-    creations = Creation.objects.all()
+    creations = Creation.objects.all().order_by("user__RegistTime")
+    Creation_user = creations.values('user__RegistTime')
+    print Creation_user
+
     praises = Praise.objects.all()
     follows = Follow.objects.all()
     # userId = int(req.COOKIES.get('user'))
