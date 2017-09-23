@@ -16,7 +16,7 @@
         <div class="teamdetailsynopsis1-1"><strong>团队简介：</strong></div>
         <div class="teamdetailsynopsis1-2">
             所属学院：
-            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Institude }}>
+            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.UserName}}>
         </div>
         <div class="teamdetailsynopsis1-3">
             团队名称：
@@ -51,12 +51,9 @@
         <div class="teamlable1-1"><strong>团队标签</strong></div>
         <div class="teamlable1-2"></div>
         <div class="teamlable1-3">
-            <a href="" style="text-decoration: none;"><span class="teamlable1-4">css</span></a>
-            <a href="" style="text-decoration: none;"><span class="teamlable1-4">html</span></a>
-            <a href="" style="text-decoration: none;"><span class="teamlable1-4">css</span></a>
-            <a href="" style="text-decoration: none;"><span class="teamlable1-4">html</span></a>
-            <a href="" style="text-decoration: none;"><span class="teamlable1-4">css</span></a>
-            <a href="" style="text-decoration: none;"><span class="teamlable1-4">html</span></a>
+            {% for label in labels %}
+            <a href="" style="text-decoration: none;"><span class="teamlable1-4">{{ label.userLabel.Name }}</span></a>
+            {% endfor %}
         </div>
     </div>
     <div class="comment">

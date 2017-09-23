@@ -11,7 +11,7 @@
         <div class="home">
             <div class="home-left">
 
-                {% for creation in creations %}
+                {% for creation  in creations %}
                     <div class="block">
 
                         <div class="abstract">
@@ -23,7 +23,7 @@
                         </div>
                         <div class="block-head">
                             <a class="ava" href="#">
-                                <img src="{% static 'photos/photos/2017/09/19/user/default_cdNstvn.jpg' %}" style="width:40px;height:40px">
+                                <img src= "/static/photos/{{ creation.user.Img }}"  style="width:40px;height:40px">
                             </a>
                             <a class="name" style="margin-top:20px" href="#">
                                 <span>{{ creation.user }}</span>
