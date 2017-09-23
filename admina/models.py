@@ -138,6 +138,7 @@ class Creation(models.Model):
     Id = models.AutoField(primary_key=True)
     Date = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, related_name='Creation_User_set')
+    LastChange = models.DateField(auto_now=True)
     Describe = models.TextField(max_length=200, null=True)
     Name = models.CharField(max_length=20, null=False)
     IsUse = models.BooleanField(default=True)
@@ -154,7 +155,7 @@ class Creation2ProjectLabel(models.Model):
     Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.projectLabel
+        return str(self.Id)
 
 
 class Recruit(models.Model):
@@ -173,18 +174,21 @@ class Recruit(models.Model):
     Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.project.__unicode__()
+        return self.project
 class Praise(models.Model):
     '''
     赞扬表
     '''
     Id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, related_name='Praise_User_set', null=True)
+    user = models.ForeignKey(User, related_name='Praise_User_set', null=False)
+    user_prised = models.ForeignKey(User, related_name='Praised_User_set', null=True,blank=True)
     creation = models.ForeignKey(Creation, related_name='Praise_Creation_set', null=True, blank=True)
     project = models.ForeignKey(Project, related_name='Praise_Project_set', null=True, blank=True)
     Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
+
     def __unicode__(self):
-        return self.Id
+
+        return str(self.Id)
 
 class Apply(models.Model):
     '''
@@ -312,27 +316,3 @@ class HelpApplication(models.Model):
     def __unicode__(self):
         return self.Id
 
-'''
-将数据库字段注册到Django自带后台，方便数据添加测试
-后台账号为admin 密码adminadmin
-'''
-admin.site.register(Admin)
-admin.site.register(User)
-admin.site.register(UserLabel)
-admin.site.register(User2UserLabel)
-admin.site.register(Project)
-admin.site.register(ProjectLabel)
-admin.site.register(Project2ProjectLabel)
-admin.site.register(ProjectUser)
-admin.site.register(Creation)
-admin.site.register(Recruit)
-admin.site.register(Praise)
-admin.site.register(Apply)
-admin.site.register(Message)
-admin.site.register(Comment)
-admin.site.register(Follow)
-admin.site.register(Report)
-admin.site.register(Score)
-admin.site.register(ScoreChange)
-admin.site.register(Creation2ProjectLabel)
-admin.site.register(HelpApplication)
