@@ -9,7 +9,6 @@ from admina.models import *
 将数据库字段注册到Django自带后台，方便数据添加测试
 后台账号为admin 密码adminadmin
 '''
-
 admin.site.register(Admin)
 admin.site.register(User)
 admin.site.register(UserLabel)
