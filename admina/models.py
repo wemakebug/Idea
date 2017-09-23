@@ -279,11 +279,8 @@ class Score(models.Model):
     Id = models.AutoField(primary_key=True)
     Level = models.PositiveIntegerField(default=0)
     Value = models.IntegerField(null=False, default=0)
-    Uuid = models.UUIDField(null=True, blank=True)
     Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
-    def __unicode__(self):
-        return self.Level
 
 class ScoreChange(models.Model):
     '''
