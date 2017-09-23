@@ -13,26 +13,23 @@
         {% for team in teams %}
             <div class="second">
                 <div class="border_0">
-                    <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-                        <img src="{% static 'team/imgs/team.jpg'%}" style="width: 100% ;height: 100%"  alt="">
-                    </div>
                     <div class="referral">
-                        <a href=""></a>
-                        <div class="referral_0" style="cursor:pointer;" onclick="window.location.href='teamdetails/{{ team.Id }}'">{{ team.UserName }}</div>
-                        <div class="referral_0"style="font-size: 13px;">团队分类：</div>
+                        <h3 class="referral_0" style="cursor:pointer;" onclick="window.location.href='teamdetails/{{ team.Id }}'">{{ team.UserName }}</h3>
+{#                        <div class="referral_0"style="font-size: 13px;">团队分类：</div>#}
                         <p>{{ UserLabel.Name }}</p>
                     </div>
-                    <p class="intro_0">简介：</p>
+{#                    <p class="intro_0">简介：</p>#}
                     <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
                           <p> &nbsp;&nbsp; {{ team.Introduction }}</p>
+                    </div>
+                    <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
+                        <img src="{{ team.Img }}" style="width: 100% ;height: 100%"  alt="">
                     </div>
                     <div class="feature">
                         <div class="praise" team="{{ team.Id }}">
                             <span id="praise"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /></span>
-                            {% for praise in praises %}
                             <span id="praise-txt">{{Praise.project}}</span>
                             <span id="add-num"><em>+1</em></span>
-                                {% endfor %}
                         </div>
     {#                    <div class="praise">#}
     {#                        <span id="praise"><img src="{% static '/creation/imgs/like.png' %}" id="praise-img" /></span>#}
@@ -48,7 +45,9 @@
        <div class="clear"></div>
         <div class="broadSide">
             <div class="intro_1">
-                <img src="{% static '/creation/imgs/idea.png' %}" style="width:40px;height:40px;margin:10px 0px 0px 10px">
+                <img src="{% static 'creation/imgs/light.png' %}"
+                         style="width:40px;height:40px;margin:-16px 0px 26px -10px">
+                <img src="{% static '/idea/imgs/idea_logo.png' %}" style="width:40px;height:40px;margin:10px 0px 0px 10px">
                 <span>Team</span>
                 <p>&nbsp; &nbsp;&nbsp; &nbsp; 创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
             </div>
@@ -77,21 +76,25 @@
 			var text_box = $("#add-num");
 			var praise_txt = $("#praise-txt");
 			var num=parseInt(praise_txt.text());
-			if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){
-				$(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");
-				praise_txt.removeClass("hover");
-				text_box.show().html("<em class='add-animation'>-1</em>");
-				$(".add-animation").removeClass("hover");
-				num -=1;
-				praise_txt.text(num)
-			}else{
-				$(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img' class='animation' />");
-				praise_txt.addClass("hover");
-				text_box.show().html("<em class='add-animation'>+1</em>");
-				$(".add-animation").addClass("hover");
-				num +=1;
-				praise_txt.text(num)
-			}
+			if(isset($_SESSION['id'])) {
+                {#			if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){#}
+                {#				$(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");#}
+                {#				praise_txt.removeClass("hover");#}
+                {#				text_box.show().html("<em class='add-animation'>-1</em>");#}
+                {#				$(".add-animation").removeClass("hover");#}
+                {#				num -=1;#}
+                {#				praise_txt.text(num)#}
+                {#			}else{#}
+                {#				$(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img' class='animation' />");#}
+                {#				praise_txt.addClass("hover");#}
+                {#				text_box.show().html("<em class='add-animation'>+1</em>");#}
+                {#				$(".add-animation").addClass("hover");#}
+                {#				num +=1;#}
+                {#				praise_txt.text(num)#}
+                {#			}#}
+            }else {
+			    alert("请先登录！")
+            }
 		});
 	})
 </script>

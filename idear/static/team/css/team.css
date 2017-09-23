@@ -5,7 +5,7 @@ html{
 .first {
 	/*position: relative;*/
 	font-family: 宋体;
-	margin: 66px 13% 0;
+	margin: 66px 10.5% 0;
 	width:80%;
 
 
@@ -17,7 +17,7 @@ html{
 
 }
 .second{
-	margin: 40px 2% 0;
+	margin: 40px 2.5% 0;
 	padding: 0;
 	float: left;
 	width: 32%;
@@ -30,12 +30,13 @@ html{
 	 width: 100%;
 	 background-color:rgba(255, 255, 255, 1);
 	 box-shadow: 0 5px 5px 0 rgba(211, 211, 211, 0.8);
+     border-radius: 10px;
  }
 
 .photo_0{
-	height: 35%;
-	width: 35%;
-	margin: 13px 10%;
+	height: 15%;
+	width: 8%;
+	margin: 12px 9% 0;
 	background-color:rgba(255, 255, 255, 0.6);
 	z-index: 99;
 	cursor:pointer;
@@ -48,10 +49,10 @@ html{
 	z-index: 99;
 }
 .content_0{
-	font-size: 13px;
-	height: 105px;
-	width: 85%;
-	margin: 3px 2%;
+	font-size: 15px;
+	height: 125px;
+	width: 88%;
+	margin: 3px 5%;
 	z-index: 99;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -61,30 +62,28 @@ html{
 }
 .referral{
 	float: left;
-	width: 50%;
-	margin: -120px 45% 0;
+	width: 100%;
+	margin: 6px 0;
 }
 .referral_0{
+    text-align: center;
 	font-weight: bold;
-	margin: 15px 7%;
+	margin: 15px ;
 }
 
 .broadSide{
 	float: left;
 	width: 20%;
 	/*position:absolute;*/
-	margin: -770px 75%;
+	margin: -760px 79%;
 }
 .intro_1{
-	width: 73%;
-	height: 260px;
+	width: 85%;
+	height: 230px;
 	margin: 99px 22px ;
 	background-color:#8bcfcc;
-    border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	box-shadow: 2px 2px 2px 2px #bdc3c7;
+	box-shadow: 6px 6px 2px 2px #bdc3c7;
+    border-radius: 10px 70px;
 	opacity:0.8;
 }
 .intro_1 p {
