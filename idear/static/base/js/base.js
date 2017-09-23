@@ -13,6 +13,7 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
+
     $('.nav li a').each(function () {
         $this = $(this);
         if ($this[0].href == String(window.location.href)) {
@@ -21,7 +22,8 @@ $(document).ready(function () {
     });
     var user_img = document.getElementById('user_img');
     var username = getCookie('username');
-    if (username === null) {
+    alert(username);
+    if (username === null || username === '') {
         var hidden_item = document.getElementById('login_status_false');
         hidden_item.style.display = '';
     } else {

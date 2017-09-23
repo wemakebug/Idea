@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from itertools import chain
 import json
+
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
 from admina.models import Creation2ProjectLabel, Creation, ProjectLabel, Comment, User, Praise, Follow, ProjectUser, \
@@ -256,23 +258,25 @@ def regist(req):
                     result['message'] = '服务器异常!!' + e
                     return HttpResponse(json.dumps(result))
 
+@csrf_exempt
 def logout(req):
     '''
     注销界面
     :param req: 
     :return: 
     '''
-    if req.method == "GET":
-        response = render(req, 'idea/index.html')
+    if req.method == "POST":
+        response = HttpResponseRedirect('/idear/team')
+        print '11'
         response.delete_cookie('username')
-        print req.COOKIES.get('username')
         response.delete_cookie('email')
-        print req.COOKIES.get('email')
-        try:
-            del req.session['uuid']
-            del req.session['verficode']
-        except:
-            pass
+        # response.set_cookie('username','')
+        # response.set_cookie('email', '')
+        # try:
+        #     del req.session['uuid']
+        #     del req.session['verficode']
+        # except Exception as e:
+        #     print e
         return response
 
 def forgetPassword(req):
