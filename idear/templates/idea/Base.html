@@ -44,7 +44,7 @@
                         <img src="/static/idea/imgs/imgs/Experiment .jpg" style="width: 100%;height: 100%;" id="user_img">
                     </a>
                 </div>
-               <a href="javascript:void(0)">
+               <a href="logout">
                    <div class="login_out" ><p>[注销]</p></div>
                </a>
             </div>
@@ -82,11 +82,6 @@
     <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
     <script>
-        $(function () {
-            $.post("logout", ".login_out", function () {
-
-            });
-        });
     </script>
 </body>
 </html>
