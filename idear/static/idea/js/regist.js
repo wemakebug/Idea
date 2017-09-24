@@ -40,8 +40,7 @@ function isemail(str) {
     return true;
 }
 
-$('#submit_btn').click(function () {
-
+function registlogin(){
     var UserName = document.getElementById("registname").value;
     var Email = document.getElementById("registemail").value;
     var Passwd = document.getElementById("registpassword").value;
@@ -131,4 +130,11 @@ $('#submit_btn').click(function () {
         });
     }
 
-});
+}
+//回车键实现登录
+document.onkeydown=keyListener;
+    function keyListener(e){
+       if (e.keyCode==13){  //回车键的键值为13
+           registlogin(); //调用注册按钮的注册事件
+       }
+    }
