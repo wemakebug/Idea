@@ -11,25 +11,25 @@
 
 {%endblock%}
 {%block content%}
-<div class="middle">
-	<div class="content">
-        <div class="top-content-information">
-            <div class="top-name">
-                <div class="center_act">
-                    <div id="slogan" data-text="我们不完美">
-                    </div>
+    <div class="top-content-information">
+        {% comment %}<div class="top-name">
+            <div class="center_act">
+                <div id="slogan" data-text="我们不完美">
                 </div>
             </div>
-        </div>
+        </div>{% endcomment %}
+    </div>
+<div class="middle">
+	<div class="content">
 		<div class="top-content">
             <div class="content-information">
-                <div class="decoration">
+                {% comment %}<div class="decoration">
                     <div style='background-color:#E1F3EA;'></div>
                     <div style='background-color:#9CCAC6;'></div>
                     <div style='background-color:#3E7D67;'></div>
                     <div style='background-color:#200C18;'></div>
                     <div style='background-color:#E3E2E0;'></div>
-                </div>
+                </div>{% endcomment %}
             </div>
         </div>
 		<div class="main-content">
@@ -92,9 +92,38 @@
 					</div>
 				</div>
 			</div>
-			<div class="mainbox_two" >
-                {% comment %}<div class="about_ours"><p>关于我们</p></div>{% endcomment %}
+            <div class="best_find">
                 <div class="line_one"></div>
+                <div class="thumbs-up">
+                    <h3>本周最多点赞</h3>
+                    <div class="best_project">
+                        <div class="pro">
+                            <div class="pro_img"></div>
+                            <div class="pro_content">
+                                <p>项目内容</p>
+                            </div>
+                            <div class="pro_line"></div>
+                            <div class="pro_best">
+                                <p>点赞/收藏/评论+作者</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle_line"></div>
+                <div class="collection">
+                    <h3>本周最多收藏</h3>
+                    <div class="best_project">
+                        <div class="pro">
+                            <div class="pro_img"></div>
+                            <div class="pro_content"></div>
+                            <div class="pro_best"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+			<div class="mainbox_two" >
+                <div class="line_thin"></div>
                 <div class="box-one-left">
 					<h2>ABOUT<small>us</small></h2>
 				</div>
@@ -132,13 +161,61 @@
 
             </div>
 
-            <div class="mainbox_three" id="main-box-two">
+            <div class="mainbox_last" >
                 <div class=" dividing_line "></div>
                 <div class=" dividing_middle">
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>
+                            <div class="single-member effect-2">
+                                <div class="member-image">
+                                    <img src="../static/idea/imgs/member_270x210.jpg" alt="Member">
+                                </div>
+                                <div class="member-info">
+                                    <h3>Sophia</h3>
+                                    <h5>ShowGilr</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                                    <div class="social-touch">
+                                        <a class="fb-touch" href="#"></a>
+                                        <a class="tweet-touch" href="#"></a>
+                                        <a class="linkedin-touch" href="#"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-member effect-2">
+                                <div class="member-image">
+                                    <img src="../../static/idea/imgs/member_270x210.jpg" alt="Member">
+                                </div>
+                                <div class="member-info">
+                                    <h3>Sophia</h3>
+                                    <h5>ShowGilr</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                                    <div class="social-touch">
+                                        <a class="fb-touch" href="#"></a>
+                                        <a class="tweet-touch" href="#"></a>
+                                        <a class="linkedin-touch" href="#"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-member effect-2">
+                                <div class="member-image">
+                                    <img src="../../static/idea/imgs/member_270x210.jpg" alt="Member">
+                                </div>
+                                <div class="member-info">
+                                    <h3>Sophia</h3>
+                                    <h5>ShowGilr</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut .</p>
+                                    <div class="social-touch">
+                                        <a class="fb-touch" href="#"></a>
+                                        <a class="tweet-touch" href="#"></a>
+                                        <a class="linkedin-touch" href="#"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                {% comment %} <div class=" dividing_line2"></div>{% endcomment %}
