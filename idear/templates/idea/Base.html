@@ -30,7 +30,7 @@
 					<input id="search" type="submit" value="">
 			    </div>
 		    </div>
-			<div class="sidebar" id="login_status_false">
+			<div class="sidebar" id="login_status_false" style="display: none">
 				<a href="login">
 					<div class="rlogin"><p>登录</p></div>
 				</a>
@@ -38,13 +38,13 @@
 					<div class="rregsiter"><p>注册</p></div>
 				</a>
 			</div>
-            <div class="btn_hidden" id="login_status_true">
+            <div class="btn_hidden" id="login_status_true" style="display: none">
                 <div class="user_figure">
                     <a href="#">
                         <img src="/static/idea/imgs/imgs/Experiment .jpg" style="width: 100%;height: 100%;" id="user_img">
                     </a>
                 </div>
-               <a href="logout">
+               <a href="/idear/logout">
                    <div class="login_out" ><p>[注销]</p></div>
                </a>
             </div>
@@ -82,7 +82,6 @@
     <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
     <script>
-
     </script>
 </body>
 </html>

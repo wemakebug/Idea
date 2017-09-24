@@ -45,7 +45,7 @@ class User(models.Model):
     School = models.CharField(null=True, max_length=20)
     Institude = models.CharField(null=True, max_length=20)
     Major = models.CharField(null=True, max_length=20)
-    Uuid = models.UUIDField(null=True, blank=True)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
         return self.UserName
@@ -66,7 +66,7 @@ class Project(models.Model):
     Img = models.ImageField(upload_to='photos/%Y/%m/%d/project', null=True)
     Summary = models.TextField(null=True, max_length=200)
     Progress = models.TextField(null=True, max_length=200)
-
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
     def __unicode__(self):
         return self.ProjectName
 
@@ -77,7 +77,7 @@ class ProjectLabel(models.Model):
     Id = models.AutoField(primary_key=True)
     ProjectLabelName = models.CharField(max_length=20, null=False, unique=True)
     IsUse = models.BooleanField(default=True)
-
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
     def __unicode__(self):
         return self.ProjectLabelName
 
@@ -88,8 +88,10 @@ class Project2ProjectLabel(models.Model):
     Id = models.AutoField(primary_key=True)
     projectLabel = models.ForeignKey(ProjectLabel, related_name='Project2ProjectLabel_ProjectLabel_set', null=False)
     project = models.ForeignKey(Project, related_name='Project2ProjectLabel_Project_set')
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
-
+    def __unicode__(self):
+        return self.projectLabel.__unicode__() + '  ' +self.project.__unicode__()
 class UserLabel(models.Model):
     '''
     用户标签表
@@ -98,6 +100,7 @@ class UserLabel(models.Model):
     projectLabel = models.ForeignKey(ProjectLabel, related_name='UserLabel_Project_set')
     IsUse = models.BooleanField(default=True)
     Name = models.CharField(null=False, max_length=20, unique=True)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
         return self.Name
@@ -109,6 +112,7 @@ class User2UserLabel(models.Model):
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='User2UserLabel_User_set')
     userLabel = models.ForeignKey(UserLabel, related_name='User2UserLabel_UserLabel_set', null=False)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
         return self.user.__unicode__() + '  '+self.userLabel.__unicode__()
@@ -123,7 +127,7 @@ class ProjectUser(models.Model):
     project = models.ForeignKey(Project, related_name='ProjectUser_Project_set', null=False)
     Identity = models.PositiveIntegerField(default=0)
     Evaluate = models.TextField(max_length=200)
-
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
     def __unicode__(self):
         return self.project
 
@@ -134,10 +138,12 @@ class Creation(models.Model):
     Id = models.AutoField(primary_key=True)
     Date = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, related_name='Creation_User_set')
+    LastChange = models.DateField(auto_now=True)
     Describe = models.TextField(max_length=200, null=True)
     Name = models.CharField(max_length=20, null=False)
     IsUse = models.BooleanField(default=True)
     Img = models.ImageField(upload_to='photos/creation/%Y/%m/%d')
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
         return self.Name
@@ -146,9 +152,10 @@ class Creation2ProjectLabel(models.Model):
     Id = models.AutoField(primary_key=True)
     creation = models.ForeignKey(Creation,related_name='Creation2ProjectLabel_Creation_set', null=False)
     projectLabel = models.ForeignKey(ProjectLabel, related_name='Creation2ProjectLabel_ProjectLabel_set', null=False)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.projectLabel
+        return str(self.Id)
 
 
 class Recruit(models.Model):
@@ -162,20 +169,26 @@ class Recruit(models.Model):
     Describe = models.TextField(null=False, max_length=200)
     State = models.PositiveIntegerField(default=0)
     Times = models.PositiveIntegerField(default=1)
-    PredictNuber = models.PositiveIntegerField(default=1)
-    RecruitedNuber = models.PositiveIntegerField(default=0)
+    PredictNumber = models.PositiveIntegerField(default=1)
+    RecruitedNumber = models.PositiveIntegerField(default=0)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
+    def __unicode__(self):
+        return self.project
 class Praise(models.Model):
     '''
     赞扬表
     '''
     Id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, related_name='Praise_User_set', null=True)
+    user = models.ForeignKey(User, related_name='Praise_User_set', null=False)
+    user_prised = models.ForeignKey(User, related_name='Praised_User_set', null=True,blank=True)
     creation = models.ForeignKey(Creation, related_name='Praise_Creation_set', null=True, blank=True)
     project = models.ForeignKey(Project, related_name='Praise_Project_set', null=True, blank=True)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.Id
+
+        return str(self.Id)
 
 class Apply(models.Model):
     '''
@@ -187,6 +200,10 @@ class Apply(models.Model):
     Describe = models.TextField(null=True, max_length=200)
     State = models.PositiveIntegerField(default=0)
     SendTime = models.DateField(auto_now_add=True)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
+
+    def __unicode__(self):
+        return self.user.__unicode__()
 
 class Message(models.Model):
     '''
@@ -201,6 +218,10 @@ class Message(models.Model):
     Date = models.DateField(auto_now_add=True)
     IsRead = models.BooleanField(default=False)
     Content = models.TextField(max_length=200, null=False)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
+
+    def __unicode__(self):
+        return self.user.__unicode__()
 
 class Comment(models.Model):
     '''
@@ -215,9 +236,11 @@ class Comment(models.Model):
     Content = models.TextField(max_length=200)
     IsUse = models.BooleanField(default=True)
     IsAdopt = models.BooleanField(default=False)
+    Isreply = models.BooleanField(default=False)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.user
+        return self.user.__unicode__()
 
 class Follow(models.Model):
     '''
@@ -228,10 +251,10 @@ class Follow(models.Model):
     project = models.ForeignKey(Project, related_name='Follow_Project_set', null=True, blank=True)
     creation = models.ForeignKey(Creation, related_name='Follow_Creation_set', null=True, blank=True)
     Follower = models.ForeignKey(User, related_name='Follow_Follower_set', null=True, blank=True)
-
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.user
+        return self.user.__unicode__()
 
 class Report(models.Model):
     '''
@@ -247,9 +270,10 @@ class Report(models.Model):
     ReportDate = models.DateField(auto_now_add=True)
     DealTime = models.DateField(null=True)
     State = models.PositiveIntegerField(default=0)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.comment
+        return self.comment.__unicode__()
 
 class Score(models.Model):
     '''
@@ -259,8 +283,8 @@ class Score(models.Model):
     Id = models.AutoField(primary_key=True)
     Level = models.PositiveIntegerField(default=0)
     Value = models.IntegerField(null=False, default=0)
-    def __unicode__(self):
-        return self.Level
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
+
 
 class ScoreChange(models.Model):
     '''
@@ -272,6 +296,7 @@ class ScoreChange(models.Model):
     score = models.ForeignKey(Score, related_name='ScoreChange_Score_set', null=False)
     Event = models.CharField(null=True,max_length=30)
     Date = models.DateField(auto_now_add=True)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
         return self.user
@@ -286,31 +311,8 @@ class HelpApplication(models.Model):
     WhatWant = models.TextField(null=True,blank=True)
     Email = models.EmailField(null=False)
     IsReplied = models.BooleanField(default=False, blank=True)
+    Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
         return self.Id
 
-'''
-将数据库字段注册到Django自带后台，方便数据添加测试
-后台账号为admin 密码adminadmin
-'''
-admin.site.register(Admin)
-admin.site.register(User)
-admin.site.register(UserLabel)
-admin.site.register(User2UserLabel)
-admin.site.register(Project)
-admin.site.register(ProjectLabel)
-admin.site.register(Project2ProjectLabel)
-admin.site.register(ProjectUser)
-admin.site.register(Creation)
-admin.site.register(Recruit)
-admin.site.register(Praise)
-admin.site.register(Apply)
-admin.site.register(Message)
-admin.site.register(Comment)
-admin.site.register(Follow)
-admin.site.register(Report)
-admin.site.register(Score)
-admin.site.register(ScoreChange)
-admin.site.register(Creation2ProjectLabel)
-admin.site.register(HelpApplication)

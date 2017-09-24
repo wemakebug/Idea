@@ -35,7 +35,7 @@
 /*}*/
 .teamdetailsynopsis{
 	width: 48%;
-	height:230px;
+	height:250px;
 	/*background-color: rgba(127,255,212,0.1);*/
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     -moz-box-shadow:-10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -182,9 +182,9 @@
 	width: 100%;
 }
 .comment{
-	width: 80%;
+	width: 65%;
 	height: auto;
-	margin-left: 10%;
+	margin-left: 17%;
 	margin-right: 10%;
 	margin-top: 5%;
 }
@@ -201,12 +201,28 @@
 	height: 4px;
 	background-color: rgba(95,158,160,0.6);
 }
+.headimage{
+	width: 13%;
+	height: 235px;
+	float: right;
+	margin-right: 19%;
+	margin-top: -510px;
+}
+#headimgss:hover{
+	width: 12%;
+	height: 210px;
+	float: right;
+	margin-right: 19.5%;
+	margin-top: -495px;
+	border:3px solid rgba(132,112,255,0.5);
+	cursor: pointer;
+}
 .teamlable{
 	width: 13%;
-	height: 500px;
+	height: 250px;
 	float: right;
-	margin-right: 9%;
-	margin-top: -500px;
+	margin-right: 19%;
+	margin-top: -250px;
 }
 .teamlable1-1{
 	width: 100%;
@@ -239,5 +255,17 @@
 	height: 50px;
 	line-height: 50px;
 	margin:1px 4px
+}
+.register1-3{
+    font-size:1em ;
+    width: 120px;
+    display: inline-block;
+    text-indent: 1em;
+}
+.register1-2{
+	font-size:1em ;
+    width: 80px;
+    display: inline-block;
+    text-indent: 1em;
 }
 

@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from itertools import chain
 import json
+
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
 from admina.models import Creation2ProjectLabel, Creation, ProjectLabel, Comment, User, Praise, Follow, ProjectUser, \
@@ -256,6 +258,7 @@ def regist(req):
                     result['message'] = '服务器异常!!' + e
                     return HttpResponse(json.dumps(result))
 
+@csrf_exempt
 def logout(req):
     '''
     注销界面
@@ -263,16 +266,9 @@ def logout(req):
     :return: 
     '''
     if req.method == "GET":
-        response = render(req, 'idea/index.html')
+        response = render_to_response('idea/index.html')
         response.delete_cookie('username')
-        print req.COOKIES.get('username')
         response.delete_cookie('email')
-        print req.COOKIES.get('email')
-        try:
-            del req.session['uuid']
-            del req.session['verficode']
-        except:
-            pass
         return response
 
 def forgetPassword(req):
@@ -314,7 +310,6 @@ def team(req):
     '''
     if req.method == 'GET':
         teams = models.User.objects.all().filter(Identity=2)
-
         return render_to_response('team/team.html', {'teams': teams})
     if req.method == 'POST':
         pass
@@ -323,22 +318,19 @@ def teamdetails(req, teamid):
     '''
     团队详情页面 所有team 按照创建时间排序
     :param req: 
-    :param teamid: 
+    :param teamid: 团队ID
     :return: 
     '''
     if req.method == 'GET':
-
-        # try:
-        #     team = models.User.objects.get(Id=teamid)
-        # except:
-        #     return HttpResponse('404')
-        # else:
-        #     if int(team.Identity) == 2:
-        #         return render_to_response('team/teamdetails.html', {'team': team})
-        #     else:
-        #         return HttpResponse('404')
-
-        return render_to_response('team/teamdetails.html')
+        try:
+            this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=teamid))
+            labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
+        except Exception, e:
+            print e.message
+            return Http404
+        else:
+            print labels
+            return render_to_response('team/teamdetails.html', {"team": this_team, "labels":labels})
     if req.method == 'POST':
         pass
 
@@ -386,18 +378,7 @@ def service(req):
 
 
 
-''' 团队页面相关视图结束'''
-
-
-
-
-
-
-
-
-
-
-
+''' 团队页面相关视图结束  '''
 
 
 
@@ -432,7 +413,8 @@ def creations(req):
     创意灵感一级二级页面项目显示  
     '''
     projectLabels = ProjectLabel.objects.all()
-    creations = Creation.objects.all()
+    creations = Creation.objects.all().order_by("Date")
+    User_img = creations.values('user__Img')
     praises = Praise.objects.all()
     follows = Follow.objects.all()
     # userId = int(req.COOKIES.get('user'))
@@ -451,7 +433,7 @@ def creations(req):
                     creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
-                                       'follows': follows, 'praises': praises})
+                                       'follows': follows, 'praises': praises, "Imgs": User_img})
 
         else:
             id = req.POST['creationId']
@@ -460,7 +442,8 @@ def creations(req):
             user = creation.user
             return render_to_response('/creation/sec_creations.html',
                                       {'creation': creation, 'comments': comments, 'user': user})
-    except:
+    except Exception, e:
+        print e.message
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 
