@@ -8,7 +8,7 @@ body,div{
 		padding:0;
     }
 	body{
-	    min-width:1500px;
+	    min-width:1300px;
         max-width:2000px;
         overflow-x: hidden;
 	}
@@ -27,7 +27,7 @@ body,div{
         z-index:9999;
         top:0px;
         text-align:left;
-        min-width:1500px;
+        min-width:1300px;
         max-width:2000px;
 	}
 	.header{
@@ -64,7 +64,7 @@ body,div{
         height:100%;
         float:left;
         text-align:center;
-	    line-height:65px;
+	    line-height:66px;
 	    overflow:hidden;
     }
     .active{
@@ -217,37 +217,18 @@ body,div{
         border-right: 6px solid transparent;
         border-left: 6px solid transparent;
     }
-    .login_out{
-        width: 20%;
-        height: 40%;
-        margin-top: 7%;/**/
-        /*background: #295E6A;*/
-        float: left;
-        margin-left: 0%;
-        /*overflow: hidden;*/
-        /*border-radius: 3px;*/
-        /*border: none;
-        outline: none;
-        cursor: pointer;*/
-    }
-    .login_out p{
-        width:100%;
-	    height:100%;
-        text-align: center;
-        line-height: 27px;
-        margin: 0 auto;
-        font-size:1em;
-	    color:white;
-    }
+
+
+
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
 	}
-	.nav-bottom{
+	/*.nav-bottom{
 		width: 100%;
 		height: 1px;
 		background: #ccc;
-	}
+	}*/
     .footer_line{
          width: 100%;
         height: 1px;
@@ -260,14 +241,12 @@ body,div{
         padding:10px 0;
         text-align: center;
         line-height:70px;
-
-
 	}
     .container{
         width:25%;
         height:100%;
         float: left;
-        margin-left: 21%;
+        margin-left: 23.5%;
         display:block;
     }
     .container ul{
@@ -277,8 +256,13 @@ body,div{
     }
 	.container ul li{
 		display: inline-block;
+        width:24%;
+        height:100%;
+        float:left;
+	    overflow:hidden;
     }
     .container ul li a{
+        width:100%;
         display: inline-block;
         text-decoration:none;
         color:gray;
