@@ -54,25 +54,27 @@
 										</thead>
 
 										<tbody>
-                                            {% for ScoreChange in ScoreChanges %}
+                                            {% for obj in L %}
 											<tr>
 
-												<td>{{ ScoreChange.Id }}</td>
+												<td>{{ obj.num }}</td>
 
-												<td>{{ ScoreChange.user }}</td>
+												<td>{{ obj.ScoreChange.user }}</td>
 
-												<td class="hidden-480">{{ ScoreChange.score }}</td>
+												<td class="hidden-480">{{ obj.ScoreChange.score }}</td>
 
-												<td class="hidden-480">{{ ScoreChange.Event }}</td>
+												<td class="hidden-480">{{ obj.ScoreChange.Event }}</td>
 
-												<td class="hidden-480">{{ ScoreChange.Date }}</td>
+												<td class="hidden-480">{{ obj.ScoreChange.Date }}</td>
 
                                                 <td>
-                                                    <i class="icon-remove">&nbsp;&nbsp;&nbsp;
-                                                        <a data-toggle="modal" href="#responsive" style="text-decoration: none">
-                                                            <i class="icon-edit" name="editbtn"></i>
-                                                        </a>
-                                                    </i>
+                                                    <a data-toggle="modal" href="#responsive" style="text-decoration: none">
+                                                        <i class="icon-remove" id="{{ obj.ScoreChange.Id }}" name="editbtn"></i>
+                                                    </a>
+
+                                                    <a data-toggle="modal" href="#responsive" style="text-decoration: none">
+                                                        <i class="icon-edit" id="{{ obj.ScoreChange.Id }}" name="editbtn"></i>
+                                                    </a>
                                                 </td>
 											</tr>
                                             {% endfor %}
@@ -95,19 +97,23 @@
                                                         <div class="span6" id="message_content">
 
                                                             <label>用户：</label>
-                                                             <select>
+                                                             <select id="user">
+                                                                <option value="0">请选择用户</option>
                                                                 {% for obj in users %}
                                                                     <option>{{ obj.UserName }}</option>
                                                                 {% endfor %}
                                                             </select>
 
                                                             <label>等级：</label>
-                                                             <select>
+                                                             <select id="score">
+                                                                 <option value="0">请选择等级</option>
                                                                 {% for obj in scores %}
                                                                     <option>{{ obj.Level }}</option>
                                                                 {% endfor %}
                                                             </select>
 
+                                                            <label for="Event">变动事件</label>
+                                                            <input type="text" id="Event" placeholder="请填写变动事件">
                                                         </div>
 
                                                     </div>
@@ -117,7 +123,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" data-dismiss="modal" class="btn">关闭</button>
 
-                                                    <button type="button" class="btn blue" name="sub_btn">保存更改</button>
+                                                    <button type="button" class="btn blue" name="sub_btn">添加</button>
                                                 </div>
                                             </div>
                                             {#提示框结束#}

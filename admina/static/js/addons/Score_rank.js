@@ -26,7 +26,7 @@ $("body").on("click", "button[name='sub_btn']", function () {
         if($("button[name='sub_btn']").text() == "添加"){
             score_rank("0", Level, Value);
         }else if($("button[name='sub_btn']").text() == "修改"){
-            score_rank(this.id, Level, Value);
+            score_rank($(this).val(), Level, Value);
         }
     }
 });
@@ -47,11 +47,16 @@ $("body").on("click", ".icon-remove", function () {
 // 修改
 $("body").on("click", ".icon-edit", function () {
     $("button[name='sub_btn']").text("修改");
-    var curr
+    $("button[name='sub_btn']").val(this.id);
+    var currNode = $(this).parents("tr");
+    $("#Level").val(currNode.find("td").eq(1).text());
+    $("#Value").val(currNode.find("td").eq(2).text());
 });
 
 
 // 添加按钮
 $("body").on("click", "button[name='add']", function () {
-    
+    $("button[name='sub_btn']").text("添加");
+    $("#Level").val("");
+    $("#Value").val("");
 });
