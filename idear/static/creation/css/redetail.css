@@ -93,7 +93,7 @@
 .home-b-title {
 	float:left;
 	width:80%;
-	margin-left:11%;
+	margin-left:10%;
 	margin-bottom:25px;
 }
 .home-b-title h1 {
@@ -119,6 +119,17 @@
 .home-b-title a:hover {
 	text-decoration:underline;
 }
+.text {
+	float: left;
+	height: auto;
+	margin-left: 10%;
+	width: 80%;
+}
+.text h1 {
+	margin-top:50px;
+	font-family:宋体;
+	font-size: 30px;
+}
 .home-b-collection{
     float:right;
     width:62px;
@@ -134,7 +145,7 @@
 .home-b-share {
 	width:60px;
 	float:right;
-	margin:-5.5% 10px 15px 0;
+	margin:-5.5% 15px 15px 0;
 	font-size:15px;
 }
 .share-buttons {
@@ -186,17 +197,42 @@
 	background-image: url(qq.png);
 	background-size: contain;
 }
-.text {
-	float: left;
-	height: auto;
-	margin-left: 11%;
-	width: 80%;
+.likebutton{
+    display: inline-block;
+    width:60px;
+    height:30px;
+    margin:66px 0 0 40px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #8590a6;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border-radius: 10px;
 }
-.text h1 {
-	margin-top:50px;
-	font-family:宋体;
-	font-size: 30px;
+.likebutton:hover{
+    background-color: #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
 }
+.likebutton::after{
+    content:"1111";
+}
+
+.likebutton:active{
+    background-color: #ffffff;
+    border-radius: 10px;
+
+}
+.plike{
+    width:30%;
+    height:80%;
+    float:left;
+    margin-left:10%;
+    color: #8590a6;
+}
+
 .main-right {
 	float:left;
 	width:28%;
@@ -329,8 +365,9 @@
 	color: white;
 }
 .comment{
-    width:90%;
+    width:100%;
     height:70%;
+    margin:10% 0;
 }
 .ctitle{
     width:100%;
