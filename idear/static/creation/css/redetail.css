@@ -15,16 +15,15 @@
 	height:auto;
 }
 .main-left {
-	width:53%;
+	width:100%;
 	height:auto;
 	float:left;
-	margin-left:3%;
 }
 .home-b-all {
 	background-color:white;
-	width:740px;
+	width:850px;
 	height:auto;
-	margin-left: 10%;
+	margin-left: 18%;
 	margin-top: 30px;
 	float:left;
 	box-shadow: 1px 1px 1px 1px #9999;
@@ -92,8 +91,8 @@
 }
 .home-b-title {
 	float:left;
-	width:80%;
-	margin-left:10%;
+	width:auto;
+	margin-left:15%;
 	margin-bottom:25px;
 }
 .home-b-title h1 {
@@ -119,33 +118,46 @@
 .home-b-title a:hover {
 	text-decoration:underline;
 }
+.home-b-title hr{
+    margin-top:8px;
+    color:#539092;
+}
 .text {
 	float: left;
 	height: auto;
-	margin-left: 10%;
-	width: 80%;
+	margin-left: 15%;
+	width: 70%;
 }
 .text h1 {
 	margin-top:50px;
 	font-family:宋体;
 	font-size: 30px;
 }
+.text hr{
+    margin-top:10px;
+    color:#f1f1f1;
+}
+.home-b-foot{
+    width:200px;
+    float:right;
+    margin:10% 1% 0 0;
+}
 .home-b-collection{
     float:right;
     width:62px;
-    margin-top:10%;
+    margin-top:24%;
     font-size:15px;
 }
 .home-b-report{
     float:right;
     width:62px;
-    margin-top:10%;
+    margin-top:24%;
     font-size:15px;
 }
 .home-b-share {
 	width:60px;
 	float:right;
-	margin:-5.5% 15px 15px 0;
+	margin:-33.5% 15px 15px 0;
 	font-size:15px;
 }
 .share-buttons {
@@ -198,33 +210,21 @@
 	background-size: contain;
 }
 .likebutton{
-    display: inline-block;
     width:60px;
-    height:30px;
-    margin:66px 0 0 40px;
+    height:60px;
+    margin:40px 0 0 35px;
     font-size: 14px;
-    line-height: 32px;
-    color: #8590a6;
-    text-align: center;
-    cursor: pointer;
-    background: none;
-    border-radius: 10px;
+    line-height: 26px;
+    background-color: #539092;
+    border:1px;
+    border-radius: 50px;
+    float:left;
 }
 .likebutton:hover{
-    background-color: #ffffff;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-}
-.likebutton::after{
-    content:"1111";
+    background-color: #539092;
+    border-radius: 30px;
 }
 
-.likebutton:active{
-    background-color: #ffffff;
-    border-radius: 10px;
-
-}
 .plike{
     width:30%;
     height:80%;
@@ -232,142 +232,82 @@
     margin-left:10%;
     color: #8590a6;
 }
-
-.main-right {
+.home-b-user{
+    width:850px;
+    height:110px;
+    float:left;
+    background-color:white;
+    margin:5px 0 0 18%;
+    box-shadow:1px 1px 1px 1px #9999;
+}
+.user-img {
+	width:70px;
+	height:70px;
 	float:left;
-	width:28%;
-	margin-top:30px;
-	margin-left:7%;
-}
-.person {
-	/*margin-top:10%;*/
-	background-color:white;
-	width:100%;
-	height:42%;
-	border-radius: 15px;
-	box-shadow: 1px 1px 1px 1px #9999;
-}
-.person-one {
-	width:100%;
-	height:42%;
-	border-bottom: 8px solid #539092;
-	background:url(background0.jpg) no-repeat center;
-	background-size:100% 100%
-}
-.person-one-img {
-	width:80px;
-	height:80px;
-	float:left;
-	margin-left:37%;
+	margin-left:5%;
 	overflow:hidden;
-	margin-top:118px;
+	margin-top:2%;
 	border-radius:50%;
-	border: 8px solid #539092;
 }
-.person-one-img img {
+.user-img img {
 	width:100%;
 	height:100%;
 }
-.person-two {
-	width:100%;
-	height:60%;
-}
-.person-header {
-	width:100%;
-	height:15%;
-	display:inline-block;
-	margin-top:5%;
-	text-align:center;
-}
-.pname {
-	display: inline-block;
+.user-name{
+    display: inline-block;
 	font-family: 幼圆;
-	font-size: 25px;
-	font-weight: bold;
-	height: 80%;
+	font-size: 18px;
 	text-align: center;
+	font-weight:bold;
 	width: auto;
+	float:left;
+	margin:4% 0 0 2%;
 }
-.person-middle {
-	width:100%;
+.user-intro {
+	width:20%;
 	height:15%;
-	margin-top:2%;
+	margin-top:7%;
+    margin-left:-15%;
+	float:left;
 }
-.pscore {
-	width:18%;
+.user-score {
+	width:31%;
 	height:100%;
 	font-size:13px;
 	float:left;
-	margin-left:36%;
-	/*font-size:15px;*/
-
 }
 .pimg {
-	width:18px;
-	height:18px;
+	width:16px;
+	height:16px;
 	vertical-align:middle;
 }
-.pid {
-	width: 18%;
+.user-id {
+	width: 30%;
 	height:100%;
 	font-size:13px;
 	float:left;
+	margin-left:10px;
 }
-.person-footer {
-	width:100%;
-	height:15%;
-	text-align:center;
-	margin-top:2%;
-}
-.pbutton {
-	border: 2px solid;
-	border-radius: 20px;
-	color: white;
+.user-follow {
+	border: 3px solid;
+	border-radius: 30px;
+	color: gray;
 	display: inline-block;
 	float: right;
 	font-family: 幼圆;
-	font-size: 15px;
+	font-size: 30px;
 	font-weight: bold;
-	margin: 12px 12px 0 0;
-	padding: 4px 20px;
+	margin: 4% 4% 0 0;
+	padding: 0px 10px;
 }
-.pbutton:hover {
-	color:#29a09f;
-}
-.user-tag {
-	background: #37aead none repeat scroll 0 0;
-	border-radius: 3px 15px 15px 3px;
-	display: inline-block;
-	font-size: 15px;
-	height: 26px;
-	line-height: 24px;
-	margin: 15px 0 0 2px;
-	padding: 0 20px 0 23px;
-	position: relative;
-	text-decoration: none;
-	transition: color 0.2s ease 0s;
-	width: 30px;
-	color:white;
-}
-.user-tag::before {
-	background: white;
-	border-radius: 10px;
-	box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
-	content: '';
-	height: 6px;
-	left: 10px;
-	position: absolute;
-	width: 6px;
-	top: 10px;
-}
-.user-tag:hover {
-	background-color: #29a09f;
-	color: white;
+.user-follow:hover {
+	color:#007776;
 }
 .comment{
-    width:100%;
-    height:70%;
-    margin:10% 0;
+    width:850px;
+    height:auto;
+    margin:5% 0 0 18%;
+    float:left;
 }
 .ctitle{
     width:100%;
