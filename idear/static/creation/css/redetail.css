@@ -15,13 +15,14 @@
 	height:auto;
 }
 .main-left {
-	width:100%;
+	width:60%;
 	height:auto;
 	float:left;
+	margin-left:3%
 }
 .home-b-all {
 	background-color:white;
-	width:850px;
+	width:680px;
 	height:auto;
 	margin-left: 18%;
 	margin-top: 30px;
@@ -209,31 +210,101 @@
 	background-image: url(qq.png);
 	background-size: contain;
 }
-.likebutton{
-    width:60px;
-    height:60px;
-    margin:40px 0 0 35px;
-    font-size: 14px;
-    line-height: 26px;
-    background-color: #539092;
-    border:1px;
-    border-radius: 50px;
+/*动态点赞开始*/
+
+.praise{
     float:left;
-}
-.likebutton:hover{
-    background-color: #539092;
-    border-radius: 30px;
+    width:30px;
+    height:30px;
+    margin: 125px 0 0 45px;
+    cursor: pointer;
+    font-size: 12px;
+    text-align:center;
+    position: relative;
 }
 
-.plike{
-    width:30%;
-    height:80%;
+#praise-txt{
     float:left;
-    margin-left:10%;
-    color: #8590a6;
+    margin: -20px 0 0 35px;
+    height:25px;
+    line-height:25px;
+    display: block;
+}
+#praise-txt1{
+    float:left;
+    margin:-20px 0 0 50px;
+    width:90px;
+    line-height:15px;
+    display: block;
+}
+.praise img{
+    width:30px;
+    height:30px;
+    display:block;
+    margin: 0 auto;
+}
+.praise img{
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+#add-num{
+    display:none;
+}
+
+/*点赞图标放大动画开始*/
+@keyframes myfirst
+{
+    0%{
+        width:30px;
+        height:30px;
+    }
+    50%{
+        width:40px;
+        height:40px;
+    }
+    100% {
+        width:30px;
+        height:30px;
+    }
+}
+
+@keyframes mypraise
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
 }
 .home-b-user{
-    width:850px;
+    width:700px;
     height:110px;
     float:left;
     background-color:white;
@@ -302,6 +373,19 @@
 }
 .user-follow:hover {
 	color:#007776;
+}
+.main-right{
+    width:20%;
+	height:auto;
+	float:left;
+	margin-top:30px;
+}
+.similar-block{
+    display:none;
+    background-color:white;
+    width:90%;
+    height:240px;
+    box-shadow: 1px 1px 1px 1px #9999;
 }
 .comment{
     width:850px;

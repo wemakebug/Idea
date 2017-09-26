@@ -9,7 +9,6 @@
 {% endblock %}
 {% block content %}
     {% load static %}
-<body bgcolor="#f1f1f1">
     <div class="container-b">
         <div class="main">
             <div class="main-left">
@@ -54,9 +53,12 @@
 
                         </div>
                     </div>
-                    <button class="likebutton">
-
-                    </button>
+                    <div class="praise">
+                        <span id="praise"><img src="{% static '/creation/imgs/like1.png' %}" id="praise-img" /></span>
+                        <span id="praise-txt">1455</span>
+                        <span id="praise-txt1">人觉得很赞</span>
+                        <span id="add-num"></span>
+                    </div>
                 </div>
                 <div class="home-b-user">
                     <div class="user-img">
@@ -75,6 +77,12 @@
                     </div>
                     <a href="#"><span class="user-follow">+</span></a>
                 </div>
+            </div>
+            <div class="main-right">
+
+                <div class="similar-block">
+                </div>
+
             </div>
 
                 <div class="comment">
