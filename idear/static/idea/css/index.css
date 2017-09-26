@@ -15,7 +15,6 @@
 	    margin-left:17%;
 	    background:#FFFFFF;
 	}
-
 	.top-content-information{
         margin-top:66px;
 	    width:100%;
@@ -200,24 +199,62 @@
     }
     .best_project{
         width: 80%;
-        height: 80%;
-
-        margin-top: 5%;
+        height: 85%;
+        margin-top: 3%;
     }
     .pro{
         width: 80%;
         height: 100%;
-
     }
-    .pro_img{
+    .pro_left_img{
         width: 100%;
-        height:   70%;
+        height:65%;
         background: url("../imgs/best_img.png");
+        background-size:100% 100%;
+    }
+    .pro_right_img{
+        width: 100%;
+        height: 65%;
+        background: url("../imgs/r_bg.jpg");
         background-size:100% 100%;
     }
     .pro_content{
         width: 100%;
-        height: 20%;
+        height: 28%;
+    }
+    .pro_label{
+        width: 100%;
+        height:20%;
+    }
+    .pro_label p{
+        width: 100%;
+        height: 100%;
+        color:gray;
+        font-size: 0.8em;
+    }
+    .pro_name{
+        width: 100%;
+        height: 26%;
+    }
+    .pro_name p{
+        width: 100%;
+        height: 100%;
+        font-size: 1.2em;
+       /* font-family: 幼圆;*/
+    }
+    .pro_introduce{
+        width: 100%;
+        height:39%;
+        margin-top: 4%;
+    }
+    #txt{
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        line-height: 21px;
+        overflow: hidden;
+        font-size: 0.9em;
+        color:gray;
     }
     .pro_line{
         width: 100%;
@@ -226,9 +263,98 @@
     }
     .pro_best{
         width: 100%;
-        height:9%;
+        height:6%;
         margin-top: 0.5%;
+    }
+    .pro_best ul{
+        width: 60%;
+        height: 100%;
+        float: left;
+    }
+    .pro_by{
+        width: 40%;
+        height:100%;
+        float: right;
 
+    }
+    .pro_by p{
+        width: 68%;
+        height:100%;
+        float: right;
+        color: #8a8a8a;
+        font-size: 0.9em;
+        overflow: hidden;
+    }
+    .pro_by a{
+
+        /*color: #8a8a8a;*/
+
+    }
+    .pro_best ul li{
+        width: 30%;
+        height: 100%;
+        float: left;
+
+    }
+    .pro_comment{
+        width: 40%;
+        height: 100%;
+        background: url("../imgs/pro_comment.png");
+        background-size:100% 100%;
+        float: left;
+    }
+    .pro-thumbs-up{
+        width: 40%;
+        height: 100%;
+        background: url("../imgs/thumbs-up.png");
+        background-size:100% 100%;
+        float: left;
+    }
+    .pro-collection{
+        width: 40%;
+        height: 100%;
+        background: url("../imgs/collection.png");
+        background-size:100% 100%;
+        float: left;
+    }
+    .comment_num {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+    .thumbs-up-num{
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+    .collection-num{
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+    .comment_num p{
+        width: 100%;
+        height: 100%;
+        color:#8a8a8a;
+        font-size:0.8em;
+        text-align: center;
+        line-height: 24.66px;
+    }
+    .thumbs-up-num p{
+        width: 100%;
+        height: 100%;
+        color:#8a8a8a;
+        font-size:0.8em;
+        text-align: center;
+        line-height: 24.66px;
+    }
+    .collection-num p{
+        width: 100%;
+        height: 100%;
+        color:#8a8a8a;
+        font-size:0.8em;
+        text-align: center;
+        line-height: 24.66px;
     }
     .mainbox_two{
         width:90%;
