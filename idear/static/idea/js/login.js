@@ -18,22 +18,39 @@ function login() {
     var warn2 = document.getElementById("warn2");
     if (email === "" || email === undefined || email === null) {
         if (password === "" || password === undefined || password === null) {
-            document.getElementById("warn1").style.display = "block";
-            document.getElementById("warn2").style.display = "block";
-            alert("请填写完整的信息!");
+            // document.getElementById("warn1").style.display = "block";
+            // document.getElementById("warn2").style.display = "block";
+            swal({
+                title:"请输入邮箱",
+                text:"请填写完整信息！",
+                type:"warning"
+            })
         } else {
-            document.getElementById("warn1").style.display = "block";
-            document.getElementById("warn2").style.display = "none";
-            alert("请填写完整的信息!");
+            // document.getElementById("warn1").style.display = "block";
+            // document.getElementById("warn2").style.display = "none";
+            swal({
+                title:"请输入邮箱",
+                text:"请填写完整信息！",
+                type:"warning"
+            })
         }
     } else {
         if (password === "" || password === undefined || password === null) {
-            document.getElementById("warn1").style.display = "none";
-            document.getElementById("warn2").style.display = "block";
-            alert("请填写完整的信息!");
+            // document.getElementById("warn1").style.display = "none";
+            // document.getElementById("warn2").style.display = "block";
+            swal({
+                title:"请输入密码",
+                text:"请填写完整信息！",
+                type:"warning"
+            })
         } else {
             document.getElementById("warn1").style.display = "none";
             document.getElementById("warn2").style.display = "none";
+            swal({
+                title:"登录成功",
+                text:"恭喜你登录成功！",
+                type:"success"
+            })
         }
     }
 }
@@ -63,7 +80,11 @@ $("input[class='login_input']").click(function () {
             });
         }
         else {
-            alert('请输入正确的邮箱')
+             swal({
+                title:"邮箱不正确",
+                text:"请输入正确邮箱！",
+                type:"warning"
+            })
         }
 
     }

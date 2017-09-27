@@ -23,14 +23,18 @@
                         </div>
                         <div class="block-head">
                             <a class="ava" href="#">
-                                <img src="{% static 'photos/photos/2017/09/19/user/default_cdNstvn.jpg' %}" style="width:40px;height:40px">
+                                <img src="{{ creation.User.Img }}" style="width:40px;height:40px">
                             </a>
                             <a class="name" style="margin-top:20px" href="#">
                                 <span>{{ creation.user }}</span>
                             </a>
                             <!--        <a class="follow" creation={{creation.Id}}>
-                                        <span style="color:#539092" id="starId">关注</span></a>
-                                -->
+
+                                    <span style="color:#539092" id="starId">关注</span>
+
+
+
+       </a> -->
 
                         </div>
 
@@ -40,7 +44,7 @@
                                      style="float: left; height: 12px; margin: 2px 0 0 5px; width: 12px;">
                             </div>
 
-                            <span>&nbspRank&nbsp;{{ creation.user.Score }}</span>
+                            <span>&nbsp;Rank&nbsp;{{ creation.user.Score }}</span>
                         </div>
                         <div class="block-hot">
                             <a class="follow" creation={{ creation.Id }}>

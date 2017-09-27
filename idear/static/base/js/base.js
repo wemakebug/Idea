@@ -13,6 +13,7 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
+
     $('.nav li a').each(function () {
         $this = $(this);
         if ($this[0].href == String(window.location.href)) {
@@ -21,13 +22,13 @@ $(document).ready(function () {
     });
     var user_img = document.getElementById('user_img');
     var username = getCookie('username');
-    if (username === null) {
+    if (username === null || username === '') {
         var hidden_item = document.getElementById('login_status_false');
         hidden_item.style.display = '';
     } else {
         var hidden_item = document.getElementById('login_status_true');
         hidden_item.style.display = '';
-         var email = $.cookie('email');
+        var email = $.cookie('email');
     var username = $.cookie('username');
     var data = {
         'email': email,
@@ -125,9 +126,12 @@ $(document).ready(function () {
         });
     }
 })(jQuery);
+/*
 $(function(){
   $('#slogan').typer({
     search: '不完美',
     replace: ['在努力完美', '等着你']
   })
-});
+});*/
+
+

@@ -35,7 +35,7 @@
 /*}*/
 .teamdetailsynopsis{
 	width: 48%;
-	height:230px;
+	height:250px;
 	/*background-color: rgba(127,255,212,0.1);*/
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     -moz-box-shadow:-10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -255,5 +255,17 @@
 	height: 50px;
 	line-height: 50px;
 	margin:1px 4px
+}
+.register1-3{
+    font-size:1em ;
+    width: 120px;
+    display: inline-block;
+    text-indent: 1em;
+}
+.register1-2{
+	font-size:1em ;
+    width: 80px;
+    display: inline-block;
+    text-indent: 1em;
 }
 

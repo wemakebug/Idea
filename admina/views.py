@@ -77,14 +77,54 @@ def logout(req):
 @csrf_exempt
 def score_rank(req):
     if req.method == "GET":
-        currentpage = 1
-        dataperpage = 6
-        scoreRank = models.Score.objects.all().order_by('Id')
-        page = Paginator(scoreRank, dataperpage)
-        scoreRank = page.page(currentpage).object_list
-        return render_to_response('second/Score_rank.html', {'ScoreRank': scoreRank})
+        if "id" in req.GET:
+            id = req.GET["id"]
+            try:
+                models.Score.objects.get(pk=id).delete()
+                return HttpResponse("删除成功")  # 删除成功
+            except Exception as e:
+                print e
+                return HttpResponse("数据异常，请刷新后重试")
+        else:
+            currentpage = 1
+            dataperpage = 6
+            scoreRank = models.Score.objects.all().order_by('-Id')
+            page = Paginator(scoreRank, dataperpage)
+            scoreRank = page.page(currentpage).object_list
+
+            L = []
+            for i in range(0, scoreRank.count()):
+                info = {}
+                info["num"] = i + 1
+                info["score"] = scoreRank[i]
+                L.append(info)
+
+            return render_to_response('second/Score_rank.html', {'L': L })
     if req.method == "POST":
-        pass
+        id = req.POST["id"]
+        Level = req.POST["Level"]
+        Value = req.POST["Value"]
+
+        score = models.Score.objects.filter(pk=id)
+        if score.exists():
+            score = score[0]
+        else:
+            score = models.Score()
+
+        score.Level = Level
+        score.Value = Value
+
+        try:
+            score.save()
+
+            if id == "0":
+                return HttpResponse("保存成功")
+            else:
+                return HttpResponse("修改成功")
+        except Exception as e:
+            print e
+            return HttpResponse("数据异常，请刷新后重试")
+
 
 
 @csrf_exempt
@@ -124,28 +164,58 @@ def score_user(req, page):
 @csrf_exempt
 def score_record(req):
     if req.method == "GET":
-        currentpage = 1
-        scoreChanges = models.ScoreChange.objects.all().order_by('Id')
-        page = Paginator(scoreChanges, 6)
-        scoreChanges = page.page(currentpage).object_list
-        return render_to_response('second/Score_record.html', {'ScoreChanges': scoreChanges})
+        if "id" in req.GET:
+            id = req.GET["id"]
+            try:
+                models.ScoreChange.objects.get(pk=id).delete()
+                return HttpResponse("删除成功")
+            except Exception as e:
+                print e
+                return HttpResponse("数据异常，请刷新后重试")
+        else:
+            currentpage = 1
+            scoreChanges = models.ScoreChange.objects.all().order_by('Id')
+            users = models.User.objects.all()
+            scores = models.Score.objects.all()
+
+            page = Paginator(scoreChanges, 6)
+            scoreChanges = page.page(currentpage).object_list
+
+            L = []
+            for i in range(0, scoreChanges.count()):
+                info = {}
+                info["num"] = i + 1
+                info["scoreChange"] = scoreChanges[i]
+                L.append(info)
+
+            return render_to_response('second/Score_record.html', {
+                'L': L, "users": users, "scores": scores
+            })
     if req.method == "POST":
-        result = {}
+        id = req.POST["id"]
+        user = req.POST["user"]
+        score = req.POST["score"]
+        Event = req.POST["Event"]
+
+        score_change = models.ScoreChange.objects.filter(pk=id)
+        if score_change.exists():
+            score_change = score_change[0]
+        else:
+            score_change = models.ScoreChange()
+
+        score_change.user_id = user
+        score_change.score_id = score
+        score_change.Event = Event
+
         try:
-            id = req.POST['id']
-            confirmed = req.POST['confirm']
-            if confirmed:
-                try:
-                    user = models.User.objects.get(Id=id)
-                    user.delete()
-                except:
-                    result['message'] = '用户不存在'
-                    result["status"] = 0
-                    return HttpResponse(json.dumps(result))
-        except:
-            result['message'] = '服务器异常'
-            result["status"] = 0
-            return HttpResponse(json.dumps(result))
+            score_change.save()
+            if id != "0":
+                return HttpResponse("创建成功")
+            else:
+                return HttpResponse("修改成功")
+        except Exception as e:
+            print e
+            return HttpResponse("数据异常，请刷新后重试")
 
 
 @csrf_exempt
