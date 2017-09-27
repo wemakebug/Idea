@@ -22,7 +22,7 @@
 }
 .home-b-all {
 	background-color:white;
-	width:680px;
+	width:660px;
 	height:auto;
 	margin-left: 18%;
 	margin-top: 30px;
@@ -216,7 +216,7 @@
     float:left;
     width:30px;
     height:30px;
-    margin: 125px 0 0 45px;
+    margin: 108px 0 0 45px;
     cursor: pointer;
     font-size: 12px;
     text-align:center;
@@ -225,17 +225,23 @@
 
 #praise-txt{
     float:left;
-    margin: -20px 0 0 35px;
+    margin: 0 0 0 35px;
     height:25px;
     line-height:25px;
     display: block;
+    font-size:15px;
 }
-#praise-txt1{
-    float:left;
-    margin:-20px 0 0 50px;
-    width:90px;
-    line-height:15px;
-    display: block;
+#praise-txt.hover{
+    color: #539092;
+}
+.praise p {
+    line-height: 25px;
+    margin-top: -23px;
+    position: absolute;
+    text-align: left;
+    width: 180px;
+    height:0px;
+    font-size:15px;
 }
 .praise img{
     width:30px;
@@ -304,7 +310,7 @@
     }
 }
 .home-b-user{
-    width:700px;
+    width:660px;
     height:110px;
     float:left;
     background-color:white;
@@ -337,12 +343,12 @@
 .user-intro {
 	width:20%;
 	height:15%;
-	margin-top:7%;
-    margin-left:-15%;
+	margin-top:8%;
+    margin-left:-18.5%;
 	float:left;
 }
 .user-score {
-	width:31%;
+	width:55px;
 	height:100%;
 	font-size:13px;
 	float:left;
@@ -353,7 +359,7 @@
 	vertical-align:middle;
 }
 .user-id {
-	width: 30%;
+	width: 55px;
 	height:100%;
 	font-size:13px;
 	float:left;
@@ -374,17 +380,33 @@
 .user-follow:hover {
 	color:#007776;
 }
+.line {
+    background-color:#539092;
+    width:2px;
+    height:280px;
+    float:left;
+    margin-left:-10px;
+    margin-top:30px;
+}
+.word {
+    float: left;
+    font-family: 幼圆;
+    font-size: 20px;
+    height: 280px;
+    margin-left: 0px;
+    margin-top: 26px;
+    width: 30px;
+}
 .main-right{
-    width:20%;
+    width:23%;
 	height:auto;
 	float:left;
 	margin-top:30px;
 }
 .similar-block{
-    display:none;
     background-color:white;
     width:90%;
-    height:240px;
+    height:280px;
     box-shadow: 1px 1px 1px 1px #9999;
 }
 .comment{
