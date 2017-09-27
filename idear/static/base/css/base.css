@@ -34,7 +34,7 @@ body,div{
 		width: 100%;
 		height:66px;
         background:#539092;
-
+        /*background: #FFFFFF;*/
 	}
 	.logo{
 	    float:left;
@@ -164,14 +164,14 @@ body,div{
     }
     .btn_hidden{
         float: right;
-		width: 14.5%;/**/
+		width: 2.5%;/**/
 		height: 100%;
-        margin-right: 0.6%;/*后加*/
+        margin-right: 13.6%;/*后加*/
     }
     .user_figure a{
         width: 40px;
         height: 40px;/**/
-        margin-top: 4.8%;/**/
+        margin-top: 29.8%;/**/
         /*background-images:url();*/
         float: left;
         overflow: hidden;
@@ -182,44 +182,23 @@ body,div{
     .user_figure:hover{
         display: block;
     }
-    .hover_list{
-        width:100px;
-        height: 200px;
-        margin-top: 66px;
-        margin-right: 200px;
-        background: #e0e0e0;
-    }
-    .hover_list:before,.hover_list:after {
-        content: '';
-        height: 0;
-        width: 0;
-        position: absolute;
-        display: block;
-        border-width: 10px 12px 10px 0;
-        border-style: solid;
-        border-color: transparent  #8BCFCC;
-        top: 20px;
-        left: -11px;
-    }
-
-   /* .demo1{!**!
-        float: right;
-		width: 5%;
-		height: 100%;
-        margin-right: 10%;
-
-    }*/
-    .demo1{
-        width:160px;
-        margin-top:66px;
+    .list_hidden{
+        width:200px;
+        margin-top:10px;
         float: left;
-        margin-left: -40px;
+        margin-left: 0px;
         /*border:1px solid #FFFFFF;*/
         background: url("../../idea/imgs/list_bg.jpeg");
         background-size:100% 100% ;
-        height:300px;
+        height:320px;
+        border: 1px solid transparent;
+        opacity: 0.8;
+        display: none;
     }
-    .demo1 em{
+    .btn_hidden:hover .list_hidden{
+        display: block;
+    }
+    .list_hidden em{
         display:block;
         width:50px;
         height:30px;
@@ -231,15 +210,21 @@ body,div{
         color:#FFFFFF;
         font-style:normal;
     }
+    .list_content{
+        width:99.9%;
+        height: 100%;
+        border: 1px solid transparent;
+    }
+    .list_line{
+        width: 80%;
+        height: 1px;
+        margin-top: 5%;
+        background: #c9c9c9;
+    }
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
 	}
-	/*.nav-bottom{
-		width: 100%;
-		height: 1px;
-		background: #ccc;
-	}*/
     .footer_line{
          width: 100%;
         height: 1px;
