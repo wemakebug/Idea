@@ -1,0 +1,23 @@
+{%extends 'idea/Base.html'%}
+{% load static %}
+{%block title%}
+   <title>我的主页</title>
+{%endblock%}
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="headhole">
+    <div class="headtop">
+        <div class="headtop1-1">
+            <div class="headtop1-2"><strong>用户名动态获取</strong></div>
+            <div class="headtop1-3"></div>
+        </div>
+        <div class="headtopimages"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
