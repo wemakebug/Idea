@@ -12,21 +12,92 @@
     width: 50%;
     height: 240px;
     float: left;
-    text-align: center;
 }
 .headtop1-2{
-    width: 60%;
+    width: 70%;
     height: 80px;
     line-height: 80px;
     font-size: 20px;
+    text-align: center;
 }
 .headtop1-3{
-    width: 60%;
+    width: 70%;
     height:100px;
     line-height: 100px;
+    text-align: center;
+}
+.headtop1-4{
+    width: 25%;
+    height: 55px;
+    line-height: 55px;
+    float: left;
+    margin: 3%;
+}
+.headtop1-5{
+    width: 25%;
+    height: 55px;
+    line-height: 55px;
+    float: left;
+    margin: 3%;
+}
+.headtop1-6{
+    width: 25%;
+    height: 55px;
+    line-height: 55px;
+    float: left;
+    margin: 3%;
+}
+.clickdown1{
+    text-decoration: none;
+    color: rgb(105,105,105);
+}
+.clickdown1:hover{
+    color: black;
+}
+.EditProfile{
+    width: 70%;
+    height: 55px;
+    line-height: 55px;
+}
+.smallimages{
+    width: 5%;
+    height:61%;
+    float: left;
+    margin-top: 2%;
+    margin-left: 40%;
+}
+.editor{
+    width: 15%;
+    height: 55px;
+    float: left;
+    line-height: 55px;
+    text-align: center;
+}
+.editor1{
+    text-decoration: none;
+    color: rgb(105,105,105);
+}
+.editor1:hover{
+    color: black;
 }
 .headtopimages{
     width: 50%;
     height: 240px;
     float: left;
+    text-align: center;
+}
+.headtopimages1{
+    height: 200px;
+    width: 200px;
+    margin: 2% 40%;
+    /*border-radius: 140px;*/
+}
+.myprojects{
+    width: 100%;
+    height: auto;
+}
+.myprojects1-1{
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
 }
