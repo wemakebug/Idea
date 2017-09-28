@@ -126,9 +126,12 @@ $(document).ready(function () {
         });
     }
 })(jQuery);
+/*
 $(function(){
   $('#slogan').typer({
     search: '不完美',
     replace: ['在努力完美', '等着你']
   })
-});
+});*/
+
+

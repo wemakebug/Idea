@@ -67,4 +67,21 @@ $(".like").click(function(){
 })
 
 
-
+$(function(){
+		$("#praise").click(function(){
+			var praise_img = $("#praise-img");
+			var praise_txt = $("#praise-txt");
+			var num=parseInt(praise_txt.text());
+			if(praise_img.attr("src") == ("../static/creation/imgs/likes.png")){
+				$(this).html("<img src='../static/creation/imgs/like1.png' id='praise-img' class='animation' />");
+				praise_txt.removeClass("hover");
+				num -=1;
+				praise_txt.text(num)
+			}else{
+				$(this).html("<img src='../static/creation/imgs/likes.png' id='praise-img' class='animation' />");
+				praise_txt.addClass("hover");
+				num +=1;
+				praise_txt.text(num)
+			}
+		});
+	})

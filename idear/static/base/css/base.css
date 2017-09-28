@@ -8,7 +8,7 @@ body,div{
 		padding:0;
     }
 	body{
-	    min-width:1500px;
+	    min-width:1300px;
         max-width:2000px;
         overflow-x: hidden;
 	}
@@ -27,14 +27,14 @@ body,div{
         z-index:9999;
         top:0px;
         text-align:left;
-        min-width:1500px;
+        min-width:1300px;
         max-width:2000px;
 	}
 	.header{
 		width: 100%;
 		height:66px;
         background:#539092;
-
+        /*background: #FFFFFF;*/
 	}
 	.logo{
 	    float:left;
@@ -64,7 +64,7 @@ body,div{
         height:100%;
         float:left;
         text-align:center;
-	    line-height:65px;
+	    line-height:66px;
 	    overflow:hidden;
     }
     .active{
@@ -78,7 +78,6 @@ body,div{
 		width:30%;
 		margin-left:6%;/*后加*/
 		height:66px;
-
 	}
     .searchbar{
         width:60%;
@@ -165,14 +164,14 @@ body,div{
     }
     .btn_hidden{
         float: right;
-		width: 14.5%;/**/
+		width: 2.5%;/**/
 		height: 100%;
-        margin-right: 0.6%;/*后加*/
+        margin-right: 13.6%;/*后加*/
     }
     .user_figure a{
         width: 40px;
         height: 40px;/**/
-        margin-top: 4.8%;/**/
+        margin-top: 29.8%;/**/
         /*background-images:url();*/
         float: left;
         overflow: hidden;
@@ -183,70 +182,48 @@ body,div{
     .user_figure:hover{
         display: block;
     }
-    .demo1{/**/
-        float: right;
-		width: 5%;
-		height: 100%;
-        margin-right: 10%;
-        /*display: none;*/
-    }
-    .demo2{
-        width: 5%;
-        height: 75%;
-        background: #295E6A;
-        position: absolute;
-        top: 66px;
-    }
-    .demo2 ul{
-        width: 100%;
-        height:100%;
-    }
-    .demo2 ul li{
-        width: 100%;
-        height:40%;
-        text-align: center;
-        line-height: 33px;
-    }
-    .demo2:before{
-        content: '';
-        position: absolute;
-        top: -6px;
-        left: 20px;
-        display: inline-block;
-        border-bottom: 6px solid #295E6A;
-        border-right: 6px solid transparent;
-        border-left: 6px solid transparent;
-    }
-    .login_out{
-        width: 20%;
-        height: 40%;
-        margin-top: 7%;/**/
-        /*background: #295E6A;*/
+    .list_hidden{
+        width:200px;
+        margin-top:10px;
         float: left;
-        margin-left: 0%;
-        /*overflow: hidden;*/
-        /*border-radius: 3px;*/
-        /*border: none;
-        outline: none;
-        cursor: pointer;*/
+        margin-left: 0px;
+        /*border:1px solid #FFFFFF;*/
+        background: url("../../idea/imgs/list_bg.jpeg");
+        background-size:100% 100% ;
+        height:320px;
+        border: 1px solid transparent;
+        opacity: 0.8;
+        display: none;
     }
-    .login_out p{
-        width:100%;
-	    height:100%;
-        text-align: center;
-        line-height: 27px;
-        margin: 0 auto;
-        font-size:1em;
-	    color:white;
+    .btn_hidden:hover .list_hidden{
+        display: block;
+    }
+    .list_hidden em{
+        display:block;
+        width:50px;
+        height:30px;
+        font-size:50px;
+        overflow:hidden;
+        _position: relative;
+        margin-left:10px;
+        margin-top:-30px;
+        color:#FFFFFF;
+        font-style:normal;
+    }
+    .list_content{
+        width:99.9%;
+        height: 100%;
+        border: 1px solid transparent;
+    }
+    .list_line{
+        width: 80%;
+        height: 1px;
+        margin-top: 5%;
+        background: #c9c9c9;
     }
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
-	}
-	.nav-bottom{
-		width: 100%;
-		height: 1px;
-		background: #ccc;
 	}
     .footer_line{
          width: 100%;
@@ -260,14 +237,12 @@ body,div{
         padding:10px 0;
         text-align: center;
         line-height:70px;
-
-
 	}
     .container{
         width:25%;
         height:100%;
         float: left;
-        margin-left: 21%;
+        margin-left: 23.5%;
         display:block;
     }
     .container ul{
@@ -277,8 +252,13 @@ body,div{
     }
 	.container ul li{
 		display: inline-block;
+        width:24%;
+        height:100%;
+        float:left;
+	    overflow:hidden;
     }
     .container ul li a{
+        width:100%;
         display: inline-block;
         text-decoration:none;
         color:gray;
