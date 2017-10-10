@@ -29,19 +29,11 @@ idea/css/index.css{% extends 'idea/Base.html'%}
             <div class="project_bottom_top">
                 <div class="project_bottom_left">
 {#                    <p class="FixText">项目名称：</p>#}
-                    <p class="FixText">招募人数：</p>
-                    <p class="FixText">招募状态：</p>
-                    <p class="FixText">项目标签：</p>
-                    <p class="FixText">时间：</p>
+                    <li class="FixText">招募人数:<p class="FixText-right">{{project.Number}}</p></li>
+                    <li class="FixText">招募状态：<p class="FixText-right">正在进行</p></li>
+                    <li class="FixText">项目标签：<p class="FixText-right">{{project.ID}}</p></li>
+                    <li class="FixText">时间：<p class="FixText-right">{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}</p></li>
                 </div>
-                 <div class="project_bottom_right">
-
-{#                   <input id="ProjectName" type="text" name="ProjectName" value="{{project.ProjectName}}" readonly="readonly" class="VariableText"/>#}
-                     <input type="text" name="Number" value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input type="text" name="State" value="正在进行" readonly="readonly" class="VariableText"/>
-                     <input type="text" name="State" value="正在进行" readonly="readonly" class="VariableText"/>
-                     <input type="text" name="UserName" value="{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}" readonly="readonly" class="VariableText"/>
-                 </div>
                 <script>
                     function getProjectID() {
                         var projectID=1;
