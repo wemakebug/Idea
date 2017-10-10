@@ -693,3 +693,13 @@ def get_projects(req):
             return render_to_response('project/recruit.html', {'projects': projects})
 
 ''' 招募项目相关页面结束'''
+
+
+'''个人中心相关页面'''
+def homepage(req):
+    if req.method == 'GET':
+        return render_to_response('personal/homepage.html')
+    if req.method == 'POST':
+        pass
+
+'''个人中心相关页面结束'''

@@ -222,6 +222,7 @@
         -o-transform:scale(1.1);
         -moz-box-shadow: 5px 5px 4px #888888;
         box-shadow: 5px 5px 4px #888888;
+        transition: 0.2s ease-out;
     }
     .pro_right_img{
         width: 100%;
@@ -239,6 +240,7 @@
         -o-transform:scale(1.1);
         -moz-box-shadow: 5px 5px 4px #888888;
         box-shadow: 5px 5px 4px #888888;
+        transition: 0.2s ease-out;
     }
     .pro_content{
         width: 100%;

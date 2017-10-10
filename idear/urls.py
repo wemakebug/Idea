@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'creations$', views.creations),
     url(r'forgetPassword$', views.forgetPassword),
+    url(r'homepage$',views.homepage),
     url(r'apply$', views.apply),
     url(r'recruit$', views.projects),
     url(r'redetails$', views.redetails),
