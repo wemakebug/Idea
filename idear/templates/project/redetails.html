@@ -21,10 +21,10 @@
                          <div class="tags"><span>标签</span></div>
                          <div class="tags"><span>标签</span></div>
                          <div class="tags"><span>标签</span></div>
-{#                         <div class="plogo"> <img  src="{% static 'project/imgs/user.svg'%}"></div>#}
                          <div class="title">
-                            <h5> 项目名称哈哈哈</h5>
-                            <p class="ptime">2017.04.20 23:33&nbsp;&nbsp;|&nbsp; 项目状态：未启动</p>
+                             <h5> 项目名称哈哈哈</h5>
+                             <p class="ptime">2017.04.20 23:33&nbsp;&nbsp;|&nbsp; 项目状态：未启动 |  项目发起人：xxx</p>
+
                          </div>
                       </div>
 
@@ -38,6 +38,10 @@
                           <button class="likebutton">
                               <img class="plike" src="{% static '/project/imgs/like1.png' %}"  >
                           </button>
+
+                          <div class="recruit">
+                              <a href="apply" class="rbutton">查看招募帖</a>
+                          </div>
                           <div class="home-b-share">
                               <a href="#" class="share-buttons"></a>
                               <a href="#" class="share-buttons"></a>
@@ -53,34 +57,36 @@
                               <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;height:16px;">
                               <a>关注</a>
                           </div>
+
                       </div>
+
                   </div>
 
-{#                  <div class="content-footer">#}
-{#                           <!--此处为招募帖详细内容-->#}
-{#                          <div class="rtitle">招募帖</div>#}
-{#                          <div class="rmain">#}
-{#                              <div class="rm-header">#}
-{#                                 <div class="rm-h1">预计招募人数：</div>#}
-{#                                 <div class="rm-h2">已招募人数：</div>#}
-{#                                 <div class="rm-h3">招募开始/截止时间：</div>#}
-{#                               </div>#}
-{#                          <div class="rm-middle">#}
-{#                                 <div class="rm-nav">#}
-{#                                      <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:#}
-{##}
-{#                                 </div>#}
-{#                                 <div class="rcontent">#}
-{#                                  <p> </p>#}
-{#                                 </div>#}
-{#                          </div>#}
-{#                          </div>#}
-{#                          <div class="rfooter">#}
-{#                               <div class="rfcontent">#}
-{#                                 <a href="apply" class="rbutton">申请加入</a>#}
-{#                               </div>#}
-{#                          </div>#}
-{#                     </div>#}
+                  <div class="content-middle">
+                           <!--此处为招募帖详细内容-->
+                          <div class="rtitle">招募帖</div>
+                          <div class="rmain">
+                              <div class="rm-header">
+                                 <div class="rm-h1">预计招募人数：</div>
+                                 <div class="rm-h2">已招募人数：</div>
+                                 <div class="rm-h3">招募开始/截止时间：</div>
+                               </div>
+                          <div class="rm-middle">
+                                 <div class="rm-nav">
+                                      <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
+
+                                 </div>
+                                 <div class="rcontent">
+                                  <p> </p>
+                                 </div>
+                          </div>
+                          </div>
+                          <div class="rfooter">
+                               <div class="rfcontent">
+                                 <a href="apply" class="rbutton">申请加入</a>
+                               </div>
+                          </div>
+                     </div>
               </div>
               <div class="middle"></div>
               <div class="content-footer">
@@ -88,119 +94,138 @@
                       <div class="ctop">
                            <img class="u-img"  src="{% static 'project/imgs/user.svg'%}">
                            <div class="carea">
-                               <textarea class="tocomment">
-                               </textarea>
-                               <img class="emoji"  src="{% static 'project/imgs/emoji.svg'%}">
+                               <div class="tocomment">
+                               </div>
+
                                <button class="putcomment">评论</button>
                            </div>
                       </div>
+                      <div class="c-all">
+                          <div class="cmain">
+                              <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
+                              <div class="comment-box">
+                                  <div class="comment-head">
+                                      <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
+                                      <span>2017-11-11</span>
+                                      <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
+                                      <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
+                                      <img class="clike"  src="{% static 'project/imgs/like1.png'%}">
+                                  </div>
+                                  <div class="comment-content">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="c-reply">
+                              <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                              <div class="rcomment-box">
+                                  <div class="rcomment-head">
+                                      <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                      <span>2017-11-11</span>
+                                      <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
+                                      <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                      <img class="rclike"  src="{% static 'project/imgs/like1.png'%}">
+                                  </div>
+                                  <div class="rcomment-content">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="cmain">
+                              <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
+                              <div class="comment-box">
+                                  <div class="comment-head">
+                                      <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
+                                      <span>2017-11-11</span>
+                                      <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
+                                      <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
+                                      <img class="clike"  src="{% static 'project/imgs/like1.png'%}">
+                                  </div>
+                                  <div class="comment-content">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="c-reply">
+                              <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                              <div class="rcomment-box">
+                                  <div class="rcomment-head">
+                                      <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                      <span>2017-11-11</span>
+                                      <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
+                                      <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                      <img class="rclike"  src="{% static 'project/imgs/like1.png'%}">
+                                  </div>
+                                  <div class="rcomment-content">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="c-reply">
+                              <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                              <div class="rcomment-box">
+                                  <div class="rcomment-head">
+                                      <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                      <span>2017-11-11</span>
+                                      <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
+                                      <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                      <img class="rclike"  src="{% static 'project/imgs/like1.png'%}">
+                                  </div>
+                                  <div class="rcomment-content">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="cmain">
+                              <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
+                              <div class="comment-box">
+                                  <div class="comment-head">
+                                      <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
+                                      <span>2017-11-11</span>
+                                      <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
+                                      <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
+                                      <img class="clike"  src="{% static 'project/imgs/like1.png'%}">
+                                  </div>
+                                  <div class="comment-content">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="c-reply">
+                              <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                              <div class="rcomment-box">
+                                  <div class="rcomment-head">
+                                      <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                      <span>2017-11-11</span>
+                                      <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
+                                      <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                      <img class="rclike"  src="{% static 'project/imgs/like1.png'%}">
+                                  </div>
+                                  <div class="rcomment-content">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="c-reply">
+                              <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                              <div class="rcomment-box">
+                                  <div class="rcomment-head">
+                                      <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                      <span>2017-11-11</span>
+                                      <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
+                                      <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                      <img class="rclike"  src="{% static 'project/imgs/like1.png'%}">
+                                  </div>
+                                  <div class="rcomment-content">
+                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
 
-                      <div class="cmain">
-                          <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-                          <div class="comment-box">
-                              <div class="comment-head">
-                                  <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                  <span>2017-11-11</span>
-                                  <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                  <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
-                                  <img class="c-like"  src="{% static 'project/imgs/like1.png'%}">
-                              </div>
-                              <div class="comment-content">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                              </div>
-                          </div>
-                      </div>
-                            <div class="c-reply">
-                          <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-                          <div class="comment-box">
-                              <div class="comment-head">
-                                  <h6 class="comment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
-                                  <span>2017-11-11</span>
-                                  <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                  <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
-                                  <img class="c-like"  src="{% static 'project/imgs/like1.png'%}">
-                              </div>
-                              <div class="comment-content">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                              </div>
-                          </div>
-                      </div>
-                            <div class="c-reply">
-                          <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-                          <div class="comment-box">
-                              <div class="comment-head">
-                                  <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                  <span>2017-11-11</span>
-                                  <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                  <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
-                                  <img class="c-like"  src="{% static 'project/imgs/like1.png'%}">
-                              </div>
-                              <div class="comment-content">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                              </div>
-                          </div>
-                      </div>
 
-                      <div class="cmain">
-                                    <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-                                     <div class="comment-box">
-                                          <div class="comment-head">
-                                                 <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                                 <span>2017-11-11</span>
-                                                 <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                                 <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
-                                                 <img class="c-like"  src="{% static 'project/imgs/like1.png'%}">
-                                          </div>
-                                          <div class="comment-content">
-                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                         </div>
-                                     </div>
-                      </div>
-                            <div class="c-reply">
-                          <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-                          <div class="comment-box">
-                              <div class="comment-head">
-                                  <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                  <span>2017-11-11</span>
-                                  <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                  <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
-                                  <img class="c-like"  src="{% static 'project/imgs/like1.png'%}">
-                              </div>
-                              <div class="comment-content">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                              </div>
-                          </div>
-                      </div>
-                      <div class="cmain">
-                                    <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-                                     <div class="comment-box">
-                                          <div class="comment-head">
-                                                 <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                                 <span>2017-11-11</span>
-                                                 <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                                 <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
-                                                 <img class="c-like"  src="{% static 'project/imgs/like1.png'%}">
-                                          </div>
-                                          <div class="comment-content">
-                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                         </div>
-                                     </div>
-                                </div>
-                      <div class="cmain">
-                                    <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-                                     <div class="comment-box">
-                                          <div class="comment-head">
-                                                 <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                                 <span>2017-11-11</span>
-                                                 <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                                 <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
-                                                 <img class="c-like"  src="{% static 'project/imgs/like1.png'%}">
-                                          </div>
-                                          <div class="comment-content">
-                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                         </div>
-                                     </div>
-                      </div>
+
+                  </div>
               </div>
           </div>
       </div>
