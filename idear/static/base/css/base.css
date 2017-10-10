@@ -197,6 +197,7 @@ body,div{
     }
     .btn_hidden:hover .list_hidden{
         display: block;
+        transition: 0.2s ease-out;
     }
     .list_hidden em{
         display:block;
@@ -215,10 +216,15 @@ body,div{
         height: 100%;
         border: 1px solid transparent;
     }
+    .list_creation{
+        width: 80%;
+        height: 10%;
+        background: #295E6A;
+    }
     .list_line{
         width: 80%;
         height: 1px;
-        margin-top: 5%;
+        margin-top: 2%;
         background: #c9c9c9;
     }
 	.sidebar ul li{
