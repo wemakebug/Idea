@@ -5,7 +5,7 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -42,6 +42,7 @@ audio:not([controls]) {
 template {
   display: none;
 }
+
 a {
   background-color: transparent;
 }
@@ -59,17 +60,17 @@ strong {
 dfn {
   font-style: italic;
 }
-h1 {
+/*h1 {
   margin: .67em 0;
   font-size: 2em;
-}
+}*/
 mark {
   color: #000;
   background: #ff0;
 }
-small {
+/*small {
   font-size: 80%;
-}
+}*/
 sub,
 sup {
   position: relative;
@@ -228,7 +229,7 @@ th {
   img {
     max-width: 100% !important;
   }
-  p,
+  /*p,
   h2,
   h3 {
     orphans: 3;
@@ -237,7 +238,7 @@ th {
   h2,
   h3 {
     page-break-after: avoid;
-  }
+  }*/
   .navbar {
     display: none;
   }
@@ -1088,14 +1089,14 @@ body {
   color: #333;
   background-color: #fff;
 }
-input,
+/*input,
 button,
 select,
 textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-}
+}*/
 a {
   color: #337ab7;
   text-decoration: none;
@@ -1171,7 +1172,7 @@ hr {
 [role="button"] {
   cursor: pointer;
 }
-h1,
+/*h1,
 h2,
 h3,
 h4,
@@ -1187,8 +1188,8 @@ h6,
   font-weight: 500;
   line-height: 1.1;
   color: inherit;
-}
-h1 small,
+}*/
+/*h1 small,
 h2 small,
 h3 small,
 h4 small,
@@ -1303,7 +1304,7 @@ p {
 small,
 .small {
   font-size: 85%;
-}
+}*/
 mark,
 .mark {
   padding: .2em;
@@ -3971,7 +3972,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   z-index: 2;
   margin-left: -1px;
 }
-.nav {
+/*.nav {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -4223,7 +4224,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-fixed-bottom .navbar-collapse {
     max-height: 200px;
   }
-}
+}*/
 .container > .navbar-header,
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
