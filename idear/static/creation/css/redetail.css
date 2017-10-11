@@ -416,7 +416,7 @@
     width:80%;
     heigth:20px;
     float:left;
-    margin:15% 0 0 10%;
+    margin:20% 0 0 10%;
     font-family:幼圆;
     font-size:25px;
     text-align:center;
@@ -441,7 +441,22 @@
 	-webkit-line-clamp: 5;
 	overflow: hidden;
 }
-
+.block-bottom{
+    width:100%;
+    height:50px;
+    float:left;
+    margin-top:12%;
+}
+.block-imgl{
+    width:28px;
+    height:25px;
+    margin:10px 0 0 30px;
+}
+.block-imgc{
+    width:24px;
+    height:24px;
+    margin:10px 0 0 8px;
+}
 .comment{
     width:740px;
     height:auto;
