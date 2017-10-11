@@ -31,7 +31,7 @@ idea/css/index.css{% extends 'idea/Base.html'%}
 {#                    <p class="FixText">项目名称：</p>#}
                     <li class="FixText">招募人数:<p class="FixText-right">{{project.Number}}</p></li>
                     <li class="FixText">招募状态：<p class="FixText-right">正在进行</p></li>
-                    <li class="FixText">项目标签：<p class="FixText-right">{{project.ID}}</p></li>
+                    <li class="FixText">项目标签：<p class="FixText-right">互联网</p></li>
                     <li class="FixText">时间：<p class="FixText-right">{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}</p></li>
                 </div>
                 <script>
@@ -39,11 +39,6 @@ idea/css/index.css{% extends 'idea/Base.html'%}
                         var projectID=1;
                     }
                 </script>
-{#                <button class="button button-3d button-action button-circle button-tiny"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>#}
-{#                <div class="feed" id="feed1">#}
-{#                         <div class="heart " id="like1" rel="like"></div>#}
-{#                       <div class="likeCount" id="likeCount1">14</div>#}
-{#                </div>#}
             </div>
 
         </div>
@@ -65,6 +60,17 @@ idea/css/index.css{% extends 'idea/Base.html'%}
         </div>
     </div>
 </div>
+{#    <script>#}
+{# /* 长宽占位 rem算法, 根据root的rem来计算各元素相对rem, 默认html 320/20 = 16px */#}
+{# function placeholderPic(){#}
+{#  var w = document.documentElement.offsetWidth;#}
+{#  document.documentElement.style.fontSize=w/250+'px';#}
+{# }#}
+{# placeholderPic();#}
+{# window.onresize=function(){#}
+{#  placeholderPic();#}
+{# }#}
+{#</script>#}
 {% endblock %}
 {% block script %}
 {% endblock %}
