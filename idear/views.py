@@ -450,12 +450,14 @@ def creations(req):
 @csrf_exempt
 def star(req):
     '''
+
     点赞
     1为创意
     2为项目
 
     status
     状态值：0为失败，1为关注成功, 2为取消关注成功
+
     '''
     status = 0
     try:
@@ -590,10 +592,10 @@ def redetails(req):
 @csrf_exempt
 def projects(req):
     '''
-    创意灵感一级二级页面项目显示
+    招募项目一级二级页面项目显示
     '''
     projectLabels = ProjectLabel.objects.all()
-    projects = Project.objects.all()
+    projects = Project.objects.all().order_by("Date")
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
@@ -616,6 +618,7 @@ def projects(req):
             return render_to_response('project/recruit.html',
                                       {'project': project, 'comments': comments, 'user': user})
     except:
+
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 
