@@ -85,8 +85,8 @@ idea/css/index.css{% extends 'idea/Base.html'%}
 {% block script %}
      <script>
          $(function () {
-            $(".project_top").slice(0, 12).show();
-           if($(".project_top").length <= 12) {
+            $(".project_top").slice(0, 9).show();
+           if($(".project_top").length <= 9) {
            $(".more").hide();
            }
             $(".more").on('click', function (e) {

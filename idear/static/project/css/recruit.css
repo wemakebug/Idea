@@ -23,8 +23,8 @@ body, html {
     float: left;
     width: 50%;
     height: 80%;
-    margin-top: 70px;
-    margin-left: 200px;
+    margin-top: 5%;
+    margin-left: 10%;
 }
 
 .bg_right {
@@ -37,7 +37,7 @@ body, html {
 }
 
 .project_top {
-    width: 35%;
+    width: 350px;
     height: 270px;
     float: left;
     margin-top: 30px;
@@ -280,13 +280,10 @@ body, html {
     background-image: linear-gradient(to bottom, #b7dc8e 0%, #99ce5f 70%, #85c440 100%);
 }
 
-
-
-
 .home-right {
 	width:300px;
 	float:right;
-	margin-right:20%;
+	margin-right:400px;
     margin-top: 100px;
 }
 .home-right p,span{
