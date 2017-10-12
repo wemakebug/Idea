@@ -87,18 +87,24 @@
                 </div>
             <div class="main-right">
                 <div class="similar-block">
-                    <div class="block-title">
-                        <a>创意题目</a>
+                    <div class="block-main">
+                        <a class="block-title" href="redetail">创意啊啊啊啊啊啊啊啊啊啊啊啊啊啦
                         <hr>
                         <div class="block-text">
                             <p>创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊</p>
                         </div>
+                        </a>
                     </div>
                     <div class="block-bottom">
-                        <img class="block-imgl" src="{% static 'creation/imgs/like0.png'%}">
-                        <span>7</span>
-                        <img class="block-imgc" src="{% static 'creation/imgs/collection0.png'%}">
-                        <span>54</span>
+                        <div class="block-bottom-ava">
+                            <img src="{{ creation.User.Img }}" style="width:40px;height:40px">
+                        </div>
+                        <div class="block-bottom-hot">
+                            <img class="block-imgl" src="{% static 'creation/imgs/like0.png'%}">
+                            <span>7</span>
+                            <img class="block-imgc" src="{% static 'creation/imgs/collection0.png'%}">
+                            <span>54</span>
+                        </div>
                     </div>
                 </div>
             </div>
