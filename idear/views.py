@@ -705,4 +705,16 @@ def homepage(req):
     if req.method == 'POST':
         pass
 
+
+
+
+
+
+
+
+def editprofile(req):
+    if req.method == 'GET':
+        return render_to_response('personal/editprofile.html')
+    if req.method == 'POST':
+        pass
 '''个人中心相关页面结束'''
