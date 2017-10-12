@@ -14,64 +14,92 @@ idea/css/index.css{% extends 'idea/Base.html'%}
 
     <div class="bg_left">
        {%for project in projects%}
-        <div class="project_top_1 project_top">
+        <div class="project_top">
         <div style="display: none;width:100%;height: 100% " onclick="getProjectID()">{{project.Id}}</div>
             <a href="redetails/">
                 <div class="project_top_1_left">
-                    <img src="{% static 'project/imgs/HeadImg.png'%}">
+                    <img class="project_img" src="{% static 'project/imgs/HeadImg.png'%}">
                 </div>
                 <div class="project_top_1_right">
-                    <h5>{{project.ProjectName}}</h5>
-                    <p class="project_top_1_text">{{project.Description}}
-                    </p>
+                    <span class="project_top_1_right-span">{{project.ProjectName}}</span>
+                    <div class="project_Text_Bg">
+                        <li class="FixText">招募人数:<p class="FixText-right">1/{{project.Number}}</p></li>
+                        <li class="FixText">招募状态：<p class="FixText-right">正在进行</p></li>
+{#                        <li class="FixText">项目标签：<p class="FixText-right">互联网</p></li>#}
+{#                        <li class="FixText">时间：<p class="FixText-right">{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}</p></li>#}
+                    </div>
                 </div>
+
             </a>
+            <div class="project_middle">
+                <script>
+                    function Chang_icon() {
+                        for (var i=0;i<tag;i++){
+
+                        }
+                    }
+                </script>
+                <span class="project_middle_icon-1"></span>
+                <span class="project_middle_text">互联网</span>
+                <span class="project_middle_icon-2"></span>
+                <span class="project_middle_text">大数据</span>
+                <span class="project_middle_icon-3"></span>
+                <span class="project_middle_text">互联网</span>
+            </div>
             <div class="project_bottom_top">
-                <div class="project_bottom_left">
-{#                    <p class="FixText">项目名称：</p>#}
-                    <li class="FixText">招募人数:<p class="FixText-right">{{project.Number}}</p></li>
-                    <li class="FixText">招募状态：<p class="FixText-right">正在进行</p></li>
-                    <li class="FixText">项目标签：<p class="FixText-right">互联网</p></li>
-                    <li class="FixText">时间：<p class="FixText-right">{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}</p></li>
-                </div>
-{#                <script>#}
-{#                    function getProjectID() {#}
-{#                        var projectID=1;#}
-{#                    }#}
-{#                </script>#}
+                    <p class="project_top_1_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{project.Description}}上百条毛巾整齐叠在架上，放眼望去的“奇景”让所有人都不自觉张开嘴赞叹，日本“今治毛巾”的东京南青山旗舰店里，这是每天都在上演的日常。</p>
+                    <div class="progress">
+                    <span class="green" style="width: 100%;"><span>正在进行</span></span>
+                    </div>
             </div>
 
         </div>
 {% endfor %}
     </div>
-    <div class="bg_border"></div>
-    <div class="bg_right">
-        <div class="explain">
-            <p class="explain_title">板块说明</p>
-            <p class="explain_text">&nbsp;&nbsp;&nbsp;&nbsp;块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明块说明板块说明板块说明</p>
-            <a target="_blank" href="redetails.html"><p class="explain_new_project">发布新项目</p></a>
-        </div>
-        <div class="Tag_All">
-            <div class="Tag_Text">按标签显示</div>
-                <a href="recruit?sign=all" sign="all" class="project_sign" ><span class="Sign">所有</span></a>
-                {%for obj in projectLabels%}
-                <a href="recruit?sign={{obj.Id}}" sign="{{obj.Id}}" class="project_sign"><span class="Sign">{{obj.ProjectLabelName}}</span></a>
-                {%endfor%}
-        </div>
+        <div class="home-right">
+                <div class="intro">
+                    <img src="{% static 'creation/imgs/light.png' %}"
+                         style="width:40px;height:40px;margin:-16px 0px 26px -10px">
+                    <img src="{% static 'idea/imgs/idea_logo.png' %}"
+                         style="width:60px;height:40px;margin:0px 0px -10px 4px">
+                    <p>&nbsp;&nbsp;&nbsp;创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
+                    <button class="add">添加</button>
+                </div>
+
+                <div class="tag">
+                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                    <span>标签</span>
+                    <hr>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
+
+                    {% for obj in projectLabels %}
+                        <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span
+                                class="allsign">{{ obj.ProjectLabelName }}</span></a>
+                    {% endfor %}
+                </div>
+            </div>
+        <a class="more">加载更多</a>
     </div>
 </div>
-{#    <script>#}
-{# /* 长宽占位 rem算法, 根据root的rem来计算各元素相对rem, 默认html 320/20 = 16px */#}
-{# function placeholderPic(){#}
-{#  var w = document.documentElement.offsetWidth;#}
-{#  document.documentElement.style.fontSize=w/250+'px';#}
-{# }#}
-{# placeholderPic();#}
-{# window.onresize=function(){#}
-{#  placeholderPic();#}
-{# }#}
-{#</script>#}
 {% endblock %}
 {% block script %}
+     <script>
+         $(function () {
+            $(".project_top").slice(0, 9).show();
+           if($(".project_top").length <= 9) {
+           $(".more").hide();
+           }
+            $(".more").on('click', function (e) {
+
+              if ($(".project_top:hidden").length == 0) {
+               $(".more").css('display', 'none');
+              }
+                e.preventDefault();
+                $(".project_top:hidden").slice(0, 4).slideDown();
+                if ($(".project_top:hidden").length == 0) {
+                    $(".more").fadeOut('slow');
+                }
+            });
+        })</script>
 {% endblock %}
 

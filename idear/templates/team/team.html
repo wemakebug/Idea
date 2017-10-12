@@ -23,20 +23,15 @@
                     </div>
 {#                    <p class="intro_0">简介：</p>#}
                     <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-<<<<<<< HEAD
-                          <p> &nbsp;&nbsp; {{ team.Introduction }}</p>
+                          {{ team.Introduction }}
                     </div>
-                    <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-                        <img src="{{ team.Img }}" style="width: 100% ;height: 100%"  alt="">
-=======
-                         {{ team.Introduction }}
->>>>>>> 3e464c9080c3c6bd76c28fbcd3aa6ad70e1eb8a8
+
                     </div>
                     <div class="feature">
                         <div class="praise" team="{{ team.Id }}">
-                            <span id="praise"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /> </span>
-                            <span id="praise-txt">1123{{Praise.project}}</span>
-                            <span id="add-num"><em>+1</em></span>
+                            <span id="praise" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /> </span>
+                            <span id="praise-txt" class="praise-txt">1123{{Praise.project}}</span>
+                            <span id="add-num" class="add-num"><em>+1</em></span>
                         </div>
 {#                        <div class="praise">#}
 {#                            <span id="praise"><img src="{% static '/creation/imgs/like.png' %}" id="praise-img" /></span>#}
@@ -53,16 +48,16 @@
         <div class="broadSide">
             <div class="intro_1">
                 <img src="{% static 'creation/imgs/light.png' %}"
-                         style="width:40px;height:40px;margin:-16px 0px 26px -10px">
-                <img src="{% static '/idea/imgs/idea_logo.png' %}" style="width:40px;height:40px;margin:10px 0px 0px 10px">
-                <span>Team</span>
-                <p>&nbsp; &nbsp;&nbsp; &nbsp; 创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
+                         style="width:40px;height:40px;margin:-20px 0px 26px -10px">
+                <img src="{% static '/idea/imgs/idea_logo.png' %}" style="width:40px;height:40px;margin:0">
+{#                <span>Team</span>#}
+                <p> 创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
             </div>
             <div class="classify">
                 <div class="tag">
                     <img src="{% static '/creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                     <span>标签</span>
-                    <hr style="width: 73%">
+                    <hr style="width: 85%">
                     <a href="team_sign=al" sign="all"><span class="allsign">所有</span></a>
                     {% for obj in projectLabels %}
                         <a href="team_sign={{ teams.Id }}" sign="{{ obj.Id }}"><span
@@ -78,28 +73,28 @@
     <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
 <script type="text/javascript">
     $(function(){
-		$("#praise").click(function(){
-			var praise_img = $("#praise-img");
-			var text_box = $("#add-num");
-			var praise_txt = $("#praise-txt");
-			var num=parseInt(praise_txt.text());
+        $("#praise").live("click",function () {
+            var praise_img = $("#praise-img");
+            var text_box = $("#add-num");
+            var praise_txt = $("#praise-txt");
+            var num=parseInt(praise_txt.text());
 {#			alert("11111")#}
-                if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){
-                    $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");
-                    praise_txt.removeClass("hover");
-                    text_box.show().html("<em class='add-animation'>-1</em>");
-                    $(".add-animation").removeClass("hover");
-                    num -=1;
-                    praise_txt.text(num)
-                }else{
-                    $(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img' class='animation' />");
-                    praise_txt.addClass("hover");
-                    text_box.show().html("<em class='add-animation'>+1</em>");
-                    $(".add-animation").addClass("hover");
-                    num +=1;
-                    praise_txt.text(num)
-                }
-		});
+            if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){
+                $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");
+                praise_txt.removeClass("hover");
+                text_box.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+                num -=1;
+                praise_txt.text(num)
+            }else{
+                $(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img' class='animation' />");
+                praise_txt.addClass("hover");
+                text_box.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+                num +=1;
+                praise_txt.text(num)
+            }
+        });
 	})
 </script>
 {%endblock%}

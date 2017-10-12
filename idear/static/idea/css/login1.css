@@ -90,16 +90,16 @@ body{
     padding-left: 22%;
 }
 .forget_password{
-    float: right;
+    width: 100%;
     font-size: 13px;
-    margin-right: 24%;
     cursor:pointer;
-    margin-top:-17px;
+    margin-top:7px;
+    margin-left: 69%;
 }
 .input_1{
     border: 1px solid rgba(54, 54 ,54,0.9);
-    font-size: 1em;
-    padding: .25em .5em .3125em;
+    font-size: 21px;
+    padding: 0.55em 5.3em .475em 0.37em;
     color: #5E6C77;
     border-radius: .25em;
     background: transparent;
@@ -111,9 +111,9 @@ body{
 .login_input{
     background-color: #539092;
     border: 1px solid rgba(255,250,250,0.9);
-    height: 35px;
-    width: 100px;
-    font-size: 1em;
+    height: 50px;
+    width: 55%;
+    font-size: 20px;
     /*letter-spacing:10px;*/
     cursor:pointer;
     border-radius: 5px;
@@ -121,19 +121,19 @@ body{
     padding: .25em .5em .3125em;
     font-family: kaiti;
 }
-.login_register{
-    background-color: #539092;
-    border: 1px solid rgba(255,250,250,0.9);
-    height: 35px;
-    width: 100px;
-    font-size: 1em;
-    /*letter-spacing:10px;*/
-    cursor:pointer;
-    border-radius: 5px;
-    color:rgb(255,250,250) ;
-    padding: .25em .5em .3125em;
-    font-family: kaiti;
-}
+/*.login_register{*/
+    /*background-color: #539092;*/
+    /*border: 1px solid rgba(255,250,250,0.9);*/
+    /*height: 35px;*/
+    /*width: 100px;*/
+    /*font-size: 1em;*/
+    /*!*letter-spacing:10px;*!*/
+    /*cursor:pointer;*/
+    /*border-radius: 5px;*/
+    /*color:rgb(255,250,250) ;*/
+    /*padding: .25em .5em .3125em;*/
+    /*font-family: kaiti;*/
+/*}*/
 #warn1,#warn2{
     float:right;
     color:Red;
@@ -184,7 +184,7 @@ body{
     width: 15px;
     height: 15px;
     z-index: -8;
-    background-color:rgba(255,245,238, 0.3);
+    background-color:rgba(255,245,238, 0.5);
     animotion: square 25s infinite;
     -webkit-animation: square 25s infinite;
 }
