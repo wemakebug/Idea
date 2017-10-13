@@ -1,11 +1,12 @@
 {% extends 'idea/Base.html' %}
+{% load static %}
 
 
 {%block title%}<title>项目</title>{%endblock%}
 
 {%block CSS%}
-    <link rel="stylesheet" href="../../static/project/css/style.css">
-    <link rel="stylesheet" href="../../static/idea/css/index.css">
+    <link rel="stylesheet" href="{% static 'project/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
 {%endblock%}
 
 {% block content %}
@@ -15,10 +16,10 @@
     <div class="bg_left">
         <div class="project_top_1 project_top">
 
-            <a href="redetails.html">
+            <a href="redetails">
                 <div class="project_top_1_left">
 
-                    <img src="../../static/project/imgs/HeadImg.png">
+                    <img src="{% static 'project/imgs/HeadImg.png'%}">
 
                 </div>
                 <div class="project_top_1_right">

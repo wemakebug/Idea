@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 """
 Django settings for Idea project.
 
@@ -49,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'django.contrib.staticfiles'
+
 ]
 
 ROOT_URLCONF = 'Idea.urls'
@@ -80,17 +82,31 @@ WSGI_APPLICATION = 'Idea.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+
         # 'USER': 'root',
         # 'NAME': 'Idea',
+        # 'PASSWORD': '123456',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '3306',
+
+        # 'USER': 'mysqlroot',
+        # 'NAME': 'Idea',
+        # 'PASSWORD': 'chuangxin2624',
+        #     'HOST': '172.22.80.30',
+        # 'PORT': '5002'
+
+        # 'USER': 'root',  #腾讯云服务器 可用 速度较慢
+        # 'NAME': 'idea',
         # 'PASSWORD': '123456',
         # 'HOST': '123.207.72.192',
         # 'PORT': '3306',
 
-        'USER': 'mysqlroot',
-        'NAME': 'Idea',
-        'PASSWORD': 'chuangxin2624',
-        'HOST': '172.22.80.30',
-        'PORT': '5002',
+        'USER': 'root',  #实验室主机,内存较小,不一定够用
+        'NAME': 'idea',
+        'PASSWORD': '123456',
+        'HOST': '10.55.91.107',
+        'PORT': '3306'
+
 
     }
 }
@@ -134,16 +150,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+)
+
 STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
+
 ]
 
-STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'admina/').replace('\\', '/')
+
+STATIC_ROOT = os.path.join(os.path.dirname(__file__), '/admina/').replace('\\', '/')
 
 
-MEDIA_URL = 'photos/'
+MEDIA_URL = '/photos/'
+MEDIAFILES_DIRS =[
+    os.path.join(BASE_DIR, "idear/static/photos"),
+]
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../idear/static/photos/').replace('\\', '/')
 
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../photos').replace('\\', '/')

@@ -1,30 +1,48 @@
 {% extends 'idea/Base.html'%}
 	{%block CSS%}
-        <link rel="stylesheet" href="../../static/project/css/apply.css">
-        <link rel="stylesheet" href="../../static/idea/css/index.css">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'project/css/apply.css'%}">
+        <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
 	{%endblock%}
 {%block title%}<title>申请表</title>{%endblock%}
+{%block script %}
+<script>
+    function checkApply(){
+           var Project_History = document.getElementById("Project_History").value;
+           var Apply_reason= document.getElementById("Apply_reason").value;
+           if(Apply_reason == ""  ){
+            alert("申请理由不能为空");
+             return false;
+           }else{
+           return true;
+           }
+        }
+</script>
+{% endblock %}
 {%block content%}
     <div class="bg_all">
     <div class="bg">
-    <form>
+    <form id="Apply_Form" method = 'post'  action = '' onsubmit = "return checkApply()">
         <div class="bdiv_left">
 
             <div class="headimg"></div>
-                <p class="FixText1">用户昵称：</p><input type="text" name="UserName" value="张三" readonly="readonly" class="VariableText1"/>
-                <p class="FixText2">用户身份：</p><input type="text" name="Identity" value="学生" readonly="readonly" class="VariableText2"/>
-                <p class="FixText2">用户等级：</p><input type="text" name="Score" value="一颗星" readonly="readonly" class="VariableText2"/>
-                <p class="FixText2">个人标签：</p><input type="text" name="Name" value="#IT" readonly="readonly" class="VariableText2"/>
-                <p class="FixText2">学校：</p><input type="text" name="School" value="华北理工大学" readonly="readonly" class="VariableText2 LongText"/>
-                <p class="FixText2">学院：</p><input type="text" name="Institude" value="化学工程学院" readonly="readonly" class="VariableText2 LongText"/>
-                <p class="FixText2">专业：</p><input type="text" name="Major" value="化学工程与工艺" readonly="readonly" class="VariableText2 LongText"/>
-        </div>
+                <div class="User_Info">
+                    <p class="FixText1">用户昵称：</p><input type="text" name="UserName" value="张三" readonly="readonly" class="VariableText1"/>
+                    <p class="FixText2">用户身份：</p><input type="text" name="Identity" value="学生" readonly="readonly" class="VariableText2"/>
+                    <p class="FixText2">用户等级：</p><input type="text" name="Score" value="一颗星" readonly="readonly" class="VariableText2"/>
+                    <p class="FixText2">个人标签：</p><input type="text" name="Name" value="#IT" readonly="readonly" class="VariableText2"/>
+                    <p class="FixText2">学校：</p><input type="text" name="School" value="华北理工大学" readonly="readonly" class="VariableText2 LongText"/>
+                    <p class="FixText2">学院：</p><input type="text" name="Institude" value="化学工程学院" readonly="readonly" class="VariableText2 LongText"/>
+                    <p class="FixText2">专业：</p><input type="text" name="Major" value="化学工程与工艺" readonly="readonly" class="VariableText2 LongText"/>
+                </div>
+            </div>
         <div class="bdiv_right">
             <p class="FormTitle">申请表</p>
-            <p class="FixText3">项目参与历史：</p><br><textarea rows="10" cols="30" class="VariableText3" autofocus="autofocus"></textarea>
-            <p class="FixText4">申请理由：</p><br><textarea rows="10" cols="30" class="VariableText3" autofocus="autofocus"></textarea>
-            <input type="submit" value="提交" class="FixButton" onclick="">
+            <p class="FixText3">项目参与历史：</p><br><textarea id="Project_History" rows="10" cols="30" class="VariableText3" autofocus="autofocus" form="Apply_Form"></textarea>
+            <p class="FixText4">申请理由：</p><br><textarea id="Apply_reason" rows="10" cols="30" class="VariableText3" autofocus="autofocus" required="required" form="Apply_Form" ></textarea>
+            <button class="FixButton" onclick="checkUser()">提交</button>
         </div>
+        {% csrf_token %}
     </form>
     </div>
     </div>

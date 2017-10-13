@@ -1,0 +1,54 @@
+.feed{
+    float:left;
+    margin-left: 40%;
+}
+.heart {
+        background: url(../imgs/fuck.png);
+        background-position: left;
+        background-repeat: no-repeat;
+        height: 100px;
+        width: 100px;
+        cursor: pointer;
+        position: absolute;
+        /*left:-14px;*/
+         /*background-size:2900%;*/
+   }
+  .heart:hover, .heart:focus{
+           background-position: right;
+    }
+ .likeCount{
+            font-family: 'Georgia', Times, Times New Roman, serif;
+            /*margin-top: 32px;*/
+            /*margin-left: 68px;*/
+            font-size: 25px;
+            color: #999999
+            float:left;
+}
+@-webkit-keyframes heartBlast {
+    0% {
+        background-position: left;
+    }
+    100% {
+        background-position: right;
+    }
+   }
+@keyframes heartBlast {
+     0% {
+         background-position: left;
+     }
+     100% {
+          background-position: right;
+      }
+}
+.heartAnimation {
+          display: inline-block;
+         -webkit-animation-name: heartBlast;
+          animation-name: heartBlast;
+          -webkit-animation-duration: .8s;
+          animation-duration: .8s;
+          -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+          -webkit-animation-timing-function: steps(28);//共28个背景图片帧
+          animation-timing-function: steps(28);
+          background-position: right;
+}

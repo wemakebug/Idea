@@ -1,62 +1,110 @@
 <html>
 <head>
-    <meta http-equiv=content-type content="text/html;charset=utf-8">
-	{%block title%} {%endblock%}
-	<link rel="stylesheet" href="../../static/idea/css/index.css">
-	{%block CSS%}{%endblock%}
-	<title>首页</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+{#    <meta http-equiv=content-type content="text/html;charset=utf-8">#}
+{#    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>#}
+    {% load static %}
+    {% block title %} {% endblock %}
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+    {% block CSS %}{% endblock %}
+    <title>首页</title>
 </head>
 <body >
 	<div class="head">
     	<div class="header">
 			<div class="logo">
-				<!--<img src="../static/imgs/LOGO.png">-->
 			</div>
-				<div class="nav">
-					<div class="mainnav" style=""><a href="">首页</a></div>
-					<div class="mainnav"><a href="">招募项目</a></div>
-					<div class="mainnav"><a href="">开发项目</a></div>
-					<div class="mainnav"><a href="creations?sign=all">创意灵感</a></div>
-					<div class="mainnav"><a href="">常驻团队</a></div>
-				</div>
+            <div class="nav_main" id="nav_1">
+                <ul class="menu">
+                    <li class="sel"><a href="index" ><p>首页</p></a></li>
+                    <li class="index_recruit"><a href="recruit?sign=1"><p>招募项目</p></a></li>
+                    <li class=""><a href="#" ><p>开发项目</p></a></li>
+                    <li class="index_creations"><a href="creations?sign=all"><p>创意灵感</p></a></li>
+                    <li class="index_team"><a href="team"><p>常驻团队</p></a></li>
+                </ul>
+            </div>
             <div class="search1">
 				<div class="searchbar">
                     <form>
-      				    <input id="search-left" type="text" placeholder="搜索从这里开始...">
+      				    <input id="search-left" type="text" placeholder="搜索从这里开始..." autocomplete="off">
     			    </form>
 					<input id="search" type="submit" value="">
 			    </div>
 		    </div>
-			<div class="sidebar">
-				<ul>
-					<li><a href="">登录</a></li>
-					<li><a href="">注册</a></li>
-				</ul>
+			<div class="sidebar" id="login_status_false" style="display: none">
+				<a href="login">
+					<div class="rlogin"><p>登录</p></div>
+				</a>
+				<a href="regist">
+					<div class="rregsiter"><p>注册</p></div>
+				</a>
 			</div>
+            <div class="user_hidden" id="login_status_true" style="display: none">
+                <div class="user_figure">
+                    <a href="#">
+                        <img src="/static/idea/imgs/imgs/Experiment .jpg" style="width: 100%;height: 100%;" id="user_img">
+                    </a>
+                </div>
+                <div class="list_hidden">
+                    <em>&#9670;</em>
+                    <div class="list_content">
+                        <div class="list_creation">
+                            <div class="list_image"></div>
+                            <div class="list_name">
+                                <p><a href="#">user name</a></p>
+                            </div>
+                        </div>
+                        <div class="list_line"></div>
+                        <div class="list_main">
+                            <div class="main_block"><p><a href="#">Your message</a></p></div>
+                            <div class="main_block"><p><a href="#">Your profile</a></p></div>
+                            <div class="main_block"><p><a href="#">Your star</a></p></div>
+                        </div>
+                        <div class="list_line"></div>
+                        <div class="list_foot">
+                            <div class="setting"><p><a href="#">Settings</a></p></div>
+                            <div class="log_out"><p><a href="#">Sign out</a></p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 		<div class="nav-bottom">
 		</div>
 	</div>
+{% block content %}
 
-	    {% block content %}
+{% endblock %}
+<div class="footer_line">
+</div>
+<div id="footer">
+    <div id="container">
+        <ul>
+            <li class="about"><a href="team"><p>关于我们</p></a></li>
+            <li class="service"><a href="service"><p>服务规则</p></a></li>
+            <li class="ordinance"><a href="ordinance" ><p>隐私条款</p></a></li>
+            <li class="advice"><a href="advice"><p>提出建议</p></a></li>
+        </ul>
+    </div>
+    <div class="main_logo">
+        <div class="main_logo_graph" id="footer_img">
+            <img src="{% static 'idea/imgs/Experiment .jpg' %}" style="width: 100%;height: 100%;">
+        </div>
+    </div>
+    <div class="right_sentence">
+        <p>创享 © 2017. All Rights Reserved.</p>
+    </div>
+</div>
 
-	    {% endblock %}
+{% block script %}
+{% endblock %}
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
 
-
-	<div class="footer">
-		<div class="container">
-			<ul>
-				<li><a href="" >关于我们 </a> </li>
-				<li><a href="" >服务规则  </a> </li>
-				<li><a href="" >隐私条款</a></li>
-				<li><a href="" >提出建议 </a></li>
-			</ul>
-			<p>创享 © 2017. All Rights Reserved.</p>
-		</div>
-	</div>
-<script type="text/javascript" src="../../static/idea/js/jquery-1.8.3.min.js"></script>
-{%block script%}
-
-{%endblock%}
+    <script>
+    </script>
 </body>
 </html>

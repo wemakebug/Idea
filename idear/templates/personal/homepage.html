@@ -1,0 +1,78 @@
+{%extends 'idea/Base.html'%}
+{% load static %}
+{%block title%}
+   <title>我的主页</title>
+{%endblock%}
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="headhole">
+    <div class="headtop">
+        <div class="headtop1-1">
+            <div class="headtop1-2"><strong>用户名动态获取</strong></div>
+            <div class="headtop1-3">
+                <div class="headtop1-4">
+                     <a href="#" class="clickdown1">获赞：9999</a>
+                </div>
+                 <div class="headtop1-5">
+                     <a href="#" class="clickdown1">关注：9999</a>
+                </div>
+                 <div class="headtop1-6">
+                     <a href="#" class="clickdown1">粉丝：9999</a>
+                </div>
+            </div>
+            <div class="EditProfile">
+                <div class="smallimages">
+                    <img src="{% static 'personal/imgs/bianjixiaotubiao.png'%}"style="height: 100%;width: 100%;">
+                </div>
+                <div class="editor">
+                    <a href="#" class="editor1">编辑资料</a>
+                </div>
+            </div>
+        </div>
+        <div class="headtopimages">
+            <div class="headtopimages1">
+                <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 140px;">
+            </div>
+        </div>
+    </div>
+    <div class="myprojects">
+        <div class="myprojects1-1">
+            <div class="wrapper">
+				<ul class="navigation-list ul-reset">
+					<li class="navigation-item ib">
+						<a href="#" class="navigation-link">
+							With the project
+						</a>
+					</li>
+					<li class="navigation-item ib">
+						<a href="#" class="navigation-link">
+							inspiration
+						</a>
+					</li>
+					<li class="navigation-item ib">
+						<a href="#" class="navigation-link">
+                            Unread message
+						</a>
+					</li>
+					<li class="navigation-item ib">
+						<a href="#" class="navigation-link">
+							Read the news
+						</a>
+					</li>
+				</ul>
+			</div>
+        </div>
+        <div class="project">
+            <div class=""></div>
+            <div class="project1"></div>
+            <div class="project1"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

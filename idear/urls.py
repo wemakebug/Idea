@@ -15,8 +15,6 @@ Including another URLconf
 """
 from django.conf.urls import url
 from idear import views as views
-from idear import creations
-from idear import projects
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,18 +23,25 @@ urlpatterns = [
     url(r'login$', views.login),
     url(r'regist$', views.regist),
     url(r'team$', views.team),
-    url(r'teamdetails$', views.teamdetails),
-    url(r'creations$', creations.creations),
+    url(r'teamdetails/(?P<teamid>\d+)$', views.teamdetails),
+    url(r'teamhelpapplication/?(\d+)$', views.teamhelpapplication),
+    url(r'creations$', views.creations),
     url(r'forgetPassword$', views.forgetPassword),
+    url(r'homepage$',views.homepage),
+    url(r'editprofile$',views.editprofile),
     url(r'apply$', views.apply),
     url(r'recruit$', views.projects),
     url(r'redetails$', views.redetails),
-    url(r'projects$', projects.projects),
-    # url(r'test$', creations.Get_creation),
-    # url(r'test$', creations.Get_creation)
-    # url(r'test$', creations.Get_creation),
-    # url(r'test$', creations.Get_creation)
-    # url(r'projects$', projects.projects),
+    url(r'projects$', views.projects),
+    url(r'redetail$', views.redetail),
+    url(r'star$', views.star),
+    url(r'attend$', views.attend),
+    url(r'ordinance$', views.ordinance),
+    url(r'service$', views.service),
+    url(r'advice$', views.advice),
+    url(r'logout$', views.logout),
+    url(r'test/?(\d+)$', views.test),
+    url(r'getimg', views.get_user_img),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

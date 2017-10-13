@@ -4,7 +4,7 @@
 	margin:0px;
 }
 body{
-    font-family: kaiti;
+    /*font-family: kaiti;*/
     background-size:cover;
     background-attachment: fixed;
     width: 100%;
@@ -16,12 +16,13 @@ body{
     bottom:0;
 }
 .line_1{
-    height:2px;
-    margin-top: 35%;
-    margin-bottom: 10px;
-    background-color:rgba(253 ,245 ,230, 0.6);
+    width: 100%;
+    height:150px;
+    /*margin-bottom: 10px;*/
+    background-color: rgba(102,139,139, 0.9);
     overflow:hidden;
-    opacity: 1;
+    /*opacity: 1;*/
+    text-align: center;
 }
 .line{
     height:2px;
@@ -31,92 +32,109 @@ body{
     overflow:hidden;
     opacity: 1;
 }
-.border{
-    background-color: rgba(253 ,245 ,230, 0.3);
-    height: 600px;
-    width: 563px;
-    margin-left: 32%;
-    margin-top: 6.5%;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 50px 50px 0 rgba(50, 170, 180, 0.2), 0 2px 0 0 rgba(250, 250, 250, 0.5) inset;
+/*.border{*/
+    /*background-color: rgba(253 ,245 ,230, 0.3);*/
+    /*height: 500px;*/
+    /*width: 563px;*/
+    /*margin-left: 32%;*/
+    /*margin-top: 6.5%;*/
+    /*border: none;*/
+    /*-webkit-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);*/
+    /*-moz-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);*/
+    /*box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);*/
+/*}*/
+.border_1:hover{
+    -webkit-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.8);
+    -moz-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.8);
+    box-shadow: 16px 18px 16px rgba(207, 207, 207,0.8);
 }
 .border_1{
+    background-color: rgba(253 ,245 ,230, 0.3);
+    min-width:40%;
+	min-height:630px;
     float: left;
-    height: 600px;
-    width: 563px;
-    margin-left: 32%;
-    margin-top: 8%;
+    margin-left: 30%;
+    margin-top: 6%;
+    -webkit-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
+    -moz-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
+    box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
 }
-.headPortrait{
-    background-color: white;
-    float: left;
-    height: 120px;
-    width: 110px;
-    border-radius: 50%;
-    margin-left: 48%;
-    margin-top: -570px;
-}
+/*.headPortrait{*/
+    /*background-color: white;*/
+    /*float: left;*/
+    /*height: 120px;*/
+    /*width: 110px;*/
+    /*border-radius: 50%;*/
+    /*margin-left: 48%;*/
+    /*margin-top: -487px;*/
+/*}*/
 .headPortrait img{
     height: 100%;
     width: 100%;
 }
 .textbox{
-    font-weight: bold;
-    font-size: 20px;
-    letter-spacing:10px;
-    padding-left: 12%;
-    margin-top: 4%;
-    margin-bottom: 4%;
-    color: #0e0e0e;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    margin-top: 20px;
+    font-size: 18px;
+    margin-bottom: 20px;
+
 }
 .remember_password{
     letter-spacing:8px;
     width: 50%;
-    margin-top: -7px;
+    margin-top: 5px;
     font-size: 13px;
-    padding-left: 15%;
+    padding-left: 22%;
 }
 .forget_password{
-    float: right;
+    width: 10%;
     font-size: 13px;
-    margin-right: 19%;
-    border: none;
     cursor:pointer;
-    margin-top:-12px;
+    margin-top:7px;
+    margin-left: 69%;
 }
 .input_1{
-    background-color:white;
-    border-radius: 5px;
-    width: 240px;
-    height: 32px;
-    border: 1px solid rgba(0, 191 ,255,0.8);
+    border: 1px solid rgba(54, 54 ,54,0.3);
+    font-size: 21px;
+    padding: 0.55em 5.3em .475em 0.37em;
+    color: rgb(54, 54 ,54);
+    /*border-radius: .25em;*/
+    background: transparent;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    /*font-family: kaiti;*/
+    width: auto;
 }
 .login_input{
-    background-color: white;
-    border: 1px solid rgba(0, 191 ,255,0.8);
-    height: 35px;
-    width: 85px;
-    font-size: 12px;
-    letter-spacing:10px;
-    margin-left: 22%;
+    background-color: #539092;
+    border: 1px solid rgba(255,250,250,0.9);
+    height: 50px;
+    width: 55%;
+    font-size: 20px;
+    /*letter-spacing:10px;*/
     cursor:pointer;
-    margin-top:9%;
     border-radius: 5px;
+    color:rgb(255,250,250) ;
+    padding: .25em .5em .3125em;
+    /*font-family: kaiti;*/
+    margin-top: 20px;
 }
-.login_register{
-    background-color: white;
-    border: 1px solid rgba(0, 191 ,255,0.8);
-    float: right;
-    height: 35px;
-    width: 85px;
-    font-size: 12px;
-    letter-spacing:10px;
-    margin-right: 23%;
-    cursor:pointer;
-    margin-top:-6%;
-    border-radius: 5px;
-}
+/*.login_register{*/
+    /*background-color: #539092;*/
+    /*border: 1px solid rgba(255,250,250,0.9);*/
+    /*height: 35px;*/
+    /*width: 100px;*/
+    /*font-size: 1em;*/
+    /*!*letter-spacing:10px;*!*/
+    /*cursor:pointer;*/
+    /*border-radius: 5px;*/
+    /*color:rgb(255,250,250) ;*/
+    /*padding: .25em .5em .3125em;*/
+    /*font-family: kaiti;*/
+/*}*/
 #warn1,#warn2{
     float:right;
     color:Red;
@@ -135,15 +153,21 @@ body{
     -moz-transform:skew(20deg) ;
     -o-transform:skew(20deg) ;
 }
+/*.back{*/
+    /*width: 10%;*/
+    /*margin: 37px 520px;*/
+    /*float: left;*/
+    /*color: #0e0e0e;*/
+/*}*/
 .wrap {
     width: 100%;
     height: 100%;
     padding: 40px 0;
     position: fixed;
-    margin-top:0px;
+    margin-top:-40px;
     opacity: 0.8;
-    background: linear-gradient(to bottom right,rgba(28, 134, 238,0.3),rgba(99 ,184 ,255,0.6));
-    background: -webkit-linear-gradient(to bottom right,rgba(28, 134, 238,0.3),rgba(99 ,184 ,255,0.6));
+    background: linear-gradient(to bottom right,rgba(220, 220 ,220,0.6),rgba(205, 193, 197,0.6));
+    background: -webkit-linear-gradient(to bottom right,rgba(220, 220 ,220,0.3),rgba(205, 193, 197,0.6));
 }
 .wrap ul {
     position: absolute;
@@ -161,7 +185,7 @@ body{
     width: 15px;
     height: 15px;
     z-index: -8;
-    background-color:rgba(255, 250, 205, 0.3);
+    background-color:rgba(255,245,238, 0.5);
     animotion: square 25s infinite;
     -webkit-animation: square 25s infinite;
 }
@@ -286,6 +310,29 @@ body{
         transform: translateY(-500);
     }
 }
+.back{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+}
+.back1-1{
+    /*border: 1px solid rgba(224,238,224	,0.8);*/
+    width: 100px;
+    font-size: 1em;
+    padding: .25em .5em .3125em;
+    color: rgb(54,54,54);
+    border-radius: .25em;
+    background: transparent;
+    /*background-color: rgba(230,230,250,0.8);*/
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    /*font-family: kaiti;*/
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 83%;
+}
+
 
 
 

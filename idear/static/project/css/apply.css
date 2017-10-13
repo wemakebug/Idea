@@ -36,6 +36,10 @@ body,html{
     top:150px;
     position:absolute;
 }
+.User_Info{
+    height: 400px;
+    width: 100%;
+}
 .bdiv_left{
     float: left;
     width: 35%;
@@ -91,7 +95,7 @@ body,html{
     margin-top: 20%;
 }
 .VariableText3{
-    width: 680px;
+    width: 80%;
     height: 100px;
     resize: none;
 }
@@ -106,4 +110,10 @@ body,html{
     height: 30px;
     background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     border-radius:10px;
+}
+@media (max-width: 1500px){
+    .headimg{
+    width:130px;
+    height:130px;
+    }
 }
