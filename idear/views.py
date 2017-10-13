@@ -354,30 +354,29 @@ def teamhelpapplication(req, teamhelpid):
     if req.method == 'POST':
         pass
 
+
+
+def service(req):
+    '''
+    服务页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('idea/service.html')
+    if req.method == "POST":
+            pass
+
 def ordinance(req):
     '''
     隐私条例页面详情
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == 'GET':
         return render_to_response('idea/ordinance.html')
     if req.method == "POST":
         pass
-
-def service(req):
-    '''
-    服务条款页面详情
-    :param req: 
-    :return: 
-    '''
-    if req.method == 'GET':
-        return render_to_response('idea/service.html')
-    if req.method == "POST":
-        pass
-
-
-
 ''' 团队页面相关视图结束  '''
 
 
@@ -676,7 +675,16 @@ def homepage(req):
     if req.method == 'POST':
         pass
 
-
+def release(req):
+    '''
+    隐私条例页面详情
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('idea/release.html')
+    if req.method == "POST":
+        pass
 
 
 
