@@ -1,19 +1,19 @@
  //加载更多
 $(function() {
-    $(".block").slice(0, 9).show();
-    if ($(".block").length <= 9) {
-        $(".more").hide();
+    $(".project_top").slice(0, 9).show();
+    if ($(".project_top").length <= 9) {
+        $(".project_more").hide();
     }
-    $(".more").on('click',function(e) {
+    $(".project_more").on('click',function(e) {
         e.preventDefault();
-        $(".block:hidden").slice(0, 6).slideDown();
-        if ($(".block:hidden").length == 0) {
-            $(".more").fadeOut('slow');
+        $(".project_top:hidden").slice(0, 6).slideDown();
+        if ($(".project_top:hidden").length == 0) {
+            $(".project_more").fadeOut('slow');
         }
 
 
-        if ($(".block:hidden").length == 0) {
-            $(".more").fadeOut('slow');
+        if ($(".project_top:hidden").length == 0) {
+            $(".project_more").fadeOut('slow');
         }
     });
 });
@@ -30,14 +30,14 @@ $(".follow").click(function(){
    follow = $(this)
    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
     if(data == 1)
-        { 
+        {
           follow.children().attr("src","../static/creation/imgs/collections.png")
           follow.children(".followspan").html(parseInt(follow.children(".followspan").html())+1)
       }
     else if(data == 0)
         alert("操作失败")
     else
-      { 
+      {
         follow.children().attr("src","../static/creation/imgs/collection1.png")
         follow.children(".followspan").html(parseInt(follow.children(".followspan").html())-1)
       }

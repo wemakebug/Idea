@@ -354,30 +354,29 @@ def teamhelpapplication(req, teamhelpid):
     if req.method == 'POST':
         pass
 
+
+
+def service(req):
+    '''
+    服务页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('idea/service.html')
+    if req.method == "POST":
+            pass
+
 def ordinance(req):
     '''
     隐私条例页面详情
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == 'GET':
         return render_to_response('idea/ordinance.html')
     if req.method == "POST":
         pass
-
-def service(req):
-    '''
-    服务条款页面详情
-    :param req: 
-    :return: 
-    '''
-    if req.method == 'GET':
-        return render_to_response('idea/service.html')
-    if req.method == "POST":
-        pass
-
-
-
 ''' 团队页面相关视图结束  '''
 
 
@@ -504,9 +503,12 @@ def attend(req):
             try:
                 p = Follow.objects.get(creation_id=Id, user_id=userId).delete()
                 status = 2
+                print 2
             except:
                 p = Follow.objects.create(creation_id=Id, user_id=userId)
                 status = 1
+                print 1
+            print "the answer is "+status
             return HttpResponse(status)
         elif attendType == 2:
             try:
@@ -649,38 +651,6 @@ def star(req):
         return HttpResponse(status)
 
 
-@csrf_exempt
-def attend(req):
-    '''
-    Id的关注类型
-    1为被关注创意
-    2为被关注项目
-    3为被关注用户
-
-
-    status
-    状态值：0为失败，1为成功
-    '''
-    status = 0
-    # try:
-    Id = req.POST['Id']
-    userId = req.POST['userId']
-    attendType = int(req.POST['attendType'])
-    if attendType == 1:
-        p = Follow.objects.create(creation_id=Id, user_id=userId)
-        status = 1
-        return HttpResponse(status)
-    elif attendType == 2:
-        p = Follow.objects.create(project_id=Id, user_id=userId)
-        status = 1
-        return HttpResponse(status)
-    elif attendType == 3:
-        F = Follow.objects.create(Follower_id=Id, user_id=userId)
-        status = 1
-        return HttpResponse(status)
-        # except:
-        #     return HttpResponse(status)
-
 
 def get_projects(req):
     if req.method == "GET":
@@ -705,4 +675,25 @@ def homepage(req):
     if req.method == 'POST':
         pass
 
+def release(req):
+    '''
+    隐私条例页面详情
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('idea/release.html')
+    if req.method == "POST":
+        pass
+
+
+
+
+
+
+def editprofile(req):
+    if req.method == 'GET':
+        return render_to_response('personal/editprofile.html')
+    if req.method == 'POST':
+        pass
 '''个人中心相关页面结束'''

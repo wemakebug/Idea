@@ -1,4 +1,9 @@
 $(function () {
+    document.getElementsByName("name")[0].focus();
+});
+
+
+$(function () {
     $("input[id='email']").val("");
     $("input[id='password']").val("");
 });
@@ -89,7 +94,6 @@ $("input[class='login_input']").click(function () {
 
     }
 });
-
 //回车键实现登录
 function keyLogin(){
    if (event.keyCode==13){  //回车键的键值为13

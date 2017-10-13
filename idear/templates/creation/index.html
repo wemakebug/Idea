@@ -18,7 +18,7 @@
 
                             <a class="text" href="redetail">
                                 <h5>{{ creation.Name }}</h5>
-                                <p class="text-x">{{ creation.Describe }}</p>
+                                <a class="text-x">{{ creation.Describe }}</a>
                             </a>
                         </div>
                         <div class="block-head">
@@ -48,15 +48,15 @@
                         </div>
                         <div class="block-hot">
                             <a class="follow" creation={{ creation.Id }}>
-                                <img src="{% static 'creation/imgs/collection1.png' %}" style="width:18px;height:18px;"
+                                <img src="{% static 'creation/imgs/collection1.png' %}" style="width:20px;height:20px;"
                                      class="followimg">
 
-                                {% for follow in follows %}
+
                                     {% if follow.user_id == userId and follow.creation_id == creation.Id %}
                                         <img src="{% static 'creation/imgs/collections.png' %}"
                                              style="width:18px;height:18px;margin-left: -23px ">
                                     {% endif %}
-                                {% endfor %}
+
 
                                 <span class="followspan">{{ creation.Follow_Creation_set.count }}</span>
                             </a>

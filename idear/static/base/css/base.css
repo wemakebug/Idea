@@ -8,7 +8,7 @@ body,div{
 		padding:0;
     }
 	body{
-	    min-width:1300px;
+	    min-width:1500px;
         max-width:2000px;
         overflow-x: hidden;
 	}
@@ -34,7 +34,6 @@ body,div{
 		width: 100%;
 		height:66px;
         background:#539092;
-        /*background: #FFFFFF;*/
 	}
 	.logo{
 	    float:left;
@@ -66,6 +65,7 @@ body,div{
         text-align:center;
 	    line-height:66px;
 	    overflow:hidden;
+
     }
     .active{
         background: #295E6A;
@@ -305,42 +305,43 @@ body,div{
         height: 1px;
         background: #e0e0e0;
     }
-    #footer {
+    .footer_con {
         width:100%;
         height:90px;
         background:#F1F1F1;
-        padding:10px 0;
+        /*padding:10px 0;*/
         text-align: center;
-        line-height:70px;
+        line-height:90px;
 	}
-    #container{
+    #container_footer{
         width:25%;
         height:100%;
         float: left;
-        margin-left: 23.5%;
+        margin-left: 21%;
         display:block;
     }
-    #container ul{
-        width: 100%;
+    #container_footer>ul{
+        width: 91%;
         height:100%;
         display: block;
+        float: right;
     }
-	#container ul li{
+	#container_footer>ul>li{
 		display: inline-block;
-        width:24%;
+        width:23%;
         height:100%;
         float:left;
 	    overflow:hidden;
     }
-    #container ul li a{
+    #container_footer>ul>li a{
         width:100%;
         display: inline-block;
         text-decoration:none;
         color:gray;
         font-size: 0.85em;
-        margin: 0px 30px 0px 0;
+        /*margin: 0px 30px 0px 0;*/
     }
-     #container ul li a:hover{
+     #container_footer>ul>li a:hover{
         color:#539092;
      }
 
@@ -351,9 +352,9 @@ body,div{
     }
     .main_logo_graph{
         width:30%;
-        height:65%;
+        height:51%;
         margin-left: 31%;
-        margin-top: 10%;
+        margin-top: 15%;
         overflow: hidden;
         border-radius: 60px;
         border: 1px solid #ccc;

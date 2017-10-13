@@ -107,6 +107,7 @@ DATABASES = {
         'HOST': '10.55.91.107',
         'PORT': '3306'
 
+
     }
 }
 
@@ -162,6 +163,7 @@ STATICFILES_DIRS = [
 
 ]
 
+
 STATIC_ROOT = os.path.join(os.path.dirname(__file__), '/admina/').replace('\\', '/')
 
 
@@ -170,3 +172,4 @@ MEDIAFILES_DIRS =[
     os.path.join(BASE_DIR, "idear/static/photos"),
 ]
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../idear/static/photos/').replace('\\', '/')
+
