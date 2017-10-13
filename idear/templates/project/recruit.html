@@ -39,6 +39,7 @@ idea/css/index.css{% extends 'idea/Base.html'%}
                         }
                     }
                 </script>
+                <span class="project_middle_fix">所需人员标签：</span>
                 <span class="project_middle_icon-1"></span>
                 <span class="project_middle_text">互联网</span>
                 <span class="project_middle_icon-2"></span>
@@ -78,26 +79,25 @@ idea/css/index.css{% extends 'idea/Base.html'%}
                     {% endfor %}
                 </div>
             </div>
-        <a class="more">加载更多</a>
     </div>
-</div>
+    <a class="project_more">加载更多</a>
 {% endblock %}
 {% block script %}
      <script>
          $(function () {
-            $(".project_top").slice(0, 9).show();
-           if($(".project_top").length <= 9) {
-           $(".more").hide();
+            $(".project_top").slice(0, 1).show();
+           if($(".project_top").length <= 1) {
+           $(".project_more").hide();
            }
-            $(".more").on('click', function (e) {
+            $(".project_more").on('click', function (e) {
 
               if ($(".project_top:hidden").length == 0) {
-               $(".more").css('display', 'none');
+               $(".project_more").css('display', 'none');
               }
                 e.preventDefault();
                 $(".project_top:hidden").slice(0, 4).slideDown();
                 if ($(".project_top:hidden").length == 0) {
-                    $(".more").fadeOut('slow');
+                    $(".project_more").fadeOut('slow');
                 }
             });
         })</script>

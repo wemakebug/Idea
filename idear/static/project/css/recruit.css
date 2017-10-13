@@ -21,7 +21,7 @@ body, html {
 
 .bg_left {
     float: left;
-    width: 50%;
+    width: 80%;
     height: 80%;
     margin-top: 5%;
     margin-left: 10%;
@@ -43,7 +43,7 @@ body, html {
     margin-top: 30px;
     /*position: relative;*/
     left: 20px;
-    margin-left: 10%;
+    margin-left: 5%;
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
     box-shadow: 10px 10px 5px #c0c7d0;
@@ -101,6 +101,7 @@ body, html {
     margin-left: 20px;
     width: 80%;
     font-style: inherit;
+    font-weight: bold;
 }
 
 .project_top_1_text {
@@ -131,14 +132,18 @@ body, html {
     float: left;
     margin-bottom: 10px;
 }
-
+.project_middle_fix{
+    margin-left: 10px;
+    font-size: 12px;
+    color: #0e0e0e;
+}
 .project_middle_text {
     font-size: 12px;
     color: #586069;
 }
 
 .project_middle_icon-1 {
-    margin-left: 45px;
+    margin-left: 10px;
     background-color: #3572A5;
     top: 1px;
     position: relative;
@@ -281,10 +286,11 @@ body, html {
 }
 
 .home-right {
-	width:300px;
-	float:right;
-	margin-right:400px;
-    margin-top: 100px;
+    width: 300px;
+    /*float:rig%t;*/
+    left: 70%;
+    top: 100px;
+    position: absolute;
 }
 .home-right p,span{
     font-size: 15px;
@@ -377,4 +383,17 @@ body, html {
 	background-color:white;
 	border-radius: 3px;
 	box-shadow: 2px 2px 2px 2px #bdc3c7;
+}
+.project_more{
+    width:800px;
+	height:30px;
+	text-align: center;
+	float:left;
+    margin-top:30px;
+	margin-left:13%;
+	margin-bottom:2%;
+	background-color:white;
+	border-radius: 3px;
+	box-shadow: 2px 2px 2px 2px #bdc3c7;
+    display: block;
 }
