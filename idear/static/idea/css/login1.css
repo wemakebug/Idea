@@ -94,7 +94,7 @@ body{
     font-size: 13px;
     cursor:pointer;
     margin-top:7px;
-    margin-left: 69%;
+    margin-left: 64%;
 }
 .input_1{
     border: 1px solid rgba(54, 54 ,54,0.3);
@@ -107,6 +107,35 @@ body{
     transition: all .100s;
     /*font-family: kaiti;*/
     width: auto;
+}
+.inputs{
+    border-left: 1px solid rgba(54, 54 ,54,0.3);
+    border-top: 1px solid rgba(54, 54 ,54,0.3);
+    border-bottom: 1px solid rgba(54, 54 ,54,0.3);
+    font-size: 21px;
+    padding: 0.55em .37em .475em 0.37em;
+    color: rgb(54, 54 ,54);
+    width: 27.5%;
+    /*border-radius: .25em;*/
+    background: transparent;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    /*font-family: kaiti;*/
+}
+.forgetinput1{
+    border-top: 1px solid rgba(54, 54 ,54,0.3);
+    border-bottom: 1px solid rgba(54, 54 ,54,0.3);
+    border-right: 1px solid rgba(54, 54 ,54,0.3);
+    border-right: 1px solid rgba(54, 54 ,54,0.3);
+    font-size: 21px;
+    padding: 0.55em .37em .475em 0.37em;
+    color: rgb(54, 54 ,54);
+    width: 13%;
+    /*border-radius: .25em;*/
+    background: transparent;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    cursor: pointer;
 }
 .login_input{
     background-color: #539092;
@@ -314,7 +343,7 @@ body{
     width: 100%;
     height: 30px;
     line-height: 30px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 .back1-1{
     /*border: 1px solid rgba(224,238,224	,0.8);*/
@@ -330,7 +359,7 @@ body{
     /*font-family: kaiti;*/
     cursor: pointer;
     font-weight: bold;
-    margin-left: 83%;
+    margin-left: 87%;
 }
 
 
