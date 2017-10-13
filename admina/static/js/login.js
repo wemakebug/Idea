@@ -63,6 +63,7 @@ var Login = function () {
 						else if(result.status === 0){
 						    alert(result.message);
                             window.location.href = 'login';
+
                         }
 
                     })
