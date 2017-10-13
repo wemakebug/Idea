@@ -504,9 +504,12 @@ def attend(req):
             try:
                 p = Follow.objects.get(creation_id=Id, user_id=userId).delete()
                 status = 2
+                print 2
             except:
                 p = Follow.objects.create(creation_id=Id, user_id=userId)
                 status = 1
+                print 1
+            print "the answer is "+status
             return HttpResponse(status)
         elif attendType == 2:
             try:
@@ -648,38 +651,6 @@ def star(req):
     except:
         return HttpResponse(status)
 
-
-@csrf_exempt
-def attend(req):
-    '''
-    Id的关注类型
-    1为被关注创意
-    2为被关注项目
-    3为被关注用户
-
-
-    status
-    状态值：0为失败，1为成功
-    '''
-    status = 0
-    # try:
-    Id = req.POST['Id']
-    userId = req.POST['userId']
-    attendType = int(req.POST['attendType'])
-    if attendType == 1:
-        p = Follow.objects.create(creation_id=Id, user_id=userId)
-        status = 1
-        return HttpResponse(status)
-    elif attendType == 2:
-        p = Follow.objects.create(project_id=Id, user_id=userId)
-        status = 1
-        return HttpResponse(status)
-    elif attendType == 3:
-        F = Follow.objects.create(Follower_id=Id, user_id=userId)
-        status = 1
-        return HttpResponse(status)
-        # except:
-        #     return HttpResponse(status)
 
 
 def get_projects(req):

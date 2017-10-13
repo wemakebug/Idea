@@ -34,7 +34,6 @@ def login(req):
         result = {}
         account = req.POST["account"].lower().strip()
         password = req.POST["password"]
-
         if models.Admin.objects.filter(Account=account):
             user = models.Admin.objects.get(Account=account)
             if user.Password == password:
