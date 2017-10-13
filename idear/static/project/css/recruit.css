@@ -1,16 +1,15 @@
-* {
+/** {
     border: 0px;
     padding: 0px;
     margin: 0px;
-    /*box-sizing:border-box;*/
-}
-P,span{
-    font-size: 12px;
-}
+    !*box-sizing:border-box;*!
+}*/
 .bg_all {
-    position: relative;
+    /*position: relative;*/
+    display: inline;
+    width: 100%;
+    height: auto;
 }
-
 body, html {
     width: 100%;
     height: auto;
@@ -23,8 +22,9 @@ body, html {
     float: left;
     width: 80%;
     height: 80%;
-    margin-top: 5%;
+    margin-top:66px;
     margin-left: 10%;
+    max-width: 1200px;
 }
 
 .bg_right {
@@ -73,7 +73,9 @@ body, html {
 .project_top p, .project_top h5 {
     color: #0e0e0e;
 }
-
+.bg_all P,span{
+    font-size: 12px;
+}
 .project_top_1_left {
     width: 35%;
     height: 35%;
@@ -111,6 +113,8 @@ body, html {
     height: 80%;
     margin: auto;
     left: 25px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 }
 
 .project_top h5 {
