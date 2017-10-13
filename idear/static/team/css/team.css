@@ -5,35 +5,43 @@ html{
 .first {
 	/*position: relative;*/
 	font-family: 宋体;
+    overflow: hidden;
+    color: #444;;
 	margin: 66px auto 0;
 	width:80%;
 }
 .clear{
 	clear:both;
 	width:100%;
-	height: 50px;
+	height: 15px;
 }
-.second{
-	margin: 40px 0 0 5.5%;
-	padding: 0;
-	float: left;
-	width: 29%;
-	height: 305px;
+.second_0{
+    float: left;
+    width: 75%;
+    margin: 0 1%;
+}
+/*.second{*/
+	/*margin: 40px 2% 0 4.5%;*/
+	/*padding: 0;*/
+	/*float: left;*/
+	/*width: 41%;*/
+	/*height: 305px;*/
 
-}
+/*}*/
  .border_0{
+     margin: 40px 2% 0 4.5%;
 	 float: left;
-	 height: 100%;
-	 width: 100%;
+	 height: 305px;
+	 width: 41%;
 	 background-color:rgba(255, 255, 255, 1);
 	 box-shadow: 0 5px 5px 0 rgba(211, 211, 211, 0.8);
      border-radius: 10px;
  }
 
 .photo_0{
-	height: 17%;
-	width: 16%;
-	margin: 5% auto 0;
+	height: 19%;
+	width: 17%;
+	margin: 5% 8% 0;
 	background-color:rgba(255, 255, 255, 0.6);
 	z-index: 99;
 	cursor:pointer;
@@ -45,39 +53,92 @@ html{
 	margin: 20px 10% 0;
 	z-index: 99;
 }
+.leftMatter{
+    float: right;
+    width: 30% ;
+    height: 100%;
+    margin: -36% 5% 0 5%;
+}
+.leftMatter p {
+    font-size: 12px;
+    color: #7A8B8B;
+}
+.teamTag{
+    height: 80%;
+    margin: 0;
+}
+.repo-language-color {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
 .content_0{
-	font-size: 15px;
-	height: 50%;
-	width: 88%;
-	margin: 8px auto;
+	font-size: 14px;
+    text-indent: 2em;
+	height: 100%;
+	width: 45%;
+	margin: 4% 0 0 8%;
 	z-index: 99;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-    word-break:break-all;
+    display: -webkit-box;
+    display: -moz-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 	cursor:pointer;
 }
 .referral{
+    width: 75%;
 	float: left;
-	margin: 6px auto;
+	margin: -13% 27% 0;
 }
-.referral_0{
-    text-align: center;
+.referral h3{
 	font-weight: bold;
-	margin: 5px ;
+	margin: 0 ;
+    cursor:pointer;
 }
+.referral p{
+    color: #7A8B8B;
+    margin: 3% 0;
+}
+.applyHelp{
 
+    border: none;
+    background: #539092;
+    cursor :pointer;
+    width: 15%;
+    margin:0 0 0 65%;
+    border-radius: 5px;
+}
+.more_0 {
+    color: #444444;
+    width: 89%;
+    height: 30px;
+    text-align: center;
+    float: left;
+    margin: 40px 4.5%;
+    margin-bottom: 2%;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 2px #bdc3c7;
+    cursor: pointer;
+}
 
 /*动态点赞开始*/
 .praise{
+    float: right;
     width:18px;
     height:18px;
-	margin: 0 73%;
+	margin: -4% 10%;
     /*cursor: pointer;*/
     font-size: 12px;
     text-align:center;
     position: relative;
 }
+
 #praise{
     cursor :pointer;
     display:block;
@@ -329,15 +390,15 @@ html{
 /*点赞数量加减动画结束*/
 /*动态点赞结束*/
 .broadSide{
-	float: left;
+	float: right;
 	width: 22%;
 	/*position:absolute;*/
-	margin: -775px 77%;
+	margin: 4% 0;
 }
 .intro_1{
 	width: 85%;
 	height: 230px;
-	margin: 99px 22px ;
+	margin: 0px 22px ;
 	background-color:#8bcfcc;
 	box-shadow: 6px 6px 2px 2px #bdc3c7;
     border-radius: 10px 70px;
@@ -358,7 +419,7 @@ html{
 /*}*/
 .classify{
 	float: right;
-    margin: -80px -27px;
+    margin: 3px -27px;
 }
  .tag hr {
 	 border: 0;
@@ -395,17 +456,4 @@ html{
 .allsign:hover{
      color: #fff;
      background-color: #57cecd;
-}
-
-.more{
-	width:918px;
-	height:30px;
-	text-align: center;
-	float:left;
-	margin-top:30px;
-	margin-left:65px;
-	margin-bottom:2%;
-	background-color:white;
-	border-radius: 3px;
-	box-shadow: 2px 2px 2px 2px #bdc3c7;
 }
