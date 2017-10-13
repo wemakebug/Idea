@@ -8,83 +8,104 @@
 
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css'%}">
-    <link rel="stylesheet" href="{% static 'project/css/font/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'project/css/radialindicator.css'%}">
+
 {%endblock%}
 {%block content%}
-
 
       <div class="main">
 		  <div class="content-all">
               <div class="main-left">
                   <div class="content-top">
                       <div class="content-main">
-                         <div class="tags"><span>标签</span></div>
-                         <div class="tags"><span>标签</span></div>
-                         <div class="tags"><span>标签</span></div>
+                         <div class="tags"><span>网站</span></div>
+                         <div class="tags"><span>购物</span></div>
+                         <div class="tags"><span>IT</span></div>
                          <div class="title">
-                             <h5> 项目名称哈哈哈</h5>
-                             <p class="ptime">2017.04.20 23:33&nbsp;&nbsp;|&nbsp; 项目状态：未启动 |  项目发起人：xxx</p>
-
+                             <h5>  买买买 - 聚合全网优惠单品</h5>
+                             <p class="ptime">2017.04.20 23:33&nbsp;&nbsp;|&nbsp; 项目状态：第一次招募  </p>
                          </div>
                       </div>
-
                       <div class="description">
                            <div class="des" >
-                 {#                             <h6>项目内容:</h6>#}
-                               <span></span>
+                               <p>mmmai.top是一个简单的导购平台，在她上面可以一站式聚合查看来自什么值得买、慢慢买等折扣商品推荐网站的超值单品，不必一个网站一个网站的去查看。</p>
+                               <p>目前支持：</p>
+                               <ul>
+                                    <li>1.什么值得买</li>
+                                    <li>2.买个便宜货</li>
+                                    <li>3.今日值得买</li>
+
+                               </ul>
+                               <p> 曾经推荐过很多超值单品，比如298元 某东 移动端: 耐（NIKE ZOOM WITNESS EP 男款篮球鞋 ￥391，￥1839.00 摩托罗拉 moto x 极( XT1581) 64GB 玛雅黑 全网通4G手机、COACH 蔻驰 女款卡其色PVC单肩手提包 36718 IMBDX (F36718 IMBDX)399元等等。</p>
+                               <p>后续会添加智能订阅以及推荐功能，更加精准的实时汇报你关注的值得买信息。
+                               <p><img c src="{% static '/project/imgs/example.png' %}"  ></p>
                            </div>
                       </div>
                       <div class="option">
                           <button class="likebutton">
                               <img class="plike" src="{% static '/project/imgs/like1.png' %}"  >
                           </button>
-
-                          <div class="recruit">
-                              <a href="apply" class="rbutton">查看招募帖</a>
+                          <div class="op-tip">
+                              <div class="home-b-collection">
+                                  <img src="{% static '/creation/imgs/collection0.png' %}" style="width:25px;height:25px;vertical-align:middle;">
+                                  <a>关注</a>
+                              </div>
+                              <div class="home-b-share">
+                                  <a href="#" class="share-buttons"></a>
+                                  <a href="#" class="share-buttons"></a>
+                                  <a href="#" class="share-buttons"></a>
+                                  <a href="#" class="share-icon"><img src="{% static '/creation/imgs/share.png' %}" style="width:25px;height:25px;vertical-align:middle;">
+                                      分享</a>
+                              </div>
+                              <div class="home-b-comment">
+                                  <img src="{% static '/project/imgs/reply.svg' %}" style="width:25px;height:25px;vertical-align:middle;">
+                                  <a>评论</a>
+                              </div>
+                              <div class="home-b-report">
+                                  <img src="{% static '/creation/imgs/report.png' %}" style="width:23px;height:24x;vertical-align:middle;">
+                                    <a>举报</a>
+                              </div>
                           </div>
-                          <div class="home-b-share">
-                              <a href="#" class="share-buttons"></a>
-                              <a href="#" class="share-buttons"></a>
-                              <a href="#" class="share-buttons"></a>
-                              <a href="#" class="share-icon">
-                                  <img src="{% static '/creation/imgs/share.png' %}" style="width:16px;height:16px;">分享</a>
-                          </div>
-                          <div class="home-b-report">
-                              <img src="{% static '/creation/imgs/report.png' %}" style="width:16px;height:16px;">
-                                <a>举报</a>
-                          </div>
-                          <div class="home-b-collection">
-                              <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;height:16px;">
-                              <a>关注</a>
-                          </div>
-
                       </div>
-
                   </div>
-
+                  <div class="middle"></div>
                   <div class="content-middle">
                            <!--此处为招募帖详细内容-->
                           <div class="rtitle">招募帖</div>
                           <div class="rmain">
                               <div class="rm-header">
-                                 <div class="rm-h1">预计招募人数：</div>
-                                 <div class="rm-h2">已招募人数：</div>
-                                 <div class="rm-h3">招募开始/截止时间：</div>
-                               </div>
-                          <div class="rm-middle">
-                                 <div class="rm-nav">
-                                      <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
+                                 <div class="rm-h1">已招募人数/预计招募人数：5/10</div>
+                                 <div class="rm-h2">招募开始/截止时间：2017-10-10/2017-11-12</div>
+                                 <div class="rm-h3">(进度条)还剩3天！</div>
+                              </div>
+                              <div class="rm-nav">
 
-                                 </div>
-                                 <div class="rcontent">
-                                  <p> </p>
-                                 </div>
-                          </div>
+                                      <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
+                              </div>
+                              <div class="rcontent">
+                                  <div class="rcontent-main">
+                                  <ul>
+                                      <li>1、 根据需求实现静态页面交互效果；</li>
+                                      <li>2、熟悉各浏览器的特性和W3C相关标准，对浏览器引擎及JS引擎有一定研究；</li>
+                                      <li>3、熟悉HTTP协议，RestAPI以及WebSocket等通讯协议；</li>
+                                      <li>4、熟悉常见前端开发框架、类库，对其实现机制及原理有深入研究；</li>
+                                      <li>5、对Node.js，AngularJS等前沿开发框架有一定研究者优先。</li>
+                                  </ul>
+                                  </div>
+                                  <div class="lastday">
+                                       <div class="prg-cont rad-prg" id="indicatorContainer2"></div>
+                                  </div>
+                              </div>
+
                           </div>
                           <div class="rfooter">
                                <div class="rfcontent">
-                                 <a href="apply" class="rbutton">申请加入</a>
+                                    <a href="apply" class="rbutton">申请加入</a>
+                                    <div class="rclose">
+                                        <img class="close" src="{% static 'project/imgs/close.svg'%}"><a>收起</a>
+                                    </div>
                                </div>
+
                           </div>
                      </div>
               </div>
@@ -95,6 +116,7 @@
                            <img class="u-img"  src="{% static 'project/imgs/user.svg'%}">
                            <div class="carea">
                                <div class="tocomment">
+                                   <textarea placeholder="" name="" id="comment-content" class="comment-text"></textarea>
                                </div>
 
                                <button class="putcomment">评论</button>
@@ -222,12 +244,20 @@
                               </div>
                           </div>
                       </div>
-
-
-
                   </div>
               </div>
           </div>
       </div>
-      </div>
+      <div class="middle"></div>
+      <script>
+        	SyntaxHighlighter.defaults['toolbar'] = false;
+			SyntaxHighlighter.all();
+      </script>
+      {% block script %}
+
+       <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
+          <script type="text/javascript" src="{% static 'project/js/radialindicator.js' %}"></script>
+          <script type="text/javascript" src="{% static 'project/js/demo.js' %}"></script>
+      {% endblock %}
+
  {% endblock %}
