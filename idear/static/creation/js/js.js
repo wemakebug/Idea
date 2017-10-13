@@ -25,22 +25,19 @@ $.cookie("user",3)
 userId = $.cookie("user")
 
 $(".follow").click(function(){
+
    Id = $(this).attr("creation")
    follow = $(this)
-
-
-
-
    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
     if(data == 1)
-        {
+        { 
           follow.children().attr("src","../static/creation/imgs/collections.png")
           follow.children(".followspan").html(parseInt(follow.children(".followspan").html())+1)
       }
     else if(data == 0)
-    	alert("操作失败")
+        alert("操作失败")
     else
-      {
+      { 
         follow.children().attr("src","../static/creation/imgs/collection1.png")
         follow.children(".followspan").html(parseInt(follow.children(".followspan").html())-1)
       }
