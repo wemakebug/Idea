@@ -376,28 +376,30 @@ body, html {
 	font-size:17px;
 	font-weight:bold;
 }
-.more {
-	width:918px;
-	height:30px;
-	text-align: center;
-	float:left;
-	margin-top:30px;
-	margin-left:65px;
-	margin-bottom:2%;
-	background-color:white;
-	border-radius: 3px;
-	box-shadow: 2px 2px 2px 2px #bdc3c7;
+.project_get_more{
+    position: absolute;
+    bottom:-200px;
+    width: 860px;
+
 }
-.project_more{
-    width:800px;
-	height:30px;
-	text-align: center;
-	float:left;
-    margin-top:30px;
-	margin-left:13%;
-	margin-bottom:2%;
-	background-color:white;
-	border-radius: 3px;
-	box-shadow: 2px 2px 2px 2px #bdc3c7;
+.load-more {
     display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #a5a7aa;
+    line-height: 100px;
+    text-align: center;
+    margin: 0 auto;
+    color: #757779;
+    outline: 0;
+    text-decoration: none;
+}
+.f-weight {
+    font-weight: 500;
+}
+.load-more:-webkit-any-link {
+    color: -webkit-link;
+    cursor: auto;
+    text-decoration: underline;
 }
