@@ -116,8 +116,8 @@ a {
 	color: #444;
 }
 h5 {
-	font-size: 22px;
-	font-family: 宋体;
+	font-size: 18px;
+	font-family: 幼圆;
 	width: 100%;
 }
 .block-hot {
@@ -157,20 +157,24 @@ h5 {
 }
 .text {
     float:left;
-	margin:20px 0 0 27px;
+	margin:25px 0 0 30px;
 	width:80%;
 	height:50px;
     overflow:hidden;
+    line-height:24px;
 }
 .text-x {
 	float:left;
-	margin:15px 0 0 30px;
+	margin:10px 0 0 30px;
 	width: 80%;
 	height: 107px;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 5;
 	overflow: hidden;
+	font-size:15px;
+	font-family:幼圆;
+	line-height:22px;
 }
 
 .follow {
