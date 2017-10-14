@@ -36,7 +36,7 @@
 .tags {
 	float:right;
 	margin:-2px 25px 0 0;
-	width:40px;
+	width:60px;
 }
 .tags span::before {
 	background: #539092 none repeat scroll 0 0;
@@ -64,7 +64,7 @@
 	position: absolute;
 }
 .tags span {
-	background: #539092 none repeat scroll 0 0;
+	background: #6EABAD none repeat scroll 0 0;
 	border-radius:0px 8px 5px 5px;
 	display: inline-block;
 	float: right;
@@ -79,6 +79,9 @@
 	font-family:幼圆;
 	font-size:15px;
 	color:white;
+}
+.tags span:hover{
+    background: #539092 none repeat scroll 0 0;
 }
 .home-b-head {
 	width:100%;

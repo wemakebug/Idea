@@ -56,6 +56,7 @@ body{
     border-bottom-right-radius:8px;
     width: 8%;
     top:-2px;
+
 }
 .tags span:before, .tags span:after {
     position: absolute;
@@ -285,26 +286,46 @@ body{
 }
 .rm-header{
     width:100%;
-    height:60px;
+    height:120px;
     line-height: 50px;
-    overflow: hidden;
+    position: absolute;
+    margin-top: -8px;
+    margin-left: -8px;
+    /*overflow: hidden;*/
+    font-size: 15px;
+    /*background-color: #2f96b4;*/
 }
 
-.rm-h1{
-    width:25%;
-    height:100%;
-    float:left;
-    background-color: #ABCDCB;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    margin-left:5.5%;
+.ribbon6 {
 
+      display: inline-block;
+      text-align: center;
+      width: 220px;
+      height:50px;
+      line-height: 40px;
+      margin-left:-42px;
+      margin-top:30px;
+      font-size:30px;
+      font-family: 幼圆;
+      font-weight:bold;
+     /*position: absolute;*/
+      /*z-index: 10;*/
+      /*overflow: hidden;*/
+      transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
+      -moz-transform: rotate(30deg);
+      -webkit-transform: rotate(-40deg);
+      -o-transform: rotate(30deg);
+      border: 1px dashed;
+      box-shadow:0 0 0 3px #ABCDCB,  0px 21px 5px -18px rgba(0,0,0,0.6);
+      background:#ABCDCB ;
 }
+
+
 .rm-h2{
     width:30%;
     height:100%;
-    float:left;
+    float:right;
     background-color: #ABCDCB;
     margin-left: 10%;
     -webkit-border-radius: 15px;
@@ -314,7 +335,7 @@ body{
 .rm-h3{
     width:13%;
     height:100%;
-    float:left;
+    float:right;
     background-color:  #ABCDCB;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -324,7 +345,7 @@ body{
 .rm-nav{
     width:20%;
     height:40px;
-    margin-top:10px;
+    margin-top:150px;
     margin-left:5%;
     font-size:20px;
 }
@@ -341,10 +362,11 @@ body{
 .rcontent{
     width:85%;
     height:auto;
+
     overflow: hidden;
 }
 .rcontent-main{
-    width:60%;
+    width:80%;
     height:auto;
     float:left;
     font-size: 18px;
@@ -362,7 +384,6 @@ body{
     height:180px;
     background-color:  #ABCDCB ;
     /*margin-top:20%;*/
-
 }
 a.rbutton {
             height:35px;
@@ -505,7 +526,7 @@ a.rbutton:active {
 	display: block;
 	border-width: 10px 12px 10px 0;
 	border-style: solid;
-	border-color: transparent  #8BCFCC;
+	/*border-color: transparent  #8BCFCC;*/
 	top: 15px;
 	left: -11px;
 }
@@ -524,7 +545,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:  #8BCFCC;
+    /*background-color:  #8BCFCC;*/
 }
 .comment-name {
 	color: #283035;
@@ -569,7 +590,7 @@ a.rbutton:active {
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:  #8BCFCC;
+    /*background-color:  #8BCFCC;*/
 }
 .c-reply{
     width:88%;
@@ -587,7 +608,7 @@ a.rbutton:active {
     content: '';
 	width: 60px;
 	height: 2px;
-	background: #c7cacb;
+	/*background: #c7cacb;*/
 	position: absolute;
 	top: 25px;
 	left: -55px;
@@ -624,7 +645,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:  #8BCFCC;
+    /*background-color:  #8BCFCC;*/
 }
 .rcomment-name {
 	color: #283035;
@@ -669,5 +690,5 @@ a.rbutton:active {
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:  #8BCFCC;
+    /*background-color:  #8BCFCC;*/
 }
