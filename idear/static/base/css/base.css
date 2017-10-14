@@ -303,6 +303,7 @@ body,div{
     .footer_line{
          width: 100%;
         height: 1px;
+        overflow: hidden;
         background: #e0e0e0;
     }
     .footer_con {

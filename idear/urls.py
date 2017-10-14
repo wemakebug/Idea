@@ -28,10 +28,11 @@ urlpatterns = [
     url(r'creations$', views.creations),
     url(r'forgetPassword$', views.forgetPassword),
     url(r'homepage$',views.homepage),
+    url(r'release',views.release),
     url(r'editprofile$',views.editprofile),
     url(r'apply$', views.apply),
     url(r'recruit$', views.projects),
-    url(r'redetails$', views.redetails),
+    url(r'redetails/$', views.redetails),
     url(r'projects$', views.projects),
     url(r'redetail$', views.redetail),
     url(r'star$', views.star),
@@ -42,7 +43,6 @@ urlpatterns = [
     url(r'test/?(\d+)$', views.test),
     url(r'getimg', views.get_user_img),
     url(r'ordinance',views.ordinance),
-    url(r'release',views.release),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

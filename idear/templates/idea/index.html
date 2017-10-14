@@ -29,8 +29,8 @@
             <img src="{% static 'idea/imgs/bg_top.jpg'%}">
         </div>
     </div>
-    <a class="carousel-control left top-content-control" href="#myCarousel" data-slide="prev"></a>
-    <a class="carousel-control right top-content-control" href="#myCarousel" data-slide="next"></a>
+    <a class="carousel-control left top-content-control-left" href="#myCarousel" data-slide="prev"></a>
+    <a class="carousel-control right top-content-control-right" href="#myCarousel" data-slide="next"></a>
 </div>
 <div class="middle">
 	<div class="content">
@@ -45,8 +45,10 @@
 				</div>
 				<div class="usage">
 					<div class="usage_one">
-                        <a href="recruit?sign=all">
-						    <div class="usage_icon"></div>
+                        <a href="recruit?sign=1">
+						    <div class="usage_icon">
+                                {% comment %}<img src="../../static/idea/imgs/recruit.png">{% endcomment %}
+                            </div>
                         </a>
 						<div class="usage_details">
 							<div class="detail-name">
@@ -58,7 +60,7 @@
 						</div>
 					</div>
 					<div class="usage_one">
-                        <a href="#">
+                        <a href="release">
 						    <div class="usage_icon2"></div>
                         </a>
 						<div class="usage_details">

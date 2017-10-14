@@ -423,46 +423,52 @@
 .block-main {
     text-align:left;
 }
-.block-main a:hover{
+.block-title:hover{
     color:#539092;
 }
-.block-main hr{
-    margin-top:5px;
-}
+
 .block-title{
-    width:100%;
-    height:55px;
+    float:left;
+	margin-left:12px;
+	width:91%;
+	height:50px;
+    overflow:hidden;
+    line-height:24px;
 }
 .block-text{
-    width:100%;
-    height:31%;
     float:left;
-    margin-top:5%;
-    font-family:幼圆;
-    font-size:15px;
-    color:gray;
-    text-align:center;
-    display: -webkit-box;
+	margin:8px 0 0 12px;
+	width: 91%;
+	height: 107px;
+	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 5;
 	overflow: hidden;
+	font-size:15px;
+	font-family:幼圆;
+	line-height:22px;
+}
+h5 {
+	font-size: 18px;
+	font-family: 幼圆;
+	width: 100%;
 }
 .block-bottom{
     width:100%;
     height:50px;
     float:left;
-    margin-top:10%;
+    margin-top:9%;
     font-size: 13px;
 }
 .block-bottom-ava{
     float:left;
     width:40px;
-    margin-left:32px;
+    margin-left:41px;
 }
 .block-bottom-hot{
-    width:50%;
+    width:40%;
     float:left;
-    margin:15px 0 0 70px;
+    margin:15px 0 0 57px;
 }
 .block-imgl{
     width:23px;
