@@ -269,8 +269,10 @@ body, html {
     color: #404040;
     color: rgba(0, 0, 0, 0.7);
     text-shadow: 0 1px rgba(255, 255, 255, 0.4);
-    text-align: center;
-    margin-right: 0;
+    /*text-align: center;*/
+    left: 0;
+    position: absolute;
+    z-index: 9999;
 }
 
 .progress > span:before {

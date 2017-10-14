@@ -49,10 +49,9 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                     <div class="project_bottom_top">
                         <p class="project_top_1_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project.Description }}</p>
                         <div class="progress">
-                            <span class="green" style="width:70%;"><span>1/5</span></span>
+                            <span class="green" style="width:70%;"><span>当前招募进度：1/{{ project.Number }}</span></span>
                         </div>
                     </div>
-
                 </div>
             {% endfor %}
             {#        <div class="project_get_more"><a href="javascript:;" class="load-more f-weight">浏览更多</a></div>#}
@@ -90,7 +89,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
         //限制字符个数
         $(document).ready(function () {
             $(".project_top_1_text").each(function () {
-                var maxwidth = 150;
+                var maxwidth = 100;
                 if ($(this).text().length > maxwidth) {
                     $(this).text($(this).text().substring(0, maxwidth));
                     $(this).html($(this).html() + '…')
@@ -116,6 +115,10 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                 }
             });
         });
+        function calculate_plan() {
+            var RecruitContrast = 1/{{ project.Number }};
+            
+        }
         {#        function chooseTag() {#}
         {#            var obj = document.getElementById("choose_Tag");#}
         {#            obj.setAttribute("class", "Tag_choose");#}
