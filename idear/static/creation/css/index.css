@@ -23,7 +23,7 @@
     position:fixed;
 	width:280px;
 	float:left;
-	margin-left:55%;
+	margin-left:1040px;
 }
 .intro {
 	width:100%;
@@ -75,9 +75,7 @@
 	color: #fff;
 	background-color: #57cecd;
 }
-.allsign:visited {
-    background-color: #57cecd;
-}
+
 .intro p {
 	width:86%;
 	float:left;

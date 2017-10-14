@@ -93,10 +93,12 @@
                     <hr>
                     <a href="creations?sign=all" sign="all"><span class="allsign">所有</span></a>
 
+
                     {% for obj in projectLabels %}
                         <a href="creations?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span
                                 class="allsign">{{ obj.ProjectLabelName }}</span></a>
                     {% endfor %}
+
                 </div>
             </div>
             <a class="more">加载更多</a>

@@ -1,3 +1,9 @@
+window.onscroll=function(){
+    var sl=-Math.max(document.body.scrollLeft,document.documentElement.scrollLeft);
+    document.getElementById('home-right').style.left=sl+'px';
+
+};
+
  //加载更多
 $(function() {
     $(".block").slice(0, 9).show();
@@ -19,7 +25,11 @@ $(function() {
 });
 //标签点击后变色
 
-
+$(document).ready(function(){
+  $(" tag span").click(function(){
+    $("tag span").toggleClass("allsign");
+  });
+});
 
 
 
