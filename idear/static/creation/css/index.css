@@ -20,9 +20,10 @@
 	margin-left:2.5%;
 }
 .home-right {
-	width:20%;
-	float:right;
-	margin-right:6%;
+    position:fixed;
+	width:280px;
+	float:left;
+	margin-left:55%;
 }
 .intro {
 	width:100%;
@@ -65,14 +66,17 @@
 }
 .allsign {
 	border: 1px solid #c0c5cd;
-	background-color: #eeeeee;
+	background-color: white;
 	border-radius: 5px;
 	padding: 6px 15px;
-	color: #a9b1b5;
+	color: gray;
 }
 .allsign:hover {
 	color: #fff;
 	background-color: #57cecd;
+}
+.allsign:visited {
+    background-color: #57cecd;
 }
 .intro p {
 	width:86%;
