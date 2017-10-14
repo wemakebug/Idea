@@ -137,12 +137,10 @@ def test(req, param):
     测试页面
     '''
     if req.method == "GET":
-        print param
         teams = models.User.objects.all().filter(Identity=2)
         return render_to_response('team/test.html', {'teams': teams})
     if req.method == "POST":
         data = req.POST["data"]
-        print data
         return HttpResponse(data)
 
 def index(req):
@@ -253,9 +251,10 @@ def regist(req):
                     result['message'] = '注册成功，正在调转'
                     result['status'] = 1
                     return HttpResponse(json.dumps(result))
-                except Exception, e:
+                except Exception as e:
+                    print(e)
                     result['status'] = 0
-                    result['message'] = '服务器异常!!' + e
+                    result['message'] = '服务器异常!!'
                     return HttpResponse(json.dumps(result))
 
 @csrf_exempt
@@ -325,11 +324,11 @@ def teamdetails(req, teamid):
         try:
             this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=teamid))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
-        except Exception, e:
-            print e.message
+        except Exception as e :
+            print(e.message)
             return Http404
         else:
-            print labels
+            print(labels)
             return render_to_response('team/teamdetails.html', {"team": this_team, "labels":labels})
     if req.method == 'POST':
         pass
@@ -442,8 +441,8 @@ def creations(req):
             user = creation.user
             return render_to_response('/creation/sec_creations.html',
                                       {'creation': creation, 'comments': comments, 'user': user})
-    except Exception, e:
-        print e.message
+    except Exception as e:
+        print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 
