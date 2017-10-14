@@ -9,13 +9,12 @@
     display: inline;
     width: 100%;
     height: auto;
+    /*max-height: 1200px;*/
 }
 body, html {
-    width: 100%;
-    height: auto;
-    position: absolute;
     background-color: #f1f1f1;
     transition: 0.2s ease-out;
+    position: absolute;
 }
 
 .bg_left {
@@ -25,6 +24,7 @@ body, html {
     margin-top:66px;
     margin-left: 10%;
     max-width: 1200px;
+    min-height: 500px;
 }
 
 .bg_right {
@@ -294,7 +294,7 @@ body, html {
     /*float:rig%t;*/
     left: 70%;
     top: 100px;
-    position: absolute;
+    position: fixed;
 }
 .home-right p,span{
     font-size: 15px;
@@ -403,3 +403,8 @@ body, html {
     cursor: auto;
     text-decoration: underline;
 }
+/*@media screen and (max-width: 1500px) {*/
+    /*.home-right{*/
+        /*left: 80%;*/
+    /*}*/
+/*}*/
