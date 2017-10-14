@@ -295,32 +295,40 @@ body{
     font-size: 15px;
     /*background-color: #2f96b4;*/
 }
-
-.ribbon6 {
-
-      display: inline-block;
-      text-align: center;
-      width: 220px;
-      height:50px;
-      line-height: 40px;
-      margin-left:-42px;
-      margin-top:30px;
-      font-size:30px;
-      font-family: 幼圆;
-      font-weight:bold;
-     /*position: absolute;*/
-      /*z-index: 10;*/
-      /*overflow: hidden;*/
-      transform: rotate(30deg);
-      -ms-transform: rotate(30deg);
-      -moz-transform: rotate(30deg);
-      -webkit-transform: rotate(-40deg);
-      -o-transform: rotate(30deg);
-      border: 1px dashed;
-      box-shadow:0 0 0 3px #ABCDCB,  0px 21px 5px -18px rgba(0,0,0,0.6);
-      background:#ABCDCB ;
+.ribbon3 {
+    display: inline-block;
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    font-size:30px;
+    font-family:幼圆;
+    font-weight:bold;
+    line-height: 50px;
+    padding-left: 15px;
+    background: #ABCDCB;
+    left: -2px;
+    top: 30px
 }
-
+.ribbon3:before, .ribbon3:after {
+    content: "";
+    position: absolute;
+}
+.ribbon3:before {
+  height: 0;
+  width: 0;
+  border-bottom: 8px solid black;
+  border-left: 8px solid transparent;
+  top: -8px;
+  left: 0;
+}
+.ribbon3:after {
+  height: 0;
+  width: 0;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 15px solid #ABCDCB;
+  right: -15px;
+}
 
 .rm-h2{
     width:30%;
@@ -362,7 +370,6 @@ body{
 .rcontent{
     width:85%;
     height:auto;
-
     overflow: hidden;
 }
 .rcontent-main{
@@ -567,8 +574,9 @@ a.rbutton:active {
 .clike{
     width:25px;
     height:25px;
-    float:right;
-    margin:8px 10px;
+    float:left;
+    margin:8px 0 0 60%;
+
 }
 .creport{
     width:20px;
@@ -579,8 +587,8 @@ a.rbutton:active {
 .creply{
     width:20px;
     height:20px;
-    float:right;
-    margin:10px 10px;
+    float:left;
+    margin:12px 11px;
 }
 .comment-content {
 	width:100%;
@@ -667,8 +675,8 @@ a.rbutton:active {
 .rclike{
     width:25px;
     height:25px;
-    float:right;
-    margin:8px 10px;
+    float:left;
+    margin:8px 0 0 50%;
 }
 .rcreport{
     width:20px;
@@ -679,7 +687,7 @@ a.rbutton:active {
 .rcreply{
     width:20px;
     height:20px;
-    float:right;
+    float:left;
     margin:10px 10px;
 }
 .rcomment-content {
