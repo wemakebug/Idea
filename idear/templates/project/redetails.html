@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css'%}">
     <link rel="stylesheet" href="{% static 'project/css/radialindicator.css'%}">
-
+    <link rel="stylesheet" href="{% static 'project/css/page-styles.css'%}">
 {%endblock%}
 {%block content%}
 
@@ -62,7 +62,7 @@
                                   <a>评论</a>
                               </div>
                               <div class="home-b-report">
-                                  <img src="{% static '/creation/imgs/report.png' %}" style="width:23px;height:24x;vertical-align:middle;">
+                                  <img src="{% static '/creation/imgs/report.png' %}" style="width:23px;height:24px;vertical-align:middle;">
                                     <a>举报</a>
                               </div>
                           </div>
@@ -74,6 +74,8 @@
 {#                          <div class="rtitle">招募帖</div>#}
                           <div class="rmain">
                               <div class="rm-header">
+
+{#                                  圆圈进度条#}
                                   <span class="ribbon6">招募帖</span>
 {#                                  <div class="rm-h2">招募开始/截止时间：2017-10-10/2017-11-12</div>#}
 {#                                  <div class="rm-h3">(进度条)还剩3天！</div>#}
@@ -83,7 +85,6 @@
                                       <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
                               </div>
                               <div class="rcontent">
-                                  <div class="rcontent-main">
                                   <ul>
                                       <li>1、 根据需求实现静态页面交互效果；</li>
                                       <li>2、熟悉各浏览器的特性和W3C相关标准，对浏览器引擎及JS引擎有一定研究；</li>
@@ -99,7 +100,7 @@
                           </div>
                           <div class="rfooter">
                                <div class="rfcontent">
-                                    <a href="apply" class="rbutton">申请加入</a>
+                                    <a href="/idear/apply" class="rbutton">申请加入</a>
 {#                                    <div class="rclose">#}
 {#                                        <img class="close" src="{% static 'project/imgs/close.svg'%}"><a>收起</a>#}
 {#                                    </div>#}
@@ -247,16 +248,24 @@
               </div>
           </div>
       </div>
-      <div class="middle"></div>
-      <script>
-        	SyntaxHighlighter.defaults['toolbar'] = false;
-			SyntaxHighlighter.all();
-      </script>
+{#      <div class="middle"></div>#}
+{#          <div class="htmleaf-container">#}
+{#            <div class="circles">#}
+{#                <div class="second circle">#}
+{#                    <strong>456546456</strong>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#      <script>#}
+{#        	SyntaxHighlighter.defaults['toolbar'] = false;#}
+{#			SyntaxHighlighter.all();#}
+{#      </script>#}
+
       {% block script %}
-          <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
-{#       <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>#}
-          <script type="text/javascript" src="{% static 'project/js/radialindicator.js' %}"></script>
-          <script type="text/javascript" src="{% static 'project/js/demo.js' %}"></script>
+          <script src=""></script>
+       <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
+{#          <script type="text/javascript" src="{% static 'project/js/radialindicator.js' %}"></script>#}
+{#          <script type="text/javascript" src="{% static 'project/js/demo.js' %}"></script>#}
       {% endblock %}
 
  {% endblock %}

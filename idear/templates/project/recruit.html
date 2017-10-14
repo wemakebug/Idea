@@ -90,7 +90,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
         $(document).ready(function () {
             $(".project_top_1_text").
             each(function () {
-                var maxwidth = 100;
+                var maxwidth = 150;
                 if ($(this).text().length > maxwidth) {
                     $(this).text($(this).text().substring(0, maxwidth));
                     $(this).html($(this).html() +'…')
