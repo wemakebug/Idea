@@ -7,6 +7,7 @@
 	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
 	overflow: hidden;
 	font-family: Microsoft Yahei;
+    min-width: 1900px;
 }
 /*.teamdetailfilter {*/
 	/*width:100%;*/
@@ -35,8 +36,8 @@
 	/*height:auto;*/
 /*}*/
 .teamdetailsynopsis{
-	width: 50%;
-	height:250px;
+	width: 100%;
+	height:190px;
 	/*background-color: rgba(127,255,212,0.1);*/
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     -moz-box-shadow:-10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -44,36 +45,43 @@
 	border-radius: 10px;
 	padding: 5px;
 	/*position: relative;*/
-	margin-left: 17%;
-	margin-top: 6%;
+}
+.teandetails11-1{
+   width: 65%;
+	height: 260px;
+	margin-left: 17.5%;
+	margin-right: 10%;
+	margin-top: 5%;
+	font-family: "Microsoft Yahei";
+    border-top: rgba(220,220,220,0.5);
 }
 .teamdetailsynopsis1-1{
 	width:100%;
-	height: 50px;
-	font-size: 22px;
-	line-height: 50px;
-	text-indent: 1.5em;
+	height: 60px;
+	font-size: 25px;
+	line-height: 60px;
+	text-align: center;
 }
 .teamdetailsynopsis1-2{
-	width:45%;
+	width:100%;
 	height: 50px;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 50px;
 	float: right;
 	color: rgba(54, 54 ,54,0.6);
 }
-.teamdetailsynopsis1-3{
-	width:45%;
-	height: 50px;
-	font-size: 20px;
-	line-height: 50px;
-	float: right;
-	color: rgba(54, 54 ,54,0.6);
-}
+/*.teamdetailsynopsis1-3{*/
+	/*width:45%;*/
+	/*height: 50px;*/
+	/*font-size: 20px;*/
+	/*line-height: 50px;*/
+	/*float: right;*/
+	/*color: rgba(54, 54 ,54,0.6);*/
+/*}*/
 .teamdetailsynopsis1-4{
-	width:45%;
+	width:100%;
 	height: 50px;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 50px;
 	float: right;
 	color: rgba(54, 54 ,54,0.6);
@@ -81,30 +89,29 @@
 .teamdetailsynopsis1-5{
 	width:45%;
 	height: 50px;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 50px;
 	float: right;
 	color: rgba(54, 54 ,54,0.6);
 }
 .teamdetailsynopsis1-6{
-	width:45%;
+	width:100%;
 	height: 50px;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 50px;
 	float: left;
-	margin-left: 10%;
 	color: rgba(54, 54 ,54,0.6);
 }
 .teamdetailsynopsis1-7{
-	width:45%;
+	width:100%;
 	height: 50px;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 50px;
 	float: right;
 	color: rgba(54, 54 ,54,0.6);
 }
 .details{
-	width: 50%;
+	width: 30%;
 	height:230px;
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     -moz-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -113,71 +120,646 @@
 	padding: 5px;
 	margin-top: 100px;
 	/*position:relative;*/
+    float: left;
 	margin-left: 17%;
 }
-.details1-1{
-	width:100%;
+/*.details1-1{*/
+	/*width:100%;*/
+	/*height: 50px;*/
+	/*font-size: 22px;*/
+	/*line-height: 50px;*/
+	/*text-indent: 1.5em;*/
+/*}*/
+/*.details1-2{*/
+	/*width:75%;*/
+	/*height: 140px;*/
+	/*font-size: 20px;*/
+	/*margin-left: 0.5%;*/
+	/*color: rgba(54, 54 ,54,0.6);*/
+/*}*/
+.detailspicture{
+	width: 120px;
+	height: 120px;
+	float: left;
+    border-radius: 14px;
+}
+.detailspicture1-1{
+	width: 76%;
+	height: 170px;
+	float: left;
+}
+.detailspicture1-2{
+	width: 65%;
 	height: 50px;
-	font-size: 22px;
-	line-height: 50px;
+	font-size: 23px;
 	text-indent: 1.5em;
 }
-.details1-2{
-	width:75%;
-	height: 140px;
-	font-size: 20px;
-	margin-left: 10%;
+.detailspicture1-3{
+	width: 65%;
+	height: 90px;
+	font-size: 18px;
 	color: rgba(54, 54 ,54,0.6);
+	margin-left: 8%;
 }
-.details1-3{
-	width: 100%;
-	height: 140px;
-	border: none;
-	background: transparent;
-	scrollbar-base-color:rgba(30,144,255,0.1);
-	scrollbar-highlight-color:transparent;
-	/*font-family: kaiti;*/
-	font-family: "Microsoft Yahei";
-	font-size: 20px;
-	resize: none;
-	color: rgba(54, 54 ,54,0.6);
-	text-indent: 1.5em;
+/*.detailszan{*/
+	/*text-align: right;*/
+    /*cursor :pointer;*/
+    /*display:block;*/
+    /*width:17px;*/
+    /*height:17px;*/
+    /*z-index: 99;*/
+/*}*/
+/*.detailszan1-1{*/
+	/*width: 20px;*/
+	/*height: 20px;*/
+	/*clear: both;*/
+    /**/
+/*}*/
+.teamspeak{
+    width: 20%;
+	height:230px;
+	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
+    -moz-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
+    box-shadow:-10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
+	border-radius: 10px;
+	padding: 5px;
+	margin-top: 100px;
+	/*position:relative;*/
+    float: left;
+}
+.praise1{
+    width: 10%;
+    height: 30px;
+    margin-top: 22px;
+    float: right;
+}
+.praise1-1{
+    width: 10%;
+    height: 30px;
+    margin-top: 21px;
+    float: right;
+}
+.praise1-2{
+    width: 12%;
+    height: 30px;
+    margin-top: 21px;
+    float: right;
+}
+#praise11-2{
+    cursor :pointer;
+    display:block;
+    width:20px;
+    height:20px;
+    z-index: 99;
+}
+#praise-txt11-2{
+    font-size: 13px;
+    height:25px;
+    margin: -22px 18px;
+    line-height:25px;
+    display: block;
+}
+.praise11-2 img{
+    width:100%;
+    height:100%;
+    display:block;;
+}
+.praise11-2 img.animation{
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+.praise11-2 .hover , #add-num11-2 .add-animation.hover , #praise-txt11-2.hover{
+    color: #EB4F38;
+}
+#praise11-1{
+    cursor :pointer;
+    display:block;
+    width:20px;
+    height:20px;
+    z-index: 99;
+}
+#praise-txt11-1{
+    font-size: 13px;
+    height:25px;
+    margin: -22px 18px;
+    line-height:25px;
+    display: block;
+}
+.praise11-1 img{
+    width:100%;
+    height:100%;
+    display:block;;
+}
+.praise11-1 img.animation{
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+#add-num11-1{
+    display:none;
+}
+#add-num11-1 .add-animation{
+    color: #000;
+    position:absolute;
+    top:-15px;
+    left: 10px;
+    font-size: 15px;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    -moz-opacity:0;
+    animation: mypraise 0.5s ;
+    -moz-animation: mypraise 0.5s ;	/* Firefox */
+    -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
+    -o-animation: mypraise 0.5s ;	/* Opera */
+    font-style:normal;
+}
+.praise11-1 .hover , #add-num11-1 .add-animation.hover , #praise-txt11-1.hover{
+    color: #EB4F38;
+}
 
+/*点赞图标放大动画开始*/
+@keyframes myfirst
+{
+    0%{
+        width:17px;
+        height:17px;
+    }
+    50%{
+        width:25px;
+        height:25px;
+    }
+    100% {
+        width:17px;
+        height:17px;
+    }
 }
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%{
+        width:17px;
+        height:17px;
+    }
+    50%{
+        width:25px;
+        height:25px;
+    }
+    100% {
+        width:17px;
+        height:17px;
+    }
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%{
+        width:17px;
+        height:17px;
+    }
+    50%{
+        width:25px;
+        height:25px;
+    }
+    100% {
+        width:17px;
+        height:17px;
+    }
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%{
+        width:17px;
+        height:17px;
+    }
+    50%{
+        width:25px;
+        height:25px;
+    }
+    100% {
+        width:17px;
+        height:17px;
+    }
+}
+/*点赞图标放大动画结束*/
+/*点赞数量加减动画开始*/
+@keyframes mypraise
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-moz-keyframes mypraise /* Firefox */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-webkit-keyframes mypraise /* Safari 和 Chrome */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-o-keyframes mypraise /* Opera */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+/*点赞数量加减动画结束*/
+/*动态点赞结束*/
+#praise11{
+    cursor :pointer;
+    display:block;
+    width:17px;
+    height:17px;
+    z-index: 99;
+}
+#praise-txt11{
+    font-size: 13px;
+    height:25px;
+    margin: -21px 18px;
+    line-height:25px;
+    display: block;
+}
+.praise11 img{
+    width:100%;
+    height:100%;
+    display:block;;
+}
+.praise11 img.animation{
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+#add-num11{
+    display:none;
+}
+#add-num11 .add-animation{
+    color: #000;
+    position:absolute;
+    top:-15px;
+    left: 10px;
+    font-size: 15px;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    -moz-opacity:0;
+    animation: mypraise 0.5s ;
+    -moz-animation: mypraise 0.5s ;	/* Firefox */
+    -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
+    -o-animation: mypraise 0.5s ;	/* Opera */
+    font-style:normal;
+}
+.praise11 .hover , #add-num11 .add-animation.hover , #praise-txt11.hover{
+    color: #EB4F38;
+}
+
+/*点赞图标放大动画开始*/
+@keyframes myfirst
+{
+    0%{
+        width:17px;
+        height:17px;
+    }
+    50%{
+        width:25px;
+        height:25px;
+    }
+    100% {
+        width:17px;
+        height:17px;
+    }
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%{
+        width:17px;
+        height:17px;
+    }
+    50%{
+        width:25px;
+        height:25px;
+    }
+    100% {
+        width:17px;
+        height:17px;
+    }
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%{
+        width:17px;
+        height:17px;
+    }
+    50%{
+        width:25px;
+        height:25px;
+    }
+    100% {
+        width:17px;
+        height:17px;
+    }
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%{
+        width:17px;
+        height:17px;
+    }
+    50%{
+        width:25px;
+        height:25px;
+    }
+    100% {
+        width:17px;
+        height:17px;
+    }
+}
+/*点赞图标放大动画结束*/
+/*点赞数量加减动画开始*/
+@keyframes mypraise
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-moz-keyframes mypraise /* Firefox */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-webkit-keyframes mypraise /* Safari 和 Chrome */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+
+@-o-keyframes mypraise /* Opera */
+{
+    0%{
+        top:-15px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+    25%{
+        top:-20px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    50%{
+        top:-25px;
+        opacity: 1;
+        filter: Alpha(opacity=100);
+        -moz-opacity:1;
+    }
+    75%{
+        top:-30px;
+        opacity: 0.5;
+        filter: Alpha(opacity=50);
+        -moz-opacity:0.5;
+    }
+    100% {
+        top:-35px;
+        opacity: 0;
+        filter: Alpha(opacity=0);
+        -moz-opacity:0;
+    }
+}
+/*点赞数量加减动画结束*/
+/*动态点赞结束*/
+/*.details1-3{*/
+	/*width: 100%;*/
+	/*height: 140px;*/
+	/*border: none;*/
+	/*background: transparent;*/
+	/*scrollbar-base-color:rgba(30,144,255,0.1);*/
+	/*scrollbar-highlight-color:transparent;*/
+	/*!*font-family: kaiti;*!*/
+	/*font-family: "Microsoft Yahei";*/
+	/*font-size: 20px;*/
+	/*resize: none;*/
+	/*color: rgba(54, 54 ,54,0.6);*/
+	/*text-indent: 1.5em;*/
+
+/*}*/
 .teamdetailadddiv{
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
+	width: 10%;
+	height: 30px;
+	line-height: 30px;
 	color: rgba(54, 54 ,54,0.6);
+    float: left;
+    /*margin-left: 68%;*/
+    margin-top: 22px;
 }
 .details1-4{
-	/*border: 1px solid rgba(54, 54 ,54,0.9);*/
-    width: 100px;
-    font-size: 1em;
-    padding: .25em .5em .3125em;
-    color: rgb(54,54,54);
-    border-radius: .25em;
-	cursor:pointer;
-    /*background: transparent;*/
-	background: -webkit-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
-    background: -o-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
-    background: -moz-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
-    background: linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
-    opacity: 0.7;
-    -webkit-transition: all .100s;
-    transition: all .100s;
-	/*font-family: kaiti;*/
-	font-family: "Microsoft Yahei";
 	margin-left: 77%;
-	margin-top: 6px;
 	position: relative;
-}
-.details1-4:hover{
-	background: -webkit-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
-    background: -o-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
-    background: -moz-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
-    background: linear-gradient(-90deg,   #F0FFFF,#E0EEEE);
-	opacity: 0.9;
 }
 .detailsinput1-1{
 	border: 0 solid rgba(54, 54 ,54,0.6);
@@ -199,50 +781,64 @@
 .historys{
 	width: 65%;
 	height: auto;
-	margin-left: 17%;
+	margin-left: 18%;
 	margin-right: 10%;
 	margin-top: 5%;
 	font-family: "Microsoft Yahei";
+    clear: both;
 }
 .historys1-1{
 	width: 100%;
-	line-height: 50px;
+	line-height: 30px;
 	text-align: center;
 	font-size: 27px;
 	font-family: "Microsoft Yahei";
 }
 .historys1-2{
-	width: 100%;
+	width: 28%;
 	height: 30%;
-	border-bottom: solid 2px rgba(220,220,220,0.5);
-	border-top:solid 2px rgba(220,220,220,0.5) ;
+	border: solid 2px rgba(220,220,220,0.5);
 	font-family: "Microsoft Yahei";
+    float: left;
+    margin-left: 2%;
+    margin-right: 3%;
+    margin-top: 4%;
+    border-radius: 20px;
+    -webkit-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
+    -moz-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
+    box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
+}
+.historys1-2:hover{
+    -webkit-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
+    -moz-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
+    box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
 }
 .historys1-3{
-	width: 150px;
-	height: 150px;
+	width: 100px;
+	height: 100px;
 	border: 1px solid rgba(54, 54 ,54,0.1);
 	float: left;
 	margin-top: 3px;
 	color: rgba(54, 54 ,54,0.6);
 	font-family: "Microsoft Yahei";
+    border-radius: 14px;
 }
 .historys1-4{
-	width: 86%;
+	width: 70%;
 	height: 62%;
 	float: left;
 	font-family: "Microsoft Yahei";
 }
 .historys1-5{
 	width: 95%;
-	height: 30%;
+	height: 20%;
 	font-size: 20px;
 	padding: 1%  0 0  5%;
 	font-family: "Microsoft Yahei";
 }
 .historys1-6{
 	width: 95%;
-	height: 60%;
+	height: 70%;
 	font-size: 20px;
 	padding: 0.8%  0 0  5%;
 	color: rgba(54, 54 ,54,0.6);
@@ -261,7 +857,19 @@
     color: rgba(54, 54 ,54,0.6);
 	font-family: "Microsoft Yahei";
 }
-
+.spanwidth{
+    padding: .15em .1125em;
+    color: rgba(54, 54 ,54,0.6);
+    border-radius: .25em;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    /*font-family: kaiti;*/
+	font-family: "Microsoft Yahei";
+	font-size: 16px;
+	height: 30px;
+	line-height: 30px;
+	margin:1px 2px
+}
 .project_middle_icon-1 {
     margin-left: 10px;
     background-color: #3572A5;
@@ -304,24 +912,25 @@
 	font-family: "Microsoft Yahei";
 }
 .comment{
+    clear: both;
 	width: 65%;
 	height: auto;
 	margin-left: 17%;
 	margin-right: 10%;
-	margin-top: 4%;
+	margin-top: 28%;
 	font-family: "Microsoft Yahei";
 }
 .comment1-1{
 	width: 100%;
-	height: 50px;
-	line-height: 50px;
+	height: 90px;
+	line-height: 90px;
 	text-align: center;
 	font-size: 27px;
 	margin-top: 5px;
 }
 .comment1-2{
 	width: 100%;
-	height: 4px;
+	height: 2px;
 	background-color: rgba(95,158,160,0.6);
 }
 .headimage{
@@ -343,10 +952,11 @@
 }
 .teamlable{
 	width: 13%;
-	height: 600px;
+	height: 330px;
 	float: right;
 	margin-right: 17%;
-	margin-top: -600px;
+	margin-top: 90px;
+    overflow: hidden;
 }
 .teamlable1-1{
 	width: 100%;
@@ -365,7 +975,7 @@
 }
 .teamlable1-3{
 	width: 100%;
-	height: 540px;
+	height: 280px;
 	color: rgba(54, 54 ,54,0.6);
 }
 .teamlable1-4{
@@ -378,7 +988,7 @@
     transition: all .100s;
     /*font-family: kaiti;*/
 	font-family: "Microsoft Yahei";
-	font-size: 20px;
+	font-size: 18px;
 	height: 50px;
 	line-height: 50px;
 	margin:1px 4px

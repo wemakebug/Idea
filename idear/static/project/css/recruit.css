@@ -46,7 +46,7 @@ body, html {
     left: 20px;
     margin-left: 5%;
     border-radius: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 0, 255);
     box-shadow: 10px 10px 5px #c0c7d0;
     transition: 0.2s ease-out;
 }
@@ -293,7 +293,7 @@ body, html {
 .home-right {
     width: 300px;
     /*float:rig%t;*/
-    margin-left:65%;
+    margin-left:1040px;
     top: 100px;
     position: fixed;
     float: right;
@@ -350,6 +350,11 @@ body, html {
 .allsign:hover {
 	color: #fff;
 	background-color: #57cecd;
+}
+.Tag_choose{
+    color: #fff;
+	background-color: #57cecd;
+
 }
 .intro p {
 	width:86%;
