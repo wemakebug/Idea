@@ -286,28 +286,29 @@ body{
 }
 .rm-header{
     width:100%;
-    height:135px;
+    height:120px;
     line-height: 50px;
-    /*position: absolute;*/
+    position: absolute;
     margin-top: -8px;
     margin-left: -8px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     font-size: 15px;
     /*background-color: #2f96b4;*/
 }
 
 .ribbon6 {
+
       display: inline-block;
       text-align: center;
-      width: 250px;
+      width: 220px;
       height:50px;
       line-height: 40px;
-      margin-left:-70px;
-      margin-top:22px;
+      margin-left:-42px;
+      margin-top:30px;
       font-size:30px;
       font-family: 幼圆;
       font-weight:bold;
-  /*position: absolute;*/
+     /*position: absolute;*/
       /*z-index: 10;*/
       /*overflow: hidden;*/
       transform: rotate(30deg);
@@ -319,27 +320,7 @@ body{
       box-shadow:0 0 0 3px #ABCDCB,  0px 21px 5px -18px rgba(0,0,0,0.6);
       background:#ABCDCB ;
 }
-.rm-header:before {
-    content: "";
-    display: block;
-    border-radius: 8px 8px 0px 0px;
-    width: 40px;
-    height: 8px;
-    position: absolute;
-    left: 109px;
-    background: #4D6530;
-}
-.rm-header:after {
-    content: "";
-    display: block;
-    border-radius: 8px 0px 0px 8px;
-    width: 8px;
-    height: 40px;
-    position: absolute;
-    left: 0px;
-    top: 89px;
-    background: #4D6530;
-}
+
 
 .rm-h2{
     width:30%;
@@ -364,7 +345,7 @@ body{
 .rm-nav{
     width:20%;
     height:40px;
-    margin-top:30px;
+    margin-top:150px;
     margin-left:5%;
     font-size:20px;
 }
@@ -381,7 +362,7 @@ body{
 .rcontent{
     width:85%;
     height:auto;
-    margin-top: 10px;
+
     overflow: hidden;
 }
 .rcontent-main{
