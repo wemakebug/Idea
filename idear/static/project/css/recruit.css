@@ -239,6 +239,7 @@ body, html {
     overflow: hidden;
     position: relative;
     bottom: 10px;
+    background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
 }
 
 .progress > span {
