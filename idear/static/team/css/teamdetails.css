@@ -6,6 +6,7 @@
     background-color: rgba(205, 201, 201,0.1);
 	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
 	overflow: hidden;
+	font-family: Microsoft Yahei;
 }
 /*.teamdetailfilter {*/
 	/*width:100%;*/
@@ -34,7 +35,7 @@
 	/*height:auto;*/
 /*}*/
 .teamdetailsynopsis{
-	width: 40%;
+	width: 50%;
 	height:250px;
 	/*background-color: rgba(127,255,212,0.1);*/
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -43,14 +44,15 @@
 	border-radius: 10px;
 	padding: 5px;
 	/*position: relative;*/
-	margin-left: 28%;
+	margin-left: 17%;
 	margin-top: 6%;
 }
 .teamdetailsynopsis1-1{
 	width:100%;
 	height: 50px;
-	font-size: 20px;
+	font-size: 22px;
 	line-height: 50px;
+	text-indent: 1.5em;
 }
 .teamdetailsynopsis1-2{
 	width:45%;
@@ -58,7 +60,7 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .teamdetailsynopsis1-3{
 	width:45%;
@@ -66,7 +68,7 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .teamdetailsynopsis1-4{
 	width:45%;
@@ -74,7 +76,7 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .teamdetailsynopsis1-5{
 	width:45%;
@@ -82,7 +84,7 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .teamdetailsynopsis1-6{
 	width:45%;
@@ -90,9 +92,8 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: left;
-	text-indent: 2em;
 	margin-left: 10%;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .teamdetailsynopsis1-7{
 	width:45%;
@@ -100,10 +101,10 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .details{
-	width: 51%;
+	width: 50%;
 	height:230px;
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     -moz-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -117,14 +118,16 @@
 .details1-1{
 	width:100%;
 	height: 50px;
-	font-size: 20px;
+	font-size: 22px;
 	line-height: 50px;
+	text-indent: 1.5em;
 }
 .details1-2{
 	width:75%;
 	height: 140px;
 	font-size: 20px;
 	margin-left: 10%;
+	color: rgba(54, 54 ,54,0.6);
 }
 .details1-3{
 	width: 100%;
@@ -134,9 +137,10 @@
 	scrollbar-base-color:rgba(30,144,255,0.1);
 	scrollbar-highlight-color:transparent;
 	/*font-family: kaiti;*/
+	font-family: "Microsoft Yahei";
 	font-size: 20px;
 	resize: none;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 	text-indent: 1.5em;
 
 }
@@ -144,6 +148,7 @@
 	width: 100%;
 	height: 50px;
 	line-height: 50px;
+	color: rgba(54, 54 ,54,0.6);
 }
 .details1-4{
 	/*border: 1px solid rgba(54, 54 ,54,0.9);*/
@@ -162,6 +167,7 @@
     -webkit-transition: all .100s;
     transition: all .100s;
 	/*font-family: kaiti;*/
+	font-family: "Microsoft Yahei";
 	margin-left: 77%;
 	margin-top: 6px;
 	position: relative;
@@ -174,7 +180,7 @@
 	opacity: 0.9;
 }
 .detailsinput1-1{
-	border: 0 solid rgba(54, 54 ,54,0.9);
+	border: 0 solid rgba(54, 54 ,54,0.6);
     font-size: 1em;
     padding: -0.25em .5em .3125em;
     color: #5E6C77;
@@ -183,6 +189,7 @@
     -webkit-transition: all .100s;
     transition: all .100s;
     /*font-family: kaiti;*/
+	font-family: "Microsoft Yahei";
 }
 #canvas{
 	margin-top: -1000px;
@@ -195,56 +202,64 @@
 	margin-left: 17%;
 	margin-right: 10%;
 	margin-top: 5%;
+	font-family: "Microsoft Yahei";
 }
 .historys1-1{
 	width: 100%;
 	line-height: 50px;
 	text-align: center;
-	font-size: 20px;
+	font-size: 27px;
+	font-family: "Microsoft Yahei";
 }
 .historys1-2{
 	width: 100%;
 	height: 30%;
 	border-bottom: solid 2px rgba(220,220,220,0.5);
 	border-top:solid 2px rgba(220,220,220,0.5) ;
+	font-family: "Microsoft Yahei";
 }
 .historys1-3{
-	width: 12%;
-	height: 60%;
+	width: 150px;
+	height: 150px;
 	border: 1px solid rgba(54, 54 ,54,0.1);
 	float: left;
 	margin-top: 3px;
+	color: rgba(54, 54 ,54,0.6);
+	font-family: "Microsoft Yahei";
 }
 .historys1-4{
 	width: 86%;
 	height: 62%;
 	float: left;
+	font-family: "Microsoft Yahei";
 }
 .historys1-5{
 	width: 95%;
-	height: 40%;
-	font-size: 40px;
+	height: 30%;
+	font-size: 20px;
 	padding: 1%  0 0  5%;
+	font-family: "Microsoft Yahei";
 }
 .historys1-6{
 	width: 95%;
-	height: 50%;
+	height: 60%;
 	font-size: 20px;
 	padding: 0.8%  0 0  5%;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .historys1-7{
 	width: 100%;
 	height: 32%;
 	padding-top: 1%;
-	font-size: 20px;
+	font-size: 17px;
 	clear: both;
 	text-indent: 1.5em;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .project_middle_text {
     font-size: 20px;
-    color: #586069;
+    color: rgba(54, 54 ,54,0.6);
+	font-family: "Microsoft Yahei";
 }
 
 .project_middle_icon-1 {
@@ -258,6 +273,7 @@
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
+	font-family: "Microsoft Yahei";
 }
 
 .project_middle_icon-2 {
@@ -271,6 +287,7 @@
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
+	font-family: "Microsoft Yahei";
 }
 
 .project_middle_icon-3 {
@@ -284,6 +301,7 @@
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
+	font-family: "Microsoft Yahei";
 }
 .comment{
 	width: 65%;
@@ -291,13 +309,14 @@
 	margin-left: 17%;
 	margin-right: 10%;
 	margin-top: 4%;
+	font-family: "Microsoft Yahei";
 }
 .comment1-1{
 	width: 100%;
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
-	font-size: 20px;
+	font-size: 27px;
 	margin-top: 5px;
 }
 .comment1-2{
@@ -333,6 +352,7 @@
 	width: 100%;
 	height: 40px;
 	line-height: 40px;
+	font-size: 22px;
 }
 .teamlable1-2{
 	width: 100%;
@@ -346,16 +366,18 @@
 .teamlable1-3{
 	width: 100%;
 	height: 540px;
+	color: rgba(54, 54 ,54,0.6);
 }
 .teamlable1-4{
 	border: 1px solid rgba(54, 54 ,54,0.1);
     padding: .25em .2125em;
-    color: #5E6C77;
+    color: rgba(54, 54 ,54,0.6);
     border-radius: .25em;
     background: rgba( 181,181,181,0.1);
     -webkit-transition: all .100s;
     transition: all .100s;
     /*font-family: kaiti;*/
+	font-family: "Microsoft Yahei";
 	font-size: 20px;
 	height: 50px;
 	line-height: 50px;
@@ -366,13 +388,13 @@
     width: 120px;
     display: inline-block;
     text-indent: 1em;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 .register1-2{
 	font-size:1em ;
-    width: 80px;
+    width: 120px;
     display: inline-block;
     text-indent: 1em;
-	color: rgba(54, 54 ,54,0.8);
+	color: rgba(54, 54 ,54,0.6);
 }
 
