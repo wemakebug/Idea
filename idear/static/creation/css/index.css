@@ -107,26 +107,24 @@
 }
 .name {
 	float:left;
-	width:100px;
+	width:180px;
 	height:20px;
+	overflow:hidden;
 }
 a {
 	text-decoration: none;
 	color: #444;
 }
 h5 {
-	float: left;
-	font-size: 22px;
-	font-family: 宋体;
-	margin: 30px 0 10px;
-	text-align: center;
+	font-size: 18px;
+	font-family: 幼圆;
 	width: 100%;
 }
 .block-hot {
-	width:100px;
+	width:140px;
 	height:80px;
 	float:left;
-	margin-left:174px;
+	margin-left:120px;
 }
 .usedfollow {
 	float:right;
@@ -158,21 +156,30 @@ h5 {
 	height:68%;
 }
 .text {
-	margin-left: 30px;
+    float:left;
+	margin:25px 0 0 30px;
+	width:80%;
+	height:50px;
+    overflow:hidden;
+    line-height:24px;
 }
 .text-x {
 	float:left;
-	margin:0 30px;
+	margin:10px 0 0 30px;
 	width: 80%;
 	height: 107px;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 5;
 	overflow: hidden;
+	font-size:15px;
+	font-family:幼圆;
+	line-height:22px;
 }
+
 .follow {
 	float:right;
-	margin-right: 5px;
+	margin: -1px 0 0 5px;
 }
 .follow span {
 	font-size:15px;

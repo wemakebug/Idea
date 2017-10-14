@@ -10,6 +10,9 @@ from django.utils import timezone
 '''
 
 class Admin(models.Model):
+    '''
+    管理员表， 用作后台管理
+    '''
     Id = models.AutoField(primary_key=True)
     Account = models.CharField(null=False, blank=False, unique=True, max_length=25)
     Password = models.CharField(null=False, blank=False, max_length=25)
@@ -316,3 +319,19 @@ class HelpApplication(models.Model):
     def __unicode__(self):
         return self.Id
 
+
+class UserImageForge(models.Model):
+    '''
+    用户图片仓库字段，用于富文本编辑器的文件上传功能的实现
+    '''
+    Id = models.AutoField(primary_key=True)
+    Img = models.ImageField(upload_to='photos/%Y/%m/%d/user', null=True, blank=True)
+    IsUse = models.BooleanField(default=True)
+    UploadDate = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, related_name="UserImageForge_User_set")
+
+    def __unicode__(self):
+        try:
+            return str(self.user.UserName) + str(self.Img)
+        except:
+            return str(self.Img)

@@ -7,7 +7,7 @@ body,html{
 	width:100%;
 	height:100%;
 	/*overflow-y:hidden;*/
-    font-family: kaiti;
+    /*font-family: kaiti;*/
 }
 .wrap {
     width: 100%;
@@ -35,7 +35,7 @@ body,html{
     width: 15px;
     height: 15px;
     z-index: -8;
-    background-color:rgba(255,245,238, 0.3);
+    background-color:rgba(255,245,238, 0.5);
     animotion: square 25s infinite;
     -webkit-animation: square 25s infinite;
 }
@@ -190,10 +190,11 @@ body,html{
 /*}*/
 .register1-1{
     min-width:40%;
-	min-height:500px;
+	height:70%;
     float: left;
     margin-left: 30%;
-    margin-top: 8%;
+    margin-right: 30%;
+    margin-top: 4%;
     /*border-radius: 50px;*/
     background-color: rgba(253,245,230,0.3);
     -webkit-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
@@ -226,42 +227,54 @@ body,html{
 .center1-1{
     text-align: center;
     width: 100%;
-    height: 40px;
-    line-height: 40px;
+    height: 60px;
+    line-height: 60px;
     margin-top: 1px;
 }
 .center1-2{
     text-align: center;
-    width: 50%;
-    height: 40px;
-    line-height: 40px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
     margin-top: 5px;
-    float: left;
 }
 .center1-4{
     width: 100%;
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
     margin-top: 5px;
     /*text-indent: 110px;*/
     text-align: center;
 }
 .input1-1{
-    border: 1px solid rgba(54, 54 ,54,0.9);
-    font-size: 1em;
-    padding: .25em .5em .3125em;
-    color: #5E6C77;
-    border-radius: .25em;
+    border: 1px solid rgba(54, 54 ,54,0.3);
+    font-size: 21px;
+    padding: 0.55em 5.3em .475em 0.37em;
+    color: rgb(54, 54 ,54);
+    /*border-radius: .25em;*/
     background: transparent;
     -webkit-transition: all .100s;
     transition: all .100s;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
+    width: 55%;
+}
+.input1-11{
+    border: 1px solid rgba(54, 54 ,54,0.3);
+    font-size: 21px;
+    padding: 0.55em 5.3em .475em 0.37em;
+    color: rgb(54, 54 ,54);
+    /*border-radius: .25em;*/
+    background: transparent;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    /*font-family: kaiti;*/
     width: auto;
 }
 .input1-2{
     border: 1px solid rgba(255,250,250,0.9);
-    width: 100px;
-    font-size: 1em;
+    width: 55%;
+    height: 50px;
+    font-size: 21px;
     padding: .25em .5em .3125em;
     color: rgb(255,250,250);
     border-radius: .25em;
@@ -269,9 +282,9 @@ body,html{
     /*background: transparent;*/
     -webkit-transition: all .100s;
     transition: all .100s;
-    margin-left: 55px;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
     background-color: #539092;
+    margin-top: 20px;
 }
 .input1-3{
     border: 1px solid rgba(255,250,250,0.9);
@@ -285,7 +298,7 @@ body,html{
     -webkit-transition: all .100s;
     transition: all .100s;
     margin-right: 55px;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
     background-color: #539092;
 }
 .input1-4{
@@ -298,7 +311,7 @@ body,html{
     background: transparent;
     -webkit-transition: all .100s;
     transition: all .100s;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
     cursor:pointer;
 }
 .input1-5{
@@ -312,7 +325,7 @@ body,html{
     -webkit-transition: all .100s;
     transition: all .100s;
     margin-right: 70px;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
 }
 .register1-3{
     font-size:1.25em ;
@@ -364,7 +377,7 @@ body,html{
     background: transparent;
     -webkit-transition: all .100s;
     transition: all .100s;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
 }
 .back{
     width: 100%;
@@ -383,7 +396,7 @@ body,html{
     /*background-color: rgba(230,230,250,0.8);*/
     -webkit-transition: all .100s;
     transition: all .100s;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
     cursor: pointer;
     font-weight: bold;
 }

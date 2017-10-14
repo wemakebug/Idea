@@ -13,13 +13,13 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
-
-    $('.nav li a').each(function () {
+    $('.nav_main li a').each(function () {
         $this = $(this);
         if ($this[0].href == String(window.location.href)) {
             $this.addClass('active');
         }
     });
+
     var user_img = document.getElementById('user_img');
     var username = getCookie('username');
     if (username === null || username === '') {
@@ -126,12 +126,5 @@ $(document).ready(function () {
         });
     }
 })(jQuery);
-/*
-$(function(){
-  $('#slogan').typer({
-    search: '不完美',
-    replace: ['在努力完美', '等着你']
-  })
-});*/
 
 

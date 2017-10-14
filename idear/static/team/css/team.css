@@ -5,38 +5,43 @@ html{
 .first {
 	/*position: relative;*/
 	font-family: 宋体;
-	margin: 66px 10.5% 0;
+    overflow: hidden;
+    color: #444;;
+	margin: 66px auto 0;
 	width:80%;
-
-
 }
 .clear{
 	clear:both;
 	width:100%;
-	height: 50px;
-
+	height: 15px;
 }
-.second{
-	margin: 40px 2.5% 0;
-	padding: 0;
-	float: left;
-	width: 32%;
-	height: 290px;
-
+.second_0{
+    float: left;
+    width: 75%;
+    margin: 0 1%;
 }
+/*.second{*/
+	/*margin: 40px 2% 0 4.5%;*/
+	/*padding: 0;*/
+	/*float: left;*/
+	/*width: 41%;*/
+	/*height: 305px;*/
+
+/*}*/
  .border_0{
+     margin: 40px 2% 0 4.5%;
 	 float: left;
-	 height: 100%;
-	 width: 100%;
+	 height: 305px;
+	 width: 41%;
 	 background-color:rgba(255, 255, 255, 1);
 	 box-shadow: 0 5px 5px 0 rgba(211, 211, 211, 0.8);
      border-radius: 10px;
  }
 
 .photo_0{
-	height: 15%;
-	width: 8%;
-	margin: 12px 9% 0;
+	height: 19%;
+	width: 17%;
+	margin: 5% 8% 0;
 	background-color:rgba(255, 255, 255, 0.6);
 	z-index: 99;
 	cursor:pointer;
@@ -48,125 +53,103 @@ html{
 	margin: 20px 10% 0;
 	z-index: 99;
 }
+.leftMatter{
+    float: right;
+    width: 30% ;
+    height: 100%;
+    margin: -36% 5% 0 5%;
+}
+.leftMatter p {
+    font-size: 12px;
+    color: #7A8B8B;
+}
+.teamTag{
+    height: 80%;
+    margin: 0;
+}
+.repo-language-color {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
 .content_0{
-	font-size: 15px;
-	height: 125px;
-	width: 88%;
-	margin: 3px 5%;
+	font-size: 14px;
+    text-indent: 2em;
+	height: 100%;
+	width: 45%;
+	margin: 4% 0 0 8%;
 	z-index: 99;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-    word-break:break-all;
+    display: -webkit-box;
+    display: -moz-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 	cursor:pointer;
 }
 .referral{
+    width: 75%;
 	float: left;
-	width: 100%;
-	margin: 6px 0;
+	margin: -13% 27% 0;
 }
-.referral_0{
-    text-align: center;
+.referral h3{
 	font-weight: bold;
-	margin: 15px ;
+	margin: 0 ;
+    cursor:pointer;
 }
+.referral p{
+    color: #7A8B8B;
+    margin: 3% 0;
+}
+.applyHelp{
 
-.broadSide{
-	float: left;
-	width: 20%;
-	/*position:absolute;*/
-	margin: -760px 79%;
-}
-.intro_1{
-	width: 85%;
-	height: 230px;
-	margin: 99px 22px ;
-	background-color:#8bcfcc;
-	box-shadow: 6px 6px 2px 2px #bdc3c7;
-    border-radius: 10px 70px;
-	opacity:0.8;
-}
-.intro_1 p {
-	float: left;
-	margin-left: 11%;
-	text-align: left;
-	width: 86%;
-}
-.feature button{
-	border: none;
-	cursor: pointer;
-	background-color: white
-}
-.classify{
-	float: right;
-    margin: -80px -27px;
-}
- .tag hr {
-	 border: 0;
-	 border-top: 1px solid #c0c5cd;
-	 margin-bottom: 15px;
-	 position: relative;
- }
- .tag hr:before{
-    content: '';
-    width: 60px;
-    height: 4px;
-    background-color: #57cecd;
-    position: absolute;
-    bottom: 0;
- }
- .tag a{
-    font-size: 15px;
-    text-decoration: none;
- }
-  .tag span{
-    display: inline-block;
-    margin-bottom: 8px;
-    font-family:幼圆;
- }
-
- .allsign{
-    border: 1px solid #c0c5cd;
-    background-color: #eeeeee;
+    border: none;
+    background: #539092;
+    cursor :pointer;
+    width: 15%;
+    margin:0 0 0 65%;
     border-radius: 5px;
-    padding: 6px 15px;
-    color: #a9b1b5;
+}
+.more_0 {
+    color: #444444;
+    width: 89%;
+    height: 30px;
+    text-align: center;
+    float: left;
+    margin: 40px 4.5%;
+    margin-bottom: 2%;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px 2px #bdc3c7;
+    cursor: pointer;
 }
 
-.allsign:hover{
-     color: #fff;
-     background-color: #57cecd;
-}
-
-.more{
-	width:918px;
-	height:30px;
-	text-align: center;
-	float:left;
-	margin-top:30px;
-	margin-left:65px;
-	margin-bottom:2%;
-	background-color:white;
-	border-radius: 3px;
-	box-shadow: 2px 2px 2px 2px #bdc3c7;
-}
 /*动态点赞开始*/
 .praise{
-    width:17px;
-    height:17px;
-	margin: 0 80%;
-    cursor: pointer;
+    float: right;
+    width:18px;
+    height:18px;
+	margin: -4% 10%;
+    /*cursor: pointer;*/
     font-size: 12px;
     text-align:center;
     position: relative;
 }
+
 #praise{
+    cursor :pointer;
     display:block;
     width:17px;
     height:17px;
+    z-index: 99;
 }
 #praise-txt{
+    font-size: 13px;
     height:25px;
+    margin: -17px 18px;
     line-height:25px;
     display: block;
 }
@@ -406,3 +389,71 @@ html{
 }
 /*点赞数量加减动画结束*/
 /*动态点赞结束*/
+.broadSide{
+	float: right;
+	width: 22%;
+	/*position:absolute;*/
+	margin: 4% 0;
+}
+.intro_1{
+	width: 85%;
+	height: 230px;
+	margin: 0px 22px ;
+	background-color:#8bcfcc;
+	box-shadow: 6px 6px 2px 2px #bdc3c7;
+    border-radius: 10px 70px;
+	opacity:0.8;
+}
+
+.intro_1 p {
+    text-indent: 2em;
+    line-height:25px;
+	float: left;
+	margin:0 11%;
+	text-align: left;
+	width: 82%;
+}
+/*.feature button{*/
+	/*border: none;*/
+	/*background-color: white*/
+/*}*/
+.classify{
+	float: right;
+    margin: 3px -27px;
+}
+ .tag hr {
+	 border: 0;
+	 border-top: 1px solid #c0c5cd;
+	 margin-bottom: 15px;
+	 position: relative;
+ }
+ .tag hr:before{
+    content: '';
+    width: 60px;
+    height: 4px;
+    background-color: #57cecd;
+    position: absolute;
+    bottom: 0;
+ }
+ .tag a{
+    font-size: 15px;
+    text-decoration: none;
+ }
+  .tag span{
+    display: inline-block;
+    margin-bottom: 8px;
+    font-family:幼圆;
+ }
+
+ .allsign{
+    border: 1px solid #c0c5cd;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    padding: 6px 15px;
+    color: #a9b1b5;
+}
+
+.allsign:hover{
+     color: #fff;
+     background-color: #57cecd;
+}

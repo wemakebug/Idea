@@ -1,0 +1,22 @@
+.main_block{
+    width: 100%;
+    display: inline;
+    margin-top: 66px;
+}
+.release_pro{
+    width: 80%;
+    height: 50px;
+    margin-top: 1%;
+}
+.pro_edit{
+    width: 40%;
+    height:100%;
+    background: #295E6A;
+    float: left;
+}
+.pro_chance{
+    width: 60%;
+    height:100%;
+    background:#0b94ea;
+    float: right;
+}

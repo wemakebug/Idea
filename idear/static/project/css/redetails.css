@@ -6,27 +6,22 @@ body{
     height:auto;
     overflow:hidden;
 	}
-
 .content-all{
     margin-top:100px;
-    width:1400px;
+    width:80%;
     height:auto;
-    margin-left:10%;
 	}
 
 .main-left{
     float:left;
-    /*width:55%;*/
     width:70%;
     height: auto;
-    /*background-color: #f2f2f2;*/
-    /*background-color:indianred;*/
     margin-left: 15%;
     }
 /*左上项目详情*/
 .content-top {
     width: 100%;
-    height:  700px;
+    height:  auto;
     display: inline-block;
     position: relative;
     float: left;
@@ -54,9 +49,9 @@ body{
     display: inline-block;
     text-align: center;
     background:  #539092;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1px;
-    padding: 30px 8px 15px;
+    padding: 26px 8px 15px;
     border-top-right-radius:8px;
     border-bottom-right-radius:8px;
     width: 8%;
@@ -103,7 +98,6 @@ body{
     text-align:center;
     font-family:宋体;
 }
-
 .ptime{
     display:inline-block;
     color: gray;
@@ -111,29 +105,31 @@ body{
     font-size: 18px;
     font-weight: lighter;
     margin-top: 8px;
-
 }
 .description{
-    height:400px;
+    height:auto;
     width:100%;
 }
 .des{
-    overflow:auto;
-    height:80%;
-    width:90%;
-    font-size: 40px;
-    border-top:1px solid #205D67;
+    height:auto;
+    width:85%;
+    font-size: 18px;
     color:black;
 }
+
 .option{
-    width:80%;
+    width:82%;
     height:100px;
+    color:black;
+    margin-top:40px;
 }
+
+
 .likebutton{
     display: inline-block;
     width:13%;
     height:50%;
-    margin:11px 0 0 40%;
+    margin:11px 0 0 0;
     font-size: 14px;
     line-height: 32px;
     color: #8590a6;
@@ -142,11 +138,13 @@ body{
     background: none;
     border: 1px solid rgb(204, 216, 225);
     border-radius: 10px;
-    background-color:  #7ECBA1 ;
+    background-color:#ffffff ;
     border-color: #539092 ;
+    float:left;
 }
+
 .likebutton:hover{
-    background-color: #ffffff;
+    background-color: #ABCDCB;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -158,7 +156,6 @@ body{
 .likebutton:active{
     background-color: #ffffff;
     border-radius: 10px;
-
 }
 .plike{
     width:30%;
@@ -167,23 +164,34 @@ body{
     margin-left:10%;
     color: #8590a6;
 }
+.op-tip{
+    width:43%;
+    height:40px;
+    float:right;
+    margin-top: 18px;
+}
 .home-b-collection{
-    float:right;
-    width:62px;
-    margin-top:3%;
-    font-size:15px;
+    float:left;
+    width:20%;
+    font-size:18px;
+    margin-left: 40px;
+
 }
-.home-b-report{
-    float:right;
-    width:62px;
-    margin-top:3%;
-    font-size:15px;
-}
+
 .home-b-share {
-	width:60px;
-	float:right;
-    margin-top:-11.5%;
-	font-size:15px;
+	width:20%;
+	float:left;
+	font-size:18px;
+    margin-top: -114px;
+    margin-left:5px;
+
+}
+.home-b-comment {
+	width:20%;
+	float:left;
+	font-size:18px;
+    margin-left:5px;
+
 }
 .share-icon{
     margin:20px auto 0;
@@ -222,22 +230,27 @@ body{
 .share-buttons:not(:last-child):nth-last-child(2) {
 	-webkit-transition-delay: 50ms;
 	transition-delay: 20ms;
-	background-image: url(../imgs/weibo.png);
+	background-image: url(../../project/imgs/weibo.svg);
 	background-size: contain;
 }
 .share-buttons:not(:last-child):nth-last-child(3) {
 	-webkit-transition-delay: 75ms;
 	transition-delay: 40ms;
-	background-image: url(../imgs/weixin.png);
+	background-image: url(../../project/imgs/weixin.svg);
 	background-size: contain;
 }
 .share-buttons:not(:last-child):nth-last-child(4) {
 	-webkit-transition-delay: 100ms;
 	transition-delay: 60ms;
-	background-image: url(../imgs/qq.png);
+	background-image: url(../../project/imgs/qq.svg);
 	background-size: contain;
 }
-
+.home-b-report{
+    float:left;
+    width:20%;
+    font-size:18px;
+    margin-left:5px;
+}
 
 .prcontent{
     font-size: 20px;
@@ -247,49 +260,78 @@ body{
     height:25%;
     float:right;
 }
-
-/*左下招募帖*/
+/*招募帖*/
+.content-middle{
+    width:100%;
+    height:auto;
+    overflow:hidden;
+    background-color: #ffffff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
 .rtitle{
     width:100%;
-    height:12%;
+    height:50px;
     text-align: center;
     font-size:2em;
+    overflow: hidden;
 }
 .rmain{
     width:100%;
-    height:70%;
-    border-bottom:1px solid #DDDDDD;
+    height:auto;
     font-size:15px;
+    overflow: hidden;
 }
 .rm-header{
     width:100%;
-
-    border-bottom:1px solid #DDDDDD;
+    height:60px;
     line-height: 50px;
+    overflow: hidden;
 }
-.rm-h1{
-    width:15%;
 
+.rm-h1{
+    width:25%;
+    height:100%;
     float:left;
-    margin-left: 5%;
+    background-color: #ABCDCB;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin-left:5.5%;
+
 }
 .rm-h2{
-    width:15%;
+    width:30%;
+    height:100%;
     float:left;
-
-    margin-left:15%;
+    background-color: #ABCDCB;
+    margin-left: 10%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
 .rm-h3{
-    width:40%;
-
-    float:right;
+    width:13%;
+    height:100%;
+    float:left;
+    background-color:  #ABCDCB;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin-left:10%;
 }
-
 .rm-nav{
     width:20%;
-    height:14%;
+    height:40px;
+    margin-top:10px;
     margin-left:5%;
     font-size:20px;
+}
+.rm-middle{
+    width:100%;
+    height:auto;
+    overflow: hidden;
 }
 .rimg{
     width:30px;
@@ -297,17 +339,33 @@ body{
     vertical-align:middle;
 }
 .rcontent{
-    width:95%;
-    height:73%;
-    border: 1px solid black;
+    width:85%;
+    height:auto;
+    overflow: hidden;
+}
+.rcontent-main{
+    width:60%;
+    height:auto;
+    float:left;
+    font-size: 18px;
+    margin-top:10px;
 }
 .rfcontent{
-    margin-top:1%;
+    margin-top:3%;
     width:16%;
     height:75%;
+    overflow: hidden;
+}
+.lastday{
+    float:right;
+    width:180px;
+    height:180px;
+    background-color:  #ABCDCB ;
+    /*margin-top:20%;*/
+
 }
 a.rbutton {
-            height:80%;
+            height:35px;
 			position: relative;
 			color: rgba(255,255,255,1);
 			text-decoration: none;
@@ -338,7 +396,19 @@ a.rbutton:active {
 }
 .rfooter{
     width:100%;
-    height:15%;
+    height:130px;
+    overflow: hidden;
+}
+.rclose{
+    width:50%;
+    height:60px;
+    margin-top:25px;
+    font-size:20px;
+}
+.close{
+    width:35px;
+    height:35px;
+    vertical-align: middle;
 }
 .middle{
     height:50px;
@@ -353,15 +423,18 @@ a.rbutton:active {
     -moz-border-radius: 8px;
     border-radius: 8px;
     overflow:hidden;
+    margin-left:15%;
     /*margin-top: 50px;*/
-
 }
 .comment{
     width:100%;
     height:auto;
     overflow:hidden;
 }
-
+.c-all{
+    width:100%;
+    height:auto;
+}
 .ctitle{
     width:100%;
     height:8%;
@@ -378,38 +451,31 @@ a.rbutton:active {
     margin-left:8%;
     margin-top:5%;
 }
-.w-input{
-    width:90%;
-    height:60%;
-    margin-left:5%;
-    overflow:hidden;
-    resize:none;
-    border:1px solid black;
 
-}
 .carea {
     width: 70%;
     height: 100px;
     float: right;
     margin: 50px 15% 0 0;
-
 }
 .tocomment{
-    display:block;
+
     width:100%;
     height:50px;
+
+}
+.comment-text{
+    width:100%;
+    height: 40px;
+    margin-top:2px;
     border-radius:5px;
     resize:none;
 }
-.emoji{
-    width:25px;
-    height:25px;
-    margin:10px 0 0 10px;
-}
+
 .putcomment{
     width:8%;
     height:30px;
-    margin:5px 3% 0 0;
+    margin-top:5px;
     background-color: #3a87ad;
     border:none;
     float:right;
@@ -418,7 +484,6 @@ a.rbutton:active {
 
 .cmain{
     height:100px;
-
 }
 .c-img{
     display:block;
@@ -432,7 +497,6 @@ a.rbutton:active {
     height:80px;
 	position: relative;
 }
-
 .comment-box:before,  .comment-box:after {
 	content: '';
 	height: 0;
@@ -442,10 +506,10 @@ a.rbutton:active {
 	border-width: 10px 12px 10px 0;
 	border-style: solid;
 	border-color: transparent  #8BCFCC;
-	top: 20px;
+	top: 15px;
 	left: -11px;
 }
- .comment-box:before {
+.comment-box:before {
 	border-width: 11px 13px 11px 0;
 	border-color: transparent rgba(0,0,0,0.05);
 	left: -12px;
@@ -462,8 +526,6 @@ a.rbutton:active {
 	border-radius: 4px 4px 0 0;
     background-color:  #8BCFCC;
 }
-
-
 .comment-name {
 	color: #283035;
 	font-size: 14px;
@@ -472,20 +534,16 @@ a.rbutton:active {
 	margin: 5px 0 10px 5px;
     cursor: pointer;
 }
-
 .comment-name a {
 	color: #283035;
-
 }
-
 .comment-head span {
 	float: left;
 	color: #999;
 	font-size: 13px;
 	margin: 6px 0 10px 20px;
-
 }
-.c-like{
+.clike{
     width:25px;
     height:25px;
     float:right;
@@ -513,9 +571,103 @@ a.rbutton:active {
 	border-radius: 0 0 4px 4px;
     background-color:  #8BCFCC;
 }
-
 .c-reply{
     width:88%;
-    height:80px;
+    height:100px;
     margin-left: 10%;
+}
+.rc-img{
+    display:block;
+    width:40px;
+    height:40px;
+    margin-left:8%;
+    float:left;
+}
+.rc-img::after{
+    content: '';
+	width: 60px;
+	height: 2px;
+	background: #c7cacb;
+	position: absolute;
+	top: 25px;
+	left: -55px;
+}
+.rcomment-box {
+    width:  70%;
+    height:80px;
+	position: relative;
+}
+.rcomment-box:before,  .comment-box:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	border-color: transparent  #8BCFCC;
+	top: 10px;
+	left: -11px;
+}
+.rcomment-box:before {
+	border-width: 11px 13px 11px 0;
+	border-color: transparent  #8BCFCC;
+	left: -12px;
+}
+
+.rcomment-head {
+	height:40%;
+	width:100%;
+    margin-top:5px;
+	border-bottom: 2px solid #E5E5E5;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+    background-color:  #8BCFCC;
+}
+.rcomment-name {
+	color: #283035;
+	font-size: 14px;
+	font-weight: 700;
+	float: left;
+	margin: 5px 0 10px 5px;
+    cursor: pointer;
+}
+.rcomment-name a {
+	color: #283035;
+}
+.rcomment-head span {
+	float: left;
+	color: #999;
+	font-size: 13px;
+	margin: 6px 0 10px 20px;
+}
+.rclike{
+    width:25px;
+    height:25px;
+    float:right;
+    margin:8px 10px;
+}
+.rcreport{
+    width:20px;
+    height:20px;
+    float:right;
+    margin:10px 10px;
+}
+.rcreply{
+    width:20px;
+    height:20px;
+    float:right;
+    margin:10px 10px;
+}
+.rcomment-content {
+	width:100%;
+	height: 55%;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+    background-color:  #8BCFCC;
 }

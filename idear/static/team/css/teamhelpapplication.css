@@ -131,12 +131,12 @@
 }
 .requestdetails1-2{
     width:100%;
-    height:210px;
+    height:470px;
     font-size: 20px;
 }
 .requestdetails1-3{
     width: 75%;
-	height: 200px;
+	height: 450px;
 	border: none;
 	background: transparent;
 	scrollbar-base-color:rgba(30,144,255,0.1);
@@ -156,8 +156,8 @@
 }
 .requestdetails1-5{
     width: 15%;
-	height: 200px;
-    line-height: 200px;
+	height: 90px;
+    line-height: 90px;
     font-size: 20px;
     /*text-align: right;*/
     margin-left: 10%;

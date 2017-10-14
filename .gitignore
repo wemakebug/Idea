@@ -1,7 +1,10 @@
 *.pyc
 
 
-/.idea/
+/.idea/*
 .idea/workspace.xml
 *.xml
 *.docx
+*.iml
+
+

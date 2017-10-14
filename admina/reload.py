@@ -1,6 +1,6 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response,render
-from admina import models
+from . import models
 from django.core.paginator import Paginator
 
 @csrf_exempt
@@ -14,7 +14,7 @@ def label_user(req):
         userlabel = models.UserLabel.objects.all().order_by('Id')
         page = Paginator(userlabel, 6)
         userLabel = page.page(currentpage).object_list
-        print userLabel
+        print(userLabel)
         return render_to_response('second/Label_User.html', {'UserLabel': userLabel})
     if req.method == "POST":
         pass

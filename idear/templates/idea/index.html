@@ -5,31 +5,37 @@
 {%endblock%}
 {%block CSS%}
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
-    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/base.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
 {%endblock%}
 {%block script%}
 
 {%endblock%}
 {%block content%}
-    <div class="top-content-information">
-        {% comment %}<div class="top-name">
-            <div class="center_act">
-                <div id="slogan" data-text="我们不完美">
-                </div>
-            </div>
-        </div>{% endcomment %}
+<div id="myCarousel" class="carousel slide top-content-information">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="{% static 'idea/imgs/bg_top.jpg'%}">
+        </div>
+        <div class="item">
+            <img src="{% static 'idea/imgs/bg_top1.jpg'%}">
+        </div>
+        <div class="item">
+            <img src="{% static 'idea/imgs/bg_top.jpg'%}">
+        </div>
     </div>
+    <a class="carousel-control left top-content-control-left" href="#myCarousel" data-slide="prev"></a>
+    <a class="carousel-control right top-content-control-right" href="#myCarousel" data-slide="next"></a>
+</div>
 <div class="middle">
 	<div class="content">
 		<div class="top-content">
             <div class="content-information">
-                {% comment %}<div class="decoration">
-                    <div style='background-color:#E1F3EA;'></div>
-                    <div style='background-color:#9CCAC6;'></div>
-                    <div style='background-color:#3E7D67;'></div>
-                    <div style='background-color:#200C18;'></div>
-                    <div style='background-color:#E3E2E0;'></div>
-                </div>{% endcomment %}
             </div>
         </div>
 		<div class="main-content">
@@ -39,8 +45,10 @@
 				</div>
 				<div class="usage">
 					<div class="usage_one">
-                        <a href="recruit?sign=all">
-						    <div class="usage_icon"></div>
+                        <a href="recruit?sign=1">
+						    <div class="usage_icon">
+                                {% comment %}<img src="../../static/idea/imgs/recruit.png">{% endcomment %}
+                            </div>
                         </a>
 						<div class="usage_details">
 							<div class="detail-name">
@@ -52,7 +60,7 @@
 						</div>
 					</div>
 					<div class="usage_one">
-                        <a href="#">
+                        <a href="release">
 						    <div class="usage_icon2"></div>
                         </a>
 						<div class="usage_details">
@@ -297,8 +305,10 @@
 		</div>
 	</div>
 </div>
-    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script src="{% static 'base/js/jquery-3.2.1.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'idea/js/index.js'%}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
+    <script>$('.carousel').carousel({interval: 4000})</script>
 {% endblock %}
 
 
