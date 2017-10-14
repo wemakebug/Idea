@@ -2,7 +2,7 @@
 	margin-top: 0;
 	width:100%;
 	/*height:100%;*/
-	font-family: kaiti;
+	/*font-family: kaiti;*/
     background-color: rgba(205, 201, 201,0.1);
 	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
 	overflow: hidden;
@@ -34,7 +34,7 @@
 	/*height:auto;*/
 /*}*/
 .teamdetailsynopsis{
-	width: 48%;
+	width: 40%;
 	height:250px;
 	/*background-color: rgba(127,255,212,0.1);*/
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -43,7 +43,7 @@
 	border-radius: 10px;
 	padding: 5px;
 	/*position: relative;*/
-	margin-left: 17%;
+	margin-left: 28%;
 	margin-top: 6%;
 }
 .teamdetailsynopsis1-1{
@@ -58,6 +58,7 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
+	color: rgba(54, 54 ,54,0.8);
 }
 .teamdetailsynopsis1-3{
 	width:45%;
@@ -65,6 +66,7 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
+	color: rgba(54, 54 ,54,0.8);
 }
 .teamdetailsynopsis1-4{
 	width:45%;
@@ -72,6 +74,7 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
+	color: rgba(54, 54 ,54,0.8);
 }
 .teamdetailsynopsis1-5{
 	width:45%;
@@ -79,6 +82,7 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
+	color: rgba(54, 54 ,54,0.8);
 }
 .teamdetailsynopsis1-6{
 	width:45%;
@@ -88,6 +92,7 @@
 	float: left;
 	text-indent: 2em;
 	margin-left: 10%;
+	color: rgba(54, 54 ,54,0.8);
 }
 .teamdetailsynopsis1-7{
 	width:45%;
@@ -95,16 +100,17 @@
 	font-size: 20px;
 	line-height: 50px;
 	float: right;
+	color: rgba(54, 54 ,54,0.8);
 }
 .details{
-	width: 48%;
+	width: 51%;
 	height:230px;
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     -moz-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     box-shadow:-10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
 	border-radius: 10px;
 	padding: 5px;
-	margin-top: 30px;
+	margin-top: 100px;
 	/*position:relative;*/
 	margin-left: 17%;
 }
@@ -127,9 +133,11 @@
 	background: transparent;
 	scrollbar-base-color:rgba(30,144,255,0.1);
 	scrollbar-highlight-color:transparent;
-	font-family: kaiti;
+	/*font-family: kaiti;*/
 	font-size: 20px;
 	resize: none;
+	color: rgba(54, 54 ,54,0.8);
+	text-indent: 1.5em;
 
 }
 .teamdetailadddiv{
@@ -138,32 +146,9 @@
 	line-height: 50px;
 }
 .details1-4{
-	/*border: 1px solid rgba(54, 54 ,54,0.9);*/
-    width: 100px;
-    font-size: 1em;
-    padding: .25em .5em .3125em;
-    color: rgb(54,54,54);
-    border-radius: .25em;
-	cursor:pointer;
-    /*background: transparent;*/
-	background: -webkit-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
-    background: -o-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
-    background: -moz-linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
-    background: linear-gradient(-90deg,  #E0EEEE,#F0FFFF);
-    opacity: 0.7;
-    -webkit-transition: all .100s;
-    transition: all .100s;
-	font-family: kaiti;
 	margin-left: 77%;
 	margin-top: 6px;
 	position: relative;
-}
-.details1-4:hover{
-	background: -webkit-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
-    background: -o-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
-    background: -moz-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
-    background: linear-gradient(-90deg,   #F0FFFF,#E0EEEE);
-	opacity: 0.9;
 }
 .detailsinput1-1{
 	border: 0 solid rgba(54, 54 ,54,0.9);
@@ -174,7 +159,7 @@
     background: transparent;
     -webkit-transition: all .100s;
     transition: all .100s;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
 }
 #canvas{
 	margin-top: -1000px;
@@ -202,25 +187,28 @@
 }
 .historys1-3{
 	width: 12%;
-	height: 62%;
+	height: 60%;
+	border: 1px solid rgba(54, 54 ,54,0.1);
 	float: left;
+	margin-top: 3px;
 }
 .historys1-4{
-	width: 88%;
+	width: 86%;
 	height: 62%;
 	float: left;
 }
 .historys1-5{
 	width: 95%;
-	height: 30%;
+	height: 40%;
 	font-size: 40px;
-	padding: 2%  0 0  5%;
+	padding: 1%  0 0  5%;
 }
 .historys1-6{
 	width: 95%;
 	height: 50%;
 	font-size: 20px;
 	padding: 0.8%  0 0  5%;
+	color: rgba(54, 54 ,54,0.8);
 }
 .historys1-7{
 	width: 100%;
@@ -229,6 +217,7 @@
 	font-size: 20px;
 	clear: both;
 	text-indent: 1.5em;
+	color: rgba(54, 54 ,54,0.8);
 }
 .project_middle_text {
     font-size: 20px;
@@ -294,27 +283,28 @@
 	background-color: rgba(95,158,160,0.6);
 }
 .headimage{
-	width: 13%;
-	height: 235px;
-	float: right;
-	margin-right: 19%;
-	margin-top: -510px;
+	width: 10%;
+	height: 200px;
+	float: left;
+	margin-left: 17%;
+	margin-top: -570px;
+	border: 1px solid rgba(54, 54 ,54,0.1);
 }
 #headimgss:hover{
-	width: 12%;
-	height: 210px;
-	float: right;
-	margin-right: 19.5%;
-	margin-top: -495px;
+	width: 8%;
+	height: 170px;
+	float: left;
+	margin-left: 18%;
+	margin-top: -555px;
 	border:3px solid rgba(132,112,255,0.5);
 	cursor: pointer;
 }
 .teamlable{
 	width: 13%;
-	height: 250px;
+	height: 600px;
 	float: right;
-	margin-right: 19%;
-	margin-top: -250px;
+	margin-right: 17%;
+	margin-top: -600px;
 }
 .teamlable1-1{
 	width: 100%;
@@ -332,7 +322,7 @@
 }
 .teamlable1-3{
 	width: 100%;
-	height: 260px;
+	height: 540px;
 }
 .teamlable1-4{
 	border: 1px solid rgba(54, 54 ,54,0.1);
@@ -342,7 +332,7 @@
     background: rgba( 181,181,181,0.1);
     -webkit-transition: all .100s;
     transition: all .100s;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
 	font-size: 20px;
 	height: 50px;
 	line-height: 50px;
@@ -353,11 +343,13 @@
     width: 120px;
     display: inline-block;
     text-indent: 1em;
+	color: rgba(54, 54 ,54,0.8);
 }
 .register1-2{
 	font-size:1em ;
     width: 80px;
     display: inline-block;
     text-indent: 1em;
+	color: rgba(54, 54 ,54,0.8);
 }
 

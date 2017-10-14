@@ -5,13 +5,13 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 Examples:
 Function views
     1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^^$', views.home, name='home')
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
 Class-based views
     1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^^$', Home.as_view(), name='home')
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^^blog/', include('blog.urls'))
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
 from idear import views as views
@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^editprofile$',views.editprofile),
     url(r'^apply$', views.apply),
     url(r'^recruit$', views.projects),
-    url(r'^redetails$', views.redetails),
+    url(r'^redetails/$', views.redetails),
     url(r'^projects$', views.projects),
     url(r'^redetail$', views.redetail),
     url(r'^star$', views.star),

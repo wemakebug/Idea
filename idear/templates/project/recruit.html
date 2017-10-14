@@ -11,7 +11,6 @@ idea/css/index.css{% extends 'idea/Base.html' %}
 {% endblock %}
 {% block content %}
     <div class="bg_all">
-
         <div class="bg_left">
             {% for project in projects %}
                 <div class="project_top">
@@ -75,16 +74,16 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                 <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
 
                 {% for obj in projectLabels %}
-                    <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span
-                            class="allsign">{{ obj.ProjectLabelName }}</span></a>
+                    <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}" ><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
                 {% endfor %}
             </div>
         </div>
     </div>
-
 {% endblock %}
 {% block script %}
     <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/index.js'%}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'project/js/more.js' %}"></script>
     <script>
         //限制字符个数
@@ -99,6 +98,10 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                 }
             });
         });
+{#        function chooseTag() {#}
+{#            var obj = document.getElementById("choose_Tag");#}
+{#            obj.setAttribute("class", "Tag_choose");#}
+{#        }#}
     </script>
 {% endblock %}
 
