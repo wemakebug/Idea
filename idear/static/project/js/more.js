@@ -2,18 +2,18 @@
 $(function() {
     $(".project_top").slice(0,1000).show();
     if ($(".project_top").length <= 1000) {
-        $(".project_more").hide();
+        $(".load-more").hide();
     }
-    $(".project_more").on('click',function(e) {
+    $(".load-more").on('click',function(e) {
         e.preventDefault();
         $(".project_top:hidden").slice(0, 2).slideDown();
         if ($(".project_top:hidden").length == 0) {
-            $(".project_more").fadeOut('slow');
+            $(".load-more").fadeOut('slow');
         }
 
 
         if ($(".project_top:hidden").length == 0) {
-            $(".project_more").fadeOut('slow');
+            $(".load-more").fadeOut('slow');
         }
     });
 });

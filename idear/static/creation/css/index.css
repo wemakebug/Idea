@@ -20,9 +20,10 @@
 	margin-left:2.5%;
 }
 .home-right {
-	width:20%;
-	float:right;
-	margin-right:6%;
+    position:fixed;
+	width:280px;
+	float:left;
+	margin-left:1040px;
 }
 .intro {
 	width:100%;
@@ -65,15 +66,16 @@
 }
 .allsign {
 	border: 1px solid #c0c5cd;
-	background-color: #eeeeee;
+	background-color: white;
 	border-radius: 5px;
 	padding: 6px 15px;
-	color: #a9b1b5;
+	color: gray;
 }
 .allsign:hover {
 	color: #fff;
 	background-color: #57cecd;
 }
+
 .intro p {
 	width:86%;
 	float:left;
@@ -139,17 +141,21 @@ h5 {
 	border-bottom-right-radius: 3px;
 }
 .level {
-	width: 70px;
-	height: 18px;
+	width: 35%;
+	height: 20px;
 	margin: 6px 28px -16px;
 	float:left;
-	background: #71adb5 ;
+	background: #53C4BE ;
 	color: #fff;
 	border-radius: 10px;
 	box-shadow: 1px 1px 1px 1px #777777;
+
 }
 .level span {
-	font-size:12px;
+    font-size:12px;
+    display:block;
+	float:left;
+	margin-left:15px;
 }
 .abstract {
 	width:100%;
