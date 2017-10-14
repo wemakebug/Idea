@@ -677,19 +677,14 @@ def homepage(req):
 
 def release(req):
     '''
-    隐私条例页面详情
+    发布项目页面
     :param req:
     :return:
     '''
     if req.method == 'GET':
-        return render_to_response('idea/release.html')
+        return render_to_response('personal/release.html')
     if req.method == "POST":
         pass
-
-
-
-
-
 
 def editprofile(req):
     if req.method == 'GET':

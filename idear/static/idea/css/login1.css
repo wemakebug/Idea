@@ -3,17 +3,10 @@
 	padding:0px;
 	margin:0px;
 }
-body{
+body,html{
     /*font-family: kaiti;*/
-    background-size:cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    width:100%;
+	height:100%;
 }
 .line_1{
     width: 100%;
@@ -51,10 +44,11 @@ body{
 .border_1{
     background-color: rgba(253 ,245 ,230, 0.3);
     min-width:40%;
-	min-height:630px;
+	height:70%;
     float: left;
     margin-left: 30%;
-    margin-top: 6%;
+    margin-right: 30%;
+    margin-top: 4%;
     -webkit-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
     -moz-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
     box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
@@ -106,7 +100,7 @@ body{
     -webkit-transition: all .100s;
     transition: all .100s;
     /*font-family: kaiti;*/
-    width: auto;
+    width: 55%;
 }
 .inputs{
     border-left: 1px solid rgba(54, 54 ,54,0.3);
@@ -115,7 +109,7 @@ body{
     font-size: 21px;
     padding: 0.55em .37em .475em 0.37em;
     color: rgb(54, 54 ,54);
-    width: 27.5%;
+    width: 49.2%;
     /*border-radius: .25em;*/
     background: transparent;
     -webkit-transition: all .100s;
@@ -130,7 +124,7 @@ body{
     font-size: 21px;
     padding: 0.55em .37em .475em 0.37em;
     color: rgb(54, 54 ,54);
-    width: 13%;
+    width: 22%;
     /*border-radius: .25em;*/
     background: transparent;
     -webkit-transition: all .100s;
