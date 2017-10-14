@@ -21,8 +21,14 @@
 	    width:100%;
 
 	}
-    .top-content-control{
-        cursor: crosshair;
+    .top-content-control-left{
+        /*cursor: crosshair;*/
+        cursor: url('../imgs/arrow-left-large.svg'),crosshair;
+
+
+    }
+    .top-content-control-right{
+        cursor: url('../imgs/arrow-right-large.svg'),crosshair;
     }
 	.top-name{
 	    width:100%;

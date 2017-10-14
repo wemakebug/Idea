@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'editprofile$',views.editprofile),
     url(r'apply$', views.apply),
     url(r'recruit$', views.projects),
-    url(r'redetails$', views.redetails),
+    url(r'redetails/$', views.redetails),
     url(r'projects$', views.projects),
     url(r'redetail$', views.redetail),
     url(r'star$', views.star),
