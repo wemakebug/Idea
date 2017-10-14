@@ -66,7 +66,7 @@ html{
 	height: 69%;
 	width: 85%;
     line-height:25px;
-	margin: 3% auto 0;
+	margin: 3.5% auto 0;
 	z-index: 99;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -382,7 +382,8 @@ html{
 .broadSide{
 	float: right;
 	width: 20%;
-	margin: 0 1%;
+	/*position:absolute;*/
+	margin: 0% 1%;
 }
 .intro_1{
 	width: 100%;
@@ -408,7 +409,7 @@ html{
 /*}*/
 .classify{
 	float: right;
-    margin: 3px 1%;
+    margin: 3px 0px;
 }
  .tag hr {
 	 border: 0;
