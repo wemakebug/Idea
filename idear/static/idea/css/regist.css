@@ -190,11 +190,11 @@ body,html{
 /*}*/
 .register1-1{
     min-width:40%;
-	height:70%;
+	height:630px;
     float: left;
     margin-left: 30%;
     margin-right: 30%;
-    margin-top: 4%;
+    margin-top: 20px;
     /*border-radius: 50px;*/
     background-color: rgba(253,245,230,0.3);
     -webkit-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
