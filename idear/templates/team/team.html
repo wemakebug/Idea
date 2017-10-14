@@ -15,25 +15,26 @@
 {#                <div class="second">#}
                     <div class="border_0">
                         <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-                            <img src="{% static 'team/imgs/team.jpg' %}" style="width: 100% ;height: 100%"  alt="">
+                            <img src="{% static 'team/imgs/team.jpg' %}" style=" width: 100% ;height: 100%;border-radius: 6px;"  alt="">
                         </div>
                         <div class="referral">
                             <h3 onclick="window.location.href='teamdetails/{{ team.Id }}'">{{ team.UserName }}</h3>
-                            <p style="font-size: 11px;">入驻时间：2017-10-12</p>
+                            <p>负 责 人：超厉害的 | 团队人数：5人</p>
+                            <p >入驻时间：2017-10-12</p>
                         </div>
 
-                        <div style="height: 56%">
-                            <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-                                {{ team.Introduction }}
-                            </div>
+                        <div style="height: 50%">
                             <div class="leftMatter">
                                 <div class="teamTag">
+                                    团队标签：
                                     <span class="repo-language-color pinned-repo-meta" style="background-color:#f1e05a;"></span>
-                                    JavaScript<br>
-                                    <span class="repo-language-color pinned-repo-meta" style="background-color:#4444;"></span>
+                                    大数据
+                                    <span class="repo-language-color pinned-repo-meta" style="background-color: #0b94ea;"></span>
                                     JavaScript
                                 </div>
-                                 <p>负责人：超厉害的</p>
+                            </div>
+                            <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
+                                {{ team.Introduction }}
                             </div>
                         </div>
     {#                    <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">#}
@@ -74,7 +75,7 @@
                 <div class="tag">
                     <img src="{% static '/creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                     <span>标签</span>
-                    <hr style="width: 85%">
+                    <hr style="width: 100%">
                     <a href="team" sign="all"><span class="allsign">所有</span></a>
                     {% for obj in projectLabels %}
                         <a href="team={{ obj.Id }}" sign="{{ obj.Id }}">
@@ -114,8 +115,8 @@
         });
 	})
      $(function () {
-            $(".block").slice(0, 12).show();
-           if($(".block").length <= 12) {
+            $(".block").slice(0, 6).show();
+           if($(".block").length <= 6) {
            $(".more_0").hide();
            }
             $(".more_0").on('click', function (e) {
@@ -127,6 +128,18 @@
                 $(".block:hidden").slice(0, 4).slideDown();
                 if ($(".block:hidden").length == 0) {
                     $(".more_0").fadeOut('slow');
+                }
+            });
+        });
+
+    $(document).ready(function () {
+            $(".content_0").
+            each(function () {
+                var maxwidth = 120;
+                if ($(this).text().length > maxwidth) {
+                    $(this).text($(this).text().substring(0, maxwidth));
+                    $(this).html($(this).html() +'…')
+                    ;
                 }
             });
         });
