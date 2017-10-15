@@ -14,7 +14,7 @@
             <h2>个人中心/新建项目</h2>
         </div>
         <div class="pro_chance">
-            <div class="chance_ownname"><p>公开</p></div>
+            <div class="openness" id="openness" onclick="getInnerHTML()"><p>公开</p></div>
             <div class="chance_ownname"><a href="#"><p>暂存</p></a></div>
             <div class="chance_ownname chance_release"><button><p>发布</p></button></div>
         </div>
@@ -88,17 +88,31 @@
         function(){
             var oDiv = document.getElementById("cke_1_top"),
             H = 0,
-            Y = oDiv
+            Y = oDiv;
             while (Y) {H += Y.offsetTop; Y = Y.offsetParent}
             window.onscroll = function()
             {
-                var s = document.body.scrollTop || document.documentElement.scrollTop
+                var s = document.body.scrollTop || document.documentElement.scrollTop;
                 if(s>H) {
-                    oDiv.style = "position:fixed;top:66px;border-right:1px solid #c9c9c9;width:43.878087%;min-width:658px"
+                    oDiv.style = "position:fixed;top:66px;width:43.930636%;min-width:658px"
                 } else {
                     oDiv.style = ""
                 }
             }
         }
+    </script>
+    <script type="text/javascript">
+        function getInnerHTML()
+        {
+            document.getElementById("openness").innerHTML = "<p>隐私</p>";
+
+        }
+            {% comment %}var div = document.getElementById('openness');
+            if(div.className.indexOf('openness') >= 0){
+                div.className='openness2';
+            }else{
+                div.className='openness';
+            }
+        }{% endcomment %}
     </script>
 {% endblock %}
