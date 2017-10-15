@@ -11,14 +11,51 @@
 <div class="main_block">
     <div class="release_pro">
         <div class="pro_edit">
-
+            <p>个人中心/新建项目</p>
         </div>
         <div class="pro_chance">
-
+            <div class="chance_ownname"><p>公开程度</p></div>
+            <div class="chance_ownname"><p>暂存</p></div>
+            <div class="chance_ownname chance_release"><p>发布</p></div>
         </div>
+    </div>
+    <div class="pro_status">
+        <div class="now_status">
+            <p>状态：创建中</p>
+        </div>
+    </div>
+    <div class="main_pro_con">
+        <div class="add_img">
+            <div class="chance_add">
+                <div class="add_cover"></div>
+                <div class="add_button">
+                    <a href="#"><h2>添加封面</h2></a>
+                </div>
+            </div>
+            <div class="imgs_history">
+                <div class="his-line"></div>
+                <div class="picture_his">
+                    <p>图片历史库</p>
+                </div>
+            </div>
+            <div class="pic_library">
+                <a href="#"><p>我的图片库</p></a>
+            </div>
+        </div>
+        <div class="rich_text">
+            <textarea id="TextArea1" style="width: 30px;height: 30px" class="ckeditor"></textarea>
+        </div>
+        <div class="chance_type"></div>
     </div>
 </div>
 {% endblock %}
 
 {% block script %}
+    <script type="text/javascript" src={% static "ckeditor/ckeditor-init.js" %}></script>
+    <script type="text/javascript" src={% static "ckeditor/ckeditor/ckeditor.js" %}></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('TextArea1', {
+            customConfig:'{% static "ckeditor_configs/MyCongif.js" %}'
+        });
+    </script>
 {% endblock %}
