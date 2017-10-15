@@ -344,14 +344,14 @@
 
 }
 .user-intro {
-	width:60%;
+	width:70%;
 	height:15%;
 	margin-top:4%;
     margin-left:-0.5%;
 	float:left;
 }
 .user-score {
-	width:55px;
+	width:65px;
 	height:100%;
 	font-size:13px;
 	float:left;
@@ -362,7 +362,7 @@
 	vertical-align:middle;
 }
 .user-id {
-	width: 55px;
+	width: 65px;
 	height:100%;
 	font-size:13px;
 	float:left;
@@ -469,19 +469,27 @@ h5 {
     margin-left:41px;
 }
 .block-bottom-hot{
-    width:40%;
+    width:60%;
     float:left;
-    margin:15px 0 0 57px;
+    margin:-18px 0 0 102px;
+}
+.block-hotl{
+    width:38%;
+    float:left;
+    margin-left:45px;
 }
 .block-imgl{
     width:23px;
     height:23px;
-    margin-left:30px;
+}
+.block-hotc{
+    width:35%;
+    float:left;
+    margin-top:2px;
 }
 .block-imgc{
     width:20px;
     height:20px;
-    margin-left:8px;
 }
 .comment{
     width:740px;
