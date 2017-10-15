@@ -11,6 +11,7 @@
 {%endblock%}
 {%block content%}
 <div class="teamdetail">
+    <div style="width: 100%;height:350px;margin-top: 30px;">
         <div class="details">
             <div class="detailspicture">
                 <img src="{% static 'team/imgs/team.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
@@ -42,8 +43,6 @@
                     <input type="button" value="申请帮助" class="btn btn-info btn-xs" id="petitionhelp">
                 </div>
             </div>
-    {#            <textarea name="details" disabled="disabled" class="details1-3">这个团队是什么什么，团队有某某特色，我们主要发展方向，我们有什么什么技术等等等#}
-    {#            </textarea>#}
         </div>
         <div class="teamspeak">
             <div class="teamdetailsynopsis1-2">
@@ -52,17 +51,14 @@
             </div>
             <div class="teamdetailsynopsis1-4">
                 <span class="register1-3">注册时间：</span>
-    {#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.RegistTime }}>#}
                 {{ team.RegistTime }}
             </div>
             <div class="teamdetailsynopsis1-7">
                 <span class="register1-3">团队分数：</span>
-    {#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Score }}>#}
                 {{ team.Score }}
             </div>
             <div class="teamdetailsynopsis1-6">
                 <span class="register1-2">用户邮箱：</span>
-    {#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Email }}>#}
                  {{ team.Email }}
             </div>
         </div>
@@ -71,14 +67,16 @@
             <div class="teamlable1-2"></div>
             <div class="teamlable1-3">
                 {% for label in labels %}
-                <a href="" style="text-decoration: none;"><span class="teamlable1-4">{{ label.userLabel.Name }}</span></a>
+            <a href="" style="text-decoration: none;"><span class="teamlable1-4">{{ label.userLabel.Name }}</span></a>
                 {% endfor %}
             </div>
         </div>
-        <div class="historys">
-            <div class="historys1-1">
-                 项目历史
-            </div>
+    </div>
+    <div class="historys">
+        <div class="historys1-1">
+             项目历史
+        </div>
+        <div style="width: 80%;height: auto;margin-left: 10%;margin-right: 10%;">
             <div class="historys1-2">
                 <div class="historys1-3">
                     <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
@@ -110,183 +108,184 @@
                     </span>
                     </div>
                 </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
-            </div>
-        </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                     项目名称某某某
-                </div>
-                <div class="historys1-6">
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-2"></span>
-                        <span class="project_middle_text">大数据</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-3"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">数据结构</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">js</span>
-                    </span>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
                 </div>
             </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
-            </div>
-        </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                    项目名称某某某
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
                 </div>
-                <div class="historys1-6">
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-2"></span>
-                        <span class="project_middle_text">大数据</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-3"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">数据结构</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">js</span>
-                    </span>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
-            </div>
-        </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                     项目名称某某某
-                </div>
-                <div class="historys1-6">
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-2"></span>
-                        <span class="project_middle_text">大数据</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-3"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">数据结构</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">js</span>
-                    </span>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
                 </div>
             </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
-            </div>
-        </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                    项目名称某某某
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
                 </div>
-                <div class="historys1-6">
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-2"></span>
-                        <span class="project_middle_text">大数据</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-3"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">数据结构</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">js</span>
-                    </span>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                        项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
-            </div>
-        </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                     项目名称某某某
-                </div>
-                <div class="historys1-6">
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-2"></span>
-                        <span class="project_middle_text">大数据</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-3"></span>
-                        <span class="project_middle_text">互联网</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">数据结构</span>
-                    </span>
-                    <span class="spanwidth">
-                        <span class="project_middle_icon-1"></span>
-                        <span class="project_middle_text">js</span>
-                    </span>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
                 </div>
             </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                        项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
             </div>
         </div>
     </div>

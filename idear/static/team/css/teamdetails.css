@@ -7,7 +7,7 @@
 	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
 	overflow: hidden;
 	font-family: Microsoft Yahei;
-    min-width: 1900px;
+    /*min-width: 1900px;*/
 }
 /*.teamdetailfilter {*/
 	/*width:100%;*/
@@ -65,7 +65,7 @@
 .teamdetailsynopsis1-2{
 	width:100%;
 	height: 50px;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 50px;
 	float: right;
 	color: rgba(54, 54 ,54,0.6);
@@ -81,7 +81,7 @@
 .teamdetailsynopsis1-4{
 	width:100%;
 	height: 50px;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 50px;
 	float: right;
 	color: rgba(54, 54 ,54,0.6);
@@ -89,7 +89,7 @@
 .teamdetailsynopsis1-5{
 	width:45%;
 	height: 50px;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 50px;
 	float: right;
 	color: rgba(54, 54 ,54,0.6);
@@ -97,7 +97,7 @@
 .teamdetailsynopsis1-6{
 	width:100%;
 	height: 50px;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 50px;
 	float: left;
 	color: rgba(54, 54 ,54,0.6);
@@ -105,7 +105,7 @@
 .teamdetailsynopsis1-7{
 	width:100%;
 	height: 50px;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 50px;
 	float: right;
 	color: rgba(54, 54 ,54,0.6);
@@ -121,7 +121,7 @@
 	margin-top: 100px;
 	/*position:relative;*/
     float: left;
-	margin-left: 17%;
+	margin-left: 10%;
 }
 /*.details1-1{*/
 	/*width:100%;*/
@@ -144,20 +144,20 @@
     border-radius: 14px;
 }
 .detailspicture1-1{
-	width: 76%;
+	width: 65%;
 	height: 170px;
 	float: left;
 }
 .detailspicture1-2{
-	width: 65%;
+	width: 90%;
 	height: 50px;
-	font-size: 23px;
+	font-size: 20px;
 	text-indent: 1.5em;
 }
 .detailspicture1-3{
-	width: 65%;
+	width: 90%;
 	height: 90px;
-	font-size: 18px;
+	font-size: 16px;
 	color: rgba(54, 54 ,54,0.6);
 	margin-left: 8%;
 }
@@ -188,19 +188,19 @@
     float: left;
 }
 .praise1{
-    width: 10%;
+    width: 14%;
     height: 30px;
     margin-top: 22px;
     float: right;
 }
 .praise1-1{
-    width: 10%;
+    width: 14%;
     height: 30px;
     margin-top: 21px;
     float: right;
 }
 .praise1-2{
-    width: 12%;
+    width: 15%;
     height: 30px;
     margin-top: 21px;
     float: right;
@@ -749,7 +749,7 @@
 
 /*}*/
 .teamdetailadddiv{
-	width: 10%;
+	width: 12%;
 	height: 30px;
 	line-height: 30px;
 	color: rgba(54, 54 ,54,0.6);
@@ -779,29 +779,29 @@
 	width: 100%;
 }
 .historys{
-	width: 65%;
+	width: 100%;
 	height: auto;
-	margin-left: 18%;
-	margin-right: 10%;
-	margin-top: 5%;
+	/*margin-left: 18%;*/
+	/*margin-right: 10%;*/
+	margin-top: 3%;
 	font-family: "Microsoft Yahei";
     clear: both;
 }
 .historys1-1{
-	width: 100%;
+	width: 90%;
 	line-height: 30px;
 	text-align: center;
 	font-size: 27px;
 	font-family: "Microsoft Yahei";
 }
 .historys1-2{
-	width: 28%;
-	height: 30%;
+	width: 26%;
+	height: 350px;
 	border: solid 2px rgba(220,220,220,0.5);
 	font-family: "Microsoft Yahei";
     float: left;
     margin-left: 2%;
-    margin-right: 3%;
+    margin-right: 2%;
     margin-top: 4%;
     border-radius: 20px;
     -webkit-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
@@ -824,8 +824,8 @@
     border-radius: 14px;
 }
 .historys1-4{
-	width: 70%;
-	height: 62%;
+	width: 67%;
+	height: 200px;
 	float: left;
 	font-family: "Microsoft Yahei";
 }
@@ -847,13 +847,13 @@
 	width: 100%;
 	height: 32%;
 	padding-top: 1%;
-	font-size: 17px;
+	font-size: 16px;
 	clear: both;
 	text-indent: 1.5em;
 	color: rgba(54, 54 ,54,0.6);
 }
 .project_middle_text {
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(54, 54 ,54,0.6);
 	font-family: "Microsoft Yahei";
 }
@@ -915,7 +915,7 @@
     clear: both;
 	width: 65%;
 	height: auto;
-	margin-left: 17%;
+	margin-left: 13%;
 	margin-right: 10%;
 	margin-top: 28%;
 	font-family: "Microsoft Yahei";
@@ -951,11 +951,12 @@
 	cursor: pointer;
 }
 .teamlable{
-	width: 13%;
-	height: 330px;
-	float: right;
-	margin-right: 17%;
+	width: 14%;
+	height: 230px;
+	float: left;
+	/*margin-right: 17%;*/
 	margin-top: 90px;
+    margin-left: 4%;
     overflow: hidden;
 }
 .teamlable1-1{
@@ -975,7 +976,7 @@
 }
 .teamlable1-3{
 	width: 100%;
-	height: 280px;
+	height: 200px;
 	color: rgba(54, 54 ,54,0.6);
 }
 .teamlable1-4{
