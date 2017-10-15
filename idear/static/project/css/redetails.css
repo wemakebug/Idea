@@ -291,7 +291,7 @@ body{
 }
 .r-message{
     display:inline-block;
-    margin:75px 0 0 10px;
+    margin:75px 0 0 70px;
     olor: gray;
     font-family: 幼圆;
     font-size: 18px;
@@ -336,7 +336,7 @@ body{
     float:right;
     width:130px;
     height:130px;
-    background-color: #ABCDCB ;
+    /*background-color: #ABCDCB ;*/
     margin:10px 10px 0 0;
 }
 .size1 {
@@ -542,10 +542,12 @@ a.rbutton:active {
     width:100%;
     height:auto;
     overflow:hidden;
+
 }
 .c-all{
     width:100%;
     height:auto;
+
 }
 .ctitle{
     width:100%;
@@ -568,7 +570,7 @@ a.rbutton:active {
 }
 .ctop{
     width:100%;
-    height:200px;
+    height:150px;
 }
 .u-img{
     width:50px;
@@ -663,7 +665,7 @@ a.rbutton:active {
 .comment-name a {
 	color: #283035;
 }
-.comment-head span {
+.cdate{
 	float: left;
 	color: #999;
 	font-size: 13px;
@@ -673,25 +675,32 @@ a.rbutton:active {
     width:25px;
     height:25px;
     float:left;
-    margin:8px 0 0 60%;
-
+    margin:4px 0 0 57%;
+}
+.clikenum{
+    display:inline-block;
+    float:left;
+    margin-top:10px;
+    color: #999;
+	font-size: 13px;
 }
 .creport{
     width:20px;
     height:20px;
     float:right;
-    margin:10px 10px;
+    margin:7px 10px 0 4px;
 }
 .creply{
     width:20px;
     height:20px;
     float:left;
-    margin:12px 11px;
+    margin:8px 0 0 5px;
 }
 .comment-content {
 	width:100%;
-	height: 55%;
+	height: auto;
 	font-size: 15px;
+    line-height:30px;
 	color: #595959;
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
@@ -764,7 +773,7 @@ a.rbutton:active {
 .rcomment-name a {
 	color: #283035;
 }
-.rcomment-head span {
+.rcdate{
 	float: left;
 	color: #999;
 	font-size: 13px;
@@ -774,27 +783,35 @@ a.rbutton:active {
     width:25px;
     height:25px;
     float:left;
-    margin:8px 0 0 50%;
+    margin:4px 0 0 46.5%;
+}
+.rclikenum{
+    display:inline-block;
+    float:left;
+    margin-top: 10px;
+    color: #999;
+	font-size: 13px;
 }
 .rcreport{
     width:20px;
     height:20px;
     float:right;
-    margin:10px 10px;
+    margin:7px 10px 0 4px;
 }
 .rcreply{
     width:20px;
     height:20px;
     float:left;
-    margin:10px 10px;
+    margin:8px 0 0 5px;
 }
 .rcomment-content {
 	width:100%;
-	height: 55%;
+	height: auto;
 	font-size: 15px;
+    line-height:30px;
 	color: #595959;
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:   #ABCDCB;
+    background-color:  #ABCDCB;
 }
