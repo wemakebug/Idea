@@ -271,13 +271,7 @@ body{
     -moz-border-radius: 15px;
     border-radius: 15px;
 }
-.rtitle{
-    width:100%;
-    height:50px;
-    text-align: center;
-    font-size:2em;
-    overflow: hidden;
-}
+
 .rmain{
     width:100%;
     height:auto;
@@ -286,7 +280,7 @@ body{
 }
 .rm-header{
     width:100%;
-    height:120px;
+    height:150px;
     line-height: 50px;
     position: absolute;
     margin-top: -8px;
@@ -294,6 +288,15 @@ body{
     /*overflow: hidden;*/
     font-size: 15px;
     /*background-color: #2f96b4;*/
+}
+.r-message{
+    display:inline-block;
+    margin:75px 0 0 10px;
+    olor: gray;
+    font-family: 幼圆;
+    font-size: 18px;
+    font-weight: lighter;
+
 }
 .ribbon3 {
     display: inline-block;
@@ -314,41 +317,46 @@ body{
     position: absolute;
 }
 .ribbon3:before {
-  height: 0;
-  width: 0;
-  border-bottom: 8px solid black;
-  border-left: 8px solid transparent;
-  top: -8px;
-  left: 0;
+   height: 0;
+   width: 0;
+   border-bottom: 8px solid  #ABCDCB ;
+   border-left: 8px solid transparent;
+   top: -8px;
+   left: 0;
 }
 .ribbon3:after {
-  height: 0;
-  width: 0;
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
-  border-left: 15px solid #ABCDCB;
-  right: -15px;
+   height: 0;
+   width: 0;
+   border-top: 25px solid transparent;
+   border-bottom: 25px solid transparent;
+   border-left: 15px solid #ABCDCB;
+   right: -15px;
 }
-
-.rm-h2{
-    width:30%;
-    height:100%;
+.lastday{
     float:right;
-    background-color: #ABCDCB;
-    margin-left: 10%;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    width:130px;
+    height:130px;
+    background-color: #ABCDCB ;
+    margin:10px 10px 0 0;
 }
-.rm-h3{
-    width:13%;
-    height:100%;
-    float:right;
-    background-color:  #ABCDCB;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    margin-left:10%;
+.size1 {
+    /*float: right;*/
+    display:inline-block;
+    color: #a1a1a1;
+    line-height: 30px;
+    font-size:20px;
+    margin:3% 0 0 15%;
+}
+.size2 {
+    display:inline-block;
+    font-size: 50px;
+    color: #1b1b1b;
+    margin:15px 0 0 15px;
+}
+.size3 {
+    display:inline-block;
+    font-size: 20px;
+    color: #6d6d6d;
 }
 .rm-nav{
     width:20%;
@@ -377,7 +385,7 @@ body{
     height:auto;
     float:left;
     font-size: 18px;
-    margin-top:10px;
+    margin-top:30px;
 }
 .rfcontent{
     margin-top:3%;
@@ -385,12 +393,12 @@ body{
     height:75%;
     overflow: hidden;
 }
-.lastday{
+.r-number{
     float:right;
     width:230px;
     height:250px;
-    background-color:  #ABCDCB ;
-    margin-bottom:80px;
+    /*background-color:  #ABCDCB ;*/
+    /*margin-bottom:80px;*/
 }
 .progress-pie-chart {
   width: 200px;
@@ -412,20 +420,19 @@ body{
       width: 200px;
       height: 200px;
       clip: rect(0, 200px, 200px, 100px);
-      margin-bottom:10px;
 
 }
 .ppc-progress .ppc-progress-fill {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  left: calc(50% - 100px);
-  top: calc(50% - 100px);
-  width: 200px;
-  height: 200px;
-  clip: rect(0, 100px, 200px, 0);
-  background: #81ce97;
-  transform: rotate(60deg);
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      left: calc(50% - 100px);
+      top: calc(50% - 100px);
+      width: 200px;
+      height: 200px;
+      clip: rect(0, 100px, 200px, 0);
+      background: #81ce97;
+      transform: rotate(60deg);
 }
 .gt-50 .ppc-progress {
   clip: rect(0, 100px, 200px, 0);
@@ -458,9 +465,19 @@ body{
   display: table-cell;
   vertical-align: middle;
 }
-.progress-pie-chart {
-  margin: 50px auto 0;
+.r-progress{
+    display:inline-block;
+    width:200px;
+    text-align: center;
+    font-size:20px;
+    height:30px;
+    font-weight:bold;
+    margin-top:20px;
 }
+/*进度条位置控制*/
+/*.progress-pie-chart {*/
+  /*margin: 50px auto 0;*/
+/*}*/
 a.rbutton {
             height:35px;
 			position: relative;
@@ -520,8 +537,6 @@ a.rbutton:active {
     -moz-border-radius: 8px;
     border-radius: 8px;
     overflow:hidden;
-    margin-left:15%;
-    /*margin-top: 50px;*/
 }
 .comment{
     width:100%;
@@ -537,6 +552,19 @@ a.rbutton:active {
     height:8%;
     text-align: center;
     line-height: 50px;
+}
+.comment1-1{
+	width: 100%;
+	height: 90px;
+	line-height: 90px;
+	text-align: center;
+	font-size: 27px;
+	margin-top: 5px;
+}
+.comment1-2{
+	width: 100%;
+	height: 2px;
+	background-color: rgba(95,158,160,0.6);
 }
 .ctop{
     width:100%;
@@ -621,7 +649,8 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #8BCFCC;*/
+    background-color:   #ABCDCB;
+
 }
 .comment-name {
 	color: #283035;
@@ -667,7 +696,7 @@ a.rbutton:active {
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    /*background-color:  #8BCFCC;*/
+    background-color:   #ABCDCB;
 }
 .c-reply{
     width:88%;
@@ -722,7 +751,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #8BCFCC;*/
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
@@ -767,5 +796,5 @@ a.rbutton:active {
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    /*background-color:  #8BCFCC;*/
+    background-color:   #ABCDCB;
 }

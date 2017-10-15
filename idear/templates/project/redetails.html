@@ -73,13 +73,18 @@
                         </div>
                     </div>
                 </div>
-                  <div class="middle"></div>
-                  <div class="content-middle">
+                   <div class="middle"></div>
+                   <div class="content-middle">
                            <!--此处为招募帖详细内容-->
-{#                          <div class="rtitle">招募帖</div>#}
                           <div class="rmain">
+                              <div class="lastday">
+                                      <span class="size1">剩余时间<br>
+                                      <span class="size2">6</span><span class="size3">天</span>
+                                      </span>
+                              </div>
                               <div class="rm-header">
-                                 <div class="ribbon"><span class="ribbon3">招募帖</span></div>
+                                  <div class="ribbon"><span class="ribbon3">招募帖</span></div>
+                                  <p class="r-message">2017.04.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：20 </p>
                               </div>
                               <div class="rm-nav">
                                   <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
@@ -94,8 +99,8 @@
                                       <li>5、对Node.js，AngularJS等前沿开发框架有一定研究者优先。</li>
                                   </ul>
                                   </div>
-                                  <div class="lastday">
-                                       <div class="progress-pie-chart" data-percent="150">
+                                  <div class="r-number">
+                                       <div class="progress-pie-chart" data-percent="50">
                                        <div class="ppc-progress">
                                             <div class="ppc-progress-fill"></div>
                                        </div>
@@ -105,71 +110,73 @@
                                              </div>
                                        </div>
                                   </div>
+                                       <p class="r-progress">当前招募进度</p>
+
                                   </div>
                               </div>
                           </div>
                           <div class="rfooter">
                                <div class="rfcontent">
                                     <a href="/idear/apply" class="rbutton">申请加入</a>
-
                                </div>
+                          </div>
+                   </div>
+            </div>
+            <div class="middle"></div>
+            <div class="content-footer">
+                <div class="comment">
+                    <div class="comment1-1">评论专区</div>
+                    <div class="comment1-2"></div>
+                    <div class="ctop">
+                        <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
+                        <div class="carea">
+                            <div class="tocomment">
+                                <textarea placeholder="" name="" id="comment-content" class="comment-text"></textarea>
+                            </div>
+                            <button class="putcomment">评论</button>
+                        </div>
                     </div>
-                </div>
+                    <div class="c-all">
+                              <div class="cmain">
+                                  <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
+{#                                  可以加hover点上变成网站logo#}
+                                  <div class="comment-box">
+                                      <div class="comment-head">
+                                          <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
+                                          <span>2017-11-11</span>
+                                          <img class="clike"  src="{% static 'project/imgs/like1.png'%}">
+                                          <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
+                                          <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
+                                      </div>
+                                      <div class="comment-content">
+                                          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                      </div>
+                                  </div>
+                              </div>
 
+                              <div class="c-reply">
+                                  <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                                  <div class="rcomment-box">
+                                      <div class="rcomment-head">
+                                          <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                          <span>2017-11-11</span>
+
+                                          <img class="rclike"  src="{% static 'project/imgs/like1.png'%}">
+                                          <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
+                                          <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                      </div>
+                                      <div class="rcomment-content">
+                                          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                </div>
             </div>
         </div>
-        <div class="middle"></div>
-        <div class="content-footer">
-            <div class="comment">
-                <div class="ctop">
-                    <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
-                    <div class="carea">
-                        <div class="tocomment">
-                            <textarea placeholder="" name="" id="comment-content" class="comment-text"></textarea>
-                        </div>
+    </div>
+    <div class="middle"></div>
 
-                                  <button class="putcomment">评论</button>
-                           </div>
-                      </div>
-                      <div class="c-all">
-                          <div class="cmain">
-                              <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-                              <div class="comment-box">
-                                  <div class="comment-head">
-                                      <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                      <span>2017-11-11</span>
-                                      <img class="clike"  src="{% static 'project/imgs/like1.png'%}">
-                                      <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                      <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
-                                  </div>
-                                  <div class="comment-content">
-                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="c-reply">
-                              <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
-                              <div class="rcomment-box">
-                                  <div class="rcomment-head">
-                                      <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
-                                      <span>2017-11-11</span>
-
-                                      <img class="rclike"  src="{% static 'project/imgs/like1.png'%}">
-                                      <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
-                                      <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
-                                  </div>
-                                  <div class="rcomment-content">
-                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="middle"></div>
     {% block script %}
         <script>
             $(function () {
@@ -183,7 +190,9 @@
                     deg = 360;
                 }
                 $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
-                $('.ppc-percents span').html('1' + '/' + percent/100);
+                  $('.ppc-percents span').html( percent + '/' +  100);
+{#                $('.ppc-percents span').html('1' + '/' + percent/100);#}
+{#                进度条中间显示计算 已招募人数/预计招募人数#}
             });
         </script>
         <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
