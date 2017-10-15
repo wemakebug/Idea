@@ -69,6 +69,8 @@ body,div{
     }
     .active{
         background: #295E6A;
+        border-left:1px solid #cccccc;
+        border-right:1px solid #cccccc ;
     }
 	.nav_main ul li:hover{
         background:#295E6A;
@@ -219,16 +221,6 @@ body,div{
         height: 10%;
         margin-top: 2%;
     }
-    /*.list_image{
-        width: 12%;
-        height: 70%;
-        margin-top: 7%;
-        background: #295E6A;
-        float: left;
-        margin-left: 5%;
-        background: url("../../idea/imgs/atm.png");
-        background-size:100% 100%;
-    }*/
     .list_name{
         width: 70%;
         height:100%;
@@ -300,6 +292,11 @@ body,div{
         float: left;
         padding:12% 15px;
 	}
+    .nav-bottom{
+        width: 100%;
+        height: 1px;
+        background: #CCCCCC;
+    }
     .footer_line{
          width: 100%;
         height: 1px;
