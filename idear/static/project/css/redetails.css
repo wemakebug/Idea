@@ -56,6 +56,7 @@ body{
     border-bottom-right-radius:8px;
     width: 8%;
     top:-2px;
+
 }
 .tags span:before, .tags span:after {
     position: absolute;
@@ -285,26 +286,54 @@ body{
 }
 .rm-header{
     width:100%;
-    height:60px;
+    height:120px;
     line-height: 50px;
-    overflow: hidden;
+    position: absolute;
+    margin-top: -8px;
+    margin-left: -8px;
+    /*overflow: hidden;*/
+    font-size: 15px;
+    /*background-color: #2f96b4;*/
+}
+.ribbon3 {
+    display: inline-block;
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    font-size:30px;
+    font-family:幼圆;
+    font-weight:bold;
+    line-height: 50px;
+    padding-left: 15px;
+    background: #ABCDCB;
+    left: -2px;
+    top: 30px
+}
+.ribbon3:before, .ribbon3:after {
+    content: "";
+    position: absolute;
+}
+.ribbon3:before {
+  height: 0;
+  width: 0;
+  border-bottom: 8px solid black;
+  border-left: 8px solid transparent;
+  top: -8px;
+  left: 0;
+}
+.ribbon3:after {
+  height: 0;
+  width: 0;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 15px solid #ABCDCB;
+  right: -15px;
 }
 
-.rm-h1{
-    width:25%;
-    height:100%;
-    float:left;
-    background-color: #ABCDCB;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    margin-left:5.5%;
-
-}
 .rm-h2{
     width:30%;
     height:100%;
-    float:left;
+    float:right;
     background-color: #ABCDCB;
     margin-left: 10%;
     -webkit-border-radius: 15px;
@@ -314,7 +343,7 @@ body{
 .rm-h3{
     width:13%;
     height:100%;
-    float:left;
+    float:right;
     background-color:  #ABCDCB;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -324,7 +353,7 @@ body{
 .rm-nav{
     width:20%;
     height:40px;
-    margin-top:10px;
+    margin-top:150px;
     margin-left:5%;
     font-size:20px;
 }
@@ -358,11 +387,79 @@ body{
 }
 .lastday{
     float:right;
-    width:180px;
-    height:180px;
+    width:230px;
+    height:250px;
     background-color:  #ABCDCB ;
-    /*margin-top:20%;*/
+    margin-bottom:80px;
+}
+.progress-pie-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  position: relative;
+}
+.progress-pie-chart.gt-50 {
+  background-color: #81ce97;
+}
 
+.ppc-progress {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      left: calc(50% - 100px);
+      top: calc(50% - 100px);
+      width: 200px;
+      height: 200px;
+      clip: rect(0, 200px, 200px, 100px);
+      margin-bottom:10px;
+
+}
+.ppc-progress .ppc-progress-fill {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  clip: rect(0, 100px, 200px, 0);
+  background: #81ce97;
+  transform: rotate(60deg);
+}
+.gt-50 .ppc-progress {
+  clip: rect(0, 100px, 200px, 0);
+}
+.gt-50 .ppc-progress .ppc-progress-fill {
+  clip: rect(0, 200px, 200px, 100px);
+  background: #e5e5e5;
+}
+
+.ppc-percents {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 173.91304px/2);
+  top: calc(50% - 173.91304px/2);
+  width: 173.91304px;
+  height: 173.91304px;
+  background: #fff;
+  text-align: center;
+  display: table;
+}
+.ppc-percents span {
+  display: block;
+  font-size: 2.6em;
+  font-weight: bold;
+  color: #81ce97;
+}
+
+.pcc-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+.progress-pie-chart {
+  margin: 50px auto 0;
 }
 a.rbutton {
             height:35px;
@@ -505,7 +602,7 @@ a.rbutton:active {
 	display: block;
 	border-width: 10px 12px 10px 0;
 	border-style: solid;
-	border-color: transparent  #8BCFCC;
+	/*border-color: transparent  #8BCFCC;*/
 	top: 15px;
 	left: -11px;
 }
@@ -524,7 +621,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:  #8BCFCC;
+    /*background-color:  #8BCFCC;*/
 }
 .comment-name {
 	color: #283035;
@@ -546,8 +643,9 @@ a.rbutton:active {
 .clike{
     width:25px;
     height:25px;
-    float:right;
-    margin:8px 10px;
+    float:left;
+    margin:8px 0 0 60%;
+
 }
 .creport{
     width:20px;
@@ -558,8 +656,8 @@ a.rbutton:active {
 .creply{
     width:20px;
     height:20px;
-    float:right;
-    margin:10px 10px;
+    float:left;
+    margin:12px 11px;
 }
 .comment-content {
 	width:100%;
@@ -569,7 +667,7 @@ a.rbutton:active {
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:  #8BCFCC;
+    /*background-color:  #8BCFCC;*/
 }
 .c-reply{
     width:88%;
@@ -587,7 +685,7 @@ a.rbutton:active {
     content: '';
 	width: 60px;
 	height: 2px;
-	background: #c7cacb;
+	/*background: #c7cacb;*/
 	position: absolute;
 	top: 25px;
 	left: -55px;
@@ -624,7 +722,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:  #8BCFCC;
+    /*background-color:  #8BCFCC;*/
 }
 .rcomment-name {
 	color: #283035;
@@ -646,8 +744,8 @@ a.rbutton:active {
 .rclike{
     width:25px;
     height:25px;
-    float:right;
-    margin:8px 10px;
+    float:left;
+    margin:8px 0 0 50%;
 }
 .rcreport{
     width:20px;
@@ -658,7 +756,7 @@ a.rbutton:active {
 .rcreply{
     width:20px;
     height:20px;
-    float:right;
+    float:left;
     margin:10px 10px;
 }
 .rcomment-content {
@@ -669,5 +767,5 @@ a.rbutton:active {
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:  #8BCFCC;
+    /*background-color:  #8BCFCC;*/
 }

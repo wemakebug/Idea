@@ -34,6 +34,6 @@ urlpatterns = [
     url(r'util5$', reload.util5),
 
     # this url should always in the last
-    url(r'^index$', views.login),
+    url(r'^$', views.login),
 
 ]

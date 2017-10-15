@@ -2,21 +2,175 @@
     width: 100%;
     display: inline;
     margin-top: 66px;
+    height: auto;
 }
 .release_pro{
     width: 80%;
     height: 50px;
-    margin-top: 1%;
+    margin-top: 3%;
 }
 .pro_edit{
-    width: 40%;
+    width: 20%;
     height:100%;
+    float: left;
+    margin-left: 8%;
+}
+.pro_edit p{
+    width: 80%;
+    height: 90%;
+    border: 1px solid transparent;
+    float: right;
+    text-align: center;
+    line-height: 47px;
+    font-size: 1.2em;
+    font-family:幼圆;
+}
+.pro_chance{
+    width: 28%;
+    height:80%;
+    margin-top: 0.4%;
+    float: right;
+    margin-right:13% ;
+}
+.chance_ownname{
+    width: 28%;
+    height: 90%;
+    border: 1px solid #000000;
+    margin-left: 2.5%;
+    float: left;
+    text-align: center;
+    line-height: 38px;
+}
+.chance_ownname p{
+    width: 100%;
+    height: 100%;
+}
+.chance_release{
+    background: #000000;
+    color:white;
+}
+.pro_status{
+    width: 16%;
+    height:35px;
+    float: right;
+    margin-right: 12%;
+    margin-top: 2%;
+}
+.now_status{
+    width: 70%;
+    height:100%;
+    float:right;
+
+}
+.now_status p{
+    width: 100%;
+    height: 100%;
+    font-family: 幼圆;
+    text-align: center;
+    line-height: 35px;
+}
+.main_pro_con{
+    width: 80%;
+    height:auto;
+    margin-top: 4%;
+    /*margin-bottom: 10px;*/
+}
+.add_img{
+    width: 19%;
+    height:900px;
+    float: left;
+    margin-left: 3.5%;
+    border-bottom: 1px solid #c9c9c9;
+    border-top:1px solid #c9c9c9;
+    border-left: 1px solid #c9c9c9;
+}
+.chance_add{
+    width: 90%;
+    height:30%;
+    /*background: #e0e0e0;*/
+   /* border: 1px solid #e0e0e0;*/
+    margin-top:4%;
+}
+.add_cover{
+    width: 100%;
+    height: 90%;
+    background: url('../imgs/default.png');
+    background-size:100% 100% ;
+    /*margin-top: 15%;*/
+
+}
+.add_cover h2{
+    width: 100%;
+    height: 30%;
+    text-align: center;
+    line-height: 64.8px;
+    font-family: 幼圆;
+    color: #ffffff;
+}
+.add_button{
+    width: 100%;
+    height:10%;
+    background: #295E6A;
+}
+.add_button h2{
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    font-size: 1em;
+    font-family: 幼圆;
+    text-align: center;
+    line-height: 27px;
+}
+.imgs_history{
+    width: 100%;
+    height: 5%;
+    margin-top: 8%;
+}
+.his-line{
+    width:60%;
+    height:1px;
+    margin-top: 8%;
     background: #295E6A;
     float: left;
 }
-.pro_chance{
-    width: 60%;
-    height:100%;
-    background:#0b94ea;
+.picture_his{
+    width: 40%;
+    height: 100%;
+
     float: right;
+}
+.picture_his p{
+    width: 100%;
+    height:100%;
+    text-align: center;
+    line-height: 45px;
+}
+.pic_library{
+    width: 100%;;
+    height: 6%;
+    border-bottom: 1px solid #c9c9c9;
+    border-top:1px solid #c9c9c9;
+}
+.pic_library p{
+    width:80%;
+    height: 100%;
+    line-height: 54px;
+    margin-left: 4%;
+    color: #bebebe;
+}
+.rich_text{
+    width: 55%;
+    height:auto;
+    min-height: 1000px;
+    float: left;
+
+}
+.chance_type{
+    width: 20%;
+    min-height: 800px;
+    float: left;
+    border-bottom: 1px solid #c9c9c9;
+    border-top:1px solid #c9c9c9;
+    border-right: 1px solid #c9c9c9;
+
 }
