@@ -11,12 +11,25 @@
 <div class="main_block">
     <div class="release_pro">
         <div class="pro_edit">
-            <p>个人中心/新建项目</p>
+            <h2>个人中心/新建项目</h2>
         </div>
         <div class="pro_chance">
-            <div class="chance_ownname"><p>公开程度</p></div>
-            <div class="chance_ownname"><p>暂存</p></div>
-            <div class="chance_ownname chance_release"><p>发布</p></div>
+            <div class="chance_ownname"><p>公开</p></div>
+            <div class="chance_ownname"><a href="#"><p>暂存</p></a></div>
+            <div class="chance_ownname chance_release"><button><p>发布</p></button></div>
+        </div>
+    </div>
+    <div class="input_pro_title">
+        <form>
+            <input class="input_title" placeholder="请在这里输入标题" autocomplete="off" type="text">
+        </form>
+    </div>
+    <div class="pro_owner">
+        <div class="pro_founder">
+            <p>创建人：</p>
+            <div class="owner_name">
+                <p>somenoe</p>
+            </div>
         </div>
     </div>
     <div class="pro_status">
@@ -24,7 +37,7 @@
             <p>状态：创建中</p>
         </div>
     </div>
-    <div class="main_pro_con">
+    <div class="main_pro_con" id="main_pro_con">
         <div class="add_img">
             <div class="chance_add">
                 <div class="add_cover"></div>
@@ -42,10 +55,22 @@
                 <a href="#"><p>我的图片库</p></a>
             </div>
         </div>
-        <div class="rich_text">
-            <textarea id="TextArea1" style="width: 30px;height: 30px" class="ckeditor"></textarea>
+        <div class="rich_text" id="rich_text">
+            <textarea id="TextArea1" class="ckeditor"></textarea>
         </div>
-        <div class="chance_type"></div>
+        <div class="chance_type">
+            <div class="input_num">
+                <p>所需人数：</p>
+                <input autocomplete="off" type="text">
+            </div>
+            <div class="pro_label">
+                <div class="chance_label">
+                    <p class="pro_label_exh">项目类型</p>
+                    <p class="chance_must">必选</p>
+                </div>
+                <div class="label_name"></div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -57,5 +82,23 @@
         CKEDITOR.replace('TextArea1', {
             customConfig:'{% static "ckeditor_configs/MyCongif.js" %}'
         });
+    </script>
+    <script type="text/javascript">
+        window.onload=
+        function(){
+            var oDiv = document.getElementById("cke_1_top"),
+            H = 0,
+            Y = oDiv
+            while (Y) {H += Y.offsetTop; Y = Y.offsetParent}
+            window.onscroll = function()
+            {
+                var s = document.body.scrollTop || document.documentElement.scrollTop
+                if(s>H) {
+                    oDiv.style = "position:fixed;top:66px;border-right:1px solid #c9c9c9;width:43.878087%;min-width:658px"
+                } else {
+                    oDiv.style = ""
+                }
+            }
+        }
     </script>
 {% endblock %}

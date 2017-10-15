@@ -16,7 +16,7 @@ CKEDITOR.editorConfig = function( config )
     //config.filebrowserWindowWidth = '1000';
     //config.filebrowserWindowHeight = '700';
     config.language =  "zh-cn" ;
-    config.height = '800';
+    config.height = '750';
     //编辑器样式，有三种：'kama'（默认）、'office2003'、'v2'
     //config.skin = "v2";
     //背景颜色
