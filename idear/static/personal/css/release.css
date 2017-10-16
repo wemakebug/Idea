@@ -33,23 +33,8 @@
     float: right;
     margin-right:13% ;
 }
-
-.openness{
-    width: 28%;
-    height: 90%;
-    border: 1px solid #000000;
-    margin-left: 2.5%;
-    float: left;
-    text-align: center;
-    line-height: 36px;
-}
-.openness p{
-    width: 100%;
-    height: 100%;
-}
-.openness p:hover{
-    background: #000000;
-    color:#ffffff;
+#openness{
+    cursor: pointer;
 }
 .chance_ownname{
     width: 28%;
@@ -68,31 +53,11 @@
     background: #000000;
     color:#ffffff;
 }
-.openness2{
-    width: 28%;
-    height: 90%;
-    border: 1px solid #000000;
-    margin-left: 2.5%;
-    float: left;
-    text-align: center;
-    line-height: 36px;
-    display: none;
-}
-.openness2:hover{
-    display: block;
-}
-.openness2 p{
-    width: 100%;
-    height: 100%;
-}
-.openness2 p:hover{
-    background: #000000;
-    color:#ffffff;
-}
 .chance_release button{
     width: 100%;
     height: 100%;
     border:0;
+    cursor: pointer;
     text-align: center;
     line-height: 36px;
     background: #000000;
@@ -115,11 +80,9 @@
     font-size: 1.5em;
     font-family: 幼圆;
 }
-
 .pro_owner{
     width: 20%;
     height: 40px;
-
 }
 .pro_founder{
     width: 100%;
@@ -172,7 +135,7 @@
 }
 .add_img{
     width: 19%;
-    height:500px;
+    height:400px;
     float: left;
     margin-left: 3%;
     border-bottom: 1px solid #c9c9c9;
@@ -181,7 +144,7 @@
 }
 .chance_add{
     width: 90%;
-    height:53%;
+    height:70%;
     /*background: #e0e0e0;*/
    /* border: 1px solid #e0e0e0;*/
     margin-top:4%;
@@ -202,24 +165,10 @@
     font-family: 幼圆;
     color: #ffffff;
 }
-.add_button{
-    width: 100%;
-    height:10%;
-    background: #295E6A;
-}
-.add_button h2{
-    width: 100%;
-    height: 100%;
-    color: #ffffff;
-    font-size: 1em;
-    font-family: 幼圆;
-    text-align: center;
-    line-height: 27px;
-}
 .imgs_history{
     width: 100%;
     height: 11%;
-    margin-top: 39%;
+    margin-top: 6.5%;
 }
 .his-line{
     width:60%;
@@ -312,7 +261,31 @@
     float: left;
 }
 .label_name{
-    width: 100%;
+    width: 90%;
     height: 92.5%;
     overflow: auto;/*超出显示滚动条*/
 }
+.chance_pro_label{
+    min-width: 30%;
+    width:auto;
+    max-width: 100%;
+    overflow: hidden;
+    height: 30px;
+    border: 1px solid #bbbbbb;
+    color:gray;
+    font-size: 0.95em;
+    font-family: 幼圆;
+    margin-left: 2%;
+    margin-top: 8px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+.chance_pro_label:hover{
+    border-color: #295E6A;
+    /*color: #ffffff;*/
+}
+
+
+

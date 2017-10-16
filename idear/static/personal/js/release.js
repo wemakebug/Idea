@@ -1,0 +1,30 @@
+/**
+ * Created by zhanglingxue on 2017/10/16.
+ */
+
+    window.onload = function () {
+        var oDiv = document.getElementById("cke_1_top"),
+            H = 0,
+            Y = oDiv;
+        while (Y) {
+            H += Y.offsetTop;
+            Y = Y.offsetParent
+        }
+        window.onscroll = function () {
+            var s = document.body.scrollTop || document.documentElement.scrollTop;
+            if (s > H) {
+                oDiv.style = "position:fixed;top:66px;width:43.930636%;min-width:658px"
+            } else {
+                oDiv.style = ""
+            }
+        }
+    }
+
+    var div = document.getElementById('openness');
+    div.onclick = function () {
+        if (div.innerHTML == "<p>公开</p>") {
+            div.innerHTML = "<p>隐私</p>";
+        } else {
+            div.innerHTML = "<p>公开</p>";
+        }
+    }
