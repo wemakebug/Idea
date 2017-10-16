@@ -166,21 +166,21 @@ body{
     color: #8590a6;
 }
 .op-tip{
-    width:43%;
+    width:46%;
     height:40px;
     float:right;
     margin-top: 18px;
 }
 .home-b-collection{
     float:left;
-    width:20%;
+    width:75px;
     font-size:18px;
-    margin-left: 40px;
+    /*margin-left: 40px;*/
 
 }
 
 .home-b-share {
-	width:20%;
+	width:75px;
 	float:left;
 	font-size:18px;
     margin-top: -114px;
@@ -188,7 +188,7 @@ body{
 
 }
 .home-b-comment {
-	width:20%;
+	width:75px;
 	float:left;
 	font-size:18px;
     margin-left:5px;
@@ -247,8 +247,8 @@ body{
 	background-size: contain;
 }
 .home-b-report{
-    float:left;
-    width:20%;
+    float:right;
+    width:75px;
     font-size:18px;
     margin-left:5px;
 }
@@ -675,7 +675,7 @@ a.rbutton:active {
     width:25px;
     height:25px;
     float:left;
-    margin:4px 0 0 57%;
+    margin:4px 0 0 270px;
 }
 .clikenum{
     display:inline-block;
@@ -783,7 +783,7 @@ a.rbutton:active {
     width:25px;
     height:25px;
     float:left;
-    margin:4px 0 0 46.5%;
+    margin:4px 0 0 169px;
 }
 .rclikenum{
     display:inline-block;
