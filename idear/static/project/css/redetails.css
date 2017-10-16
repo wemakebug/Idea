@@ -8,23 +8,20 @@ body{
 	}
 .content-all{
     margin-top:100px;
-    width:1400px;
+    width:80%;
     height:auto;
-    margin-left:10%;
 	}
 
 .main-left{
     float:left;
-    /*width:55%;*/
     width:70%;
     height: auto;
-    /*background-color: #f2f2f2;*/
-    margin-left: 18%;
+    margin-left: 15%;
     }
 /*左上项目详情*/
 .content-top {
     width: 100%;
-    height:  700px;
+    height:  auto;
     display: inline-block;
     position: relative;
     float: left;
@@ -52,13 +49,14 @@ body{
     display: inline-block;
     text-align: center;
     background:  #539092;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1px;
-    padding: 30px 8px 15px;
+    padding: 26px 8px 15px;
     border-top-right-radius:8px;
     border-bottom-right-radius:8px;
     width: 8%;
     top:-2px;
+
 }
 .tags span:before, .tags span:after {
     position: absolute;
@@ -110,29 +108,29 @@ body{
     margin-top: 8px;
 }
 .description{
-    height:400px;
+    height:auto;
     width:100%;
 }
 .des{
-    overflow:auto;
-    height:80%;
-    width:90%;
-    font-size: 40px;
-    /*border-top:1px solid #205D67;*/
+    height:auto;
+    width:85%;
+    font-size: 18px;
     color:black;
 }
+
 .option{
-    width:80%;
+    width:82%;
     height:100px;
     color:black;
-
+    margin-top:40px;
 }
+
 
 .likebutton{
     display: inline-block;
     width:13%;
     height:50%;
-    margin:11px 0 0 5%;
+    margin:11px 0 0 0;
     font-size: 14px;
     line-height: 32px;
     color: #8590a6;
@@ -141,18 +139,13 @@ body{
     background: none;
     border: 1px solid rgb(204, 216, 225);
     border-radius: 10px;
-    background-color:  #7ECBA1 ;
+    background-color:#ffffff ;
     border-color: #539092 ;
     float:left;
 }
-.recruit{
-    width:150px;
-    float:left;
-    height:50px;
-    margin:11px 0 0 20%;
-}
+
 .likebutton:hover{
-    background-color: #ffffff;
+    background-color: #ABCDCB;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -172,23 +165,34 @@ body{
     margin-left:10%;
     color: #8590a6;
 }
+.op-tip{
+    width:43%;
+    height:40px;
+    float:right;
+    margin-top: 18px;
+}
 .home-b-collection{
-    float:right;
-    width:62px;
-    margin-top:3%;
-    font-size:15px;
+    float:left;
+    width:20%;
+    font-size:18px;
+    margin-left: 40px;
+
 }
-.home-b-report{
-    float:right;
-    width:62px;
-    margin-top:3%;
-    font-size:15px;
-}
+
 .home-b-share {
-	width:60px;
-	float:right;
-    margin-top:-11.5%;
-	font-size:15px;
+	width:20%;
+	float:left;
+	font-size:18px;
+    margin-top: -114px;
+    margin-left:5px;
+
+}
+.home-b-comment {
+	width:20%;
+	float:left;
+	font-size:18px;
+    margin-left:5px;
+
 }
 .share-icon{
     margin:20px auto 0;
@@ -227,22 +231,27 @@ body{
 .share-buttons:not(:last-child):nth-last-child(2) {
 	-webkit-transition-delay: 50ms;
 	transition-delay: 20ms;
-	background-image: url(../imgs/weibo.png);
+	background-image: url(../../project/imgs/weibo.svg);
 	background-size: contain;
 }
 .share-buttons:not(:last-child):nth-last-child(3) {
 	-webkit-transition-delay: 75ms;
 	transition-delay: 40ms;
-	background-image: url(../imgs/weixin.png);
+	background-image: url(../../project/imgs/weixin.svg);
 	background-size: contain;
 }
 .share-buttons:not(:last-child):nth-last-child(4) {
 	-webkit-transition-delay: 100ms;
 	transition-delay: 60ms;
-	background-image: url(../imgs/qq.png);
+	background-image: url(../../project/imgs/qq.svg);
 	background-size: contain;
 }
-
+.home-b-report{
+    float:left;
+    width:20%;
+    font-size:18px;
+    margin-left:5px;
+}
 
 .prcontent{
     font-size: 20px;
@@ -252,48 +261,114 @@ body{
     height:25%;
     float:right;
 }
-/*左下招募帖*/
-.rtitle{
+/*招募帖*/
+.content-middle{
     width:100%;
-    height:12%;
-    text-align: center;
-    font-size:2em;
+    height:auto;
+    overflow:hidden;
+    background-color: #ffffff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
+
 .rmain{
     width:100%;
-    height:70%;
-    border-bottom:1px solid #DDDDDD;
+    height:auto;
     font-size:15px;
+    overflow: hidden;
 }
 .rm-header{
     width:100%;
-
-    border-bottom:1px solid #DDDDDD;
+    height:150px;
     line-height: 50px;
+    position: absolute;
+    margin-top: -8px;
+    margin-left: -8px;
+    /*overflow: hidden;*/
+    font-size: 15px;
+    /*background-color: #2f96b4;*/
 }
-.rm-h1{
-    width:15%;
+.r-message{
+    display:inline-block;
+    margin:75px 0 0 70px;
+    olor: gray;
+    font-family: 幼圆;
+    font-size: 18px;
+    font-weight: lighter;
 
-    float:left;
-    margin-left: 5%;
 }
-.rm-h2{
-    width:15%;
-    float:left;
-
-    margin-left:15%;
+.ribbon3 {
+    display: inline-block;
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    font-size:30px;
+    font-family:幼圆;
+    font-weight:bold;
+    line-height: 50px;
+    padding-left: 15px;
+    background: #ABCDCB;
+    left: -2px;
+    top: 30px
 }
-.rm-h3{
-    width:40%;
-
+.ribbon3:before, .ribbon3:after {
+    content: "";
+    position: absolute;
+}
+.ribbon3:before {
+   height: 0;
+   width: 0;
+   border-bottom: 8px solid  #ABCDCB ;
+   border-left: 8px solid transparent;
+   top: -8px;
+   left: 0;
+}
+.ribbon3:after {
+   height: 0;
+   width: 0;
+   border-top: 25px solid transparent;
+   border-bottom: 25px solid transparent;
+   border-left: 15px solid #ABCDCB;
+   right: -15px;
+}
+.lastday{
     float:right;
+    width:130px;
+    height:130px;
+    /*background-color: #ABCDCB ;*/
+    margin:10px 10px 0 0;
 }
-
+.size1 {
+    /*float: right;*/
+    display:inline-block;
+    color: #a1a1a1;
+    line-height: 30px;
+    font-size:20px;
+    margin:3% 0 0 15%;
+}
+.size2 {
+    display:inline-block;
+    font-size: 50px;
+    color: #1b1b1b;
+    margin:15px 0 0 15px;
+}
+.size3 {
+    display:inline-block;
+    font-size: 20px;
+    color: #6d6d6d;
+}
 .rm-nav{
     width:20%;
-    height:14%;
+    height:40px;
+    margin-top:150px;
     margin-left:5%;
     font-size:20px;
+}
+.rm-middle{
+    width:100%;
+    height:auto;
+    overflow: hidden;
 }
 .rimg{
     width:30px;
@@ -301,17 +376,110 @@ body{
     vertical-align:middle;
 }
 .rcontent{
-    width:95%;
-    height:73%;
-
+    width:85%;
+    height:auto;
+    overflow: hidden;
+}
+.rcontent-main{
+    width:60%;
+    height:auto;
+    float:left;
+    font-size: 18px;
+    margin-top:30px;
 }
 .rfcontent{
-    margin-top:1%;
+    margin-top:3%;
     width:16%;
     height:75%;
+    overflow: hidden;
 }
+.r-number{
+    float:right;
+    width:230px;
+    height:250px;
+    /*background-color:  #ABCDCB ;*/
+    /*margin-bottom:80px;*/
+}
+.progress-pie-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  position: relative;
+}
+.progress-pie-chart.gt-50 {
+  background-color: #81ce97;
+}
+
+.ppc-progress {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      left: calc(50% - 100px);
+      top: calc(50% - 100px);
+      width: 200px;
+      height: 200px;
+      clip: rect(0, 200px, 200px, 100px);
+
+}
+.ppc-progress .ppc-progress-fill {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      left: calc(50% - 100px);
+      top: calc(50% - 100px);
+      width: 200px;
+      height: 200px;
+      clip: rect(0, 100px, 200px, 0);
+      background: #81ce97;
+      transform: rotate(60deg);
+}
+.gt-50 .ppc-progress {
+  clip: rect(0, 100px, 200px, 0);
+}
+.gt-50 .ppc-progress .ppc-progress-fill {
+  clip: rect(0, 200px, 200px, 100px);
+  background: #e5e5e5;
+}
+
+.ppc-percents {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 173.91304px/2);
+  top: calc(50% - 173.91304px/2);
+  width: 173.91304px;
+  height: 173.91304px;
+  background: #fff;
+  text-align: center;
+  display: table;
+}
+.ppc-percents span {
+  display: block;
+  font-size: 2.6em;
+  font-weight: bold;
+  color: #81ce97;
+}
+
+.pcc-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+.r-progress{
+    display:inline-block;
+    width:200px;
+    text-align: center;
+    font-size:20px;
+    height:30px;
+    font-weight:bold;
+    margin-top:20px;
+}
+/*进度条位置控制*/
+/*.progress-pie-chart {*/
+  /*margin: 50px auto 0;*/
+/*}*/
 a.rbutton {
-            height:80%;
+            height:35px;
 			position: relative;
 			color: rgba(255,255,255,1);
 			text-decoration: none;
@@ -342,7 +510,19 @@ a.rbutton:active {
 }
 .rfooter{
     width:100%;
-    height:15%;
+    height:130px;
+    overflow: hidden;
+}
+.rclose{
+    width:50%;
+    height:60px;
+    margin-top:25px;
+    font-size:20px;
+}
+.close{
+    width:35px;
+    height:35px;
+    vertical-align: middle;
 }
 .middle{
     height:50px;
@@ -357,17 +537,17 @@ a.rbutton:active {
     -moz-border-radius: 8px;
     border-radius: 8px;
     overflow:hidden;
-    margin-left:18%;
-    /*margin-top: 50px;*/
 }
 .comment{
     width:100%;
     height:auto;
     overflow:hidden;
+
 }
 .c-all{
     width:100%;
     height:auto;
+
 }
 .ctitle{
     width:100%;
@@ -375,9 +555,22 @@ a.rbutton:active {
     text-align: center;
     line-height: 50px;
 }
+.comment1-1{
+	width: 100%;
+	height: 90px;
+	line-height: 90px;
+	text-align: center;
+	font-size: 27px;
+	margin-top: 5px;
+}
+.comment1-2{
+	width: 100%;
+	height: 2px;
+	background-color: rgba(95,158,160,0.6);
+}
 .ctop{
     width:100%;
-    height:200px;
+    height:150px;
 }
 .u-img{
     width:50px;
@@ -393,9 +586,15 @@ a.rbutton:active {
     margin: 50px 15% 0 0;
 }
 .tocomment{
-    display:block;
+
     width:100%;
     height:50px;
+
+}
+.comment-text{
+    width:100%;
+    height: 40px;
+    margin-top:2px;
     border-radius:5px;
     resize:none;
 }
@@ -403,7 +602,7 @@ a.rbutton:active {
 .putcomment{
     width:8%;
     height:30px;
-    margin:5px 3% 0 0;
+    margin-top:5px;
     background-color: #3a87ad;
     border:none;
     float:right;
@@ -433,7 +632,7 @@ a.rbutton:active {
 	display: block;
 	border-width: 10px 12px 10px 0;
 	border-style: solid;
-	border-color: transparent  #8BCFCC;
+	/*border-color: transparent  #8BCFCC;*/
 	top: 15px;
 	left: -11px;
 }
@@ -452,7 +651,8 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:  #8BCFCC;
+    background-color:   #ABCDCB;
+
 }
 .comment-name {
 	color: #283035;
@@ -465,7 +665,7 @@ a.rbutton:active {
 .comment-name a {
 	color: #283035;
 }
-.comment-head span {
+.cdate{
 	float: left;
 	color: #999;
 	font-size: 13px;
@@ -474,42 +674,44 @@ a.rbutton:active {
 .clike{
     width:25px;
     height:25px;
-    float:right;
-    margin:8px 10px;
+    float:left;
+    margin:4px 0 0 57%;
+}
+.clikenum{
+    display:inline-block;
+    float:left;
+    margin-top:10px;
+    color: #999;
+	font-size: 13px;
 }
 .creport{
     width:20px;
     height:20px;
     float:right;
-    margin:10px 10px;
+    margin:7px 10px 0 4px;
 }
 .creply{
     width:20px;
     height:20px;
-    float:right;
-    margin:10px 10px;
+    float:left;
+    margin:8px 0 0 5px;
 }
 .comment-content {
 	width:100%;
-	height: 55%;
+	height: auto;
 	font-size: 15px;
+    line-height:30px;
 	color: #595959;
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:  #8BCFCC;
+    background-color:   #ABCDCB;
 }
 .c-reply{
     width:88%;
     height:100px;
     margin-left: 10%;
 }
-.content-middle{
-    width:80%;
-    height:400px;
-    overflow:hidden;
-}
-
 .rc-img{
     display:block;
     width:40px;
@@ -521,7 +723,7 @@ a.rbutton:active {
     content: '';
 	width: 60px;
 	height: 2px;
-	background: #c7cacb;
+	/*background: #c7cacb;*/
 	position: absolute;
 	top: 25px;
 	left: -55px;
@@ -558,7 +760,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:  #8BCFCC;
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
@@ -571,7 +773,7 @@ a.rbutton:active {
 .rcomment-name a {
 	color: #283035;
 }
-.rcomment-head span {
+.rcdate{
 	float: left;
 	color: #999;
 	font-size: 13px;
@@ -580,28 +782,36 @@ a.rbutton:active {
 .rclike{
     width:25px;
     height:25px;
-    float:right;
-    margin:8px 10px;
+    float:left;
+    margin:4px 0 0 46.5%;
+}
+.rclikenum{
+    display:inline-block;
+    float:left;
+    margin-top: 10px;
+    color: #999;
+	font-size: 13px;
 }
 .rcreport{
     width:20px;
     height:20px;
     float:right;
-    margin:10px 10px;
+    margin:7px 10px 0 4px;
 }
 .rcreply{
     width:20px;
     height:20px;
-    float:right;
-    margin:10px 10px;
+    float:left;
+    margin:8px 0 0 5px;
 }
 .rcomment-content {
 	width:100%;
-	height: 55%;
+	height: auto;
 	font-size: 15px;
+    line-height:30px;
 	color: #595959;
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:  #8BCFCC;
+    background-color:  #ABCDCB;
 }

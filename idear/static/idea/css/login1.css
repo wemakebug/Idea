@@ -3,17 +3,10 @@
 	padding:0px;
 	margin:0px;
 }
-body{
+body,html{
     /*font-family: kaiti;*/
-    background-size:cover;
-    background-attachment: fixed;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    width:100%;
+	height:100%;
 }
 .line_1{
     width: 100%;
@@ -51,10 +44,11 @@ body{
 .border_1{
     background-color: rgba(253 ,245 ,230, 0.3);
     min-width:40%;
-	min-height:630px;
+	height:630px;
     float: left;
     margin-left: 30%;
-    margin-top: 6%;
+    margin-right: 30%;
+    margin-top: 20px;
     -webkit-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
     -moz-box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
     box-shadow: 16px 18px 16px rgba(207, 207, 207,0.5);
@@ -90,11 +84,11 @@ body{
     padding-left: 22%;
 }
 .forget_password{
-    width: 10%;
+    width: 15%;
     font-size: 13px;
     cursor:pointer;
-    margin-top:7px;
-    margin-left: 69%;
+    /*margin-top:7px;*/
+    margin-left: 75%;
 }
 .input_1{
     border: 1px solid rgba(54, 54 ,54,0.3);
@@ -106,7 +100,31 @@ body{
     -webkit-transition: all .100s;
     transition: all .100s;
     /*font-family: kaiti;*/
-    width: auto;
+    width: 55%;
+}
+.inputs{
+   border: 1px solid rgba(54, 54 ,54,0.3);
+    font-size: 21px;
+    padding: 0.55em 5.3em .475em 0.37em;
+    color: rgb(54, 54 ,54);
+    width: 55%;
+    /*border-radius: .25em;*/
+    background: transparent;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    /*font-family: kaiti;*/
+}
+.forgetinput1{
+    border: 1px solid rgba(54, 54 ,54,0.3);
+    font-size: 21px;
+    padding: 0.55em 5.3em .475em 0.37em;
+    color: rgb(54, 54 ,54);
+    width:15%;
+    /*border-radius: .25em;*/
+    background: transparent;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    cursor: pointer;
 }
 .login_input{
     background-color: #539092;
@@ -314,7 +332,7 @@ body{
     width: 100%;
     height: 30px;
     line-height: 30px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 .back1-1{
     /*border: 1px solid rgba(224,238,224	,0.8);*/
@@ -330,7 +348,7 @@ body{
     /*font-family: kaiti;*/
     cursor: pointer;
     font-weight: bold;
-    margin-left: 83%;
+    margin-left: 85%;
 }
 
 

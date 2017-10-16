@@ -1,0 +1,47 @@
+/* These are just a test styles - you don't need them in your project */
+.htmleaf-header{
+	letter-spacing: -1px;
+	text-align: center;
+    width: 200px!important;
+    height: 200px!important;
+}
+.circle {
+    width: 100px;
+    margin: 6px 6px 20px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.circle canvas {
+    vertical-align: top;
+}
+
+.circle strong {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+}
+
+.circle strong i {
+    font-style: normal;
+    font-size: 0.6em;
+    font-weight: normal;
+}
+
+.circle span {
+    display: block;
+    color: #aaa;
+    margin-top: 12px;
+}
+
+@media (max-height: 600px), (max-width: 480px) {
+    .credits {
+        position: inherit;
+    }
+}

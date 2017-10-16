@@ -1,105 +1,128 @@
-idea/css/index.css{% extends 'idea/Base.html'%}
+idea/css/index.css{% extends 'idea/Base.html' %}
 {% load static %}
-{%block title%}
-   <title>招募项目</title>
-{%endblock%}
-{%block CSS%}
-    <link rel="stylesheet" href="{% static 'project/css/recruit.css'%}">
-    <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
-    <link rel="stylesheet" href="{% static 'project/css/buttons.css'%}">
+{% block title %}
+    <title>招募项目</title>
+{% endblock %}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'project/css/recruit.css' %}">
+    <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'project/css/buttons.css' %}">
     <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-{%endblock%}
-{%block content%}
-<div class="bg_all">
+{% endblock %}
+{% block content %}
+    <div class="bg_all">
+        <div class="bg_left">
+            {% for project in projects %}
+                <div class="project_top">
+                    <div style="display:none;width:100%;height: 100% " onclick="getProjectID()">{{ project.Id }}</div>
+                    <a href="redetails/">
+                        <div class="project_top_1_left">
+                            <img class="project_img" src="{% static 'project/imgs/HeadImg.png' %}">
+                        </div>
+                        <div class="project_top_1_right">
+                            <span class="project_top_1_right-span">{{ project.ProjectName }}</span>
+                            <div class="project_Text_Bg">
+                                <li class="FixText">截止时间:<p
+                                        class="FixText-right">{{ project.EndTime | date:"Y/m/d" }}</p></li>
+                                <li class="FixText">招募状态：<p class="FixText-right">正在进行</p></li>
+                                {#                        <li class="FixText">项目标签：<p class="FixText-right">互联网</p></li>#}
+                                {#                        <li class="FixText">时间：<p class="FixText-right">{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}</p></li>#}
+                            </div>
+                        </div>
+                    </a>
+                    <div class="project_middle">
+                        <script>
+                            function Chang_icon() {
+                                for (var i = 0; i < tag; i++) {
 
-    <div class="bg_left">
-       {%for project in projects%}
-        <div class="project_top">
-        <div style="display: none;width:100%;height: 100% " onclick="getProjectID()">{{project.Id}}</div>
-            <a href="redetails/">
-                <div class="project_top_1_left">
-                    <img class="project_img" src="{% static 'project/imgs/HeadImg.png'%}">
-                </div>
-                <div class="project_top_1_right">
-                    <span class="project_top_1_right-span">{{project.ProjectName}}</span>
-                    <div class="project_Text_Bg">
-                        <li class="FixText">招募人数:<p class="FixText-right">1/{{project.Number}}</p></li>
-                        <li class="FixText">招募状态：<p class="FixText-right">正在进行</p></li>
-{#                        <li class="FixText">项目标签：<p class="FixText-right">互联网</p></li>#}
-{#                        <li class="FixText">时间：<p class="FixText-right">{{project.StartTime | date:"Y/m/d"}}-{{project.EndTime | date:"Y/m/d"}}</p></li>#}
+                                }
+                            }
+                        </script>
+                        <span class="project_middle_fix">所需人员标签：</span>
+                        <span class="project_middle_icon-1"></span>
+                        <span class="project_middle_text">互联网</span>
+                        <span class="project_middle_icon-2"></span>
+                        <span class="project_middle_text">大数据</span>
+                        <span class="project_middle_icon-3"></span>
+                        <span class="project_middle_text">互联网</span>
+                    </div>
+                    <div class="project_bottom_top">
+                        <p class="project_top_1_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project.Description }}</p>
+                        <div class="progress">
+                            <span class="green" style="width:70%;"><span>当前招募进度：1/{{ project.Number }}</span></span>
+                        </div>
                     </div>
                 </div>
-
-            </a>
-            <div class="project_middle">
-                <script>
-                    function Chang_icon() {
-                        for (var i=0;i<tag;i++){
-
-                        }
-                    }
-                </script>
-                <span class="project_middle_icon-1"></span>
-                <span class="project_middle_text">互联网</span>
-                <span class="project_middle_icon-2"></span>
-                <span class="project_middle_text">大数据</span>
-                <span class="project_middle_icon-3"></span>
-                <span class="project_middle_text">互联网</span>
-            </div>
-            <div class="project_bottom_top">
-                    <p class="project_top_1_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{project.Description}}上百条毛巾整齐叠在架上，放眼望去的“奇景”让所有人都不自觉张开嘴赞叹，日本“今治毛巾”的东京南青山旗舰店里，这是每天都在上演的日常。</p>
-                    <div class="progress">
-                    <span class="green" style="width: 100%;"><span>正在进行</span></span>
-                    </div>
-            </div>
-
+            {% endfor %}
+            {#        <div class="project_get_more"><a href="javascript:;" class="load-more f-weight">浏览更多</a></div>#}
         </div>
-{% endfor %}
-    </div>
         <div class="home-right">
-                <div class="intro">
-                    <img src="{% static 'creation/imgs/light.png' %}"
-                         style="width:40px;height:40px;margin:-16px 0px 26px -10px">
-                    <img src="{% static 'idea/imgs/idea_logo.png' %}"
-                         style="width:60px;height:40px;margin:0px 0px -10px 4px">
-                    <p>&nbsp;&nbsp;&nbsp;创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
-                    <button class="add">添加</button>
-                </div>
-
-                <div class="tag">
-                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
-                    <span>标签</span>
-                    <hr>
-                    <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
-
-                    {% for obj in projectLabels %}
-                        <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span
-                                class="allsign">{{ obj.ProjectLabelName }}</span></a>
-                    {% endfor %}
-                </div>
+            <div class="intro">
+                <img src="{% static 'creation/imgs/light.png' %}"
+                     style="width:40px;height:40px;margin:-16px 0px 26px -10px">
+                <img src="{% static 'idea/imgs/idea_logo.png' %}"
+                     style="width:60px;height:40px;margin:0px 0px -10px 4px">
+                <p>&nbsp;&nbsp;&nbsp;创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
+                <button class="add">添加</button>
             </div>
-        <a class="more">加载更多</a>
+
+            <div class="tag">
+                <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                <span>标签</span>
+                <hr>
+                <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
+                {% for obj in projectLabels %}
+                    <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag"
+                                                                                  onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-</div>
+    <a class="more">加载更多</a>
 {% endblock %}
 {% block script %}
-     <script>
-         $(function () {
-            $(".project_top").slice(0, 9).show();
-           if($(".project_top").length <= 9) {
-           $(".more").hide();
-           }
+    <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    {#    <script type="text/javascript" src="{% static 'idea/js/index.js'%}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>#}
+    <script src="{% static 'project/js/more.js' %}"></script>
+    <script>
+        //限制字符个数
+        $(document).ready(function () {
+            $(".project_top_1_text").each(function () {
+                var maxwidth = 100;
+                if ($(this).text().length > maxwidth) {
+                    $(this).text($(this).text().substring(0, maxwidth));
+                    $(this).html($(this).html() + '…')
+                    ;
+                }
+            });
+        });
+        $(function () {
+            $(".project_top").slice(0, 6).show();
+            if ($(".project_top").length <= 6) {
+                $(".more").hide();
+            }
             $(".more").on('click', function (e) {
-
-              if ($(".project_top:hidden").length == 0) {
-               $(".more").css('display', 'none');
-              }
                 e.preventDefault();
-                $(".project_top:hidden").slice(0, 4).slideDown();
+                $(".project_top:hidden").slice(0, 2).slideDown();
+                if ($(".project_top:hidden").length == 0) {
+                    $(".more").fadeOut('slow');
+                }
+
+
                 if ($(".project_top:hidden").length == 0) {
                     $(".more").fadeOut('slow');
                 }
             });
-        })</script>
+        });
+        function calculate_plan() {
+            var RecruitContrast = 1/{{ project.Number }};
+            
+        }
+        {#        function chooseTag() {#}
+        {#            var obj = document.getElementById("choose_Tag");#}
+        {#            obj.setAttribute("class", "Tag_choose");#}
+        {#        }#}
+    </script>
 {% endblock %}
 

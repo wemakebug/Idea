@@ -3,7 +3,7 @@
 	overflow:hidden;
 	width:100%;
 	/*height:1000px;*/
-    font-family: kaiti;
+    /*font-family: kaiti;*/
     background-color: rgba(205, 201, 201,0.1);
 	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
 }
@@ -75,6 +75,7 @@
     height: 50px;
     line-height: 50px;
     float: right;
+    color: rgba(54, 54 ,54,0.8);
 }
 .application1-7{
     width: 45%;
@@ -82,18 +83,21 @@
     line-height: 50px;
     float: right;
     text-indent: 1em;
+    color: rgba(54, 54 ,54,0.8);
 }
 .application1-8{
     width: 45%;
     height: 50px;
     line-height: 50px;
     float: right;
+    color: rgba(54, 54 ,54,0.8);
 }
 .application1-9{
     width: 45%;
     height: 50px;
     line-height: 50px;
     float: right;
+    color: rgba(54, 54 ,54,0.8);
 }
 .application1-10{
     width: 45%;
@@ -102,6 +106,7 @@
     float: right;
     margin-right: 45%;
     margin-left: 10%;
+    color: rgba(54, 54 ,54,0.8);
 }
 .applicationinput1-1{
     border: 0 solid rgba(54, 54 ,54,0.9);
@@ -112,7 +117,8 @@
     background: transparent;
     -webkit-transition: all .100s;
     transition: all .100s;
-    font-family: kaiti;
+    /*font-family: kaiti;*/
+    color: rgba(54, 54 ,54,0.8);
 }
 .requestdetails{
     width: 80%;
@@ -133,6 +139,7 @@
     width:100%;
     height:470px;
     font-size: 20px;
+    color: rgba(54, 54 ,54,0.8);
 }
 .requestdetails1-3{
     width: 75%;
@@ -142,6 +149,7 @@
 	scrollbar-base-color:rgba(30,144,255,0.1);
 	scrollbar-highlight-color:transparent;
     float: left;
+    color: rgba(54, 54 ,54,0.8);
 }
 .requestdetails1-4{
     width: 75%;
@@ -162,6 +170,7 @@
     /*text-align: right;*/
     margin-left: 10%;
     float: left;
+    color: rgba(54, 54 ,54,0.8);
 }
 .needhelp{
     width: 100%;
@@ -220,7 +229,7 @@
     opacity: 0.7;
     -webkit-transition: all .100s;
     transition: all .100s;
-	font-family: kaiti;
+	/*font-family: kaiti;*/
 }
 .submithelp1-2:hover{
     background: -webkit-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
@@ -244,7 +253,7 @@
     opacity: 0.7;
     -webkit-transition: all .100s;
     transition: all .100s;
-	font-family: kaiti;
+	/*font-family: kaiti;*/
 }
 .submithelp1-3:hover{
     background: -webkit-linear-gradient(-90deg,  #F0FFFF,#E0EEEE);
