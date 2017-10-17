@@ -42,8 +42,159 @@
     transition: all .100s;
 }
 .editcontent{
-    width: 60%;
-    height: 700px;
-    margin-left: 20%;
-    margin-right: 20%;
+    width: 50%;
+    height: 690px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.editcontent1-1{
+    width:18%;
+    height: 640px;
+    margin-top: 50px;
+    float: left;
+    margin-left: 5%;
+}
+.editcontent1-2{
+    width: 100%;
+    text-align: center;
+}
+.editcontent1-3{
+    display:block;
+    text-decoration: none;
+    color: rgba(190,190,190,0.9);
+    line-height: 32px;
+    width: 50%;
+}
+.editcontent1-3:hover{
+    color: rgba(0,0,0,0.5);
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+}
+.editcontent1-4{
+    display:block;
+    text-decoration: none;
+    color: rgba(190,190,190,0.9);
+    line-height: 32px;
+    width: 50%;
+}
+.editcontent1-4:hover{
+    color: rgba(0,0,0,0.5);
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+}
+.editcontent1-5{
+    display:block;
+    text-decoration: none;
+    color: rgba(190,190,190,0.9);
+    line-height: 32px;
+    width: 50%;
+}
+.editcontent1-5:hover{
+    color: rgba(0,0,0,0.5);
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+}
+.editmaincontect{
+    width: 68%;
+    height: 640px;
+    margin-top: 50px;
+    float: left;
+    padding: 0 0 0 60px;
+}
+.accountinf{
+    width: 90%;
+    line-height: 32px;
+    color: rgba(0,0,0,0.5);
+    padding: 4px 38px;
+}
+.editmaincontect1-1{
+    width: 90%;
+    height: 260px;
+    padding: 4px 38px;
+}
+.editmaincontect1-2{
+    width: 70%;
+    line-height: 50px;
+    float: left;
+    margin-left: 5%;
+    color: rgba(0,0,0,0.5);
+}
+.editmaincontect1-3{
+    width: 25%;
+    line-height: 50px;
+    float: left;
+}
+.editmaincontect1-4{
+    text-decoration: none;
+    color: rgba(190,190,190,0.9);
+
+}
+.editmaincontect1-4:hover{
+    color: rgba(0,0,0,0.5);
+}
+.useremail{
+    clear: both;
+    width: 90%;
+    line-height: 50px;
+    margin-left: 5%;
+    color: rgba(0,0,0,0.5);
+}
+.myheadpicture{
+    width: 90%;
+    height:80px ;
+    margin-left: 5%;
+    color: rgba(0,0,0,0.5);
+}
+.myheadpicture1-1{
+    width: 52%;
+    height: 80px;
+    border-radius: 50px;
+    float: left;
+    text-align: center;
+}
+.myheadpicture1-2{
+    width: 20%;
+    line-height: 80px;
+    float: left;
+    color: rgba(0,0,0,0.5);
+}
+.changepicture{
+    width: 22%;
+    float: right;
+    line-height: 80px;
+}
+.changepicture1-1{
+    text-decoration: none;
+    color: rgba(190,190,190,0.9);
+}
+.changepicture1-1:hover{
+    color: rgba(0,0,0,0.5);
+}
+.thirdaccount{
+    width: 90%;
+    line-height: 32px;
+    color: rgba(0,0,0,0.5);
+    padding: 4px 38px;
+}
+.correlationaccount{
+    width: 90%;
+    height: 150px;
+    padding: 4px 38px;
+    color: rgba(0,0,0,0.5);
+}
+.correlationaccount1-1{
+    width: 68%;
+    line-height: 50px;
+    float: left;
+    margin-left: 5%;
+    padding: 0 0 0 14px;
+}
+.correlationaccount1-2{
+    width: 20%;
+    line-height: 50px;
+    float: left;
+}
+.correlationaccount1-3{
+    text-decoration: none;
+    color: rgba(190,190,190,0.9);
+}
+.correlationaccount1-3:hover{
+    color: rgba(0,0,0,0.5);
 }
