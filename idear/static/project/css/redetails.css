@@ -175,8 +175,7 @@ body{
     float:left;
     width:75px;
     font-size:18px;
-    /*margin-left: 40px;*/
-
+    margin-left: 5%;
 }
 
 .home-b-share {
@@ -192,6 +191,7 @@ body{
 	float:left;
 	font-size:18px;
     margin-left:5px;
+    cursor: pointer;
 
 }
 .share-icon{
@@ -247,7 +247,7 @@ body{
 	background-size: contain;
 }
 .home-b-report{
-    float:right;
+    float:left;
     width:75px;
     font-size:18px;
     margin-left:5px;
@@ -595,6 +595,7 @@ a.rbutton:active {
     width:100%;
     height: 40px;
     margin-top:2px;
+    font-size: 15px;
     border-radius:5px;
     resize:none;
 }
@@ -651,7 +652,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:   #ABCDCB;
+    /*background-color:   #ABCDCB;*/
 
 }
 .comment-name {
@@ -671,11 +672,16 @@ a.rbutton:active {
 	font-size: 13px;
 	margin: 6px 0 10px 20px;
 }
+.c-option{
+    float:right;
+    width:20%;
+    height:100%;
+}
 .clike{
     width:25px;
     height:25px;
     float:left;
-    margin:4px 0 0 270px;
+    margin-top:4px;
 }
 .clikenum{
     display:inline-block;
@@ -694,7 +700,7 @@ a.rbutton:active {
     width:20px;
     height:20px;
     float:left;
-    margin:8px 0 0 5px;
+    margin:8px 0 0 10px;
 }
 .comment-content {
 	width:100%;
@@ -760,7 +766,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:  #ABCDCB;
+    /*background-color:  #ABCDCB;*/
 }
 .rcomment-name {
 	color: #283035;
@@ -779,11 +785,16 @@ a.rbutton:active {
 	font-size: 13px;
 	margin: 6px 0 10px 20px;
 }
+.r-option{
+    float:right;
+    width:22%;
+    height:100%;
+}
 .rclike{
     width:25px;
     height:25px;
     float:left;
-    margin:4px 0 0 169px;
+    margin-top:4px;
 }
 .rclikenum{
     display:inline-block;
@@ -802,7 +813,7 @@ a.rbutton:active {
     width:20px;
     height:20px;
     float:left;
-    margin:8px 0 0 5px;
+    margin:8px 0 0 10px;
 }
 .rcomment-content {
 	width:100%;

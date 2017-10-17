@@ -60,7 +60,7 @@
                                                                     style="width:25px;height:25px;vertical-align:middle;">
                                     分享</a>
                             </div>
-                            <div class="home-b-comment">
+                            <div class="home-b-comment" id="comment11-22">
                                 <img src="{% static '/project/imgs/reply.svg' %}"
                                      style="width:25px;height:25px;vertical-align:middle;">
                                 <a>评论</a>
@@ -131,7 +131,7 @@
                         <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                         <div class="carea">
                             <div class="tocomment">
-                                <textarea placeholder="" name="" id="comment-content" class="comment-text"></textarea>
+                                <textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>
                             </div>
                             <button class="putcomment">评论</button>
                         </div>
@@ -144,9 +144,11 @@
                                       <div class="comment-head">
                                           <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
                                           <span class="cdate">2017-11-11</span>
-                                          <img class="clike"  src="{% static 'project/imgs/like1.png'%}"><span class="clikenum">1111</span>
-                                          <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                          <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
+                                          <div class="c-option">
+                                              <img class="clike"  src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
+                                              <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
+                                          </div>
                                       </div>
                                       <div class="comment-content">
                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -160,10 +162,11 @@
                                       <div class="rcomment-head">
                                           <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
                                           <span class="rcdate">2017-11-11</span>
-
-                                          <img class="rclike"  src="{% static 'project/imgs/like1.png'%}"><span class="rclikenum">1111</span>
-                                          <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
-                                          <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                          <div class="r-option">
+                                              <img class="rclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
+                                              <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                          </div>
                                       </div>
                                       <div class="rcomment-content">
                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -194,7 +197,11 @@
 {#                $('.ppc-percents span').html('1' + '/' + percent/100);#}
 {#                进度条中间显示计算 已招募人数/预计招募人数#}
             });
+            $("#comment11-22").click(function () {
+             document.getElementById("comment-content1").focus();
+             })
         </script>
+
         <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
     {% endblock %}
 
