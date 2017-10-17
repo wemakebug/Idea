@@ -41,9 +41,6 @@
         <div class="add_img">
             <div class="chance_add">
                 <div class="add_cover"></div>
-                {% comment %}<div class="add_button">
-                    <a href="#"><h2>添加封面</h2></a>
-                </div>{% endcomment %}
             </div>
             <div class="imgs_history">
                 <div class="his-line"></div>
@@ -69,13 +66,9 @@
                     <p class="chance_must">必选</p>
                 </div>
                 <div class="label_name">
-                    <div class="chance_pro_label" id="chance_pro_label" onclick="MyFunction()">大数据</div>
-                    <div class="chance_pro_label" name="chance_pro_label" onclick="MyFunction()">Css</div>
-                    <div class="chance_pro_label" name="chance_pro_label" onclick="MyFunction()">大数据你好呀随便起的名字看看能多长</div>
-                    <div class="chance_pro_label" name="chance_pro_label" onclick="MyFunction()">智能建模</div>
-                    <div class="chance_pro_label" name="chance_pro_label" onclick="MyFunction()">数据应用</div>
-                    <div class="chance_pro_label" name="chance_pro_label" onclick="MyFunction()">JavaScript</div>
-
+                    {% for str in string %}
+                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()">{{ str }}</div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -91,17 +84,5 @@
         CKEDITOR.replace('TextArea1', {
             customConfig:'{% static "ckeditor_configs/MyCongif.js" %}'
         });
-    </script>
-    <script type="text/javascript">
-        var oDiv = document.getElementById('chance_pro_label');
-        oDiv.onclick = function(){
-            if(!this.style.backgroundColor ){
-                this.style.backgroundColor = '#295e6a';
-                this.style.color = '#ffffff';
-            }else{
-                this.style.backgroundColor = '';
-                this.style.color = 'gray';
-            }
-        };
     </script>
 {% endblock %}

@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from idear import views as views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,7 +28,6 @@ urlpatterns = [
     url(r'^creations$', views.creations),
     url(r'^forgetPassword$', views.forgetPassword),
     url(r'^homepage$',views.homepage),
-    url(r'^release',views.release),
     url(r'^editprofile$',views.editprofile),
     url(r'^apply$', views.apply),
     url(r'^recruit$', views.projects),
@@ -43,6 +42,7 @@ urlpatterns = [
     url(r'^test/?(\d+)$', views.test),
     url(r'^getimg', views.get_user_img),
     url(r'^ordinance',views.ordinance),
+    url(r'^release',views.addlabel),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^admina/',include('admina.urls')),
     url(r'^idear/',include('idear.urls')),
     url(r'^photos/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT, 'show_indexes': True}),
+    url(r'^release', include("idear.urls")),
 ]
 
