@@ -28,3 +28,16 @@
             div.innerHTML = "<p>公开</p>";
         }
     }
+
+     var oDiv = document.getElementsByName("chance_pro_label")
+        for(var i=0;i<oDiv.length;i++){
+            oDiv[i].onclick = function(){
+                if(!this.style.backgroundColor ){
+                    this.style.backgroundColor = '#295e6a';
+                    this.style.color = '#ffffff';
+                }else{
+                    this.style.backgroundColor = '';
+                    this.style.color = 'gray';
+                }
+            };
+        }
