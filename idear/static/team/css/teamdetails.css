@@ -121,7 +121,7 @@
 	margin-top: 100px;
 	/*position:relative;*/
     float: left;
-	margin-left: 10%;
+	margin-left: 16%;
 }
 /*.details1-1{*/
 	/*width:100%;*/
@@ -176,7 +176,7 @@
     /**/
 /*}*/
 .teamspeak{
-    width: 20%;
+    width: 22%;
 	height:230px;
 	-webkit-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
     -moz-box-shadow: -10px 0px 10px rgba(205, 193, 197,0.1),10px 0px 10px rgba(205, 193, 197,0.1),0px 10px 10px rgba(205, 193, 197,0.1);
@@ -200,7 +200,7 @@
     float: right;
 }
 .praise1-2{
-    width: 15%;
+    width: 16%;
     height: 30px;
     margin-top: 21px;
     float: right;
@@ -779,29 +779,28 @@
 	width: 100%;
 }
 .historys{
-	width: 100%;
+	width: 75%;
 	height: auto;
-	/*margin-left: 18%;*/
-	/*margin-right: 10%;*/
+	margin-left: 14.5%;
+	margin-right: 10.5%;
 	margin-top: 3%;
 	font-family: "Microsoft Yahei";
     clear: both;
 }
 .historys1-1{
-	width: 90%;
+	width: 100%;
 	line-height: 30px;
 	text-align: center;
 	font-size: 27px;
 	font-family: "Microsoft Yahei";
 }
 .historys1-2{
-	width: 26%;
+	width: 29%;
 	height: 350px;
 	border: solid 2px rgba(220,220,220,0.5);
 	font-family: "Microsoft Yahei";
     float: left;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 3%;
     margin-top: 4%;
     border-radius: 20px;
     -webkit-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
@@ -824,22 +823,22 @@
     border-radius: 14px;
 }
 .historys1-4{
-	width: 67%;
+	width: 65%;
 	height: 200px;
 	float: left;
 	font-family: "Microsoft Yahei";
 }
 .historys1-5{
-	width: 95%;
+	width: 90%;
 	height: 20%;
-	font-size: 20px;
+	font-size: 16px;
 	padding: 1%  0 0  5%;
 	font-family: "Microsoft Yahei";
 }
 .historys1-6{
-	width: 95%;
+	width: 90%;
 	height: 70%;
-	font-size: 20px;
+	font-size: 16px;
 	padding: 0.8%  0 0  5%;
 	color: rgba(54, 54 ,54,0.6);
 }
@@ -913,10 +912,10 @@
 }
 .comment{
     clear: both;
-	width: 65%;
+	width: 72%;
 	height: auto;
-	margin-left: 13%;
-	margin-right: 10%;
+	margin-left: 16%;
+	margin-right: 9%;
 	margin-top: 28%;
 	font-family: "Microsoft Yahei";
 }
