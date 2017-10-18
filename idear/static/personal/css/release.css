@@ -13,10 +13,10 @@
     width: 20%;
     height:100%;
     float: left;
-    margin-left: 8%;
+    margin-left: 10%;
 }
 .pro_edit h2{
-    width: 80%;
+    width: 100%;
     height: 90%;
     border: 1px solid transparent;
     float: right;
@@ -130,6 +130,7 @@
 .main_pro_con{
     width: 80%;
     height:auto;
+    min-width:1180px;
     /*min-height:1000px;*/
     /*margin-bottom: 10px;*/
 }
@@ -223,17 +224,17 @@
     border-bottom: 1px solid #bbbbbb;
 }
 .input_num>p{
-    width: 25%;
-    min-width:81px;
+    width: 31%;
+    min-width:31%;
     height: 100%;
     float:left;
     margin-left: 2%;
-    line-height: 57px;
+    line-height: 56px;
     color:gray;
 }
 .input_num input{
     border:0;
-    width: 60%;
+    width: 67%;
     height: 100%;
     color:#295E6A;
 }
@@ -246,12 +247,14 @@
     height:8%;
 }
 .pro_label_exh{
-    width: 30%;
+    width: 31%;
+    min-width:81px;
     margin-left:2%;
     color:gray;
 }
 .chance_must{
-    width:68%;
+    width:58%;
+    font-size: 0.9em;
     text-align: right;
     color:#295E6A;
 }
@@ -285,6 +288,9 @@
 .chance_pro_label:hover{
     border-color: #295E6A;
     /*color: #ffffff;*/
+}
+.cke_top{
+    padding: 0;
 }
 
 
