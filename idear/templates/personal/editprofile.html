@@ -25,7 +25,7 @@
                     <tr><td><a href="#" class="editcontent1-5">更改密码</a></td></tr>
                 </table>
             </div>
-            <div style="width: 2px;height: 690px;background-color:rgba(190,190,190,0.9);float: left; "></div>
+            <div style="width: 1px;height: 690px;background-color:rgba(190,190,190,0.9);float: left; "></div>
             <div class="editmaincontect">
                 <div class="accountinf">账号信息</div>
                 <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>
@@ -60,9 +60,64 @@
                     <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微信账号</a></div>
                 </div>
             </div>
+            <div class="personalinformation">
+                <div class="personalinf">个人信息</div>
+                <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>
+                <div class="personalinformation1-1">
+                    <div class="personalinformation1-2">
+                        用户昵称：
+                        <input type="text" placeholder="用户名" class="personalinput">
+                    </div>
+                    <div class="personalinformation1-3">
+                        用户身份：
+                        <input type="text" class="personalinput1-1" onfocus=this.blur()>
+                    </div>
+                    <div class="personalinformation1-4">
+                        所属学校：
+                        <input type="text" placeholder="学校" class="personalinput1-2">
+                    </div>
+                    <div class="personalinformation1-5">
+                        所在学院：
+                        <input type="text" class="personalinput1-3" placeholder="所在学院或是系" >
+                    </div>
+                    <div class="personalinformation1-6">
+                        主修专业：
+                        <input type="text" class="personalinput1-4" placeholder="专业" >
+                    </div>
+                    <div class="personalinformation1-7">
+                        用户等级：
+                        <input type="text" class="personalinput1-5" placeholder="分数" onfocus=this.blur()>
+                    </div>
+                    <div class="personalinformation1-7">
+                        注册时间：
+                        <input type="text" class="personalinput1-5" placeholder="注册时间" onfocus=this.blur()>
+                    </div>
+                    <div class="personalinformation1-8">
+                        <input type="radio" class="personalinput1-6" checked>男
+                        <input type="radio" class="personalinput1-6">女
+                        <input type="radio" class="personalinput1-6">保密
+                    </div>
+                    <div class="personalinformation1-9">
+                        <div style="line-height: 100px;width: 15%;text-align: center;float: left;margin-left: 90px;">个人描述：</div>
+                        <textarea class="personalinput1-7"></textarea>
+                    </div>
+                    <div class="personalinformation1-10">：
+                        <input type="button" class="personalinput1-8" >保存
+                    </div>
+                </div>
+            </div>
+            <div class="changepassword">
+                <div class="changepasswordinf">更改密码</div>
+                <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>
+                <div class="changepassword1-1">
+
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block script %}
+    <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/editprofile.js' %}"></script>
 {% endblock %}
