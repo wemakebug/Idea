@@ -359,6 +359,7 @@ body,div{
     }
     .right_sentence{
         width:15%;
+        min-width:204px;
         height:100%;
         float: left;
     }

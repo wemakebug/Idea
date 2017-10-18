@@ -397,14 +397,14 @@ def ordinance(req):
 
 ''' 创意灵感 页面相关部分开始'''
 
-def redetail(req):
+def crdetails(req):
     '''
     创意详情
     :param req: 
     :return: 
     '''
     if req.method == 'GET':
-        return render_to_response('creation/redetail.html')
+        return render_to_response('creation/crdetails.html')
     if req.method == "POST":
         pass
 
