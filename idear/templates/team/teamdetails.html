@@ -11,141 +11,286 @@
 {%endblock%}
 {%block content%}
 <div class="teamdetail">
-    <div class="teamdetailsynopsis">
-        <div class="teamdetailsynopsis1-1"><strong>团队简介：</strong></div>
-        <div class="teamdetailsynopsis1-2">
-            <span class="register1-3">所属学院：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.UserName}}>#}
-            {{ team.UserName}}
+    <div style="width: 100%;height:350px;margin-top: 30px;">
+        <div class="details">
+            <div class="detailspicture">
+                <img src="{% static 'team/imgs/team.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+            </div>
+            <div class="detailspicture1-1">
+                <div class="detailspicture1-2">
+                    {{ team.UserName }}
+                </div>
+                <div class="detailspicture1-3">
+                    我们做的是技术，追求质量与品质.
+                </div>
+            </div>
+            <div style="width: 100%;height: 50px;clear: both;">
+                <div class="praise1-2 praise11-2" id="comment11-2">
+                    <span id="praise11-2" class="praise11-2"><img src="{% static 'team/imgs/评论图标.png' %}" id="praise-img11-2" /> </span>
+                    <span id="praise-txt11-2" class="praise-txt11-2">评论</span>
+                </div>
+                <div class="praise11-1 praise1-1" team="{{ team.Id }}">
+                     <span id="praise11-1" class="praise11-1"><img src="{% static 'team/imgs/心形.png' %}" id="praise-img11-1" /> </span>
+                     <span id="praise-txt11-1" class="praise-txt11-1">1123{{Praise.project}}</span>
+                     <span id="add-num11-1" class="add-num11-1"><em>+1</em></span>
+                </div>
+                <div class="praise11 praise1" team="{{ team.Id }}">
+                     <span id="praise11" class="praise11"><img src="{% static 'team/imgs/点赞.png' %}" id="praise-img11" /> </span>
+                     <span id="praise-txt11" class="praise-txt11">1123{{Praise.project}}</span>
+                     <span id="add-num11" class="add-num11"><em>+1</em></span>
+                </div>
+                <div class="teamdetailadddiv">
+                    <input type="button" value="申请帮助" class="btn btn-info btn-xs" id="petitionhelp">
+                </div>
+            </div>
         </div>
-        <div class="teamdetailsynopsis1-3">
-            <span class="register1-3">团队名称：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.UserName }}>#}
-            {{ team.UserName }}
+        <div class="teamspeak">
+            <div class="teamdetailsynopsis1-2">
+                <span class="register1-3">所属学院：</span>
+                {{ team.UserName}}
+            </div>
+            <div class="teamdetailsynopsis1-4">
+                <span class="register1-3">注册时间：</span>
+                {{ team.RegistTime }}
+            </div>
+            <div class="teamdetailsynopsis1-7">
+                <span class="register1-3">团队分数：</span>
+                {{ team.Score }}
+            </div>
+            <div class="teamdetailsynopsis1-6">
+                <span class="register1-2">用户邮箱：</span>
+                 {{ team.Email }}
+            </div>
         </div>
-        <div class="teamdetailsynopsis1-4">
-            <span class="register1-3">注册时间：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.RegistTime }}>#}
-            {{ team.RegistTime }}
-        </div>
-        <div class="teamdetailsynopsis1-7">
-            <span class="register1-3">团队分数：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Score }}>#}
-            {{ team.Score }}
-        </div>
-        <div class="teamdetailsynopsis1-6">
-            <span class="register1-2">邮箱：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Email }}>#}
-             {{ team.Email }}
-        </div>
-    </div>
-    <div class="details">
-        <div class="details1-1"><strong>团队详情：</strong></div>
-        <div class="details1-2">
-            <textarea name="details" disabled="disabled" class="details1-3">这个团队是什么什么，团队有某某特色，我们主要发展方向，我们有什么什么技术等等等
-            </textarea>
-        </div>
-        <div class="teamdetailadddiv">
-            <input type="button" value="申请帮助" class="btn btn-primary btn-lg active details1-4" id="petitionhelp">
-        </div>
-    </div>
-    <div class="headimage" id="headimgss">
-        <img src="{% static 'team/imgs/xiaoyubiao.png'%}" style="width: 100%;height: 100%;">
-    </div>
-    <div class="teamlable">
-        <div class="teamlable1-1"><strong>团队标签</strong></div>
-        <div class="teamlable1-2"></div>
-        <div class="teamlable1-3">
-            {% for label in labels %}
+        <div class="teamlable">
+            <div class="teamlable1-1">团队标签</div>
+            <div class="teamlable1-2"></div>
+            <div class="teamlable1-3">
+                {% for label in labels %}
             <a href="" style="text-decoration: none;"><span class="teamlable1-4">{{ label.userLabel.Name }}</span></a>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
     <div class="historys">
         <div class="historys1-1">
-            <strong>项目历史</strong>
+             项目历史
         </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'team/imgs/sdg logo 狗狗.png'%}" style="width: 100%;height: 100%;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                    <strong>项目名称某某某</strong>
+        <div style="width: 100%;height: auto;">
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
                 </div>
-                <div class="historys1-6">
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">互联网</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">大数据</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">互联网</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">数据结构</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">js</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">html</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">css</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">python</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">php</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">美工</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">建筑</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">化学</span>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                        <span class="project_middle_icon-1"></span>
+                        <span class="project_middle_text">互联网</span>
+                    </span>
+                    <span class="spanwidth">
+                        <span class="project_middle_icon-2"></span>
+                        <span class="project_middle_text">大数据</span>
+                    </span>
+                    <span class="spanwidth">
+                        <span class="project_middle_icon-3"></span>
+                        <span class="project_middle_text">互联网</span>
+                    </span>
+                    <span class="spanwidth">
+                        <span class="project_middle_icon-1"></span>
+                        <span class="project_middle_text">数据结构</span>
+                    </span>
+                    <span class="spanwidth">
+                        <span class="project_middle_icon-1"></span>
+                        <span class="project_middle_text">js</span>
+                    </span>
+                    </div>
                 </div>
-            </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
-            </div>
-        </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'team/imgs/sdg logo 狗狗.png'%}" style="width: 100%;height: 100%;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                    <strong>项目名称某某某</strong>
-                </div>
-                <div class="historys1-6">
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">互联网</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">大数据</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">互联网</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">数据结构</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">js</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">html</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">css</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">python</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">php</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">美工</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">建筑</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">化学</span>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
                 </div>
             </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                        项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                        项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
             </div>
         </div>
     </div>
     <div class="comment">
-        <div class="comment1-1"><strong>评论专区</strong></div>
+        <div class="comment1-1">评论专区</div>
         <div class="comment1-2"></div>
         <!--
          此评论textarea文本框部分使用的https://github.com/alexdunphy/flexText此插件
@@ -153,7 +298,7 @@
         <div class="commentAll">
             <!--评论区域 begin-->
             <div class="reviewArea clearfix">
-                <textarea class="content1 comment-input text111 " placeholder="评论...&hellip;" onkeyup="keyUP(this)"></textarea>
+                <textarea class="content1 comment-input text111 " id="contectnumber1" placeholder="评论...&hellip;" onkeyup="keyUP(this)"></textarea>
                 <a href="javascript:;" class="plBtn">评论</a>
             </div>
              <!--评论区域 end-->
@@ -190,7 +335,7 @@
 {%block script%}
     <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'team/js/teamdetails.js'%}"></script>
-    <script type="text/javascript" src="{% static 'team/js/teambg.js'%}"></script>
+{#    <script type="text/javascript" src="{% static 'team/js/teambg.js'%}"></script>#}
 {#    不懂#}
     <script type="text/javascript" src="{% static 'team/js/jquery.flexText.js'%}"></script>
     <!--textarea高度自适应-->
@@ -345,6 +490,60 @@
             $(this).find('.z-num').html(zNum);
             $(this).find('.date-dz-z-click-red').addClass('red');
         }
+    })
+</script>
+<script type="text/javascript">
+    $(function(){
+        $("#praise11").on("click",function () {
+            var praise_img = $("#praise-img11");
+            var text_box = $("#add-num11");
+            var praise_txt = $("#praise-txt11");
+            var num=parseInt(praise_txt.text());
+{#			alert("11111")#}
+            if(praise_img.attr("src") === ("{% static 'team/imgs/yizan.png' %}")){
+                $(this).html("<img src='{% static 'team/imgs/点赞.png' %}' id='praise-img11' class='animation' />");
+                praise_txt.removeClass("hover");
+                text_box.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+                num -=1;
+                praise_txt.text(num)
+            }else{
+                $(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img11' class='animation' />");
+                praise_txt.addClass("hover");
+                text_box.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+                num +=1;
+                praise_txt.text(num)
+            }
+        });
+	});
+     $(function(){
+        $("#praise11-1").on("click",function () {
+            var praise_img1 = $("#praise-img11-1");
+            var text_box1 = $("#add-num11-1");
+            var praise_txt1 = $("#praise-txt11-1");
+            var num1=parseInt(praise_txt1.text());
+{#			alert("11111")#}
+                if(praise_img1.attr("src") === ("{% static 'team/imgs/心形实心.png' %}")){
+                $(this).html("<img src='{% static 'team/imgs/心形.png' %}' id='praise-img11-1' class='animation' />");
+                praise_txt1.removeClass("hover");
+
+                text_box1.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+                num1 -=1;
+                praise_txt1.text(num1)
+            }else{
+                $(this).html("<img src='{% static 'team/imgs/心形实心.png' %}' id='praise-img11-1' class='animation' />");
+                praise_txt1.addClass("hover");
+                text_box1.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+                num1 +=1;
+                praise_txt1.text(num1)
+            }
+        });
+	})
+    $("#comment11-2").click(function () {
+        document.getElementById("contectnumber1").focus();
     })
 </script>
 {% endblock %}

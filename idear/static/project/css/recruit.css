@@ -22,7 +22,7 @@ body, html {
     float: left;
     width: 80%;
     height: auto;
-    margin-top:66px;
+    margin-top:50px;
     margin-left: 10%;
     max-width: 1200px;
     min-height: 500px;
@@ -269,8 +269,10 @@ body, html {
     color: #404040;
     color: rgba(0, 0, 0, 0.7);
     text-shadow: 0 1px rgba(255, 255, 255, 0.4);
-    text-align: center;
-    margin-right: 0;
+    /*text-align: center;*/
+    left: 0;
+    position: absolute;
+    z-index: 9999;
 }
 
 .progress > span:before {
@@ -405,6 +407,18 @@ body, html {
     color: #757779;
     outline: 0;
     text-decoration: none;
+}
+.more {
+	width:918px;
+	height:30px;
+	text-align: center;
+	float:left;
+	margin-top:30px;
+	margin-left:65px;
+	margin-bottom:2%;
+	background-color:white;
+	border-radius: 3px;
+	box-shadow: 2px 2px 2px 2px #bdc3c7;
 }
 .f-weight {
     font-weight: 500;

@@ -600,7 +600,7 @@ def projects(req):
     招募项目一级二级页面项目显示
     '''
     projectLabels = ProjectLabel.objects.all()
-    projects = Project.objects.all().order_by("Date")
+    projects = Project.objects.all().order_by("EndTime")
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
@@ -622,8 +622,8 @@ def projects(req):
             user = project.user
             return render_to_response('project/recruit.html',
                                       {'project': project, 'comments': comments, 'user': user})
-    except:
-
+    except Exception as e:
+        print e
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 
@@ -694,4 +694,12 @@ def editprofile(req):
         return render_to_response('personal/editprofile.html')
     if req.method == 'POST':
         pass
+
+def addlabel(req):
+    str = ["大数据", "Css", "我就测试名称能多长再多说一个字吧", "JavaScript", "可以自行添加标签啦"]
+    return render_to_response('personal/release.html', {"string": str})
 '''个人中心相关页面结束'''
+
+
+
+

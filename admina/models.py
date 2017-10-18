@@ -73,6 +73,7 @@ class Project(models.Model):
     def __unicode__(self):
         return self.ProjectName
 
+
 class ProjectLabel(models.Model):
     '''
     项目标签表
