@@ -3,7 +3,7 @@
 {% block CSS %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
-    <link rel="stylesheet" href="{% static '/creation/css/redetail.css' %}">
+    <link rel="stylesheet" href="{% static '/creation/css/crdetails.css' %}">
 
 
 {% endblock %}
@@ -114,13 +114,100 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-
+                 <div class="similar-block">
+                    <div class="block-main">
+                        <a class="block-title" href="redetail">
+                            <h5>创意啊啊啊啊啊啊啊啊啊啊啊啊啊啦</h5>
+                        <a class="block-text">创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊</a>
+                        </a>
+                    </div>
+                    <div class="block-bottom">
+                        <div class="block-bottom-ava">
+                            <img src="{% static '/creation/imgs/tx.jpg' %}" style="width:40px;height:40px">
+                        </div>
+                        <div class="block-bottom-hot">
+                            <div class="block-hotl">
+                            <img class="block-imgl" src="{% static 'creation/imgs/like0.png'%}">
+                            <span>7</span>
+                            </div>
+                            <div class="block-hotc">
+                            <img class="block-imgc" src="{% static 'creation/imgs/collection0.png'%}">
+                            <span>54</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
+
+            <div class="content-footer">
+                <div class="comment">
+                    <div class="comment1-1">评论专区</div>
+                    <div class="comment1-2"></div>
+                    <div class="ctop">
+                        <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
+                        <div class="carea">
+                            <div class="tocomment">
+                                <textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>
+                            </div>
+                            <button class="putcomment">评论</button>
+                        </div>
+                    </div>
+                    <div class="c-all">
+                              <div class="cmain">
+                                  <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
+{#                                  可以加hover点上变成网站logo#}
+                                  <div class="comment-box">
+                                      <div class="comment-head">
+                                          <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
+                                          <span class="cdate">2017-11-11</span>
+                                          <div class="c-option">
+                                              <img class="clike"  src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
+                                              <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
+                                          </div>
+                                      </div>
+                                      <div class="comment-content">
+                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="c-reply">
+                                  <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                                  <div class="rcomment-box">
+                                      <div class="rcomment-head">
+                                          <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                          <span class="rcdate">2017-11-11</span>
+                                          <div class="r-option">
+                                              <img class="rclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
+                                              <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                          </div>
+                                      </div>
+                                      <div class="rcomment-content">
+                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                </div>
         </div>
+    </div>
+</div>
 
 {% endblock %}
 {% block script %}
