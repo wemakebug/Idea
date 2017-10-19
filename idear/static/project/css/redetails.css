@@ -142,10 +142,11 @@ body{
     background-color:#ffffff ;
     border-color: #539092 ;
     float:left;
+    background-color: #ABCDCB;
 }
 
 .likebutton:hover{
-    background-color: #ABCDCB;
+    background-color: #ffffff;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -539,6 +540,12 @@ body{
     font-size: 25px;
     border-radius:5px;
     resize:none;
+    border: 1px solid #c6c8ce;
+}
+.close{
+    width:30px;
+    height:40px;
+    margin-left:50px;
 }
 .subapply{
     width:8%;
@@ -627,9 +634,7 @@ body{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background: transparent;
     border: 1px solid #c6c8ce;
-
-}
-
+ }
 .putcomment{
     width:8%;
     height:30px;
@@ -683,7 +688,7 @@ body{
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:   #ABCDCB;*/
+    background-color:   #ABCDCB;
 
 }
 .comment-name {
@@ -788,7 +793,6 @@ body{
 	border-color: transparent  #ABCDCB;
 	left: -12px;
 }
-
 .rcomment-head {
 	height:40%;
 	width:100%;
@@ -798,7 +802,7 @@ body{
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #ABCDCB;*/
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
