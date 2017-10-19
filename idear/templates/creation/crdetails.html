@@ -14,19 +14,15 @@
             <div class="main-left">
                 <div class="home-b-all">
                     <div class="home-b-tags">
-                        <a class="tags" href="creations?sign=1">
-                            <span>互联网</span>
-                        </a>
-                        <a class="tags" href="creations?sign=2">
-                            <span>大数据</span>
-                        </a>
-                        <a class="tags" href="creations?sign=3">
-                            <span>智能应用</span>
-                        </a>
+                        {%for label in labels%}
+                        <a class="tags" href="creations?sign={{label.projectLabel.Id}}">
+                            <span>{{label.projectLabel.ProjectLabelName}}</span>
+                        </a>                        
+                        {%endfor%}
                     </div>
                     <div class="home-b-title">
                         <h1>{{creation.Name}}</h1>
-                        <p>2017.04.20 23:33&nbsp;&nbsp;|&nbsp;&nbsp;<a href="www.github.com">www.github.com</a></p>
+                        <p>{{creation.LastChange}}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="www.github.com">www.github.com</a></p>
                         <hr>
                     </div>
                     <div class="text">
@@ -91,34 +87,13 @@
                     <p>你可能会对这些感兴趣</p>
                 </div>
             <div class="main-right">
-                <div class="similar-block">
-                    <div class="block-main">
-                        <a class="block-title" href="redetail">
-                            <h5>创意啊啊啊啊啊啊啊啊啊啊啊啊啊啦</h5>
-                        <a class="block-text">创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊</a>
-                        </a>
-                    </div>
-                    <div class="block-bottom">
-                        <div class="block-bottom-ava">
-                            <img src="{% static '/creation/imgs/tx.jpg' %}" style="width:40px;height:40px">
-                        </div>
-                        <div class="block-bottom-hot">
-                            <div class="block-hotl">
-                            <img class="block-imgl" src="{% static 'creation/imgs/like0.png'%}">
-                            <span>7</span>
-                            </div>
-                            <div class="block-hotc">
-                            <img class="block-imgc" src="{% static 'creation/imgs/collection0.png'%}">
-                            <span>54</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
+
+{%for creation2crojectLabel in creation2crojectLabels%}
                  <div class="similar-block">
                     <div class="block-main">
                         <a class="block-title" href="redetail">
-                            <h5>创意啊啊啊啊啊啊啊啊啊啊啊啊啊啦</h5>
+                            <h5>{{creation2crojectLabel.creation.Name}}</h5>
                         <a class="block-text">创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊创建简介啊啊啊啊啊啊啊啊啊</a>
                         </a>
                     </div>
@@ -138,13 +113,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
+{%endfor%}
 
 
 
