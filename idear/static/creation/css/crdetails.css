@@ -95,13 +95,12 @@
 }
 .home-b-title {
 	float:left;
-	width:auto;
-	margin-left:15%;
-	margin-bottom:25px;
+	width:75%;
+	margin:24px 0 25px 15%;
 }
 .home-b-title h1 {
 	font-family:幼圆;
-	font-size:30px;
+	font-size:23px;
 	font-weight:bold;
 }
 .home-b-title p {
@@ -124,7 +123,8 @@
 }
 .home-b-title hr{
     margin-top:2px;
-    color:#539092;
+    color:#f1f1f1;
+    width:260px;
 }
 .text {
 	float: left;

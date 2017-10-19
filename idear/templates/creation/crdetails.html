@@ -26,7 +26,8 @@
                         <hr>
                     </div>
                     <div class="text">
-                        <p>{{creation.Name}}</p>
+                        <p>{{creation.Describe}}</p>
+                        <p>{{creation.Describe}}</p>
                         <p>{{creation.Describe}}</p>
                     </div>
                     <div class="home-b-foot">
@@ -94,7 +95,7 @@
 {%for creation2crojectLabel in creation2crojectLabels%}
                  <div class="similar-block">
                     <div class="block-main">
-                        <a class="block-title" href="redetail">
+                        <a class="block-title" href="crdetails?creationId={{creation.Id}}">
                             <h5>{{creation2crojectLabel.creation.Name}}</h5>
                         <a class="block-text">{{creation2crojectLabel.creation.Describe}}</a>
                         </a>
@@ -140,7 +141,6 @@
                     <div class="c-all" name="c-all">
                               <div class="cmain">
                                   <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
-{#                                  可以加hover点上变成网站logo#}
                                   <div class="comment-box">
                                       <div class="comment-head">
                                           <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>

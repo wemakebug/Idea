@@ -80,7 +80,7 @@ $(function(){
 		});
 	})
 
-
+//评论
 $("#putcomment").click(function () {
             var content = "<div class=\"cmain\">\n" +
                 "                                  <img class=\"c-img\"  src=\"/static/project/imgs/user.svg\">\n" +
