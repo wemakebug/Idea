@@ -20,13 +20,13 @@
         <div class="editcontent">
             <div class="editcontent1-1">
                 <table class="editcontent1-2">
-                    <tr><td><a href="#" class="editcontent1-3">账号信息</a></td></tr>
-                    <tr><td><a href="#" class="editcontent1-4">个人信息</a></td></tr>
-                    <tr><td><a href="#" class="editcontent1-5">更改密码</a></td></tr>
+                    <tr><td id="editcontent1-3"><a href="#" class="editcontent1-3 editcontent11-3" id="editcontent1-33">个人信息</a></td></tr>
+                    <tr><td id="editcontent1-4"><a href="#" class="editcontent1-4" id="editcontent1-44">账号信息</a></td></tr>
+                    <tr><td id="editcontent1-5"><a href="#" class="editcontent1-5" id="editcontent1-55">更改密码</a></td></tr>
                 </table>
             </div>
             <div style="width: 1px;height: 690px;background-color:rgba(190,190,190,0.9);float: left; "></div>
-            <div class="editmaincontect">
+            <div class="editmaincontect publicclass1-1" id="editmaincontect">
                 <div class="accountinf">账号信息</div>
                 <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>
                 <div class="editmaincontect1-1">
@@ -60,7 +60,7 @@
                     <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微信账号</a></div>
                 </div>
             </div>
-            <div class="personalinformation">
+            <div class="personalinformation" id="personalinformation">
                 <div class="personalinf">个人信息</div>
                 <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>
                 <div class="personalinformation1-1">
@@ -101,16 +101,34 @@
                         <div style="line-height: 100px;width: 15%;text-align: center;float: left;margin-left: 90px;">个人描述：</div>
                         <textarea class="personalinput1-7"></textarea>
                     </div>
-                    <div class="personalinformation1-10">：
-                        <input type="button" class="personalinput1-8" >保存
+                    <div class="personalinformation1-10">
+                        <input type="button" class="personalinput1-8" value="保存">
                     </div>
                 </div>
             </div>
-            <div class="changepassword">
+            <div class="changepassword publicclass1-1" id="changepassword">
                 <div class="changepasswordinf">更改密码</div>
                 <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>
                 <div class="changepassword1-1">
-
+                    <div class="changepassword1-2">
+                        旧密码：
+                        <input type="text" placeholder="旧密码" class="changepasswordinput">
+                    </div>
+                    <div class="changepassword1-3">
+                        新密码：
+                        <input type="text" placeholder="新密码" class="changepasswordinput1-1">
+                    </div>
+                    <div class="changepassword1-4">
+                        确认密码：
+                        <input type="text" placeholder="确认密码" class="changepasswordinput1-2">
+                    </div>
+                    <div class="changepassword1-5">
+                        验证码：
+                        <input type="text" placeholder="验证码" class="changepasswordinput1-1">
+                    </div>
+                    <div class="changepassword1-6">
+                        <input type="button" class="changepasswordinput1-3" value="提交">
+                    </div>
                 </div>
             </div>
         </div>

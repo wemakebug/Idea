@@ -1008,13 +1008,14 @@
 	color: rgba(54, 54 ,54,0.6);
 }
 .content-footer{
-    width:70%;
+    width:98%;
     height: auto;
-    background-color:  #FFFFFF;
+    /*background-color:  #FFFFFF;*/
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
     overflow:hidden;
+    margin-top: 20px;
 }
 .comment{
     width:100%;
@@ -1022,7 +1023,7 @@
     /*overflow:hidden;*/
 
 }
-.c-all{
+.c-all1{
     width:100%;
     height:auto;
 
@@ -1054,7 +1055,7 @@
     width:50px;
     height:50px;
     margin-left:8%;
-    margin-top:5%;
+    margin-top:3.5%;
 }
 
 .carea {
@@ -1073,9 +1074,13 @@
     width:100%;
     height: 40px;
     margin-top:2px;
-    font-size: 15px;
+    font-size: 20px;
     border-radius:5px;
     resize:none;
+    line-height:1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: transparent;
+    border: 1px solid #c6c8ce;
 }
 
 .putcomment{
@@ -1195,13 +1200,12 @@
 .c-reply{
     width:88%;
     height:100px;
-    margin-left: 10%;
+    margin-left: 14.6%;
 }
 .rc-img{
     display:block;
     width:40px;
     height:40px;
-    margin-left:8%;
     float:left;
 }
 .rc-img::after{
@@ -1214,9 +1218,9 @@
 	left: -55px;
 }
 .rcomment-box {
-    width:  70%;
+    width:  73%;
     height:80px;
-    margin-left: 10%;
+    margin-left: 7%;
 	position: relative;
 }
 .rcomment-box:before,  .comment-box:after {
