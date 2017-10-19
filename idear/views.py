@@ -404,7 +404,9 @@ def crdetails(req):
     :return: 
     '''
     if req.method == 'GET':
-        return render_to_response('creation/crdetails.html')
+        creationId =  req.GET['creationId']
+        creation = Creation.objects.get(Id = creationId)
+        return render_to_response('creation/crdetails.html',{"creation":creation})
     if req.method == "POST":
         pass
 
