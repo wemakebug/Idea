@@ -145,7 +145,7 @@
                 </div>
                 <div class="middle_line"></div>
                 <div class="collection">
-                    <h3>本周最多收藏</h3>
+                    {% comment %}<h3>本周最多收藏</h3>{% endcomment %}
                     <div class="best_project">
                         <div class="pro">
                             <a href="#">
@@ -153,7 +153,7 @@
                                     <img src="../../static/idea/imgs/r_bg.jpg">
                                 </div>
                             </a>
-                            <div class="pro_content">
+                            {% comment %}<div class="pro_content">
                                 <div class="pro_label"><a href="#" ><p>招募</p></a></div>
                                 <div class="pro_name"><a href="#"><p>一个非常好的项目</p></a></div>
                                 <div class="pro_introduce">
@@ -181,7 +181,7 @@
                                 <div class="pro_by">
                                     <p>by&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">someone</a></p>
                                 </div>
-                            </div>
+                            </div>{% endcomment %}
                         </div>
                     </div>
                 </div>
@@ -284,22 +284,24 @@
 				<div class="mainbox_four_left">
 					<div class="main_open">
 						<div class="open_content" id="open_arrangement">
-							<div class="open_top">
+							{% comment %}<div class="open_top">
 								<div class="open_writer">
 									<h2>Open <small>your journey of exploration</small></h2>
 								</div>
-							</div>
-							<div class="open_bottom">
-								<a href="regist"><div class="open_button">开启</div></a>
-							</div>
+							</div>{% endcomment %}
+							<a href="regist">
+                                <div class="open_bottom">
+                                    {% comment %}<div class="open_button">开启</div>{% endcomment %}
+                                </div>
+                            </a>
 						</div>
 					</div>
 				</div>
-				<div class="mainbox_four_right">
+				{% comment %}<div class="mainbox_four_right">
 					<div class="mainbox_forward">
 
 					</div>
-				</div>
+				</div>{% endcomment %}
 			</div>
 			<a id="gotop" href="#"></a>
 		</div>
