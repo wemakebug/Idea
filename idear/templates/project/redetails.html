@@ -12,29 +12,29 @@
     <link rel="stylesheet" href="{% static 'project/css/page-styles.css' %}">
 {% endblock %}
 {% block content %}
-
     <div class="main">
         <div class="content-all">
             <div class="main-left">
                  <div class="content-top">
                         <div class="content-main">
+                            此处为for循环显示不超过三个
                             <div class="tags"><span>网站</span></div>
                             <div class="tags"><span>购物</span></div>
                             <div class="tags"><span>IT</span></div>
                             <div class="title">
-                                <h5> 买买买 - 聚合全网优惠单品</h5>
-                                <p class="ptime">2017.04.20 23:33&nbsp;&nbsp;|&nbsp; 项目状态：第一次招募 </p>
+                                <h5 id="rdpname"> 买买买 - 聚合全网优惠单品</h5>
+                                <p class="ptime" id="rdptime">2017.04.20 23:33&nbsp;&nbsp;|&nbsp; 项目状态：<span id="rdpstatus">第一次招募</span> </p>
                             </div>
                         </div>
                         <div class="description">
-                            <div class="des">
+{#                            项目描述#}
+                            <div class="des" id="rdpdes">
                                 <p>mmmai.top是一个简单的导购平台，在她上面可以一站式聚合查看来自什么值得买、慢慢买等折扣商品推荐网站的超值单品，不必一个网站一个网站的去查看。</p>
                                 <p>目前支持：</p>
                                 <ul>
                                     <li>1.什么值得买</li>
                                     <li>2.买个便宜货</li>
                                     <li>3.今日值得买</li>
-
                                 </ul>
                                 <p> 曾经推荐过很多超值单品，比如298元 某东 移动端: 耐（NIKE ZOOM WITNESS EP 男款篮球鞋 ￥391，￥1839.00 摩托罗拉 moto x 极(
                                     XT1581) 64GB 玛雅黑 全网通4G手机、COACH 蔻驰 女款卡其色PVC单肩手提包 36718 IMBDX (F36718 IMBDX)399元等等。</p>
@@ -43,19 +43,19 @@
                             </div>
                         </div>
                         <div class="option">
-                            <button class="likebutton">
+                            <button class="likebutton" id="rdlikebutton">
                                 <img class="plike" id="rdplike" src="{% static '/project/imgs/like1.svg' %}">
                             </button>
                             <div class="op-tip">
-                                <div class="home-b-collection" id>
+                                <div class="home-b-collection" id="rdcollection">
                                     <img src="{% static '/creation/imgs/collection0.png' %}"
                                          style="width:25px;height:25px;vertical-align:middle;">
                                     <a>关注</a>
                                 </div>
                                 <div class="home-b-share">
-                                    <a href="#" class="share-buttons"></a>
-                                    <a href="#" class="share-buttons"></a>
-                                    <a href="#" class="share-buttons"></a>
+                                    <a href="#" class="share-buttons" id="share-qq"></a>
+                                    <a href="#" class="share-buttons" id="share-weixin"></a>
+                                    <a href="#" class="share-buttons" id="share-weibo"></a>
                                     <a href="#" class="share-icon"><img src="{% static '/creation/imgs/share.png' %}"
                                                                         style="width:25px;height:25px;vertical-align:middle;">
                                         分享</a>
@@ -65,7 +65,7 @@
                                          style="width:25px;height:25px;vertical-align:middle;">
                                     <a>评论</a>
                                 </div>
-                                <div class="home-b-report">
+                                <div class="home-b-report"id="rdreport">
                                     <img src="{% static '/creation/imgs/report.png' %}"
                                          style="width:23px;height:24px;vertical-align:middle;">
                                     <a>举报</a>
@@ -80,17 +80,18 @@
                           <div class="rmain">
                               <div class="lastday">
                                       <span class="size1">剩余时间<br>
-                                      <span class="size2">6</span><span class="size3">天</span>
+                                      <span class="size2" id="lastday">6</span><span class="size3">天</span>
                                       </span>
                               </div>
                               <div class="rm-header">
                                   <div class="ribbon"><span class="ribbon3">招募帖</span></div>
-                                  <p class="r-message">2017.04.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：20 </p>
+                                  <p class="r-message" id="rdr-message">2017.04.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">20 </span></p>
                               </div>
                               <div class="rm-nav">
                                   <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
                               </div>
                               <div class="rcontent">
+{#                                  招募要求#}
                                   <div class="rcontent-main">
                                   <ul>
                                       <li>1、 根据需求实现静态页面交互效果；</li>
@@ -100,6 +101,7 @@
                                       <li>5、对Node.js，AngularJS等前沿开发框架有一定研究者优先。</li>
                                   </ul>
                                   </div>
+{#                                  招募进度条#}
                                   <div class="r-number">
                                        <div class="progress-pie-chart" data-percent="50">
                                        <div class="ppc-progress">
@@ -112,7 +114,6 @@
                                        </div>
                                   </div>
                                        <p class="r-progress">当前招募进度</p>
-
                                   </div>
                               </div>
                           </div>
@@ -125,11 +126,13 @@
                  <div class="r-apply" id="rdr-apply">
                      <p class="applyhead">请填入申请理由</p>
                      <textarea placeholder="" name="" id="comment-content2" class="apply-text"></textarea>
-                     <button class="subapply">提交</button>
+                     <img class="close" id="rdclose" src="{% static 'project/imgs/close.svg'%}">
+                     <button class="subapply" id="rdsubapply">提交</button>
                  </div>
             </div>
             <div class="middle"></div>
             <div class="content-footer">
+{#                评论部分#}
                 <div class="comment">
                     <div class="comment1-1">评论专区</div>
                     <div class="comment1-2"></div>
@@ -144,20 +147,20 @@
                     </div>
                     <div class="c-all" name="c-all">
                               <div class="cmain">
-                                  <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
+                                  <img class="c-img" id="rduimg" src="{% static 'project/imgs/user.svg'%}">
 {#                                  可以加hover点上变成网站logo#}
                                   <div class="comment-box">
                                       <div class="comment-head">
-                                          <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                          <span class="cdate">2017-11-11</span>
+                                          <h6 class="comment-name "id="rduname"><a href=" ">Agustin Ortiz</a></h6>
+                                          <span class="cdate" id="rdcdate">2017-11-11</span>
                                           <div class="c-option">
                                               <img class="clike" id="rdclike" src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
                                               <img class="creply" id="rdcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="creport" id="rdcreport" src="{% static 'creation/imgs/report.png'%}">
+                                              <img class="creport" id="rdreport" src="{% static 'creation/imgs/report.png'%}">
                                           </div>
                                       </div>
                                       <div class="comment-content">
-                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                         <p id="rdc-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                       </div>
                                   </div>
                               </div>
@@ -171,11 +174,11 @@
                                           <div class="r-option">
                                               <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
                                               <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
+                                              <img class="rcreport" id="rdreport" src="{% static 'creation/imgs/report.png'%}">
                                           </div>
                                       </div>
                                       <div class="rcomment-content">
-                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                         <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
                                       </div>
                                   </div>
                               </div>
@@ -202,64 +205,70 @@
                   $('.ppc-percents span').html( percent + '/' +  100);
 {#                $('.ppc-percents span').html('1' + '/' + percent/100);#}
 {#                进度条中间显示计算 已招募人数/预计招募人数#}
-            });
+                });
                 $("#comment11-22").click(function () {
                    document.getElementById("comment-content1").focus();
                 });
+{#                申请加入下拉#}
                 $("#rdrbutton").click(function(){
                     $("#rdr-apply").slideDown("slow");
                 });
-        $('body').on('click','.putcomment',function(){
-            var myDate = new Date();
-            //获取当前年
-            var year=myDate.getFullYear();
-            //获取当前月
-            var month=myDate.getMonth()+1;
-            //获取当前日
-            var date=myDate.getDate();
-            var h=myDate.getHours();       //获取当前小时数(0-23)
-            var m=myDate.getMinutes();     //获取当前分钟数(0-59)
-            if(m<10) m = '0' + m;
-            var s=myDate.getSeconds();
-            if(s<10) s = '0' + s;
-            var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
-            //获取输入内容
-            var oSize = document.getElementById("comment-content1").val();
-            console.log(oSize);
-            //动态创建评论模块
+{#                收起提交申请部分#}
+                $("#rdclose").click(function(){
+                    $("#rdr-apply").slideUp("slow");
+                });
+{#                 提交部分#}
+                $("#rdsubapply").click(function(){
+                    $("#rdr-apply").slideUp("slow");
+                });
+{#                评论生成下方div#}
+                $('body').on('click','.putcomment',function(){
+                    var myDate = new Date();
+                    //获取当前年
+                    var year=myDate.getFullYear();
+                    //获取当前月
+                    var month=myDate.getMonth()+1;
+                    //获取当前日
+                    var date=myDate.getDate();
+                    var h=myDate.getHours();       //获取当前小时数(0-23)
+                    var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+                    if(m<10) m = '0' + m;
+                    var s=myDate.getSeconds();
+                    if(s<10) s = '0' + s;
+                    var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
+                    //获取输入内容
+                    var oSize = document.getElementById("comment-content1").val();
+                    console.log(oSize);
+                    //动态创建评论模块
+                });
+                $("#putcomment").click(function () {
+                    var content = "<div class=\"cmain\">\n" +
+                        "                                  <img class=\"c-img\"  src=\"{% static 'project/imgs/user.svg'%}\">\n" +
+                        "{#                                  可以加hover点上变成网站logo#}\n" +
+                        "                                  <div class=\"comment-box\">\n" +
+                        "                                      <div class=\"comment-head\">\n" +
+                        "                                          <h6 class=\"comment-name \"><a href=\" \">Agustin Ortiz</a></h6>\n" +
+                        "                                          <span class=\"cdate\">2017-11-11</span>\n" +
+                        "                                          <div class=\"c-option\">\n" +
+                        "                                              <img class=\"clike\" id=\"rdclike\" src=\"{% static 'project/imgs/like1.svg'%}\"><span class=\"clikenum\">1111</span>\n" +
+                        "                                              <img class=\"creply\" id=\"rdcreply\" src=\"{% static 'project/imgs/reply.svg'%}\">\n" +
+                        "                                              <img class=\"creport\" id=\"rdcreport\" src=\"{% static 'creation/imgs/report.png'%}\">\n" +
+                        "                                          </div>\n" +
+                        "                                      </div>\n" +
+                        "                                      <div class=\"comment-content\">\n" +
+                        "                                         <p>"+ "HelloWorld" + "</p>\n" +
+                        "                                      </div>\n" +
+                        "                                  </div>\n" +
+                        "                              </div>";
+                    $(".c-all").get(0).innerHTML = content + $(".c-all").get(0).innerHTML;
+                    $(".c-all").get(0).insertBefore(div1) ;
+                   });
 
-
-
-    });
-        $("#putcomment").click(function () {
-            var content = "<div class=\"cmain\">\n" +
-                "                                  <img class=\"c-img\"  src=\"{% static 'project/imgs/user.svg'%}\">\n" +
-                "{#                                  可以加hover点上变成网站logo#}\n" +
-                "                                  <div class=\"comment-box\">\n" +
-                "                                      <div class=\"comment-head\">\n" +
-                "                                          <h6 class=\"comment-name \"><a href=\" \">Agustin Ortiz</a></h6>\n" +
-                "                                          <span class=\"cdate\">2017-11-11</span>\n" +
-                "                                          <div class=\"c-option\">\n" +
-                "                                              <img class=\"clike\" id=\"rdclike\" src=\"{% static 'project/imgs/like1.svg'%}\"><span class=\"clikenum\">1111</span>\n" +
-                "                                              <img class=\"creply\" id=\"rdcreply\" src=\"{% static 'project/imgs/reply.svg'%}\">\n" +
-                "                                              <img class=\"creport\" id=\"rdcreport\" src=\"{% static 'creation/imgs/report.png'%}\">\n" +
-                "                                          </div>\n" +
-                "                                      </div>\n" +
-                "                                      <div class=\"comment-content\">\n" +
-                "                                         <p>"+ "HelloWorld" + "</p>\n" +
-                "                                      </div>\n" +
-                "                                  </div>\n" +
-                "                              </div>";
-
-            $(".c-all").get(0).innerHTML = content + $(".c-all").get(0).innerHTML;
-            $(".c-all").get(0).insertBefore(div1) ;
-        });
-
-        var div1 = document.createElement("div");
-        div1.attr("c-img");
-        var img = document.createElement("img");
-        img.src="";
-        div1.insertBefore(img);
+                    var div1 = document.createElement("div");
+                    div1.attr("c-img");
+                    var img = document.createElement("img");
+                    img.src="";
+                    div1.insertBefore(img);
         </script>
 
         <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>

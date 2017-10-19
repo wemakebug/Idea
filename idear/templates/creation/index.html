@@ -16,7 +16,7 @@
 
                         <div class="abstract">
 
-                            <a class="text" href="crdetails">
+                            <a class="text" href="crdetails?creationId={{ creation.Id}}">
                                 <h5>{{ creation.Name }}</h5>
                                 <a class="text-x">{{ creation.Describe }}</a>
                             </a>
@@ -49,7 +49,7 @@
                         <div class="block-hot">
                             <a class="follow" creation={{ creation.Id }}>
                                 <img src="{% static 'creation/imgs/collection1.png' %}" style="width:20px;height:20px;"
-                                     class="followimg">
+                                     class="following">
 
 
                                     {% if follow.user_id == userId and follow.creation_id == creation.Id %}
