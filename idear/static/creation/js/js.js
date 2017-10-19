@@ -79,3 +79,26 @@ $(function(){
 			}
 		});
 	})
+
+
+$("#putcomment").click(function () {
+            var content = "<div class=\"cmain\">\n" +
+                "                                  <img class=\"c-img\"  src=\"/static/project/imgs/user.svg\">\n" +
+                "                                  <div class=\"comment-box\">\n" +
+                "                                      <div class=\"comment-head\">\n" +
+                "                                          <h6 class=\"comment-name \"><a href=\" \">Agustin Ortiz</a></h6>\n" +
+                "                                          <span class=\"cdate\">2017-11-11</span>\n" +
+                "                                          <div class=\"c-option\">\n" +
+                "                                              <img class=\"clike\" id=\"rdclike\" src=\"/static/project/imgs/like1.svg\"><span class=\"clikenum\">1111</span>\n" +
+                "                                              <img class=\"creply\" id=\"rdcreply\" src=\"/static/project/imgs/reply.svg\">\n" +
+                "                                              <img class=\"creport\" id=\"rdcreport\" src=\"/static/creation/imgs/report.png\">\n" +
+                "                                          </div>\n" +
+                "                                      </div>\n" +
+                "                                      <div class=\"comment-content\">\n" +
+                "                                         <p>"+ "HelloWorld" + "</p>\n" +
+                "                                      </div>\n" +
+                "                                  </div>\n" +
+                "                              </div>";
+
+            $(".c-all").get(0).innerHTML = content + $(".c-all").get(0).innerHTML;
+        });

@@ -321,7 +321,7 @@
 }
 .home-b-user{
     width:660px;
-    height:110px;
+    height:100px;
     float:left;
     background-color:white;
     margin:5px 0 0 18%;
@@ -393,16 +393,16 @@
 	color:#007776;
 }
 .line {
-position:fixed;
-    background-color:#539092;
-    width:2px;
+    position:fixed;
+    background-color:rgba(95,158,160,0.6);
+    width:3px;
     height:280px;
     float:left;
     margin-left:880px;
     margin-top:30px;
 }
 .word {
-position:fixed;
+    position:fixed;
     float: left;
     font-family: 幼圆;
     font-size: 20px;
@@ -413,7 +413,7 @@ position:fixed;
     margin-left:890px;
 }
 .main-right{
-    width:23%;
+    width:290px;
 	height:auto;
 	float:left;
     position:fixed;
@@ -528,7 +528,7 @@ h5 {
 .c-all{
     width:100%;
     height:auto;
-
+    margin-bottom:40px;
 }
 .ctitle{
     width:100%;
@@ -561,10 +561,10 @@ h5 {
 }
 
 .carea {
-    width: 65%;
+    width: 72%;
     height: 100px;
     float: right;
-    margin: 50px 15% 0 0;
+    margin: 43px 62px 0 0;
 }
 .tocomment{
 
@@ -582,7 +582,7 @@ h5 {
 }
 
 .putcomment{
-    width:8%;
+    width:12%;
     height:30px;
     margin-top:5px;
     background-color: #3a87ad;
@@ -602,7 +602,9 @@ h5 {
     float:left;
 }
 .comment-box {
-    width:65%;
+    width:72%;
+    float:left;
+    margin-left:20px;
     height:80px;
 	position: relative;
 }
@@ -655,7 +657,7 @@ h5 {
 }
 .c-option{
     float:right;
-    width:20%;
+    width:28%;
     height:100%;
 }
 .clike{
@@ -716,7 +718,9 @@ h5 {
 	left: -55px;
 }
 .rcomment-box {
-    width: 65%;
+    width:73%;
+    float:left;
+    margin-left:20px;
     height:80px;
 	position: relative;
 }
@@ -768,7 +772,7 @@ h5 {
 }
 .r-option{
     float:right;
-    width:22%;
+    width:31%;
     height:100%;
 }
 .rclike{
