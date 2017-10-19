@@ -65,7 +65,7 @@
                         <img src="{% static '/creation/imgs/tx.jpg' %}">
                     </div>
                     <div class="user-name">
-                        <p>啊啊啊啊啊啊</p>
+                        <p>{{creation.user.UserName}}</p>
                         <div class="user-intro">
                             <div class="user-score">
                                 <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
@@ -118,8 +118,6 @@
 
 
 
-
-
             </div>
 
             <div class="content-footer">
@@ -154,7 +152,7 @@
                                       </div>
                                   </div>
                               </div>
-
+                              
                               <div class="c-reply">
                                   <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
                                   <div class="rcomment-box">
