@@ -1,0 +1,187 @@
+{% extends 'idea/Base.html' %}
+{% block title %}<title>创意详情</title>{% endblock %}
+{% block CSS %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+    <link rel="stylesheet" href="{% static '/creation/css/crdetails.css' %}">
+
+
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="container-b">
+        <div class="main">
+            <div class="main-left">
+                <div class="home-b-all">
+                    <div class="home-b-tags">
+                        {%for label in labels%}
+                        <a class="tags" href="creations?sign={{label.projectLabel.Id}}">
+                            <span>{{label.projectLabel.ProjectLabelName}}</span>
+                        </a>                        
+                        {%endfor%}
+                    </div>
+                    <div class="home-b-title">
+                        <h1>{{creation.Name}}</h1>
+                        <p>{{creation.LastChange}}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="www.github.com">www.github.com</a></p>
+                        <hr>
+                    </div>
+                    <div class="text">
+                        <p>{{creation.Describe}}</p>
+                        <p>{{creation.Describe}}</p>
+                        <p>{{creation.Describe}}</p>
+                    </div>
+                    <div class="home-b-foot">
+                        <div class="home-b-report">
+                            <img src="{% static '/creation/imgs/report.png' %}" style="width:16px;
+    height:16px;">
+                            <a href="#">举报</a>
+                        </div>
+                        <div class="home-b-share">
+                            <a href="#" class="share-buttons"></a>
+                            <a href="#" class="share-buttons"></a>
+                            <a href="#" class="share-buttons"></a>
+                            <a><img src="{% static '/creation/imgs/share.png' %}" style="width:16px;
+    height:16px;">分享</a>
+                        </div>
+                        <div class="home-b-comment">
+                            <img src="{% static '/creation/imgs/reply.svg' %}" style="width:16px;
+    height:16px;">
+                            <a href="#">评论</a>
+                        </div>
+                        <div class="home-b-collection">
+                            <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;
+    height:16px;">
+                            <a href="#">收藏</a>
+
+                        </div>
+                    </div>
+                    <div class="praise">
+                        <span id="praise"><img src="{% static '/creation/imgs/like1.png' %}" id="praise-img" /></span>
+                        <p><span id="praise-txt">1</span>人觉得很赞</p>
+                        <span id="add-num"></span>
+                    </div>
+                </div>
+                <div class="home-b-user">
+                    <div class="user-img">
+                        <img src="{% static '/creation/imgs/tx.jpg' %}">
+                    </div>
+                    <div class="user-name">
+                        <p>{{creation.user.UserName}}</p>
+                        <div class="user-intro">
+                            <div class="user-score">
+                                <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
+                                <span>1000</span>
+                            </div>
+                            <div class="user-id">
+                                <img class="pimg" src="{% static 'project/imgs/id.svg'%}">
+                                <span>身份</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#"><span class="user-follow">+</span></a>
+                </div>
+            </div>
+                <div class="line">
+                <hr>
+                </div>
+                <div class="word">
+                    <img src="{% static 'creation/imgs/light1.png' %}"
+                         style="width:30px;height:30px;margin:5px 0px 2px -5px">
+                    <p>你可能会对这些感兴趣</p>
+                </div>
+            <div class="main-right">
+
+
+{%for creation2crojectLabel in creation2crojectLabels%}
+                 <div class="similar-block">
+                    <div class="block-main">
+                        <a class="block-title" href="crdetails?creationId={{creation.Id}}">
+                            <h5>{{creation2crojectLabel.creation.Name}}</h5>
+                        <a class="block-text">{{creation2crojectLabel.creation.Describe}}</a>
+                        </a>
+                    </div>
+                    <div class="block-bottom">
+                        <div class="block-bottom-ava">
+                            <img src="{% static '/creation/imgs/tx.jpg' %}" style="width:40px;height:40px">
+                        </div>
+                        <div class="block-bottom-hot">
+                            <div class="block-hotl">
+                            <img class="block-imgl" src="{% static 'creation/imgs/like0.png'%}">
+                            <span>7</span>
+                            </div>
+                            <div class="block-hotc">
+                            <img class="block-imgc" src="{% static 'creation/imgs/collection0.png'%}">
+                            <span>54</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{%endfor%}
+
+
+
+
+            </div>
+
+            <div class="content-footer">
+                <div class="comment">
+                    <div class="comment1-1">评论专区</div>
+                    <div class="comment1-2"></div>
+                    <div class="ctop">
+                        <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
+                        <div class="carea">
+                            <div class="tocomment">
+                                <textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>
+                            </div>
+                            <button class="putcomment" id="putcomment">评论</button>
+                        </div>
+                    </div>
+                    <div class="c-all" name="c-all">
+                              <div class="cmain">
+                                  <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
+                                  <div class="comment-box">
+                                      <div class="comment-head">
+                                          <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
+                                          <span class="cdate">2017-11-11</span>
+                                          <div class="c-option">
+                                              <img class="clike" id="rdclike" src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
+                                              <img class="creply" id="rdcreply" src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="creport" id="rdcreport" src="{% static 'creation/imgs/report.png'%}">
+                                          </div>
+                                      </div>
+                                      <div class="comment-content">
+                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              <div class="c-reply">
+                                  <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                                  <div class="rcomment-box">
+                                      <div class="rcomment-head">
+                                          <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                          <span class="rcdate">2017-11-11</span>
+                                          <div class="r-option">
+                                              <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
+                                              <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
+                                          </div>
+                                      </div>
+                                      <div class="rcomment-content">
+                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                      </div>
+                                  </div>
+                              </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+
+    <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'creation/js/js.js' %}"></script>
+
+{% endblock %}

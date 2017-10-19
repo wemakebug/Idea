@@ -18,6 +18,7 @@
 	width:70%;
 	float:left;
 	margin-left:2.5%;
+	min-height:855px;
 }
 .home-right {
     position:fixed;

@@ -142,10 +142,11 @@ body{
     background-color:#ffffff ;
     border-color: #539092 ;
     float:left;
+    background-color: #ABCDCB;
 }
 
 .likebutton:hover{
-    background-color: #ABCDCB;
+    background-color: #ffffff;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -166,7 +167,7 @@ body{
     color: #8590a6;
 }
 .op-tip{
-    width:46%;
+    width:350px;
     height:40px;
     float:right;
     margin-top: 18px;
@@ -261,6 +262,7 @@ body{
     height:25%;
     float:right;
 }
+
 /*招募帖*/
 .content-middle{
     width:100%;
@@ -279,7 +281,7 @@ body{
     overflow: hidden;
 }
 .rm-header{
-    width:100%;
+    width:55%;
     height:150px;
     line-height: 50px;
     position: absolute;
@@ -478,8 +480,8 @@ body{
 /*.progress-pie-chart {*/
   /*margin: 50px auto 0;*/
 /*}*/
-a.rbutton {
-            height:35px;
+.rbutton {
+            height:38px;
 			position: relative;
 			color: rgba(255,255,255,1);
 			text-decoration: none;
@@ -488,6 +490,7 @@ a.rbutton {
 			font-weight: 700;
 			font-size: 25px;
 			display: block;
+            cursor: pointer;
 			-webkit-border-radius: 8px;
 			-moz-border-radius: 8px;
 			border-radius: 5px;
@@ -503,7 +506,7 @@ a.rbutton {
 }
 
 /*单击按键后变化*/
-a.rbutton:active {
+.rbutton:active {
     -webkit-box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
     -moz-box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
     box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
@@ -513,16 +516,45 @@ a.rbutton:active {
     height:130px;
     overflow: hidden;
 }
-.rclose{
-    width:50%;
-    height:60px;
-    margin-top:25px;
-    font-size:20px;
+.r-apply{
+    display:none;
+    width:100%;
+    height:auto;
+    margin-top: 30px;
+    overflow: hidden;
+    background-color:#ffffff ;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+.applyhead{
+    width:150px;
+    height:30px;
+    margin:5px 0 0 55px;
+    font-size: 20px;
+}
+.apply-text{
+    width:90%;
+    height: 300px;
+    margin:10px 0 0 5%;
+    font-size: 25px;
+    border-radius:5px;
+    resize:none;
+    border: 1px solid #c6c8ce;
 }
 .close{
-    width:35px;
-    height:35px;
-    vertical-align: middle;
+    width:30px;
+    height:40px;
+    margin-left:50px;
+}
+.subapply{
+    width:8%;
+    height:30px;
+    margin:10px 52px 10px 0;
+    background-color: #3a87ad;
+    border:none;
+    float:right;
+    border-radius:5px;
 }
 .middle{
     height:50px;
@@ -583,7 +615,7 @@ a.rbutton:active {
     width: 70%;
     height: 100px;
     float: right;
-    margin: 50px 15% 0 0;
+    margin: 50px 13% 0 0;
 }
 .tocomment{
 
@@ -595,11 +627,14 @@ a.rbutton:active {
     width:100%;
     height: 40px;
     margin-top:2px;
-    font-size: 15px;
+    font-size: 20px;
     border-radius:5px;
     resize:none;
-}
-
+    line-height:1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: transparent;
+    border: 1px solid #c6c8ce;
+ }
 .putcomment{
     width:8%;
     height:30px;
@@ -624,6 +659,7 @@ a.rbutton:active {
     width:  70%;
     height:80px;
 	position: relative;
+    left: 20px;
 }
 .comment-box:before,  .comment-box:after {
 	content: '';
@@ -652,7 +688,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:   #ABCDCB;*/
+    background-color:   #ABCDCB;
 
 }
 .comment-name {
@@ -674,7 +710,7 @@ a.rbutton:active {
 }
 .c-option{
     float:right;
-    width:20%;
+    width:140px;
     height:100%;
 }
 .clike{
@@ -738,6 +774,7 @@ a.rbutton:active {
     width:  70%;
     height:80px;
 	position: relative;
+    left:20px;
 }
 .rcomment-box:before,  .comment-box:after {
 	content: '';
@@ -756,7 +793,6 @@ a.rbutton:active {
 	border-color: transparent  #ABCDCB;
 	left: -12px;
 }
-
 .rcomment-head {
 	height:40%;
 	width:100%;
@@ -766,7 +802,7 @@ a.rbutton:active {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #ABCDCB;*/
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
@@ -787,7 +823,7 @@ a.rbutton:active {
 }
 .r-option{
     float:right;
-    width:22%;
+    width:138px;
     height:100%;
 }
 .rclike{
