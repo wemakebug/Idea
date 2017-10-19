@@ -66,8 +66,8 @@
                     <p class="chance_must">必选</p>
                 </div>
                 <div class="label_name">
-                    {% for str in string %}
-                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()">{{ str }}</div>
+                    {% for obj in labels %}
+                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()">{{ obj.ProjectLabelName}}</div>
                     {% endfor %}
                 </div>
             </div>

@@ -706,8 +706,8 @@ def editprofile(req):
         pass
 
 def addlabel(req):
-    str = ["大数据", "Css", "我就测试名称能多长再多说一个字吧", "JavaScript", "可以自行添加标签啦"]
-    return render_to_response('personal/release.html', {"string": str})
+    obj = models.ProjectLabel.objects.all()
+    return render_to_response('personal/release.html', {"labels": obj})
 '''个人中心相关页面结束'''
 
 
