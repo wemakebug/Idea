@@ -394,7 +394,6 @@ def ordinance(req):
 
 
 
-
 ''' 创意灵感 页面相关部分开始'''
 
 def crdetails(req):
