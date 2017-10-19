@@ -5,8 +5,8 @@
 {%endblock%}
 {%block CSS%}
 <link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
-<link rel="stylesheet" href="{% static 'team/css/commentstyle.css'%}">
-<link rel="stylesheet" href="{% static 'team/css/comment.css'%}">
+{#<link rel="stylesheet" href="{% static 'team/css/commentstyle.css'%}">#}
+{#<link rel="stylesheet" href="{% static 'team/css/comment.css'%}">#}
 <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
 {%endblock%}
 {%block content%}
@@ -289,21 +289,23 @@
             </div>
         </div>
     </div>
+
     <div class="comments">
         <div class="content-footer">
             <div class="comment">
+                <div style="width: 100%;height: 100px;"></div>
                 <div class="comment1-1">评论专区</div>
                 <div class="comment1-2"></div>
                 <div class="ctop">
                     <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                     <div class="carea">
                         <div class="tocomment">
-                            <textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>
+                            <textarea placeholder="评论..." name="" id="comment-content11" class="comment-text"></textarea>
                         </div>
-                        <button class="putcomment">评论</button>
+                        <button class="putcomment" id="putcommentbutton">评论</button>
                     </div>
                 </div>
-                <div class="c-all">
+                <div class="c-all1">
                     <div class="cmain">
                         <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
 {#                                  可以加hover点上变成网站logo#}
@@ -312,9 +314,9 @@
                                 <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
                                 <span class="cdate">2017-11-11</span>
                                 <div class="c-option">
-                                    <img class="clike"  src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
-                                    <img class="creply"  src="{% static 'project/imgs/reply.svg'%}">
-                                    <img class="creport"  src="{% static 'creation/imgs/report.png'%}">
+                                    <img class="clike" id="rdclike1"  src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
+                                    <img class="creply" id="rdcreply1"  src="{% static 'project/imgs/reply.svg'%}">
+                                    <img class="creport" id="rdcreport1"  src="{% static 'creation/imgs/report.png'%}">
                                 </div>
                             </div>
                             <div class="comment-content">
@@ -330,44 +332,13 @@
                                 <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
                                 <span class="rcdate">2017-11-11</span>
                                 <div class="r-option">
-                                    <img class="rclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
-                                    <img class="rcreply"  src="{% static 'project/imgs/reply.svg'%}">
-                                    <img class="rcreport"  src="{% static 'creation/imgs/report.png'%}">
+                                    <img class="rclike"  id="rdclike2" src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
+                                    <img class="rcreply" id="rcreply2"  src="{% static 'project/imgs/reply.svg'%}">
+                                    <img class="rcreport" id="rcreport2" src="{% static 'creation/imgs/report.png'%}">
                                 </div>
                             </div>
                             <div class="rcomment-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-
-{#    <div class="comment">#}
-{#        <div class="comment1-1">评论专区</div>#}
-{#        <div class="comment1-2"></div>#}
-{#        <!--#}
-{#         此评论textarea文本框部分使用的https://github.com/alexdunphy/flexText此插件#}
-{#        -->#}
-{#        <div class="commentAll">#}
-{#            <!--评论区域 begin-->#}
-{#            <div class="reviewArea clearfix">#}
-{#                <textarea class="content1 comment-input text111 " id="contectnumber1" placeholder="评论...&hellip;" onkeyup="keyUP(this)"></textarea>#}
-{#                <a href="javascript:;" class="plBtn">评论</a>#}
-{#            </div>#}
-{#             <!--评论区域 end-->#}
-{#             <!--回复区域 begin-->#}
-{#            <div class="comment-show">#}
-{#                <div class="comment-show-con clearfix">#}
-{#                    <div class="comment-show-con-img pull-left"><a style="text-decoration: none;position: relative;" href="#"><img style="width:100%;height:100%;" src="{% static 'team/imgs/django-logo-negative.png'%}" alt=""></a></div>#}
-{#                    <div class="comment-show-con-list pull-left clearfix">#}
-{#                        <div class="pl-text clearfix">#}
-{#                            <a href="#" class="comment-size-name">张三 : </a>#}
-{#                            <span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>#}
-{#                        </div>#}
-{#                        <div class="date-dz">#}
-{#                            <span class="my-pl-con">&nbsp;来啊 造作啊!</span>#}
-{#                            <div class="date-dz-right pull-right comment-pl-block">#}
-{#                                <a href="javascript:;" class="removeBlock">删除</a>#}
-{#                                <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>#}
-{#                                <span class="pull-left date-dz-line">|</span>#}
-{#                                <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a>#}
-{#>>>>>>> 26da2a46b8ec6aab58135cc3e2d88ad8c9b927a0#}
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit ur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
                             </div>
                         </div>
                     </div>
@@ -375,26 +346,49 @@
             </div>
         </div>
     </div>
+    <div style="width: 100%;height: 30px;"></div>
 {#    <div class="teamdetaillandscape"></div>#}
 {#    <div class="teamdetailfilter"></div>#}
 {#    <canvas id="canvas"></canvas>#}
 </div>
 {% endblock %}
 {%block script%}
+    <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
 <script type="text/javascript">
-    $('.comment-show').on('click','.date-dz-z',function(){
-        var zNum = $(this).find('.z-num').html();
-        if($(this).is('.date-dz-z-click')){
-            zNum--;
-            $(this).removeClass('date-dz-z-click red');
-            $(this).find('.z-num').html(zNum);
-            $(this).find('.date-dz-z-click-red').removeClass('red');
-        }else {
-            zNum++;
-            $(this).addClass('date-dz-z-click');
-            $(this).find('.z-num').html(zNum);
-            $(this).find('.date-dz-z-click-red').addClass('red');
-        }
+    $("#putcommentbutton").click(function () {
+        var myDate = new Date();
+        //获取当前年
+        var year=myDate.getFullYear();
+        //获取当前月
+        var month=myDate.getMonth()+1;
+        //获取当前日
+        var date=myDate.getDate();
+        var h=myDate.getHours();       //获取当前小时数(0-23)
+        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+        if(m<10) m = '0' + m;
+        var s=myDate.getSeconds();
+        if(s<10) s = '0' + s;
+        var nows=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
+        var comment="<div class=\"cmain\">\n" +
+                "                                  <img class=\"c-img\"  src=\"{% static 'project/imgs/user.svg'%}\">\n" +
+                "{#                                  可以加hover点上变成网站logo#}\n" +
+                "                                  <div class=\"comment-box\">\n" +
+                "                                      <div class=\"comment-head\">\n" +
+                "                                          <h6 class=\"comment-name \"><a href=\" \">张三</a></h6>\n" +
+                "                                          <span class=\"cdate\">"+ nows+ "</span>\n" +
+                "                                          <div class=\"c-option\">\n" +
+                "                                              <img class=\"clike\" id=\"rdclike1\" src=\"{% static 'project/imgs/like1.svg'%}\"><span class=\"clikenum\">1111</span>\n" +
+                "                                              <img class=\"creply\" id=\"rdcreply1\" src=\"{% static 'project/imgs/reply.svg'%}\">\n" +
+                "                                              <img class=\"creport\" id=\"rdcreport1\" src=\"{% static 'creation/imgs/report.png'%}\">\n" +
+                "                                          </div>\n" +
+                "                                      </div>\n" +
+                "                                      <div class=\"comment-content\">\n" +
+                "                                         <p>"+ "HelloWorld哈哈哈啊哈哈哈哈哈" + "</p>\n" +
+                "                                      </div>\n" +
+                "                                  </div>\n" +
+                "                              </div>";
+                $(".c-all1").get(0).innerHTML = comment + $(".c-all1").get(0).innerHTML;
     })
 </script>
 <script type="text/javascript">
