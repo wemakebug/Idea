@@ -406,7 +406,15 @@ def crdetails(req):
     if req.method == 'GET':
         creationId =  req.GET['creationId']
         creation = Creation.objects.get(Id = creationId)
-        return render_to_response('creation/crdetails.html',{"creation":creation})
+        labels = Creation2ProjectLabel.objects.filter(creation_id = creationId)
+
+        alllables = []    #找出本创意所有的标签
+        for label in labels:
+            alllables.append(label.projectLabel.Id) 
+        alllables = list(set(alllables))
+
+        creation2crojectLabels = Creation2ProjectLabel.objects.filter(projectLabel_id__in = alllables)    #所有相关标签的 所有标签2项目
+        return render_to_response('creation/crdetails.html',{"creation":creation,"creation2crojectLabels":creation2crojectLabels[:2],"labels":labels[:3]})
     if req.method == "POST":
         pass
 
