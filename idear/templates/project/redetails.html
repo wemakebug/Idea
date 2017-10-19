@@ -17,7 +17,7 @@
             <div class="main-left">
                  <div class="content-top">
                         <div class="content-main">
-                            此处为for循环显示不超过三个
+{#                            此处为for循环显示不超过三个#}
                             <div class="tags"><span>网站</span></div>
                             <div class="tags"><span>购物</span></div>
                             <div class="tags"><span>IT</span></div>
@@ -124,7 +124,10 @@
                           </div>
                  </div>
                  <div class="r-apply" id="rdr-apply">
-                     <p class="applyhead">请填入申请理由</p>
+                      <div class="applyhead">
+                          <div class="ribbon"><span class="ribbon4">请填入申请理由</span></div>
+                      </div>
+{#                     <p class="applyhead">请填入申请理由</p>#}
                      <textarea placeholder="" name="" id="comment-content2" class="apply-text"></textarea>
                      <img class="close" id="rdclose" src="{% static 'project/imgs/close.svg'%}">
                      <button class="subapply" id="rdsubapply">提交</button>
@@ -162,6 +165,10 @@
                                       <div class="comment-content">
                                          <p id="rdc-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                       </div>
+                                      <div class="commentreply" id="commentreply">
+                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
+                                          <button class="putcomment" id="putcomment">回复</button>
+                                      </div>
                                   </div>
                               </div>
 
@@ -191,6 +198,7 @@
 
     {% block script %}
         <script>
+{#            招募进度条#}
             $(function () {
                 var $ppc = $('.progress-pie-chart'),
                     percent = parseInt($ppc.data('percent')),
@@ -220,6 +228,10 @@
 {#                 提交部分#}
                 $("#rdsubapply").click(function(){
                     $("#rdr-apply").slideUp("slow");
+                });
+{#                评论回复部分#}
+                 $("#rdcreply").click(function(){
+                    $("#commentreply").slideDown("slow");
                 });
 {#                评论生成下方div#}
                 $('body').on('click','.putcomment',function(){
@@ -269,6 +281,7 @@
                     var img = document.createElement("img");
                     img.src="";
                     div1.insertBefore(img);
+
         </script>
 
         <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
