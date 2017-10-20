@@ -528,15 +528,55 @@ body{
     border-radius: 8px;
 }
 .applyhead{
-    width:150px;
-    height:30px;
-    margin:5px 0 0 55px;
-    font-size: 20px;
+    width:55%;
+    height:50px;
+    line-height: 50px;
+    position: absolute;
+    margin-top: -8px;
+    margin-left: -8px;
+    /*overflow: hidden;*/
+    font-size: 15px;
+    /*background-color: #2f96b4;*/
 }
+.ribbon4 {
+    display: inline-block;
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    font-size:20px;
+    font-family:幼圆;
+    font-weight:bold;
+    line-height: 50px;
+    padding-left: 15px;
+    background: #ABCDCB;
+    left: -2px;
+    top: 30px
+}
+.ribbon4:before, .ribbon4:after {
+    content: "";
+    position: absolute;
+}
+.ribbon4:before {
+   height: 0;
+   width: 0;
+   border-bottom: 8px solid  #ABCDCB ;
+   border-left: 8px solid transparent;
+   top: -8px;
+   left: 0;
+}
+.ribbon4:after {
+   height: 0;
+   width: 0;
+   border-top: 25px solid transparent;
+   border-bottom: 25px solid transparent;
+   border-left: 15px solid #ABCDCB;
+   right: -15px;
+}
+
 .apply-text{
     width:90%;
     height: 300px;
-    margin:10px 0 0 5%;
+    margin:80px 0 0 5%;
     font-size: 25px;
     border-radius:5px;
     resize:none;
@@ -618,10 +658,8 @@ body{
     margin: 50px 13% 0 0;
 }
 .tocomment{
-
     width:100%;
     height:50px;
-
 }
 .comment-text{
     width:100%;
@@ -644,7 +682,6 @@ body{
     float:right;
     border-radius:5px;
 }
-
 .cmain{
     height:100px;
 }
@@ -678,7 +715,6 @@ body{
 	border-color: transparent rgba(0,0,0,0.05);
 	left: -12px;
 }
-
 .comment-head {
 	height:40%;
 	width:100%;
@@ -753,6 +789,7 @@ body{
     width:88%;
     height:100px;
     margin-left: 10%;
+    margin-top:30px;
 }
 .rc-img{
     display:block;
@@ -861,4 +898,24 @@ body{
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
     background-color:  #ABCDCB;
+}
+.commentreply{
+    display:none;
+    width:100%;
+    height:40px;
+    margin-top: 10px;
+    background-color:  #ABCDCB ;
+    -webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+.commentreply-text{
+    width:90%;
+    height: 30px;
+    margin:5px 0 0 5px;
+    border-radius:5px;
+    resize:none;
+    line-height:1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid #c6c8ce;
 }

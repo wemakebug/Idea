@@ -9,8 +9,8 @@
     display: block;
     width: 80%;
     height:100%;
-    /*max-height: 1200px;*/
-    /*min-width: 1500px;*/
+    max-height: 1200px;
+    min-width: 1500px;
 }
 body, html {
     background-color: #f1f1f1;
@@ -248,6 +248,7 @@ body, html {
     /*margin: -5% 20px;*/
     min-width: 30px;
     height: 18px;
+    z-index: 10;
     line-height: 16px;
     text-align: right;
     background: #cccccc;
@@ -272,9 +273,17 @@ body, html {
     /*text-align: center;*/
     left: 0;
     position: absolute;
-    z-index: 9999;
+    z-index: 999;
+    overflow: auto;
 }
+.progress > span > span>li{
+    /*position: absolute;*/
+    width: 200px;
+    height:100px;
+    display: block;
+    z-index: 222;
 
+}
 .progress > span:before {
     content: '';
     position: absolute;
@@ -282,7 +291,7 @@ body, html {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: -1;
     height: 18px;
     background: url('../imgs/progress.png') 0 0 repeat-x;
     border-radius: 10px;
