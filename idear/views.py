@@ -632,7 +632,7 @@ def projects(req):
             return render_to_response('project/recruit.html',
                                       {'project': project, 'comments': comments, 'user': user})
     except Exception as e:
-        print e
+        print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 
