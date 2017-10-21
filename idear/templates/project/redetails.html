@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'idea/css/sweet-alert.css' %}">
 
 {% endblock %}
 {% block content %}
@@ -17,10 +18,9 @@
                  <div class="content-top">
 
                         <div class="content-main">
-                          {%for label in labels%}
-                            <a class="tags" href="../projects?sign={{label.projectLabel.Id}}"><span>{{label.projectLabel.ProjectLabelName}}</span></a>
+                            {%for label in labels%}
+                                <a class="tags" href="../projects?sign={{label.projectLabel.Id}}"><span>{{label.projectLabel.ProjectLabelName}}</span></a>
                             {% endfor%}
-
                             <div class="title">
                                 <h5 id="rdpname"> {{ project.ProjectName }}</h5>
                                 <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：<span id="rdpstatus">第一次招募</span> </p>
@@ -30,16 +30,6 @@
 {#                            项目描述#}
                             <div class="des" id="rdpdes">
                                 {{ project.Description }}
-{#                                <p>目前支持：</p>#}
-{#                                <ul>#}
-{#                                    <li>1.什么值得买</li>#}
-{#                                    <li>2.买个便宜货</li>#}
-{#                                    <li>3.今日值得买</li>#}
-{#                                </ul>#}
-{#                                <p> 曾经推荐过很多超值单品，比如298元 某东 移动端: 耐（NIKE ZOOM WITNESS EP 男款篮球鞋 ￥391，￥1839.00 摩托罗拉 moto x 极(#}
-{#                                    XT1581) 64GB 玛雅黑 全网通4G手机、COACH 蔻驰 女款卡其色PVC单肩手提包 36718 IMBDX (F36718 IMBDX)399元等等。</p>#}
-{#                                <p>后续会添加智能订阅以及推荐功能，更加精准的实时汇报你关注的值得买信息。#}
-{#                                <p><img c src="{% static '/project/imgs/example.png' %}"></p>#}
                             </div>
                         </div>
                      <div class="option">
@@ -117,7 +107,7 @@
                                   </div>
                                        <p class="r-progress">当前招募进度</p>
                                   </div>
-                              </div>
+                         </div>
                      </div>
                      <div class="rfooter">
                                <div class="rfcontent">
@@ -205,6 +195,7 @@
 
     {% block script %}
         <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'idea/js/sweet-alert.min.js' %}"></script>
         <script>
 {#            招募进度条#}
             $(function () {
@@ -245,6 +236,15 @@
                     $("#rcommentreply").slideDown("slow");
                 });
                    {#                评论生成下方div#}
+                $("#rdreport").click(function(){
+                    swal({
+                        html:true,
+                        title:"请选择举报理由",
+                        text:"请输入正确邮箱！",
+                        type:"input"
+                    })
+                });
+
         </script>
 
 
