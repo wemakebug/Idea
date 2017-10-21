@@ -6,11 +6,16 @@
 }*/
 .bg_all {
     /*position: relative;*/
-    /*display: block;*/
+    display: block;
     width: 80%;
     height:auto;
     /*max-height: 1200px;*/
     min-width: 1500px;
+    /*margin-top: -20px;*/
+    position: relative;
+    /*overflow: hidden;*/
+    margin: 40px auto 0;
+    overflow: hidden;
 }
 body, html {
     background-color: #f1f1f1;
@@ -22,10 +27,11 @@ body, html {
     float: left;
     width: 80%;
     height: auto;
-    margin-top:50px;
-    margin-left: 10%;
-    max-width: 1200px;
-    min-height: 500px;
+    /*margin-top:50px;*/
+    /*margin-left: 10%;*/
+    /*max-width: 1200px;*/
+    /*min-height: 500px;*/
+    margin: 0 0 0 2.5%
 }
 
 .bg_right {
@@ -49,6 +55,7 @@ body, html {
     background-color: rgb(255, 255, 255);
     box-shadow: 10px 10px 5px #c0c7d0;
     transition: 0.2s ease-out;
+    margin-bottom: 25px;
 }
 
 .project_top:hover, .project_bottom:hover {
