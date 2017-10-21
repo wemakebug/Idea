@@ -17,12 +17,11 @@
             <div class="main-left">
                  <div class="content-top">
                         <div class="content-main">
-{#                            此处为for循环显示不超过三个#}
-                            <div class="tags"><span>网站</span></div>
-                            <div class="tags"><span>购物</span></div>
-                            <div class="tags"><span>IT</span></div>
+{#                           {%for label in labels%}
+                            <a class="tags" href="../projects?sign={{label.projectLabel.Id}}"><span>{{label.projectLabel.ProjectLabelName}}</span></a>
+                            {% endfor%}
                             <div class="title">
-                                <h5 id="rdpname"> 买买买 - 聚合全网优惠单品</h5>
+                                <h5 id="rdpname"> {{ project.ProjectName }}</h5>
                                 <p class="ptime" id="rdptime">2017.04.20 23:33&nbsp;&nbsp;|&nbsp; 项目状态：<span id="rdpstatus">第一次招募</span> </p>
                             </div>
                         </div>
