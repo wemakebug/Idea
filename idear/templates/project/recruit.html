@@ -80,13 +80,13 @@ idea/css/index.css{% extends 'idea/Base.html' %}
     {#    <script type="text/javascript" src="{% static 'idea/js/index.js'%}"></script>#}
     {#    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>#}
     {#    <script src="{% static 'project/js/more.js' %}"></script>#}
-{#    <script>#}
-{#        $(document).ready(function project_schedule() {#}
-{#            var schedule = 1/{{ project.Number }};#}
-{#            alert(1);#}
-{#            document.getElementById("project_schedule").style.width = "90%";#}
-{#        })#}
-{#    </script>#}
+    {#    <script>#}
+    {#        $(document).ready(function project_schedule() {#}
+    {#            var schedule = 1/{{ project.Number }};#}
+    {#            alert(1);#}
+    {#            document.getElementById("project_schedule").style.width = "90%";#}
+    {#        })#}
+    {#    </script>#}
     <script>
         //限制字符个数
         $(document).ready(function () {
@@ -100,19 +100,14 @@ idea/css/index.css{% extends 'idea/Base.html' %}
             });
         });
 
-        $(document).ready(function () {
-            $(".project_top").slice(0, 5).show();
-            if ($(".project_top").length <= 5) {
+        $(function () {
+            $(".project_top").slice(0, 6).show();
+            if ($(".project_top").length <= 6) {
                 $(".more").hide();
             }
             $(".more").on('click', function (e) {
                 e.preventDefault();
                 $(".project_top:hidden").slice(0, 6).slideDown();
-                if ($(".project_top:hidden").length == 0) {
-                    $(".more").fadeOut('slow');
-                }
-
-
                 if ($(".project_top:hidden").length == 0) {
                     $(".more").fadeOut('slow');
                 }
