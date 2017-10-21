@@ -381,9 +381,9 @@ html{
 
 .broadSide{
 	float: right;
-	width: 20%;
-	/*position:absolute;*/
-	margin: 0% 1%;
+	width: 300px;
+	position:fixed;
+	margin:0 0 0 1200px;
 }
 .intro_1{
 	width: 100%;
