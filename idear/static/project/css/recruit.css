@@ -6,10 +6,10 @@
 }*/
 .bg_all {
     /*position: relative;*/
-    display: block;
+    /*display: block;*/
     width: 80%;
-    height:100%;
-    max-height: 1200px;
+    height:auto;
+    /*max-height: 1200px;*/
     min-width: 1500px;
 }
 body, html {
@@ -377,7 +377,7 @@ body, html {
 	margin-left:8%;
 	margin-top:5%;
 	text-align:left;
-	font-family:幼圆;
+	font-family:幼圆!important;
 }
 .add:active {
 	transform: translate(0px, 5px);
@@ -428,6 +428,7 @@ body, html {
 	background-color:white;
 	border-radius: 3px;
 	box-shadow: 2px 2px 2px 2px #bdc3c7;
+    /*position: absolute;*/
 }
 .f-weight {
     font-weight: 500;
