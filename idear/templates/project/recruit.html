@@ -31,7 +31,6 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                         </div>
                     </a>
                     <div class="project_middle">
-
                         <span class="project_middle_fix">所需人员标签：</span>
                         <span class="project_middle_icon-1"></span>
                         <span class="project_middle_text">互联网</span>
@@ -43,7 +42,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                     <div class="project_bottom_top">
                         <p class="project_top_1_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project.Description }}</p>
                         <div class="progress">
-                            <span class="green" id="project_schedule"><span><li>当前招募进度：1/{{ project.Number }}</li></span></span>
+                            <span class="green" style="width: 50%"><span><li>当前招募进度：1/{{ project.Number }}</li></span></span>
                         </div>
                     </div>
                 </div>
@@ -77,21 +76,11 @@ idea/css/index.css{% extends 'idea/Base.html' %}
 {% endblock %}
 {% block script %}
     <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
-    {#    <script type="text/javascript" src="{% static 'idea/js/index.js'%}"></script>#}
-    {#    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>#}
-    {#    <script src="{% static 'project/js/more.js' %}"></script>#}
-    {#    <script>#}
-    {#        $(document).ready(function project_schedule() {#}
-    {#            var schedule = 1/{{ project.Number }};#}
-    {#            alert(1);#}
-    {#            document.getElementById("project_schedule").style.width = "90%";#}
-    {#        })#}
-    {#    </script>#}
     <script>
         //限制字符个数
         $(document).ready(function () {
             $(".project_top_1_text").each(function () {
-                var maxwidth = 100;
+                var maxwidth = 150;
                 if ($(this).text().length > maxwidth) {
                     $(this).text($(this).text().substring(0, maxwidth));
                     $(this).html($(this).html() + '…')
