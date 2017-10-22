@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
 from admina.models import Creation2ProjectLabel, Creation, ProjectLabel, Comment, User, Praise, Follow, ProjectUser, \
-    Project2ProjectLabel, Project
+    Project2ProjectLabel, Project, Recruit
 from admina import models
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -648,9 +648,9 @@ def get_projects(req):
         user = User.objects.filter(Account=account)
         if account:
             projects = ProjectUser.objects.get(user=user)
-            return render_to_response('project/recruit.html', {'projects': projects})
+            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
         else:
-            return render_to_response('project/recruit.html', {'projects': projects})
+            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
 
 
 ''' 招募项目相关页面结束'''

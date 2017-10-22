@@ -8,6 +8,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/buttons.css' %}">
     <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div class="bg_all">
@@ -42,10 +43,25 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                     <div class="project_bottom_top">
                         <p class="project_top_1_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project.Description }}</p>
                         <div class="progress">
-                            <span class="green" style="width: 50%"><span><li>当前招募进度：1/{{ project.Number }}</li></span></span>
+                            <span class="green {{ project.Id }}"><span><li>当前招募进度：1/{{ project.Number }}</li></span></span>
                         </div>
                     </div>
                 </div>
+                <script>
+                    //计算进度条宽度
+                    $(function () {
+                        var project_people = 1 /{{ project.Number }};
+                        var project_percent = project_people * 100;
+                        var project_plan = project_percent + '%';
+{#                        var project_id = $(this).index();#}
+                        $(".{{ project.Id }}").add().css("width",project_plan);
+{#                        alert($(".green")[0].style.width);#}
+{#                        $(this).find(".green").addClass("cotx" + project_id);#}
+{#                        alert($(this).find(".green").addClass("cotx" + project_id));#}
+                        {#                        $()[0].style.width = project_plan;#}
+                        {#                        alert($(".green")[0].style.width);#}
+                    });
+                </script>
             {% endfor %}
             {#        <div class="project_get_more"><a href="javascript:;" class="load-more f-weight">浏览更多</a></div>#}
         </div>
@@ -75,7 +91,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
 
 {% endblock %}
 {% block script %}
-    <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+
     <script>
         //限制字符个数
         $(document).ready(function () {
@@ -88,7 +104,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                 }
             });
         });
-
+        //加载更多
         $(function () {
             $(".project_top").slice(0, 6).show();
             if ($(".project_top").length <= 6) {
@@ -102,6 +118,8 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                 }
             });
         });
+
+
     </script>
 {% endblock %}
 
