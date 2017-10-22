@@ -1,9 +1,3 @@
-window.onscroll=function(){
-    var sl=-Math.max(document.body.scrollLeft,document.documentElement.scrollLeft);
-    document.getElementById('home-right').style.left=sl+'px';
-
-};
-
  //加载更多
 $(function() {
     $(".block").slice(0, 9).show();
@@ -16,21 +10,8 @@ $(function() {
         if ($(".block:hidden").length == 0) {
             $(".more").fadeOut('slow');
         }
-
-
-        if ($(".block:hidden").length == 0) {
-            $(".more").fadeOut('slow');
-        }
     });
 });
-//标签点击后变色
-
-$(document).ready(function(){
-  $(" tag span").click(function(){
-    $("tag span").toggleClass("allsign");
-  });
-});
-
 
 
 
@@ -98,3 +79,26 @@ $(function(){
 			}
 		});
 	})
+
+//评论
+$("#putcomment").click(function () {
+            var content = "<div class=\"cmain\">\n" +
+                "                                  <img class=\"c-img\"  src=\"/static/project/imgs/user.svg\">\n" +
+                "                                  <div class=\"comment-box\">\n" +
+                "                                      <div class=\"comment-head\">\n" +
+                "                                          <h6 class=\"comment-name \"><a href=\" \">Agustin Ortiz</a></h6>\n" +
+                "                                          <span class=\"cdate\">2017-11-11</span>\n" +
+                "                                          <div class=\"c-option\">\n" +
+                "                                              <img class=\"clike\" id=\"rdclike\" src=\"/static/project/imgs/like1.svg\"><span class=\"clikenum\">1111</span>\n" +
+                "                                              <img class=\"creply\" id=\"rdcreply\" src=\"/static/project/imgs/reply.svg\">\n" +
+                "                                              <img class=\"creport\" id=\"rdcreport\" src=\"/static/creation/imgs/report.png\">\n" +
+                "                                          </div>\n" +
+                "                                      </div>\n" +
+                "                                      <div class=\"comment-content\">\n" +
+                "                                         <p>"+ "HelloWorld" + "</p>\n" +
+                "                                      </div>\n" +
+                "                                  </div>\n" +
+                "                              </div>";
+
+            $(".c-all").get(0).innerHTML = content + $(".c-all").get(0).innerHTML;
+        });

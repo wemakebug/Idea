@@ -1,22 +1,5 @@
  //加载更多
-$(function() {
-    $(".project_top").slice(0,1000).show();
-    if ($(".project_top").length <= 1000) {
-        $(".load-more").hide();
-    }
-    $(".load-more").on('click',function(e) {
-        e.preventDefault();
-        $(".project_top:hidden").slice(0, 2).slideDown();
-        if ($(".project_top:hidden").length == 0) {
-            $(".load-more").fadeOut('slow');
-        }
 
-
-        if ($(".project_top:hidden").length == 0) {
-            $(".load-more").fadeOut('slow');
-        }
-    });
-});
 
 $(function () {
 

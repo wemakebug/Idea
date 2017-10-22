@@ -18,8 +18,7 @@
                     </div>
                     <div class="referral">
                         <h3 onclick="window.location.href='teamdetails/{{ team.Id }}'">{{ team.UserName }}</h3>
-                        <p>负 责 人：超厉害的 | 团队人数：5人</p>
-                        <p >入驻时间：2017-10-12</p>
+                        <p >入驻时间：      {{ team.RegistTime }}</p>
                     </div>
 
                     <div style="height: 50%">
@@ -62,10 +61,10 @@
                     <img src="{% static '/creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                     <span>标签</span>
                     <hr style="width: 100%">
-                    <a href="team" sign="all"><span class="allsign">所有</span></a>
-                    {% for obj in projectLabels %}
-                        <a href="team={{ obj.Id }}" sign="{{ obj.Id }}">
-                            <span class="allsign">{{ obj.ProjectLabelName }}</span></a>
+                    <a href="team?sign=all" sign="all"><span class="allsign">所有</span></a>
+                    {% for obj in labels %}
+                        <a href="team?sign={{ obj.Id }}" sign="{{ obj.Id }}">
+                            <span class="allsign">{{ obj.Name }}</span></a>
                     {% endfor %}
                 </div>
             </div>
@@ -100,23 +99,21 @@
             }
         });
 	})
-     $(function () {
-            $(".block").slice(0, 12).show();
-           if($(".block").length <= 12) {
-           $(".more_0").hide();
-           }
-            $(".more_0").on('click', function (e) {
 
-              if ($(".block:hidden").length == 0) {
-               $(".more_0").css('display', 'none');
-              }
-                e.preventDefault();
-                $(".block:hidden").slice(0, 4).slideDown();
-                if ($(".block:hidden").length == 0) {
-                    $(".more_0").fadeOut('slow');
-                }
-            });
-        });
+
+$(function() {
+    $(".border_0").slice(0, 6).show();
+    if ($(".border_0").length <= 6) {
+        $(".more_0").hide();
+    }
+    $(".more_0").on('click',function(e) {
+        e.preventDefault();
+        $(".border_0:hidden").slice(0, 6).slideDown();
+        if ($(".border_0:hidden").length == 0) {
+            $(".more_0").fadeOut('slow');
+        }
+    });
+});
 
     $(document).ready(function () {
             $(".content_0").

@@ -8,8 +8,8 @@ body,div{
 		padding:0;
     }
 	body{
-	    min-width:1500px;
-        max-width:2000px;
+	    min-width:1300px;
+        max-width:3000px;
         overflow-x: hidden;
 	}
 	a{
@@ -28,7 +28,7 @@ body,div{
         top:0px;
         text-align:left;
         min-width:1300px;
-        max-width:2000px;
+        max-width:3000px;
 	}
 	.header{
 		width: 100%;
@@ -69,6 +69,8 @@ body,div{
     }
     .active{
         background: #295E6A;
+        border-left:1px solid #cccccc;
+        border-right:1px solid #cccccc ;
     }
 	.nav_main ul li:hover{
         background:#295E6A;
@@ -168,7 +170,7 @@ body,div{
 		height: 100%;
         margin-right: 13.6%;/*后加*/
     }
-    .user_figure a{
+    .user_figure{
         width: 40px;
         height: 40px;/**/
         margin-top: 29.8%;/**/
@@ -212,6 +214,7 @@ body,div{
     .list_content{
         width:99.9%;
         height: 100%;
+        background: #295E6A;
         border: 1px solid transparent;
     }
     .list_creation{
@@ -219,17 +222,7 @@ body,div{
         height: 10%;
         margin-top: 2%;
     }
-    /*.list_image{
-        width: 12%;
-        height: 70%;
-        margin-top: 7%;
-        background: #295E6A;
-        float: left;
-        margin-left: 5%;
-        background: url("../../idea/imgs/atm.png");
-        background-size:100% 100%;
-    }*/
-    .list_name{
+    .list_name {
         width: 70%;
         height:100%;
         float: left;
@@ -247,6 +240,7 @@ body,div{
         width: 100%;
         height: 30%;
         margin-top: 2%;
+        border: 1px solid transparent;
     }
     .main_block{
         width: 80%;
@@ -271,10 +265,15 @@ body,div{
     .list_foot{
         width: 100%;
         height: 50%;
+        border: 1px solid transparent;
     }
     .setting{
         width: 100%;
         height: 18%;
+    }
+    .setting p{
+        width:100%;
+        height: 100%;
     }
     .log_out{
         width: 100%;
@@ -300,6 +299,11 @@ body,div{
         float: left;
         padding:12% 15px;
 	}
+    .nav-bottom{
+        width: 100%;
+        height: 1px;
+        background: #CCCCCC;
+    }
     .footer_line{
          width: 100%;
         height: 1px;
@@ -362,6 +366,7 @@ body,div{
     }
     .right_sentence{
         width:15%;
+        min-width:204px;
         height:100%;
         float: left;
     }

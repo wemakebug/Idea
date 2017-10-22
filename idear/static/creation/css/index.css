@@ -18,6 +18,7 @@
 	width:70%;
 	float:left;
 	margin-left:2.5%;
+	min-height:855px;
 }
 .home-right {
     position:fixed;
@@ -75,7 +76,9 @@
 	color: #fff;
 	background-color: #57cecd;
 }
-
+.allsign:visited{
+    background-color:#57cecd;
+}
 .intro p {
 	width:86%;
 	float:left;
@@ -92,9 +95,14 @@
 	margin-top: 30px;
 	margin-left:3.2%;
 	margin-bottom:0.5%;
-	background-color:white;
 	border-radius:8px;
-	box-shadow: 0 2px 8px -2px gray;
+	background-color: rgb(255, 255, 255);
+    box-shadow: 8px 8px 5px #d3e0e2;
+    transition: 0.2s ease-out;
+}
+.block:hover{
+    box-shadow: 8px 8px 5px #c0c7d0;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 .block-head {
 	width:100%;
@@ -145,15 +153,14 @@ h5 {
 	height: 20px;
 	margin: 6px 28px -16px;
 	float:left;
-	background: #53C4BE ;
+	background: #71adb5 ;
 	color: #fff;
 	border-radius: 10px;
 	box-shadow: 1px 1px 1px 1px #777777;
-
 }
 .level span {
-    font-size:12px;
-    display:block;
+	font-size:12px;
+	display:block;
 	float:left;
 	margin-left:15px;
 }

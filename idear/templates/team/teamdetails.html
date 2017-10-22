@@ -5,212 +5,358 @@
 {%endblock%}
 {%block CSS%}
 <link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
-<link rel="stylesheet" href="{% static 'team/css/commentstyle.css'%}">
-<link rel="stylesheet" href="{% static 'team/css/comment.css'%}">
+{#<link rel="stylesheet" href="{% static 'team/css/commentstyle.css'%}">#}
+{#<link rel="stylesheet" href="{% static 'team/css/comment.css'%}">#}
 <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
 {%endblock%}
 {%block content%}
 <div class="teamdetail">
-    <div class="teamdetailsynopsis">
-        <div class="teamdetailsynopsis1-1"><strong>团队简介：</strong></div>
-        <div class="teamdetailsynopsis1-2">
-            <span class="register1-3">所属学院：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.UserName}}>#}
-            {{ team.UserName}}
+    <div style="width: 100%;height:350px;margin-top: 30px;">
+        <div class="details">
+            <div class="detailspicture">
+                <img src="{% static 'team/imgs/team.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+            </div>
+            <div class="detailspicture1-1">
+                <div class="detailspicture1-2">
+                    {{ team.UserName }}
+                </div>
+                <div class="detailspicture1-3">
+                    我们做的是技术，追求质量与品质.
+                </div>
+            </div>
+            <div style="width: 100%;height: 50px;clear: both;">
+                <div class="praise1-2 praise11-2" id="comment11-2">
+                    <span id="praise11-2" class="praise11-2"><img src="{% static 'team/imgs/评论图标.png' %}" id="praise-img11-2" /> </span>
+                    <span id="praise-txt11-2" class="praise-txt11-2">评论</span>
+                </div>
+                <div class="praise11-1 praise1-1" team="{{ team.Id }}">
+                     <span id="praise11-1" class="praise11-1"><img src="{% static 'team/imgs/心形.png' %}" id="praise-img11-1" /> </span>
+                     <span id="praise-txt11-1" class="praise-txt11-1">1123{{Praise.project}}</span>
+                     <span id="add-num11-1" class="add-num11-1"><em>+1</em></span>
+                </div>
+                <div class="praise11 praise1" team="{{ team.Id }}">
+                     <span id="praise11" class="praise11"><img src="{% static 'team/imgs/点赞.png' %}" id="praise-img11" /> </span>
+                     <span id="praise-txt11" class="praise-txt11">1123{{Praise.project}}</span>
+                     <span id="add-num11" class="add-num11"><em>+1</em></span>
+                </div>
+                <div class="teamdetailadddiv">
+                    <input type="button" value="申请帮助" class="btn btn-info btn-xs" id="petitionhelp">
+                </div>
+            </div>
         </div>
-        <div class="teamdetailsynopsis1-3">
-            <span class="register1-3">团队名称：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.UserName }}>#}
-            {{ team.UserName }}
+        <div class="teamspeak">
+            <div class="teamdetailsynopsis1-2">
+                <span class="register1-3">所属学院：</span>
+                {{ team.UserName}}
+            </div>
+            <div class="teamdetailsynopsis1-4">
+                <span class="register1-3">注册时间：</span>
+                {{ team.RegistTime }}
+            </div>
+            <div class="teamdetailsynopsis1-7">
+                <span class="register1-3">团队分数：</span>
+                {{ team.Score }}
+            </div>
+            <div class="teamdetailsynopsis1-6">
+                <span class="register1-2">用户邮箱：</span>
+                 {{ team.Email }}
+            </div>
         </div>
-        <div class="teamdetailsynopsis1-4">
-            <span class="register1-3">注册时间：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.RegistTime }}>#}
-            {{ team.RegistTime }}
-        </div>
-        <div class="teamdetailsynopsis1-7">
-            <span class="register1-3">团队分数：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Score }}>#}
-            {{ team.Score }}
-        </div>
-        <div class="teamdetailsynopsis1-6">
-            <span class="register1-2">邮箱：</span>
-{#            <input type="text" class="detailsinput1-1" onfocus=this.blur(); value={{ team.Email }}>#}
-             {{ team.Email }}
-        </div>
-    </div>
-    <div class="details">
-        <div class="details1-1"><strong>团队详情：</strong></div>
-        <div class="details1-2">
-            <textarea name="details" disabled="disabled" class="details1-3">这个团队是什么什么，团队有某某特色，我们主要发展方向，我们有什么什么技术等等等
-            </textarea>
-        </div>
-        <div class="teamdetailadddiv">
-            <input type="button" value="申请帮助" class="btn btn-primary btn-lg active details1-4" id="petitionhelp">
-        </div>
-    </div>
-    <div class="headimage" id="headimgss">
-        <img src="{% static 'team/imgs/xiaoyubiao.png'%}" style="width: 100%;height: 100%;">
-    </div>
-    <div class="teamlable">
-        <div class="teamlable1-1"><strong>团队标签</strong></div>
-        <div class="teamlable1-2"></div>
-        <div class="teamlable1-3">
-            {% for label in labels %}
+        <div class="teamlable">
+            <div class="teamlable1-1">团队标签</div>
+            <div class="teamlable1-2"></div>
+            <div class="teamlable1-3">
+                {% for label in labels %}
             <a href="" style="text-decoration: none;"><span class="teamlable1-4">{{ label.userLabel.Name }}</span></a>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
     <div class="historys">
         <div class="historys1-1">
-            <strong>项目历史</strong>
+             项目历史
         </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'team/imgs/sdg logo 狗狗.png'%}" style="width: 100%;height: 100%;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                    <strong>项目名称某某某</strong>
+        <div style="width: 100%;height: auto;">
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
                 </div>
-                <div class="historys1-6">
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">互联网</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">大数据</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">互联网</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">数据结构</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">js</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">html</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">css</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">python</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">php</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">美工</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">建筑</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">化学</span>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                        <span class="project_middle_icon-1"></span>
+                        <span class="project_middle_text">互联网</span>
+                    </span>
+                    <span class="spanwidth">
+                        <span class="project_middle_icon-2"></span>
+                        <span class="project_middle_text">大数据</span>
+                    </span>
+                    <span class="spanwidth">
+                        <span class="project_middle_icon-3"></span>
+                        <span class="project_middle_text">互联网</span>
+                    </span>
+                    <span class="spanwidth">
+                        <span class="project_middle_icon-1"></span>
+                        <span class="project_middle_text">数据结构</span>
+                    </span>
+                    <span class="spanwidth">
+                        <span class="project_middle_icon-1"></span>
+                        <span class="project_middle_text">js</span>
+                    </span>
+                    </div>
                 </div>
-            </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
-            </div>
-        </div>
-        <div class="historys1-2">
-            <div class="historys1-3">
-                <img src="{% static 'team/imgs/sdg logo 狗狗.png'%}" style="width: 100%;height: 100%;">
-            </div>
-            <div class="historys1-4">
-                <div class="historys1-5">
-                    <strong>项目名称某某某</strong>
-                </div>
-                <div class="historys1-6">
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">互联网</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">大数据</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">互联网</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">数据结构</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">js</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">html</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">css</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">python</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">php</span>
-                    <span class="project_middle_icon-1"></span>
-                    <span class="project_middle_text">美工</span>
-                    <span class="project_middle_icon-2"></span>
-                    <span class="project_middle_text">建筑</span>
-                    <span class="project_middle_icon-3"></span>
-                    <span class="project_middle_text">化学</span>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
                 </div>
             </div>
-            <div class="historys1-7">
-                这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                        项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                        项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
+            </div>
+            <div class="historys1-2">
+                <div class="historys1-3">
+                    <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 14px;">
+                </div>
+                <div class="historys1-4">
+                    <div class="historys1-5">
+                         项目名称某某某
+                    </div>
+                    <div class="historys1-6">
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-2"></span>
+                            <span class="project_middle_text">大数据</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-3"></span>
+                            <span class="project_middle_text">互联网</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">数据结构</span>
+                        </span>
+                        <span class="spanwidth">
+                            <span class="project_middle_icon-1"></span>
+                            <span class="project_middle_text">js</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="historys1-7">
+                    这个项目是朝某某方向发展，我们项目有某某特色有某某前景等等特点
+                </div>
             </div>
         </div>
     </div>
-    <div class="comment">
-        <div class="comment1-1"><strong>评论专区</strong></div>
-        <div class="comment1-2"></div>
-        <!--
-         此评论textarea文本框部分使用的https://github.com/alexdunphy/flexText此插件
-        -->
-        <div class="commentAll">
-            <!--评论区域 begin-->
-            <div class="reviewArea clearfix">
-                <textarea class="content1 comment-input text111 " placeholder="评论...&hellip;" onkeyup="keyUP(this)"></textarea>
-                <a href="javascript:;" class="plBtn">评论</a>
-            </div>
-             <!--评论区域 end-->
-             <!--回复区域 begin-->
-            <div class="comment-show">
-                <div class="comment-show-con clearfix">
-                    <div class="comment-show-con-img pull-left"><a style="text-decoration: none;position: relative;" href="#"><img style="width:100%;height:100%;" src="{% static 'team/imgs/django-logo-negative.png'%}" alt=""></a></div>
-                    <div class="comment-show-con-list pull-left clearfix">
-                        <div class="pl-text clearfix">
-                            <a href="#" class="comment-size-name">张三 : </a>
-                            <span class="my-pl-con">&nbsp;来啊 造作啊!</span>
+
+    <div class="comments">
+        <div class="content-footer">
+            <div class="comment">
+                <div style="width: 100%;height: 100px;"></div>
+                <div class="comment1-1">评论专区</div>
+                <div class="comment1-2"></div>
+                <div class="ctop">
+                    <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
+                    <div class="carea">
+                        <div class="tocomment">
+                            <textarea placeholder="评论..." name="" id="comment-content11" class="comment-text"></textarea>
                         </div>
-                        <div class="date-dz">
-                            <span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>
-                            <div class="date-dz-right pull-right comment-pl-block">
-{#                                <a href="javascript:;" class="removeBlock">删除</a>#}
-                                <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
-                                <span class="pull-left date-dz-line">|</span>
-                                <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a>
+                        <button class="putcomment" id="putcommentbutton">评论</button>
+                    </div>
+                </div>
+                <div class="c-all1">
+                    <div class="cmain">
+                        <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
+{#                                  可以加hover点上变成网站logo#}
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
+                                <span class="cdate">2017-11-11</span>
+                                <div class="c-option">
+                                    <img class="clike" id="rdclike1"  src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
+                                    <img class="creply" id="rdcreply1"  src="{% static 'project/imgs/reply.svg'%}">
+                                    <img class="creport" id="rdcreport1"  src="{% static 'creation/imgs/report.png'%}">
+                                </div>
+                            </div>
+                            <div class="comment-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             </div>
                         </div>
-                        <div class="hf-list-con"></div>
+                    </div>
+
+                    <div class="c-reply">
+                        <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                        <div class="rcomment-box">
+                            <div class="rcomment-head">
+                                <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                <span class="rcdate">2017-11-11</span>
+                                <div class="r-option">
+                                    <img class="rclike"  id="rdclike2" src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
+                                    <img class="rcreply" id="rcreply2"  src="{% static 'project/imgs/reply.svg'%}">
+                                    <img class="rcreport" id="rcreport2" src="{% static 'creation/imgs/report.png'%}">
+                                </div>
+                            </div>
+                            <div class="rcomment-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit ur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--回复区域 end-->
         </div>
     </div>
+    <div style="width: 100%;height: 30px;"></div>
 {#    <div class="teamdetaillandscape"></div>#}
 {#    <div class="teamdetailfilter"></div>#}
 {#    <canvas id="canvas"></canvas>#}
 </div>
 {% endblock %}
 {%block script%}
+    <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'team/js/teamdetails.js'%}"></script>
-    <script type="text/javascript" src="{% static 'team/js/teambg.js'%}"></script>
-{#    不懂#}
-    <script type="text/javascript" src="{% static 'team/js/jquery.flexText.js'%}"></script>
-    <!--textarea高度自适应-->
 <script type="text/javascript">
-     jQuery(document).ready(function ($){
-        $('.content1').flexText();
-    });
-</script>
-<!--textarea限制字数-->
-<script type="text/javascript">
-    function keyUP(t){
-        var len = $(t).val().length;
-        if(len > 139){
-            $(t).val($(t).val().substring(0,140));
-        }
-    }
-</script>
-<!--点击评论创建评论条-->
-<script type="text/javascript">
-    $('.commentAll').on('click','.plBtn',function(){
+    $("#putcommentbutton").click(function () {
         var myDate = new Date();
         //获取当前年
         var year=myDate.getFullYear();
@@ -223,128 +369,80 @@
         if(m<10) m = '0' + m;
         var s=myDate.getSeconds();
         if(s<10) s = '0' + s;
-        var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
-        //获取输入内容
-        var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
-        console.log(oSize);
-        //动态创建评论模块
-        oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><a style="text-decoration: none;position: relative;" href="#"><img src="{% static 'team/imgs/header-img-comment_03.png'%}" alt=""></a></div> <div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">David Beckham : </a> <span class="my-pl-con">&nbsp;'+ oSize +'</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';
-        if(oSize.replace(/(^\s*)|(\s*$)/g, "") != ''){
-            $(this).parents('.reviewArea ').siblings('.comment-show').prepend(oHtml);
-            $(this).siblings('.flex-text-wrap').find('.comment-input').prop('value','').siblings('pre').find('span').text('');
-        }
-    });
+        var nows=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
+        var comment="<div class=\"cmain\">\n" +
+                "                                  <img class=\"c-img\"  src=\"{% static 'project/imgs/user.svg'%}\">\n" +
+                "{#                                  可以加hover点上变成网站logo#}\n" +
+                "                                  <div class=\"comment-box\">\n" +
+                "                                      <div class=\"comment-head\">\n" +
+                "                                          <h6 class=\"comment-name \"><a href=\" \">张三</a></h6>\n" +
+                "                                          <span class=\"cdate\">"+ nows+ "</span>\n" +
+                "                                          <div class=\"c-option\">\n" +
+                "                                              <img class=\"clike\" id=\"rdclike1\" src=\"{% static 'project/imgs/like1.svg'%}\"><span class=\"clikenum\">1111</span>\n" +
+                "                                              <img class=\"creply\" id=\"rdcreply1\" src=\"{% static 'project/imgs/reply.svg'%}\">\n" +
+                "                                              <img class=\"creport\" id=\"rdcreport1\" src=\"{% static 'creation/imgs/report.png'%}\">\n" +
+                "                                          </div>\n" +
+                "                                      </div>\n" +
+                "                                      <div class=\"comment-content\">\n" +
+                "                                         <p>"+ "HelloWorld哈哈哈啊哈哈哈哈哈" + "</p>\n" +
+                "                                      </div>\n" +
+                "                                  </div>\n" +
+                "                              </div>";
+                $(".c-all1").get(0).innerHTML = comment + $(".c-all1").get(0).innerHTML;
+    })
 </script>
-<!--点击回复动态创建回复块-->
 <script type="text/javascript">
-    $('.comment-show').on('click','.pl-hf',function(){
-        //获取回复人的名字
-        var fhName = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
-        //回复@
-        var fhN = '回复@'+fhName;
-        //var oInput = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.hf-con');
-        var fhHtml = '<div class="hf-con pull-left"> <textarea class="content1 comment-input hf-input" placeholder="" onkeyup="keyUP(this)"></textarea> <a href="javascript:;" class="hf-pl">评论</a></div>';
-        //显示回复
-        if($(this).is('.hf-con-block')){
-            $(this).parents('.date-dz-right').parents('.date-dz').append(fhHtml);
-            $(this).removeClass('hf-con-block');
-            $('.content1').flexText();
-            $(this).parents('.date-dz-right').siblings('.hf-con').find('.pre').css('padding','6px 15px');
-            //console.log($(this).parents('.date-dz-right').siblings('.hf-con').find('.pre'))
-            //input框自动聚焦
-            $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').val('').focus().val(fhN);
-        }else {
-            $(this).addClass('hf-con-block');
-            $(this).parents('.date-dz-right').siblings('.hf-con').remove();
-        }
-    });
-</script>
-<!--评论回复块创建-->
-<script type="text/javascript">
-    $('.comment-show').on('click','.hf-pl',function(){
-        var oThis = $(this);
-        var myDate = new Date();
-        //获取当前年
-        var year=myDate.getFullYear();
-        //获取当前月
-        var month=myDate.getMonth()+1;
-        //获取当前日
-        var date=myDate.getDate();
-        var h=myDate.getHours();       //获取当前小时数(0-23)
-        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
-        if(m<10) m = '0' + m;
-        var s=myDate.getSeconds();
-        if(s<10) s = '0' + s;
-        var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
-        //获取输入内容
-        var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
-        console.log(oHfVal)
-        var oHfName = $(this).parents('.hf-con').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
-        var oAllVal = '回复@'+oHfName;
-        if(oHfVal.replace(/^ +| +$/g,'') == '' || oHfVal == oAllVal){
+    $(function(){
+        $("#praise11").on("click",function () {
+            var praise_img = $("#praise-img11");
+            var text_box = $("#add-num11");
+            var praise_txt = $("#praise-txt11");
+            var num=parseInt(praise_txt.text());
+{#			alert("11111")#}
+            if(praise_img.attr("src") === ("{% static 'team/imgs/yizan.png' %}")){
+                $(this).html("<img src='{% static 'team/imgs/点赞.png' %}' id='praise-img11' class='animation' />");
+                praise_txt.removeClass("hover");
+                text_box.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+                num -=1;
+                praise_txt.text(num)
+            }else{
+                $(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img11' class='animation' />");
+                praise_txt.addClass("hover");
+                text_box.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+                num +=1;
+                praise_txt.text(num)
+            }
+        });
+	});
+     $(function(){
+        $("#praise11-1").on("click",function () {
+            var praise_img1 = $("#praise-img11-1");
+            var text_box1 = $("#add-num11-1");
+            var praise_txt1 = $("#praise-txt11-1");
+            var num1=parseInt(praise_txt1.text());
+{#			alert("11111")#}
+                if(praise_img1.attr("src") === ("{% static 'team/imgs/心形实心.png' %}")){
+                $(this).html("<img src='{% static 'team/imgs/心形.png' %}' id='praise-img11-1' class='animation' />");
+                praise_txt1.removeClass("hover");
 
-        }else {
-            $.getJSON("json/pl.json",function(data){
-                var oAt = '';
-                var oHf = '';
-                $.each(data,function(n,v){
-                    delete v.hfContent1;
-                    delete v.atName;
-                    var arr;
-                    var ohfNameArr;
-                    if(oHfVal.indexOf("@") == -1){
-                        data['atName'] = '';
-                        data['hfContent1'] = oHfVal;
-                    }else {
-                        arr = oHfVal.split(':');
-                        ohfNameArr = arr[0].split('@');
-                        data['hfContent1'] = arr[1];
-                        data['atName'] = ohfNameArr[1];
-                    }
-
-                    if(data.atName == ''){
-                        oAt = data.hfContent1;
-                    }else {
-                        oAt = '回复<a href="#" class="atName">@'+data.atName+'</a> : '+data.hfContent;
-                    }
-                    oHf = data.hfName;
-                });
-
-                var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">我的名字 : </a><span class="my-pl-con">'+oAt+'</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">'+now+'</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> </div> </div></div>';
-                oThis.parents('.hf-con').parents('.comment-show-con-list').find('.hf-list-con').css('display','block').prepend(oHtml) && oThis.parents('.hf-con').siblings('.date-dz-right').find('.pl-hf').addClass('hf-con-block') && oThis.parents('.hf-con').remove();
-            });
-        }
-    });
-</script>
-{#<!--删除评论块-->#}
-{#<script type="text/javascript">#}
-{#    $('.commentAll').on('click','.removeBlock',function(){#}
-{#        var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');#}
-{#        if(oT.siblings('.all-pl-con').length >= 1){#}
-{#            oT.remove();#}
-{#        }else {#}
-{#            $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display','none')#}
-{#            oT.remove();#}
-{#        }#}
-{#        $(this).parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();#}
-{##}
-{#    })#}
-{#</script>#}
-<!--点赞-->
-<script type="text/javascript">
-    $('.comment-show').on('click','.date-dz-z',function(){
-        var zNum = $(this).find('.z-num').html();
-        if($(this).is('.date-dz-z-click')){
-            zNum--;
-            $(this).removeClass('date-dz-z-click red');
-            $(this).find('.z-num').html(zNum);
-            $(this).find('.date-dz-z-click-red').removeClass('red');
-        }else {
-            zNum++;
-            $(this).addClass('date-dz-z-click');
-            $(this).find('.z-num').html(zNum);
-            $(this).find('.date-dz-z-click-red').addClass('red');
-        }
+                text_box1.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+                num1 -=1;
+                praise_txt1.text(num1)
+            }else{
+                $(this).html("<img src='{% static 'team/imgs/心形实心.png' %}' id='praise-img11-1' class='animation' />");
+                praise_txt1.addClass("hover");
+                text_box1.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+                num1 +=1;
+                praise_txt1.text(num1)
+            }
+        });
+	})
+    $("#comment11-2").click(function () {
+        document.getElementById("contectnumber1").focus();
     })
 </script>
 {% endblock %}
