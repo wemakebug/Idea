@@ -239,6 +239,7 @@ body{
     width:75px;
     font-size:18px;
     margin-left:5px;
+    cursor: pointer;
 }
 
 .prcontent{
@@ -662,6 +663,7 @@ body{
     border:none;
     float:right;
     border-radius:5px;
+    cursor: pointer;
 }
 .cmain{
     height:auto;
@@ -735,6 +737,7 @@ body{
     height:25px;
     float:left;
     margin-top:4px;
+    cursor: pointer;
 }
 .clikenum{
     display:inline-block;
@@ -742,18 +745,21 @@ body{
     margin-top:10px;
     color: #999;
 	font-size: 13px;
+
 }
 .creport{
     width:20px;
     height:20px;
     float:right;
     margin:7px 10px 0 4px;
+    cursor: pointer;
 }
 .creply{
     width:20px;
     height:20px;
     float:left;
     margin:8px 0 0 10px;
+    cursor: pointer;
 }
 .comment-content {
 	width:100%;
@@ -849,6 +855,7 @@ body{
     height:25px;
     float:left;
     margin-top:4px;
+    cursor: pointer;
 }
 .rclikenum{
     display:inline-block;
@@ -862,12 +869,15 @@ body{
     height:20px;
     float:right;
     margin:7px 10px 0 4px;
+    cursor: pointer;
 }
 .rcreply{
     width:20px;
     height:20px;
     float:left;
     margin:8px 0 0 10px;
+    cursor: pointer;
+
 }
 .rcomment-content {
 	width:100%;
@@ -900,7 +910,4 @@ body{
     line-height:1.7;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid #c6c8ce;
-}
-#rdreport{
-    cursor: pointer;
 }
