@@ -416,8 +416,8 @@ def creations(req):
     User_img = creations.values('user__Img')
     praises = Praise.objects.all()
     follows = Follow.objects.all()
-    userId = int(req.COOKIES.get('user'))
-    # userId = 3
+    # userId = int(req.COOKIES.get('user'))
+    userId = 3
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
@@ -431,7 +431,6 @@ def creations(req):
                 
                 for obj in CreationLabelObjs:    #将所有的对应标签的创意拿出来 放到creations对象里
                     creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
-
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
                                        'follows': follows, 'praises': praises, "Imgs": User_img})
@@ -448,41 +447,7 @@ def creations(req):
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 
-@csrf_exempt
-def star(req):
-    '''
 
-    点赞
-    1为创意
-    2为项目
-
-    status
-    状态值：0为失败，1为关注成功, 2为取消关注成功
-
-    '''
-    status = 0
-    try:
-        Id = req.POST["Id"]
-        userId = req.POST["userId"]
-        starType = int(req.POST["starType"])
-        if starType == 1:
-            try:
-                p = Praise.objects.get(creation_id=Id, user_id=userId).delete()
-                status = 2
-            except:
-                p = Praise.objects.create(creation_id=Id, user_id=userId)
-                status = 1
-            return HttpResponse(status)
-        else:
-            try:
-                p = Praise.objects.get(project_id=Id, user_id=userId).delete()
-                status = 2
-            except:
-                p = Praise.objects.create(project_id=Id, user_id=userId)
-                status = 1
-            return HttpResponse(status)
-    except:
-        return HttpResponse(status)
 
 
 @csrf_exempt
@@ -505,12 +470,9 @@ def attend(req):
             try:
                 p = Follow.objects.get(creation_id=Id, user_id=userId).delete()
                 status = 2
-                print(2)
             except:
                 p = Follow.objects.create(creation_id=Id, user_id=userId)
                 status = 1
-                print(1)
-            print("the answer is " + status)
             return HttpResponse(status)
         elif attendType == 2:
             try:
@@ -530,6 +492,47 @@ def attend(req):
             return HttpResponse(status)
     except:
         return HttpResponse(status)
+
+
+
+
+
+@csrf_exempt
+def star(req):
+    '''
+    点赞
+    1为创意
+    2为项目
+
+    status
+    状态值：0为失败，1为成功， 2为取消点赞成功
+    '''
+    status = 0
+    try:
+        Id = req.POST["Id"]
+        userId = req.POST["userId"]
+        starType = int(req.POST["starType"])
+        if starType == 1:    #如果是创意
+            try:
+                p = Praise.objects.get(creation_id=Id, user_id=userId).delete()    #尝试取消点赞
+                status = 2
+            except:
+                p = Praise.objects.create(creation_id=Id, user_id=userId)
+                status = 1
+            return HttpResponse(status)
+        else:    
+            try:
+                p = Praise.objects.get(project_id=Id, user_id=userId).delete()
+                status = 2
+            except:
+                p = Praise.objects.create(project_id=Id, user_id=userId)
+                status = 1
+            return HttpResponse(status)
+    except Exception as e:
+        print e
+        return HttpResponse(status)
+
+
 
 
 ''' 创意灵感 页面相关部分结束'''
@@ -633,31 +636,7 @@ def projects(req):
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 
-@csrf_exempt
-def star(req):
-    '''
-    点赞
-    1为创意
-    2为项目
 
-    status
-    状态值：0为失败，1为成功
-    '''
-    status = 0
-    try:
-        Id = req.POST["Id"]
-        userId = req.POST["userId"]
-        starType = int(req.POST["starType"])
-        if starType == 1:
-            p = Praise.objects.get_or_create(creation_id=Id, user_id=userId)
-            status = 1
-            return HttpResponse(status)
-        else:
-            p = Praise.objects.get_or_create(project_id=Id, user_id=userId)
-            status = 1
-            return HttpResponse(status)
-    except:
-        return HttpResponse(status)
 
 
 def get_projects(req):
