@@ -18,7 +18,7 @@ body{
     height: auto;
     margin-left: 15%;
     }
-/*左上项目详情*/
+/*项目详情*/
 .content-top {
     width: 100%;
     height:  auto;
@@ -37,6 +37,7 @@ body{
     width:100%;
     height:150px;
 }
+/*项目详情标签*/
 .tags {
     top: -8px;
     right: 10px;
@@ -45,6 +46,7 @@ body{
 .tags span {
     float:right;
     margin-left:2%;
+    margin-right:1%;
     position: relative;
     display: inline-block;
     text-align: center;
@@ -78,22 +80,11 @@ body{
     left: -8px;
     top:0;
 }
-.plogo{
-    width:110px;
-    height:110px;
-    float:left;
-    margin-top:3%;
-    margin-left:5%;
-}
-.plogo img{
-    width:100%;
-    height:100%;
-}
 .title{
-    width:60%;
+    width:80%;
     height:60%;
     float:left;
-    margin-left:20%;
+    margin-left:10%;
     color:black;
     font-size:2.5em;
     text-align:center;
@@ -124,8 +115,6 @@ body{
     color:black;
     margin-top:40px;
 }
-
-
 .likebutton{
     display: inline-block;
     width:13%;
@@ -136,11 +125,9 @@ body{
     color: #8590a6;
     text-align: center;
     cursor: pointer;
-    background: none;
-    border: 1px solid rgb(204, 216, 225);
+    border: 1px solid   #539092 ;
     border-radius: 10px;
-    background-color:#ffffff ;
-    border-color: #539092 ;
+    /*background-color:#ffffff ;*/
     float:left;
     background-color: #ABCDCB;
 }
@@ -273,7 +260,6 @@ body{
     -moz-border-radius: 15px;
     border-radius: 15px;
 }
-
 .rmain{
     width:100%;
     height:auto;
@@ -289,12 +275,11 @@ body{
     margin-left: -8px;
     /*overflow: hidden;*/
     font-size: 15px;
-    /*background-color: #2f96b4;*/
 }
 .r-message{
     display:inline-block;
     margin:75px 0 0 70px;
-    olor: gray;
+    color: gray;
     font-family: 幼圆;
     font-size: 18px;
     font-weight: lighter;
@@ -338,11 +323,9 @@ body{
     float:right;
     width:130px;
     height:130px;
-    /*background-color: #ABCDCB ;*/
     margin:10px 10px 0 0;
 }
 .size1 {
-    /*float: right;*/
     display:inline-block;
     color: #a1a1a1;
     line-height: 30px;
@@ -399,9 +382,8 @@ body{
     float:right;
     width:230px;
     height:250px;
-    /*background-color:  #ABCDCB ;*/
-    /*margin-bottom:80px;*/
 }
+/*圆形进度条*/
 .progress-pie-chart {
   width: 200px;
   height: 200px;
@@ -412,7 +394,6 @@ body{
 .progress-pie-chart.gt-50 {
   background-color: #81ce97;
 }
-
 .ppc-progress {
       content: "";
       position: absolute;
@@ -516,6 +497,7 @@ body{
     height:130px;
     overflow: hidden;
 }
+/*申请加入*/
 .r-apply{
     display:none;
     width:100%;
@@ -528,15 +510,55 @@ body{
     border-radius: 8px;
 }
 .applyhead{
-    width:150px;
-    height:30px;
-    margin:5px 0 0 55px;
-    font-size: 20px;
+    width:55%;
+    height:50px;
+    line-height: 50px;
+    position: absolute;
+    margin-top: -8px;
+    margin-left: -8px;
+    /*overflow: hidden;*/
+    font-size: 15px;
+    /*background-color: #2f96b4;*/
 }
+.ribbon4 {
+    display: inline-block;
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    font-size:20px;
+    font-family:幼圆;
+    font-weight:bold;
+    line-height: 50px;
+    padding-left: 15px;
+    background: #ABCDCB;
+    left: -2px;
+    top: 30px
+}
+.ribbon4:before, .ribbon4:after {
+    content: "";
+    position: absolute;
+}
+.ribbon4:before {
+   height: 0;
+   width: 0;
+   border-bottom: 8px solid  #ABCDCB ;
+   border-left: 8px solid transparent;
+   top: -8px;
+   left: 0;
+}
+.ribbon4:after {
+   height: 0;
+   width: 0;
+   border-top: 25px solid transparent;
+   border-bottom: 25px solid transparent;
+   border-left: 15px solid #ABCDCB;
+   right: -15px;
+}
+
 .apply-text{
     width:90%;
     height: 300px;
-    margin:10px 0 0 5%;
+    margin:80px 0 0 5%;
     font-size: 25px;
     border-radius:5px;
     resize:none;
@@ -561,6 +583,7 @@ body{
     background-color: #f2f2f2;
     overflow:hidden;
 }
+/*评论部分*/
 .content-footer{
     width:70%;
     height: auto;
@@ -574,12 +597,10 @@ body{
     width:100%;
     height:auto;
     overflow:hidden;
-
 }
 .c-all{
     width:100%;
     height:auto;
-
 }
 .ctitle{
     width:100%;
@@ -618,10 +639,8 @@ body{
     margin: 50px 13% 0 0;
 }
 .tocomment{
-
     width:100%;
     height:50px;
-
 }
 .comment-text{
     width:100%;
@@ -644,9 +663,8 @@ body{
     float:right;
     border-radius:5px;
 }
-
 .cmain{
-    height:100px;
+    height:auto;
 }
 .c-img{
     display:block;
@@ -657,7 +675,7 @@ body{
 }
 .comment-box {
     width:  70%;
-    height:80px;
+    height:auto;
 	position: relative;
     left: 20px;
 }
@@ -671,16 +689,15 @@ body{
 	border-style: solid;
 	/*border-color: transparent  #8BCFCC;*/
 	top: 15px;
-	left: -11px;
+	left: -13px;
 }
 .comment-box:before {
 	border-width: 11px 13px 11px 0;
 	border-color: transparent rgba(0,0,0,0.05);
 	left: -12px;
 }
-
 .comment-head {
-	height:40%;
+	height:30px;
 	width:100%;
     margin-top:5px;
 	border-bottom: 2px solid #E5E5E5;
@@ -749,10 +766,11 @@ body{
 	border-radius: 0 0 4px 4px;
     background-color:   #ABCDCB;
 }
+/*评论回复*/
 .c-reply{
     width:88%;
-    height:100px;
-    margin-left: 10%;
+    height:auto;
+    margin:30px 0 30px 10%;
 }
 .rc-img{
     display:block;
@@ -772,7 +790,7 @@ body{
 }
 .rcomment-box {
     width:  70%;
-    height:80px;
+    height:auto;
 	position: relative;
     left:20px;
 }
@@ -794,7 +812,7 @@ body{
 	left: -12px;
 }
 .rcomment-head {
-	height:40%;
+	height:30px;
 	width:100%;
     margin-top:5px;
 	border-bottom: 2px solid #E5E5E5;
@@ -861,4 +879,28 @@ body{
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
     background-color:  #ABCDCB;
+}
+/*评论回复文本框*/
+.commentreply{
+    display:none;
+    width:100%;
+    height:40px;
+    margin: 10px 0 10px 0;
+    background-color:  #ABCDCB ;
+    -webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+.commentreply-text{
+    width:90%;
+    height: 30px;
+    margin:5px 0 0 5px;
+    border-radius:5px;
+    resize:none;
+    line-height:1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid #c6c8ce;
+}
+#rdreport{
+    cursor: pointer;
 }
