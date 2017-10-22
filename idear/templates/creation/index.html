@@ -51,11 +51,12 @@
                                 <img src="{% static 'creation/imgs/collection1.png' %}" style="width:20px;height:20px;"
                                      class="following">
 
-
+                                {% for follow in follows%}
                                     {% if follow.user_id == userId and follow.creation_id == creation.Id %}
                                         <img src="{% static 'creation/imgs/collections.png' %}"
                                              style="width:18px;height:18px;margin-left: -23px ">
                                     {% endif %}
+                                {%endfor%}
 
 
                                 <span class="followspan">{{ creation.Follow_Creation_set.count }}</span>

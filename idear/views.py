@@ -412,7 +412,7 @@ def crdetails(req):
             alllables.append(label.projectLabel.Id) 
         alllables = list(set(alllables))
 
-        creation2crojectLabels = Creation2ProjectLabel.objects.filter(projectLabel_id__in = alllables)    #所有相关标签的 所有标签2项目
+        creation2crojectLabels = Creation2ProjectLabel.objects.filter(projectLabel_id__in = alllables)    #所有相关标签的 所有的 标签2项目
         return render_to_response('creation/crdetails.html',{"creation":creation,"creation2crojectLabels":creation2crojectLabels[:2],"labels":labels[:3]})
     if req.method == "POST":
         pass
@@ -428,8 +428,8 @@ def creations(req):
     User_img = creations.values('user__Img')
     praises = Praise.objects.all()
     follows = Follow.objects.all()
-    # userId = int(req.COOKIES.get('user'))
-    userId = 3
+    userId = int(req.COOKIES.get('user'))
+    # userId = 3
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
@@ -439,9 +439,11 @@ def creations(req):
             # 如果有特殊标签
             else:
                 CreationLabelObjs = Creation2ProjectLabel.objects.filter(projectLabel=sign)
-                creations = Creation.objects.filter(Img="null")
-                for obj in CreationLabelObjs:
+                creations = Creation.objects.filter(Img="null")    #把creations搞空，以便以后使用creations传输数据
+                
+                for obj in CreationLabelObjs:    #将所有的对应标签的创意拿出来 放到creations对象里
                     creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
+
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
                                        'follows': follows, 'praises': praises, "Imgs": User_img})
