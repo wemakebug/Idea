@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.views.decorators.csrf import csrf_exempt
-from admina import models
+from . import models
 import json
 from django.shortcuts import render, HttpResponse, Http404, render_to_response, HttpResponseRedirect
 import uuid
@@ -82,7 +82,7 @@ def score_rank(req):
                 models.Score.objects.get(pk=id).delete()
                 return HttpResponse("删除成功")  # 删除成功
             except Exception as e:
-                print e
+                print(e)
                 return HttpResponse("数据异常，请刷新后重试")
         else:
             currentpage = 1
@@ -121,7 +121,7 @@ def score_rank(req):
             else:
                 return HttpResponse("修改成功")
         except Exception as e:
-            print e
+            print(e)
             return HttpResponse("数据异常，请刷新后重试")
 
 
@@ -169,7 +169,7 @@ def score_record(req):
                 models.ScoreChange.objects.get(pk=id).delete()
                 return HttpResponse("删除成功")
             except Exception as e:
-                print e
+                print(e)
                 return HttpResponse("数据异常，请刷新后重试")
         else:
             currentpage = 1
@@ -213,7 +213,7 @@ def score_record(req):
             else:
                 return HttpResponse("修改成功")
         except Exception as e:
-            print e
+            print(e)
             return HttpResponse("数据异常，请刷新后重试")
 
 
@@ -229,3 +229,5 @@ def UserManager(req):
         OneUser["Score"] = user.Score
         UsersList.append(OneUser)
     return HttpResponse(json.dumps(UsersList))
+
+

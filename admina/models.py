@@ -73,6 +73,7 @@ class Project(models.Model):
     def __unicode__(self):
         return self.ProjectName
 
+
 class ProjectLabel(models.Model):
     '''
     项目标签表
@@ -234,7 +235,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, related_name='Comment_User_set', null=False)
     creation = models.ForeignKey(Creation, related_name='Comment_Creation_set', null=True, blank=True)
     project = models.ForeignKey(Project, related_name='Comment_Project_set', null=True, blank=True)
-    commited_user = models.ForeignKey(User, related_name='commited_user_set',null=True,blank=True)
+    commited_user = models.ForeignKey(User, related_name='commited_user_set', null=True, blank=True)
     Date = models.DateField(auto_now_add=True)
     Content = models.TextField(max_length=200)
     IsUse = models.BooleanField(default=True)
@@ -250,7 +251,7 @@ class Follow(models.Model):
     关注表
     '''
     Id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, related_name='Follow_User_set', null=False) 
+    user = models.ForeignKey(User, related_name='Follow_User_set', null=False)
     project = models.ForeignKey(Project, related_name='Follow_Project_set', null=True, blank=True)
     creation = models.ForeignKey(Creation, related_name='Follow_Creation_set', null=True, blank=True)
     Follower = models.ForeignKey(User, related_name='Follow_Follower_set', null=True, blank=True)
@@ -319,3 +320,19 @@ class HelpApplication(models.Model):
     def __unicode__(self):
         return self.Id
 
+
+class UserImageForge(models.Model):
+    '''
+    用户图片仓库字段，用于富文本编辑器的文件上传功能的实现
+    '''
+    Id = models.AutoField(primary_key=True)
+    Img = models.ImageField(upload_to='photos/%Y/%m/%d/user', null=True, blank=True)
+    IsUse = models.BooleanField(default=True)
+    UploadDate = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, related_name="UserImageForge_User_set")
+
+    def __unicode__(self):
+        try:
+            return str(self.user.UserName) + str(self.Img)
+        except:
+            return str(self.Img)

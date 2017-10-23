@@ -16,7 +16,7 @@
 
                         <div class="abstract">
 
-                            <a class="text" href="redetail">
+                            <a class="text" href="crdetails?creationId={{ creation.Id}}">
                                 <h5>{{ creation.Name }}</h5>
                                 <a class="text-x">{{ creation.Describe }}</a>
                             </a>
@@ -44,18 +44,19 @@
                                      style="float: left; height: 12px; margin: 2px 0 0 5px; width: 12px;">
                             </div>
 
-                            <span>&nbsp;Rank&nbsp;{{ creation.user.Score }}</span>
+                            <span>Rank{{ creation.user.Score }}</span>
                         </div>
                         <div class="block-hot">
                             <a class="follow" creation={{ creation.Id }}>
                                 <img src="{% static 'creation/imgs/collection1.png' %}" style="width:20px;height:20px;"
-                                     class="followimg">
+                                     class="following">
 
-
+                                {% for follow in follows%}
                                     {% if follow.user_id == userId and follow.creation_id == creation.Id %}
                                         <img src="{% static 'creation/imgs/collections.png' %}"
                                              style="width:18px;height:18px;margin-left: -23px ">
                                     {% endif %}
+                                {%endfor%}
 
 
                                 <span class="followspan">{{ creation.Follow_Creation_set.count }}</span>
@@ -70,7 +71,7 @@
                                              style="width:18px;height:18px;margin-left: -23px ">
                                     {% endif %}
                                 {% endfor %}
-                                <span>{{ creation.Praise_Creation_set.count }}</span>
+                                <span class="likespan">{{ creation.Praise_Creation_set.count }}</span>
                             </a>
                         </div>
                     </div>
@@ -93,10 +94,12 @@
                     <hr>
                     <a href="creations?sign=all" sign="all"><span class="allsign">所有</span></a>
 
+
                     {% for obj in projectLabels %}
                         <a href="creations?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span
                                 class="allsign">{{ obj.ProjectLabelName }}</span></a>
                     {% endfor %}
+
                 </div>
             </div>
             <a class="more">加载更多</a>
@@ -109,9 +112,8 @@
 {% endblock %}
 {% block script %}
 
-    <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'creation/js/js.js' %}"></script>
-
 
 
 {% endblock %}

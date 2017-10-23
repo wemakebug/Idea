@@ -10,42 +10,45 @@
 {%endblock%}
 {%block content%}
     <div class="first">
-        {% for team in teams %}
-            <div class="second">
+        <div class="second_0">
+            {% for team in teams %}
                 <div class="border_0">
                     <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-                        <img src="{{ team.Img }}" style="width: 100% ;height: 100%"  alt="">
+                        <img src="{% static 'team/imgs/team.jpg' %}" style=" width: 100% ;height: 100%;border-radius: 6px;"  alt="">
                     </div>
                     <div class="referral">
-                        <h4 class="referral_0" style="cursor:pointer;" onclick="window.location.href='teamdetails/{{ team.Id }}'">{{ team.UserName }}</h4>
-{#                        <div class="referral_0"style="font-size: 13px;">团队分类：</div>#}
-{#                        <p>{{ UserLabel.Name }}</p>#}
-                    </div>
-{#                    <p class="intro_0">简介：</p>#}
-                    <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-                          {{ team.Introduction }}
+                        <h3 onclick="window.location.href='teamdetails/{{ team.Id }}'">{{ team.UserName }}</h3>
+                        <p >入驻时间：      {{ team.RegistTime }}</p>
                     </div>
 
+                    <div style="height: 50%">
+                        <div class="leftMatter">
+                            <div class="teamTag">
+                                团队标签：
+                                <span class="repo-language-color pinned-repo-meta" style="background-color:#f1e05a;"></span>
+                                大数据
+                                <span class="repo-language-color pinned-repo-meta" style="background-color: #0b94ea;"></span>
+                                JavaScript
+                            </div>
+                        </div>
+                        <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
+                            {{ team.Introduction }}
+                        </div>
                     </div>
                     <div class="feature">
+                        <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
                         <div class="praise" team="{{ team.Id }}">
                             <span id="praise" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /> </span>
                             <span id="praise-txt" class="praise-txt">1123{{Praise.project}}</span>
                             <span id="add-num" class="add-num"><em>+1</em></span>
                         </div>
-{#                        <div class="praise">#}
-{#                            <span id="praise"><img src="{% static '/creation/imgs/like.png' %}" id="praise-img" /></span>#}
-{#                            <span id="praise-txt">（{{Praise.project}}）</span>#}
-{#                            <span id="add-num"><em>+1</em></span>#}
-{#                        </div>#}
-
                     </div>
                 </div>
-
-            </div>
-        {% endfor %}
-       <div class="clear"></div>
-        <div class="broadSide">
+            {% endfor %}
+            <a class="more_0">加载更多</a>
+            <div class="clear"></div>
+        </div>
+        <div class="broadSide" id="broadSide">
             <div class="intro_1">
                 <img src="{% static 'creation/imgs/light.png' %}"
                          style="width:40px;height:40px;margin:-20px 0px 26px -10px">
@@ -57,11 +60,11 @@
                 <div class="tag">
                     <img src="{% static '/creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                     <span>标签</span>
-                    <hr style="width: 85%">
-                    <a href="team_sign=al" sign="all"><span class="allsign">所有</span></a>
-                    {% for obj in projectLabels %}
-                        <a href="team_sign={{ teams.Id }}" sign="{{ obj.Id }}"><span
-                                class="allsign">{{ obj.ProjectLabelName }}</span></a>
+                    <hr style="width: 100%">
+                    <a href="team?sign=all" sign="all"><span class="allsign">所有</span></a>
+                    {% for obj in labels %}
+                        <a href="team?sign={{ obj.Id }}" sign="{{ obj.Id }}">
+                            <span class="allsign">{{ obj.Name }}</span></a>
                     {% endfor %}
                 </div>
             </div>
@@ -96,5 +99,33 @@
             }
         });
 	})
+
+
+$(function() {
+    $(".border_0").slice(0, 6).show();
+    if ($(".border_0").length <= 6) {
+        $(".more_0").hide();
+    }
+    $(".more_0").on('click',function(e) {
+        e.preventDefault();
+        $(".border_0:hidden").slice(0, 6).slideDown();
+        if ($(".border_0:hidden").length == 0) {
+            $(".more_0").fadeOut('slow');
+        }
+    });
+});
+
+    $(document).ready(function () {
+            $(".content_0").
+            each(function () {
+                var maxwidth = 136;
+                if ($(this).text().length > maxwidth) {
+                    $(this).text($(this).text().substring(0, maxwidth));
+                    $(this).html($(this).html() +'…')
+                    ;
+                }
+            });
+        });
+
 </script>
 {%endblock%}

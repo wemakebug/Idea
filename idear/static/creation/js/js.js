@@ -10,13 +10,12 @@ $(function() {
         if ($(".block:hidden").length == 0) {
             $(".more").fadeOut('slow');
         }
-
-
-        if ($(".block:hidden").length == 0) {
-            $(".more").fadeOut('slow');
-        }
     });
+
+    // var content_input = document.getElementById("comment-content1");
+    // content_input.value = "";
 });
+
 
 $(function () {
 
@@ -24,8 +23,9 @@ $.cookie("user",3)
 
 userId = $.cookie("user")
 
-$(".follow").click(function(){
 
+// 创意关注操作
+$(".follow").click(function(){
    Id = $(this).attr("creation")
    follow = $(this)
    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
@@ -46,39 +46,28 @@ $(".follow").click(function(){
 
 })
 
-
+//创意点赞操作
 $(".like").click(function(){
+
    Id = $(this).attr("creation")
+   like = $(this)
    $.post("star",{userId:userId,starType:"1",Id:Id},function(data){
-    if(data == 1)
-    	alert("感谢您的点赞")
+    if(data == 1)    //点赞成功
+        { 
+          like.children().attr("src","../static/creation/imgs/likes.png")
+          like.children(".likespan").html(parseInt(like.children(".likespan").html())+1)
+      }
     else if(data == 0)
-    	alert("操作失败")
-    else
-      alert("取消点赞")
-    location.reload()
-})
+        alert(data)
+    else    //取消点赞成功
+      { 
+        like.children().attr("src","../static/creation/imgs/like1.png")
+        like.children(".likespan").html(parseInt(like.children(".likespan").html())-1)
+      }
 
 })
 
 })
 
+})
 
-$(function(){
-		$("#praise").click(function(){
-			var praise_img = $("#praise-img");
-			var praise_txt = $("#praise-txt");
-			var num=parseInt(praise_txt.text());
-			if(praise_img.attr("src") == ("../static/creation/imgs/likes.png")){
-				$(this).html("<img src='../static/creation/imgs/like1.png' id='praise-img' class='animation' />");
-				praise_txt.removeClass("hover");
-				num -=1;
-				praise_txt.text(num)
-			}else{
-				$(this).html("<img src='../static/creation/imgs/likes.png' id='praise-img' class='animation' />");
-				praise_txt.addClass("hover");
-				num +=1;
-				praise_txt.text(num)
-			}
-		});
-	})

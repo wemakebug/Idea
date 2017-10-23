@@ -1,0 +1,88 @@
+{%extends 'idea/Base.html'%}
+{% load static %}
+{%block title%}
+   <title>发布项目</title>
+{%endblock%}
+{% block CSS %}
+<link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="main_block">
+    <div class="release_pro">
+        <div class="pro_edit">
+            <h2>个人中心/新建项目</h2>
+        </div>
+        <div class="pro_chance">
+            <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>
+            <div class="chance_ownname"><a href="#"><p>暂存</p></a></div>
+            <div class="chance_ownname chance_release"><button><p>发布</p></button></div>
+        </div>
+    </div>
+    <div class="input_pro_title">
+        <form>
+            <input class="input_title" placeholder="请在这里输入标题" autocomplete="off" type="text">
+        </form>
+    </div>
+    <div class="pro_owner">
+        <div class="pro_founder">
+            <p>创建人：</p>
+            <div class="owner_name">
+                <p>somenoe</p>
+            </div>
+        </div>
+    </div>
+    <div class="pro_status">
+        <div class="now_status">
+            <p>状态：创建中</p>
+        </div>
+    </div>
+    <div class="main_pro_con" id="main_pro_con">
+        <div class="add_img">
+            <div class="chance_add">
+                <div class="add_cover"></div>
+            </div>
+            <div class="imgs_history">
+                <div class="his-line"></div>
+                <div class="picture_his">
+                    <p>图片历史库</p>
+                </div>
+            </div>
+            <div class="pic_library">
+                <a href="#"><p>我的图片库</p></a>
+            </div>
+        </div>
+        <div class="rich_text" id="rich_text">
+            <textarea id="TextArea1" class="ckeditor"></textarea>
+        </div>
+        <div class="chance_type">
+            <div class="input_num">
+                <p>所需人数</p>
+                <input autocomplete="off" type="text" placeholder="数字">
+            </div>
+            <div class="pro_label">
+                <div class="chance_label">
+                    <p class="pro_label_exh">项目类型</p>
+                    <p class="chance_must">必选</p>
+                </div>
+                <div class="label_name">
+                    {% for obj in labels %}
+                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()">{{ obj.ProjectLabelName}}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src={% static "ckeditor/ckeditor-init.js" %}></script>
+    <script type="text/javascript" src={% static "ckeditor/ckeditor/ckeditor.js" %}></script>
+    <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('TextArea1', {
+            customConfig:'{% static "ckeditor_configs/MyCongif.js" %}'
+        });
+    </script>
+{% endblock %}
