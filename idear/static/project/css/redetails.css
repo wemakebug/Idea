@@ -138,8 +138,13 @@ body{
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
 }
-.likebutton::after{
-    content:"1111";
+.plikenum{
+    display:block;
+    width:50px;
+    height:25px;
+    float:right;
+    font-size: 15px;
+    margin-right:10px;
 }
 
 .likebutton:active{
@@ -463,7 +468,7 @@ body{
   /*margin: 50px auto 0;*/
 /*}*/
 .rbutton {
-            height:38px;
+            height:45px;
 			position: relative;
 			color: rgba(255,255,255,1);
 			text-decoration: none;
@@ -910,4 +915,22 @@ body{
     line-height:1.7;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid #c6c8ce;
+}
+.report-text{
+    width:84%;
+    margin:40px 0 0 8%;
+    height: 250px;
+    border-radius:5px;
+    resize:none;
+    border: 1px solid #c6c8ce;
+}
+.putreport{
+    width:50px;
+    height:30px;
+    float:right;
+    margin:10px 40px 0 0;
+    background-color: #3a87ad;
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
 }
