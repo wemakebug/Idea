@@ -546,7 +546,19 @@ def star(req):
         print e
         return HttpResponse(status)
 
-
+@csrf_exempt
+def comment(req):
+    '''
+    创意评论
+    :param req:
+    :return:
+    '''
+    status = 0
+    if req.method =='POST':
+        username = "chris"
+        creationId = 3
+        content = req.POST["Content"]
+        user = models.User.objects.get("UserName=username")
 
 
 ''' 创意灵感 页面相关部分结束'''
