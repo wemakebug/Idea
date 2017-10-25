@@ -138,8 +138,13 @@ body{
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
 }
-.likebutton::after{
-    content:"1111";
+.plikenum{
+    display:block;
+    width:50px;
+    height:25px;
+    float:right;
+    font-size: 15px;
+    margin-right:10px;
 }
 
 .likebutton:active{
@@ -239,6 +244,7 @@ body{
     width:75px;
     font-size:18px;
     margin-left:5px;
+    cursor: pointer;
 }
 
 .prcontent{
@@ -462,7 +468,7 @@ body{
   /*margin: 50px auto 0;*/
 /*}*/
 .rbutton {
-            height:38px;
+            height:45px;
 			position: relative;
 			color: rgba(255,255,255,1);
 			text-decoration: none;
@@ -662,6 +668,7 @@ body{
     border:none;
     float:right;
     border-radius:5px;
+    cursor: pointer;
 }
 .cmain{
     height:auto;
@@ -735,6 +742,7 @@ body{
     height:25px;
     float:left;
     margin-top:4px;
+    cursor: pointer;
 }
 .clikenum{
     display:inline-block;
@@ -742,18 +750,21 @@ body{
     margin-top:10px;
     color: #999;
 	font-size: 13px;
+
 }
 .creport{
     width:20px;
     height:20px;
     float:right;
     margin:7px 10px 0 4px;
+    cursor: pointer;
 }
 .creply{
     width:20px;
     height:20px;
     float:left;
     margin:8px 0 0 10px;
+    cursor: pointer;
 }
 .comment-content {
 	width:100%;
@@ -849,6 +860,7 @@ body{
     height:25px;
     float:left;
     margin-top:4px;
+    cursor: pointer;
 }
 .rclikenum{
     display:inline-block;
@@ -862,12 +874,15 @@ body{
     height:20px;
     float:right;
     margin:7px 10px 0 4px;
+    cursor: pointer;
 }
 .rcreply{
     width:20px;
     height:20px;
     float:left;
     margin:8px 0 0 10px;
+    cursor: pointer;
+
 }
 .rcomment-content {
 	width:100%;
@@ -901,6 +916,21 @@ body{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid #c6c8ce;
 }
-#rdreport{
+.report-text{
+    width:84%;
+    margin:40px 0 0 8%;
+    height: 250px;
+    border-radius:5px;
+    resize:none;
+    border: 1px solid #c6c8ce;
+}
+.putreport{
+    width:50px;
+    height:30px;
+    float:right;
+    margin:10px 40px 0 0;
+    background-color: #3a87ad;
+    border:none;
+    border-radius:5px;
     cursor: pointer;
 }

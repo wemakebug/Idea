@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
 from admina.models import Creation2ProjectLabel, Creation, ProjectLabel, Comment, User, Praise, Follow, ProjectUser, \
-    Project2ProjectLabel, Project
+    Project2ProjectLabel, Project, Recruit
 from admina import models
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -307,11 +307,25 @@ def team(req):
     :return: 
     '''
     if req.method == 'GET':
-
         ''' 标签查询'''
-        teams = models.User.objects.all().filter(Identity=2)
-        User2UserLabel = models.User2UserLabel.objects.all()
-        return render_to_response('team/team.html', {'teams': teams,'User2UserLabel': User2UserLabel})
+
+
+        sign = req.GET["sign"]
+        if sign == "all":
+            teams = models.User.objects.filter(Identity=2);
+            User2UserLabel = models.User2UserLabel.objects.all()
+            labels = models.UserLabel.objects.all();
+            return render_to_response('team/team.html', {"teams": teams, "labels": labels,'User2UserLabel': User2UserLabel})
+        elif int(sign):
+            labels = models.UserLabel.objects.filter(pk=sign)
+            # user_2_userLable = models.User2UserLabel.objects.filter(Q(userLabel=labels) & Q(user__Identity=2))
+            user_2_userLable = models.User2UserLabel.objects.filter(userLabel=labels).filter(user__Identity=2)
+            User2UserLabel = models.User2UserLabel.objects.all()
+            teams = []
+            for obj in user_2_userLable:
+                teams.append(obj.user)
+            return render_to_response('team/team.html', {"teams": teams, "labels": labels, 'User2UserLabel': User2UserLabel})
+
     if req.method == 'POST':
         pass
 
@@ -652,9 +666,9 @@ def get_projects(req):
         user = User.objects.filter(Account=account)
         if account:
             projects = ProjectUser.objects.get(user=user)
-            return render_to_response('project/recruit.html', {'projects': projects})
+            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
         else:
-            return render_to_response('project/recruit.html', {'projects': projects})
+            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
 
 
 ''' 招募项目相关页面结束'''
@@ -692,5 +706,3 @@ def addlabel(req):
     obj = models.ProjectLabel.objects.all()
     return render_to_response('personal/release.html', {"labels": obj})
 
-
-'''个人中心相关页面结束'''

@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'idea/css/sweet-alert.css' %}">
+    <link rel="stylesheet" href="{% static 'project/css/layer.css' %}">
 
 {% endblock %}
 {% block content %}
@@ -23,7 +23,7 @@
                             {% endfor%}
                             <div class="title">
                                 <h5 id="rdpname"> {{ project.ProjectName }}</h5>
-                                <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：<span id="rdpstatus">第一次招募</span> </p>
+                                <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：第<span id="rdpstatus">一</span>次招募 </p>
                             </div>
                         </div>
                      <div class="description">
@@ -35,6 +35,7 @@
                      <div class="option">
                             <button class="likebutton" id="rdlikebutton">
                                 <img class="plike" id="rdplike" src="{% static '/project/imgs/like1.svg' %}">
+                                <span class="plikenum">1111</span>
                             </button>
                             <div class="op-tip">
                                 <div class="home-b-collection" id="rdcollection">
@@ -76,9 +77,9 @@
                              </span>
                          </div>
                          <div class="rm-header">
-                                  <div class="ribbon"><span class="ribbon3">招募帖</span></div>
-                                  <p class="r-message" id="rdr-message">2017.04.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">20 </span></p>
-                              </div>
+                             <div class="ribbon"><span class="ribbon3">招募帖</span></div>
+                             <p class="r-message" id="rdr-message">2017.04.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">20 </span></p>
+                         </div>
                          <div class="rm-nav">
                                   <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
                               </div>
@@ -113,7 +114,7 @@
                                <div class="rfcontent">
                                     <div class="rbutton" id="rdrbutton">申请加入</div>
                                </div>
-                          </div>
+                     </div>
                  </div>
 
                  <div class="r-apply" id="rdr-apply">
@@ -153,7 +154,7 @@
                                           <div class="c-option">
                                               <img class="clike" id="rdclike" src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
                                               <img class="creply" id="rdcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="creport" id="rdreport" src="{% static 'creation/imgs/report.png'%}">
+                                              <img class="creport" id="rdcreport" src="{% static 'creation/imgs/report.png'%}">
                                           </div>
                                       </div>
                                       <div class="comment-content">
@@ -166,15 +167,15 @@
                                   </div>
                               </div>
                         <div class="c-reply">
-                                  <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
-                                  <div class="rcomment-box">
+                            <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                            <div class="rcomment-box">
                                       <div class="rcomment-head">
                                           <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
                                           <span class="rcdate">2017-11-11</span>
                                           <div class="r-option">
                                               <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
                                               <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="rcreport" id="rdreport" src="{% static 'creation/imgs/report.png'%}">
+                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
                                           </div>
                                       </div>
                                       <div class="rcomment-content">
@@ -185,18 +186,64 @@
                                           <button class="putcomment" id="putcomment">回复</button>
                                       </div>
                                   </div>
-                              </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="middle"></div>
+        {% block script %}
+            <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
+            <script type="text/javascript"  src="{% static  'project/js/layer/layer.js' %}"> </script>
 
-    {% block script %}
-        <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'idea/js/sweet-alert.min.js' %}"></script>
+       {% endblock %}
         <script>
+             $("#rdreport"). on('click', function(){
+                    layer.open({
+	                            type: 1,
+                                offset: '200px',
+                                resize:false,
+                                move:false,
+                                area: ['500px', '400px'],
+                                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+	                            shade: 0.6,
+                                maxmin: false,
+                                anim: 0//0-6的动画形式，-1不开启
+	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                                        '<button class="putreport" id="putreport">提交</button> '
+	                });
+                });
+             $("#rdcreport"). on('click', function(){
+                     layer.open({
+	                            type: 1,
+                                offset: '200px',
+                                resize:false,
+                                move:false,
+                                area: ['500px', '400px'],
+                                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+	                            shade: 0.6,
+                                maxmin: false,
+                                anim: 0//0-6的动画形式，-1不开启
+	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                                        '<button class="putreport" id="putreport">提交</button> '
+	                });
+                });
+             $("#rdrcreport"). on('click', function(){
+                    layer.open({
+	                            type: 1,
+                                offset: '200px',
+                                resize:false,
+                                move:false,
+                                area: ['500px', '400px'],
+                                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+	                            shade: 0.6,
+                                maxmin: false,
+                                anim: 0//0-6的动画形式，-1不开启
+	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                                        '<button class="putreport" id="putreport">提交</button> '
+	                });
+                });
 {#            招募进度条#}
             $(function () {
                 var $ppc = $('.progress-pie-chart'),
@@ -232,23 +279,12 @@
                 $("#rdcreply").click(function(){
                     $("#commentreply").slideDown("slow");
                 });
-                $("#rdrcreply").click(function(){
+                $('#rdrcreply').click(function(){
                     $("#rcommentreply").slideDown("slow");
-                });
-                   {#                评论生成下方div#}
-                $("#rdreport").click(function(){
-                    swal({
-                        html:true,
-                        title:"请选择举报理由",
-                        text:"请输入正确邮箱！",
-                        type:"input"
-                    })
                 });
 
         </script>
 
-
-    {% endblock %}
 
 
 {% endblock %}

@@ -18,9 +18,10 @@ html{
 .second_0{
     float: left;
     width: 75%;
-    margin: 0 0 0 2.5%
+    margin: 0 0 0 2.5%;
 }
  .border_0{
+     display:none;
      margin: 30px 2% 0 4.5%;
 	 float: left;
 	 height: 305px;
@@ -56,7 +57,7 @@ html{
 }
 .referral p{
     color: #7A8B8B;
-    margin: 2% 0;
+    margin: 3% 0;
     font-size: 11px;
 }
 .content_0{
@@ -66,7 +67,7 @@ html{
 	height: 69%;
 	width: 85%;
     line-height:25px;
-	margin: 3% auto 0;
+	margin: 3.5% auto 0;
 	z-index: 99;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -381,8 +382,9 @@ html{
 
 .broadSide{
 	float: right;
-	width: 20%;
-	margin: 0 1%;
+	width: 300px;
+	position:fixed;
+	margin:0 0 0 1200px;
 }
 .intro_1{
 	width: 100%;
@@ -408,7 +410,7 @@ html{
 /*}*/
 .classify{
 	float: right;
-    margin: 3px 1%;
+    margin: 3px 0px;
 }
  .tag hr {
 	 border: 0;
