@@ -70,4 +70,3 @@ $(".like").click(function(){
 })
 
 })
-

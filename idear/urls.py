@@ -43,6 +43,7 @@ urlpatterns = [
     url(r'^getimg', views.get_user_img),
     url(r'^ordinance',views.ordinance),
     url(r'^release',views.addlabel),
+    url(r'^comment',views.comment),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
