@@ -143,6 +143,7 @@ def test(req, param):
     '''
     if req.method == "GET":
         teams = models.User.objects.all().filter(Identity=2)
+
         return render_to_response('team/test.html', {'teams': teams})
     if req.method == "POST":
         data = req.POST["data"]
@@ -306,8 +307,11 @@ def team(req):
     :return: 
     '''
     if req.method == 'GET':
+
+        ''' 标签查询'''
         teams = models.User.objects.all().filter(Identity=2)
-        return render_to_response('team/team.html', {'teams': teams})
+        User2UserLabel = models.User2UserLabel.objects.all()
+        return render_to_response('team/team.html', {'teams': teams,'User2UserLabel': User2UserLabel})
     if req.method == 'POST':
         pass
 
@@ -529,7 +533,7 @@ def star(req):
                 status = 1
             return HttpResponse(status)
     except Exception as e:
-        print e
+        print(e)
         return HttpResponse(status)
 
 

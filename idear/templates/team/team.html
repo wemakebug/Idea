@@ -11,7 +11,7 @@
 {%block content%}
     <div class="first">
         <div class="second_0">
-            {% for team in teams %}
+            {% for team in teams%}
 {#                <div class="second">#}
                     <div class="border_0">
                         <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
@@ -27,10 +27,17 @@
                             <div class="leftMatter">
                                 <div class="teamTag">
                                     团队标签：
-                                    <span class="repo-language-color pinned-repo-meta" style="background-color:#f1e05a;"></span>
-                                    大数据
-                                    <span class="repo-language-color pinned-repo-meta" style="background-color: #0b94ea;"></span>
-                                    JavaScript
+                                    {% for User2 in User2UserLabel  %}
+
+                                        {% if User2.user.Id == team.Id %}
+                                            <span class="repo-language-color pinned-repo-meta" style="background-color:#f1e05a;"></span>{{ User2.userLabel.Name}}
+                                        {% endif %}
+                                    {% endfor %}
+{#                                    <span class="repo-language-color pinned-repo-meta" style="background-color:#f1e05a;"></span>#}
+{#                                    大数据#}
+{#                                    <span class="repo-language-color pinned-repo-meta" style="background-color: #0b94ea;"></span>#}
+{#                                    JavaScript#}
+
                                 </div>
                             </div>
                             <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
