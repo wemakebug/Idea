@@ -14,27 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from admina import views as views, reload as reload
+from . import views as views, reload as reload
 urlpatterns = [
-    url(r'^login$', views.login),
-    url(r'^logout$', views.logout),
-    url(r'^score_rank$', views.score_rank),
-    url(r'^score_record$', views.score_record),
-    url(r'^user_score/(?P<page>\d+)$', views.score_user),
-    url(r'^user_detail$', reload.user_detail),
-    url(r'^UserManager$', views.UserManager),
-    url(r'^label_user$', reload.label_user),
-    url(r'^label_project$', reload.label_project),
 
-    # test urls  deleted  enable
-    url(r'util1$', reload.util1),
-    url(r'util2$', reload.util2),
-    url(r'util3$', reload.util3),
-    url(r'util4$', reload.util4),
-    url(r'util5$', reload.util5),
+    # url(r'^login$', views.login),
+    # url(r'^logout$', views.logout),
+    # url(r'^score_rank$', views.score_rank),
+    # url(r'^score_record$', views.score_record),
+    # url(r'^user_score/(?P<page>\d+)$', views.score_user),
+    # url(r'^user_detail$', reload.user_detail),
+    # url(r'^UserManager$', views.UserManager),
+    # url(r'^label_user/(?P<page>\d+)$', reload.label_user),
+    # url(r'^label_project/(?P<page>\d+)$', reload.label_project),
 
-    # this url should always in the last
-    url(r'^$', views.login),
 
+    url(r'index', views.index),
+    url(r'user_detail', views.user_detail),
+    url(r'profile', views.Profile),
+    url(r'PhotoGallery', views.PhotoGallary)
 
 ]

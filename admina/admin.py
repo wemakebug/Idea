@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from admina.models import *
+from .models import *
 # Register your models here.
 
 '''
@@ -29,3 +29,4 @@ admin.site.register(Score)
 admin.site.register(ScoreChange)
 admin.site.register(Creation2ProjectLabel)
 admin.site.register(HelpApplication)
+admin.site.register(UserImageForge)

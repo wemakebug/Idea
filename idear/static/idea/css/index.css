@@ -669,13 +669,13 @@
     .effect-4 h3{
         line-height: 35px;
     }
-    .effect-4 .member-image{
+    .effect-4 .member-images{
         position: absolute;
         width: 14%;
         transition: 0.4s;
         border: 1px solid transparent;
     }
-    .effect-4 .member-image img{
+    .effect-4 .member-images img{
         width: 100%;
         height: 100%;
     }

@@ -148,7 +148,7 @@ CKEDITOR.editorConfig = function( config )
     //在清除图片属性框中的链接属性时 是否同时清除两边的<a>标签
     //config.image_removeLinkByEmptyURL = true;
     //一组用逗号分隔的标签名称，显示在左下角的层次嵌套中
-    //config.menu_groups ='clipboard,form,tablecell,tablecellproperties,tablerow,tablecolumn,table,anchor,link,image,flash,checkbox,radio,textfield,hiddenfield,imagebutton,button,select,textarea';
+    //config.menu_groups ='clipboard,form,tablecell,tablecellproperties,tablerow,tablecolumn,table,anchor,link,images,flash,checkbox,radio,textfield,hiddenfield,imagebutton,button,select,textarea';
     //显示子菜单时的延迟，单位：ms
     //config.menu_subMenuDelay = 400;
     //当执行“新建”命令时，编辑器中的内容
