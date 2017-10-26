@@ -437,6 +437,7 @@ def creations(req):
     # userId = int(req.COOKIES.get('user'))
     userId = 3
     try:
+
         if req.method == 'GET':
             sign = req.GET['sign']
             # 如果是所有项目
@@ -449,10 +450,11 @@ def creations(req):
                 
                 for obj in CreationLabelObjs:    #将所有的对应标签的创意拿出来 放到creations对象里
                     creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
+                    if User_img == "NULL":
+                        User_img = "/static/photos/photos/default.jpg"
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
                                        'follows': follows, 'praises': praises, "Imgs": User_img})
-
 
         else:
             id = req.POST['creationId']

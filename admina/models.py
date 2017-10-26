@@ -146,7 +146,7 @@ class Creation(models.Model):
     Describe = models.TextField(max_length=200, null=True)
     Name = models.CharField(max_length=20, null=False)
     IsUse = models.BooleanField(default=True)
-    Img = models.ImageField(upload_to='photos/%Y/%m/%d/creation')
+    Img = models.ImageField(upload_to='photos/%Y/%m/%d/user')
     Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
