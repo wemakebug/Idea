@@ -185,21 +185,54 @@ body,div{
         display: block;
     }
     .list_hidden{
-        width:185px;
-        margin-top:10px;
+        width:262px;
+        margin-top:-57px;
         float: left;
-        margin-left: 0px;
-        background: rgb(255, 251, 240);
-        height:320px;
+        margin-left: 44px;
+        /*background: rgb(255, 251, 240);*/
+        height:643px;
         border: 1px solid transparent;
         opacity: 0.8;
-        display: none;
+        /*display: none;*/
+        background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+        background-blend-mode: multiply,multiply;
     }
-    .user_hidden:hover .list_hidden{
+    /*.user_hidden:hover .list_hidden{
         display: block;
         transition: 0.2s ease-out;
+    }*/
+    .list_content{
+        width:100%;
+        height: 70%;
+        margin-top: 37%;
+        border: 1px solid transparent;
     }
-    .list_hidden em{
+    .list_block{
+        width: 80%;
+        height: 11%;
+        margin-top: 4%;
+        border:1px solid #bbbbbb;
+
+    }
+    .list_block p{
+        width:100%;
+        height:100%;
+        text-align: center;
+        line-height: 47.1333px;
+        color: #000000;
+        font-family: 幼圆;
+        overflow: hidden;
+        display: block;
+    }
+    .list_block p a{
+        width:100%;
+        height:100%;
+        display: block;
+    }
+    .list_block:hover{
+        border-color: #295E6A;
+    }
+    /*.list_hidden em{
         display:block;
         width:50px;
         height:30px;
@@ -211,13 +244,8 @@ body,div{
         color:#FFFFFF;
         font-style:normal;
     }
-    .list_content{
-        width:99.9%;
-        height: 100%;
-        background: #295E6A;
-        border: 1px solid transparent;
-    }
-    .list_creation{
+    */
+    /*.list_creation{
         width: 100%;
         height: 10%;
         margin-top: 2%;
@@ -228,7 +256,7 @@ body,div{
         float: left;
         margin-left: 1%;
     }
-    .list_name p a{
+    .list_name a{
         width: 90%;
         height: 100%;
         margin-left: 10%;
@@ -294,7 +322,7 @@ body,div{
         line-height: 50px;
         color:#8a8a8a;
         font-size: 0.9em;
-    }
+    }*/
 	.sidebar ul li{
         float: left;
         padding:12% 15px;
