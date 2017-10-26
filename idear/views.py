@@ -313,7 +313,6 @@ def team(req):
             return render_to_response('team/team.html', {"teams": teams, "labels": labels})
         elif int(sign):
             labels = models.UserLabel.objects.filter(pk=sign)
-            # user_2_userLable = models.User2UserLabel.objects.filter(Q(userLabel=labels) & Q(user__Identity=2))
             user_2_userLable = models.User2UserLabel.objects.filter(userLabel=labels).filter(user__Identity=2)
             teams = []
             for obj in user_2_userLable:

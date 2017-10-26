@@ -39,7 +39,7 @@
                         <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
                         <div class="praise" team="{{ team.Id }}">
                             <span id="praise" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /> </span>
-                            <span id="praise-txt" class="praise-txt">1123{{Praise.project}}</span>
+                            <span id="praise-txt" class="praise-txt">{{team.project}}</span>
                             <span id="add-num" class="add-num"><em>+1</em></span>
                         </div>
                     </div>
@@ -81,7 +81,6 @@
             var text_box = $("#add-num");
             var praise_txt = $("#praise-txt");
             var num=parseInt(praise_txt.text());
-{#			alert("11111")#}
             if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){
                 $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");
                 praise_txt.removeClass("hover");
