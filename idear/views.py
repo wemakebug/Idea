@@ -704,8 +704,9 @@ def editprofile(req):
     if req.method == 'POST':
         pass
 
-def addlabel(req):
+def release(req):
     obj = models.ProjectLabel.objects.all()
+    user = models.User.objects.all().order_by("Date")
     return render_to_response('personal/release.html', {"labels": obj})
 '''个人中心相关页面结束'''
 

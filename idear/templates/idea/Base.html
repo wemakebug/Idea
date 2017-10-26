@@ -48,25 +48,14 @@
                     </a>
                 </div>
                 <div class="list_hidden">
-                    <em>&#9670;</em>
                     <div class="list_content">
-                        <div class="list_creation">
-                            <div class="list_image"></div>
-                            <div class="list_name">
-                                <p><a href="#">user name</a></p>
-                            </div>
-                        </div>
-                        <div class="list_line"></div>
-                        <div class="list_main">
-                            <div class="main_block"><p><a href="#">Your message</a></p></div>
-                            <div class="main_block"><p><a href="#">Your profile</a></p></div>
-                            <div class="main_block"><p><a href="#">Your star</a></p></div>
-                        </div>
-                        <div class="list_line"></div>
-                        <div class="list_foot">
-                            <div class="setting"><p><a href="#">Settings</a></p></div>
-                            <div class="log_out"><p><a href="#">Sign out</a></p></div>
-                        </div>
+                        <div class="list_block" id="user_name"><p>{{ user.UserName }}</p></div>
+                        <div class="list_block" id="my_homepage"><p><a href="#">我的主页</a></p></div>
+                        <div class="list_block" id="my_inspiration"><p><a href="#">我的灵感</a></p></div>
+                        <div class="list_block" id="my_pro"><p><a href="#">我的项目</a></p></div>
+                        <div class="list_block" id="my_follow"><p><a href="#">我关注的</a></p></div>
+                        <div class="list_block" id="my_settings"><p><a href="#">设置</a></p></div>
+                        <div class="list_block" id="sign_out"><p><a href="#">退出</a></p></div>
                     </div>
                 </div>
             </div>
@@ -104,7 +93,15 @@
     <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
 
-    <script>
-    </script>
+    {% comment %}<script>
+        $(function(){
+
+            $('.user_figure').hover(function(){
+                $(this).find('.list_hidden').stop(true,true).slideDown();
+            },function(){
+                $(this).find('.list_hidden').stop(true,true).slideUp();
+            });
+        });
+    </script>{% endcomment %}
 </body>
 </html>
