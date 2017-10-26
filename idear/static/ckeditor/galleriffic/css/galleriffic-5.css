@@ -35,13 +35,13 @@ div.nav-controls {
 div.slideshow-container,
 div.loader,
 div.slideshow a.advance-link {
-	width: 510px; /* This should be set to be at least the width of the largest image in the slideshow with padding */
+	width: 510px; /* This should be set to be at least the width of the largest images in the slideshow with padding */
 }
 
 div.loader,
 div.slideshow a.advance-link,
 div.caption-container {
-	height: 502px; /* This should be set to be at least the height of the largest image in the slideshow with padding */	
+	height: 502px; /* This should be set to be at least the height of the largest images in the slideshow with padding */
 }
 
 div.slideshow-container {
@@ -66,7 +66,7 @@ div.slideshow span.image-wrapper {
 }
 div.slideshow a.advance-link {
 	display: block;
-	line-height: 502px; /* This should be set to be at least the height of the largest image in the slideshow with padding */
+	line-height: 502px; /* This should be set to be at least the height of the largest images in the slideshow with padding */
 	text-align: center;
 }
 
