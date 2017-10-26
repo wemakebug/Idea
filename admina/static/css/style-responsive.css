@@ -1,583 +1,284 @@
-@media (min-width: 980px) and (max-width: 1280px) {  
+/* MEDIA QUERIES */
 
-	.page-boxed .header .dropdown .username {
-		display: none;
-	}	
+@media screen and (max-width: 768px) {
+
+    body {
+        position: relative;
+    }
+
+    .left-side {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .left-side-collapsed .left-side {
+        display: none;
+    }
+
+    .left-side-collapsed .main-content {
+        margin-left: 0;
+    }
+
+    .left-side-collapsed .header-section {
+        margin-left: 0;
+    }
+
+    .left-side-show section {
+        overflow-x: hidden;
+    }
+
+    .left-side-show .left-side {
+        display: block;
+    }
+
+    .left-side-show .main-content {
+        margin-left: 240px;
+    }
+
+    .btn-demo {
+        margin-bottom: 20px;
+    }
+
+    .left-sideinner {
+        padding: 5px 10px;
+    }
+
+    .left-sideinner .searchform input {
+        background: #fff;
+        border: 0;
+    }
+
+    .sticky-header .header-section {
+        left: 0;
+    }
+
+    .sticky-header.left-side-show .header-section {
+        left: 240px;
+    }
+
+    .sticky-header .menu-right {
+        margin-right: 15px;
+    }
+
+    .sticky-header .left-side {
+        top: 60px;
+    }
+
+    .lock-wrapper {
+        margin: 25% auto;
+    }
+
+    .sticky-left-side .custom-nav {
+        margin-top: -5px;
+    }
+    .stepy-error {
+        bottom: 50px;
+    }
+
 }
 
-@media (min-width: 980px) { 
 
- 	/***
- 	Page sidebar
- 	***/
- 	.page-sidebar {
-		position: absolute;
- 		width: 225px;
-  	}
+@media screen and (max-width: 767px) {
 
-	.page-sidebar-fixed .page-sidebar {
-	  	position: fixed !important;
-	 	top: 41px;
-	}
+    .searchform {
+        position: relative;
+    }
 
-	.page-sidebar-fixed ul.page-sidebar-menu > li.last {
-		margin-bottom: 15px !important;
-	}
+    .searchform input {
+        background:#fff;
+    }
 
-	.page-sidebar-fixed.page-sidebar-hover-on .page-sidebar {
-		z-index: 10000;		
-		width: 35px;		
-	}
+    .notification-menu li:nth-child(4) {
+        display: none;
+    }
 
-	.page-sidebar-fixed.page-sidebar-hover-on .page-sidebar .selected {
-		display: none;
-	}
+    .left-side .searchform,
+    .left-side .logged-user {
+        display: block;
+    }
 
-	.page-sidebar-fixed.page-sidebar-hover-on .page-content {
-		margin-left: 35px;
-	}
-	.page-sidebar-fixed.page-sidebar-hover-on .footer {
-		margin-left: 35px;
-	}
+    .breadcrumb-wrapper {
+        display: none;
+    }
 
-	.page-sidebar-fixed .page-sidebar-closed .page-sidebar .sidebar-search .submit,
-	.page-sidebar-fixed .page-sidebar .sidebar-toggler {
-		-webkit-transition: all  0.2s ease;
-	     -moz-transition: all  0.2s ease;
-	       -o-transition: all  0.2s ease;
-	          transition: all  0.2s ease;
-	}
+    .notification-menu .dropdown-menu:after {
+        display: none;
+    }
 
-	.page-sidebar-hovering {
-		overflow: hidden !important;
-	}
+    /*calendar*/
+    .fc-button-inner {
+        padding: 0;
+    }
 
-	.page-sidebar-hovering .sub-menu,
-	.page-sidebar-hovering span.title,
-	.page-sidebar-hovering span.arrow {		  
-		display: none !important;
-	}
+    /*media gallery*/
+    .media-gal .item {
+        width: 100%;
+    }
+    .media-filter {
+        margin: 25px 0;
+    }
 
-	.page-sidebar-hovering .submit {
-		opacity: 0;
-		width: 0 !important;
-		height: 0 !important;
-	}
+    .media-filter + .pull-right, .media-filter + .pull-right + .btn  {
+        float: left !important;
+    }
 
-  	/***
-  	Page content
-  	***/
-  	.page-content { 
-  		margin-left: 225px; 
-		margin-top: 0px;
-		min-height: 760px; 
-	}
+    /*state info*/
+    .state-info {
+        position: static;
+        width: 100%;
+        margin-top: 15px;
+    }
 
-	.page-sidebar-fixed .page-content {
-		min-height: 600px; 
-	}
+    .state-info .panel {
+        width: 100%;
+    }
 
-	.page-content.no-min-height {
-		min-height: auto;
-	}
+    .lock-wrapper {
+        margin: 40% auto;
+    }
 
-	/***
-	Footer
-	***/
+    .pricing-table {
+        width: 100%;
+        margin-left: 0;
+    }
 
-	/* fixed sidebar */
-	.page-sidebar-fixed .footer {
-	  margin-left: 225px;
-	  background-color: #fff;
-	}
+    .mail-box > aside, .mail-box > section {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+    }
 
-	.page-sidebar-fixed .footer .footer-inner {
-	  color: #333;
-	}
+    .mail-list {
+        height: auto;
+    }
 
-	.page-sidebar-fixed.page-sidebar-closed .footer {
-	  margin-left: 35px;
-	}
-
-	.page-sidebar-fixed .footer .footer-tools .go-top { 
-	  background-color: #666;
-	}
-
-	.page-sidebar-fixed .footer .footer-tools .go-top i {
-	  color: #ddd;
-	}
-
-	/* boxed layout */
-	.page-boxed	.header .brand {
-  		margin-left: 0px !important;
-  		width: 226px;
-	}
-
-	.page-boxed .header .brand img {
-		margin-left: 10px;
-	}
 }
 
-/***
-For tablets and phones
-***/
-@media (max-width:979px) { 
-	
-	/***
-	Body
-	***/
-	body {
-		margin: 0px !important;
-	}	
+@media screen and (max-width: 640px) {
 
-	/***
- 	Page header
- 	***/
- 	.header {
- 		margin: 0 !important;
- 	}
-
-	.header .nav li.dropdown i {
-		display: inline-block;
-		position: relative;
-		top:1px;
-		right:0px;
-	}
-
-	.header .nav {
-		margin-bottom: 0px !important;
-	}
-
-	.header .brand {
-  		margin-left: 0px !important;
-  		padding-left: 0px !important; 
-	}
-
-	.header .brand img {
-		margin-left: 2px !important;
-	}
-
-	/***
-	Page container
-	***/
-	.page-container {
-		margin: 0 !important;
-		padding: 0 !important;
-	}
-
-	.page-header-fixed .page-container {
-		margin-top: 0px !important;
-	}
-
-	/***
-  	Page content
-  	***/
-  	.page-content {
-  		margin: 0px !important;
-  		padding: 0px !important;  		
-		min-height: 280px; 
-  	}
-
-	/***
-	Page sidebar
-	***/
-	.page-sidebar {
-		margin: 0 10px;
-	}
-
-	.page-sidebar.in {
-		margin: 10px;
-		position: relative;
-		z-index: 5;
-	}
-
-	.page-sidebar .sidebar-toggler {
-		display: none;
-	}
-
-	.page-sidebar ul {
-		margin-top:0px;
-		width:100%;
-	}
-
-	.page-sidebar .selected {
-		display: none !important;
-	}
-
-	.page-sidebar .sidebar-search {
-	  width: 220px;
-	  margin-top: 20px;
-	  margin-bottom:20px;
-	}
-
-	/***
-	Page title
-	***/
-	.page-title {
-		margin: 15px 0px;
-	}
-
-	/***
-	Styler panel
-	***/
-	.styler-panel {
-		top:55px;
-		right:20px;
-	}
 }
 
-@media (min-width: 768px) and (max-width: 1280px) { 
+@media screen and (max-width: 480px) {
+    /*form wizard steps*/
+    .widget-container .stepy-titles li , .stepy-titles li{
+        width: 100%;
+    }
+    .directory-list li {
+        display: inline-block;
+        float: left;
+        width: auto;
+    }
 
-	/***
-	Form wizard
-	***/
-	.form-wizard .step .desc {
-	  margin-top: 10px;
-	  display: block;
-	}
-
-	/***
-	Pricing tables
-	***/
-
-	.pricing-table .rate .price,
-	.pricing-table2 .rate .price {
-		width: 100%;
-		display: block;
-		text-align: center;
-		margin-bottom: 10px;
-	}
-
-} 
- 
-@media (min-width: 768px) and (max-width: 979px) { 
-
-	/***
-	Body
-	***/
-	body {
-	 	padding-top: 0px;
-	}
-
-	/***
-	Page sidebar
-	***/
-	.page-sidebar .btn-navbar.collapsed .arrow { 
-		display: none;
-	}	
-
-	.page-sidebar .btn-navbar .arrow {
-	  position: absolute;
-	  right: 25px;
-	  width: 0; 
-	  height: 0;
-	  top:50px;
-	  border-bottom: 15px solid #5f646b;
-	  border-left: 15px solid transparent; 
-	  border-right: 15px solid transparent; 
-	}
-
-} 
- 
-@media (max-width: 767px) { 
-	
-	/***
-	Page header
-	***/
-	.header .navbar-inner .container-fluid,
-	.header .navbar-inner .container {
-		margin-left: 10px !important;
-		margin-right: 10px !important;
-	}
-
-	.header .top-nav .nav{  
-	 	margin-top: 0px;
-	 	margin-right: 5px;
-	}
-
-	.header .nav > li > .dropdown-menu.notification:after, 
-	.header .nav > li > .dropdown-menu.notification:before {
-		margin-right: 180px;
-	}
-
-	.header .nav > li > .dropdown-menu.notification {
-  		margin-right: -180px;
-	}
-
-	.header .nav > li > .dropdown-menu.inbox:after, 
-	.header .nav > li > .dropdown-menu.inbox:before {
-		margin-right: 140px;
-	}
-
-	.header .nav > li > .dropdown-menu.inbox {
-  		margin-right: -140px;
-	}
-
-	.header .nav > li > .dropdown-menu.tasks:after, 
-	.header .nav > li > .dropdown-menu.tasks:before {
-		margin-right: 90px;
-	}
-
-	.header .nav > li > .dropdown-menu.tasks {
-  		margin-right: -90px;
-	}
-
-  	/* Header logo */
-	.header .brand {
-  		margin-left: 0px !important;
-  		width: 110px;
-	}
-	
-	/***
-	Page content
-	***/
-	.page-content {
-		padding: 10px !important;
-	}
-
-	/***
-	Page title
-	***/
-	.page-title {
-		margin-bottom: 20px;
-	}
-	
-	/***
-	Styler pagel
-	***/
-	.styler-panel {
-		top:58px;
-		right:12px;
-	}	
-
-	/***
-	Page breadcrumb
-	***/
-	.breadcrumb {
-		padding-left: 10px;
-  		padding-right: 10px;
-	}
-
-	/***
-	Portlet form action
-	***/
-	.portlet-body.form .form-actions{
-	  padding-left: 15px;	
-	} 
-
-	/***
-	Gritter notification
-	***/
-	#gritter-notice-wrapper {
-		right:1px !important;
-	}
-
-	/***
-	Form input validation states
-	***/
-	.input-icon .input-error, 
-	.input-icon .input-warning, 
-	.input-icon .input-success { 
-		top:-27px;
-		float: right;
-		right:10px !important;
-	}	
-
-	/***
-	Advance tables
-	***/
-	.table-advance tr td.highlight:first-child a {
-		margin-left: 8px;
-	}
-
-	/***
-	Footer	
-	***/	
-	.footer {
-		padding-left: 10px;
-		padding-right: 10px;		
-	}	
-	
-	.footer .go-top {  
-		float: right;
-		display: block;
-		margin-right: 0px;
-	}
-
-	/***
-	Vertical inline menu
-	***/
-	.ver-inline-menu li.active:after {
-		display: none;
-	}
-
-	/***
-	Form controls
-	***/
-	.form-horizontal .form-actions {
-  		padding-left: 180px; 	
-  	}
-
-  	.portlet .form-horizontal .form-actions {
-  		padding-left: 190px; 	
-  	}
+    .directory-list li a {
+        display: block;
+        padding:5px 10px;
+        margin-bottom: 1px;
+    }
 }
 
-@media (max-width: 480px) {
 
-	/***
-	Header navbar
-	***/
-	.header .nav {
-		clear:both !important;
-	}
+@media screen and (max-width: 479px) {
+    /*calendar*/
+    .fc-button-inner, .fc-button-content {
+        padding: 0;
+    }
+    .fc-header-title h2 {
+        font-size: 12px!important;
+    }
+    .fc .fc-header-space {
+        padding-left: 0;
+    }
+    .fc-state-active, .fc-state-active .fc-button-inner, .fc-state-active, .fc-button-today .fc-button-inner, .fc-state-hover, .fc-state-hover .fc-button-inner {
+        background: none repeat scroll 0 0 #FFFFFF !important;
+        color: #32323A !important;
+    }
+    .fc-state-default, .fc-state-default .fc-button-inner {
+        background: none repeat scroll 0 0 #FFFFFF !important;
+    }
 
-	.header .nav > li.dropdown .dropdown-toggle {
-  		margin-top:3px !important;
-  	}	
+    .error-wrapper h1 img {
+        width: 100%;
+    }
+    /*form wizard steps*/
+    .widget-container .stepy-titles li , .stepy-titles li{
+        width: 100%;
+    }
 
-  	.header .nav li.dropdown .dropdown-toggle .badge {
-  		top: 11px;
-  	}
 
-  	/***
-	Page sidebar
-	***/
-	.page-sidebar.in {
-		margin-top: 7px !important;
-	}
+    .directory-list li {
+        display: inline-block;
+        float: left;
+        width: auto;
+    }
 
-	/***
-	Styler panel
-	***/
-	.styler-panel {
-		top:92px;
-		right:12px;
-	}	
-
-	/***
-	Page title
-	***/
-	.page-title small {
-		display: block;
-		clear: both;
-	}
-
-	/***
-	Dashboard date range panel
-	***/
-	.page-content .breadcrumb .dashboard-date-range  {
-		padding-bottom: 8px;
-	} 
-
-	.page-content .breadcrumb .dashboard-date-range span {
-		display: none;
-	}
-
-	/***
-	Login page
-	***/
-	.login .logo {
-		margin-top:10px;
-	}
-
-	.login .content {
-		padding: 30px; 
-		width: 222px;
-	}
-
-	.login .content h3 {
-		font-size: 22px;
-	}
-
-	.login .content .m-wrap {
-  		width: 180px;
-	}
-
-	.login .checkbox {
-		font-size: 13px;
-	}
-
-	/***
-	Form controls
-	***/	
-	.form-horizontal.form-bordered .control-label {
-	    float: none;
-	    width: auto;
-	    padding-top: 0;
-	    text-align: left;
-	    margin-top: 0;
-	    margin-left: 10px;
-	}
-
-	.form-horizontal.form-bordered .controls {
-		padding-top: 0 !important;
-		border-left: 0 !important;	
-	}
-
-	.form-horizontal.form-bordered.form-label-stripped .control-group:nth-child(even) {
-	  background-color: none !important;
-	} 
-
-	.form-horizontal.form-bordered.form-label-stripped .control-group:nth-child(even) .controls {
-	  background-color: none !important;  
-	}
-
-	.form-horizontal.form-row-seperated .control-label {
-	    float: none;
-	    width: auto;
-	    padding-top: 0;
-	    text-align: left;
-	    margin-left: 10px;
-	}
-
-  	.form-horizontal.form-row-seperated .controls {
-		border-left: 0;
-    	margin-left: 10px;
-  	}
-
-  	.portlet .form-horizontal .form-actions {
-  		padding-left: 10px; 	
-  	}
-
-	/***
-	Hidden phone
-	***/
-	.hidden-480 {
-		display: none;
-	}
-
-	/***
-	Modal header close button fix
-	***/
-	.modal-header .close {
-		margin-top: 5px !important;
-	}
-
-	/***
-	Fix text view
-	***/
-	.control-group .controls .text {
-  		display: block !important;
-  		margin-bottom: 10px;
-  	}
+    .directory-list li a {
+        display: block;
+        padding:5px 10px;
+        margin-bottom: 1px;
+    }
 }
 
-@media (max-width: 320px) {
+@media screen and (max-width: 360px) {
 
-	.header .nav > li.dropdown .dropdown-toggle {
-	  padding-left: 8px !important;
-	  padding-right: 8px !important;
-	}
 
-	/***
-	Hidden phone
-	***/
-	.hidden-320 {
-		display: none;
-	}
 
-	.header .brand {
-		width: 100px;
-	}	
-}	
+    .notification-menu li:first-child .dropdown-menu {
+        margin-right: -90px;
+    }
+
+    .notification-menu li:nth-child(2) .dropdown-menu {
+        margin-right: -45px;
+    }
+
+    .notification-menu li:nth-child(3) .dropdown-menu {
+        margin-right: 0px;
+    }
+
+    .nav-tabs.nav-justified.nav-profile > li {
+        float: none;
+        display: block;
+        width: auto;
+    }
+    .lock-wrapper {
+        margin: 40% auto;
+        max-width: 300px;
+    }
+    .lock-wrapper input, .lock-wrapper input:focus {
+        width: 80% !important;
+    }
+    .lock-wrapper .locked {
+        right: 70px;
+    }
+
+
+}
+
+@media screen and (max-width: 320px) {
+
+    .lock-wrapper {
+        margin: 40% auto;
+        max-width: 300px;
+    }
+
+    .lock-wrapper input, .lock-wrapper input:focus {
+        width: 80% !important;
+    }
+    .lock-wrapper .locked {
+        right: 70px;
+    }
+
+    .media-filter li {
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .media-filter + .btn-group .btn {
+        margin-bottom: 5px;
+    }
+
+
+}

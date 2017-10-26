@@ -7,6 +7,7 @@ import json
 from django.shortcuts import render, HttpResponse, Http404, render_to_response, HttpResponseRedirect
 import uuid
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.conf.urls import handler404, handler500,handler403
 
 
 # Create your views here.
@@ -18,7 +19,7 @@ def loginCheck(req):
     :return: 验证失败直接调转登陆界面，成功则继续执行
     '''
     if req.session.get('account') == None:
-        return render(req, 'first/login.html')
+        return render(req, '/exAdmin/login.html')
     else:
         pass
 
@@ -27,7 +28,7 @@ def loginCheck(req):
 def login(req):
     if req.method == "GET":
         if req.session.get('account') == None:
-            return render_to_response('first/login.html')
+            return render_to_response('exAdmin/login.html')
         else:
             return render_to_response('second/User_detail.html')
     if req.method == "POST":
@@ -230,4 +231,39 @@ def UserManager(req):
         UsersList.append(OneUser)
     return HttpResponse(json.dumps(UsersList))
 
+@csrf_exempt
+def index(req):
+    return render_to_response('base/Base.html')
 
+
+
+''' 新后台相关页面视图'''
+
+def user_detail(req):
+    return render(req, 'base/base.html')
+
+def Profile(req):
+    if req.method == "GET":
+        username = 'chris'
+        try:
+            user = models.User.objects.get(UserName=username)
+        except:
+            raise Http404
+        else:
+            print(user.Img)
+            return render(req, 'second/UserDetail.html', {"user": user})
+
+def PhotoGallary(req):
+    if req.method == "GET":
+        username = 'chris'
+        try:
+            user = models.User.objects.get(UserName=username)
+        except:
+            raise Http404
+        else:
+            try:
+                Images = models.UserImageForge.objects.filter(user=user)
+            except:
+                Images = None
+            else:
+                return render(req, 'second/PhotoGallery.html',{'user': user,'Images':Images})
