@@ -57,7 +57,7 @@
                     </div>
                     <div class="praise">
                         <span id="praise"><img src="{% static '/creation/imgs/like1.png' %}" id="praise-img" /></span>
-                        <p><span id="praise-txt">1</span>人觉得很赞</p>
+                        <p><span id="praise-txt">{{creation.Praise_Creation_set.count}}</span>人觉得很赞</p>
                         <span id="add-num"></span>
                     </div>
                 </div>
@@ -107,11 +107,11 @@
                         <div class="block-bottom-hot">
                             <div class="block-hotl">
                             <img class="block-imgl" src="{% static 'creation/imgs/like0.png'%}">
-                            <span>7</span>
+                            <span>{{creation2crojectLabel.creation.Praise_Creation_set.count}}</span>
                             </div>
                             <div class="block-hotc">
                             <img class="block-imgc" src="{% static 'creation/imgs/collection0.png'%}">
-                            <span>54</span>
+                            <span>{{creation2crojectLabel.creation.Follow_Creation_set.count}}</span>
                             </div>
                         </div>
                     </div>

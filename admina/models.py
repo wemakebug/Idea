@@ -178,7 +178,7 @@ class Recruit(models.Model):
     Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.project
+        return self.Id
 class Praise(models.Model):
     '''
     赞扬表
