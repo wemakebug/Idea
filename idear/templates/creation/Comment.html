@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+$(".like").click(function(){
+   Id = $(this).attr("creation")
+   $.post("star",{userId:userId,starType:"1",Id:Id},function(data){
+    if(data == 1)
+    	alert("感谢您的点赞")
+    else if(data == 0)
+    	alert("操作失败")
+    else
+      alert("取消点赞")
+    location.reload()
+})
+
+})
+
+})
+
+
+$(function(){
+		$("#praise").click(function(){
+			var praise_img = $("#praise-img");
+			var praise_txt = $("#praise-txt");
+			var num=parseInt(praise_txt.text());
+			if(praise_img.attr("src") == ("../static/creation/imgs/likes.png")){
+				$(this).html("<img src='../static/creation/imgs/like1.png' id='praise-img' class='animation' />");
+				praise_txt.removeClass("hover");
+				num -=1;
+				praise_txt.text(num)
+			}else{
+				$(this).html("<img src='../static/creation/imgs/likes.png' id='praise-img' class='animation' />");
+				praise_txt.addClass("hover");
+				num +=1;
+				praise_txt.text(num)
+			}
+		});
+	})
+
+//评论
+$("#putcomment").click(function () {
+
+    function CreateComment(string) {
+        var div1 = document.createElement("div");
+    div1.classList = "cmain";
+
+    var img1 = document.createElement("img");
+    img1.className = "c-img";
+    img1.src = "/static/project/imgs/user.svg";
+
+    var div2 = document.createElement("div");
+    div2.className = "comment-box";
+
+    var div_contenthead = document.createElement("div");
+    div_contenthead.classList = "comment-head";
+
+    var div_commentcontent = document.createElement("div");
+    div_commentcontent.classList = "comment-content";
+
+    var commentcontent_p = document.createElement("p");
+    commentcontent_p.textContent = "终于完了";
+
+
+    var h6 = document.createElement("h6");
+    h6.textContent = string;
+
+    var span = document.createElement("span");
+    span.classList = "cdate";
+    var div_coption = document.createElement("div");
+    div_coption.classList = "c-option";
+
+    div_contenthead.appendChild(h6);
+    div_contenthead.appendChild(span);
+    div_contenthead.appendChild(div_coption);
+
+
+    div1.appendChild(img1);
+    div1.appendChild(div2);
+    div2.appendChild(div_contenthead);
+    div2.appendChild(div_commentcontent);
+
+    var c_all = document.getElementsByName("c-all")[0];
+
+    var cmain = document.getElementsByName("cmain")[0];
+    c_all.insertBefore(div1,cmain);
+    }
+
+    var comment_input = document.getElementById("comment-content1");
+    var comment_content = comment_input.value;
+
+    $.post('comment_creation',{
+
+        "string": comment_content
+    }, function (data) {
+        data = JSON.parse(data);
+        if(data.status == 0){
+            alert("Wrong");
+        }else {
+            CreateComment(data);
+        }
+
+    });
+
+});
+</body>
+</html>
+
+
+@csrf_exempt
+def Comment_Creation(req):
+    '''
+    创意评论
+    :param req:
+    :return:
+    '''
+    if req.method == "POST":
+        result={
+            "status":1,
+            "string":None
+        }
+        # req.COOKIES["username"]
+        content = req.POST["string"]
+        username = "chris"
+        creationid = 3
+        user = models.User.objects.get(UserName=username)
+            # creation = models.Creation.objects.get(id=creationid)
+        creation = models.Creation.objects.get(pk=creationid)
+        models.Comment.objects.create(user=user, creation=creation, Content=content)
+        return HttpResponse(json.dumps(result))
+    if req.method == "GET":
+
+        # content = req.POST["content"]
+        content = "hello World"
+        username = "chris"
+        creationid = 3
+
+        # try:
+        user = models.User.objects.get(UserName=username)
+            # creation = models.Creation.objects.get(id=creationid)
+        creation = models.Creation.objects.get(pk=creationid)
+        # except Exception :
+        #     return HttpResponse("NULL")
+        # else:
+        models.Comment.objects.create(user=user, creation=creation, Content=content)
+        return HttpResponse("TRUE")

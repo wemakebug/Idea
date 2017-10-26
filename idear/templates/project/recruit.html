@@ -8,14 +8,15 @@ idea/css/index.css{% extends 'idea/Base.html' %}
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/buttons.css' %}">
     <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div class="bg_all">
         <div class="bg_left">
             {% for project in projects %}
                 <div class="project_top">
-                    <div style="display:none;width:100%;height: 100% " onclick="getProjectID()">{{ project.Id }}</div>
-                    <a href="redetails/">
+                    <div style="display:none;width:100%;height: 100%">{{ project.Id }}</div>
+                    <a href="redetails?projectId={{ project.Id }}">
                         <div class="project_top_1_left">
                             <img class="project_img" src="{% static 'project/imgs/HeadImg.png' %}">
                         </div>
@@ -31,13 +32,6 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                         </div>
                     </a>
                     <div class="project_middle">
-                        <script>
-                            function Chang_icon() {
-                                for (var i = 0; i < tag; i++) {
-
-                                }
-                            }
-                        </script>
                         <span class="project_middle_fix">所需人员标签：</span>
                         <span class="project_middle_icon-1"></span>
                         <span class="project_middle_text">互联网</span>
@@ -49,10 +43,25 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                     <div class="project_bottom_top">
                         <p class="project_top_1_text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project.Description }}</p>
                         <div class="progress">
-                            <span class="green" style="width:10%;"><span><li>当前招募进度：1/{{ project.Number }}</li></span></span>
+                            <span class="green {{ project.Id }}"><span><li>当前招募进度：1/{{ project.Number }}</li></span></span>
                         </div>
                     </div>
                 </div>
+                <script>
+                    //计算进度条宽度
+                    $(function () {
+                        var project_people = 1 /{{ project.Number }};
+                        var project_percent = project_people * 100;
+                        var project_plan = project_percent + '%';
+{#                        var project_id = $(this).index();#}
+                        $(".{{ project.Id }}").add().css("width",project_plan);
+{#                        alert($(".green")[0].style.width);#}
+{#                        $(this).find(".green").addClass("cotx" + project_id);#}
+{#                        alert($(this).find(".green").addClass("cotx" + project_id));#}
+                        {#                        $()[0].style.width = project_plan;#}
+                        {#                        alert($(".green")[0].style.width);#}
+                    });
+                </script>
             {% endfor %}
             {#        <div class="project_get_more"><a href="javascript:;" class="load-more f-weight">浏览更多</a></div>#}
         </div>
@@ -77,19 +86,17 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                 {% endfor %}
             </div>
         </div>
+        <a class="more">加载更多</a>
     </div>
-    <a class="more">加载更多</a>
+
 {% endblock %}
 {% block script %}
-    <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
-    {#    <script type="text/javascript" src="{% static 'idea/js/index.js'%}"></script>#}
-    {#    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>#}
-    <script src="{% static 'project/js/more.js' %}"></script>
+
     <script>
         //限制字符个数
         $(document).ready(function () {
             $(".project_top_1_text").each(function () {
-                var maxwidth = 100;
+                var maxwidth = 150;
                 if ($(this).text().length > maxwidth) {
                     $(this).text($(this).text().substring(0, maxwidth));
                     $(this).html($(this).html() + '…')
@@ -97,6 +104,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                 }
             });
         });
+        //加载更多
         $(function () {
             $(".project_top").slice(0, 6).show();
             if ($(".project_top").length <= 6) {
@@ -104,25 +112,14 @@ idea/css/index.css{% extends 'idea/Base.html' %}
             }
             $(".more").on('click', function (e) {
                 e.preventDefault();
-                $(".project_top:hidden").slice(0, 2).slideDown();
-                if ($(".project_top:hidden").length == 0) {
-                    $(".more").fadeOut('slow');
-                }
-
-
+                $(".project_top:hidden").slice(0, 6).slideDown();
                 if ($(".project_top:hidden").length == 0) {
                     $(".more").fadeOut('slow');
                 }
             });
         });
-        function calculate_plan() {
-            var RecruitContrast = 1/{{ project.Number }};
-            
-        }
-        {#        function chooseTag() {#}
-        {#            var obj = document.getElementById("choose_Tag");#}
-        {#            obj.setAttribute("class", "Tag_choose");#}
-        {#        }#}
+
+
     </script>
 {% endblock %}
 

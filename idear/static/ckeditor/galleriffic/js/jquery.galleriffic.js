@@ -10,7 +10,7 @@
  * Modifed by Jay Hayes (http://iamvery.com)
  */
 ;(function($) {
-	// Globally keep track of all images by their unique hash.  Each item is an image data object.
+	// Globally keep track of all images by their unique hash.  Each item is an images data object.
 	var allImages = {};
 	var imageCounter = 0;
 
@@ -31,9 +31,9 @@
 			return allImages[hash];
 		},
 
-		// Global function that looks up an image by its hash and displays the image.
-		// Returns false when an image is not found for the specified hash.
-		// @param {String} hash This is the unique hash value assigned to an image.
+		// Global function that looks up an images by its hash and displays the images.
+		// Returns false when an images is not found for the specified hash.
+		// @param {String} hash This is the unique hash value assigned to an images.
 		gotoImage: function(hash) {
 			var imageData = $.galleriffic.getImage(hash);
 			if (!imageData)
@@ -45,10 +45,10 @@
 			return true;
 		},
 
-		// Removes an image from its respective gallery by its hash.
-		// Returns false when an image is not found for the specified hash or the
+		// Removes an images from its respective gallery by its hash.
+		// Returns false when an images is not found for the specified hash or the
 		// specified owner gallery does match the located images gallery.
-		// @param {String} hash This is the unique hash value assigned to an image.
+		// @param {String} hash This is the unique hash value assigned to an images.
 		// @param {Object} ownerGallery (Optional) When supplied, the located images
 		// gallery is verified to be the same as the specified owning gallery before
 		// performing the remove operation.
@@ -113,21 +113,21 @@
 				this.pause();
 
 				if (!this.enableHistory) {
-					// The href attribute holds the unique hash for an image
+					// The href attribute holds the unique hash for an images
 					var hash = $.galleriffic.normalizeHash($(link).attr('href'));
 					$.galleriffic.gotoImage(hash);
 					e.preventDefault();
 				}
 			},
 
-			// Appends an image to the end of the set of images.  Argument listItem can be either a jQuery DOM element or arbitrary html.
+			// Appends an images to the end of the set of images.  Argument listItem can be either a jQuery DOM element or arbitrary html.
 			// @param listItem Either a jQuery object or a string of html of the list item that is to be added to the gallery.
 			appendImage: function(listItem) {
 				this.addImage(listItem, false, false);
 				return this;
 			},
 
-			// Inserts an image into the set of images.  Argument listItem can be either a jQuery DOM element or arbitrary html.
+			// Inserts an images into the set of images.  Argument listItem can be either a jQuery DOM element or arbitrary html.
 			// @param listItem Either a jQuery object or a string of html of the list item that is to be added to the gallery.
 			// @param {Integer} position The index within the gallery where the item shouold be added.
 			insertImage: function(listItem, position) {
@@ -135,10 +135,10 @@
 				return this;
 			},
 
-			// Adds an image to the gallery and optionally inserts/appends it to the DOM (thumbExists)
+			// Adds an images to the gallery and optionally inserts/appends it to the DOM (thumbExists)
 			// @param listItem Either a jQuery object or a string of html of the list item that is to be added to the gallery.
 			// @param {Boolean} thumbExists Specifies whether the thumbnail already exists in the DOM or if it needs to be added.
-			// @param {Boolean} insert Specifies whether the the image is appended to the end or inserted into the gallery.
+			// @param {Boolean} insert Specifies whether the the images is appended to the end or inserted into the gallery.
 			// @param {Integer} position The index within the gallery where the item shouold be added.
 			addImage: function(listItem, thumbExists, insert, position) {
 				var $li = ( typeof listItem === "string" ) ? $(listItem) : listItem;				
@@ -148,7 +148,7 @@
 				var $caption = $li.find('.caption').remove();
 				var hash = $aThumb.attr('name');
 
-				// Increment the image counter
+				// Increment the images counter
 				imageCounter++;
 
 				// Autogenerate a hash value if none is present or if it is a duplicate
@@ -197,7 +197,7 @@
 					});
 				}
 
-				// Register the image globally
+				// Register the images globally
 				allImages[''+hash] = imageData;
 
 				// Setup attributes and click handler
@@ -211,7 +211,7 @@
 				return this;
 			},
 
-			// Removes an image from the gallery based on its index.
+			// Removes an images from the gallery based on its index.
 			// Returns false when the index is out of range.
 			removeImageByIndex: function(index) {
 				if (index < 0 || index >= this.data.length)
@@ -231,17 +231,17 @@
 				return $.galleriffic.removeImageByHash(hash, this);
 			},
 
-			// Removes an image from the gallery.
+			// Removes an images from the gallery.
 			removeImage: function(imageData) {
 				var index = imageData.index;
 				
-				// Remove the image from the gallery data array
+				// Remove the images from the gallery data array
 				this.data.splice(index, 1);
 				
 				// Remove the global registration
 				delete allImages[''+imageData.hash];
 				
-				// Remove the image's list item from the DOM
+				// Remove the images's list item from the DOM
 				this.updateThumbs(function() {
 					var $li = gallery.find('ul.thumbs')
 						.children(':eq('+index+')')
@@ -251,7 +251,7 @@
 						gallery.onImageRemoved(imageData, $li);
 				});
 
-				// Update each image objects index value
+				// Update each images objects index value
 				this.updateIndices(index);
 
 				return this;
@@ -280,7 +280,7 @@
 
 			isPreloadComplete: false,
 
-			// Initalizes the image preloader
+			// Initalizes the images preloader
 			preloadInit: function() {
 				if (this.preloadAhead == 0) return this;
 				
@@ -290,16 +290,16 @@
 			},
 
 			// Changes the location in the gallery the preloader should work
-			// @param {Integer} index The index of the image where the preloader should restart at.
+			// @param {Integer} index The index of the images where the preloader should restart at.
 			preloadRelocate: function(index) {
 				// By changing this startIndex, the current preload script will restart
 				this.preloadStartIndex = index;
 				return this;
 			},
 
-			// Recursive function that performs the image preloading
-			// @param {Integer} startIndex The index of the first image the current preloader started on.
-			// @param {Integer} currentIndex The index of the current image to preload.
+			// Recursive function that performs the images preloading
+			// @param {Integer} startIndex The index of the first images the current preloader started on.
+			// @param {Integer} currentIndex The index of the current images to preload.
 			preloadRecursive: function(startIndex, currentIndex) {
 				// Check if startIndex has been relocated
 				if (startIndex != this.preloadStartIndex) {
@@ -327,7 +327,7 @@
 				if (imageData.image)
 					return this.preloadNext(startIndex, currentIndex); 
 				
-				// Preload the image
+				// Preload the images
 				var image = new Image();
 				
 				image.onload = function() {
@@ -341,9 +341,9 @@
 				return this;
 			},
 			
-			// Called by preloadRecursive in order to preload the next image after the previous has loaded.
-			// @param {Integer} startIndex The index of the first image the current preloader started on.
-			// @param {Integer} currentIndex The index of the current image to preload.
+			// Called by preloadRecursive in order to preload the next images after the previous has loaded.
+			// @param {Integer} startIndex The index of the first images the current preloader started on.
+			// @param {Integer} currentIndex The index of the current images to preload.
 			preloadNext: function(startIndex, currentIndex) {
 				var nextIndex = this.getNextIndex(currentIndex);
 				if (nextIndex == startIndex) {
@@ -357,8 +357,8 @@
 				return this;
 			},
 
-			// Safe way to get the next image index relative to the current image.
-			// If the current image is the last, returns 0
+			// Safe way to get the next images index relative to the current images.
+			// If the current images is the last, returns 0
 			getNextIndex: function(index) {
 				var nextIndex = index+1;
 				if (nextIndex >= this.data.length)
@@ -366,8 +366,8 @@
 				return nextIndex;
 			},
 
-			// Safe way to get the previous image index relative to the current image.
-			// If the current image is the first, return the index of the last image in the gallery.
+			// Safe way to get the previous images index relative to the current images.
+			// If the current images is the first, return the index of the last images in the gallery.
 			getPrevIndex: function(index) {
 				var prevIndex = index-1;
 				if (prevIndex < 0)
@@ -424,7 +424,7 @@
 				return this;
 			},
 
-			// Advances the slideshow to the next image and delegates navigation to the
+			// Advances the slideshow to the next images and delegates navigation to the
 			// history plugin when history is enabled
 			// enableHistory is true
 			ssAdvance: function() {
@@ -434,7 +434,7 @@
 				return this;
 			},
 
-			// Advances the gallery to the next image.
+			// Advances the gallery to the next images.
 			// @param {Boolean} dontPause Specifies whether to pause the slideshow.
 			// @param {Boolean} bypassHistory Specifies whether to delegate navigation to the history plugin when history is enabled.  
 			next: function(dontPause, bypassHistory) {
@@ -442,7 +442,7 @@
 				return this;
 			},
 
-			// Navigates to the previous image in the gallery.
+			// Navigates to the previous images in the gallery.
 			// @param {Boolean} dontPause Specifies whether to pause the slideshow.
 			// @param {Boolean} bypassHistory Specifies whether to delegate navigation to the history plugin when history is enabled.
 			previous: function(dontPause, bypassHistory) {
@@ -479,8 +479,8 @@
 				return this;
 			},
 
-			// Navigates to the image at the specified index in the gallery
-			// @param {Integer} index The index of the image in the gallery to display.
+			// Navigates to the images at the specified index in the gallery
+			// @param {Integer} index The index of the images in the gallery to display.
 			// @param {Boolean} dontPause Specifies whether to pause the slideshow.
 			// @param {Boolean} bypassHistory Specifies whether to delegate navigation to the history plugin when history is enabled.
 			gotoIndex: function(index, dontPause, bypassHistory) {
@@ -501,11 +501,11 @@
 			},
 
 			// This function is garaunteed to be called anytime a gallery slide changes.
-			// @param {Object} imageData An object holding the image metadata of the image to navigate to.
+			// @param {Object} imageData An object holding the images metadata of the images to navigate to.
 			gotoImage: function(imageData) {
 				var index = imageData.index;
 
-				// Prevent reloading same image
+				// Prevent reloading same images
 				if (this.currentImage && this.currentImage.index == index)
 					return this;
 
@@ -529,7 +529,7 @@
 				return this.defaultTransitionDuration / 2;
 			},
 
-			// Rebuilds the slideshow image and controls and performs transitions
+			// Rebuilds the slideshow images and controls and performs transitions
 			refresh: function() {
 				var imageData = this.currentImage;
 				if (!imageData)
@@ -551,7 +551,7 @@
 					previousCaption = this.$captionContainer.find('span.current').addClass('previous').removeClass('current');
 				}
 
-				// Perform transitions simultaneously if syncTransitions is true and the next image is already preloaded
+				// Perform transitions simultaneously if syncTransitions is true and the next images is already preloaded
 				var isSync = this.syncTransitions && imageData.image;
 
 				// Flag we are transitioning
@@ -594,7 +594,7 @@
 					}
 				}
 
-				// Go ahead and begin transitioning in of next image
+				// Go ahead and begin transitioning in of next images
 				if (isSync)
 					this.buildImage(imageData, isSync);
 
@@ -605,7 +605,7 @@
 					image.onload = function() {
 						imageData.image = this;
 
-						// Only build image if the out transition has completed and we are still on the same image hash
+						// Only build images if the out transition has completed and we are still on the same images hash
 						if (!isTransitioning && imageData.hash == gallery.data[gallery.currentImage.index].hash) {
 							gallery.buildImage(imageData, isSync);
 						}
@@ -622,17 +622,17 @@
 				return this.syncThumbs();
 			},
 
-			// Called by the refresh method after the previous image has been transitioned out or at the same time
+			// Called by the refresh method after the previous images has been transitioned out or at the same time
 			// as the out transition when performing a synchronous transition.
-			// @param {Object} imageData An object holding the image metadata of the image to build.
+			// @param {Object} imageData An object holding the images metadata of the images to build.
 			// @param {Boolean} isSync Specifies whether the transitions are synchronized.
 			buildImage: function(imageData, isSync) {
 				var gallery = this;
 				var nextIndex = this.getNextIndex(imageData.index);
 
-				// Construct new hidden span for the image
+				// Construct new hidden span for the images
 				var newSlide = this.$imageContainer
-					.append('<span class="image-wrapper current"><a class="advance-link" rel="history" href="#'+this.data[nextIndex].hash+'" title="'+imageData.title+'">&nbsp;</a></span>')
+					.append('<span class="images-wrapper current"><a class="advance-link" rel="history" href="#'+this.data[nextIndex].hash+'" title="'+imageData.title+'">&nbsp;</a></span>')
 					.find('span.current').css('opacity', '0');
 				
 				newSlide.find('a')
@@ -643,9 +643,9 @@
 				
 				var newCaption = 0;
 				if (this.$captionContainer) {
-					// Construct new hidden caption for the image
+					// Construct new hidden caption for the images
 					newCaption = this.$captionContainer
-						.append('<span class="image-caption current"></span>')
+						.append('<span class="images-caption current"></span>')
 						.find('span.current').css('opacity', '0')
 						.append(imageData.caption);
 				}
@@ -655,7 +655,7 @@
 					this.$loadingContainer.hide();
 				}
 
-				// Transition in the new image
+				// Transition in the new images
 				if (this.onTransitionIn) {
 					this.onTransitionIn(newSlide, newCaption, isSync);
 				} else {
@@ -679,7 +679,7 @@
 				return Math.floor(this.currentImage.index / this.numThumbs);
 			},
 
-			// Applies the selected class to the current image's corresponding thumbnail.
+			// Applies the selected class to the current images's corresponding thumbnail.
 			// Also checks if the current page has changed and updates the displayed page of thumbnails if necessary.
 			syncThumbs: function() {
 				var page = this.getCurrentPage();
@@ -928,7 +928,7 @@
 				initFirstImage = true;
 		}
 
-		// Setup gallery to show the first image
+		// Setup gallery to show the first images
 		if (initFirstImage)
 			this.gotoIndex(0, false, true);
 
