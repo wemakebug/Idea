@@ -178,7 +178,7 @@ class Recruit(models.Model):
     Uuid = models.UUIDField(null=True, blank=True, default=uuid.uuid1())
 
     def __unicode__(self):
-        return self.project
+        return self.project.__unicode__()
 class Praise(models.Model):
     '''
     赞扬表
@@ -326,13 +326,10 @@ class UserImageForge(models.Model):
     用户图片仓库字段，用于富文本编辑器的文件上传功能的实现
     '''
     Id = models.AutoField(primary_key=True)
-    Img = models.ImageField(upload_to='photos/%Y/%m/%d/user', null=True, blank=True)
+    Img = models.ImageField(upload_to='photos/user/', null=True, blank=True)
     IsUse = models.BooleanField(default=True)
     UploadDate = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, related_name="UserImageForge_User_set")
 
     def __unicode__(self):
-        try:
-            return str(self.user.UserName) + str(self.Img)
-        except:
-            return str(self.Img)
+            return str(self.user.__unicode__())

@@ -240,4 +240,30 @@ def index(req):
 ''' 新后台相关页面视图'''
 
 def user_detail(req):
-    return render(req, 'profile.html')
+    return render(req, 'base/base.html')
+
+def Profile(req):
+    if req.method == "GET":
+        username = 'chris'
+        try:
+            user = models.User.objects.get(UserName=username)
+        except:
+            raise Http404
+        else:
+            print(user.Img)
+            return render(req, 'second/UserDetail.html', {"user": user})
+
+def PhotoGallary(req):
+    if req.method == "GET":
+        username = 'chris'
+        try:
+            user = models.User.objects.get(UserName=username)
+        except:
+            raise Http404
+        else:
+            try:
+                Images = models.UserImageForge.objects.filter(user=user)
+            except:
+                Images = None
+            else:
+                return render(req, 'second/PhotoGallery.html',{'user': user,'Images':Images})
