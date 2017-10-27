@@ -44,5 +44,6 @@ urlpatterns = [
     url(r'^ordinance',views.ordinance),
     url(r'^release',views.release),
 
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -707,3 +707,4 @@ def release(req):
     user = models.User.objects.all().order_by("Date")
     return render_to_response('personal/release.html', {"labels": obj})
 
+
