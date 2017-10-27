@@ -39,10 +39,11 @@
                     <div class="feature">
                         <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
                         <div class="praise" team="{{ team.Id }}">
-                            <span id="praise" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /> </span>
-                            <span id="praise-txt" class="praise-txt">{{team.project}}</span>
-                            <span id="add-num" class="add-num"><em>+1</em></span>
+                            <span id="praise+{{ team.id }}" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img+{{ team.id }}" /> </span>
+                            <span id="praise-txt+{{ team.id }}" class="praise-txt">{{team.project}}</span>
+                            <span id="add-num+{{ team.id }}" class="add-num"><em>+1</em></span>
                         </div>
+
                     </div>
                 </div>
             {% endfor %}
@@ -77,13 +78,13 @@
     <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
 <script type="text/javascript">
     $(function(){
-        $("#praise").live("click",function () {
-            var praise_img = $("#praise-img");
-            var text_box = $("#add-num");
-            var praise_txt = $("#praise-txt");
+        $("#praise+{{ team.id }}").live("click",function () {
+            var praise_img = $("#praise-img+{{ team.id }}");
+            var text_box = $("#add-num+{{ team.id }}");
+            var praise_txt = $("#praise-txt+{{ team.id }}");
             var num=parseInt(praise_txt.text());
             if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){
-                $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");
+                $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img+{{ team.id }}' class='animation' />");
                 praise_txt.removeClass("hover");
                 text_box.show().html("<em class='add-animation'>-1</em>");
                 $(".add-animation").removeClass("hover");
@@ -98,7 +99,7 @@
                 praise_txt.text(num)
             }
         });
-	})
+	});
 
 
 $(function() {
