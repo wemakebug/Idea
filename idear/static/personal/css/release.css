@@ -1,13 +1,14 @@
 .main_block{
     width: 100%;
-    display: inline;
+    display: block;
     margin-top: 66px;
     height: auto;
 }
 .release_pro{
     width: 80%;
     height: 50px;
-    margin-top: 3%;
+    display: block;
+    margin-top: 6%;
 }
 .pro_edit{
     width: 20%;

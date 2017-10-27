@@ -215,6 +215,21 @@
 	                });
                 });
              $("#rdcreport"). on('click', function(){
+                    layer.open({
+	                             type: 1,
+                                offset: '200px',
+                                resize:false,
+                                move:false,
+                                area: ['500px', '400px'],
+                                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+	                            shade: 0.6,
+                                maxmin: false,
+                                anim: 0//0-6的动画形式，-1不开启
+	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                                        '<button class="putreport" id="putreport">提交</button> '
+	                });
+                });
+             $("#rdcreport"). on('click', function(){
                      layer.open({
 	                            type: 1,
                                 offset: '200px',
@@ -227,6 +242,7 @@
                                 anim: 0//0-6的动画形式，-1不开启
 	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
                                         '<button class="putreport" id="putreport">提交</button> '
+
 	                });
                 });
              $("#rdrcreport"). on('click', function(){
@@ -242,6 +258,7 @@
                                 anim: 0//0-6的动画形式，-1不开启
 	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
                                         '<button class="putreport" id="putreport">提交</button> '
+
 	                });
                 });
 {#            招募进度条#}
@@ -283,17 +300,6 @@
                     $("#rcommentreply").slideDown("slow");
                 });
 
-{#                $(function(){#}
-{#                    $("#rdcollection").on("click",function (){#}
-{#                        var rdco_img = $("#rdcoimg");#}
-{#                        if(rdco_img.attr("src") === ("{% static '/creation/imgs/collection0.png' %}")){#}
-{#                            $(this).html("<img src='{% static '/project/imgs/star.png' %}' id='rdcoimg' class='animation' />" );#}
-{#                        }else{#}
-{#                            $(this).html("<img src='{% static '/creation/imgs/collection0.png' %}' id='rdcoimg' class='animation' />");#}
-{#                        }#}
-{#                    });#}
-{#                });#}
-
                 function changeImage()
                     {
                     element=document.getElementById('rdcoimg')
@@ -306,7 +312,6 @@
                       element.src= '{% static '/creation/imgs/collection0.png' %}';
                       }
                     }
-
         </script>
 
 
