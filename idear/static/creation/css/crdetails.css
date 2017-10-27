@@ -488,23 +488,22 @@ h5 {
 .block-bottom-hot{
     width:60%;
     float:left;
-    margin:-18px 0 0 102px;
+    margin:-18px 0 0 120px;
 }
-.block-hotl{
-    width:38%;
+.block-hotlike{
+    width:26%;
     float:left;
     margin-left:45px;
 }
-.block-imgl{
-    width:23px;
-    height:23px;
+.block-imglike{
+    width:20px;
+    height:20px;
 }
-.block-hotc{
-    width:35%;
+.block-hotfollow{
+    width:26%;
     float:left;
-    margin-top:2px;
 }
-.block-imgc{
+.block-imgfollow{
     width:20px;
     height:20px;
 }

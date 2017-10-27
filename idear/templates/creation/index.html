@@ -23,7 +23,17 @@
                         </div>
                         <div class="block-head">
                             <a class="ava" href="#">
-                                <img src="/static/photos/{{ creation.Img }}" style="width:40px;height:40px">
+                                <img src="/static/photos/{{ creation.user.Img }}" style="width:40px;height:40px">
+                                <script type="text/javascript">
+  $(function) {
+  var img=document.getElementById("block-head").getElementsByTagName("img")
+  for(var i=0;i<img.length;i++){
+    if (img[i].readyState=="uninitialized"){
+   img[i].src="/static/photos/photos/default.jpg";
+    }
+  }
+ }
+</script>
                             </a>
                             <a class="name" style="margin-top:20px" href="#">
                                 <span>{{ creation.user }}</span>

@@ -437,6 +437,7 @@ def creations(req):
     # userId = int(req.COOKIES.get('user'))
     userId = 3
     try:
+
         if req.method == 'GET':
             sign = req.GET['sign']
             # 如果是所有项目
@@ -445,10 +446,12 @@ def creations(req):
             # 如果有特殊标签
             else:
                 CreationLabelObjs = Creation2ProjectLabel.objects.filter(projectLabel=sign)
-                creations = Creation.objects.filter(Img="null")    #把creations搞空，以便以后使用creations传输数据
+                  #把creations搞空，以便以后使用creations传输数据
                 
                 for obj in CreationLabelObjs:    #将所有的对应标签的创意拿出来 放到creations对象里
                     creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
+                    if User_img == "NULL":
+                        User_img = "/static/photos/photos/default.jpg"
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
                                        'follows': follows, 'praises': praises, "Imgs": User_img})
@@ -550,9 +553,34 @@ def star(req):
         print(e)
         return HttpResponse(status)
 
-
-
-
+@csrf_exempt
+def comment(req):
+    '''
+    创意评论
+    :param req:
+    :return:
+    '''
+    status = 0
+    if req.method =='POST':
+        result = {
+            "status":1,
+            "string":None
+        }
+        username = "chris"
+        creationid = 3
+        content = req.POST["string"]
+        user = models.User.objects.get("UserName=username")
+        creation = models.Creation.objects.get(pk = creationid)
+        models.Comment.objects.create(user = user ,creation = creation , Content = content)
+        return HttpResponse(json.dumps(result))
+    if req.method =='GET':
+        content = "hello world"
+        username = "chris"
+        creationid = 3
+        user = models.User.objects.get("UserName=username")
+        creation = models.Creation.objects.get(pk=creationid)
+        models.Comment.objects.create(user=user, creation=creation, Content=content)
+        return HttpResponse("TRUE")
 ''' 创意灵感 页面相关部分结束'''
 
 ''' 招募项目 相关页面开始'''

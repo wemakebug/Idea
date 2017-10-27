@@ -27,8 +27,6 @@
                     </div>
                     <div class="text">
                         <p>{{creation.Describe}}</p>
-                        <p>{{creation.Describe}}</p>
-                        <p>{{creation.Describe}}</p>
                     </div>
                     <div class="home-b-foot">
                         <div class="home-b-report">
@@ -63,7 +61,7 @@
                 </div>
                 <div class="home-b-user">
                     <div class="user-img">
-                        <img src="{% static '/creation/imgs/tx.jpg' %}">
+                        <img src="/static/photos/{{ creation.user.Img }}">
                     </div>
                     <div class="user-name">
                         <p>{{creation.user.UserName}}</p>
@@ -95,23 +93,36 @@
 {%for creation2crojectLabel in creation2crojectLabels%}
                  <div class="similar-block">
                     <div class="block-main">
-                        <a class="block-title" href="crdetails?creationId={{creation.Id}}">
+                        <a class="block-title" href="crdetails?creationId={{creation2crojectLabel.creation.Id}}">
                             <h5>{{creation2crojectLabel.creation.Name}}</h5>
                         <a class="block-text">{{creation2crojectLabel.creation.Describe}}</a>
                         </a>
                     </div>
                     <div class="block-bottom">
                         <div class="block-bottom-ava">
-                            <img src="{% static '/creation/imgs/tx.jpg' %}" style="width:40px;height:40px">
+                            <img src="/static/photos/{{ creation2crojectLabel.creation.user.Img }}" style="width:40px;height:40px">
                         </div>
                         <div class="block-bottom-hot">
-                            <div class="block-hotl">
-                            <img class="block-imgl" src="{% static 'creation/imgs/like0.png'%}">
-                            <span>{{creation2crojectLabel.creation.Praise_Creation_set.count}}</span>
+<<<<<<< HEAD
+                            <div class="block-hotlike" creation={{ creation2crojectLabel.creation.Id }}>
+                            <img class="block-imglike" src="{% static 'creation/imgs/like1.png'%}">
+                                {% for praise in praises %}
+                                    {% if praise.user_id == userId and praise.creation_id == creation2crojectLabel.creation.Id %}
+                                        <img src="{% static 'creation/imgs/likes.png' %}"
+                                             style="width:18px;height:18px;margin-left: -23px ">
+                                    {% endif %}
+                                {% endfor %}
+                            <span class="likespan">{{ creation2crojectLabel.creation.Praise_Creation_set.count }}</span>
                             </div>
-                            <div class="block-hotc">
-                            <img class="block-imgc" src="{% static 'creation/imgs/collection0.png'%}">
-                            <span>{{creation2crojectLabel.creation.Follow_Creation_set.count}}</span>
+                            <div class="block-hotfollow" creation={{ creation2crojectLabel.creation.Id }}>
+                            <img class="block-imgfollow" src="{% static 'creation/imgs/collection1.png'%}">
+                                {% for follow in follows %}
+                                    {% if follow.user_id == userId and follow.creation_id == creation2crojectLabel.creation.Id %}
+                                        <img src="{% static 'creation/imgs/collections.png' %}"
+                                             style="width:18px;height:18px;margin-left: -23px ">
+                                    {% endif %}
+                                {% endfor %}
+                            <span class="followspan">{{ creation2crojectLabel.creation.Follow_Creation_set.count }}</span>
                             </div>
                         </div>
                     </div>
@@ -183,5 +194,6 @@
 
     <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'creation/js/js.js' %}"></script>
+    <script type="text/javascript" src="{% static 'creation/js/crdetails.js' %}"></script>
 
 {% endblock %}
