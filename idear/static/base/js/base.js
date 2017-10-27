@@ -3,7 +3,6 @@
  */
 
 
-
 function getCookie(name) {
     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
     if (arr = document.cookie.match(reg))
@@ -29,24 +28,36 @@ $(document).ready(function () {
         var hidden_item = document.getElementById('login_status_true');
         hidden_item.style.display = '';
         var email = $.cookie('email');
-    var username = $.cookie('username');
-    var data = {
-        'email': email,
-        'username': username
-    };
-    $.post('getimg', {}, function (result) {
-        result = JSON.parse(result);
-        if (result['status'] === 1) {
-            // alert(result['message']);
-            var img_path = result['img_path'];
-            var message = result['message'];
-            user_img.src = '/static/photos/' + img_path;
-        } else if (result['status'] === 0) {
-            // var message = result['message'];
-            // alert(message);
-        } else {
+        var username = $.cookie('username');
+        var data = {
+            'email': email,
+            'username': username
+        };
+        $.post('getimg', {}, function (result) {
+            result = JSON.parse(result);
+            if (result['status'] === 1) {
+                var img_path = result['img_path'];
+                var message = result['message'];
+                alert(message)
+                user_img.src = '/static' + img_path;
+
+            } else if (result['status'] === 0) {
+                // var message = result['message'];
+                // alert(message);
+            } else {
+            }
+        });
+    var cookie = {
+        get:function(str){
+            var cookies = {};
+            document.cookie.split(';').forEach(function(item){
+                var c = item.split('=');
+                cookies[c[0]]=c[1];
+            });
+            return cookies[str] || "";
         }
-    });
+    }
+    document.querySelector("#username").innerHTML = cookie.get("username");
     }
 });
 

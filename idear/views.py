@@ -108,28 +108,33 @@ def get_user_img(req):
         }
         try:
             email = req.COOKIES.get('email')
+            print email
             username = req.COOKIES.get('username')
+            print username
         except:
             result['status'] = 0
             result['message'] = '尚未登陆'
             return HttpResponse(json.dumps(result))
         else:
             try:
-                user = models.User.objects.filter(Email=email)
-            except:
+                user = models.User.objects.get(UserName=username)
+            except Exception,e:
+                print e
                 result['status'] = 0
                 result['message'] = '获取数据异常'
                 return HttpResponse(json.dumps(result))
             else:
                 try:
-                    img_path = user.Img
                     result['status'] = 1
                     result['message'] = '路径获取成功'
+                    img_path = user.Img.url
+                    print img_path
                     result['img_path'] = img_path
-                except:
-                    img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
+                except Exception,e:
+                    print e
                     result['status'] = 1
                     result['message'] = '用户暂未上传图片'
+                    img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
                     result['img_path'] = img_path
                     return HttpResponse(json.dumps(result))
                 else:
@@ -196,6 +201,8 @@ def login(req):
                         result['email'] = email
                         req.session['uuid'] = str(user.Uuid)
                         result['message'] = '登陆成功'
+                        img_path = user.Img
+                        # print(img_path)
                         return HttpResponse(json.dumps(result))
                     elif user.PassWord != password:
                         result['status'] = 0
@@ -447,7 +454,7 @@ def creations(req):
             else:
                 CreationLabelObjs = Creation2ProjectLabel.objects.filter(projectLabel=sign)
                   #把creations搞空，以便以后使用creations传输数据
-                
+
                 for obj in CreationLabelObjs:    #将所有的对应标签的创意拿出来 放到creations对象里
                     creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
                     if User_img == "NULL":
@@ -541,7 +548,7 @@ def star(req):
                 p = Praise.objects.create(creation_id=Id, user_id=userId)
                 status = 1
             return HttpResponse(status)
-        else:    
+        else:
             try:
                 p = Praise.objects.get(project_id=Id, user_id=userId).delete()
                 status = 2
@@ -730,9 +737,9 @@ def editprofile(req):
         pass
 
 
-def release(req):
+def addlabel(req):
     obj = models.ProjectLabel.objects.all()
-    user = models.User.objects.all().order_by("Date")
     return render_to_response('personal/release.html', {"labels": obj})
 
+'''个人中心相关页面结束'''
 
