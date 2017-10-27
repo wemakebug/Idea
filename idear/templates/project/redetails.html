@@ -19,7 +19,7 @@
 
                         <div class="content-main">
                             {%for label in labels%}
-                                <a class="tags" href="../projects?sign={{label.projectLabel.Id}}"><span>{{label.projectLabel.ProjectLabelName}}</span></a>
+                                <a class="tags" href="../projects?sign={{label.projectLabel.Id}}"><span class="ribbon1"><span>{{label.projectLabel.ProjectLabelName}}</span></span></a>
                             {% endfor%}
                             <div class="title">
                                 <h5 id="rdpname"> {{ project.ProjectName }}</h5>
@@ -39,7 +39,7 @@
                             </button>
                             <div class="op-tip">
                                 <div class="home-b-collection" id="rdcollection">
-                                    <img src="{% static '/creation/imgs/collection0.png' %}"
+                                    <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg" onclick="changeImage()"
                                          style="width:25px;height:25px;vertical-align:middle;">
                                     <a>关注</a>
                                 </div>
@@ -52,17 +52,17 @@
                                         分享</a>
                                 </div>
                                 <div class="home-b-comment" id="comment11-22">
-                                    <img src="{% static '/project/imgs/reply.svg' %}"
+                                    <img src="{% static '/project/imgs/reply.svg' %}" id=""
                                          style="width:25px;height:25px;vertical-align:middle;">
                                     <a>评论</a>
                                 </div>
                                 <div class="home-b-report"id="rdreport">
                                     <img src="{% static '/creation/imgs/report.png' %}"
-                                         style="width:23px;height:24px;vertical-align:middle;">
+                                         style="width:20px;height:21px;vertical-align:middle;">
                                     <a>举报</a>
                                 </div>
                             </div>
-                        </div>
+                     </div>
                  </div>
 
                  <div class="middle"></div>
@@ -78,7 +78,7 @@
                          </div>
                          <div class="rm-header">
                              <div class="ribbon"><span class="ribbon3">招募帖</span></div>
-                             <p class="r-message" id="rdr-message">2017.04.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">20 </span></p>
+                             <p class="r-message" id="rdr-message"> 2017.05.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">20 </span></p>
                          </div>
                          <div class="rm-nav">
                                   <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
@@ -145,7 +145,7 @@
                     </div>
                     <div class="c-all" name="c-all">
                         <div class="cmain">
-                                  <img class="c-img" id="rduimg" src="{% static 'project/imgs/user.svg'%}">
+                                  <img class="c-img" id="rdimg" src="{% static 'project/imgs/user.svg'%}">
 {#                                  可以加hover点上变成网站logo#}
                                   <div class="comment-box">
                                       <div class="comment-head">
@@ -215,6 +215,21 @@
 	                });
                 });
              $("#rdcreport"). on('click', function(){
+                    layer.open({
+	                             type: 1,
+                                offset: '200px',
+                                resize:false,
+                                move:false,
+                                area: ['500px', '400px'],
+                                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+	                            shade: 0.6,
+                                maxmin: false,
+                                anim: 0//0-6的动画形式，-1不开启
+	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                                        '<button class="putreport" id="putreport">提交</button> '
+	                });
+                });
+             $("#rdcreport"). on('click', function(){
                      layer.open({
 	                            type: 1,
                                 offset: '200px',
@@ -227,6 +242,7 @@
                                 anim: 0//0-6的动画形式，-1不开启
 	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
                                         '<button class="putreport" id="putreport">提交</button> '
+
 	                });
                 });
              $("#rdrcreport"). on('click', function(){
@@ -242,6 +258,7 @@
                                 anim: 0//0-6的动画形式，-1不开启
 	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
                                         '<button class="putreport" id="putreport">提交</button> '
+
 	                });
                 });
 {#            招募进度条#}
@@ -283,6 +300,18 @@
                     $("#rcommentreply").slideDown("slow");
                 });
 
+                function changeImage()
+                    {
+                    element=document.getElementById('rdcoimg')
+                    if (element.src.match("collection0"))
+                      {
+                      element.src='{% static '/project/imgs/star.png' %}' ;
+                      }
+                    else
+                      {
+                      element.src= '{% static '/creation/imgs/collection0.png' %}';
+                      }
+                    }
         </script>
 
 

@@ -30,7 +30,7 @@ urlpatterns = [
 
     url(r'index', views.index),
     url(r'user_detail', views.user_detail),
-
-
+    url(r'profile', views.Profile),
+    url(r'PhotoGallery', views.PhotoGallary)
 
 ]
