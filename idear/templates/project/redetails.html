@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
-    <link rel="stylesheet" href="{% static 'project/css/layer.css' %}">
+
 
 {% endblock %}
 {% block content %}
@@ -19,7 +19,7 @@
 
                         <div class="content-main">
                             {%for label in labels%}
-                                <a class="tags" href="../projects?sign={{label.projectLabel.Id}}"><span>{{label.projectLabel.ProjectLabelName}}</span></a>
+                                <a class="tags" href="../projects?sign={{label.projectLabel.Id}}"><span class="ribbon1"><span>{{label.projectLabel.ProjectLabelName}}</span></span></a>
                             {% endfor%}
                             <div class="title">
                                 <h5 id="rdpname"> {{ project.ProjectName }}</h5>
@@ -39,7 +39,7 @@
                             </button>
                             <div class="op-tip">
                                 <div class="home-b-collection" id="rdcollection">
-                                    <img src="{% static '/creation/imgs/collection0.png' %}"
+                                    <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg" onclick="changeImage()"
                                          style="width:25px;height:25px;vertical-align:middle;">
                                     <a>关注</a>
                                 </div>
@@ -52,17 +52,17 @@
                                         分享</a>
                                 </div>
                                 <div class="home-b-comment" id="comment11-22">
-                                    <img src="{% static '/project/imgs/reply.svg' %}"
+                                    <img src="{% static '/project/imgs/reply.svg' %}" id=""
                                          style="width:25px;height:25px;vertical-align:middle;">
                                     <a>评论</a>
                                 </div>
                                 <div class="home-b-report"id="rdreport">
                                     <img src="{% static '/creation/imgs/report.png' %}"
-                                         style="width:23px;height:24px;vertical-align:middle;">
+                                         style="width:20px;height:21px;vertical-align:middle;">
                                     <a>举报</a>
                                 </div>
                             </div>
-                        </div>
+                     </div>
                  </div>
 
                  <div class="middle"></div>
@@ -78,7 +78,7 @@
                          </div>
                          <div class="rm-header">
                              <div class="ribbon"><span class="ribbon3">招募帖</span></div>
-                             <p class="r-message" id="rdr-message">2017.04.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">20 </span></p>
+                             <p class="r-message" id="rdr-message"> 2017.05.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">20 </span></p>
                          </div>
                          <div class="rm-nav">
                                   <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
@@ -140,12 +140,12 @@
                             <div class="tocomment">
                                 <textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>
                             </div>
-                            <button class="putcomment" id="putcomment">评论</button>
+                            <button class="putcomment" id="rdputcomment">评论</button>
                         </div>
                     </div>
                     <div class="c-all" name="c-all">
                         <div class="cmain">
-                                  <img class="c-img" id="rduimg" src="{% static 'project/imgs/user.svg'%}">
+                                  <img class="c-img" id="rdimg" src="{% static 'project/imgs/user.svg'%}">
 {#                                  可以加hover点上变成网站logo#}
                                   <div class="comment-box">
                                       <div class="comment-head">
@@ -178,7 +178,7 @@
                                               <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
                                           </div>
                                       </div>
-                                      <div class="rcomment-content">
+                                        <div class="rcomment-content">
                                          <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
                                       </div>
                                       <div class="commentreply" id="rcommentreply">
@@ -187,6 +187,49 @@
                                       </div>
                                   </div>
                         </div>
+                        <div class="c-reply">
+                            <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                            <div class="rcomment-box">
+                                      <div class="rcomment-head">
+                                          <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                          <span class="rcdate">2017-11-11</span>
+                                          <div class="r-option">
+                                              <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
+                                              <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
+                                          </div>
+                                      </div>
+                                        <div class="rcomment-content">
+                                         <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                      </div>
+                                      <div class="commentreply" id="rcommentreply">
+                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
+                                          <button class="putcomment" id="putcomment">回复</button>
+                                      </div>
+                                  </div>
+                        </div>
+                        <div class="c-reply">
+                            <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
+                            <div class="rcomment-box">
+                                      <div class="rcomment-head">
+                                          <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
+                                          <span class="rcdate">2017-11-11</span>
+                                          <div class="r-option">
+                                              <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
+                                              <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
+                                          </div>
+                                      </div>
+                                        <div class="rcomment-content">
+                                         <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                      </div>
+                                      <div class="commentreply" id="rcommentreply">
+                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
+                                          <button class="putcomment" id="putcomment">回复</button>
+                                      </div>
+                                  </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -199,7 +242,7 @@
 
        {% endblock %}
         <script>
-             $("#rdreport"). on('click', function(){
+             $(".home-b-report"). on('click', function(){
                     layer.open({
 	                            type: 1,
                                 offset: '200px',
@@ -210,42 +253,28 @@
 	                            shade: 0.6,
                                 maxmin: false,
                                 anim: 0//0-6的动画形式，-1不开启
-<<<<<<< HEAD
-	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>'
-	                });
-                });
-             $("#rdcreport"). on('click', function(){
-                    layer.open({
-	                            type: 1,
-                                offset: '200px',
-                                move:false,
-                                resize:false,
-=======
 	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
                                         '<button class="putreport" id="putreport">提交</button> '
 	                });
                 });
+
              $("#rdcreport"). on('click', function(){
                      layer.open({
 	                            type: 1,
                                 offset: '200px',
                                 resize:false,
                                 move:false,
->>>>>>> 74fdb394393403b5c2aceb0cff8c53f5fabe50e6
                                 area: ['500px', '400px'],
                                 title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
 	                            shade: 0.6,
                                 maxmin: false,
                                 anim: 0//0-6的动画形式，-1不开启
-<<<<<<< HEAD
-	                            ,content: 'Hello WORLD'
-=======
 	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
                                         '<button class="putreport" id="putreport">提交</button> '
->>>>>>> 74fdb394393403b5c2aceb0cff8c53f5fabe50e6
+
 	                });
                 });
-             $("#rdrcreport"). on('click', function(){
+             $(".rcreport"). on('click', function(){
                     layer.open({
 	                            type: 1,
                                 offset: '200px',
@@ -256,12 +285,9 @@
 	                            shade: 0.6,
                                 maxmin: false,
                                 anim: 0//0-6的动画形式，-1不开启
-<<<<<<< HEAD
-	                            ,content: '<div> </div>'
-=======
 	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
                                         '<button class="putreport" id="putreport">提交</button> '
->>>>>>> 74fdb394393403b5c2aceb0cff8c53f5fabe50e6
+
 	                });
                 });
 {#            招募进度条#}
@@ -296,18 +322,114 @@
                     $("#rdr-apply").slideUp("slow");
                 });
 {#                评论回复部分#}
-                $("#rdcreply").click(function(){
+                $(".creply").click(function(){
                     $("#commentreply").slideDown("slow");
                 });
-                $('#rdrcreply').click(function(){
-                    $("#rcommentreply").slideDown("slow");
+                $('.rcreply').click(function(){
+                    var ele = this;
+                    var parent_div = ele.parentNode.parentNode.parentNode;
+                    var reply = parent_div.lastChild;
+                    if(reply.tagName === undefined){
+                        reply = parent_div.childNodes[parent_div.childNodes.length-2];
+                    }else {
+                        reply = parent_div.lastChild;
+                    }
+                    reply = $(reply);
+                    reply.slideDown("slow");
                 });
-<<<<<<< HEAD
+{#                关注部分点击图片替换#}
+                function changeImage()
+                    {
+                    element=document.getElementById('rdcoimg')
+                    if (element.src.match("collection0"))
+                      {
+                      element.src='{% static '/project/imgs/star.png' %}' ;
+                      }
+                    else
+                      {
+                      element.src= '{% static '/creation/imgs/collection0.png' %}';
+                      }
+                    }
 
-=======
->>>>>>> 74fdb394393403b5c2aceb0cff8c53f5fabe50e6
+{#                   评论创建#}
+                $("#rdputcomment").click(function(){
 
-                </script>
+                         var c_main = document.createElement("div");
+                         c_main.className = "cmain";
+
+                         var cmain_cimg = document.createElement("img");
+                         cmain_cimg.className = "c-img";
+                         cmain_cimg.src = "/static/project/imgs/user.svg";
+
+                         var cmain_commentbox = document.createElement("div");
+                         cmain_commentbox.className = "comment-box";
+
+                         var commentbox_commenthead = document.createElement("div");
+                         commentbox_commenthead.className = "comment-head";
+
+                         var commenthead_cname = document.createElement("h6");
+                         commenthead_cname.className = "comment-name";
+
+                         var commenthead_cdate = document.createElement("span");
+                         commenthead_cdate.className = "cdate";
+
+                         var commenthead_coption = document.createElement("div");
+                         commenthead_coption.className = "c-option";
+
+                         var coption_clike = document.createElement("img");
+                         coption_clike.className = "clike";
+                         coption_clike.src = "/static/project/imgs/like1.svg";
+
+                         var coption_clikenum = document.createElement("span");
+                         coption_clikenum.className = "clikenum";
+
+                         var coption_creply = document.createElement("img");
+                         coption_creply.className = "creply";
+                         coption_creply.src = "/static/project/imgs/reply.svg";
+
+                         var coption_creport = document.createElement("img");
+                         coption_creport.className = "creport";
+                         coption_creport.src = "/static/creation/imgs/report.png";
+
+                         var commentbox_commentcontent = document.createElement("div");
+                         commentbox_commentcontent.className = "comment-content";
+
+                         var commentcontent_p = document.createElement("p");
+                         commentcontent_p.textContent = "ASDASDASDAWDF";
+
+                         var cmain_commentreply = document.createElement("div");
+                         cmain_commentreply.className = "commentreply";
+                         cmain_commentreply.name = "commentreply";
+
+
+                         var commentreply_text = document.createElement("textarea");
+                         commentreply_text.className = "commentreply-text";
+
+                         var commentreply_putcomment = document.createElement("button");
+                         commentreply_putcomment.className = "putcomment";
+
+                         c_main.appendChild(cmain_cimg);
+                         c_main.appendChild(cmain_commentbox);
+                         c_main.appendChild(cmain_commentreply);
+                         cmain_commentbox.appendChild(commentbox_commenthead);
+                         cmain_commentbox.appendChild(commentbox_commentcontent);
+                         commentbox_commenthead.appendChild(commenthead_cname);
+                         commentbox_commenthead.appendChild(commenthead_cdate);
+                         commentbox_commenthead.appendChild(commenthead_coption);
+                         commenthead_coption.appendChild(coption_clike);
+                         commenthead_coption.appendChild(coption_clikenum);
+                         commenthead_coption.appendChild(coption_creport);
+                         commenthead_coption.appendChild(coption_creply);
+                         commentbox_commentcontent.appendChild(commentcontent_p);
+                         cmain_commentreply.appendChild(commentreply_text);
+                         cmain_commentreply.appendChild(commentreply_putcomment);
+
+                         var c_all = document.getElementsByName("c-all")[0];
+
+                         var cmain = document.getElementsByClassName("cmain")[0];
+                         c_all.insertBefore(c_main, cmain);
+                });
+        </script>
 
 
 

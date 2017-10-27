@@ -636,11 +636,13 @@ def redetails(req):
         for label in labels:
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
-
         project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+        recruit = Recruit.objects.filter(Q(project_id=projectId))
+
         return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3]})
+                                   "labels": labels[:3], "recruit": recruit})
+
     if req.method == "POST":
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
@@ -651,9 +653,10 @@ def redetails(req):
         alllables = list(set(alllables))
 
         project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+        recruit = Recruit.objects.all().filter(project_id=projectId)
         return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3]})
+                                   "labels": labels[:3],"recruit":recruit})
 
 
 @csrf_exempt
