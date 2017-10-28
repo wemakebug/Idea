@@ -328,6 +328,18 @@ def team(req):
     if req.method == 'POST':
         pass
 
+def praise(req):
+    '''
+    点赞
+    :param req:
+    :return:
+    '''
+    
+
+
+
+
+
 
 def teamdetails(req, teamid):
     '''
@@ -359,7 +371,7 @@ def teamhelpapplication(req, teamhelpid):
     '''
     if req.method == 'GET':
         try:
-            teamhelp = models.User.objects.get(Id=teamhelpid)
+            teamhelp = models.User.objects.get(Id=teamdetails)
         except:
             return HttpResponse('404')
         else:

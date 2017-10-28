@@ -27,7 +27,8 @@
                                 团队标签：
                                 {% for User2 in User2UserLabel  %}
                                         {% if User2.user.Id == team.Id %}
-                                            <span class="repo-language-color pinned-repo-meta" style="background-color:#f1e05a;"></span>{{ User2.userLabel.Name}}
+                                            <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
+                                            <a style=" font-size: 14px;color: #7A8B8B;">{{ User2.userLabel.Name}}</a>
                                         {% endif %}
                                     {% endfor %}
                             </div>
@@ -39,9 +40,9 @@
                     <div class="feature">
                         <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
                         <div class="praise" team="{{ team.Id }}">
-                            <span id="praise+{{ team.id }}" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img+{{ team.id }}" /> </span>
-                            <span id="praise-txt+{{ team.id }}" class="praise-txt">{{team.project}}</span>
-                            <span id="add-num+{{ team.id }}" class="add-num"><em>+1</em></span>
+                            <span id="praise_0" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /> </span>
+                            <span id="praise-txt" class="praise-txt">{{team.project}}</span>
+                            <span id="add-num" class="add-num"><em>+1</em></span>
                         </div>
 
                     </div>
@@ -77,14 +78,15 @@
     <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
 <script type="text/javascript">
+//点赞
     $(function(){
-        $("#praise+{{ team.id }}").live("click",function () {
-            var praise_img = $("#praise-img+{{ team.id }}");
-            var text_box = $("#add-num+{{ team.id }}");
-            var praise_txt = $("#praise-txt+{{ team.id }}");
-            var num=parseInt(praise_txt.text());
+        $("body").on("click","#praise_0",function () {
+            var praise_img = $("#praise-img");
+            var text_box = $("#add-num");
+            var praise_txt = $("#praise-txt");
+            var num = parseInt(praise_txt.text());
             if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){
-                $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img+{{ team.id }}' class='animation' />");
+                $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");
                 praise_txt.removeClass("hover");
                 text_box.show().html("<em class='add-animation'>-1</em>");
                 $(".add-animation").removeClass("hover");
@@ -102,6 +104,7 @@
 	});
 
 
+//加载更多
 $(function() {
     $(".border_0").slice(0, 6).show();
     if ($(".border_0").length <= 6) {
@@ -115,7 +118,7 @@ $(function() {
         }
     });
 });
-
+//控制介绍字数
     $(document).ready(function () {
             $(".content_0").
             each(function () {
@@ -127,6 +130,11 @@ $(function() {
                 }
             });
         });
+//随机显示颜色
+$('.repo-language-color').each(function() {
+    var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
+    $(this).css('background', col)
+})
 
 </script>
 {%endblock%}

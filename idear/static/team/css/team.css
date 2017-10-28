@@ -67,7 +67,7 @@ html{
 	height: 69%;
 	width: 85%;
     line-height:25px;
-	margin: 3.5% auto 0;
+	margin: 4.5% auto 0;
 	z-index: 99;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -82,14 +82,15 @@ html{
 }
 .teamTag{
     height: 80%;
-    margin: 0;
+    margin: -5px;
 }
 .repo-language-color {
     position: relative;
-    top: 1px;
+    top:0.5px;
+    margin-left: 8px;
     display: inline-block;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
 }
 .applyHelp{
@@ -116,14 +117,14 @@ html{
     position: relative;
 }
 
-#praise{
+.praise_0{
     cursor :pointer;
     display:block;
     width:17px;
     height:17px;
     z-index: 99;
 }
-#praise-txt{
+.praise-txt{
     font-size: 13px;
     height:25px;
     margin: -17px 18px;
@@ -141,10 +142,10 @@ html{
     -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
     -o-animation: myfirst 0.5s;	/* Opera */
 }
-#add-num{
+.add-num{
     display:none;
 }
-#add-num .add-animation{
+.add-num .add-animation{
     color: #000;
     position:absolute;
     top:-15px;
