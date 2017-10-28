@@ -5,6 +5,9 @@
 {%endblock%}
 {% block CSS %}
 <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
+    <script type="text/javascript" src={% static "ckeditor/ckeditor-init.js" %}></script>
+    <script type="text/javascript" src={% static "ckeditor/ckeditor/ckeditor.js" %}></script>
+    <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
 {% endblock %}
 
 {% block content %}
@@ -74,15 +77,14 @@
         </div>
     </div>
 </div>
-{% endblock %}
 
-{% block script %}
-    <script type="text/javascript" src={% static "ckeditor/ckeditor-init.js" %}></script>
-    <script type="text/javascript" src={% static "ckeditor/ckeditor/ckeditor.js" %}></script>
-    <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
     <script type="text/javascript">
         CKEDITOR.replace('TextArea1', {
             customConfig:'{% static "ckeditor_configs/MyCongif.js" %}'
         });
     </script>
+{% endblock %}
+
+{% block script %}
+
 {% endblock %}

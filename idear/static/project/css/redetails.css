@@ -283,7 +283,7 @@ body{
     font-size: 15px;
 }
 .r-message{
-    display:inline-block;
+    display:block;
     margin:75px 0 0 70px;
     color: gray;
     font-family: 幼圆;
@@ -749,6 +749,7 @@ body{
     float:left;
     margin-top:10px;
     color: #999;
+    width:30px;
 	font-size: 13px;
 
 }
