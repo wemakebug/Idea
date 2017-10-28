@@ -164,8 +164,8 @@
     }
     .thumbs-up{
         width: 49.95%;
-        height:100%;
-
+        height:90%;
+        margin-top: 5%;
         float: left;
     }
     .middle_line{
@@ -180,16 +180,11 @@
         height: 20%;
         float: right;
     }
-    .best_find h3{
-        font-size: 1.5em;
-        /*color:gray;*/
-        font-weight: 200;
-        text-align: center;
-    }
+
     .best_project{
         width: 80%;
-        height: 89%;
-        margin-top: 3%;
+        height: 90%;
+        margin-top: 2%;
     }
     .pro{
         width: 80%;
@@ -324,6 +319,7 @@
         background: url("../imgs/thumbs-up.png");
         background-size:100% 100%;
         float: left;
+
     }
     .pro-collection{
         width: 40%;
