@@ -108,12 +108,11 @@ def get_user_img(req):
         }
         try:
             email = req.COOKIES.get('email')
-            print email
             username = req.COOKIES.get('username')
-            print username
         except:
             result['status'] = 0
             result['message'] = '尚未登陆'
+
             return HttpResponse(json.dumps(result))
         else:
             try:
@@ -128,14 +127,11 @@ def get_user_img(req):
                     result['status'] = 1
                     result['message'] = '路径获取成功'
                     img_path = user.Img.url
-                    print img_path
                     result['img_path'] = img_path
-                except Exception,e:
-                    print e
+                except:
                     result['status'] = 1
                     result['message'] = '用户暂未上传图片'
                     img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
-                    result['img_path'] = img_path
                     return HttpResponse(json.dumps(result))
                 else:
                     return HttpResponse(json.dumps(result))
@@ -718,6 +714,7 @@ def homepage(req):
     if req.method == 'GET':
         return render_to_response('personal/homepage.html')
     if req.method == 'POST':
+
         pass
 
 
@@ -728,7 +725,8 @@ def release(req):
     :return:
     '''
     if req.method == 'GET':
-        return render_to_response('personal/release.html')
+        obj = models.ProjectLabel.objects.all()
+        return render_to_response('personal/release.html', {"labels": obj})
     if req.method == "POST":
         pass
 
@@ -739,10 +737,10 @@ def editprofile(req):
     if req.method == 'POST':
         pass
 
-
-def addlabel(req):
-    obj = models.ProjectLabel.objects.all()
-    return render_to_response('personal/release.html', {"labels": obj})
-
 '''个人中心相关页面结束'''
 
+
+
+'''test'''
+def test(req):
+    return render(req,'test.html')

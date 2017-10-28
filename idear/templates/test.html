@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Test Md5</title>
     {% load static %}
-    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+
+
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
 
 
     <!-- include summernote css/js-->
@@ -17,16 +19,14 @@
 {% load static %}
 
 
-<div id="summernote">Hello Summernote</div>
+<div id="summernote"></div>
 
-<script src="{% static '/js/md5.min.js' %}"></script>
 
 <script>
-    var hash = md5("value");
-    alert(hash);
-    $(document).ready(function() {
-  $('#summernote').summernote();
-});
+  $('#summernote').summernote({
+
+  });
+
 </script>
 
 </body>

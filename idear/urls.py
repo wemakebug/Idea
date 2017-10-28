@@ -42,10 +42,9 @@ urlpatterns = [
     url(r'^test/?(\d+)$', views.test),
     url(r'^getimg', views.get_user_img),
     url(r'^ordinance',views.ordinance),
-    # url(r'^release',views.addlabel),
+     url(r'^release',views.release),
     url(r'^comment',views.comment),
-
-
+    url(r'test', views.test),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
