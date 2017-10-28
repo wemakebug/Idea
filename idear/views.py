@@ -321,7 +321,6 @@ def team(req):
             return render_to_response('team/team.html', {"teams": teams, "labels": labels,'User2UserLabel': User2UserLabel})
         elif int(sign):
             labels = models.UserLabel.objects.filter(pk=sign)
-            # user_2_userLable = models.User2UserLabel.objects.filter(Q(userLabel=labels) & Q(user__Identity=2))
             user_2_userLable = models.User2UserLabel.objects.filter(userLabel=labels).filter(user__Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
             teams = []
@@ -331,6 +330,18 @@ def team(req):
 
     if req.method == 'POST':
         pass
+
+def praise(req):
+    '''
+    点赞
+    :param req:
+    :return:
+    '''
+    
+
+
+
+
 
 
 def teamdetails(req, teamid):
@@ -363,7 +374,7 @@ def teamhelpapplication(req, teamhelpid):
     '''
     if req.method == 'GET':
         try:
-            teamhelp = models.User.objects.get(Id=teamhelpid)
+            teamhelp = models.User.objects.get(Id=teamdetails)
         except:
             return HttpResponse('404')
         else:
