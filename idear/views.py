@@ -108,28 +108,33 @@ def get_user_img(req):
         }
         try:
             email = req.COOKIES.get('email')
+            print email
             username = req.COOKIES.get('username')
+            print username
         except:
             result['status'] = 0
             result['message'] = '尚未登陆'
             return HttpResponse(json.dumps(result))
         else:
             try:
-                user = models.User.objects.filter(Email=email)
-            except:
+                user = models.User.objects.get(UserName=username)
+            except Exception,e:
+                print e
                 result['status'] = 0
                 result['message'] = '获取数据异常'
                 return HttpResponse(json.dumps(result))
             else:
                 try:
-                    img_path = user.Img
                     result['status'] = 1
                     result['message'] = '路径获取成功'
+                    img_path = user.Img.url
+                    print img_path
                     result['img_path'] = img_path
-                except:
-                    img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
+                except Exception,e:
+                    print e
                     result['status'] = 1
                     result['message'] = '用户暂未上传图片'
+                    img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
                     result['img_path'] = img_path
                     return HttpResponse(json.dumps(result))
                 else:
@@ -196,6 +201,8 @@ def login(req):
                         result['email'] = email
                         req.session['uuid'] = str(user.Uuid)
                         result['message'] = '登陆成功'
+                        img_path = user.Img
+                        # print(img_path)
                         return HttpResponse(json.dumps(result))
                     elif user.PassWord != password:
                         result['status'] = 0
@@ -437,6 +444,7 @@ def creations(req):
     # userId = int(req.COOKIES.get('user'))
     userId = 3
     try:
+
         if req.method == 'GET':
             sign = req.GET['sign']
             # 如果是所有项目
@@ -445,10 +453,12 @@ def creations(req):
             # 如果有特殊标签
             else:
                 CreationLabelObjs = Creation2ProjectLabel.objects.filter(projectLabel=sign)
-                creations = Creation.objects.filter(Img="null")    #把creations搞空，以便以后使用creations传输数据
-                
+                  #把creations搞空，以便以后使用creations传输数据
+
                 for obj in CreationLabelObjs:    #将所有的对应标签的创意拿出来 放到creations对象里
                     creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
+                    if User_img == "NULL":
+                        User_img = "/static/photos/photos/default.jpg"
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
                                        'follows': follows, 'praises': praises, "Imgs": User_img})
@@ -538,7 +548,7 @@ def star(req):
                 p = Praise.objects.create(creation_id=Id, user_id=userId)
                 status = 1
             return HttpResponse(status)
-        else:    
+        else:
             try:
                 p = Praise.objects.get(project_id=Id, user_id=userId).delete()
                 status = 2
@@ -550,9 +560,34 @@ def star(req):
         print(e)
         return HttpResponse(status)
 
-
-
-
+@csrf_exempt
+def comment(req):
+    '''
+    创意评论
+    :param req:
+    :return:
+    '''
+    status = 0
+    if req.method =='POST':
+        result = {
+            "status":1,
+            "string":None
+        }
+        username = "chris"
+        creationid = 3
+        content = req.POST["string"]
+        user = models.User.objects.get("UserName=username")
+        creation = models.Creation.objects.get(pk = creationid)
+        models.Comment.objects.create(user = user ,creation = creation , Content = content)
+        return HttpResponse(json.dumps(result))
+    if req.method =='GET':
+        content = "hello world"
+        username = "chris"
+        creationid = 3
+        user = models.User.objects.get("UserName=username")
+        creation = models.Creation.objects.get(pk=creationid)
+        models.Comment.objects.create(user=user, creation=creation, Content=content)
+        return HttpResponse("TRUE")
 ''' 创意灵感 页面相关部分结束'''
 
 ''' 招募项目 相关页面开始'''
@@ -601,11 +636,13 @@ def redetails(req):
         for label in labels:
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
-
         project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+        recruit = Recruit.objects.filter(Q(project_id=projectId))
+
         return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3]})
+                                   "labels": labels[:3], "recruit": recruit})
+
     if req.method == "POST":
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
@@ -616,9 +653,10 @@ def redetails(req):
         alllables = list(set(alllables))
 
         project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+        recruit = Recruit.objects.all().filter(project_id=projectId)
         return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3]})
+                                   "labels": labels[:3],"recruit":recruit})
 
 
 @csrf_exempt
@@ -705,4 +743,6 @@ def editprofile(req):
 def addlabel(req):
     obj = models.ProjectLabel.objects.all()
     return render_to_response('personal/release.html', {"labels": obj})
+
+'''个人中心相关页面结束'''
 
