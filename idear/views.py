@@ -497,7 +497,7 @@ def creations(req):
 @csrf_exempt
 def attend(req):
     '''
-    Id的关注类型
+    Id的关注类型f
     1为被关注创意
     2为被关注项目
     3为被关注用户
@@ -590,10 +590,10 @@ def comment(req):
             "string":None
         }
         username = "chris"
-        creationid = 3
-        content = req.POST["string"]
-        user = models.User.objects.get("UserName=username")
-        creation = models.Creation.objects.get(pk = creationid)
+        creationId = req.POST["creationId"]
+        content = req.POST["content"]
+        user = models.User.objects.get(UserName=username)
+        creation = models.Creation.objects.get(pk = creationId)
         models.Comment.objects.create(user = user ,creation = creation , Content = content)
         return HttpResponse(json.dumps(result))
     if req.method =='GET':

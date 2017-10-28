@@ -6,6 +6,19 @@ $.cookie("user",3)
 userId = $.cookie("user")
 
 
+
+$("#putcomment").click(function(){
+
+$.post("comment",{content:$("#comment-content1").val(),creationId:$("#creationId").val()},function(data){
+location.reload();})
+
+})
+
+
+
+
+
+
 // 创意关注操作
 // $(".block-hotfollow").click(function(){
 //    Id = $(this).attr("creation")
@@ -50,5 +63,9 @@ userId = $.cookie("user")
 // })
 
 // })
+
+
+
+
 
 })
