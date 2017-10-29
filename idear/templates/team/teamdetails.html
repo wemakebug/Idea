@@ -4,9 +4,9 @@
    <title>团队详情</title>
 {%endblock%}
 {%block CSS%}
-<link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
 <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
 <link rel="stylesheet" type="text/css" href="{% static 'idea/css/sweet-alert.css' %}">
+<link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
 {%endblock%}
 {%block content%}
 <div class="teamdetail">
@@ -66,7 +66,7 @@
             <div class="teamlable1-2"></div>
             <div class="teamlable1-3">
                 {% for label in labels %}
-            <a href="" style="text-decoration: none;"><span class="teamlable1-4">{{ label.userLabel.Name }}</span></a>
+                    <span class="teamlable1-4" id="teamlable1-4" onclick="Myfunction()"><a href="#" class="hovera" style="text-decoration: none;color: rgba(54, 54 ,54,0.5)">{{ label.userLabel.Name }}</a></span>
                 {% endfor %}
             </div>
         </div>
@@ -406,8 +406,5 @@
             }
         });
 	})
-    $("#comment11-2").click(function () {
-        document.getElementById("contectnumber1").focus();
-    })
 </script>
 {% endblock %}
