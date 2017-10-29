@@ -898,7 +898,7 @@ body{
 }
 /*评论回复文本框*/
 .commentreply{
-    /*display:none;*/
+    display:none;
     width:100%;
     height:40px;
     margin: 10px 0 10px 0;
