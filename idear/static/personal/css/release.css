@@ -209,7 +209,6 @@
     height: auto;
     min-height: 900px;
     float: left;
-
 }
 .chance_type{
     width: 20%;
@@ -290,9 +289,8 @@
     border-color: #295E6A;
     /*color: #ffffff;*/
 }
-.cke_top{
-    padding: 0;
-}
+
+
 
 
 

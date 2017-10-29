@@ -108,18 +108,19 @@ def get_user_img(req):
         }
         try:
             email = req.COOKIES.get('email')
-            print email
+            print(email)
             username = req.COOKIES.get('username')
-            print username
+            print(username)
         except:
             result['status'] = 0
             result['message'] = '尚未登陆'
+
             return HttpResponse(json.dumps(result))
         else:
             try:
                 user = models.User.objects.get(UserName=username)
-            except Exception,e:
-                print e
+            except Exception as e:
+                print(e)
                 result['status'] = 0
                 result['message'] = '获取数据异常'
                 return HttpResponse(json.dumps(result))
@@ -128,10 +129,10 @@ def get_user_img(req):
                     result['status'] = 1
                     result['message'] = '路径获取成功'
                     img_path = user.Img.url
-                    print img_path
+                    print(img_path)
                     result['img_path'] = img_path
-                except Exception,e:
-                    print e
+                except Exception as e:
+                    print(e)
                     result['status'] = 1
                     result['message'] = '用户暂未上传图片'
                     img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
@@ -679,7 +680,6 @@ def projects(req):
                 for obj in ProjectLabelObjs:
                     projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
             return render_to_response('project/recruit.html', {'projects': projects, 'projectLabels': projectLabels})
-
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
@@ -704,9 +704,14 @@ def get_projects(req):
         user = User.objects.filter(Account=account)
         if account:
             projects = ProjectUser.objects.get(user=user)
-            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
+            allrecruit = []
+            for project in projects:
+                recruit = models.Recruit.objects.filter(project=project)
+                allrecruit.append()
+            allproject = zip(projects, allrecruit)
+            return render_to_response('project/recruit.html', {'allproject': allproject})
         else:
-            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
+            return render_to_response('project/recruit.html', {'allproject': allproject})
 
 
 ''' 招募项目相关页面结束'''

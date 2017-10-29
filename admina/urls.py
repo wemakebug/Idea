@@ -28,9 +28,13 @@ urlpatterns = [
     # url(r'^label_project/(?P<page>\d+)$', reload.label_project),
 
 
-    url(r'index', views.index),
-    url(r'user_detail', views.user_detail),
-    url(r'profile', views.Profile),
-    url(r'PhotoGallery', views.PhotoGallary)
+    url(r'^index$', views.index),
+    url(r'^user_detail$', views.user_detail),
+    url(r'^profile$', views.Profile),
+    url(r'^PhotoGallery$', views.PhotoGallary),
+    url(r'^post$', views.post),
+    url(r'comment_list', views.comment_list),
+
+
 
 ]
