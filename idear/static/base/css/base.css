@@ -1,7 +1,6 @@
 body,div{
 		margin:0 auto;
 		padding:0;
-		width:100%;
 	}
     *{
         margin:0 ;
@@ -181,36 +180,30 @@ body,div{
         border: 1px solid #ccc;
         margin-left:2.5%;
     }
-    .user_figure:hover{
-        display: block;
-    }
+
     .list_hidden{
         width:262px;
         margin-top:-57px;
         float: left;
-        margin-left: 44px;
+        margin-left: 40px;
         /*background: rgb(255, 251, 240);*/
-        height:643px;
+        height:920px;
         border: 1px solid transparent;
         opacity: 0.8;
-        /*display: none;*/
+        display: none;
         background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
         background-blend-mode: multiply,multiply;
     }
-    /*.user_hidden:hover .list_hidden{
-        display: block;
-        transition: 0.2s ease-out;
-    }*/
     .list_content{
         width:100%;
         height: 70%;
-        margin-top: 37%;
+        margin-top: 55%;
         border: 1px solid transparent;
     }
     .list_block{
         width: 80%;
-        height: 11%;
-        margin-top: 4%;
+        height: 8%;
+        margin-top: 9%;
         border:1px solid #bbbbbb;
 
     }
@@ -218,7 +211,7 @@ body,div{
         width:100%;
         height:100%;
         text-align: center;
-        line-height: 47.1333px;
+        line-height: 51.2333px;
         color: #000000;
         font-family: 幼圆;
         overflow: hidden;

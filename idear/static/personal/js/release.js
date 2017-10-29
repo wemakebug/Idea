@@ -3,7 +3,7 @@
  */
         /*富文本固定*/
     window.onload = function () {
-        var oDiv = document.getElementById("cke_1_top"),
+        var oDiv = document.getElementById(""),
             H = 0,
             Y = oDiv;
         while (Y) {
@@ -13,7 +13,7 @@
         window.onscroll = function () {
             var s = document.body.scrollTop || document.documentElement.scrollTop;
             if (s > H) {
-                oDiv.style = "position:fixed;top:66px;width:43.88%;min-width:647px;"
+                oDiv.style = "position:fixed;top:66px;"
             } else {
                 oDiv.style = ""
             }

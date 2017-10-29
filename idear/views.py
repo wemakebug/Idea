@@ -108,12 +108,11 @@ def get_user_img(req):
         }
         try:
             email = req.COOKIES.get('email')
-            print email
             username = req.COOKIES.get('username')
-            print username
         except:
             result['status'] = 0
             result['message'] = '尚未登陆'
+
             return HttpResponse(json.dumps(result))
         else:
             try:
@@ -128,14 +127,11 @@ def get_user_img(req):
                     result['status'] = 1
                     result['message'] = '路径获取成功'
                     img_path = user.Img.url
-                    print img_path
                     result['img_path'] = img_path
-                except Exception,e:
-                    print e
+                except:
                     result['status'] = 1
                     result['message'] = '用户暂未上传图片'
                     img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
-                    result['img_path'] = img_path
                     return HttpResponse(json.dumps(result))
                 else:
                     return HttpResponse(json.dumps(result))
@@ -325,7 +321,6 @@ def team(req):
             return render_to_response('team/team.html', {"teams": teams, "labels": labels,'User2UserLabel': User2UserLabel})
         elif int(sign):
             labels = models.UserLabel.objects.filter(pk=sign)
-            # user_2_userLable = models.User2UserLabel.objects.filter(Q(userLabel=labels) & Q(user__Identity=2))
             user_2_userLable = models.User2UserLabel.objects.filter(userLabel=labels).filter(user__Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
             teams = []
@@ -337,7 +332,20 @@ def team(req):
         pass
 
 
-def teamdetails(req, teamid):
+def praise(req):
+    '''
+    点赞
+    :param req:
+    :return:
+    '''
+    
+
+
+
+
+
+@csrf_exempt
+def teamdetails(req, teamid=2):
     '''
     团队详情页面 所有team 按照创建时间排序
     :param req: 
@@ -355,7 +363,22 @@ def teamdetails(req, teamid):
             print(labels)
             return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels})
     if req.method == 'POST':
-        pass
+        result = {
+            "status": 1,
+            "string": None
+        }
+        comment_text = req.POST["string"]
+        username = "chris"
+        teamid = 2
+        Identity = 2
+        try:
+            user = models.User.objects.get(UserName=username)
+            users = models.User.objects.get(Id=teamid)
+        except:
+            return HttpResponse("NULL")
+        else:
+            models.Comment.objects.create(user=user,Content=comment_text,commited_user=users)
+            return HttpResponse(json.dumps(result))
 
 
 def teamhelpapplication(req, teamhelpid):
@@ -367,7 +390,7 @@ def teamhelpapplication(req, teamhelpid):
     '''
     if req.method == 'GET':
         try:
-            teamhelp = models.User.objects.get(Id=teamhelpid)
+            teamhelp = models.User.objects.get(Id=teamdetails)
         except:
             return HttpResponse('404')
         else:
@@ -734,6 +757,7 @@ def homepage(req):
     if req.method == 'GET':
         return render_to_response('personal/homepage.html')
     if req.method == 'POST':
+
         pass
 
 
@@ -744,7 +768,8 @@ def release(req):
     :return:
     '''
     if req.method == 'GET':
-        return render_to_response('personal/release.html')
+        obj = models.ProjectLabel.objects.all()
+        return render_to_response('personal/release.html', {"labels": obj})
     if req.method == "POST":
         pass
 
@@ -755,10 +780,10 @@ def editprofile(req):
     if req.method == 'POST':
         pass
 
-
-def addlabel(req):
-    obj = models.ProjectLabel.objects.all()
-    return render_to_response('personal/release.html', {"labels": obj})
-
 '''个人中心相关页面结束'''
 
+
+
+'''test'''
+def test(req):
+    return render(req,'test.html')
