@@ -11,6 +11,7 @@ $(document).ready(function() {
 
 
 $("#putcommentbutton").click(function () {
+    function createteamcomment() {
         var comment_text = document.getElementById("contectnumber1").value;
         if (comment_text == null) {
             swal({
@@ -129,16 +130,20 @@ $("#putcommentbutton").click(function () {
             var c_all = document.getElementsByName("c-all")[0];
             var c_main = document.getElementsByClassName("cmain")[0];
             c_all.insertBefore(parentdiv, c_main);
+
+            $("#contectnumber1").val("");
         }
-        $("#contectnumber1").val("");
-         var comment_text = document.getElementById("contectnumber1").value;
+    }
+        var comment_text = document.getElementById("contectnumber1").value;
         $.post('/idear/teamdetails/2',{
 
             "string":comment_text
         }, function (data) {
             data = JSON.parse(data);
-            if(data.status == 0){
+            if(data.status == 0) {
                 alert("Wrong");
+            }else {
+                createteamcomment(data)
             }
         });
 
