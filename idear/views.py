@@ -373,8 +373,10 @@ def teamdetails(req, teamid=2):
         try:
             user = models.User.objects.get(UserName=username)
             users = models.User.objects.get(Q(pk=teamid) & Q(Identity=teamid))
-        except:
+        except Exception as e:
+            print e
             return HttpResponse("NULL")
+
         else:
             models.Comment.objects.create(user=user,Content=comment_text,commited_user=users)
             return HttpResponse(json.dumps(result))
