@@ -594,7 +594,7 @@ def comment(req):
         content = req.POST["content"]
         user = models.User.objects.get(UserName=username)
         creation = models.Creation.objects.get(pk = creationId)
-        models.Comment.objects.create(user = user ,creation = creation , Content = content)
+        models.Comment.objects.create(user = user ,creation = creation , Content = content, Uuid=uuid.uuid1())
         return HttpResponse(json.dumps(result))
     if req.method =='GET':
         content = "hello world"
