@@ -97,7 +97,7 @@ def get_user_img(req):
     if req.method == "GET":
         # user = models.User.objects.get(Email='chris156@123.com')
         # img = str(user.Img)
-        # print img
+        # print(img
         # return HttpResponse('ok')
         return Http404
     elif req.method == "POST":
@@ -108,9 +108,9 @@ def get_user_img(req):
         }
         try:
             email = req.COOKIES.get('email')
-            print email
+            print(email)
             username = req.COOKIES.get('username')
-            print username
+            print(username)
         except:
             result['status'] = 0
             result['message'] = '尚未登陆'
@@ -118,8 +118,8 @@ def get_user_img(req):
         else:
             try:
                 user = models.User.objects.get(UserName=username)
-            except Exception,e:
-                print e
+            except Exception as e:
+                print(e)
                 result['status'] = 0
                 result['message'] = '获取数据异常'
                 return HttpResponse(json.dumps(result))
@@ -128,10 +128,10 @@ def get_user_img(req):
                     result['status'] = 1
                     result['message'] = '路径获取成功'
                     img_path = user.Img.url
-                    print img_path
+                    print(img_path)
                     result['img_path'] = img_path
-                except Exception,e:
-                    print e
+                except Exception as e:
+                    print(e)
                     result['status'] = 1
                     result['message'] = '用户暂未上传图片'
                     img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
@@ -704,9 +704,9 @@ def get_projects(req):
         user = User.objects.filter(Account=account)
         if account:
             projects = ProjectUser.objects.get(user=user)
-            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
+            return render_to_response('project/recruit.html', {'projects': projects})
         else:
-            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
+            return render_to_response('project/recruit.html', {'projects': projects})
 
 
 ''' 招募项目相关页面结束'''
