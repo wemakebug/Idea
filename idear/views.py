@@ -660,7 +660,7 @@ def redetails(req):
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3],"recruit":recruit})
 
-
+ 
 @csrf_exempt
 def projects(req):
     '''
