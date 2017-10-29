@@ -178,6 +178,7 @@ def login(req):
     if req.method == "GET":
         return render_to_response('idea/login.html')
     if req.method == "POST":
+        # req.setCharactorEcoding("utf-8")
         result = {}
         result['email'] = None
         result['status'] = None
@@ -187,7 +188,8 @@ def login(req):
         try:
             email = req.POST['email']
             password = req.POST['password']
-        except:
+        except Exception as e:
+            print(email)
             result['status'] = 0
             result['message'] = '获取信息失败'
             return HttpResponse(json.dumps(result))
@@ -202,8 +204,6 @@ def login(req):
                         result['email'] = email
                         req.session['uuid'] = str(user.Uuid)
                         result['message'] = '登陆成功'
-                        img_path = user.Img
-                        # print(img_path)
                         return HttpResponse(json.dumps(result))
                     elif user.PassWord != password:
                         result['status'] = 0
@@ -216,7 +216,9 @@ def login(req):
             else:
                 result['status'] = 0
                 result['message'] = '帐号格式不正确'
+                message = "message"
                 return HttpResponse(json.dumps(result))
+
 
 
 @csrf_exempt
@@ -733,7 +735,8 @@ def release(req):
     :return:
     '''
     if req.method == 'GET':
-        return render_to_response('personal/release.html')
+        obj = models.ProjectLabel.objects.all()
+        return render_to_response('personal/release.html', {"labels": obj})
     if req.method == "POST":
         pass
 
@@ -745,9 +748,6 @@ def editprofile(req):
         pass
 
 
-def addlabel(req):
-    obj = models.ProjectLabel.objects.all()
-    return render_to_response('personal/release.html', {"labels": obj})
 
 '''个人中心相关页面结束'''
 
