@@ -139,6 +139,8 @@ $("#putcommentbutton").click(function () {
             data = JSON.parse(data);
             if(data.status == 0){
                 alert("Wrong");
+            }else {
+                location.reload();
             }
         });
 

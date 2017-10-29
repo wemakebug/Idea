@@ -370,10 +370,9 @@ def teamdetails(req, teamid=2):
         comment_text = req.POST["string"]
         username = "chris"
         teamid = 2
-        Identity = 2
         try:
             user = models.User.objects.get(UserName=username)
-            users = models.User.objects.get(Id=teamid)
+            users = models.User.objects.get(Q(pk=teamid) & Q(Identity=teamid))
         except:
             return HttpResponse("NULL")
         else:
