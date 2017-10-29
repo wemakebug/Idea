@@ -120,18 +120,22 @@ def Comment_Creation(req):
     :return:
     '''
     if req.method == "POST":
+
+        # req.COOKIES["username"]
+        content = req.POST["string"]
+
+
+        username = "chris"
+        creationid = 3
+        user = models.User.objects.get(UserName=username)
+        creation = models.Creation.objects.get(pk=creationid)
+
+        models.Comment.objects.create(user=user, creation=creation, Content=content)
+
         result={
             "status":1,
             "string":None
         }
-        # req.COOKIES["username"]
-        content = req.POST["string"]
-        username = "chris"
-        creationid = 3
-        user = models.User.objects.get(UserName=username)
-            # creation = models.Creation.objects.get(id=creationid)
-        creation = models.Creation.objects.get(pk=creationid)
-        models.Comment.objects.create(user=user, creation=creation, Content=content)
         return HttpResponse(json.dumps(result))
     if req.method == "GET":
 

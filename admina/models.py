@@ -236,8 +236,9 @@ class Comment(models.Model):
 
     creation = models.ForeignKey(Creation, related_name='Comment_Creation_set', null=True, blank=True)
     project = models.ForeignKey(Project, related_name='Comment_Project_set', null=True, blank=True)
-
     commited_user = models.ForeignKey(User, related_name='commited_user_set', null=True, blank=True)
+
+    commentedId = models.UUIDField(null=True, blank=True)
 
     Date = models.DateField(auto_now_add=True)
     Content = models.TextField(max_length=200)
@@ -248,6 +249,7 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.user.__unicode__()
+
 
 class Follow(models.Model):
     '''

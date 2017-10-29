@@ -97,7 +97,7 @@ def get_user_img(req):
     if req.method == "GET":
         # user = models.User.objects.get(Email='chris156@123.com')
         # img = str(user.Img)
-        # print(img
+        # print img
         # return HttpResponse('ok')
         return Http404
     elif req.method == "POST":
@@ -114,6 +114,7 @@ def get_user_img(req):
         except:
             result['status'] = 0
             result['message'] = '尚未登陆'
+
             return HttpResponse(json.dumps(result))
         else:
             try:
@@ -704,9 +705,9 @@ def get_projects(req):
         user = User.objects.filter(Account=account)
         if account:
             projects = ProjectUser.objects.get(user=user)
-            return render_to_response('project/recruit.html', {'projects': projects})
+            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
         else:
-            return render_to_response('project/recruit.html', {'projects': projects})
+            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
 
 
 ''' 招募项目相关页面结束'''
