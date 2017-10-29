@@ -718,7 +718,6 @@ def projects(req):
                 for obj in ProjectLabelObjs:
                     projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
             return render_to_response('project/recruit.html', {'projects': projects, 'projectLabels': projectLabels})
-
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
@@ -743,9 +742,14 @@ def get_projects(req):
         user = User.objects.filter(Account=account)
         if account:
             projects = ProjectUser.objects.get(user=user)
-            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
+            allrecruit = []
+            for project in projects:
+                recruit = models.Recruit.objects.filter(project=project)
+                allrecruit.append()
+            allproject = zip(projects, allrecruit)
+            return render_to_response('project/recruit.html', {'allproject': allproject})
         else:
-            return render_to_response('project/recruit.html', {'projects': projects}, {'recruit':recruit})
+            return render_to_response('project/recruit.html', {'allproject': allproject})
 
 
 ''' 招募项目相关页面结束'''
