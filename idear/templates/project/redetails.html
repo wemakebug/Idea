@@ -311,7 +311,7 @@
 {#                关注部分点击图片替换#}
                 function changeImage()
                     {
-                    element=document.getElementById('rdcoimg')
+                    element=document.getElementById('rdcoimg');
                     if (element.src.match("collection0"))
                       {
                       element.src='{% static '/project/imgs/star.png' %}' ;
@@ -407,6 +407,20 @@
                     c_all.insertBefore(c_main, cmain);
 
                 });
+                 $(function () {
+                     //var $ppc = $('.progress-pie-chart'),
+                     //percent = parseInt($ppc.data('percent')),
+
+                     var percent = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
+                     deg = 360 * percent;
+                     if (percent > 0.5) {
+                         $ppc.addClass('gt-50');
+                     }
+                     if (percent > 1) {
+                         deg = 360;
+                     }
+                     $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
+                 });
         </script>
 
 
