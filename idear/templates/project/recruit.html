@@ -13,7 +13,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
 {% block content %}
     <div class="bg_all">
         <div class="bg_left">
-            {% for project,recruit in project_all %}
+            {% for project in projects %}
                 <div class="project_top">
                     <div style="display:none;width:100%;height: 100%">{{ project.Id }}</div>
                     <a href="redetails?projectId={{ project.Id }}">
