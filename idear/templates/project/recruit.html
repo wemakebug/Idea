@@ -18,10 +18,10 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                     <div style="display:none;width:100%;height: 100%">{{ project.Id }}</div>
                     <a href="redetails?projectId={{ project.Id }}">
                         <div class="project_top_1_left">
-                            <img class="project_img" src="{% static 'project/imgs/HeadImg.png' %}">
+                            <img class="project_img" src="../../static/photos/{{ project.Img }}">
                         </div>
                         <div class="project_top_1_right">
-                            <span class="project_top_1_right-span">{{ project.ProjectName }}</span>
+                            <span class="project_top_1_right-span">{{ project.ProjectNam }}</span>
                             <div class="project_Text_Bg">
                                 <li class="FixText">截止时间:<p
                                         class="FixText-right">{{ project.EndTime | date:"Y/m/d" }}</p></li>
