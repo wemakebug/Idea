@@ -132,7 +132,7 @@ $("#putcommentbutton").click(function () {
         }
         $("#contectnumber1").val("");
          var comment_text = document.getElementById("contectnumber1").value;
-        $.post('/idear/teamdetails',{
+        $.post('/idear/teamdetails/2',{
 
             "string":comment_text
         }, function (data) {

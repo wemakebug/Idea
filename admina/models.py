@@ -170,7 +170,7 @@ class Recruit(models.Model):
     project = models.ForeignKey(Project, related_name='Recruit_Project_set', null=False)
     StartTime = models.DateField(auto_now_add=True)
     EndTime = models.DateField(null=True)
-    Describe = models.TextField(null=False, max_length=200)
+    Describe = models.TextField(null=False, max_length=1000)
     State = models.PositiveIntegerField(default=0)
     Times = models.PositiveIntegerField(default=1)
     PredictNumber = models.PositiveIntegerField(default=1)
@@ -328,7 +328,7 @@ class UserImageForge(models.Model):
     Id = models.AutoField(primary_key=True)
     Img = models.ImageField(upload_to='photos/user/', null=True, blank=True)
     IsUse = models.BooleanField(default=True)
-    UploadDate = models.DateTimeField(auto_now_add=True)
+    UploadDate = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, related_name="UserImageForge_User_set")
 
     def __unicode__(self):

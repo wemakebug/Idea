@@ -29,6 +29,7 @@ $(document).ready(function () {
         hidden_item.style.display = '';
         var email = $.cookie('email');
         var username = $.cookie('username');
+        document.getElementById("username").innerHTML = username;
         var data = {
             'email': email,
             'username': username
@@ -38,28 +39,27 @@ $(document).ready(function () {
             if (result['status'] === 1) {
                 var img_path = result['img_path'];
                 var message = result['message'];
-                alert(message)
                 user_img.src = '/static' + img_path;
-
+                document.getElementById('user_img').style.src= user_img.src;
             } else if (result['status'] === 0) {
                 // var message = result['message'];
                 // alert(message);
             } else {
             }
         });
-    var cookie = {
-        get:function(str){
-            var cookies = {};
-            document.cookie.split(';').forEach(function(item){
-                var c = item.split('=');
-                cookies[c[0]]=c[1];
-            });
-            return cookies[str] || "";
-        }
-    }
-    document.querySelector("#username").innerHTML = cookie.get("username");
-    }
-});
+         // var cookie = {
+         // get:function(str){
+         // var cookies = {};
+         // document.cookie.split(';').forEach(function(item){
+         // var c = item.split('=');
+         // cookies[c[0]]=c[1];
+         // });
+         // return cookies[str] || "";
+         // }
+         // }
+         // document.querySelector("#username").innerHTML = cookie.get("username");
+         }
+    });
 
 (function($){
     $.fn.typer = function(options){
@@ -137,5 +137,17 @@ $(document).ready(function () {
         });
     }
 })(jQuery);
+
+    function block() {
+        document.getElementsByClassName("list_hidden")[0].style.display = "block";
+        document.getElementsByClassName("list_content")[0].style.display = "block";
+        document.getElementsByClassName("list_block")[0].style.display = "block";
+        document.getElementsByClassName("list_block p")[0].style.display = "block";
+        document.getElementsByClassName("list_block p a")[0].style.display = "block";
+
+    }
+    function none() {
+        document.getElementsByClassName("list_hidden")[0].style.display = "none";
+    }
 
 
