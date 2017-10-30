@@ -447,7 +447,6 @@ def creations(req):
     # userId = int(req.COOKIES.get('user'))
     userId = 3
     try:
-
         if req.method == 'GET':
             sign = req.GET['sign']
             # 如果是所有项目
@@ -456,12 +455,10 @@ def creations(req):
             # 如果有特殊标签
             else:
                 CreationLabelObjs = Creation2ProjectLabel.objects.filter(projectLabel=sign)
-                  #把creations搞空，以便以后使用creations传输数据
+                creations = Creation.objects.filter(Img="null")  # 把creations搞空，以便以后使用creations传输数据
 
-                for obj in CreationLabelObjs:    #将所有的对应标签的创意拿出来 放到creations对象里
+                for obj in CreationLabelObjs:  # 将所有的对应标签的创意拿出来 放到creations对象里
                     creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
-                    if User_img == "NULL":
-                        User_img = "/static/photos/photos/default.jpg"
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
                                        'follows': follows, 'praises': praises, "Imgs": User_img})
