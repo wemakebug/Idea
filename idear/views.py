@@ -679,8 +679,13 @@ def projects(req):
                 projects = Project.objects.filter(Img="null")
                 for obj in ProjectLabelObjs:
                     projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
-                
-            return render_to_response('project/recruit.html', {'projects': projects, 'projectLabels': projectLabels})
+            recruit_all = []
+            for project in projects:
+                recruit = models.Recruit.objects.filter(project__Id=int(project.Id))
+                recruit_all.append(recruit)
+            all_recruit = zip(projects, recruit_all)
+            print all_recruit
+            return render_to_response('project/recruit.html', {'projectLabels': projectLabels, 'all_recruit': all_recruit})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
@@ -696,23 +701,23 @@ def projects(req):
 
 
 
-def get_projects(req):
-    if req.method == "GET":
-        return Http404()
-    if req.method == "POST":
-        projects = Project.objects.all().order_by('Id')
-        account = req.COOKIES.get('account')
-        user = User.objects.filter(Account=account)
-        recruits = []
-        for project in projects:
-            recruit = models.Recruit.objects.filter(project=project)
-            recruits.append(recruit)
-        project_all = zip(projects, recruits)
-        if account:
-            projects = ProjectUser.objects.get(user=user)
-            return render_to_response('project/recruit.html', {'project_all': project_all})
-        else:
-            return render_to_response('project/recruit.html', {'project_all': project_all})
+# def get_projects(req):
+#     if req.method == "GET":
+#         return Http404()
+#     if req.method == "POST":
+#         projects = Project.objects.all().order_by('Id')
+#         account = req.COOKIES.get('account')
+#         user = User.objects.filter(Account=account)
+#         recruits = []
+#         for project in projects:
+#             recruit = models.Recruit.objects.filter(project=project)
+#             recruits.append(recruit)
+#         project_all = zip(projects, recruits)
+#         if account:
+#             projects = ProjectUser.objects.get(user=user)
+#             return render_to_response('project/recruit.html', {'project_all': project_all})
+#         else:
+#             return render_to_response('project/recruit.html', {'project_all': project_all})
 
 
 ''' 招募项目相关页面结束'''
