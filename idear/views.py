@@ -670,6 +670,7 @@ def projects(req):
     '''
     projectLabels = ProjectLabel.objects.all()
     projects = Project.objects.all().order_by("EndTime")
+    recruit_all = []
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
@@ -682,20 +683,23 @@ def projects(req):
                 projects = Project.objects.filter(Img="null")
                 for obj in ProjectLabelObjs:
                     projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
-            recruit_all = []
             for project in projects:
-                recruit = models.Recruit.objects.filter(project__Id=int(project.Id))
+                recruit = models.Recruit.objects.get(project__Id=project.Id)
                 recruit_all.append(recruit)
             all_recruit = zip(projects, recruit_all)
-            print all_recruit
-            return render_to_response('project/recruit.html', {'projectLabels': projectLabels, 'all_recruit': all_recruit})
+            return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
             comments = Comment.objects.fitler(project=id).order_by('Date')
             user = project.user
+            # recruit_all = []
+            # for project in projects:
+            #     recruit = models.Recruit.objects.filter(project__Id=int(project.Id))
+            #     recruit_all.append(recruit)
+            # all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html',
-                                      {'project': project, 'comments': comments, 'user': user})
+                                      {'comments': comments, 'user': user})
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")

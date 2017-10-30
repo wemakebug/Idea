@@ -21,7 +21,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                             <img class="project_img" src="../../static/photos/{{ project.Img }}">
                         </div>
                         <div class="project_top_1_right">
-                            <span class="project_top_1_right-span">{{ project.ProjectName }}<script>alert('{{ recruit.Id }}')</script></span>
+                            <span class="project_top_1_right-span">{{ project.ProjectName }}{{ recruit.StartTime }}  打撒奥所多</span>
                             <div class="project_Text_Bg">
                                 <li class="FixText">截止时间:<p
                                         class="FixText-right">{{ project.EndTime | date:"Y/m/d" }}</p></li>
