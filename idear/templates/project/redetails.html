@@ -78,7 +78,9 @@
                          </div>
                          <div class="rm-header">
                              <div class="ribbon"><span class="ribbon3">招募帖</span></div>
+<
                              <p class="r-message" id="rdr-message"> {{ recruit.StartTime | date:"Y.m.d"}}-{{ recruit.EndTime | date:"Y.m.d"}}&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">{{ recruit.PredictNumber }}</span></p>
+>
                          </div>
                          <div class="rm-nav">
                                   <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
@@ -86,7 +88,6 @@
                          <div class="rcontent">
                                     {# 招募要求#}
                                   <div class="rcontent-main">
-
                                       {{ recruit.Describe }}
 {#                                      <ul>#}
 {#                                        <li>1、 根据需求实现静态页面交互效果；</li>#}
@@ -113,9 +114,9 @@
                          </div>
                      </div>
                      <div class="rfooter">
-                               <div class="rfcontent">
-                                    <div class="rbutton" id="rdrbutton">申请加入</div>
-                               </div>
+                         <div class="rfcontent">
+                             <div class="rbutton" id="rdrbutton">申请加入</div>
+                         </div>
                      </div>
                  </div>
 
