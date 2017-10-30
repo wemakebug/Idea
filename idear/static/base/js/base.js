@@ -46,6 +46,7 @@ $(document).ready(function () {
                 // alert(message);
             } else {
             }
+
         });
          // var cookie = {
          // get:function(str){
@@ -138,16 +139,12 @@ $(document).ready(function () {
     }
 })(jQuery);
 
-    function block() {
-        document.getElementsByClassName("list_hidden")[0].style.display = "block";
-        document.getElementsByClassName("list_content")[0].style.display = "block";
-        document.getElementsByClassName("list_block")[0].style.display = "block";
-        document.getElementsByClassName("list_block p")[0].style.display = "block";
-        document.getElementsByClassName("list_block p a")[0].style.display = "block";
+     function block() {
+         document.getElementsByClassName("list_all")[0].style.display = "block";
+     }
+     function none() {
+         document.getElementsByClassName("list_all")[0].style.display = "none";
+     }
 
-    }
-    function none() {
-        document.getElementsByClassName("list_hidden")[0].style.display = "none";
-    }
 
 

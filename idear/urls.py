@@ -24,7 +24,11 @@ urlpatterns = [
     url(r'^regist$', views.regist),
     url(r'^team$', views.team),
     url(r'^teamdetails$', views.teamdetails),
-    url(r'^praise$',views.praise),
+
+    url(r'^praise$',views.creations),
+
+
+
     url(r'^teamdetails/(?P<teamid>\d+)$', views.teamdetails),
     url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
@@ -44,7 +48,7 @@ urlpatterns = [
     url(r'^test/?(\d+)$', views.test),
     url(r'^getimg', views.get_user_img),
     url(r'^ordinance',views.ordinance),
-     url(r'^release',views.release),
+    url(r'^release',views.release),
     url(r'^comment',views.comment),
     url(r'test', views.test),
 

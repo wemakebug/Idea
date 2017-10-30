@@ -178,6 +178,7 @@ def login(req):
     if req.method == "GET":
         return render_to_response('idea/login.html')
     if req.method == "POST":
+        # req.setCharactorEcoding("utf-8")
         result = {}
         result['email'] = None
         result['status'] = None
@@ -187,7 +188,8 @@ def login(req):
         try:
             email = req.POST['email']
             password = req.POST['password']
-        except:
+        except Exception as e:
+            print(email)
             result['status'] = 0
             result['message'] = '获取信息失败'
             return HttpResponse(json.dumps(result))
@@ -202,8 +204,6 @@ def login(req):
                         result['email'] = email
                         req.session['uuid'] = str(user.Uuid)
                         result['message'] = '登陆成功'
-                        img_path = user.Img
-                        # print(img_path)
                         return HttpResponse(json.dumps(result))
                     elif user.PassWord != password:
                         result['status'] = 0
@@ -216,7 +216,9 @@ def login(req):
             else:
                 result['status'] = 0
                 result['message'] = '帐号格式不正确'
+                message = "message"
                 return HttpResponse(json.dumps(result))
+
 
 
 @csrf_exempt
@@ -638,8 +640,9 @@ def redetails(req):
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
         project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
-        recruit = Recruit.objects.filter(Q(project_id=projectId))
-
+        recruit = models.Recruit.objects.filter(project__Id=projectId)
+        if recruit.exists():
+            recruit = recruit[0]
         return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "recruit": recruit})
@@ -654,7 +657,7 @@ def redetails(req):
         alllables = list(set(alllables))
 
         project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
-        recruit = Recruit.objects.all().filter(project_id=projectId)
+        recruit = models.Recruit.objects.filter(project=projectId)
         return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3],"recruit":recruit})
@@ -679,6 +682,7 @@ def projects(req):
                 projects = Project.objects.filter(Img="null")
                 for obj in ProjectLabelObjs:
                     projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
+                
             return render_to_response('project/recruit.html', {'projects': projects, 'projectLabels': projectLabels})
         else:
             id = req.POST['projectId']
@@ -699,19 +703,19 @@ def get_projects(req):
     if req.method == "GET":
         return Http404()
     if req.method == "POST":
-        projects = Project.objects.all().order_by('Id').filter()
+        projects = Project.objects.all().order_by('Id')
         account = req.COOKIES.get('account')
         user = User.objects.filter(Account=account)
+        recruits = []
+        for project in projects:
+            recruit = models.Recruit.objects.filter(project=project)
+            recruits.append(recruit)
+        project_all = zip(projects, recruits)
         if account:
             projects = ProjectUser.objects.get(user=user)
-            allrecruit = []
-            for project in projects:
-                recruit = models.Recruit.objects.filter(project=project)
-                allrecruit.append()
-            allproject = zip(projects, allrecruit)
-            return render_to_response('project/recruit.html', {'allproject': allproject})
+            return render_to_response('project/recruit.html', {'project_all': project_all})
         else:
-            return render_to_response('project/recruit.html', {'allproject': allproject})
+            return render_to_response('project/recruit.html', {'project_all': project_all})
 
 
 ''' 招募项目相关页面结束'''
@@ -733,7 +737,8 @@ def release(req):
     :return:
     '''
     if req.method == 'GET':
-        return render_to_response('personal/release.html')
+        obj = models.ProjectLabel.objects.all()
+        return render_to_response('personal/release.html', {"labels": obj})
     if req.method == "POST":
         pass
 
@@ -745,9 +750,6 @@ def editprofile(req):
         pass
 
 
-def addlabel(req):
-    obj = models.ProjectLabel.objects.all()
-    return render_to_response('personal/release.html', {"labels": obj})
 
 '''个人中心相关页面结束'''
 
