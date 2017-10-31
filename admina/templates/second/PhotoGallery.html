@@ -35,7 +35,6 @@ HelloWord
 
                             <div id="gallery" class="media-gal">
                                 {% for image in Images %}
-
                                     <div class="images item " name="UserImg">
                                         <a href="#myModal" data-toggle="modal">
                                             <img src="/static/photos/{{ image.Img }}" alt="用户上传图片" id="{{ image.Id }}"/>
@@ -74,9 +73,8 @@ HelloWord
 
                                             <div class="col-md-5 img-modal">
                                                 <img src="/static/images/gallery/image2.jpg" alt="" id="openimg">
-                                                <p class="mtop10"><strong>File Name:</strong> img01.jpg</p>
+                                                <p class="mtop10" id="upimgname"><strong>File Name:</strong> </p>
                                                 <p id="up_img_type"><strong>图片类型:</strong></p>
-                                                <p><strong>Resolution:</strong> 300x200</p>
                                                 <p><strong>上传自:</strong> <a href="#">{{ user.UserName }}</a></p>
                                             </div>
                                             <div class="col-md-7">
@@ -97,8 +95,7 @@ HelloWord
                                                     <input id="link" value="" class="form-control">
                                                 </div>
                                                 <div class="pull-right">
-                                                    <button class="btn btn-danger btn-sm" type="button">Delete</button>
-                                                    <button class="btn btn-success btn-sm" type="button">Save changes</button>
+                                                    <button class="btn btn-danger btn-sm" type="button" id="delete_img_btn">Delete</button>
                                                 </div>
                                             </div>
 
@@ -132,13 +129,24 @@ HelloWord
                             ImageName = decodeURI(ImageName[ImageName.length -1]);
                             ImageType = ImageName.split(".")[ImageName.split(".").length-1];
                             $("#name").val(ImageName);
-                            $("#up_img_type").get(0).innerHTML += ImageType;
-                            alert($("#up_img_type").get(0).innerHTML);
-                            alert(ImageName);
+                            $("#up_img_type").get(0).innerHTML = "<strong>图片类型:</strong>" +ImageType;
+                            $("#upimgname").get(0).innerHTML = "<strong>File Name:</strong>" + ImageName;
                         }
                     }
                 }
             }
-        })
+
+            $("#delete_img_btn").on("click",function () {
+              $.post("PhotoGallery", {"image_id": ImageId}, function (result) {
+                    result = JSON.parse(result);
+                    if(result.status === 1){
+                        window.location.reload();
+                    }else {
+                        alert(result.message);
+                    }
+              })
+            });
+        });
+
     </script>
 {% endblock %}

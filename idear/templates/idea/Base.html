@@ -32,20 +32,23 @@
 			    </div>
 		    </div>
             <div class="user_hidden" id="login_status_true" style="display: none">
-                <div class="user_figure">
+                <div class="user_figure" id="user_figure" onmouseover="block()" onmouseout="none()">
                     <a href="#">
                         <img id="user_img" src="" style="width: 40px;height: 40px;" >
                     </a>
                 </div>
-                <div class="list_hidden">
+            </div>
+            <div class="list_all">
+                <div class="list_left"></div>
+                <div class="list_hidden" id="list_user" onmouseout="none()" onmouseover="block()">
                     <div class="list_content">
-                            <div class="list_block" id="user_name"><p id="username"></p></div>
-                            <div class="list_block" id="my_homepage"><p><a href="#">我的主页</a></p></div>
-                            <div class="list_block" id="my_inspiration"><p><a href="#">我的灵感</a></p></div>
-                            <div class="list_block" id="my_pro"><p><a href="#">我的项目</a></p></div>
-                            <div class="list_block" id="my_follow"><p><a href="#">我关注的</a></p></div>
-                            <div class="list_block" id="my_settings"><p><a href="#">设置</a></p></div>
-                            <div class="list_block" id="logout"><p><a href="">退出</a></p></div>
+                        <div class="list_block" id="user_name" ><p id="username" ></p></div>
+                        <div class="list_block" id="my_homepage" ><p><a href="#">我的主页</a></p></div>
+                        <div class="list_block" id="my_inspiration"><p><a href="#">我的灵感</a></p></div>
+                        <div class="list_block" id="my_pro"><p><a href="#">我的项目</a></p></div>
+                        <div class="list_block" id="my_follow"><p><a href="#">我关注的</a></p></div>
+                        <div class="list_block" id="my_settings"><p><a href="#">设置</a></p></div>
+                        <div class="list_block" id="logout"><p><a href="">退出</a></p></div>
                     </div>
                 </div>
             </div>
