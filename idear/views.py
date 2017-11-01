@@ -437,14 +437,26 @@ def crdetails(req):
         creationId = req.GET['creationId']
         creation = Creation.objects.get(Id=creationId)
         labels = Creation2ProjectLabel.objects.filter(creation_id=creationId)
+        comments = Comment.objects.filter(creation_id = creationId).order_by("-Date")
 
+        commentlist = []
+        for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
+            if comment.commentedId is None:
+                newcomment = []
+                newcomment.append(comment)
+                commentlist.append(newcomment)
+
+        for comlist in commentlist:    # 对每个列表循环  结果:[[head,hui,hui],[head,hui,hui]]
+            for comment in comments:
+                if str(comlist[0].Uuid)==str(comment.commentedId):
+                    comlist.append(comment)
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
 
         creation2crojectLabels = Creation2ProjectLabel.objects.filter(projectLabel_id__in = alllables)    #所有相关标签的 所有的 标签2项目
-        return render_to_response('creation/crdetails.html',{"creation":creation,"creation2crojectLabels":creation2crojectLabels[:2],"labels":labels[:3]})
+        return render_to_response('creation/crdetails.html',{"creation":creation,"comments":commentlist,"creation2crojectLabels":creation2crojectLabels[:2],"labels":labels[:3]})
 
     if req.method == "POST":
         pass
@@ -585,17 +597,19 @@ def comment(req):
     '''
     status = 0
     if req.method =='POST':
-        result = {
-            "status":1,
-            "string":None
-        }
-        username = "chris"
-        creationid = 3
-        content = req.POST["string"]
-        user = models.User.objects.get("UserName=username")
-        creation = models.Creation.objects.get(pk = creationid)
-        models.Comment.objects.create(user = user ,creation = creation , Content = content)
-        return HttpResponse(json.dumps(result))
+        try:
+            username = "chris"
+            creationId = req.POST["creationId"]
+            content = req.POST["content"]
+            user = models.User.objects.get(UserName=username)
+            creation = models.Creation.objects.get(pk = creationId)
+            models.Comment.objects.create(user = user ,creation = creation , Content = content)
+            status = 1
+            return HttpResponse(status)
+        except Exception as e:
+            print e
+            return HttpResponse(status)
+
     if req.method =='GET':
         content = "hello world"
         username = "chris"

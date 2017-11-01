@@ -17,4 +17,4 @@ def firstcommentcontent(value):
 
 @register.filter(name='leftcomment')
 def leftcomment(value):
-	return value[1:]
+    return value[1:]
