@@ -339,8 +339,8 @@ def team(req):
     if req.method == 'POST':
         pass
 
-
-def teamdetails(req, teamid):
+@csrf_exempt
+def teamdetails(req, teamid = 2):
     '''
     团队详情页面 所有team 按照创建时间排序
     :param req: 
@@ -358,7 +358,23 @@ def teamdetails(req, teamid):
             print(labels)
             return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels})
     if req.method == 'POST':
-        pass
+        content = req.POST["string"]
+        username = "chris"
+        teamid = 2
+        result = {
+            "status": 1,
+            "string": None
+        }
+        try:
+            user = models.User.objects.get(UserName=username)
+            userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=teamid))
+        except:
+            result["status"] = 0
+            result["string"] = "空"
+            return HttpResponse(json.dumps(result))
+        else:
+            models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
+            return HttpResponse(json.dumps(1))
 
 
 def teamhelpapplication(req, teamhelpid):
