@@ -52,7 +52,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                     <script>
                         //计算进度条宽度
                         $(function () {
-                            var project_people =  {{ recruit.RecruitedNumber }}/{{ recruit.PredictNumber }};
+                            var project_people =  {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
                             var project_percent = project_people * 100;
                             var project_plan = project_percent + '%';
                             {#                        var project_id = $(this).index();#}
