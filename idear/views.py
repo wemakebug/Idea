@@ -710,7 +710,7 @@ def projects(req):
                 for obj in ProjectLabelObjs:
                     projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
             for project in projects:
-                recruit = models.Recruit.objects.get(project__Id=project.Id)
+                recruit = models.Recruit.objects.filter(project__Id=project.Id)
                 recruit_all.append(recruit)
             all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
