@@ -441,7 +441,7 @@ def crdetails(req):
 
         commentlist = []
         for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
-            if comment.commited_user_id is None:
+            if comment.commentedId is None:
                 newcomment = []
                 newcomment.append(comment)
                 commentlist.append(newcomment)
@@ -450,7 +450,6 @@ def crdetails(req):
             for comment in comments:
                 if str(comlist[0].Uuid)==str(comment.commentedId):
                     comlist.append(comment)
-
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -598,17 +597,19 @@ def comment(req):
     '''
     status = 0
     if req.method =='POST':
-        result = {
-            "status":1,
-            "string":None
-        }
-        username = "chris"
-        creationId = req.POST["creationId"]
-        content = req.POST["content"]
-        user = models.User.objects.get(UserName=username)
-        creation = models.Creation.objects.get(pk = creationId)
-        models.Comment.objects.create(user = user ,creation = creation , Content = content)
-        return HttpResponse(json.dumps(result))
+        try:
+            username = "chris"
+            creationId = req.POST["creationId"]
+            content = req.POST["content"]
+            user = models.User.objects.get(UserName=username)
+            creation = models.Creation.objects.get(pk = creationId)
+            models.Comment.objects.create(user = user ,creation = creation , Content = content)
+            status = 1
+            return HttpResponse(status)
+        except Exception as e:
+            print e
+            return HttpResponse(status)
+
     if req.method =='GET':
         content = "hello world"
         username = "chris"
