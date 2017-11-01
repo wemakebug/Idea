@@ -142,7 +142,7 @@ html{
     -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
     -o-animation: myfirst 0.5s;	/* Opera */
 }
-.add-num{
+.add-num .add-animation{
     display:none;
 }
 .add-num .add-animation{

@@ -23,7 +23,7 @@
                             {% endfor%}
                             <div class="title">
                                 <h5 id="rdpname"> {{ project.ProjectName }}</h5>
-                                <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：第<span id="rdpstatus">一</span>次招募 </p>
+                                <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：第<span id="rdpstatus">{{ recruit.Times }}</span>次招募 </p>
                             </div>
                         </div>
                      <div class="description">
@@ -72,13 +72,16 @@
                      <div class="rmain">
                          <div class="lastday">
                              <span class="size1">剩余时间<br>
-                                 <span class="size2" id="rdlastday">6</span>
+                                 <span class="size2" id="rdlastday"></span>
                                  <span class="size3">天</span>
                              </span>
                          </div>
                          <div class="rm-header">
                              <div class="ribbon"><span class="ribbon3">招募帖</span></div>
-                             <p class="r-message" id="rdr-message"> 2017.05.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">{{ recruit.RecruitedNumber }}</span></p>
+                             <p class="r-message" id="rdr-message">
+                                 {{ recruit.StartTime | date:"Y.m.d"}}-{{ recruit.EndTime | date:"Y.m.d"}}&nbsp;&nbsp;|&nbsp;
+                                 预计招募人数：<span id="rdrpnumber">{{ recruit.PredictNumber }}</span>
+                             </p>
                          </div>
                          <div class="rm-nav">
                                   <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
@@ -86,34 +89,35 @@
                          <div class="rcontent">
                                     {# 招募要求#}
                                   <div class="rcontent-main">
-                                      <ul>
-                                        <li>1、 根据需求实现静态页面交互效果；</li>
-                                        <li>2、熟悉各浏览器的特性和W3C相关标准，对浏览器引擎及JS引擎有一定研究；</li>
-                                        <li>3、熟悉HTTP协议，RestAPI以及WebSocket等通讯协议；</li>
-                                        <li>4、熟悉常见前端开发框架、类库，对其实现机制及原理有深入研究；</li>
-                                        <li>5、对Node.js，AngularJS等前沿开发框架有一定研究者优先。</li>
-                                      </ul>
+                                      {{ recruit.Describe }}
+{#                                      <ul>#}
+{#                                        <li>1、 根据需求实现静态页面交互效果；</li>#}
+{#                                        <li>2、熟悉各浏览器的特性和W3C相关标准，对浏览器引擎及JS引擎有一定研究；</li>#}
+{#                                        <li>3、熟悉HTTP协议，RestAPI以及WebSocket等通讯协议；</li>#}
+{#                                        <li>4、熟悉常见前端开发框架、类库，对其实现机制及原理有深入研究；</li>#}
+{#                                        <li>5、对Node.js，AngularJS等前沿开发框架有一定研究者优先。</li>#}
+{#                                      </ul>#}
                                   </div>
                                     {# 招募进度条#}
                                   <div class="r-number">
-                                       <div class="progress-pie-chart" data-percent="50">
-                                       <div class="ppc-progress">
-                                            <div class="ppc-progress-fill"></div>
+                                       <div class="progress-pie-chart" data-percent="{{ recruit.RecruitedNumber }}">
+                                           <div class="ppc-progress">
+                                                <div class="ppc-progress-fill"></div>
+                                           </div>
+                                           <div class="ppc-percents">
+                                                 <div class="pcc-percents-wrapper">
+                                                 <span>{{ recruit.RecruitedNumber }}/{{ recruit.PredictNumber }}</span>
+                                                 </div>
+                                           </div>
                                        </div>
-                                       <div class="ppc-percents">
-                                             <div class="pcc-percents-wrapper">
-                                             <span>%</span>
-                                             </div>
-                                       </div>
-                                  </div>
                                        <p class="r-progress">当前招募进度</p>
                                   </div>
                          </div>
                      </div>
                      <div class="rfooter">
-                               <div class="rfcontent">
-                                    <div class="rbutton" id="rdrbutton">申请加入</div>
-                               </div>
+                         <div class="rfcontent">
+                             <div class="rbutton" id="rdrbutton">申请加入</div>
+                         </div>
                      </div>
                  </div>
 
@@ -121,7 +125,7 @@
                       <div class="applyhead">
                           <div class="ribbon"><span class="ribbon4">请填入申请理由</span></div>
                       </div>
-{#                     <p class="applyhead">请填入申请理由</p>#}
+
                      <textarea placeholder="" name="" id="comment-content2" class="apply-text"></textarea>
                      <img class="close" id="rdclose" src="{% static 'project/imgs/close.svg'%}">
                      <button class="subapply" id="rdsubapply">提交</button>
@@ -187,48 +191,7 @@
                                       </div>
                                   </div>
                         </div>
-                        <div class="c-reply">
-                            <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
-                            <div class="rcomment-box">
-                                      <div class="rcomment-head">
-                                          <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
-                                          <span class="rcdate">2017-11-11</span>
-                                          <div class="r-option">
-                                              <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
-                                              <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
-                                          </div>
-                                      </div>
-                                        <div class="rcomment-content">
-                                         <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                                      </div>
-                                      <div class="commentreply" id="rcommentreply">
-                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
-                                          <button class="putcomment" id="putcomment">回复</button>
-                                      </div>
-                                  </div>
-                        </div>
-                        <div class="c-reply">
-                            <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
-                            <div class="rcomment-box">
-                                <div class="rcomment-head">
-                                          <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
-                                          <span class="rcdate">2017-11-11</span>
-                                          <div class="r-option">
-                                              <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
-                                              <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
-                                          </div>
-                                      </div>
-                                <div class="rcomment-content">
-                                         <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                                      </div>
-                                <div class="commentreply" id="rcommentreply">
-                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
-                                          <button class="putcomment" id="putcomment">回复</button>
-                                      </div>
-                            </div>
-                        </div>
+
 
                     </div>
                 </div>
@@ -239,10 +202,11 @@
         {% block script %}
             <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
             <script type="text/javascript"  src="{% static  'project/js/layer/layer.js' %}"> </script>
-
+            <script type="text/javascript"  src="{% static  'project/js/redetails.js' %}"> </script>
        {% endblock %}
         <script>
-             $(".home-b-report"). on('click', function(){
+{#            项目举报#}
+            $(".home-b-report"). on('click', function(){
                     layer.open({
 	                            type: 1,
                                 offset: '200px',
@@ -257,8 +221,8 @@
                                         '<button class="putreport" id="putreport">提交</button> '
 	                });
                 });
-
-             $("#rdcreport"). on('click', function(){
+{#            评论举报#}
+            $(".creport"). on('click', function(){
                      layer.open({
 	                            type: 1,
                                 offset: '200px',
@@ -274,7 +238,8 @@
 
 	                });
                 });
-             $(".rcreport"). on('click', function(){
+{#                  评论回复举报#}
+                $(".rcreport"). on('click', function(){
                     layer.open({
 	                            type: 1,
                                 offset: '200px',
@@ -287,60 +252,16 @@
                                 anim: 0//0-6的动画形式，-1不开启
 	                            ,content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
                                         '<button class="putreport" id="putreport">提交</button> '
+	                            });
+                });
 
-	                });
-                });
-{#            招募进度条#}
-            $(function () {
-                var $ppc = $('.progress-pie-chart'),
-                    percent = parseInt($ppc.data('percent')),
-                    deg = 360 * percent / 100;
-                if (percent > 50) {
-                    $ppc.addClass('gt-50');
-                }
-                if (percent > 100){
-                    deg = 360;
-                }
-                $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
-                  $('.ppc-percents span').html( percent + '/' +  100);
-{#                $('.ppc-percents span').html('1' + '/' + percent/100);#}
-{#                进度条中间显示计算 已招募人数/预计招募人数#}
-                });
-                $("#comment11-22").click(function () {
-                   document.getElementById("comment-content1").focus();
-                });
-{#                申请加入下拉#}
-                $("#rdrbutton").click(function(){
-                    $("#rdr-apply").slideDown("slow");
-                });
-{#                收起提交申请部分#}
-                $("#rdclose").click(function(){
-                    $("#rdr-apply").slideUp("slow");
-                });
-{#                 提交部分#}
-                $("#rdsubapply").click(function(){
-                    $("#rdr-apply").slideUp("slow");
-                });
-{#                评论回复部分#}
-                $(".creply").click(function(){
-                    $("#commentreply").slideDown("slow");
-                });
-                $('.rcreply').click(function(){
-                    var ele = this;
-                    var parent_div = ele.parentNode.parentNode.parentNode;
-                    var reply = parent_div.lastChild;
-                    if(reply.tagName === undefined){
-                        reply = parent_div.childNodes[parent_div.childNodes.length-2];
-                    }else {
-                        reply = parent_div.lastChild;
-                    }
-                    reply = $(reply);
-                    reply.slideDown("slow");
-                });
+
+
+
 {#                关注部分点击图片替换#}
                 function changeImage()
                     {
-                    element=document.getElementById('rdcoimg')
+                    element=document.getElementById('rdcoimg');
                     if (element.src.match("collection0"))
                       {
                       element.src='{% static '/project/imgs/star.png' %}' ;
@@ -352,95 +273,117 @@
                     }
 
 {#                   评论创建#}
-                $("#rdputcomment").click(function(){
+                $("#rdputcomment").click(function() {
 
-                            var c_main = document.createElement("div");
-                            c_main.className = "cmain";
+                    var c_main = document.createElement("div");
+                    c_main.className = "cmain";
 
-                            var cmain_cimg = document.createElement("img");
-                            cmain_cimg.className = "c-img";
-                            cmain_cimg.src = "/static/project/imgs/user.svg";
+                    var cmain_cimg = document.createElement("img");
+                    cmain_cimg.className = "c-img";
+                    cmain_cimg.src = "/static/project/imgs/user.svg";
 
-                            var cmain_commentbox = document.createElement("div");
-                            cmain_commentbox.className = "comment-box";
+                    var cmain_commentbox = document.createElement("div");
+                    cmain_commentbox.className = "comment-box";
 
-                            var commentbox_commenthead = document.createElement("div");
-                            commentbox_commenthead.className = "comment-head";
+                    var commentbox_commenthead = document.createElement("div");
+                    commentbox_commenthead.className = "comment-head";
 
-                            var commenthead_cname = document.createElement("h6");
-                            commenthead_cname.className = "comment-name";
+                    var commenthead_cname = document.createElement("h6");
+                    commenthead_cname.className = "comment-name";
 
-                            var commenthead_cdate = document.createElement("span");
-                            commenthead_cdate.className = "cdate";
+                    var commenthead_cdate = document.createElement("span");
+                    commenthead_cdate.className = "cdate";
 
-                            var commenthead_coption = document.createElement("div");
-                            commenthead_coption.className = "c-option";
+                    var commenthead_coption = document.createElement("div");
+                    commenthead_coption.className = "c-option";
 
-                            var coption_clike = document.createElement("img");
-                            coption_clike.className = "clike";
-                            coption_clike.src = "/static/project/imgs/like1.svg";
+                    var coption_clike = document.createElement("img");
+                    coption_clike.className = "clike";
+                    coption_clike.src = "/static/project/imgs/like1.svg";
 
-                            var coption_clikenum = document.createElement("span");
-                            coption_clikenum.className = "clikenum";
+                    var coption_clikenum = document.createElement("span");
+                    coption_clikenum.className = "clikenum";
 
-                            var coption_creply = document.createElement("img");
-                            coption_creply.className = "creply";
-                            coption_creply.src = "/static/project/imgs/reply.svg";
+                    var coption_creply = document.createElement("img");
+                    coption_creply.className = "creply";
+                    coption_creply.src = "/static/project/imgs/reply.svg";
 
-                            var coption_creport = document.createElement("img");
-                            coption_creport.className = "creport";
-                            coption_creport.src = "/static/creation/imgs/report.png";
+                    var coption_creport = document.createElement("img");
+                    coption_creport.className = "creport";
+                    coption_creport.src = "/static/creation/imgs/report.png";
 
-                            var commentbox_commentcontent = document.createElement("div");
-                            commentbox_commentcontent.className = "comment-content";
+                    var commentbox_commentcontent = document.createElement("div");
+                    commentbox_commentcontent.className = "comment-content";
 
-                            var commentcontent_p = document.createElement("p");
-                            commentcontent_p.textContent = "ASDASDASDAWDF";
+                    var commentcontent_p = document.createElement("p");
+                    commentcontent_p.textContent = "ASDASDASDAWDF";
 
-                            var commentbox_commentreply = document.createElement("div");
-                            commentbox_commentreply.className = "commentreply";
-                            commentbox_commentreply.name = "commentreply";
-
-
-                            var commentreply_text = document.createElement("textarea");
-                            commentreply_text.className = "commentreply-text";
-
-                            var commentreply_putcomment = document.createElement("button");
-                            commentreply_putcomment.className = "putcomment";
-                            commentreply_putcomment.textContent = "回复";
-
-                            c_main.appendChild(cmain_cimg);
-                            c_main.appendChild(cmain_commentbox);
-
-                            cmain_commentbox.appendChild(commentbox_commenthead);
-                            cmain_commentbox.appendChild(commentbox_commentcontent);
-                            cmain_commentbox.appendChild(commentbox_commentreply);
-                            commentbox_commenthead.appendChild(commenthead_cname);
-                            commentbox_commenthead.appendChild(commenthead_cdate);
-                            commentbox_commenthead.appendChild(commenthead_coption);
-                            commenthead_coption.appendChild(coption_clike);
-                            commenthead_coption.appendChild(coption_clikenum);
-                            commenthead_coption.appendChild(coption_creport);
-                            commenthead_coption.appendChild(coption_creply);
-                            commentbox_commentcontent.appendChild(commentcontent_p);
-
-                            commentbox_commentreply.appendChild(commentreply_text);
-                            commentbox_commentreply.appendChild(commentreply_putcomment);
-
-                            var comment_input = document.getElementById("comment-content1");
-                            var comment_content = comment_input.value;
-                            commentcontent_p.innerHTML = comment_content
-                            var c_all = document.getElementsByName("c-all")[0];
-
-                            var cmain = document.getElementsByClassName("cmain")[0];
-                            c_all.insertBefore(c_main, cmain);
+                    var commentbox_commentreply = document.createElement("div");
+                    commentbox_commentreply.className = "commentreply";
+                    commentbox_commentreply.name = "commentreply";
 
 
+                    var commentreply_text = document.createElement("textarea");
+                    commentreply_text.className = "commentreply-text";
 
+                    var commentreply_putcomment = document.createElement("button");
+                    commentreply_putcomment.className = "putcomment";
+                    commentreply_putcomment.textContent = "回复";
 
+                    c_main.appendChild(cmain_cimg);
+                    c_main.appendChild(cmain_commentbox);
 
+                    cmain_commentbox.appendChild(commentbox_commenthead);
+                    cmain_commentbox.appendChild(commentbox_commentcontent);
+                    cmain_commentbox.appendChild(commentbox_commentreply);
+                    commentbox_commenthead.appendChild(commenthead_cname);
+                    commentbox_commenthead.appendChild(commenthead_cdate);
+                    commentbox_commenthead.appendChild(commenthead_coption);
+                    commenthead_coption.appendChild(coption_clike);
+                    commenthead_coption.appendChild(coption_clikenum);
+                    commenthead_coption.appendChild(coption_creport);
+                    commenthead_coption.appendChild(coption_creply);
+                    commentbox_commentcontent.appendChild(commentcontent_p);
+
+                    commentbox_commentreply.appendChild(commentreply_text);
+                    commentbox_commentreply.appendChild(commentreply_putcomment);
+
+                    var comment_input = document.getElementById("comment-content1");
+                    var comment_content = comment_input.value;
+                    commentcontent_p.innerHTML = comment_content
+                    var c_all = document.getElementsByName("c-all")[0];
+
+                    var cmain = document.getElementsByClassName("cmain")[0];
+                    c_all.insertBefore(c_main, cmain);
 
                 });
+                 $(function () {
+                     //var $ppc = $('.progress-pie-chart'),
+                     //percent = parseInt($ppc.data('percent')),
+
+                     var percent = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
+                     deg = 360 * percent;
+                     if (percent > 0.5) {
+                         $ppc.addClass('gt-50');
+                     }
+                     if (percent > 1) {
+                         deg = 360;
+                     }
+                     $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
+                 });
+
+{#                 招募帖倒计时部分#}
+                 $(function() {
+{#                     当前时间#}
+                     var rtime = Math.round(new Date().getTime()/1000);
+
+{#                     招募截止时间#}
+                     var etime = Math.round(new Date().getTime( )/1000);
+
+                     var lastday = etime - rtime;
+                     $("#rdlastday").text(lastday);
+                 });
+
         </script>
 
 
