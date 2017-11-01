@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from itertools import chain
 import json
 
+import time
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
@@ -688,7 +689,7 @@ def redetails(req):
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3],"recruit":recruit})
 
- 
+
 @csrf_exempt
 def projects(req):
     '''
