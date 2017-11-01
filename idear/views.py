@@ -356,7 +356,6 @@ def teamdetails(req, teamid = 2):
             print(e.message)
             return Http404
         else:
-            print(labels)
             return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels})
     if req.method == 'POST':
         content = req.POST["string"]

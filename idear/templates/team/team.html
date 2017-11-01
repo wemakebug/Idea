@@ -82,10 +82,10 @@
     $(function(){
         $("body").on("click",".praise_0",function () {
             var praise_img = $(this).find("img");
-            var text_box = $(".add-num");
-            var praise_txt = $(".praise-txt");
+            var text_box = $(this).siblings(".add-num");
+            var praise_txt = $(this).siblings(".praise-txt");
             var num = parseInt(praise_txt.text());
-            if(praise_img.attr("src") == '/static/team/imgs/yizan.png'){
+            if(praise_img.attr("src") == '{% static 'team/imgs/yizan.png' %}'){
                 $(this).html("<img src='{% static 'team/imgs/zan.png' %}' name='praise_img' class='animation' />");
                 praise_txt.removeClass("hover");
                 text_box.show().html("<em class='add-animation'>-1</em>");
