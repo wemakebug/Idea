@@ -24,12 +24,12 @@ urlpatterns = [
     url(r'^regist$', views.regist),
     url(r'^team$', views.team),
     url(r'^teamdetails$', views.teamdetails),
-
     url(r'^praise$',views.creations),
-
-
-
+<<<<<<< HEAD
     url(r'^teamdetails/(?P<teamid>\d+)$', views.teamdetails),
+=======
+    url(r'^teamdetails/2$', views.teamdetails),
+>>>>>>> c5997f9891af1e13e2c362b6438d284ee4f97117
     url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
     url(r'^forgetPassword$', views.forgetPassword),
