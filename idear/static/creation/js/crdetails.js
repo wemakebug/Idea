@@ -8,7 +8,6 @@ userId = $.cookie("user")
 
 
 $("#putcomment").click(function(){
-
 $.post("comment",{content:$("#comment-content1").val(),creationId:$("#creationId").val()},function(data){
 location.reload();})
 

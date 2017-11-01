@@ -200,7 +200,7 @@
     float: right;
 }
 .praise1-2{
-    width: 16%;
+    width: 17%;
     height: 30px;
     margin-top: 21px;
     float: right;
@@ -803,18 +803,18 @@
     margin-left: 3%;
     margin-top: 4%;
     border-radius: 20px;
-    -webkit-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
-    -moz-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
-    box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
+    -webkit-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);
+    -moz-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);
+    box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);
 }
 .historys1-2:hover{
-    -webkit-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
-    -moz-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
-    box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
+    -webkit-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.8);
+    -moz-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.8);
+    box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.8);
 }
 .historys1-3{
-	width: 100px;
-	height: 100px;
+	width: 90px;
+	height: 90px;
 	border: 1px solid rgba(54, 54 ,54,0.1);
 	float: left;
 	margin-top: 3px;
@@ -845,11 +845,11 @@
 .historys1-7{
 	width: 100%;
 	height: 32%;
-	padding-top: 1%;
 	font-size: 16px;
 	clear: both;
 	text-indent: 1.5em;
 	color: rgba(54, 54 ,54,0.6);
+    padding: 0 6px;
 }
 .project_middle_text {
     font-size: 16px;
@@ -976,22 +976,28 @@
 .teamlable1-3{
 	width: 100%;
 	height: 200px;
-	color: rgba(54, 54 ,54,0.6);
 }
 .teamlable1-4{
-	border: 1px solid rgba(54, 54 ,54,0.1);
-    padding: .25em .2125em;
-    color: rgba(54, 54 ,54,0.6);
-    border-radius: .25em;
-    background: rgba( 181,181,181,0.1);
+	border: 1px solid rgba(54, 54 ,54,0.2);
+    color: rgba(54, 54 ,54,0.5);
+    border-radius: 5px;
+    background: rgba( 181,181,181,0.05);
     -webkit-transition: all .100s;
     transition: all .100s;
-    /*font-family: kaiti;*/
+    width: auto;
 	font-family: "Microsoft Yahei";
 	font-size: 18px;
-	height: 50px;
-	line-height: 50px;
-	margin:1px 4px
+	height: 40px;
+	line-height: 40px;
+	margin:2px 3px;
+    display: inline-block;
+    padding: 0 2px;
+}
+.teamlable1-4:hover{
+    background-color: #57cecd;
+}
+.hovera:hover{
+    color: white !important;
 }
 .register1-3{
     font-size:1em ;
@@ -1162,29 +1168,29 @@
     height:100%;
 }
 .clike{
-    width:25px;
-    height:25px;
+    width:20px;
+    height:20px;
     float:left;
-    margin-top:4px;
+    margin-top:6px;
 }
 .clikenum{
     display:inline-block;
     float:left;
-    margin-top:10px;
+    margin-top:8px;
     color: #999;
 	font-size: 13px;
 }
 .creport{
     width:20px;
     height:20px;
-    float:right;
-    margin:7px 10px 0 4px;
+    float:left;
+    margin:7px 10px 0 10%;
 }
 .creply{
     width:20px;
     height:20px;
     float:left;
-    margin:8px 0 0 10px;
+    margin:8px 0 0 10%;
 }
 .comment-content {
 	width:100%;
@@ -1250,7 +1256,7 @@
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #ABCDCB;*/
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
@@ -1271,14 +1277,14 @@
 }
 .r-option{
     float:right;
-    width:22%;
+    width:20%;
     height:100%;
 }
 .rclike{
-    width:25px;
-    height:25px;
+    width:20px;
+    height:20px;
     float:left;
-    margin-top:4px;
+    margin-top:8px;
 }
 .rclikenum{
     display:inline-block;
@@ -1290,14 +1296,14 @@
 .rcreport{
     width:20px;
     height:20px;
-    float:right;
-    margin:7px 10px 0 4px;
+    float:left;
+    margin:7px 10px 0 10%;
 }
 .rcreply{
     width:20px;
     height:20px;
     float:left;
-    margin:8px 0 0 10px;
+    margin:8px 0 0 10%;
 }
 .rcomment-content {
 	width:100%;

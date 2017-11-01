@@ -1,16 +1,17 @@
 /**
  * Created by admin on 2017/7/23.
  */
-
+//点击按钮后发送跳转到指定页面的事件。
 $(document).ready(function() {
     $("#petitionhelp").click(function () {
-        //点击按钮后发送跳转到指定页面的事件。
         window.location.href = "teamhelpapplication";
     });
 });
+//end跳到指定页面结束
 
-
+//判断评论输入框为空，不为空往后台添加记录
 $("#putcommentbutton").click(function () {
+    function createteamcomment() {
         var comment_text = document.getElementById("contectnumber1").value;
         if (comment_text == null) {
             swal({
@@ -129,18 +130,96 @@ $("#putcommentbutton").click(function () {
             var c_all = document.getElementsByName("c-all")[0];
             var c_main = document.getElementsByClassName("cmain")[0];
             c_all.insertBefore(parentdiv, c_main);
-        }
-        $("#contectnumber1").val("");
-         var comment_text = document.getElementById("contectnumber1").value;
-        $.post('/idear/teamdetails/2',{
 
+            $("#contectnumber1").val("");
+        }
+    }
+        var comment_text = document.getElementById("contectnumber1").value;
+        $.post('/idear/teamdetails/2',{
             "string":comment_text
         }, function (data) {
             data = JSON.parse(data);
-            if(data.status == 0){
+            if(data.status == 0) {
                 alert("Wrong");
+            }else {
+                createteamcomment(data);
             }
         });
-
 });
+//end评论添加记录结束
+
+//控制标签可以选择多个
+document.onkeydown=Myfunction;
+function Myfunction(){
+   var oDiv = document.getElementById("teamlable1-4");
+    for(var i=0;i<oDiv.length;i++){
+        oDiv[i].onclick = function(){
+            if(!this.style.backgroundColor ){
+                this.style.backgroundColor = '#57cecd';
+                this.style.color = '#ffffff';
+            }else{
+                this.style.backgroundColor = '';
+                this.style.color = 'gray';
+            }
+        };
+    }
+};
+//end标签选择多个的结束
+
+//获得焦点跳转到评论
+$("#comment11-2").click(function () {
+        document.getElementById("contectnumber1").focus();
+    });
+//end跳转到评论结束
+
+//评论动态效果
+//     $(function(){
+//         $("#praise11").on("click",function () {
+//             var praise_img = $("#praise-img11");
+//             var text_box = $("#add-num11");
+//             var praise_txt = $("#praise-txt11");
+//             var num=parseInt(praise_txt.text());
+//             if(praise_img.attr("src") === ("{% static 'team/imgs/yizan.png' %}")){
+//                 $(this).html("<img src='{% static 'team/imgs/点赞.png' %}' id='praise-img11' class='animation' />");
+//                 praise_txt.removeClass("hover");
+//                 text_box.show().html("<em class='add-animation'>-1</em>");
+//                 $(".add-animation").removeClass("hover");
+//                 num -=1;
+//                 praise_txt.text(num)
+//             }else{
+//                 $(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img11' class='animation' />");
+//                 praise_txt.addClass("hover");
+//                 text_box.show().html("<em class='add-animation'>+1</em>");
+//                 $(".add-animation").addClass("hover");
+//                 num +=1;
+//                 praise_txt.text(num)
+//             }
+//         });
+// 	});
+//      $(function(){
+//         $("#praise11-1").on("click",function () {
+//             var praise_img1 = $("#praise-img11-1");
+//             var text_box1 = $("#add-num11-1");
+//             var praise_txt1 = $("#praise-txt11-1");
+//             var num1=parseInt(praise_txt1.text());
+//                 if(praise_img1.attr("src") === ("{% static 'team/imgs/心形实心.png' %}")){
+//                 $(this).html("<img src='{% static 'team/imgs/心形.png' %}' id='praise-img11-1' class='animation' />");
+//                 praise_txt1.removeClass("hover");
+//
+//                 text_box1.show().html("<em class='add-animation'>-1</em>");
+//                 $(".add-animation").removeClass("hover");
+//                 num1 -=1;
+//                 praise_txt1.text(num1)
+//             }else{
+//                 $(this).html("<img src='{% static 'team/imgs/心形实心.png' %}' id='praise-img11-1' class='animation' />");
+//                 praise_txt1.addClass("hover");
+//                 text_box1.show().html("<em class='add-animation'>+1</em>");
+//                 $(".add-animation").addClass("hover");
+//                 num1 +=1;
+//                 praise_txt1.text(num1)
+//             }
+//         });
+// 	});
+ //end评论动态效果结束
+
 
