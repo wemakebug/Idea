@@ -24,11 +24,7 @@ urlpatterns = [
     url(r'^regist$', views.regist),
     url(r'^team$', views.team),
     url(r'^teamdetails$', views.teamdetails),
-<<<<<<< HEAD
     url(r'^praise$',views.creations),
-=======
-    # url(r'^praise$', views.praise),
->>>>>>> 04ed10819299f509e37f59e067760f25955f948f
     url(r'^teamdetails/(?P<teamid>\d+)$', views.teamdetails),
     url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
