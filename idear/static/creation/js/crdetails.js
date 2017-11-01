@@ -8,9 +8,12 @@ userId = $.cookie("user")
 
 
 $("#putcomment").click(function(){
-
 $.post("comment",{content:$("#comment-content1").val(),creationId:$("#creationId").val()},function(data){
-location.reload();})
+    if (data == 1)
+      location.reload()
+    else 
+      alert("Sorry, 出现了一些问题")
+})
 
 })
 
