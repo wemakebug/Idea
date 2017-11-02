@@ -13,7 +13,7 @@
 {% endblock %}
 {% block content %}
     <div class="main">
-        <div class="content-all">{{ recruit.EndTime|date:"Y-m-d" }}
+        <div class="content-all">{{ recruit.EndTime|date:"Y-m-d" }}{{ EndTimeStamp }}
             <div class="main-left">
                 <div class="content-top">
 
@@ -380,11 +380,9 @@
 
         {#                 招募帖倒计时部分#}
         $(function () {
-            {#                     当前时间#}
-            var rtime_Y=new Date().getFullYear();
-            var rtime_M=new Date().getMonth();
-            var rtime_D=new Date().getDate();
-            var i= {{ recruit.EndTime|date:"Y" }}
+            var nowtimestamp = Date.parse(new Date());
+            var EndTimeStamp = {{ EndTime }};
+            
         });
 
     </script>
