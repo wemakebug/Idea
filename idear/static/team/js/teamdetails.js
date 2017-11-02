@@ -136,14 +136,13 @@ $("#putcommentbutton").click(function () {
     }
         var comment_text = document.getElementById("contectnumber1").value;
         $.post('/idear/teamdetails/2',{
-
             "string":comment_text
         }, function (data) {
             data = JSON.parse(data);
             if(data.status == 0) {
                 alert("Wrong");
             }else {
-                createteamcomment(data)
+                createteamcomment(data);
             }
         });
 });

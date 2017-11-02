@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from itertools import chain
 import json
 
+import time
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
@@ -339,8 +340,8 @@ def team(req):
     if req.method == 'POST':
         pass
 
-
-def teamdetails(req, teamid):
+@csrf_exempt
+def teamdetails(req, teamid = 2):
     '''
     团队详情页面 所有team 按照创建时间排序
     :param req: 
@@ -355,10 +356,25 @@ def teamdetails(req, teamid):
             print(e.message)
             return Http404
         else:
-            print(labels)
             return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels})
     if req.method == 'POST':
-        pass
+        content = req.POST["string"]
+        username = "chris"
+        teamid = 2
+        result = {
+            "status": 1,
+            "string": None
+        }
+        try:
+            user = models.User.objects.get(UserName=username)
+            userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=teamid))
+        except:
+            result["status"] = 0
+            result["string"] = "空"
+            return HttpResponse(json.dumps(result))
+        else:
+            models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
+            return HttpResponse(json.dumps(1))
 
 
 def teamhelpapplication(req, teamhelpid):
@@ -421,14 +437,26 @@ def crdetails(req):
         creationId = req.GET['creationId']
         creation = Creation.objects.get(Id=creationId)
         labels = Creation2ProjectLabel.objects.filter(creation_id=creationId)
+        comments = Comment.objects.filter(creation_id = creationId).order_by("-Date")
 
+        commentlist = []
+        for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
+            if comment.commentedId is None:
+                newcomment = []
+                newcomment.append(comment)
+                commentlist.append(newcomment)
+
+        for comlist in commentlist:    # 对每个列表循环  结果:[[head,hui,hui],[head,hui,hui]]
+            for comment in comments:
+                if str(comlist[0].Uuid)==str(comment.commentedId):
+                    comlist.append(comment)
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
 
         creation2crojectLabels = Creation2ProjectLabel.objects.filter(projectLabel_id__in = alllables)    #所有相关标签的 所有的 标签2项目
-        return render_to_response('creation/crdetails.html',{"creation":creation,"creation2crojectLabels":creation2crojectLabels[:2],"labels":labels[:3]})
+        return render_to_response('creation/crdetails.html',{"creation":creation,"comments":commentlist,"creation2crojectLabels":creation2crojectLabels[:2],"labels":labels[:3]})
 
     if req.method == "POST":
         pass
@@ -569,17 +597,19 @@ def comment(req):
     '''
     status = 0
     if req.method =='POST':
-        result = {
-            "status":1,
-            "string":None
-        }
-        username = "chris"
-        creationid = 3
-        content = req.POST["string"]
-        user = models.User.objects.get("UserName=username")
-        creation = models.Creation.objects.get(pk = creationid)
-        models.Comment.objects.create(user = user ,creation = creation , Content = content)
-        return HttpResponse(json.dumps(result))
+        try:
+            username = "chris"
+            creationId = req.POST["creationId"]
+            content = req.POST["content"]
+            user = models.User.objects.get(UserName=username)
+            creation = models.Creation.objects.get(pk = creationId)
+            models.Comment.objects.create(user = user ,creation = creation , Content = content)
+            status = 1
+            return HttpResponse(status)
+        except Exception as e:
+            print e
+            return HttpResponse(status)
+
     if req.method =='GET':
         content = "hello world"
         username = "chris"
@@ -659,7 +689,7 @@ def redetails(req):
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3],"recruit":recruit})
 
- 
+
 @csrf_exempt
 def projects(req):
     '''
@@ -681,7 +711,7 @@ def projects(req):
                 for obj in ProjectLabelObjs:
                     projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
             for project in projects:
-                recruit = models.Recruit.objects.get(project__Id=project.Id)
+                recruit = models.Recruit.objects.filter(project__Id=project.Id)
                 recruit_all.append(recruit)
             all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
