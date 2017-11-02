@@ -142,7 +142,7 @@ html{
     -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
     -o-animation: myfirst 0.5s;	/* Opera */
 }
-.add-num .add-animation{
+.add-num {
     display:none;
 }
 .add-num .add-animation{
@@ -160,7 +160,7 @@ html{
     -o-animation: mypraise 0.5s ;	/* Opera */
     font-style:normal;
 }
-.praise .hover , #add-num .add-animation.hover , #praise-txt.hover{
+.praise_0 .hover , .add-num .add-animation.hover , .praise-txt.hover{
     color: #EB4F38;
 }
 

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from itertools import chain
 import json
 
+import time
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
@@ -355,7 +356,6 @@ def teamdetails(req, teamid = 2):
             print(e.message)
             return Http404
         else:
-            print(labels)
             return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels})
     if req.method == 'POST':
         content = req.POST["string"]
@@ -607,7 +607,7 @@ def comment(req):
             status = 1
             return HttpResponse(status)
         except Exception as e:
-            print e
+            print(e)
             return HttpResponse(status)
 
     if req.method =='GET':
@@ -689,7 +689,7 @@ def redetails(req):
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3],"recruit":recruit})
 
- 
+
 @csrf_exempt
 def projects(req):
     '''
@@ -711,7 +711,7 @@ def projects(req):
                 for obj in ProjectLabelObjs:
                     projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
             for project in projects:
-                recruit = models.Recruit.objects.get(project__Id=project.Id)
+                recruit = models.Recruit.objects.filter(project__Id=project.Id)
                 recruit_all.append(recruit)
             all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
