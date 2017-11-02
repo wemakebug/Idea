@@ -16,7 +16,7 @@ class Admin(models.Model):
     Id = models.AutoField(primary_key=True)
     Account = models.CharField(null=False, blank=False, unique=True, max_length=25)
     Password = models.CharField(null=False, blank=False, max_length=25)
-    DateTime = models.DateField(auto_now_add=True)
+    DateTime = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return self.Account
@@ -41,7 +41,7 @@ class User(models.Model):
     Sex = models.PositiveSmallIntegerField(default=0, null=False)
     Email = models.EmailField(null=False, max_length=32, unique=True)
     Score = models.PositiveIntegerField(default=0, null=False)
-    RegistTime = models.DateField(auto_now_add=True)
+    RegistTime = models.DateTimeField(auto_now_add=True)
     Phone = models.CharField(null=True, blank=True, max_length=25)
     Img = models.ImageField(upload_to='photos/%Y/%m/%d/user', null=True, blank=True)
     Introduction = models.TextField(null=True, max_length=200)
@@ -62,8 +62,8 @@ class Project(models.Model):
     Id = models.AutoField(primary_key=True)
     ProjectName = models.CharField(null=False, max_length=20, unique=True)
     Description = models.TextField(null=False, max_length=200)
-    StartTime = models.DateField(auto_now_add=True)
-    EndTime = models.DateField(null=False, )
+    StartTime = models.DateTimeField(auto_now_add=True)
+    EndTime = models.DateTimeField(null=False, )
     Statue = models.PositiveIntegerField(default=0)
     Number = models.PositiveIntegerField(default=1)
     Img = models.ImageField(upload_to='photos/%Y/%m/%d/project', null=True)
@@ -141,9 +141,9 @@ class Creation(models.Model):
     创意表
     '''
     Id = models.AutoField(primary_key=True)
-    Date = models.DateField(auto_now_add=True)
+    Date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, related_name='Creation_User_set')
-    LastChange = models.DateField(auto_now=True)
+    LastChange = models.DateTimeField(auto_now=True)
     Describe = models.TextField(max_length=200, null=True)
     Name = models.CharField(max_length=20, null=False)
     IsUse = models.BooleanField(default=True)
@@ -170,8 +170,8 @@ class Recruit(models.Model):
     '''
     Id = models.AutoField(primary_key=True)
     project = models.ForeignKey(Project, related_name='Recruit_Project_set', null=False)
-    StartTime = models.DateField(auto_now_add=True)
-    EndTime = models.DateField(null=True)
+    StartTime = models.DateTimeField(auto_now_add=True)
+    EndTime = models.DateTimeField(null=True)
     Describe = models.TextField(null=False, max_length=1000)
     State = models.PositiveIntegerField(default=0) ##
     Times = models.PositiveIntegerField(default=1)
@@ -205,11 +205,20 @@ class Apply(models.Model):
     recruit = models.ForeignKey(Recruit, related_name='Apply_Recruit_set', null=False)
     Describe = models.TextField(null=True, max_length=200)
     State = models.PositiveIntegerField(default=0)
-    SendTime = models.DateField(auto_now_add=True)
+    SendTime = models.DateTimeField(auto_now_add=True)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):
         return self.user.__unicode__()
+
+class MessageType(models.Model):
+    '''
+    消息分类
+    '''
+    Id = models.AutoField(primary_key=True)
+    Describe = models.CharField(max_length=70, null=True, blank=True)
+    Priority = models.PositiveIntegerField(default=0)
+    Uuid = models.URLField(null=True, blank=True, default=str(uuid.uuid1()))
 
 class Message(models.Model):
     '''
@@ -221,13 +230,15 @@ class Message(models.Model):
     user = models.ForeignKey(User, related_name='Message_User_set', null=False)
     Priority = models.PositiveIntegerField(default=0)
     Type = models.PositiveIntegerField(default=0)
-    Date = models.DateField(auto_now_add=True)
+    Date = models.DateTimeField(auto_now_add=True)
     IsRead = models.BooleanField(default=False)
     Content = models.TextField(max_length=200, null=False)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):
         return self.user.__unicode__()
+
+
 
 class Comment(models.Model):
     '''
@@ -242,7 +253,7 @@ class Comment(models.Model):
 
     commentedId = models.UUIDField(null=True, blank=True)
 
-    Date = models.DateField(auto_now_add=True)
+    Date = models.DateTimeField(auto_now_add=True)
     Content = models.TextField(max_length=200)
     IsUse = models.BooleanField(default=True)
     IsAdopt = models.BooleanField(default=False)
@@ -278,8 +289,8 @@ class Report(models.Model):
     creation = models.ForeignKey(Creation, related_name='Report_Creation_set', null=True)
     comment = models.ForeignKey(Comment, related_name='Report_Comment_set', null=True)
     Reason = models.TextField(max_length=200)
-    ReportDate = models.DateField(auto_now_add=True)
-    DealTime = models.DateField(null=True)
+    ReportDate = models.DateTimeField(auto_now_add=True)
+    DealTime = models.DateTimeField(null=True)
     State = models.PositiveIntegerField(default=0)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
@@ -306,7 +317,7 @@ class ScoreChange(models.Model):
     user = models.ForeignKey(User, related_name='ScoreChange_User_set', null=False)
     score = models.ForeignKey(Score, related_name='ScoreChange_Score_set', null=False)
     Event = models.CharField(null=True,max_length=30)
-    Date = models.DateField(auto_now_add=True)
+    Date = models.DateTimeField(auto_now_add=True)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):
@@ -316,7 +327,7 @@ class HelpApplication(models.Model):
     Id = models.AutoField(primary_key=True)
     Applier = models.ForeignKey(User, related_name='Help_App_Applier')
     AppliedTeam = models.ForeignKey(User, related_name='Help_App_Team')
-    DateTime = models.DateField(auto_now_add=True)
+    DateTime = models.DateTimeField(auto_now_add=True)
     Reply = models.TextField(blank=True, null=True)
     Describe = models.TextField(null=True, blank=True)
     WhatWant = models.TextField(null=True,blank=True)
@@ -335,7 +346,7 @@ class UserImageForge(models.Model):
     Id = models.AutoField(primary_key=True)
     Img = models.ImageField(upload_to='photos/user/', null=True, blank=True)
     IsUse = models.BooleanField(default=True)
-    UploadDate = models.DateField(auto_now_add=True)
+    UploadDate = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, related_name="UserImageForge_User_set")
 
     def __unicode__(self):

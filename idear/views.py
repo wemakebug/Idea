@@ -607,7 +607,7 @@ def comment(req):
             status = 1
             return HttpResponse(status)
         except Exception as e:
-            print e
+            print(e)
             return HttpResponse(status)
 
     if req.method =='GET':
