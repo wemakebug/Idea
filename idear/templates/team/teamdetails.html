@@ -30,12 +30,12 @@
                 </div>
                 <div class="praise11-1 praise1-1" team="{{ team.Id }}">
                      <span id="praise11-1" class="praise11-1"><img src="{% static 'team/imgs/心形.png' %}" id="praise-img11-1" /> </span>
-                     <span id="praise-txt11-1" class="praise-txt11-1">1123{{Praise.project}}</span>
+                     <span id="praise-txt11-1" class="praise-txt11-1">{{ counnt }}</span>
                      <span id="add-num11-1" class="add-num11-1"><em>+1</em></span>
                 </div>
                 <div class="praise11 praise1" team="{{ team.Id }}">
                      <span id="praise11" class="praise11"><img src="{% static 'team/imgs/点赞.png' %}" id="praise-img11" /> </span>
-                     <span id="praise-txt11" class="praise-txt11">1123{{Praise.project}}</span>
+                     <span id="praise-txt11" class="praise-txt11">{{ team.Follow_User_set.count }}</span>
                      <span id="add-num11" class="add-num11"><em>+1</em></span>
                 </div>
                 <div class="teamdetailadddiv">

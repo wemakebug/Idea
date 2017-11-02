@@ -350,13 +350,15 @@ def teamdetails(req, teamid = 2):
     '''
     if req.method == 'GET':
         try:
-            this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=teamid))
+            this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
+            counts = models.Follow.objects.filter(user=this_team).count()
+
         except Exception as e:
             print(e.message)
             return Http404
         else:
-            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels})
+            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
@@ -374,7 +376,7 @@ def teamdetails(req, teamid = 2):
             return HttpResponse(json.dumps(result))
         else:
             models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
-            return HttpResponse(json.dumps(1))
+            return HttpResponse(json.dumps(result))
 
 
 def teamhelpapplication(req, teamhelpid):
