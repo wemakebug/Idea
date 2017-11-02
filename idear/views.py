@@ -662,6 +662,19 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
+
+        commentlist = [];
+        for comment in comments:
+            if comment.commentedId is None:
+                newcomment = [];
+                newcomment.append(comment)
+                commentlist.append(newcomment)
+
+        for comlist in commentlist:
+            for comment in comments:
+                if str(comlist[0].Uuid) == str(comment.commentedId):
+                    comlist.append(comment)
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -671,7 +684,7 @@ def redetails(req):
         if recruit.exists():
             recruit = recruit[0]
         return render_to_response('project/redetails.html',
-                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
+                                  {"project": project, "project2projectLabels": project2projectLabel[:2],"comments":commentlist,
                                    "labels": labels[:3], "recruit": recruit})
 
     if req.method == "POST":
