@@ -13,7 +13,7 @@
 {% endblock %}
 {% block content %}
     <div class="main">
-        <div class="content-all">{{ recruit.EndTime|date:"Y-m-d" }}{{ EndTimeStamp }}
+        <div class="content-all">
             <div class="main-left">
                 <div class="content-top">
 
@@ -25,7 +25,7 @@
                         <div class="title">
                             <h5 id="rdpname"> {{ project.ProjectName }}</h5>
                             <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：第<span
-                                    id="rdpstatus">{{ recruit.Times }}</span>次招募 </p>
+                                    id="rdpstatus"> </span>次招募 </p>
                         </div>
                     </div>
                     <div class="description">
@@ -282,7 +282,6 @@
 
         {#                   评论创建#}
         $("#rdputcomment").click(function () {
-
             var c_main = document.createElement("div");
             c_main.className = "cmain";
 
@@ -365,10 +364,9 @@
             c_all.insertBefore(c_main, cmain);
 
         });
-        $(function () {
-            //var $ppc = $('.progress-pie-chart'),
-            //percent = parseInt($ppc.data('percent')),
 
+        {#招募进度条#}
+        $(function () {
             var percent = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
             deg = 360 * percent;
             if (percent > 0.5) {
@@ -380,11 +378,29 @@
             $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
         });
 
-        {#                 招募帖倒计时部分#}
+        {#招募帖倒计时部分#}
         $(function () {
-            var nowtimestamp = Date.parse(new Date());
+            var nowtimestamp = Date.parse(new Date())/1000;
             var EndTimeStamp = {{ EndTime }};
-            
+            var result = (EndTimeStamp  - nowtimestamp);
+            var lastday = result/(3600*24);
+            $("#rdlastday").text(Math.ceil(lastday));
+        });
+
+       {# 招募次数阿拉伯数字转换#}
+        $(function(){
+            var t = {{ recruit.Times }};
+            var times;
+            switch(t)
+            {
+                case 1: times = "一";
+                break;
+                case 2: times = "二";
+                break;
+                case 3: times = "三";
+                break;
+            }
+            $("#rdpstatus").text(times);
         });
 
     </script>

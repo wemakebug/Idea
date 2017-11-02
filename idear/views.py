@@ -688,7 +688,7 @@ def redetails(req):
         timeStamp = int(time.mktime(timeArray))
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp})
- 
+
 
     if req.method == "POST":
         projectId = req.GET['projectId']
