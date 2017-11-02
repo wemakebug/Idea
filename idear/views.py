@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from itertools import chain
 import json
-
+import time
 import time
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
@@ -664,6 +664,19 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
+
+        commentlist = [];
+        for comment in comments:
+            if comment.commentedId is None:
+                newcomment = [];
+                newcomment.append(comment)
+                commentlist.append(newcomment)
+
+        for comlist in commentlist:
+            for comment in comments:
+                if str(comlist[0].Uuid) == str(comment.commentedId):
+                    comlist.append(comment)
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -672,9 +685,12 @@ def redetails(req):
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
-        return render_to_response('project/redetails.html',
-                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit})
+        a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
+        timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
+        timeStamp = int(time.mktime(timeArray))
+        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp})
+
 
     if req.method == "POST":
         projectId = req.GET['projectId']
@@ -709,12 +725,21 @@ def projects(req):
             # 如果有特殊标签
             else:
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
-                projects = Project.objects.filter(Img="null")
+                projects = Project.objects.filter()
                 for obj in ProjectLabelObjs:
-                    projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
-            for project in projects:
-                recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                recruit_all.append(recruit)
+                    projects = []
+                    project = Project.objects.filter(Id=int(obj.project.Id))
+                    projects.append(project)
+                    for i,project in enumerate(projects):
+                        print project
+                    #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
+                    #     recruit_all.append(recruit)
+                    # all_recruit = zip(projects, recruit_all)
+                    # projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
+
+                for project in projects:
+                    recruit = models.Recruit.objects.filter(project__Id=project.Id)
+                    recruit_all.append(recruit)
             all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
         else:
