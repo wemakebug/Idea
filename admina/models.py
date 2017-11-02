@@ -70,6 +70,7 @@ class Project(models.Model):
     Summary = models.TextField(null=True, max_length=200)
     Progress = models.TextField(null=True, max_length=200)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
+
     def __unicode__(self):
         return self.ProjectName
 
@@ -165,13 +166,14 @@ class Creation2ProjectLabel(models.Model):
 class Recruit(models.Model):
     '''
     招募表
+    state ： 1 2 3
     '''
     Id = models.AutoField(primary_key=True)
     project = models.ForeignKey(Project, related_name='Recruit_Project_set', null=False)
     StartTime = models.DateField(auto_now_add=True)
     EndTime = models.DateField(null=True)
     Describe = models.TextField(null=False, max_length=1000)
-    State = models.PositiveIntegerField(default=0)
+    State = models.PositiveIntegerField(default=0) ##
     Times = models.PositiveIntegerField(default=1)
     PredictNumber = models.PositiveIntegerField(default=1)
     RecruitedNumber = models.PositiveIntegerField(default=0)
