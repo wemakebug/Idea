@@ -662,7 +662,7 @@ def advice(req):
 
 def redetails(req):
     '''
-        项目详情
+        招募项目详情
         :param req:
         :return:
     '''
@@ -672,10 +672,11 @@ def redetails(req):
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
         comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
 
-        commentlist = [];
+        commentlist = []
+
         for comment in comments:
             if comment.commentedId is None:
-                newcomment = [];
+                newcomment = []
                 newcomment.append(comment)
                 commentlist.append(newcomment)
 
@@ -683,6 +684,7 @@ def redetails(req):
             for comment in comments:
                 if str(comlist[0].Uuid) == str(comment.commentedId):
                     comlist.append(comment)
+
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -694,24 +696,25 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
-        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],"comment":commentlist,
                                    "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp})
 
 
     if req.method == "POST":
-        projectId = req.GET['projectId']
-        project = Project.objects.get(Id=projectId)
-        labels = Project2ProjectLabel.objects.filter(project_id=projectId)
-        alllables = []  # 找出本创意所有的标签
-        for label in labels:
-            alllables.append(label.projectLabel.Id)
-        alllables = list(set(alllables))
-
-        project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
-        recruit = models.Recruit.objects.filter(project=projectId)
-        return render_to_response('project/redetails.html',
-                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3],"recruit":recruit})
+        pass
+        # projectId = req.GET['projectId']
+        # project = Project.objects.get(Id=projectId)
+        # labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        # alllables = []  # 找出本创意所有的标签
+        # for label in labels:
+        #     alllables.append(label.projectLabel.Id)
+        # alllables = list(set(alllables))
+        #
+        # project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+        # recruit = models.Recruit.objects.filter(project=projectId)
+        # return render_to_response('project/redetails.html',
+        #                           {"project": project, "project2projectLabels": project2projectLabel[:2],"comment":commentlist,
+        #                            "labels": labels[:3],"recruit":recruit})
 
 
 @csrf_exempt
