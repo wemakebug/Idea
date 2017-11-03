@@ -684,7 +684,6 @@ def redetails(req):
             for comment in comments:
                 if str(comlist[0].Uuid) == str(comment.commentedId):
                     comlist.append(comment)
-
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -696,8 +695,8 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
-        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],"comment":commentlist,
-                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp})
+        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,"comment":commentlist,})
 
 
     if req.method == "POST":
