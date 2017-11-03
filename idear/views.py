@@ -341,7 +341,7 @@ def team(req):
         pass
 
 @csrf_exempt
-def teamdetails(req, teamid = 2):
+def teamdetails(req, teamid):
     '''
     团队详情页面 所有team 按照创建时间排序
     :param req: 
@@ -353,23 +353,36 @@ def teamdetails(req, teamid = 2):
             this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
             counts = models.Follow.objects.filter(user=this_team).count()
+            comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
+            print comments
+            commentlist = []
+
+            for comment in comments:
+                if comment.commentedId is None:
+                    newcomment = []
+                    newcomment.append(comment)
+                    commentlist.append(newcomment)
+
+            for comlist in commentlist:
+                for comment in comments:
+                    if str(comlist[0].Uuid)==str(comment.commentedId):
+                        comlist.append(comment)
 
         except Exception as e:
             print(e.message)
             return Http404
         else:
-            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts})
+            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
-        teamid = 2
         result = {
             "status": 1,
             "string": None
         }
         try:
             user = models.User.objects.get(UserName=username)
-            userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=teamid))
+            userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
         except:
             result["status"] = 0
             result["string"] = "空"
@@ -671,6 +684,7 @@ def redetails(req):
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
         comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
+        print comments
 
         commentlist = [];
         for comment in comments:

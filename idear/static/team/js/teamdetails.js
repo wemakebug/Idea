@@ -135,7 +135,9 @@ $("#putcommentbutton").click(function () {
         }
     }
         var comment_text = document.getElementById("contectnumber1").value;
-        $.post('/idear/teamdetails/2',{
+        var teamid = window.location.href.split("/");
+        teamid = teamid[teamid.length-1];
+        $.post('/idear/teamdetails/'+teamid,{
             "string":comment_text
         }, function (data) {
             data = JSON.parse(data);

@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'idea/css/sweet-alert.css' %}">
 <link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
 {%endblock%}
+{% load commentshow %}
 {%block content%}
 <div class="teamdetail">
     <div style="width: 100%;height:350px;margin-top: 30px;">
@@ -304,14 +305,16 @@
                         <button class="putcomment" id="putcommentbutton">评论</button>
                     </div>
                 </div>
+
+                {% for commentlist in comments%}
                 <div class="c-all1" name="c-all">
                     <div class="cmain">
                         <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
 {#                                  可以加hover点上变成网站logo#}
                         <div class="comment-box">
                             <div class="comment-head">
-                                <h6 class="comment-name "><a href=" ">Agustin Ortiz</a></h6>
-                                <span class="cdate">2017-11-11</span>
+                                <h6 class="comment-name "><a href=" ">{{commentlist|firstcomment}}</a></h6>
+                                <span class="cdate">{{commentlist|firstcommenttime|date:"Y/m/d"}}</span>
                                 <div class="c-option">
                                     <img class="clike" id="rdclike1"  src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
                                     <img class="creply" id="rdcreply1"  src="{% static 'project/imgs/reply.svg'%}">
@@ -319,7 +322,7 @@
                                 </div>
                             </div>
                             <div class="comment-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p>{{commentlist|firstcommentcontent}}</p>
                             </div>
                             <div class="commentreply" id="commentreply">
                                 <textarea placeholder="" name=""  class="commentreply-text"></textarea>
@@ -328,12 +331,13 @@
                         </div>
                     </div>
 
+                    {%for comment in commentlist|leftcomment%}
                     <div class="c-reply">
                         <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
                         <div class="rcomment-box">
                             <div class="rcomment-head">
-                                <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
-                                <span class="rcdate">2017-11-11</span>
+                                <h6 class="rcomment-name "><a href=" ">{{comment.user.UserName}}</a>  回复</h6>
+                                <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
                                 <div class="r-option">
                                     <img class="rclike"  id="rdclike2" src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
                                     <img class="rcreply" id="rcreply2"  src="{% static 'project/imgs/reply.svg'%}">
@@ -341,12 +345,15 @@
                                 </div>
                             </div>
                             <div class="rcomment-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit ur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <p>{{comment.Content}}</p>
                             </div>
                         </div>
                     </div>
+                    {%endfor%}
                 </div>
+                {%endfor%}
             </div>
+
         </div>
     </div>
     <div style="width: 100%;height: 30px;"></div>
