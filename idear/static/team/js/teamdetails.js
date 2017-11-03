@@ -222,4 +222,11 @@ $("#comment11-2").click(function () {
 // 	});
  //end评论动态效果结束
 
+//团队详情关注
+$("#praise11-1").click(function () {
+     // Id = $(this).attr("");
+     $.post("/idear/attend",{userId:2,attendeType:"3"},function (data) {
+
+     })
+});
 

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from itertools import chain
 import json
-
+import time
 import time
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
@@ -351,13 +351,15 @@ def teamdetails(req, teamid = 2):
     '''
     if req.method == 'GET':
         try:
-            this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=teamid))
+            this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
+            counts = models.Follow.objects.filter(user=this_team).count()
+
         except Exception as e:
             print(e.message)
             return Http404
         else:
-            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels})
+            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
@@ -375,7 +377,7 @@ def teamdetails(req, teamid = 2):
             return HttpResponse(json.dumps(result))
         else:
             models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
-            return HttpResponse(json.dumps(1))
+            return HttpResponse(json.dumps(result))
 
 
 def teamhelpapplication(req, teamhelpid):
@@ -440,17 +442,23 @@ def crdetails(req):
         labels = Creation2ProjectLabel.objects.filter(creation_id=creationId)
         comments = Comment.objects.filter(creation_id = creationId).order_by("-Date")
 
+
         commentlist = []
+
         for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
             if comment.commentedId is None:
-                newcomment = []
+                newcomment = []   
                 newcomment.append(comment)
-                commentlist.append(newcomment)
+                commentlist.append(newcomment) #    [[head],[head],[head],[head]]
 
-        for comlist in commentlist:    # 对每个列表循环  结果:[[head,hui,hui],[head,hui,hui]]
+
+        for comlist in commentlist:    # 对每个列表循环  结果: [  [head,hui,hui]  ,  [head,hui,hui], [head]   ]
             for comment in comments:
                 if str(comlist[0].Uuid)==str(comment.commentedId):
-                    comlist.append(comment)
+                    comlist.append(comment)   
+                       #   [[head,hui,hui],[head,hui,hui ],[head],[head]]
+
+
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -608,7 +616,7 @@ def comment(req):
             status = 1
             return HttpResponse(status)
         except Exception as e:
-            print e
+            print(e)
             return HttpResponse(status)
 
     if req.method =='GET':
@@ -663,6 +671,19 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
+
+        commentlist = [];
+        for comment in comments:
+            if comment.commentedId is None:
+                newcomment = [];
+                newcomment.append(comment)
+                commentlist.append(newcomment)
+
+        for comlist in commentlist:
+            for comment in comments:
+                if str(comlist[0].Uuid) == str(comment.commentedId):
+                    comlist.append(comment)
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -671,9 +692,12 @@ def redetails(req):
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
-        return render_to_response('project/redetails.html',
-                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit})
+        a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
+        timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
+        timeStamp = int(time.mktime(timeArray))
+        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp})
+
 
     if req.method == "POST":
         projectId = req.GET['projectId']
@@ -708,12 +732,21 @@ def projects(req):
             # 如果有特殊标签
             else:
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
-                projects = Project.objects.filter(Img="null")
+                projects = Project.objects.filter()
                 for obj in ProjectLabelObjs:
-                    projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
-            for project in projects:
-                recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                recruit_all.append(recruit)
+                    projects = []
+                    project = Project.objects.filter(Id=int(obj.project.Id))
+                    projects.append(project)
+                    for i,project in enumerate(projects):
+                        print project
+                    #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
+                    #     recruit_all.append(recruit)
+                    # all_recruit = zip(projects, recruit_all)
+                    # projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
+
+                for project in projects:
+                    recruit = models.Recruit.objects.filter(project__Id=project.Id)
+                    recruit_all.append(recruit)
             all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
         else:
