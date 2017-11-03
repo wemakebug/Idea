@@ -27,8 +27,8 @@ urlpatterns = [
     # url(r'^label_user/(?P<page>\d+)$', reload.label_user),
     # url(r'^label_project/(?P<page>\d+)$', reload.label_project),
 
-
-    url(r'^index$', views.index),
+    url(r'^login$',views.login),
+    # url(r'^index$', views.index),
     url(r'^user_detail$', views.user_detail),
     url(r'^profile$', views.Profile),
     url(r'^PhotoGallery$', views.PhotoGallary),

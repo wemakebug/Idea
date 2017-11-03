@@ -8,7 +8,7 @@ submit_btn.onclick = function () {
     }else if(account === '' || account === null || passwd === undefined){
         alert("账号不能为空");
     }else {
-        $.post('/user/login',{
+        $.post('/admina/login',{
            account:account,
             passwd:passwd
         },function (data) {

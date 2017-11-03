@@ -9,13 +9,13 @@
 
   <title>{% block title %}{% endblock %}</title>
     {% block css %}{% endblock %}
-  <link href="/public/css/style.css" rel="stylesheet">
-  <link href="/public/css/style-responsive.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link href="/static/css/style-responsive.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
-  <script src="/public/js/html5shiv.js"></script>
-  <script src="/public/js/respond.min.js"></script>
+  <script src="/static/js/html5shiv.js"></script>
+  <script src="/static/js/respond.min.js"></script>
   <![endif]-->
 </head>
 
@@ -27,11 +27,11 @@
 
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href="#"><img src="/public/images/logo.png" alt=""></a>
+            <a href="#"><img src="/static/images/logo.png" alt=""></a>
         </div>
 
         <div class="logo-icon text-center">
-            <a href="#"><img src="/public/images/logo_icon.png" alt=""></a>
+            <a href="#"><img src="/static/images/logo_icon.png" alt=""></a>
         </div>
         <!--logo and iconic logo end-->
 
@@ -41,7 +41,7 @@
             <!-- visible to small devices only -->
             <div class="visible-xs hidden-sm hidden-md hidden-lg">
                 <div class="media logged-user">
-                    <img alt="" src="/public/images/photos/user-avatar.png" class="media-object">
+                    <img alt="" src="/static/images/photos/user-avatar.png" class="media-object">
                     <div class="media-body">
                         <h4><a href="#">John Doe</a></h4>
                         <span>"Hello There..."</span>
@@ -89,8 +89,8 @@
 
                 <li class="menu-list"><a href=""><i class="fa fa-tags"></i> <span>标签管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="/admin/label/project"> 项目标签</a></li>
-                        <li><a href="/admin/label/user"> 个人标签</a></li>
+                        <li><a href="/admina/label/project"> 项目标签</a></li>
+                        <li><a href="/admina/label/user"> 个人标签</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href="#"><i class="fa fa-comment"></i> <span>评论管理</span></a>
@@ -111,19 +111,19 @@
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-users"></i> <span>用户管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="/admin/user/all"> 全部用户</a></li>
-                        <li><a href="/admin/user/timeline"> 用户时间线</a></li>
-                        <li><a href="/admin/user/detail"> 用户详情</a></li>
-                        <li><a href="/admin/user/add"> 用户添加</a></li>
-                        <li><a href="/admin/user/introduction"> 用户自我介绍</a></li>
+                        <li><a href="/admina/user/all"> 全部用户</a></li>
+                        <li><a href="/admina/user/timeline"> 用户时间线</a></li>
+                        <li><a href="/admina/user/detail"> 用户详情</a></li>
+                        <li><a href="/admina/user/add"> 用户添加</a></li>
+                        <li><a href="/admina/user/introduction"> 用户自我介绍</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-tasks"></i> <span>项目管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="/admin/project/all"> 全部项目</a></li>
-                        <li><a href="/admin/project/add"> 新增项目</a></li>
-                        <li><a href="/admin/project/recruit"> 新增招募</a></li>
-                        <li><a href="/admin/project/recmanage"> 招募管理</a></li>
+                        <li><a href="/admina/project/all"> 全部项目</a></li>
+                        <li><a href="/admina/project/add"> 新增项目</a></li>
+                        <li><a href="/admina/project/recruit"> 新增招募</a></li>
+                        <li><a href="/admina/project/recmanage"> 招募管理</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-leaf"></i> <span>创意管理</span></a>
@@ -241,7 +241,7 @@
                         <ul class="dropdown-list normal-list">
                             <li class="new">
                                 <a href="">
-                                    <span class="thumb"><img src="/public/images/photos/user1.png" alt="" /></span>
+                                    <span class="thumb"><img src="/static/images/photos/user1.png" alt="" /></span>
                                         <span class="desc">
                                           <span class="name">John Doe <span class="badge badge-success">new</span></span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -250,7 +250,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <span class="thumb"><img src="/public/images/photos/user2.png" alt="" /></span>
+                                    <span class="thumb"><img src="/static/images/photos/user2.png" alt="" /></span>
                                         <span class="desc">
                                           <span class="name">Jonathan Smith</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -259,7 +259,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <span class="thumb"><img src="/public/images/photos/user3.png" alt="" /></span>
+                                    <span class="thumb"><img src="/static/images/photos/user3.png" alt="" /></span>
                                         <span class="desc">
                                           <span class="name">Jane Doe</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -268,7 +268,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <span class="thumb"><img src="/public/images/photos/user4.png" alt="" /></span>
+                                    <span class="thumb"><img src="/static/images/photos/user4.png" alt="" /></span>
                                         <span class="desc">
                                           <span class="name">Mark Henry</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -277,7 +277,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <span class="thumb"><img src="/public/images/photos/user5.png" alt="" /></span>
+                                    <span class="thumb"><img src="/static/images/photos/user5.png" alt="" /></span>
                                         <span class="desc">
                                           <span class="name">Jim Doe</span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
@@ -330,7 +330,7 @@
                 </li>
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <img src="/public/images/photos/user-avatar.png" alt="" />
+                        <img src="/static/images/photos/user-avatar.png" alt="" />
                         John Doe
                         <span class="caret"></span>
                     </a>
@@ -374,16 +374,16 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="/public/js/jquery-1.10.2.min.js"></script>
-<script src="/public/js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="/public/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="/public/js/bootstrap.min.js"></script>
-<script src="/public/js/modernizr.min.js"></script>
-<script src="/public/js/jquery.nicescroll.js"></script>
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<script src="/static/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/modernizr.min.js"></script>
+<script src="/static/js/jquery.nicescroll.js"></script>
 
 {% block midscript %}{% endblock %}
 <!--common scripts for all pages-->
-<script src="/public/js/scripts.js"></script>
+<script src="/static/js/scripts.js"></script>
 {% block lastscript %}{% endblock %}
 </body>
 </html>

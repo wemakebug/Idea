@@ -17,6 +17,8 @@ class Admin(models.Model):
     Account = models.CharField(null=False, blank=False, unique=True, max_length=25)
     Password = models.CharField(null=False, blank=False, max_length=25)
     DateTime = models.DateTimeField(auto_now_add=True)
+    Email = models.EmailField(null=True, blank=True)
+    Uuid = models.UUIDField(null=True, blank=True)
 
     def __unicode__(self):
         return self.Account
