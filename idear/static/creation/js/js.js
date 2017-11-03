@@ -46,6 +46,7 @@ $(".follow").click(function(){
 
 })
 
+
 //创意点赞操作
 $(".like").click(function(){
 

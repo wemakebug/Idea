@@ -289,6 +289,7 @@ body{
     font-family: 幼圆;
     font-size: 18px;
     font-weight: lighter;
+    width:60%;
 
 }
 .ribbon3 {
@@ -340,9 +341,11 @@ body{
 }
 .size2 {
     display:inline-block;
-    font-size: 50px;
+    font-size: 45px;
+    height:50px;
+    width:50px;
     color: #1b1b1b;
-    margin:15px 0 0 15px;
+    margin:12px 10px 0 0;
 }
 .size3 {
     display:inline-block;
@@ -672,6 +675,7 @@ body{
 }
 .cmain{
     height:auto;
+    margin-top: 20px;
 }
 .c-img{
     display:block;

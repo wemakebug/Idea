@@ -135,15 +135,16 @@ $("#putcommentbutton").click(function () {
         }
     }
         var comment_text = document.getElementById("contectnumber1").value;
-        $.post('/idear/teamdetails/2',{
-
+        var teamid = window.location.href.split("/");
+        teamid = teamid[teamid.length-1];
+        $.post('/idear/teamdetails/'+teamid,{
             "string":comment_text
         }, function (data) {
             data = JSON.parse(data);
             if(data.status == 0) {
                 alert("Wrong");
             }else {
-                createteamcomment(data)
+                createteamcomment(data);
             }
         });
 });
@@ -223,4 +224,11 @@ $("#comment11-2").click(function () {
 // 	});
  //end评论动态效果结束
 
+//团队详情关注
+$("#praise11-1").click(function () {
+     // Id = $(this).attr("");
+     $.post("/idear/attend",{userId:2,attendeType:"3"},function (data) {
+
+     })
+});
 

@@ -13,11 +13,11 @@
         <div class="second_0">
             {% for team in teams %}
                 <div class="border_0">
-                    <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
+                    <div class="photo_0" onclick="window.open('teamdetails/{{ team.Id }}')">
                         <img src="{% static 'team/imgs/team.jpg' %}" style=" width: 100% ;height: 100%;border-radius: 6px;"  alt="">
                     </div>
                     <div class="referral">
-                        <h3 onclick="window.location.href='teamdetails/{{ team.Id }}'">{{ team.UserName }}</h3>
+                        <h3 onclick="window.open('teamdetails/{{ team.Id }}')">{{ team.UserName }}</h3>
                         <p >入驻时间：      {{ team.RegistTime }}</p>
                     </div>
 
@@ -33,16 +33,16 @@
                                     {% endfor %}
                             </div>
                         </div>
-                        <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
+                        <div class="content_0" onclick="window.open('teamdetails/{{ team.Id }}')">
                             {{ team.Introduction }}
                         </div>
                     </div>
                     <div class="feature">
                         <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
                         <div class="praise" team="{{ team.Id }}">
-                            <span id="praise_0" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /> </span>
-                            <span id="praise-txt" class="praise-txt">{{team.project}}</span>
-                            <span id="add-num" class="add-num"><em>+1</em></span>
+                            <span class="praise_0"><img src="../../static/team/imgs/zan.png" name="praise_img" /> </span>
+                            <span class="praise-txt">123{{team.project}}</span>
+                            <span  class="add-num"><em>+1</em></span>
                         </div>
 
                     </div>
@@ -67,7 +67,8 @@
                     <a href="team?sign=all" sign="all"><span class="allsign">所有</span></a>
                     {% for obj in labels %}
                         <a href="team?sign={{ obj.Id }}" sign="{{ obj.Id }}">
-                            <span class="allsign">{{ obj.Name }}</span></a>
+                            <span class="allsign">{{ obj.Name }}</span>
+                        </a>
                     {% endfor %}
                 </div>
             </div>
@@ -76,65 +77,6 @@
 {% endblock %}
 {%block script%}
     <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
-<script type="text/javascript">
-//点赞
-    $(function(){
-        $("body").on("click","#praise_0",function () {
-            var praise_img = $("#praise-img");
-            var text_box = $("#add-num");
-            var praise_txt = $("#praise-txt");
-            var num = parseInt(praise_txt.text());
-            if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){
-                $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");
-                praise_txt.removeClass("hover");
-                text_box.show().html("<em class='add-animation'>-1</em>");
-                $(".add-animation").removeClass("hover");
-                num -=1;
-                praise_txt.text(num)
-            }else{
-                $(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img' class='animation' />");
-                praise_txt.addClass("hover");
-                text_box.show().html("<em class='add-animation'>+1</em>");
-                $(".add-animation").addClass("hover");
-                num +=1;
-                praise_txt.text(num)
-            }
-        });
-	});
-
-
-//加载更多
-$(function() {
-    $(".border_0").slice(0, 6).show();
-    if ($(".border_0").length <= 6) {
-        $(".more_0").hide();
-    }
-    $(".more_0").on('click',function(e) {
-        e.preventDefault();
-        $(".border_0:hidden").slice(0, 6).slideDown();
-        if ($(".border_0:hidden").length == 0) {
-            $(".more_0").fadeOut('slow');
-        }
-    });
-});
-//控制介绍字数
-    $(document).ready(function () {
-            $(".content_0").
-            each(function () {
-                var maxwidth = 136;
-                if ($(this).text().length > maxwidth) {
-                    $(this).text($(this).text().substring(0, maxwidth));
-                    $(this).html($(this).html() +'…')
-                    ;
-                }
-            });
-        });
-//随机显示颜色
-$('.repo-language-color').each(function() {
-    var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
-    $(this).css('background', col)
-})
-
-</script>
+    <script type="text/javascript" src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'team/js/team.js'%}"></script>
 {%endblock%}
