@@ -17,6 +17,8 @@ class Admin(models.Model):
     Account = models.CharField(null=False, blank=False, unique=True, max_length=25)
     Password = models.CharField(null=False, blank=False, max_length=25)
     DateTime = models.DateTimeField(auto_now_add=True)
+    Email = models.EmailField(null=True, blank=True)
+    Uuid = models.UUIDField(null=True, blank=True)
 
     def __unicode__(self):
         return self.Account
@@ -269,10 +271,13 @@ class Follow(models.Model):
     关注表
     '''
     Id = models.AutoField(primary_key=True)
+
     user = models.ForeignKey(User, related_name='Follow_User_set', null=False)
     project = models.ForeignKey(Project, related_name='Follow_Project_set', null=True, blank=True)
     creation = models.ForeignKey(Creation, related_name='Follow_Creation_set', null=True, blank=True)
+
     Follower = models.ForeignKey(User, related_name='Follow_Follower_set', null=True, blank=True)
+
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):

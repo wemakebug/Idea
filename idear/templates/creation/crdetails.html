@@ -46,11 +46,19 @@
                         <div class="home-b-comment">
                             <img src="{% static '/creation/imgs/reply.svg' %}" style="width:16px;
     height:16px;">
-                            <a href="#">评论</a>
+                            <a href="#comments">评论</a>
                         </div>
-                        <div class="home-b-collection">
+                        <div class="home-b-collection" creation={{ creation.Id }}>
                             <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;
+    height:16px;" class="following">
+                        {% for follow in follows %}
+                            {% if follow.user_id == userId and follow.creation_id == creation.Id %}
+
+                            <img src="{% static '/creation/imgs/collections.png' %}" style="width:16px;
     height:16px;">
+                            {% endif %}
+                        {% endfor %}
+                            <span class="followspan">{{ creation.Follow_Creation_set.count }}</span>
                             <a href="#">收藏</a>
 
                         </div>
@@ -127,15 +135,15 @@
 
             <div class="content-footer">
 
-                
-                <div class="comment">
+
+                <div class="comment" id="comments">
                     <div class="comment1-1">评论专区</div>
                     <div class="comment1-2"></div>
                     <div class="ctop">
                         <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                         <div class="carea">
                             <div class="tocomment">
-                                <textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>
+                                <textarea placeholder="输入评论内容" name="" id="comment-content1" class="comment-text"></textarea>
                             </div>
                             <button class="putcomment" id="putcomment">评论</button>
                         </div>
@@ -188,7 +196,7 @@
 
                     
                 </div>
-                
+
 
 
             </div>
