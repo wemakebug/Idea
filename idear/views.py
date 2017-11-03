@@ -323,9 +323,9 @@ def team(req):
 
         sign = req.GET["sign"]
         if sign == "all":
-            teams = models.User.objects.filter(Identity=2);
+            teams = models.User.objects.filter(Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
-            labels = models.UserLabel.objects.all();
+            labels = models.UserLabel.objects.all()
             return render_to_response('team/team.html', {"teams": teams, "labels": labels,'User2UserLabel': User2UserLabel})
         elif int(sign):
             labels = models.UserLabel.objects.filter(pk=sign)

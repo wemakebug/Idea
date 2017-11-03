@@ -1,0 +1,203 @@
+{% extends '../base/base.html' %}
+
+{% block title %}Admin-Index{% endblock %} {# title #}
+{% block css %}
+<!--file upload-->
+<link rel="stylesheet" type="text/css" href="/public/css/bootstrap-fileupload.min.css" />
+
+<link rel="stylesheet" type="text/css" href="/public/js/bootstrap-datepicker/css/datepicker-custom.css" />
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+<!-- include summernote css/js-->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+{# css #}
+
+{% endblock %}
+
+{% block heading %}   {# heading #}
+<ul class="breadcrumb">
+    <h3>项目管理</h3>
+    <li>
+        <a href="">项目名称</a>
+    </li>
+    <li class="active">新增招募</li>
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                招募添加
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" id="signupForm" >
+                        <div class="form-group ">
+                            <label for="firstname" class="control-label col-lg-2">项目名称</label>
+                            <div class="col-lg-5">
+                                <select class="form-control m-bot15">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="timepicker" class="control-label col-lg-2">招募开始时间</label>
+                            <div class="col-md-5 col-xs-11">
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label col-lg-2" >招募状态</label>
+                            <div class="col-lg-10">
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="1"> 未开始
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="2"> 初期招募
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="3"> 二次招募
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="4"> 三次招募
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="5"> 招募结束
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="timepicker2" class="control-label col-lg-2">招募结束时间</label>
+                            <div class="col-md-5 col-xs-11">
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker2"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label col-lg-2" >身份</label>
+                            <div class="col-lg-10">
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="1"> 学生
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="2"> 教师
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="3"> 团队
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="email" class="control-label col-lg-2">邮箱</label>
+                            <div class="col-lg-5">
+                                <input class="form-control " id="email" name="email" type="email" />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="confirm_password" class="control-label col-lg-2">预计人数</label>
+                            <div class="col-lg-5">
+                                <div id="spinner4">
+                                    <div class="input-group" style="width:150px;">
+                                        <div class="spinner-buttons input-group-btn">
+                                            <button type="button" class="btn spinner-up btn-primary">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999">
+                                        <div class="spinner-buttons input-group-btn">
+                                            <button type="button" class="btn spinner-down btn-warning">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="confirm_password" class="control-label col-lg-2">已招募人数</label>
+                            <div class="col-lg-5">
+                                <div id="spinner4">
+                                    <div class="input-group" style="width:150px;">
+                                        <div class="spinner-buttons input-group-btn">
+                                            <button type="button" class="btn spinner-up btn-primary">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999">
+                                        <div class="spinner-buttons input-group-btn">
+                                            <button type="button" class="btn spinner-down btn-warning">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-default" type="button">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                招募描述
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" >
+                        <div class="form-group" style="height: 500px">
+                            <label for="summernote2" class="control-label col-lg-2">进度描述</label>
+                            <div class="col-lg-10">
+                                <div id="summernote2"></div>
+                            </div>
+                            <script type="text/javascript">
+                                $('#summernote2').summernote({
+                                    height:500,
+                                });
+                            </script>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-default" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{# body #}
+
+{% endblock %}
+
+
+{% block midscript %}   {# midescript #}
+<script ype="text/javascript" src="/public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script ype="text/javascript" src="/public/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script ype="text/javascript" src="/public/js/bootstrap-daterangepicker/moment.min.js"></script>
+
+<script src="/public/js/pickers-init.js"></script>
+{% endblock %}
+
+{% block lastscript %}  {# lastscript #}
+
+{% endblock %}
