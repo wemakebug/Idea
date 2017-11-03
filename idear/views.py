@@ -439,17 +439,23 @@ def crdetails(req):
         labels = Creation2ProjectLabel.objects.filter(creation_id=creationId)
         comments = Comment.objects.filter(creation_id = creationId).order_by("-Date")
 
+
         commentlist = []
+
         for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
             if comment.commentedId is None:
-                newcomment = []
+                newcomment = []   
                 newcomment.append(comment)
-                commentlist.append(newcomment)
+                commentlist.append(newcomment) #    [[head],[head],[head],[head]]
 
-        for comlist in commentlist:    # 对每个列表循环  结果:[[head,hui,hui],[head,hui,hui]]
+
+        for comlist in commentlist:    # 对每个列表循环  结果: [  [head,hui,hui]  ,  [head,hui,hui], [head]   ]
             for comment in comments:
                 if str(comlist[0].Uuid)==str(comment.commentedId):
-                    comlist.append(comment)
+                    comlist.append(comment)   
+                       #   [[head,hui,hui],[head,hui,hui ],[head],[head]]
+
+
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
