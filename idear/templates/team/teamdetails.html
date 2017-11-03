@@ -4,10 +4,9 @@
    <title>团队详情</title>
 {%endblock%}
 {%block CSS%}
-<link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
-{#<link rel="stylesheet" href="{% static 'team/css/commentstyle.css'%}">#}
-{#<link rel="stylesheet" href="{% static 'team/css/comment.css'%}">#}
 <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'idea/css/sweet-alert.css' %}">
+<link rel="stylesheet" href="{% static 'team/css/teamdetails.css'%}">
 {%endblock%}
 {%block content%}
 <div class="teamdetail">
@@ -67,7 +66,7 @@
             <div class="teamlable1-2"></div>
             <div class="teamlable1-3">
                 {% for label in labels %}
-            <a href="" style="text-decoration: none;"><span class="teamlable1-4">{{ label.userLabel.Name }}</span></a>
+                    <span class="teamlable1-4" id="teamlable1-4" onclick="Myfunction()"><a href="#" class="hovera" style="text-decoration: none;color: rgba(54, 54 ,54,0.5)">{{ label.userLabel.Name }}</a></span>
                 {% endfor %}
             </div>
         </div>
@@ -300,12 +299,12 @@
                     <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                     <div class="carea">
                         <div class="tocomment">
-                            <textarea placeholder="评论..." name="" id="comment-content11" class="comment-text"></textarea>
+                            <textarea placeholder="评论..." name="" id="contectnumber1" class="comment-text"></textarea>
                         </div>
                         <button class="putcomment" id="putcommentbutton">评论</button>
                     </div>
                 </div>
-                <div class="c-all1">
+                <div class="c-all1" name="c-all">
                     <div class="cmain">
                         <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
 {#                                  可以加hover点上变成网站logo#}
@@ -321,6 +320,10 @@
                             </div>
                             <div class="comment-content">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                            <div class="commentreply" id="commentreply">
+                                <textarea placeholder="" name=""  class="commentreply-text"></textarea>
+                                <button class="putcomment" id="putcomments" >回复</button>
                             </div>
                         </div>
                     </div>
@@ -347,50 +350,12 @@
         </div>
     </div>
     <div style="width: 100%;height: 30px;"></div>
-{#    <div class="teamdetaillandscape"></div>#}
-{#    <div class="teamdetailfilter"></div>#}
-{#    <canvas id="canvas"></canvas>#}
 </div>
 {% endblock %}
 {%block script%}
-    <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
-<script type="text/javascript">
-    $("#putcommentbutton").click(function () {
-        var myDate = new Date();
-        //获取当前年
-        var year=myDate.getFullYear();
-        //获取当前月
-        var month=myDate.getMonth()+1;
-        //获取当前日
-        var date=myDate.getDate();
-        var h=myDate.getHours();       //获取当前小时数(0-23)
-        var m=myDate.getMinutes();     //获取当前分钟数(0-59)
-        if(m<10) m = '0' + m;
-        var s=myDate.getSeconds();
-        if(s<10) s = '0' + s;
-        var nows=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
-        var comment="<div class=\"cmain\">\n" +
-                "                                  <img class=\"c-img\"  src=\"{% static 'project/imgs/user.svg'%}\">\n" +
-                "{#                                  可以加hover点上变成网站logo#}\n" +
-                "                                  <div class=\"comment-box\">\n" +
-                "                                      <div class=\"comment-head\">\n" +
-                "                                          <h6 class=\"comment-name \"><a href=\" \">张三</a></h6>\n" +
-                "                                          <span class=\"cdate\">"+ nows+ "</span>\n" +
-                "                                          <div class=\"c-option\">\n" +
-                "                                              <img class=\"clike\" id=\"rdclike1\" src=\"{% static 'project/imgs/like1.svg'%}\"><span class=\"clikenum\">1111</span>\n" +
-                "                                              <img class=\"creply\" id=\"rdcreply1\" src=\"{% static 'project/imgs/reply.svg'%}\">\n" +
-                "                                              <img class=\"creport\" id=\"rdcreport1\" src=\"{% static 'creation/imgs/report.png'%}\">\n" +
-                "                                          </div>\n" +
-                "                                      </div>\n" +
-                "                                      <div class=\"comment-content\">\n" +
-                "                                         <p>"+ "HelloWorld哈哈哈啊哈哈哈哈哈" + "</p>\n" +
-                "                                      </div>\n" +
-                "                                  </div>\n" +
-                "                              </div>";
-                $(".c-all1").get(0).innerHTML = comment + $(".c-all1").get(0).innerHTML;
-    })
-</script>
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/sweet-alert.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'team/js/teamdetails.js' %}"></script>
 <script type="text/javascript">
     $(function(){
         $("#praise11").on("click",function () {
@@ -441,8 +406,5 @@
             }
         });
 	})
-    $("#comment11-2").click(function () {
-        document.getElementById("contectnumber1").focus();
-    })
 </script>
 {% endblock %}

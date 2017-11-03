@@ -253,6 +253,7 @@ def Profile(req):
             print(user.Img)
             return render(req, 'second/UserDetail.html', {"user": user})
 
+@csrf_exempt
 def PhotoGallary(req):
     if req.method == "GET":
         username = 'chris'
@@ -266,4 +267,47 @@ def PhotoGallary(req):
             except:
                 Images = None
             else:
-                return render(req, 'second/PhotoGallery.html',{'user': user,'Images':Images})
+                return render(req, 'second/PhotoGallery.html', {'user': user,'Images': Images})
+    if req.method == "POST":
+        print("aa")
+        result = {
+            "status": 0,
+            "message": ''
+        }
+        delete_image_id = req.POST['image_id']
+        try:
+            record = models.UserImageForge.objects.get(Id=delete_image_id)
+        except:
+            result["message"] = "服务器异常"
+            return HttpResponse(json.dumps(result))
+        else:
+            record.delete()
+            result["status"] = 1
+            result["message"]="删除成功"
+            return HttpResponse(json.dumps(result))
+
+"""评论相关页面"""
+def comment_list(req):
+    """用户相关的评论"""
+    if req.method == 'GET':
+        result = []
+        users = models.User.objects.all()
+        for user in users:
+            comments = models.Comment.objects.filter(user=user)
+            result.append(comments)
+        result = zip(users, result)
+        return render(req, 'second/UserCommentList.html',{"result":result})
+
+
+
+
+
+@csrf_exempt
+def post(req):
+    if req.method == "POST":
+        print("ok")
+        data = {
+            "status": 0,
+            "message": "success"
+        }
+        return HttpResponse(json.dumps(data))
