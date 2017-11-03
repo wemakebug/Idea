@@ -323,14 +323,15 @@ def team(req):
 
         sign = req.GET["sign"]
         if sign == "all":
-            teams = models.User.objects.filter(Identity=2);
+            teams = models.User.objects.filter(Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
-            labels = models.UserLabel.objects.all();
+            labels = models.UserLabel.objects.all()
             return render_to_response('team/team.html', {"teams": teams, "labels": labels,'User2UserLabel': User2UserLabel})
         elif int(sign):
-            labels = models.UserLabel.objects.filter(pk=sign)
+            labels = models.UserLabel.objects.all()
+            labels_0 = models.UserLabel.objects.filter(pk=sign)
             # user_2_userLable = models.User2UserLabel.objects.filter(Q(userLabel=labels) & Q(user__Identity=2))
-            user_2_userLable = models.User2UserLabel.objects.filter(userLabel=labels).filter(user__Identity=2)
+            user_2_userLable = models.User2UserLabel.objects.filter(userLabel=labels_0).filter(user__Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
             teams = []
             for obj in user_2_userLable:
