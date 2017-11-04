@@ -6,9 +6,11 @@ html{
 	/*position: relative;*/
 	font-family: 宋体;
     overflow: hidden;
+    height:auto;
     color: #444;;
 	margin: 66px auto 0;
 	width:80%;
+    min-height:800px;
 }
 .clear{
 	clear:both;
@@ -18,6 +20,7 @@ html{
 .second_0{
     float: left;
     width: 75%;
+    height: auto;
     margin: 0 0 0 2.5%;
 }
  .border_0{
@@ -142,7 +145,7 @@ html{
     -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
     -o-animation: myfirst 0.5s;	/* Opera */
 }
-.add-num .add-animation{
+.add-num {
     display:none;
 }
 .add-num .add-animation{
@@ -160,7 +163,7 @@ html{
     -o-animation: mypraise 0.5s ;	/* Opera */
     font-style:normal;
 }
-.praise .hover , #add-num .add-animation.hover , #praise-txt.hover{
+.praise_0 .hover , .add-num .add-animation.hover , .praise-txt.hover{
     color: #EB4F38;
 }
 
@@ -382,10 +385,9 @@ html{
 }
 
 .broadSide{
-	float: right;
 	width: 300px;
 	position:fixed;
-	margin:0 0 0 1200px;
+	margin-left: 1200px;
 }
 .intro_1{
 	width: 100%;
@@ -412,6 +414,7 @@ html{
 .classify{
 	float: right;
     margin: 3px 0px;
+    width: 100%;
 }
  .tag hr {
 	 border: 0;
@@ -439,12 +442,14 @@ html{
 
  .allsign{
     border: 1px solid #c0c5cd;
-    background-color: #eeeeee;
+    /*background-color: #eeeeee;*/
     border-radius: 5px;
     padding: 6px 15px;
     color: #a9b1b5;
 }
-
+ .allsign.hover{
+     background-color: #0f74a8;
+ }
 .allsign:hover{
      color: #fff;
      background-color: #57cecd;

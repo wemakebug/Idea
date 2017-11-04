@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 from itertools import chain
 import json
-
+import time
+import time
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
@@ -322,14 +323,15 @@ def team(req):
 
         sign = req.GET["sign"]
         if sign == "all":
-            teams = models.User.objects.filter(Identity=2);
+            teams = models.User.objects.filter(Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
-            labels = models.UserLabel.objects.all();
+            labels = models.UserLabel.objects.all()
             return render_to_response('team/team.html', {"teams": teams, "labels": labels,'User2UserLabel': User2UserLabel})
         elif int(sign):
-            labels = models.UserLabel.objects.filter(pk=sign)
+            labels = models.UserLabel.objects.all()
+            labels_0 = models.UserLabel.objects.filter(pk=sign)
             # user_2_userLable = models.User2UserLabel.objects.filter(Q(userLabel=labels) & Q(user__Identity=2))
-            user_2_userLable = models.User2UserLabel.objects.filter(userLabel=labels).filter(user__Identity=2)
+            user_2_userLable = models.User2UserLabel.objects.filter(userLabel=labels_0).filter(user__Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
             teams = []
             for obj in user_2_userLable:
@@ -340,7 +342,7 @@ def team(req):
         pass
 
 @csrf_exempt
-def teamdetails(req, teamid = 2):
+def teamdetails(req, teamid):
     '''
     团队详情页面 所有team 按照创建时间排序
     :param req: 
@@ -349,31 +351,46 @@ def teamdetails(req, teamid = 2):
     '''
     if req.method == 'GET':
         try:
-            this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=teamid))
+            this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
+            counts = models.Follow.objects.filter(Follower=this_team).count()
+            comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
+            print comments
+            commentlist = []
+
+            for comment in comments:
+                if comment.commentedId is None:
+                    newcomment = []
+                    newcomment.append(comment)
+                    commentlist.append(newcomment)
+
+            for comlist in commentlist:
+                for comment in comments:
+                    if str(comlist[0].Uuid)==str(comment.commentedId):
+                        comlist.append(comment)
+
         except Exception as e:
             print(e.message)
             return Http404
         else:
-            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels})
+            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
-        teamid = 2
         result = {
             "status": 1,
             "string": None
         }
         try:
             user = models.User.objects.get(UserName=username)
-            userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=teamid))
+            userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
         except:
             result["status"] = 0
             result["string"] = "空"
             return HttpResponse(json.dumps(result))
         else:
             models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
-            return HttpResponse(json.dumps(1))
+            return HttpResponse(json.dumps(result))
 
 
 def teamhelpapplication(req, teamhelpid):
@@ -438,17 +455,23 @@ def crdetails(req):
         labels = Creation2ProjectLabel.objects.filter(creation_id=creationId)
         comments = Comment.objects.filter(creation_id = creationId).order_by("-Date")
 
+
         commentlist = []
+
         for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
             if comment.commentedId is None:
-                newcomment = []
+                newcomment = []   
                 newcomment.append(comment)
-                commentlist.append(newcomment)
+                commentlist.append(newcomment) #    [[head],[head],[head],[head]]
 
-        for comlist in commentlist:    # 对每个列表循环  结果:[[head,hui,hui],[head,hui,hui]]
+
+        for comlist in commentlist:    # 对每个列表循环  结果: [  [head,hui,hui]  ,  [head,hui,hui], [head]   ]
             for comment in comments:
                 if str(comlist[0].Uuid)==str(comment.commentedId):
-                    comlist.append(comment)
+                    comlist.append(comment)   
+                       #   [[head,hui,hui],[head,hui,hui ],[head],[head]]
+
+
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -539,12 +562,12 @@ def attend(req):
             return HttpResponse(status)
         elif attendType == 3:
             try:
-                F = Follow.objects.get(Follower_id=Id, user_id=userId).delete()
+                F = Follow.objects.get(user_id=userId, Follower_id=Id).delete()
                 status = 2
             except:
-                p = Follow.objects.create(Follower_id=Id, user_id=userId)
+                p = Follow.objects.create(user_id=userId, Follower_id=Id)
                 status = 1
-            return HttpResponse(status)
+            return HttpResponse(json.dumps(status))
     except:
         return HttpResponse(status)
 
@@ -606,7 +629,7 @@ def comment(req):
             status = 1
             return HttpResponse(status)
         except Exception as e:
-            print e
+            print(e)
             return HttpResponse(status)
 
     if req.method =='GET':
@@ -653,7 +676,7 @@ def advice(req):
 
 def redetails(req):
     '''
-        项目详情
+        招募项目详情
         :param req:
         :return:
     '''
@@ -661,6 +684,21 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
+        print comments
+
+        commentlist = []
+
+        for comment in comments:
+            if comment.commentedId is None:
+                newcomment = []
+                newcomment.append(comment)
+                commentlist.append(newcomment)
+
+        for comlist in commentlist:
+            for comment in comments:
+                if str(comlist[0].Uuid) == str(comment.commentedId):
+                    comlist.append(comment)
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
@@ -669,26 +707,30 @@ def redetails(req):
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
-        return render_to_response('project/redetails.html',
-                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit})
+        a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
+        timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
+        timeStamp = int(time.mktime(timeArray))
+        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,"comment":commentlist,})
+
 
     if req.method == "POST":
-        projectId = req.GET['projectId']
-        project = Project.objects.get(Id=projectId)
-        labels = Project2ProjectLabel.objects.filter(project_id=projectId)
-        alllables = []  # 找出本创意所有的标签
-        for label in labels:
-            alllables.append(label.projectLabel.Id)
-        alllables = list(set(alllables))
+        pass
+        # projectId = req.GET['projectId']
+        # project = Project.objects.get(Id=projectId)
+        # labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        # alllables = []  # 找出本创意所有的标签
+        # for label in labels:
+        #     alllables.append(label.projectLabel.Id)
+        # alllables = list(set(alllables))
+        #
+        # project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+        # recruit = models.Recruit.objects.filter(project=projectId)
+        # return render_to_response('project/redetails.html',
+        #                           {"project": project, "project2projectLabels": project2projectLabel[:2],"comment":commentlist,
+        #                            "labels": labels[:3],"recruit":recruit})
 
-        project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
-        recruit = models.Recruit.objects.filter(project=projectId)
-        return render_to_response('project/redetails.html',
-                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3],"recruit":recruit})
 
- 
 @csrf_exempt
 def projects(req):
     '''
@@ -706,12 +748,21 @@ def projects(req):
             # 如果有特殊标签
             else:
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
-                projects = Project.objects.filter(Img="null")
+                projects = Project.objects.filter()
                 for obj in ProjectLabelObjs:
-                    projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
-            for project in projects:
-                recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                recruit_all.append(recruit)
+                    projects = []
+                    project = Project.objects.filter(Id=int(obj.project.Id))
+                    projects.append(project)
+                    for i,project in enumerate(projects):
+                        print project
+                    #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
+                    #     recruit_all.append(recruit)
+                    # all_recruit = zip(projects, recruit_all)
+                    # projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
+
+                for project in projects:
+                    recruit = models.Recruit.objects.filter(project__Id=project.Id)
+                    recruit_all.append(recruit)
             all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
         else:
