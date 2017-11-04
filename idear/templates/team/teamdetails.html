@@ -394,11 +394,9 @@
             var text_box1 = $("#add-num11-1");
             var praise_txt1 = $("#praise-txt11-1");
             var num1=parseInt(praise_txt1.text());
-{#			alert("11111")#}
                 if(praise_img1.attr("src") === ("{% static 'team/imgs/心形实心.png' %}")){
                 $(this).html("<img src='{% static 'team/imgs/心形.png' %}' id='praise-img11-1' class='animation' />");
                 praise_txt1.removeClass("hover");
-
                 text_box1.show().html("<em class='add-animation'>-1</em>");
                 $(".add-animation").removeClass("hover");
                 num1 -=1;

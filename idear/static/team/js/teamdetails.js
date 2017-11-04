@@ -222,9 +222,9 @@ $("#comment11-2").click(function () {
 
 //团队详情关注
 $("#praise11-1").click(function () {
-     // Id = $(this).attr("");
-     $.post("/idear/attend",{userId:2,attendeType:"3"},function (data) {
-
-     })
+    var teamid = window.location.href.split("/");
+    teamid = teamid[teamid.length-1];
+    $.post("/idear/attend",{userId:teamid,attendeType:"3"},function (data) {
+    })
 });
 
