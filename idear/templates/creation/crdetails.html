@@ -31,7 +31,7 @@
                         <p>{{creation.Describe}}</p>
                     </div>
                     <div class="home-b-foot">
-                        <div class="home-b-report">
+                        <div class="home-b-report" id="rdreport">
                             <img src="{% static '/creation/imgs/report.png' %}" style="width:16px;
     height:16px;">
                             <a href="#">举报</a>
@@ -192,13 +192,64 @@
 
         </div>
     </div>
-</div>
+
 
 {% endblock %}
 {% block script %}
 
     <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'creation/js/crdetails.js' %}"></script>
+    <script type="text/javascript" src="{% static 'project/js/layer/layer.js' %}"></script>
 
+<script>
+    $(".home-b-report").on('click', function () {
+            layer.open({
+                type: 1,
+                offset: '200px',
+                resize: false,
+                move: false,
+                area: ['500px', '400px'],
+                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                shade: 0.6,
+                maxmin: false,
+                anim: 0//0-6的动画形式，-1不开启
+                , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                '<button class="putreport" id="putreport">提交</button> '
+            });
+        });
+        {#            评论举报#}
+        $(".creport").on('click', function () {
+            layer.open({
+                type: 1,
+                offset: '200px',
+                resize: false,
+                move: false,
+                area: ['500px', '400px'],
+                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                shade: 0.6,
+                maxmin: false,
+                anim: 0//0-6的动画形式，-1不开启
+                , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                '<button class="putreport" id="putreport">提交</button> '
+
+            });
+        });
+        {#                  评论回复举报#}
+        $(".rcreport").on('click', function () {
+            layer.open({
+                type: 1,
+                offset: '200px',
+                resize: false,
+                move: false,
+                area: ['500px', '400px'],
+                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                shade: 0.6,
+                maxmin: false,
+                anim: 0//0-6的动画形式，-1不开启
+                , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                '<button class="putreport" id="putreport">提交</button> '
+            });
+        });
+</script>
 
 {% endblock %}
