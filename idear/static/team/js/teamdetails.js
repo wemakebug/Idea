@@ -161,7 +161,7 @@ function Myfunction(){
             }
         };
     }
-};
+}
 //end标签选择多个的结束
 
 //获得焦点跳转到评论
@@ -221,10 +221,41 @@ $("#comment11-2").click(function () {
  //end评论动态效果结束
 
 //团队详情关注
-$("#praise11-1").click(function () {
-     // Id = $(this).attr("");
-     $.post("/idear/attend",{userId:2,attendeType:"3"},function (data) {
+$(function () {
 
-     })
+    $.cookie("user", 3)
+    userId = $.cookie("user");
+
+    $("#praise11-1").click(function () {
+        var teamid = window.location.href.split("/");
+        teamid = teamid[teamid.length - 1];
+        var text_box1 = $("#add-num11-1");
+        var praise_txt1 = $("#praise-txt11-1");
+        var num1=parseInt(praise_txt1.text());
+        $.post("/idear/attend", {userId: userId,attendType: "3",Id:teamid}, function (data) {
+            data = JSON.parse(data);
+            if (data == 1) {
+                $("img[src='{% static 'team/imgs/心形.png' %}']").attr('src',"{% static 'team/imgs/心形实心.png' %}");
+                $("#praise-img11-1").addClass("animation");
+                praise_txt1.addClass("hover");
+                text_box1.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+                num1 +=1;
+                praise_txt1.text(num1);
+                window.location.reload();
+            } else if (data == 0) {
+                alert("操作失败！");
+            } else if(data == 2){
+                document.getElementById("praise-img11-1").src="../static/team/imgs/心形.png";
+                $("#praise-img11-1").addClass("animation");
+                praise_txt1.removeClass("hover");
+                text_box1.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+                num -= 1;
+                praise_txt1.text(num);
+                window.location.reload();
+            }
+        })
+    });
 });
 

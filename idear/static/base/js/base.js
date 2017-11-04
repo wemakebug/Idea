@@ -34,7 +34,7 @@ $(document).ready(function () {
             'email': email,
             'username': username
         };
-        $.post('getimg', {}, function (result) {
+        $.post('/idear/getimg', {}, function (result) {
             result = JSON.parse(result);
             if (result['status'] === 1) {
                 var img_path = result['img_path'];
