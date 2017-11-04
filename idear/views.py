@@ -353,7 +353,7 @@ def teamdetails(req, teamid):
         try:
             this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
-            counts = models.Follow.objects.filter(user=this_team).count()
+            counts = models.Follow.objects.filter(Follower=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
             print comments
             commentlist = []
@@ -563,6 +563,7 @@ def attend(req):
                 status = 1
             return HttpResponse(status)
         elif attendType == 3:
+<<<<<<< HEAD
             if Identity ==2:
                 try:
                     F = Follow.objects.get(Follower_UserName=username, user_id=userId).delete()
@@ -573,6 +574,15 @@ def attend(req):
                 return HttpResponse(status)
             else:
                 pass
+=======
+            try:
+                F = Follow.objects.get(user_id=userId, Follower_id=Id).delete()
+                status = 2
+            except:
+                p = Follow.objects.create(user_id=userId, Follower_id=Id)
+                status = 1
+            return HttpResponse(json.dumps(status))
+>>>>>>> 0b580a22f0868b9ef3ad353baeea8325758253e7
     except:
         return HttpResponse(status)
 

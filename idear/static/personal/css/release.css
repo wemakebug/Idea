@@ -154,10 +154,14 @@
 .add_cover{
     width: 100%;
     height: 90%;
-    background: url('../imgs/default.png');
+    background: url('../imgs/addimgs.png');
     background-size:100% 100% ;
-    /*margin-top: 15%;*/
-
+}
+.add_cover img{
+    width: 100%;
+    height: 100%;
+    background-size:100% 100% ;
+    border: 0;
 }
 .add_cover h2{
     width: 100%;
