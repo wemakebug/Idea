@@ -46,19 +46,11 @@
                         <div class="home-b-comment">
                             <img src="{% static '/creation/imgs/reply.svg' %}" style="width:16px;
     height:16px;">
-                            <a href="#comments">评论</a>
+                            <a href="#">评论</a>
                         </div>
-                        <div class="home-b-collection" creation={{ creation.Id }}>
+                        <div class="home-b-collection">
                             <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;
-    height:16px;" class="following">
-                        {% for follow in follows %}
-                            {% if follow.user_id == userId and follow.creation_id == creation.Id %}
-
-                            <img src="{% static '/creation/imgs/collections.png' %}" style="width:16px;
     height:16px;">
-                            {% endif %}
-                        {% endfor %}
-                            <span class="followspan">{{ creation.Follow_Creation_set.count }}</span>
                             <a href="#">收藏</a>
 
                         </div>
@@ -136,7 +128,7 @@
             <div class="content-footer">
 
 
-                <div class="comment" id="comments">
+                <div class="comment">
                     <div class="comment1-1">评论专区</div>
                     <div class="comment1-2"></div>
                     <div class="ctop">
