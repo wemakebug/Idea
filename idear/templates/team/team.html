@@ -41,7 +41,7 @@
                         <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
                         <div class="praise" team="{{ team.Id }}">
                             <span class="praise_0"><img src="../../static/team/imgs/zan.png" name="praise_img" /> </span>
-                            <span class="praise-txt">{{team.project}}</span>
+                            <span class="praise-txt">123{{team.project}}</span>
                             <span  class="add-num"><em>+1</em></span>
                         </div>
 
@@ -67,7 +67,8 @@
                     <a href="team?sign=all" sign="all"><span class="allsign">所有</span></a>
                     {% for obj in labels %}
                         <a href="team?sign={{ obj.Id }}" sign="{{ obj.Id }}">
-                            <span class="allsign">{{ obj.Name }}</span></a>
+                            <span class="allsign">{{ obj.Name }}</span>
+                        </a>
                     {% endfor %}
                 </div>
             </div>
@@ -78,6 +79,4 @@
     <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'team/js/team.js'%}"></script>
-
-
 {%endblock%}

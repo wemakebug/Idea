@@ -11,12 +11,13 @@
 
 
 {% endblock %}
+{% load commentshow %}
 {% block content %}
+
     <div class="main">
         <div class="content-all">
             <div class="main-left">
                 <div class="content-top">
-
                     <div class="content-main">
                         {% for label in labels %}
                             <a class="tags" href="../projects?sign={{ label.projectLabel.Id }}"><span
@@ -150,15 +151,15 @@
                             <button class="putcomment" id="rdputcomment">评论</button>
                         </div>
                     </div>
-
+                    {% for commentlist in comment%}
                     <div class="c-all" name="c-all">
                         <div class="cmain">
                             <img class="c-img" id="rdimg" src="{% static 'project/imgs/user.svg' %}">
                             {#                                  可以加hover点上变成网站logo#}
                             <div class="comment-box">
                                 <div class="comment-head">
-                                    <h6 class="comment-name " id="rduname"><a href=" ">Agustin Ortiz</a></h6>
-                                    <span class="cdate" id="rdcdate">2017-11-11</span>
+                                    <h6 class="comment-name " id="rduname"><a href=" ">{{commentlist|firstcomment}}</a></h6>
+                                    <span class="cdate" id="rdcdate">{{commentlist|firstcommenttime|date:"Y/m/d"}}</span>
                                     <div class="c-option">
                                         <img class="clike" id="rdclike"
                                              src="{% static 'project/imgs/like1.svg' %}"><span
@@ -169,7 +170,7 @@
                                     </div>
                                 </div>
                                 <div class="comment-content">
-                                    <p id="rdc-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
                                 </div>
                                 <div class="commentreply" id="commentreply">
                                     <textarea placeholder="" name="" class="commentreply-text"></textarea>
@@ -177,13 +178,13 @@
                                 </div>
                             </div>
                         </div>
-
+                            {%for comment in commentlist|leftcomment%}
                             <div class="c-reply">
                             <img class="rc-img" src="{% static 'project/imgs/user.svg' %}">
                             <div class="rcomment-box">
                                 <div class="rcomment-head">
-                                    <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a> 回复</h6>
-                                    <span class="rcdate">2017-11-11</span>
+                                    <h6 class="rcomment-name "><a href=" "> {{comment.user.UserName}}</a> 回复</h6>
+                                    <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
                                     <div class="r-option">
                                         <img class="rclike" id="rdrclike"
                                              src="{% static 'project/imgs/like1.svg' %}"><span
@@ -194,8 +195,7 @@
                                     </div>
                                 </div>
                                 <div class="rcomment-content">
-                                    <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem
-                                        ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                    <p id="rdr-content">{{comment.Content}}</p>
                                 </div>
                                 <div class="commentreply" id="rcommentreply">
                                     <textarea placeholder="" name="" class="commentreply-text"></textarea>
@@ -203,9 +203,9 @@
                                 </div>
                             </div>
                         </div>
-
+                            {% endfor %}
                     </div>
-                    
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -280,90 +280,6 @@
             }
         }
 
-        {#                   评论创建#}
-        $("#rdputcomment").click(function () {
-            var c_main = document.createElement("div");
-            c_main.className = "cmain";
-
-            var cmain_cimg = document.createElement("img");
-            cmain_cimg.className = "c-img";
-            cmain_cimg.src = "/static/project/imgs/user.svg";
-
-            var cmain_commentbox = document.createElement("div");
-            cmain_commentbox.className = "comment-box";
-
-            var commentbox_commenthead = document.createElement("div");
-            commentbox_commenthead.className = "comment-head";
-
-            var commenthead_cname = document.createElement("h6");
-            commenthead_cname.className = "comment-name";
-
-            var commenthead_cdate = document.createElement("span");
-            commenthead_cdate.className = "cdate";
-
-            var commenthead_coption = document.createElement("div");
-            commenthead_coption.className = "c-option";
-
-            var coption_clike = document.createElement("img");
-            coption_clike.className = "clike";
-            coption_clike.src = "/static/project/imgs/like1.svg";
-
-            var coption_clikenum = document.createElement("span");
-            coption_clikenum.className = "clikenum";
-
-            var coption_creply = document.createElement("img");
-            coption_creply.className = "creply";
-            coption_creply.src = "/static/project/imgs/reply.svg";
-
-            var coption_creport = document.createElement("img");
-            coption_creport.className = "creport";
-            coption_creport.src = "/static/creation/imgs/report.png";
-
-            var commentbox_commentcontent = document.createElement("div");
-            commentbox_commentcontent.className = "comment-content";
-
-            var commentcontent_p = document.createElement("p");
-            commentcontent_p.textContent = "ASDASDASDAWDF";
-
-            var commentbox_commentreply = document.createElement("div");
-            commentbox_commentreply.className = "commentreply";
-            commentbox_commentreply.name = "commentreply";
-
-
-            var commentreply_text = document.createElement("textarea");
-            commentreply_text.className = "commentreply-text";
-
-            var commentreply_putcomment = document.createElement("button");
-            commentreply_putcomment.className = "putcomment";
-            commentreply_putcomment.textContent = "回复";
-
-            c_main.appendChild(cmain_cimg);
-            c_main.appendChild(cmain_commentbox);
-
-            cmain_commentbox.appendChild(commentbox_commenthead);
-            cmain_commentbox.appendChild(commentbox_commentcontent);
-            cmain_commentbox.appendChild(commentbox_commentreply);
-            commentbox_commenthead.appendChild(commenthead_cname);
-            commentbox_commenthead.appendChild(commenthead_cdate);
-            commentbox_commenthead.appendChild(commenthead_coption);
-            commenthead_coption.appendChild(coption_clike);
-            commenthead_coption.appendChild(coption_clikenum);
-            commenthead_coption.appendChild(coption_creport);
-            commenthead_coption.appendChild(coption_creply);
-            commentbox_commentcontent.appendChild(commentcontent_p);
-
-            commentbox_commentreply.appendChild(commentreply_text);
-            commentbox_commentreply.appendChild(commentreply_putcomment);
-
-            var comment_input = document.getElementById("comment-content1");
-            var comment_content = comment_input.value;
-            commentcontent_p.innerHTML = comment_content
-            var c_all = document.getElementsByName("c-all")[0];
-
-            var cmain = document.getElementsByClassName("cmain")[0];
-            c_all.insertBefore(c_main, cmain);
-
-        });
 
         {#招募进度条#}
         $(function () {

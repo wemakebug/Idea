@@ -140,6 +140,8 @@
                             <button class="putcomment" id="putcomment">评论</button>
                         </div>
                     </div>
+<!-- 
+                     [  [head,hui,hui]  ,  [head,hui,hui], [head]   ] -->
 
                     {% for commentlist in comments%}
                     <div class="c-all" name="c-all">
@@ -169,7 +171,7 @@
                                           <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
                                           <div class="r-option">
                                               <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
-                                              <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
+                                              <img class="rcreply"   id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
                                               <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
                                           </div>
                                       </div>
@@ -183,6 +185,8 @@
 
                     </div>
                     {% endfor %}
+
+                    
                 </div>
 
 
