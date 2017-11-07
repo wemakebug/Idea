@@ -607,6 +607,7 @@ def star(req):
             except:
                 p = Praise.objects.create(project_id=Id, user_id=userId)
                 status = 1
+
             return HttpResponse(status)
     except Exception as e:
         print(e)
@@ -686,8 +687,10 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        praises = Praise.objects.all()
+        follows = Follow.objects.all()
         comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
-        print comments
+
 
         commentlist = []
 
@@ -713,7 +716,7 @@ def redetails(req):
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,"comment":commentlist,})
+                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
 
     if req.method == "POST":
