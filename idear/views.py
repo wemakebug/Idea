@@ -164,7 +164,10 @@ def index(req):
     :return: 
     '''
     if req.method == "GET":
-        return render_to_response('idea/index.html')
+        project = models.Project.objects.all()
+
+        label = models.Project2ProjectLabel.objects.all()
+        return render_to_response('idea/index.html',{"projects": project,"labels":label})
     if req.method == "POST":
         pass
 
@@ -219,7 +222,6 @@ def login(req):
                 result['message'] = '帐号格式不正确'
                 message = "message"
                 return HttpResponse(json.dumps(result))
-
 
 
 @csrf_exempt
