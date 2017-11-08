@@ -68,8 +68,7 @@
                                 <img src="{% static 'creation/imgs/like1.png' %}" style="width:18px;height:18px;">
                                 {% for praise in praises %}
                                     {% if praise.user_id == userId and praise.creation_id == creation.Id %}
-                                        <img src="{% static 'creation/imgs/likes.png' %}"
-                                             style="width:18px;height:18px;margin-left: -23px ">
+                                        <img src="{% static 'creation/imgs/likes.png' %}" style="width:18px;height:18px;margin-left: -23px ">
                                     {% endif %}
                                 {% endfor %}
                                 <span class="likespan">{{ creation.Praise_Creation_set.count }}</span>

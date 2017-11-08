@@ -59,7 +59,8 @@ $('.repo-language-color').each(function() {
 //点击更换样式
 $(".allsign").on("click",function () {
     var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
-    $(".allsign").eq(index($(this)).css('background',col));
-
-
+    var lables = $(this);
+    lables.css('background',col);
 });
+
+

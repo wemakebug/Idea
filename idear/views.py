@@ -164,7 +164,10 @@ def index(req):
     :return: 
     '''
     if req.method == "GET":
-        return render_to_response('idea/index.html')
+        project = models.Project.objects.all()
+
+        label = models.Project2ProjectLabel.objects.all()
+        return render_to_response('idea/index.html',{"projects": project,"labels":label})
     if req.method == "POST":
         pass
 
@@ -219,7 +222,6 @@ def login(req):
                 result['message'] = '帐号格式不正确'
                 message = "message"
                 return HttpResponse(json.dumps(result))
-
 
 
 @csrf_exempt
@@ -353,7 +355,7 @@ def teamdetails(req, teamid):
         try:
             this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
-            counts = models.Follow.objects.filter(user=this_team).count()
+            counts = models.Follow.objects.filter(Follower=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
             print comments
             commentlist = []
@@ -562,12 +564,12 @@ def attend(req):
             return HttpResponse(status)
         elif attendType == 3:
             try:
-                F = Follow.objects.get(Follower_id=Id, user_id=userId).delete()
+                F = Follow.objects.get(user_id=userId, Follower_id=Id).delete()
                 status = 2
             except:
-                p = Follow.objects.create(Follower_id=Id, user_id=userId)
+                p = Follow.objects.create(user_id=userId, Follower_id=Id)
                 status = 1
-            return HttpResponse(status)
+            return HttpResponse(json.dumps(status))
     except:
         return HttpResponse(status)
 
@@ -605,6 +607,7 @@ def star(req):
             except:
                 p = Praise.objects.create(project_id=Id, user_id=userId)
                 status = 1
+
             return HttpResponse(status)
     except Exception as e:
         print(e)
@@ -684,8 +687,10 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        praises = Praise.objects.all()
+        follows = Follow.objects.all()
         comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
-        print comments
+
 
         commentlist = []
 
@@ -711,7 +716,7 @@ def redetails(req):
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,"comment":commentlist,})
+                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
 
     if req.method == "POST":

@@ -442,13 +442,12 @@ html{
 
  .allsign{
     border: 1px solid #c0c5cd;
-    /*background-color: #eeeeee;*/
     border-radius: 5px;
     padding: 6px 15px;
     color: #a9b1b5;
 }
- .allsign.hover{
-     background-color: #0f74a8;
+ .allsign.cur{
+     background-color: #1b6d85;
  }
 .allsign:hover{
      color: #fff;

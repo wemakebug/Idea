@@ -109,7 +109,7 @@
 
                     <div class="best_project">
                         <div class="pro">
-                            <a href="#">
+                            <a href="redetails/?projectId=4">
                                 <div class="pro_left_img">
                                     <img src="../../static/idea/imgs/best_img.png">
                                 </div>
@@ -173,68 +173,24 @@
                                             <p>数学建模 </p>
                                             <p>智能应用</p>
                                         </div>
-                                        <div class="pro_no2_user">by&nbsp;some</div>
+                                        <div class="pro_no2_user"><p>by&nbsp;<a href="#">张张</a></p></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% for project in projects %}
                     <div class="pro_no3">
-                        <p><a href="#">这是排行第三的优秀项目</a></p>
+                        <p><a href="projects?projectId={{ project.Id}}">{{ project.ProjectName }}</a></p>
                         <div class="pro_no3_label">
-                            <p>|大数据</p>
-                            <p>|互联网</p>
+                            {%for label in labels%}
+                                {% if label.project.Id == project.Id %}
+                                <p>|{{label.projectLabel.ProjectLabelName}}</p>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="pro_no3">
-                        <p><a href="#">这是排行第四的项目我就拿来练手而已看看你能装多少文字</a></p>
-                        <div class="pro_no3_label">
-                            <p>|数学建模</p>
-                            <p>|互联网</p>
-                        </div>
-                    </div>
-                    <div class="pro_no3">
-                        <p><a href="#">专治疑难杂症</a></p>
-                        <div class="pro_no3_label">
-                            <p>|大数据</p>
-                            <p>|随便一个标签</p>
-                        </div>
-                    </div>
-                    <div class="pro_no3">
-                        <p><a href="#">这太复杂了我不会呀</a></p>
-                        <div class="pro_no3_label">
-                            <p>|大数据</p>
-                            <p>|互联网</p>
-                            <p>|智能应用</p>
-                        </div>
-                    </div>
-                    <div class="pro_no3">
-                        <p><a href="#">我有一个好项目</a></p>
-
-                        <div class="pro_no3_label">
-                            <p>|大数据</p>
-                        </div>
-                    </div>
-                    <div class="pro_no3">
-                        <p><a href="#">如何让人们在你的海报多停留？</a></p>
-                        <div class="pro_no3_label">
-                            <p>|大数据</p>
-                            <p>|互联网</p>
-                        </div>
-                    </div>
-                    <div class="pro_no3">
-                        <p>智慧软件工作室的约车系统</p>
-                        <div class="pro_no3_label">
-                            <p>|大数据</p>
-                        </div>
-                    </div>
-                    <div class="pro_no3">
-                        <p>高校教务系统</p>
-                        <div class="pro_no3_label">
-                            <p>|大数据</p>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
             </div>
 			<div class="mainbox_two" >
