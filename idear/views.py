@@ -164,7 +164,10 @@ def index(req):
     :return: 
     '''
     if req.method == "GET":
-        return render_to_response('idea/index.html')
+        project = models.Project.objects.all()
+
+        label = models.Project2ProjectLabel.objects.all()
+        return render_to_response('idea/index.html',{"projects": project,"labels":label})
     if req.method == "POST":
         pass
 
@@ -219,7 +222,6 @@ def login(req):
                 result['message'] = '帐号格式不正确'
                 message = "message"
                 return HttpResponse(json.dumps(result))
-
 
 
 @csrf_exempt
@@ -355,7 +357,6 @@ def teamdetails(req, teamid):
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
             counts = models.Follow.objects.filter(Follower=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
-            print comments
             commentlist = []
 
             for comment in comments:
@@ -370,10 +371,9 @@ def teamdetails(req, teamid):
                         comlist.append(comment)
 
         except Exception as e:
-            print(e.message)
             return Http404
-        else:
-            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
+
+        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
@@ -606,6 +606,7 @@ def star(req):
             except:
                 p = Praise.objects.create(project_id=Id, user_id=userId)
                 status = 1
+
             return HttpResponse(status)
         elif starType ==3:
             try:
@@ -636,6 +637,13 @@ def comment(req):
             creation = models.Creation.objects.get(pk = creationId)
             models.Comment.objects.create(user = user ,creation = creation , Content = content)
             status = 1
+            return HttpResponse(status)
+            projectId = req.POST["projectId"]
+            content = req.POST["content"]
+            user = models.User.objects.get(UserName=username)
+            project = models.Project.objects.get(pk=projectId)
+            models.Comment.objects.create(user=user, project=project, Content=content)
+            status = 2
             return HttpResponse(status)
         except Exception as e:
             print(e)
@@ -693,8 +701,10 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        praises = Praise.objects.all()
+        follows = Follow.objects.all()
         comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
-        print comments
+
 
         commentlist = []
 
@@ -720,7 +730,7 @@ def redetails(req):
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,"comment":commentlist,})
+                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
 
     if req.method == "POST":
