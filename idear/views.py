@@ -631,6 +631,13 @@ def comment(req):
             models.Comment.objects.create(user = user ,creation = creation , Content = content)
             status = 1
             return HttpResponse(status)
+            projectId = req.POST["projectId"]
+            content = req.POST["content"]
+            user = models.User.objects.get(UserName=username)
+            project = models.Project.objects.get(pk=projectId)
+            models.Comment.objects.create(user=user, project=project, Content=content)
+            status = 2
+            return HttpResponse(status)
         except Exception as e:
             print(e)
             return HttpResponse(status)
