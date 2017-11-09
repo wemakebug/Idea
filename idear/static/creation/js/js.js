@@ -19,9 +19,7 @@ $(function() {
 
 $(function () {
 
-$.cookie("user",3)
 
-userId = $.cookie("user")
 
 
 // 创意关注操作

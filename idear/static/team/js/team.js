@@ -14,11 +14,16 @@ $(function() {
 });
 //点赞
     $(function(){
+        $.cookie("user",3);
+        userId = $.cookie("user");
         $("body").on("click",".praise_0",function () {
+            Id = $(this).attr("team");
             var praise_img = $(this).find("img");
             var text_box = $(this).siblings(".add-num");
             var praise_txt = $(this).siblings(".praise-txt");
             var num = parseInt(praise_txt.text());
+             $.post("star", {userId: userId,starType: "3",Id:Id}, function (data) {
+            data = JSON.parse(data);
             if(praise_img.attr("src") == "../static/team/imgs/yizan.png"){
                 // $(this).html("<img src='{% static 'team/imgs/zan.png' %}'  name='praise_img' class='animation' />");
                $(this).html("<img src='../static/team/imgs/zan.png' name='praise_img' class='animation' />");
@@ -34,9 +39,10 @@ $(function() {
                 $(".add-animation").addClass("hover");
                 num +=1;
                 praise_txt.text(num);
-            }
-        });
-	});
+                }
+            });
+	    });
+    });
 
 //控制介绍字数
     $(document).ready(function () {
@@ -59,7 +65,8 @@ $('.repo-language-color').each(function() {
 //点击更换样式
 $(".allsign").on("click",function () {
     var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
-    $(".allsign").eq(index($(this)).css('background',col));
-
-
+    var lables = $(this);
+    lables.css('background-color',col);
 });
+
+

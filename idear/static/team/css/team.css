@@ -42,7 +42,7 @@ html{
 .photo_0{
 	height: 26%;
 	width: 20%;
-	margin: 4% 6% 0;
+	margin: 4% 7% 0;
 	background-color:rgba(255, 255, 255, 0.6);
 	z-index: 99;
 	cursor:pointer;
@@ -67,7 +67,7 @@ html{
     color: #6b6b6b;
 	font-size: 14px;
     text-indent: 2em;
-	height: 69%;
+	height: 70%;
 	width: 85%;
     line-height:25px;
 	margin: 4.5% auto 0;
@@ -442,13 +442,12 @@ html{
 
  .allsign{
     border: 1px solid #c0c5cd;
-    /*background-color: #eeeeee;*/
     border-radius: 5px;
     padding: 6px 15px;
     color: #a9b1b5;
 }
- .allsign.hover{
-     background-color: #0f74a8;
+ .allsign.cur{
+     background-color: #1b6d85;
  }
 .allsign:hover{
      color: #fff;
