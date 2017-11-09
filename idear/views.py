@@ -544,8 +544,6 @@ def attend(req):
         Id = req.POST['Id']
         userId = req.POST['userId']
         attendType = int(req.POST['attendType'])
-        Identity = int(req.POST['Identity'])
-        username = "chris"
         if attendType == 1:
             try:
                 p = Follow.objects.get(creation_id=Id, user_id=userId).delete()
@@ -563,18 +561,6 @@ def attend(req):
                 status = 1
             return HttpResponse(status)
         elif attendType == 3:
-<<<<<<< HEAD
-            if Identity ==2:
-                try:
-                    F = Follow.objects.get(Follower_UserName=username, user_id=userId).delete()
-                    status = 2
-                except:
-                    p = Follow.objects.create(Follower_UserName=username, user_id=userId)
-                    status = 1
-                return HttpResponse(status)
-            else:
-                pass
-=======
             try:
                 F = Follow.objects.get(user_id=userId, Follower_id=Id).delete()
                 status = 2
@@ -582,7 +568,6 @@ def attend(req):
                 p = Follow.objects.create(user_id=userId, Follower_id=Id)
                 status = 1
             return HttpResponse(json.dumps(status))
->>>>>>> 0b580a22f0868b9ef3ad353baeea8325758253e7
     except:
         return HttpResponse(status)
 
