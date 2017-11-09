@@ -30,11 +30,7 @@
                     <span id="praise-txt11-2" class="praise-txt11-2">评论</span>
                 </div>
                 <div class="praise11-1 praise1-1" >
-
-                     <span id="praise11-1" class="praise11-1"><img src="{% static 'team/imgs/xinxing.png' %}" id="praise-img11-1" /> </span>
-
                      <span id="praise11-1" class="praise11-1"><img src="{% static 'team/imgs/xinxing.png' %}" id="praise-img11-dianzan" /> </span>
-
                      <span id="praise-txt11-1" class="praise-txt11-1">{{ counnt }}</span>
                      <span id="add-num11-1" class="add-num11-1"><em>+1</em></span>
                 </div>
@@ -135,7 +131,7 @@
                             <div class="comment-content">
                                 <p>{{commentlist|firstcommentcontent}}</p>
                             </div>
-                            <div class="commentreply" id="commentreply">
+                            <div class="commentreply commentreplys" id="commentreplys">
                                 <textarea placeholder="" name=""  class="commentreply-text"></textarea>
                                 <button class="putcomment" id="putcomments" >回复</button>
                             </div>

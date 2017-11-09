@@ -377,6 +377,7 @@ def teamdetails(req, teamid):
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
+        reply_content = req.POST["reply_comment"]
         result = {
             "status": 1,
             "string": None
