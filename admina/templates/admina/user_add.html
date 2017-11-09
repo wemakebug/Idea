@@ -3,7 +3,9 @@
 {% block title %}Admin-Index{% endblock %} {# title #}
 {% block css %}{# css #}
 <!--file upload-->
-<link rel="stylesheet" type="text/css" href="/public/css/bootstrap-fileupload.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap-fileupload.min.css" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
 {% endblock %}
 {% block heading %}   {# heading #}
 <ul class="breadcrumb">
@@ -150,35 +152,35 @@
 
 
 {% block midscript %}   {# midescript #}
-<script type="text/javascript" src="/public/js/jquery.validate.min.js"></script>
-<script src="/public/user_statics/user_add_validation.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.min.js"></script>
+<script src="/static/user_statics/user_add_validation.js"></script>
 
 <!--ios7-->
-<script src="/public/js/ios-switch/switchery.js" ></script>
-<script src="/public/js/ios-switch/ios-init.js" ></script>
+<script src="/static/js/ios-switch/switchery.js" ></script>
+<script src="/static/js/ios-switch/ios-init.js" ></script>
 
 <!--icheck -->
-<script src="/public/js/iCheck/jquery.icheck.js"></script>
-<script src="/public/js/icheck-init.js"></script>
+<script src="/static/js/iCheck/jquery.icheck.js"></script>
+<script src="/static/js/icheck-init.js"></script>
 
 <!--multi-select-->
-<script type="text/javascript" src="/public/js/jquery-multi-select/js/jquery.multi-select.js"></script>
-<script type="text/javascript" src="/public/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
-<script src="/public/js/multi-select-init.js"></script>
+<script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
+<script src="/static/js/multi-select-init.js"></script>
 
 <!--spinner-->
-<script type="text/javascript" src="/public/js/fuelux/js/spinner.min.js"></script>
-<script src="/public/js/spinner-init.js"></script>
+<script type="text/javascript" src="/static/js/fuelux/js/spinner.min.js"></script>
+<script src="/static/js/spinner-init.js"></script>
 
 <!--file upload-->
-<script type="text/javascript" src="/public/js/bootstrap-fileupload.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-fileupload.min.js"></script>
 
 <!--tags input-->
-<script src="/public/js/jquery-tags-input/jquery.tagsinput.js"></script>
-<script src="/public/js/tagsinput-init.js"></script>
+<script src="/static/js/jquery-tags-input/jquery.tagsinput.js"></script>
+<script src="/static/js/tagsinput-init.js"></script>
 
 <!--bootstrap input mask-->
-<script type="text/javascript" src="/public/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
 
 {% endblock %}
 

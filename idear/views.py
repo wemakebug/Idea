@@ -341,7 +341,7 @@ def team(req):
         pass
 
 @csrf_exempt
-def teamdetails(req, teamid = 2):
+def teamdetails(req, teamid):
     '''
     团队详情页面 所有team 按照创建时间排序
     :param req: 
@@ -360,6 +360,7 @@ def teamdetails(req, teamid = 2):
         else:
             return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts})
     if req.method == 'POST':
+        print(teamid)
         content = req.POST["string"]
         username = "chris"
         teamid = 2
@@ -731,7 +732,7 @@ def projects(req):
                     project = Project.objects.filter(Id=int(obj.project.Id))
                     projects.append(project)
                     for i,project in enumerate(projects):
-                        print project
+                        print(project)
                     #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
                     #     recruit_all.append(recruit)
                     # all_recruit = zip(projects, recruit_all)
