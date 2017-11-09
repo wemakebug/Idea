@@ -145,23 +145,52 @@ $("#putcommentbutton").click(function () {
         }
 });
 //end评论添加记录结束
+//评论回复
+$(".putcomment").click(function () {
 
-//控制标签可以选择多个
-document.onkeydown=Myfunction;
-function Myfunction(){
-   var oDiv = document.getElementById("teamlable1-4");
-    for(var i=0;i<oDiv.length;i++){
-        oDiv[i].onclick = function(){
-            if(!this.style.backgroundColor ){
-                this.style.backgroundColor = '#57cecd';
-                this.style.color = '#ffffff';
-            }else{
-                this.style.backgroundColor = '';
-                this.style.color = 'gray';
-            }
-        };
+})
+//end结束
+//回复举报
+var aLi = document.querySelectorAll('.creport');
+for (var i = 0; i < aLi.length; i++) {
+        aLi[i].addEventListener('click', function(){
+            layer.open({
+                type: 1,
+                offset: '200px',
+                resize: false,
+                move: false,
+                area: ['500px', '400px'],
+                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                shade: 0.6,
+                maxmin: false,
+                anim: 0//0-6的动画形式，-1不开启
+                , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                '<button class="putreport" id="putreport">提交</button> '
+            });
+        });
     }
-}
+//end
+//回复内容
+var aLi = document.querySelectorAll('.putcomment');
+for (var i = 0; i < aLi.length; i++) {
+        aLi[i].addEventListener('click', function(){
+            var cmain_commentreply = document.createElement("div");
+            cmain_commentreply.className = "commentreply";
+            cmain_commentreply.name = "commentreply";
+
+            var commentreply_text = document.createElement("textarea");
+            commentreply_text.className = "commentreply-text";
+
+            var commentreply_putcomment = document.createElement("button");
+            commentreply_putcomment.className = "putcomment";
+            commentreply_putcomment.textContent = "回复";
+
+            
+        });
+    }
+//end
+//控制标签可以选择多个
+
 //end标签选择多个的结束
 
 //获得焦点跳转到评论
@@ -226,16 +255,16 @@ $(function () {
     $.cookie("user", 3)
     userId = $.cookie("user");
 
-    $("#praise11-1").click(function () {
-        var teamid = window.location.href.split("/");
-        teamid = teamid[teamid.length - 1];
+    $("#praise-img11-dianzan").click(function () {
+        var Id = window.location.href.split("/");
+        Id = Id[Id.length - 1];
         var text_box1 = $("#add-num11-1");
         var praise_txt1 = $("#praise-txt11-1");
         var num1=parseInt(praise_txt1.text());
-        $.post("/idear/attend", {userId: userId,attendType: "3",Id:teamid}, function (data) {
+        $.post("/idear/attend", {userId: userId,attendType: "3",Id:Id}, function (data) {
             data = JSON.parse(data);
             if (data == 1) {
-                $("img[src='{% static 'team/imgs/心形.png' %}']").attr('src',"{% static 'team/imgs/心形实心.png' %}");
+                document.getElementById("praise-img11-dianzan").src="../static/team/imgs/xinxingshixin.png";
                 $("#praise-img11-1").addClass("animation");
                 praise_txt1.addClass("hover");
                 text_box1.show().html("<em class='add-animation'>+1</em>");
@@ -246,7 +275,7 @@ $(function () {
             } else if (data == 0) {
                 alert("操作失败！");
             } else if(data == 2){
-                document.getElementById("praise-img11-1").src="../static/team/imgs/心形.png";
+                document.getElementById("praise-img11-dianzan").src="../static/team/imgs/xinxing.png";
                 $("#praise-img11-1").addClass("animation");
                 praise_txt1.removeClass("hover");
                 text_box1.show().html("<em class='add-animation'>-1</em>");
@@ -257,5 +286,13 @@ $(function () {
             }
         })
     });
+});
+
+//随机颜色标签圆球
+$(document).ready(function(){
+$('.repo-language-color').each(function() {
+    var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
+    $(this).css('background', col)
+})
 });
 
