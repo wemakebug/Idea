@@ -581,6 +581,7 @@ def star(req):
     点赞
     1为创意
     2为项目
+    3为个人/团队
 
     status
     状态值：0为失败，1为成功， 2为取消点赞成功
@@ -598,12 +599,20 @@ def star(req):
                 p = Praise.objects.create(creation_id=Id, user_id=userId)
                 status = 1
             return HttpResponse(status)
-        else:
+        elif starType ==2:
             try:
                 p = Praise.objects.get(project_id=Id, user_id=userId).delete()
                 status = 2
             except:
                 p = Praise.objects.create(project_id=Id, user_id=userId)
+                status = 1
+            return HttpResponse(status)
+        elif starType ==3:
+            try:
+                p = Praise.objects.get(Praise_id=Id, user_id=userId).delete()
+                status = 2
+            except:
+                p = Praise.objects.create(Praise_id=Id, user_id=userId)
                 status = 1
             return HttpResponse(status)
     except Exception as e:
