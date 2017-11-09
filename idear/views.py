@@ -357,7 +357,6 @@ def teamdetails(req, teamid):
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
             counts = models.Follow.objects.filter(Follower=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
-            print comments
             commentlist = []
 
             for comment in comments:
@@ -372,10 +371,9 @@ def teamdetails(req, teamid):
                         comlist.append(comment)
 
         except Exception as e:
-            print(e.message)
             return Http404
-        else:
-            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
+
+        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
