@@ -756,35 +756,25 @@ def projects(req):
     '''
     招募项目一级二级页面项目显示
     '''
-    projectLabels = ProjectLabel.objects.all()
-    projects = Project.objects.all().order_by("EndTime")
-    recruit_all = []
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = projects
-            # 如果有特殊标签
+                projects = Project.objects.all().order_by("EndTime")
             else:
+                projects = []
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
-                projects = Project.objects.filter()
                 for obj in ProjectLabelObjs:
-                    projects = []
-                    project = Project.objects.filter(Id=int(obj.project.Id))
-                    projects.append(project)
-                    for i,project in enumerate(projects):
-                        print project
-                    #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                    #     recruit_all.append(recruit)
-                    # all_recruit = zip(projects, recruit_all)
-                    # projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
+                    projects.append(obj.project)
 
-                for project in projects:
-                    recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                    recruit_all.append(recruit)
+            recruit_all = []
+            for project in projects:
+                recruit = models.Recruit.objects.filter(project__Id=project.Id)
+                recruit_all.append(recruit)
+
             all_recruit = zip(projects, recruit_all)
-            return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
+            return render_to_response('project/recruit.html', {'projectLabels': ProjectLabel.objects.all(), "all_recruit": all_recruit})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
