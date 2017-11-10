@@ -312,7 +312,8 @@
             $("#rdpstatus").text(times);
         });
 
-        $("#rdputcomment").click(function () {
+        $("#rdputcomment").click(function (){
+            function CreateComment() {
             var c_main = document.createElement("div");
             c_main.className = "cmain";
 
@@ -388,18 +389,25 @@
 
             var comment_input = document.getElementById("comment-content1");
             var comment_content = comment_input.value;
-            commentcontent_p.innerHTML = comment_content
+            commentcontent_p.innerHTML = comment_content;
             var c_all = document.getElementsByName("c-all")[0];
             var cmain = document.getElementsByClassName("cmain")[0];
-            c_all.insertBefore(c_main,cmain);
+            c_all.insertBefore(c_main, cmain);
+            }
+
+             comment = $("#comment-content1").val()
+             if (comment =="")
+             alert("您的输入为空")
+            else
+                 $.post("comment",
+                     {content:$("#comment-content1").val(),projectId:$("#projectId").val()},function(data) {
+                         if (data == 1)
+                             CreateComment(content)
+                         else
+                             alert("Sorry, 出现了一些问题")
+                     })
 
         });
-
-
-
-
-
-
     </script>
 
 

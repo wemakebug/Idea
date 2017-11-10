@@ -357,7 +357,6 @@ def teamdetails(req, teamid):
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
             counts = models.Follow.objects.filter(Follower=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
-            print comments
             commentlist = []
 
             for comment in comments:
@@ -372,13 +371,13 @@ def teamdetails(req, teamid):
                         comlist.append(comment)
 
         except Exception as e:
-            print(e.message)
             return Http404
-        else:
-            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
+
+        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
+        reply_content = req.POST["reply_comment"]
         result = {
             "status": 1,
             "string": None
@@ -583,6 +582,7 @@ def star(req):
     点赞
     1为创意
     2为项目
+    3为个人/团队
 
     status
     状态值：0为失败，1为成功， 2为取消点赞成功
@@ -600,7 +600,7 @@ def star(req):
                 p = Praise.objects.create(creation_id=Id, user_id=userId)
                 status = 1
             return HttpResponse(status)
-        else:
+        elif starType ==2:
             try:
                 p = Praise.objects.get(project_id=Id, user_id=userId).delete()
                 status = 2
@@ -608,6 +608,14 @@ def star(req):
                 p = Praise.objects.create(project_id=Id, user_id=userId)
                 status = 1
 
+            return HttpResponse(status)
+        elif starType ==3:
+            try:
+                p = Praise.objects.get(Praise_id=Id, user_id=userId).delete()
+                status = 2
+            except:
+                p = Praise.objects.create(Praise_id=Id, user_id=userId)
+                status = 1
             return HttpResponse(status)
     except Exception as e:
         print(e)
@@ -630,6 +638,13 @@ def comment(req):
             creation = models.Creation.objects.get(pk = creationId)
             models.Comment.objects.create(user = user ,creation = creation , Content = content)
             status = 1
+            return HttpResponse(status)
+            projectId = req.POST["projectId"]
+            content = req.POST["content"]
+            user = models.User.objects.get(UserName=username)
+            project = models.Project.objects.get(pk=projectId)
+            models.Comment.objects.create(user=user, project=project, Content=content)
+            status = 2
             return HttpResponse(status)
         except Exception as e:
             print(e)
@@ -741,35 +756,25 @@ def projects(req):
     '''
     招募项目一级二级页面项目显示
     '''
-    projectLabels = ProjectLabel.objects.all()
-    projects = Project.objects.all().order_by("EndTime")
-    recruit_all = []
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = projects
-            # 如果有特殊标签
+                projects = Project.objects.all().order_by("EndTime")
             else:
+                projects = []
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
-                projects = Project.objects.filter()
                 for obj in ProjectLabelObjs:
-                    projects = []
-                    project = Project.objects.filter(Id=int(obj.project.Id))
-                    projects.append(project)
-                    for i,project in enumerate(projects):
-                        print project
-                    #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                    #     recruit_all.append(recruit)
-                    # all_recruit = zip(projects, recruit_all)
-                    # projects = chain(projects, Project.objects.filter(Id=int(obj.project.Id)))
+                    projects.append(obj.project)
 
-                for project in projects:
-                    recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                    recruit_all.append(recruit)
+            recruit_all = []
+            for project in projects:
+                recruit = models.Recruit.objects.filter(project__Id=project.Id)
+                recruit_all.append(recruit)
+
             all_recruit = zip(projects, recruit_all)
-            return render_to_response('project/recruit.html', {'projectLabels': projectLabels, "all_recruit": all_recruit})
+            return render_to_response('project/recruit.html', {'projectLabels': ProjectLabel.objects.all(), "all_recruit": all_recruit})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
