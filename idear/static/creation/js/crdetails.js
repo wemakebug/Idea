@@ -22,7 +22,18 @@ $("#putcomment").click(function(){
 })
 
 
-
+$('.creply').click(function(){
+    var ele = this;
+    var parent_div = ele.parentNode.parentNode.parentNode;
+    var reply = parent_div.lastChild;
+    if(reply.tagName === undefined){
+        reply = parent_div.childNodes[parent_div.childNodes.length-2];
+    }else {
+        reply = parent_div.lastChild;
+    }
+    reply = $(reply);
+    reply.slideToggle("slow");
+ });
 
 
 

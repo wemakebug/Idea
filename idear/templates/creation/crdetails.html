@@ -160,6 +160,10 @@
                                       <div class="comment-content">
                                          <p>{{commentlist|firstcommentcontent}}</p>
                                       </div>
+                                      <div class="commentreply commentreplys" id="commentreplys">
+                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
+                                          <button class="putcomment" id="putcomments" >回复</button>
+                                      </div>
                                   </div>
                               </div>
                               {%for comment in commentlist|leftcomment%}
@@ -204,7 +208,6 @@
     <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'creation/js/crdetails.js' %}"></script>
     <script type="text/javascript" src="{% static 'project/js/layer/layer.js' %}"></script>
-
 <script>
     $(".home-b-report").on('click', function () {
             layer.open({
