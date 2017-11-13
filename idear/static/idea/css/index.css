@@ -447,6 +447,9 @@ small {
     text-overflow:ellipsis;
     white-space: nowrap;
 }
+.pro_no3 a:hover{
+    color:#295E6A;
+}
 .pro_no3_label{
     width: 39%;
     height: 100%;
