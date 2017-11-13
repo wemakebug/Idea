@@ -1,0 +1,152 @@
+{% extends "../base/Base.html"%}
+{% block title %}
+    ProFile
+{% endblock %}
+
+{% block pagetitle %}
+HelloWord
+{% endblock %}
+
+{% block body %}
+{% load static %}
+    <div class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Media Manager
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                <a href="javascript:;" class="fa fa-times"></a>
+                             </span>
+                        </header>
+                        <div class="panel-body">
+
+                            <ul id="filters" class="media-filter">
+                                <li><a href="#" data-filter="*">{{ user.UserName }}'s Images</a></li>
+                            </ul>
+
+                            <div class="btn-group pull-right">
+
+                                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-upload"></i> Upload New File</button>
+                            </div>
+
+
+
+                            <div id="gallery" class="media-gal">
+                                {% for image in Images %}
+                                    <div class="images item " name="UserImg">
+                                        <a href="#myModal" data-toggle="modal">
+                                            <img src="/static/photos/{{ image.Img }}" alt="用户上传图片" id="{{ image.Id }}"/>
+                                        </a>
+                                        <p name="show_Image_Name">{{ image.UploadDate }} </p>
+                                    </div>
+                                {% endfor %}
+
+
+
+
+                            </div>
+
+                            <div class="col-md-12 text-center clearfix">
+                                <ul class="pagination">
+                                    <li><a href="#">«</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">»</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Edit Media Gallery</h4>
+                                        </div>
+
+                                        <div class="modal-body row">
+
+                                            <div class="col-md-5 img-modal">
+                                                <img src="/static/images/gallery/image2.jpg" alt="" id="openimg">
+                                                <p class="mtop10" id="upimgname"><strong>File Name:</strong> </p>
+                                                <p id="up_img_type"><strong>图片类型:</strong></p>
+                                                <p><strong>上传自:</strong> <a href="#">{{ user.UserName }}</a></p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="form-group">
+                                                    <label> Name</label>
+                                                    <input id="name" value="" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label> Tittle Text</label>
+                                                    <input id="title" value="awesome image" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label> Description</label>
+                                                    <textarea rows="2" class="form-control"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>图片链接</label>
+                                                    <input id="link" value="" class="form-control">
+                                                </div>
+                                                <div class="pull-right">
+                                                    <button class="btn btn-danger btn-sm" type="button" id="delete_img_btn">Delete</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- modal -->
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    <script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="/static/js/jquery.isotope.js"></script>
+    <script type="text/javascript">
+        $("div[name='UserImg']").on('click',function () {
+            var ImageId, ImagePath, ImageName, ImageType;
+            var nodes = this.childNodes;
+            for(var i = 0;i < nodes.length;i++){
+                if(nodes[i].tagName === 'A'|| nodes[i].tagName === 'a'){
+                    var a_nodes = nodes[i].childNodes;
+                    for(var j = 0; j < a_nodes.length; j++ ){
+                        if(a_nodes[j].tagName === 'img' || a_nodes[j].tagName === 'IMG'){
+                            $("#openimg").get(0).src = a_nodes[j].src;
+                            $("#link").val(a_nodes[j].src);
+                            ImageId = a_nodes[j].id;
+                            ImageName = a_nodes[j].src.split('/');
+                            ImageName = decodeURI(ImageName[ImageName.length -1]);
+                            ImageType = ImageName.split(".")[ImageName.split(".").length-1];
+                            $("#name").val(ImageName);
+                            $("#up_img_type").get(0).innerHTML = "<strong>图片类型:</strong>" +ImageType;
+                            $("#upimgname").get(0).innerHTML = "<strong>File Name:</strong>" + ImageName;
+                        }
+                    }
+                }
+            }
+
+            $("#delete_img_btn").on("click",function () {
+              $.post("PhotoGallery", {"image_id": ImageId}, function (result) {
+                    result = JSON.parse(result);
+                    if(result.status === 1){
+                        window.location.reload();
+                    }else {
+                        alert(result.message);
+                    }
+              })
+            });
+        });
+
+    </script>
+{% endblock %}

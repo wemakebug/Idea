@@ -60,7 +60,10 @@ ROOT_URLCONF = 'Idea.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [
+            os.path.join(BASE_DIR, "/admina/static/"),
+            os.path.join(BASE_DIR, "/idear/static/"),
+        ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -160,15 +163,15 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-
+    os.path.join(BASE_DIR, "/admina/static/"),
+    os.path.join(BASE_DIR, "/idear/static/"),
 ]
 
 
-STATIC_ROOT = os.path.join(os.path.dirname(__file__), '/admina/').replace('\\', '/')
-
+STATIC_ROOT = os.path.join(os.path.dirname(__file__)).replace('\\', '/')
 
 MEDIA_URL = '/photos/'
+
 MEDIAFILES_DIRS =[
     os.path.join(BASE_DIR, "idear/static/photos"),
 ]

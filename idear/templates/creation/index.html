@@ -23,7 +23,8 @@
                         </div>
                         <div class="block-head">
                             <a class="ava" href="#">
-                                <img src="{{ creation.User.Img }}" style="width:40px;height:40px">
+                                <img src="/static/photos/{{ creation.user.Img }}" style="width:40px;height:40px">
+
                             </a>
                             <a class="name" style="margin-top:20px" href="#">
                                 <span>{{ creation.user }}</span>
@@ -67,8 +68,7 @@
                                 <img src="{% static 'creation/imgs/like1.png' %}" style="width:18px;height:18px;">
                                 {% for praise in praises %}
                                     {% if praise.user_id == userId and praise.creation_id == creation.Id %}
-                                        <img src="{% static 'creation/imgs/likes.png' %}"
-                                             style="width:18px;height:18px;margin-left: -23px ">
+                                        <img src="{% static 'creation/imgs/likes.png' %}" style="width:18px;height:18px;margin-left: -23px ">
                                     {% endif %}
                                 {% endfor %}
                                 <span class="likespan">{{ creation.Praise_Creation_set.count }}</span>
@@ -93,11 +93,8 @@
                     <span>标签</span>
                     <hr>
                     <a href="creations?sign=all" sign="all"><span class="allsign">所有</span></a>
-
-
                     {% for obj in projectLabels %}
-                        <a href="creations?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span
-                                class="allsign">{{ obj.ProjectLabelName }}</span></a>
+                        <a href="creations?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign">{{ obj.ProjectLabelName }}</span></a>
                     {% endfor %}
 
                 </div>
@@ -114,6 +111,7 @@
 
     <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'creation/js/js.js' %}"></script>
+
 
 
 {% endblock %}

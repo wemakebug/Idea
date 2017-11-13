@@ -3,9 +3,9 @@
  */
 
 
-$("#backhomepage").click(function () {
+$("#backhomepage").click(function (){
     window.location.href = "homepage";
-})
+});
 
 $("#editcontent1-3").click(function () {
     $("#editcontent1-33").addClass("editcontent11-3");
@@ -27,7 +27,6 @@ $("#editcontent1-5").click(function () {
     $("#editmaincontect").addClass("publicclass1-1");
     $("#personalinformation").addClass("publicclass1-1");
     $("#editcontent1-55").addClass("publicclass");
-    $("#changepassword").removeClass("publicclass1-1");
     $("#changepassword").removeClass("publicclass");
     $("#editcontent1-44").removeClass("publicclass");
 });

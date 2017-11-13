@@ -3,7 +3,6 @@
  */
 
 
-
 function getCookie(name) {
     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
     if (arr = document.cookie.match(reg))
@@ -29,26 +28,39 @@ $(document).ready(function () {
         var hidden_item = document.getElementById('login_status_true');
         hidden_item.style.display = '';
         var email = $.cookie('email');
-    var username = $.cookie('username');
-    var data = {
-        'email': email,
-        'username': username
-    };
-    $.post('getimg', {}, function (result) {
-        result = JSON.parse(result);
-        if (result['status'] === 1) {
-            // alert(result['message']);
-            var img_path = result['img_path'];
-            var message = result['message'];
-            user_img.src = '/static/photos/' + img_path;
-        } else if (result['status'] === 0) {
-            // var message = result['message'];
-            // alert(message);
-        } else {
-        }
+        var username = $.cookie('username');
+        document.getElementById("username").innerHTML = username;
+        var data = {
+            'email': email,
+            'username': username
+        };
+        $.post('/idear/getimg', {}, function (result) {
+            result = JSON.parse(result);
+            if (result['status'] === 1) {
+                var img_path = result['img_path'];
+                var message = result['message'];
+                user_img.src = '/static' + img_path;
+                document.getElementById('user_img').style.src= user_img.src;
+            } else if (result['status'] === 0) {
+                // var message = result['message'];
+                // alert(message);
+            } else {
+            }
+
+        });
+         // var cookie = {
+         // get:function(str){
+         // var cookies = {};
+         // document.cookie.split(';').forEach(function(item){
+         // var c = item.split('=');
+         // cookies[c[0]]=c[1];
+         // });
+         // return cookies[str] || "";
+         // }
+         // }
+         // document.querySelector("#username").innerHTML = cookie.get("username");
+         }
     });
-    }
-});
 
 (function($){
     $.fn.typer = function(options){
@@ -126,5 +138,13 @@ $(document).ready(function () {
         });
     }
 })(jQuery);
+
+     function block() {
+         document.getElementsByClassName("list_all")[0].style.display = "block";
+     }
+     function none() {
+         document.getElementsByClassName("list_all")[0].style.display = "none";
+     }
+
 
 

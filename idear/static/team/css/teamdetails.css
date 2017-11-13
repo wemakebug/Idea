@@ -1,25 +1,14 @@
 .teamdetail {
 	margin-top: 0;
 	width:100%;
-	/*height:100%;*/
-	/*font-family: kaiti;*/
+	height:auto;
     background-color: rgba(205, 201, 201,0.1);
 	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
 	overflow: hidden;
 	font-family: Microsoft Yahei;
-    /*min-width: 1900px;*/
+    min-height: 800px;
 }
-/*.teamdetailfilter {*/
-	/*width:100%;*/
-	/*height:auto;*/
-	/*position:relative;*/
-	/*top:76px;*/
-	/*left:0;*/
-	/*background-color: rgba(99,184,255,0.2);*/
-	/*animation:colorChange 30s ease-in-out infinite;*/
-	/*animation-fill-mode:both;*/
-	/*mix-blend-mode:overlay;*/
-/*}*/
+
 @keyframes colorChange {
 	0%,100% {
 	opacity:0;
@@ -28,13 +17,6 @@
 	opacity:.9;
 }
 }
-/*.teamdetaillandscape{*/
-	/*position:relative;*/
-	/*bottom:0px;*/
-	/*left:0;*/
-	/*width:100%;*/
-	/*height:auto;*/
-/*}*/
 .teamdetailsynopsis{
 	width: 100%;
 	height:190px;
@@ -200,7 +182,7 @@
     float: right;
 }
 .praise1-2{
-    width: 16%;
+    width: 17%;
     height: 30px;
     margin-top: 21px;
     float: right;
@@ -803,18 +785,27 @@
     margin-left: 3%;
     margin-top: 4%;
     border-radius: 20px;
-    -webkit-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
-    -moz-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
-    box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.5);
+    -webkit-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);
+    -moz-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);
+    box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);
 }
 .historys1-2:hover{
-    -webkit-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
-    -moz-box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
-    box-shadow: 16px 16px 16px 16px rgba(207, 207, 207,0.8);
+    -webkit-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.8);
+    -moz-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.8);
+    box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.8);
+}
+.repo-language-color {
+    position: relative;
+    top:0.5px;
+    margin-left: 8px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 .historys1-3{
-	width: 100px;
-	height: 100px;
+	width: 90px;
+	height: 90px;
 	border: 1px solid rgba(54, 54 ,54,0.1);
 	float: left;
 	margin-top: 3px;
@@ -845,11 +836,11 @@
 .historys1-7{
 	width: 100%;
 	height: 32%;
-	padding-top: 1%;
 	font-size: 16px;
 	clear: both;
 	text-indent: 1.5em;
 	color: rgba(54, 54 ,54,0.6);
+    padding: 0 6px;
 }
 .project_middle_text {
     font-size: 16px;
@@ -916,7 +907,6 @@
 	height: auto;
 	margin-left: 16%;
 	margin-right: 9%;
-	margin-top: 28%;
 	font-family: "Microsoft Yahei";
 }
 .comment1-1{
@@ -976,22 +966,28 @@
 .teamlable1-3{
 	width: 100%;
 	height: 200px;
-	color: rgba(54, 54 ,54,0.6);
 }
 .teamlable1-4{
-	border: 1px solid rgba(54, 54 ,54,0.1);
-    padding: .25em .2125em;
-    color: rgba(54, 54 ,54,0.6);
-    border-radius: .25em;
-    background: rgba( 181,181,181,0.1);
+	border: 1px solid rgba(54, 54 ,54,0.2);
+    color: rgba(54, 54 ,54,0.5);
+    border-radius: 5px;
+    background: rgba( 181,181,181,0.05);
     -webkit-transition: all .100s;
     transition: all .100s;
-    /*font-family: kaiti;*/
+    width: auto;
 	font-family: "Microsoft Yahei";
 	font-size: 18px;
-	height: 50px;
-	line-height: 50px;
-	margin:1px 4px
+	height: 40px;
+	line-height: 40px;
+	margin:2px 3px;
+    display: inline-block;
+    padding: 0 2px;
+}
+.teamlable1-4:hover{
+    background-color: #57cecd;
+}
+.hovera:hover{
+    color: white !important;
 }
 .register1-3{
     font-size:1em ;
@@ -1094,7 +1090,8 @@
 }
 
 .cmain{
-    height:100px;
+    height:150px;
+    max-height: 150px;
 }
 .c-img{
     display:block;
@@ -1136,7 +1133,7 @@
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:   #ABCDCB;*/
+    background-color:   #ABCDCB;
 
 }
 .comment-name {
@@ -1162,29 +1159,29 @@
     height:100%;
 }
 .clike{
-    width:25px;
-    height:25px;
+    width:20px;
+    height:20px;
     float:left;
-    margin-top:4px;
+    margin-top:6px;
 }
 .clikenum{
     display:inline-block;
     float:left;
-    margin-top:10px;
+    margin-top:8px;
     color: #999;
 	font-size: 13px;
 }
 .creport{
     width:20px;
     height:20px;
-    float:right;
-    margin:7px 10px 0 4px;
+    float:left;
+    margin:7px 10px 0 10%;
 }
 .creply{
     width:20px;
     height:20px;
     float:left;
-    margin:8px 0 0 10px;
+    margin:8px 0 0 10%;
 }
 .comment-content {
 	width:100%;
@@ -1250,7 +1247,7 @@
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #ABCDCB;*/
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
@@ -1271,14 +1268,14 @@
 }
 .r-option{
     float:right;
-    width:22%;
+    width:20%;
     height:100%;
 }
 .rclike{
-    width:25px;
-    height:25px;
+    width:20px;
+    height:20px;
     float:left;
-    margin-top:4px;
+    margin-top:8px;
 }
 .rclikenum{
     display:inline-block;
@@ -1290,14 +1287,14 @@
 .rcreport{
     width:20px;
     height:20px;
-    float:right;
-    margin:7px 10px 0 4px;
+    float:left;
+    margin:7px 10px 0 10%;
 }
 .rcreply{
     width:20px;
     height:20px;
     float:left;
-    margin:8px 0 0 10px;
+    margin:8px 0 0 10%;
 }
 .rcomment-content {
 	width:100%;
@@ -1309,6 +1306,50 @@
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
     background-color:  #ABCDCB;
+}
+
+/*评论回复文本框*/
+.commentreply{
+    display:none;
+}
+.commentreplys{
+    width:100%;
+    height:40px;
+    margin: 10px 0 10px 0;
+    background-color:  #ABCDCB ;
+    -webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+
+.commentreply-text{
+    width:90%;
+    height: 30px;
+    margin:5px 0 0 5px;
+    border-radius:5px;
+    resize:none;
+    line-height:1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid #c6c8ce;
+}
+/*回复举报框的样式*/
+.report-text{
+    width:84%;
+    margin:40px 0 0 8%;
+    height: 250px;
+    border-radius:5px;
+    resize:none;
+    border: 1px solid #c6c8ce;
+}
+.putreport{
+    width:50px;
+    height:30px;
+    float:right;
+    margin:10px 40px 0 0;
+    background-color: #3a87ad;
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
 }
 
 

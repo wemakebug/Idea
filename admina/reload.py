@@ -3,9 +3,6 @@ from django.shortcuts import render_to_response,render
 from . import models
 from django.core.paginator import Paginator
 
-@csrf_exempt
-def index(req):
-    return render_to_response('second/User_detail.html')
 
 @csrf_exempt
 def label_user(req):
