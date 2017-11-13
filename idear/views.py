@@ -165,9 +165,12 @@ def index(req):
     '''
     if req.method == "GET":
         project = models.Project.objects.all()
-
         label = models.Project2ProjectLabel.objects.all()
-        return render_to_response('idea/index.html',{"projects": project,"labels":label})
+        creation = models.Creation.objects.all()
+        creationlabel = models.Creation2ProjectLabel.objects.all()
+        return render_to_response('idea/index.html',{"projects": project,"labels":label,
+                                                     "creations":creation,"creationlabels":creationlabel
+                                                     })
     if req.method == "POST":
         pass
 

@@ -111,7 +111,7 @@ body{
 }
 
 .option{
-    width:82%;
+    width:85%;
     height:100px;
     color:black;
     margin-top:40px;
@@ -160,7 +160,7 @@ body{
     color: #8590a6;
 }
 .op-tip{
-    width:350px;
+    width:333px;
     height:40px;
     float:right;
     margin-top: 18px;
