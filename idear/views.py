@@ -469,7 +469,7 @@ def crdetails(req):
                 commentlist.append(newcomment) #    [[head],[head],[head],[head]]
 
 
-        for comlist in commentlist:    # 对每个列表循环  结果: [  [head,hui,hui]  ,  [head,hui,hui], [head]   ]
+        for comlist in commentlist:    # 对每个列表循环  结果: [ [head,hui,hui],[head,hui,hui],[head] ]
             for comment in comments:
                 if str(comlist[0].Uuid)==str(comment.commentedId):
                     comlist.append(comment)   
@@ -493,11 +493,7 @@ def creations(req):
     '''
     创意灵感一级二级页面项目显示  
     '''
-    projectLabels = ProjectLabel.objects.all()
-    creations = Creation.objects.all().order_by("Date")
-    User_img = creations.values('user__Img')
-    praises = Praise.objects.all()
-    follows = Follow.objects.all()
+    
     # userId = int(req.COOKIES.get('user'))
     userId = 3
     try:
@@ -505,25 +501,21 @@ def creations(req):
             sign = req.GET['sign']
             # 如果是所有项目
             if sign == "all":
-                creations = creations
+                creations = Creation.objects.all().order_by("Date")
             # 如果有特殊标签
             else:
                 CreationLabelObjs = Creation2ProjectLabel.objects.filter(projectLabel=sign)
-                creations = Creation.objects.filter(Img="null")  # 把creations搞空，以便以后使用creations传输数据
+                creations = []
+                for obj in CreationLabelObjs:
+                    creations.append(obj.creation)
 
-                for obj in CreationLabelObjs:  # 将所有的对应标签的创意拿出来 放到creations对象里
-                    creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
+            projectLabels = ProjectLabel.objects.all()
+            praises = Praise.objects.all()
+            follows = Follow.objects.all()
+
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
-                                       'follows': follows, 'praises': praises, "Imgs": User_img})
-
-        else:
-            id = req.POST['creationId']
-            creation = get_object_or_404(Creation, pk=id)
-            comments = Comment.objects.fitler(creation=id).order_by('Date')
-            user = creation.user
-            return render_to_response('/creation/sec_creations.html',
-                                      {'creation': creation, 'comments': comments, 'user': user})
+                                       'follows': follows, 'praises': praises})
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
@@ -548,6 +540,10 @@ def attend(req):
         Id = req.POST['Id']
         userId = req.POST['userId']
         attendType = int(req.POST['attendType'])
+        print Id
+        print userId
+        print attendType
+        
         if attendType == 1:
             try:
                 p = Follow.objects.get(creation_id=Id, user_id=userId).delete()
@@ -555,7 +551,6 @@ def attend(req):
             except:
                 p = Follow.objects.create(creation_id=Id, user_id=userId)
                 status = 1
-            return HttpResponse(status)
         elif attendType == 2:
             try:
                 p = Follow.objects.get(project_id=Id, user_id=userId).delete()
@@ -563,7 +558,6 @@ def attend(req):
             except:
                 p = Follow.objects.create(project_id=Id, user_id=userId)
                 status = 1
-            return HttpResponse(status)
         elif attendType == 3:
             try:
                 F = Follow.objects.get(user_id=userId, Follower_id=Id).delete()
@@ -571,7 +565,7 @@ def attend(req):
             except:
                 p = Follow.objects.create(user_id=userId, Follower_id=Id)
                 status = 1
-            return HttpResponse(json.dumps(status))
+        return HttpResponse(status)
     except:
         return HttpResponse(status)
 
@@ -770,7 +764,7 @@ def projects(req):
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-
+            #################
             recruit_all = []
             for project in projects:
                 recruit = models.Recruit.objects.filter(project__Id=project.Id)
