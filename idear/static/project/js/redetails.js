@@ -1,8 +1,4 @@
 
-       //$('.ppc-percents span').html( percent + '/' +  );
-              // $('.ppc-percents span').html('1' + '/' + percent/100);
-                //进度条中间显示计算 已招募人数/预计招募人数
-
                 $("#comment11-22").click(function () {
                    document.getElementById("comment-content1").focus();
                 });
@@ -23,16 +19,41 @@
                     $("#commentreply").slideDown("slow");
                 });
 
-                 $('.rcreply').click(function(){
-                                    var ele = this;
-                                    var parent_div = ele.parentNode.parentNode.parentNode;
-                                    var reply = parent_div.lastChild;
-                                    if(reply.tagName === undefined){
-                                        reply = parent_div.childNodes[parent_div.childNodes.length-2];
-                                    }else {
-                                        reply = parent_div.lastChild;
-                                    }
-                                    reply = $(reply);
-                                    reply.slideDown("slow");
-                                });
+                 $('.creply').click(function(){
+                    var ele = this;
+                    var parent_div = ele.parentNode.parentNode.parentNode;
+                    var reply = parent_div.lastChild;
+                    if(reply.tagName === undefined){
+                        reply = parent_div.childNodes[parent_div.childNodes.length-2];
+                    }else {
+                        reply = parent_div.lastChild;
+                    }
+                    reply = $(reply);
+                    reply.slideDown("slow");
+                 });
+
+
+                 $(".likebutton").click(function(){
+
+                     Id = $(this).attr("project")
+                     like = $(this)
+                     $.post("star", {userId: userId, starType: "2", Id: Id}, function (data) {
+                         if (data == 1)    //点赞成功
+                         {
+                             like.children().attr("src", "../static/project/imgs/liked.png")
+                             like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) + 1)
+                         }
+                         else if (data == 0)
+                             alert(data)
+                         else    //取消点赞成功
+                         {
+                             like.children().attr("src", "../static/project/imgs/like1.svg")
+                             like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) - 1)
+                         }
+
+                     });
+                 });
+
+
+
 

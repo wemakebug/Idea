@@ -124,7 +124,7 @@ class User2UserLabel(models.Model):
     def __unicode__(self):
         return self.user.__unicode__() + '  '+self.userLabel.__unicode__()
 
-class ProjectUser(models.Model):
+class ProjectUser(models.Model):    
     '''
     项目-用户表
     1.项目身份状态
@@ -271,11 +271,10 @@ class Follow(models.Model):
     关注表
     '''
     Id = models.AutoField(primary_key=True)
-
     user = models.ForeignKey(User, related_name='Follow_User_set', null=False)
+
     project = models.ForeignKey(Project, related_name='Follow_Project_set', null=True, blank=True)
     creation = models.ForeignKey(Creation, related_name='Follow_Creation_set', null=True, blank=True)
-
     Follower = models.ForeignKey(User, related_name='Follow_Follower_set', null=True, blank=True)
 
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
@@ -329,6 +328,9 @@ class ScoreChange(models.Model):
         return self.user
 
 class HelpApplication(models.Model):
+    '''
+    帮助申请表
+    '''
     Id = models.AutoField(primary_key=True)
     Applier = models.ForeignKey(User, related_name='Help_App_Applier')
     AppliedTeam = models.ForeignKey(User, related_name='Help_App_Team')

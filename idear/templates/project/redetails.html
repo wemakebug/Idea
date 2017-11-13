@@ -11,12 +11,13 @@
 
 
 {% endblock %}
+{% load commentshow %}
 {% block content %}
+
     <div class="main">
         <div class="content-all">
             <div class="main-left">
                 <div class="content-top">
-
                     <div class="content-main">
                         {% for label in labels %}
                             <a class="tags" href="../projects?sign={{ label.projectLabel.Id }}"><span
@@ -37,7 +38,7 @@
                     <div class="option">
                         <button class="likebutton" id="rdlikebutton">
                             <img class="plike" id="rdplike" src="{% static '/project/imgs/like1.svg' %}">
-                            <span class="plikenum">1111</span>
+                            <span class="plikenum">{{project.Praise_Project_set.count}}</span>
                         </button>
                         <div class="op-tip">
                             <div class="home-b-collection" id="rdcollection">
@@ -93,13 +94,6 @@
                             {# 招募要求#}
                             <div class="rcontent-main">
                                 {{ recruit.Describe }}
-                                {#                                      <ul>#}
-                                {#                                        <li>1、 根据需求实现静态页面交互效果；</li>#}
-                                {#                                        <li>2、熟悉各浏览器的特性和W3C相关标准，对浏览器引擎及JS引擎有一定研究；</li>#}
-                                {#                                        <li>3、熟悉HTTP协议，RestAPI以及WebSocket等通讯协议；</li>#}
-                                {#                                        <li>4、熟悉常见前端开发框架、类库，对其实现机制及原理有深入研究；</li>#}
-                                {#                                        <li>5、对Node.js，AngularJS等前沿开发框架有一定研究者优先。</li>#}
-                                {#                                      </ul>#}
                             </div>
                             {# 招募进度条#}
                             <div class="r-number">
@@ -150,15 +144,15 @@
                             <button class="putcomment" id="rdputcomment">评论</button>
                         </div>
                     </div>
-
+                    {% for commentlist in comment%}
                     <div class="c-all" name="c-all">
                         <div class="cmain">
                             <img class="c-img" id="rdimg" src="{% static 'project/imgs/user.svg' %}">
                             {#                                  可以加hover点上变成网站logo#}
                             <div class="comment-box">
                                 <div class="comment-head">
-                                    <h6 class="comment-name " id="rduname"><a href=" ">Agustin Ortiz</a></h6>
-                                    <span class="cdate" id="rdcdate">2017-11-11</span>
+                                    <h6 class="comment-name " id="rduname"><a href=" ">{{commentlist|firstcomment}}</a></h6>
+                                    <span class="cdate" id="rdcdate">{{commentlist|firstcommenttime|date:"Y/m/d"}}</span>
                                     <div class="c-option">
                                         <img class="clike" id="rdclike"
                                              src="{% static 'project/imgs/like1.svg' %}"><span
@@ -169,7 +163,7 @@
                                     </div>
                                 </div>
                                 <div class="comment-content">
-                                    <p id="rdc-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                    <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
                                 </div>
                                 <div class="commentreply" id="commentreply">
                                     <textarea placeholder="" name="" class="commentreply-text"></textarea>
@@ -177,13 +171,13 @@
                                 </div>
                             </div>
                         </div>
-
+                            {%for comment in commentlist|leftcomment%}
                             <div class="c-reply">
                             <img class="rc-img" src="{% static 'project/imgs/user.svg' %}">
                             <div class="rcomment-box">
                                 <div class="rcomment-head">
-                                    <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a> 回复</h6>
-                                    <span class="rcdate">2017-11-11</span>
+                                    <h6 class="rcomment-name "><a href=" "> {{comment.user.UserName}}</a> 回复</h6>
+                                    <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
                                     <div class="r-option">
                                         <img class="rclike" id="rdrclike"
                                              src="{% static 'project/imgs/like1.svg' %}"><span
@@ -194,8 +188,7 @@
                                     </div>
                                 </div>
                                 <div class="rcomment-content">
-                                    <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem
-                                        ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                    <p id="rdr-content">{{comment.Content}}</p>
                                 </div>
                                 <div class="commentreply" id="rcommentreply">
                                     <textarea placeholder="" name="" class="commentreply-text"></textarea>
@@ -203,9 +196,9 @@
                                 </div>
                             </div>
                         </div>
-
+                            {% endfor %}
                     </div>
-                    
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -270,7 +263,7 @@
 
         {#                关注部分点击图片替换#}
 
-        function changeImage() {
+        function changeImage(){
             element = document.getElementById('rdcoimg');
             if (element.src.match("collection0")) {
                 element.src = '{% static '/project/imgs/star.png' %}';
@@ -280,8 +273,47 @@
             }
         }
 
-        {#                   评论创建#}
-        $("#rdputcomment").click(function () {
+
+        {#招募进度条#}
+        $(function () {
+            var percent = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
+            deg = 360 * percent;
+            if (percent > 0.5) {
+                $ppc.addClass('gt-50');
+            }
+            if (percent > 1) {
+                deg = 360;
+            }
+            $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
+        });
+
+        {#招募帖倒计时部分#}
+        $(function () {
+            var nowtimestamp = Date.parse(new Date())/1000;
+            var EndTimeStamp = {{ EndTime }};
+            var result = (EndTimeStamp  - nowtimestamp);
+            var lastday = result/(3600*24);
+            $("#rdlastday").text(Math.ceil(lastday));
+        });
+
+       {# 招募次数阿拉伯数字转换#}
+        $(function(){
+            var t = {{ recruit.Times }};
+            var times;
+            switch(t)
+            {
+                case 1: times = "一";
+                break;
+                case 2: times = "二";
+                break;
+                case 3: times = "三";
+                break;
+            }
+            $("#rdpstatus").text(times);
+        });
+
+        $("#rdputcomment").click(function (){
+            function CreateComment() {
             var c_main = document.createElement("div");
             c_main.className = "cmain";
 
@@ -357,52 +389,25 @@
 
             var comment_input = document.getElementById("comment-content1");
             var comment_content = comment_input.value;
-            commentcontent_p.innerHTML = comment_content
+            commentcontent_p.innerHTML = comment_content;
             var c_all = document.getElementsByName("c-all")[0];
-
             var cmain = document.getElementsByClassName("cmain")[0];
             c_all.insertBefore(c_main, cmain);
-
-        });
-
-        {#招募进度条#}
-        $(function () {
-            var percent = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
-            deg = 360 * percent;
-            if (percent > 0.5) {
-                $ppc.addClass('gt-50');
             }
-            if (percent > 1) {
-                deg = 360;
-            }
-            $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
-        });
 
-        {#招募帖倒计时部分#}
-        $(function () {
-            var nowtimestamp = Date.parse(new Date())/1000;
-            var EndTimeStamp = {{ EndTime }};
-            var result = (EndTimeStamp  - nowtimestamp);
-            var lastday = result/(3600*24);
-            $("#rdlastday").text(Math.ceil(lastday));
-        });
+             comment = $("#comment-content1").val()
+             if (comment =="")
+             alert("您的输入为空")
+            else
+                 $.post("comment",
+                     {content:$("#comment-content1").val(),projectId:$("#projectId").val()},function(data) {
+                         if (data == 1)
+                             CreateComment(content)
+                         else
+                             alert("Sorry, 出现了一些问题")
+                     })
 
-       {# 招募次数阿拉伯数字转换#}
-        $(function(){
-            var t = {{ recruit.Times }};
-            var times;
-            switch(t)
-            {
-                case 1: times = "一";
-                break;
-                case 2: times = "二";
-                break;
-                case 3: times = "三";
-                break;
-            }
-            $("#rdpstatus").text(times);
         });
-
     </script>
 
 

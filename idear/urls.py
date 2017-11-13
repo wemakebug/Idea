@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^teamdetails$', views.teamdetails),
     url(r'^praise$',views.creations),
     url(r'^teamdetails/(?P<teamid>\d+)$', views.teamdetails),
-    url(r'^teamdetails/2$', views.teamdetails),
     url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
     url(r'^forgetPassword$', views.forgetPassword),

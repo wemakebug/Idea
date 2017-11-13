@@ -675,6 +675,7 @@ body{
 }
 .cmain{
     height:auto;
+    margin-bottom: 25px;
 }
 .c-img{
     display:block;
