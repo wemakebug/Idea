@@ -1,4 +1,4 @@
-idea/css/index.css{% extends 'idea/Base.html' %}
+{% extends 'idea/Base.html' %}
 {% load static %}
 {% block title %}
     <title>招募项目</title>
@@ -52,18 +52,11 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                             var project_people = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
                             var project_percent = project_people * 100;
                             var project_plan = project_percent + '%';
-                            {#                        var project_id = $(this).index();#}
                             $(".{{ project.Id }}").add().css("width", project_plan);
-                            {#                        alert($(".green")[0].style.width);#}
-                            {#                        $(this).find(".green").addClass("cotx" + project_id);#}
-                            {#                        alert($(this).find(".green").addClass("cotx" + project_id));#}
-                            {#                        $()[0].style.width = project_plan;#}
-                            {#                        alert($(".green")[0].style.width);#}
                         });
                     </script>
                 {% endfor %}
             {% endfor %}
-            {#        <div class="project_get_more"><a href="javascript:;" class="load-more f-weight">浏览更多</a></div>#}
         </div>
         <div class="home-right">
             <div class="intro">
@@ -81,8 +74,7 @@ idea/css/index.css{% extends 'idea/Base.html' %}
                 <hr>
                 <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
                 {% for obj in projectLabels %}
-                    <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag"
-                                                                                  onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
+                    <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
                 {% endfor %}
             </div>
         </div>
@@ -122,8 +114,6 @@ idea/css/index.css{% extends 'idea/Base.html' %}
             var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
             $(this).css('background', col)
         });
-
-
     </script>
 {% endblock %}
 

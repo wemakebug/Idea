@@ -88,6 +88,7 @@ class ProjectLabel(models.Model):
     def __unicode__(self):
         return self.ProjectLabelName
 
+
 class Project2ProjectLabel(models.Model):
     '''
     项目-项目标签表
@@ -99,6 +100,8 @@ class Project2ProjectLabel(models.Model):
 
     def __unicode__(self):
         return self.projectLabel.__unicode__() + '  ' +self.project.__unicode__()
+
+
 class UserLabel(models.Model):
     '''
     用户标签表

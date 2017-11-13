@@ -23,12 +23,22 @@ $("#putcomment").click(function(){
 
 
 
-//
-//
-//
-//
-//
-//// 创意关注操作
+$('.creply').click(function(){
+    var ele = this;
+    var parent_div = ele.parentNode.parentNode.parentNode;
+    var reply = parent_div.lastChild;
+    if(reply.tagName === undefined){
+        reply = parent_div.childNodes[parent_div.childNodes.length-2];
+    }else {
+        reply = parent_div.lastChild;
+    }
+    reply = $(reply);
+    reply.slideToggle("slow");
+ });
+
+
+
+// 创意关注操作
 // $(".block-hotfollow").click(function(){
 //    Id = $(this).attr("creation")
 //    follow = $(this)

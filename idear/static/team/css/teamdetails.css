@@ -1,25 +1,14 @@
 .teamdetail {
 	margin-top: 0;
 	width:100%;
-	/*height:100%;*/
-	/*font-family: kaiti;*/
+	height:auto;
     background-color: rgba(205, 201, 201,0.1);
 	background:linear-gradient(to bottom, rgba(238, 233 ,233,0.2)0%,rgba(205, 201, 201,0.1)100%);
 	overflow: hidden;
 	font-family: Microsoft Yahei;
-    /*min-width: 1900px;*/
+    min-height: 800px;
 }
-/*.teamdetailfilter {*/
-	/*width:100%;*/
-	/*height:auto;*/
-	/*position:relative;*/
-	/*top:76px;*/
-	/*left:0;*/
-	/*background-color: rgba(99,184,255,0.2);*/
-	/*animation:colorChange 30s ease-in-out infinite;*/
-	/*animation-fill-mode:both;*/
-	/*mix-blend-mode:overlay;*/
-/*}*/
+
 @keyframes colorChange {
 	0%,100% {
 	opacity:0;
@@ -28,13 +17,6 @@
 	opacity:.9;
 }
 }
-/*.teamdetaillandscape{*/
-	/*position:relative;*/
-	/*bottom:0px;*/
-	/*left:0;*/
-	/*width:100%;*/
-	/*height:auto;*/
-/*}*/
 .teamdetailsynopsis{
 	width: 100%;
 	height:190px;
@@ -812,6 +794,15 @@
     -moz-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.8);
     box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.8);
 }
+.repo-language-color {
+    position: relative;
+    top:0.5px;
+    margin-left: 8px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
 .historys1-3{
 	width: 90px;
 	height: 90px;
@@ -916,7 +907,6 @@
 	height: auto;
 	margin-left: 16%;
 	margin-right: 9%;
-	margin-top: 28%;
 	font-family: "Microsoft Yahei";
 }
 .comment1-1{
@@ -1100,7 +1090,8 @@
 }
 
 .cmain{
-    height:100px;
+    height:150px;
+    max-height: 150px;
 }
 .c-img{
     display:block;
@@ -1320,6 +1311,8 @@
 /*评论回复文本框*/
 .commentreply{
     display:none;
+}
+.commentreplys{
     width:100%;
     height:40px;
     margin: 10px 0 10px 0;
@@ -1328,6 +1321,7 @@
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
 }
+
 .commentreply-text{
     width:90%;
     height: 30px;
@@ -1337,6 +1331,25 @@
     line-height:1.7;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid #c6c8ce;
+}
+/*回复举报框的样式*/
+.report-text{
+    width:84%;
+    margin:40px 0 0 8%;
+    height: 250px;
+    border-radius:5px;
+    resize:none;
+    border: 1px solid #c6c8ce;
+}
+.putreport{
+    width:50px;
+    height:30px;
+    float:right;
+    margin:10px 40px 0 0;
+    background-color: #3a87ad;
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
 }
 
 
