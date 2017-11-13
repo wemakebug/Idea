@@ -29,6 +29,7 @@
                     </div>
                     <div class="text">
                         <p>{{creation.Describe}}</p>
+                        <p>{{creation.Describe}}</p>
                     </div>
                     <div class="home-b-foot">
                         <div class="home-b-report" id="rdreport">
@@ -46,7 +47,7 @@
                         <div class="home-b-comment">
                             <img src="{% static '/creation/imgs/reply.svg' %}" style="width:16px;
     height:16px;">
-                            <a href="#">评论</a>
+                            <a href="#comment">评论</a>
                         </div>
                         <div class="home-b-collection">
                             <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;
@@ -56,9 +57,9 @@
                         </div>
                     </div>
                     <div class="praise">
-                        <span id="praise"><img src="{% static '/creation/imgs/like1.png' %}" id="praise-img" /></span>
-                        <p><span id="praise-txt">{{creation.Praise_Creation_set.count}}</span>人觉得很赞</p>
-                        <span id="add-num"></span>
+                        <a id="like" creation={{ creation.Id }}>
+                            <img src="{% static '/creation/imgs/likes.png' %}"></a>
+                        <p><span id="like-txt">{{creation.Praise_Creation_set.count}}</span>人觉得很赞</p>
                     </div>
                 </div>
                 <div class="home-b-user">
@@ -78,7 +79,6 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#"><span class="user-follow">+</span></a>
                 </div>
             </div>
                 <div class="line">
@@ -104,16 +104,19 @@
                         <div class="block-bottom-ava">
                             <img src="/static/photos/{{ creation2crojectLabel.creation.user.Img }}" style="width:40px;height:40px">
                         </div>
+                        <div class="block-bottom-name">
+                            <a>{{creation2crojectLabel.creation.user.UserName}}</a>
+                        </div>
                         <div class="block-bottom-hot">
-                            <div class="block-hotlike" creation={{ creation2crojectLabel.creation.Id }}>
-                                        <img src="{% static 'creation/imgs/likes.png' %}"
-                                             style="width:18px;height:18px;margin-left: -23px ">
-                            <span class="likespan">{{ creation2crojectLabel.creation.Praise_Creation_set.count }}</span>
-                            </div>
                             <div class="block-hotfollow" creation={{ creation2crojectLabel.creation.Id }}>
                                         <img src="{% static 'creation/imgs/collections.png' %}"
-                                             style="width:18px;height:18px;margin-left: -23px ">
+                                             style="width:15px;height:15px;margin-left: 2px ">
                             <span class="followspan">{{ creation2crojectLabel.creation.Follow_Creation_set.count }}</span>
+                            </div>
+                            <div class="block-hotlike" creation={{ creation2crojectLabel.creation.Id }}>
+                                        <img src="{% static 'creation/imgs/likes.png' %}"
+                                             style="width:14px;height:14px;margin-left: -23px ">
+                            <span class="likespan">{{ creation2crojectLabel.creation.Praise_Creation_set.count }}</span>
                             </div>
                         </div>
                     </div>
@@ -128,7 +131,7 @@
             <div class="content-footer">
 
 
-                <div class="comment">
+                <div id="comment">
                     <div class="comment1-1">评论专区</div>
                     <div class="comment1-2"></div>
                     <div class="ctop">
@@ -176,7 +179,11 @@
                                           </div>
                                       </div>
                                       <div class="rcomment-content">
-                                         <p>{{comment.Content}}</p>
+                                          <p id="rdr-content">{{comment.Content}}</p>
+                                </div>
+                                <div class="commentreply" id="rcommentreply">
+                                    <textarea placeholder="" name="" class="commentreply-text"></textarea>
+                                    <button class="putcomment" id="putcomment">回复</button>
                                       </div>
                                   </div>
                               </div>
@@ -254,6 +261,8 @@
                 '<button class="putreport" id="putreport">提交</button> '
             });
         });
+
+
 </script>
 
 {% endblock %}

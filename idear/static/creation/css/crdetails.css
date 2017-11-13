@@ -124,7 +124,7 @@
 .home-b-title hr{
     margin-top:2px;
     color:#f1f1f1;
-    width:260px;
+    width:295px;
 }
 .text {
 	float: left;
@@ -233,25 +233,16 @@
     position: relative;
 }
 
-#praise-txt{
-    float:left;
-    margin: 0 0 0 35px;
-    height:25px;
-    line-height:25px;
-    display: block;
-    font-size:15px;
-}
-#praise-txt.hover{
-    color: #539092;
-}
+
 .praise p {
     line-height: 25px;
     margin-top: -23px;
     position: absolute;
     text-align: left;
     width: 180px;
-    height:0px;
     font-size:15px;
+    float:left;
+    margin-left:30px;
 }
 .praise img{
     width:25px;
@@ -259,66 +250,7 @@
     display:block;
     margin: 0 auto;
 }
-.praise img{
-    animation: myfirst 0.5s;
-    -moz-animation: myfirst 0.5s;	/* Firefox */
-    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
-    -o-animation: myfirst 0.5s;	/* Opera */
-}
-#add-num{
-    display:none;
-}
 
-/*点赞图标放大动画开始*/
-@keyframes myfirst
-{
-    0%{
-        width:25px;
-        height:25px;
-    }
-    50%{
-        width:30px;
-        height:30px;
-    }
-    100% {
-        width:25px;
-        height:25px;
-    }
-}
-
-@keyframes mypraise
-{
-    0%{
-        top:-15px;
-        opacity: 0;
-        filter: Alpha(opacity=0);
-        -moz-opacity:0;
-    }
-    25%{
-        top:-20px;
-        opacity: 0.5;
-        filter: Alpha(opacity=50);
-        -moz-opacity:0.5;
-    }
-    50%{
-        top:-25px;
-        opacity: 1;
-        filter: Alpha(opacity=100);
-        -moz-opacity:1;
-    }
-    75%{
-        top:-30px;
-        opacity: 0.5;
-        filter: Alpha(opacity=50);
-        -moz-opacity:0.5;
-    }
-    100% {
-        top:-35px;
-        opacity: 0;
-        filter: Alpha(opacity=0);
-        -moz-opacity:0;
-    }
-}
 .home-b-user{
     width:660px;
     height:100px;
@@ -483,25 +415,36 @@ h5 {
 .block-bottom-ava{
     float:left;
     width:40px;
-    margin-left:41px;
+    margin-left:40px;
+}
+.block-bottom-name{
+    float:left;
+    width: 90px;
+    margin-left: 6px;
+    margin-top: 20px;
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .block-bottom-hot{
-    width:60%;
-    float:left;
-    margin:-18px 0 0 120px;
+    width:auto;
+    float:right;
+    margin:23px 40px 0px 0px;
 }
 .block-hotlike{
-    width:26%;
-    float:left;
-    margin-left:45px;
+    width:auto;
+    float:right;
+    margin-right:2px;
 }
 .block-imglike{
     width:20px;
     height:20px;
 }
 .block-hotfollow{
-    width:26%;
-    float:left;
+    width:auto;
+    float:right;
+    margin-right: 2px;
 }
 .block-imgfollow{
     width:20px;
@@ -634,7 +577,7 @@ h5 {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:   #ABCDCB;*/
+    background-color:   #ABCDCB;
 
 }
 .comment-name {
@@ -750,7 +693,7 @@ h5 {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #ABCDCB;*/
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
@@ -810,4 +753,54 @@ h5 {
 	border-radius: 0 0 4px 4px;
     background-color:  #ABCDCB;
 }
+/*评论回复文本框*/
+.commentreply{
+    display:none;
+    width:100%;
+    height:40px;
+    margin: 10px 0 10px 0;
+    background-color:  #ABCDCB ;
+    -webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+.commentreply-text{
+    width:90%;
+    height: 30px;
+    margin:5px 0 0 5px;
+    border-radius:5px;
+    resize:none;
+    line-height:1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid #c6c8ce;
+}
+.report-text{
+    width:84%;
+    margin:40px 0 0 8%;
+    height: 250px;
+    border-radius:5px;
+    resize:none;
+    border: 1px solid #c6c8ce;
+}
+.putreport{
+    width:50px;
+    height:30px;
+    float:right;
+    margin:10px 40px 0 0;
+    background-color: #3a87ad;
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.animation{
+    width:28px;
+    height:28px;
+    vertical-align:middle;
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+
 
