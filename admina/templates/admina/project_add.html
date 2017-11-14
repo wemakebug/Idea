@@ -2,10 +2,13 @@
 
 {% block title %}Admin-Index{% endblock %} {# title #}
 {% block css %}
+    {% load static %}
 <!--file upload-->
-<link rel="stylesheet" type="text/css" href="/public/css/bootstrap-fileupload.min.css" />
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
 
-<link rel="stylesheet" type="text/css" href="/public/js/bootstrap-datepicker/css/datepicker-custom.css" />
+<link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
+    <!--multi-select-->
+    <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -145,6 +148,30 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">项目标签选择</label>
+                            <div class="col-md-9">
+                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
+                                        name="my_multi_select1[]">
+                                    <option>Dallas Cowboys</option>
+                                    <option>New York Giants</option>
+                                    <option selected>Philadelphia Eagles</option>
+                                    <option selected>Washington Redskins</option>
+                                    <option>Chicago Bears</option>
+                                    <option>Detroit Lions</option>
+                                    <option>Green Bay Packers</option>
+                                    <option>Minnesota Vikings</option>
+                                    <option selected>Atlanta Falcons</option>
+                                    <option>Carolina Panthers</option>
+                                    <option>New Orleans Saints</option>
+                                    <option>Tampa Bay Buccaneers</option>
+                                    <option>Arizona Cardinals</option>
+                                    <option>St. Louis Rams</option>
+                                    <option>San Francisco 49ers</option>
+                                    <option>Seattle Seahawks</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
                                 <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button class="btn btn-default" type="button">重置</button>
@@ -258,11 +285,18 @@
 
 
 {% block midscript %}   {# midescript #}
-<script ype="text/javascript" src="/public/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script ype="text/javascript" src="/public/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-<script ype="text/javascript" src="/public/js/bootstrap-daterangepicker/moment.min.js"></script>
+    <script ype="text/javascript" src="{% static '/js/bootstrap-datepicker/js/bootstrap-datepicker.js'%}"></script>
+    <script ype="text/javascript" src="{% static '/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'%}"></script>
+    <script ype="text/javascript" src="{% static '/js/bootstrap-daterangepicker/moment.min.js'%}"></script>
+    <script src="{% static '/js/pickers-init.js' %}"></script>
+    {# multiple select #}
+    <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.multi-select.js'%}"></script>
+    <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.quicksearch.js'%}"></script>
+    <script type="text/javascript">
+        $('#my_multi_select1').multiSelect();
+    </script>
+    <script src="{% static '/js/multi-select-init.js'%}"></script>
 
-<script src="/public/js/pickers-init.js"></script>
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}

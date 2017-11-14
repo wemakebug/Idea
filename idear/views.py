@@ -396,6 +396,31 @@ def teamdetails(req, teamid):
             models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
             return HttpResponse(json.dumps(result))
 
+def teamattend(req):
+    '''
+    团队详情的点赞
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'GET':
+        pass
+
+    if req.method == 'POST':
+        try:
+            Id = req.POST['Id']
+            userId = req.POST['userId']
+            FollowUser = Follow.objects.filter(Follower_id=Id, user_id=userId)
+            if len(FollowUser) > 0:
+                status = 2
+            else:
+                status = 1
+        except Exception as e:
+            return HttpResponse('404')
+        else:
+            return HttpResponse(status)
+
+
+
 
 def teamhelpapplication(req, teamhelpid):
     '''
@@ -469,7 +494,7 @@ def crdetails(req):
                 commentlist.append(newcomment) #    [[head],[head],[head],[head]]
 
 
-        for comlist in commentlist:    # 对每个列表循环  结果: [  [head,hui,hui]  ,  [head,hui,hui], [head]   ]
+        for comlist in commentlist:    # 对每个列表循环  结果: [ [head,hui,hui],[head,hui,hui],[head] ]
             for comment in comments:
                 if str(comlist[0].Uuid)==str(comment.commentedId):
                     comlist.append(comment)   
@@ -493,11 +518,7 @@ def creations(req):
     '''
     创意灵感一级二级页面项目显示  
     '''
-    projectLabels = ProjectLabel.objects.all()
-    creations = Creation.objects.all().order_by("Date")
-    User_img = creations.values('user__Img')
-    praises = Praise.objects.all()
-    follows = Follow.objects.all()
+    
     # userId = int(req.COOKIES.get('user'))
     userId = 3
     try:
@@ -505,25 +526,21 @@ def creations(req):
             sign = req.GET['sign']
             # 如果是所有项目
             if sign == "all":
-                creations = creations
+                creations = Creation.objects.all().order_by("Date")
             # 如果有特殊标签
             else:
                 CreationLabelObjs = Creation2ProjectLabel.objects.filter(projectLabel=sign)
-                creations = Creation.objects.filter(Img="null")  # 把creations搞空，以便以后使用creations传输数据
+                creations = []
+                for obj in CreationLabelObjs:
+                    creations.append(obj.creation)
 
-                for obj in CreationLabelObjs:  # 将所有的对应标签的创意拿出来 放到creations对象里
-                    creations = chain(creations, Creation.objects.filter(Id=int(obj.creation.Id)))
+            projectLabels = ProjectLabel.objects.all()
+            praises = Praise.objects.all()
+            follows = Follow.objects.all()
+
             return render_to_response('creation/index.html',
                                       {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
-                                       'follows': follows, 'praises': praises, "Imgs": User_img})
-
-        else:
-            id = req.POST['creationId']
-            creation = get_object_or_404(Creation, pk=id)
-            comments = Comment.objects.fitler(creation=id).order_by('Date')
-            user = creation.user
-            return render_to_response('/creation/sec_creations.html',
-                                      {'creation': creation, 'comments': comments, 'user': user})
+                                       'follows': follows, 'praises': praises})
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
@@ -548,30 +565,34 @@ def attend(req):
         Id = req.POST['Id']
         userId = req.POST['userId']
         attendType = int(req.POST['attendType'])
+
         if attendType == 1:
-            try:
-                p = Follow.objects.get(creation_id=Id, user_id=userId).delete()
+            FollowCreation = Follow.objects.filter(creation_id = Id, user_id = userId)
+            if len(FollowCreation) > 0:
+                FollowCreation.delete()
                 status = 2
-            except:
-                p = Follow.objects.create(creation_id=Id, user_id=userId)
+            else:
+                Follow.objects.create(creation_id=Id, user_id=userId)
                 status = 1
-            return HttpResponse(status)
+                
         elif attendType == 2:
-            try:
-                p = Follow.objects.get(project_id=Id, user_id=userId).delete()
+            FollowProject = Follow.objects.filter(project_id = Id, user_id = userId)
+            if len(FollowProject) > 0:
+                FollowProject.delete()
                 status = 2
-            except:
-                p = Follow.objects.create(project_id=Id, user_id=userId)
+            else:
+                Follow.objects.create(project_id=Id, user_id=userId)
                 status = 1
-            return HttpResponse(status)
+
         elif attendType == 3:
-            try:
-                F = Follow.objects.get(user_id=userId, Follower_id=Id).delete()
+            FollowUser = Follow.objects.filter(Follower_id = Id, user_id = userId)
+            if len(FollowUser) > 0:
+                FollowUser.delete()
                 status = 2
-            except:
-                p = Follow.objects.create(user_id=userId, Follower_id=Id)
+            else:
+                Follow.objects.create(Follower_id=Id, user_id=userId)
                 status = 1
-            return HttpResponse(json.dumps(status))
+        return HttpResponse(status)
     except:
         return HttpResponse(status)
 
@@ -733,6 +754,8 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
+
+
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
@@ -770,7 +793,7 @@ def projects(req):
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-
+            #################
             recruit_all = []
             for project in projects:
                 recruit = models.Recruit.objects.filter(project__Id=project.Id)
