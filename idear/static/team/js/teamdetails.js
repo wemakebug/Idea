@@ -277,9 +277,10 @@ $(function () {
         var num1=parseInt(praise_txt1.text());
         $.post("/idear/attend", {userId: userId,attendType: "3",Id:Id}, function (data) {
             data = JSON.parse(data);
-            if (data == 1) {
-                alert(data)
-                $("img", $(this)).attr("src", "../../static/team/imgs/redxin.png");
+            //增加记录
+            if (data == 1) {  
+                // $("img", $(this)).attr("src", "../../static/team/imgs/redxin.png");
+                $("#praise-img11-dianzan").attr("src","/static/team/imgs/redxin.png")
                 // document.getElementById("praise-img11-dianzan").src="../static/team/imgs/xinxingshixin.png";
                 $("#praise-img11-1").addClass("animation");
                 praise_txt1.addClass("hover");
@@ -287,11 +288,12 @@ $(function () {
                 $(".add-animation").addClass("hover");
                 num1 +=1;
                 praise_txt1.text(num1);
-                window.location.reload();
+                // window.location.reload();
             } else if (data == 0) {
                 alert("操作失败！");
+            //删除记录
             } else if(data == 2){
-                document.getElementById("praise-img11-dianzan").src="../static/team/imgs/xinxing.png";
+                document.getElementById("praise-img11-dianzan").src="/static/team/imgs/xinxing.png";
                 $("#praise-img11-1").addClass("animation");
                 praise_txt1.removeClass("hover");
                 text_box1.show().html("<em class='add-animation'>-1</em>");
