@@ -396,6 +396,31 @@ def teamdetails(req, teamid):
             models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
             return HttpResponse(json.dumps(result))
 
+def teamattend(req):
+    '''
+    团队详情的点赞
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'GET':
+        pass
+
+    if req.method == 'POST':
+        try:
+            Id = req.POST['Id']
+            userId = req.POST['userId']
+            FollowUser = Follow.objects.filter(Follower_id=Id, user_id=userId)
+            if len(FollowUser) > 0:
+                status = 2
+            else:
+                status = 1
+        except Exception as e:
+            return HttpResponse('404')
+        else:
+            return HttpResponse(status)
+
+
+
 
 def teamhelpapplication(req, teamhelpid):
     '''
@@ -729,6 +754,8 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
+
+
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
