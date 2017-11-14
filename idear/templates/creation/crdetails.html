@@ -46,7 +46,7 @@
                         <div class="home-b-comment">
                             <img src="{% static '/creation/imgs/reply.svg' %}" style="width:16px;
     height:16px;">
-                            <a href="#">评论</a>
+                            <a href="#comment">评论</a>
                         </div>
                         <div class="home-b-collection">
                             <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;
@@ -128,7 +128,7 @@
             <div class="content-footer">
 
 
-                <div class="comment">
+                <div id="comment">
                     <div class="comment1-1">评论专区</div>
                     <div class="comment1-2"></div>
                     <div class="ctop">
@@ -161,7 +161,7 @@
                                          <p>{{commentlist|firstcommentcontent}}</p>
                                       </div>
                                       <div class="commentreply commentreplys" id="commentreplys">
-                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
+                                          <textarea placeholder="回复" name="" id="comment-content2" class="commentreply-text"></textarea>
                                           <button class="putcomment" id="putcomments" >回复</button>
                                       </div>
                                   </div>
