@@ -566,6 +566,7 @@ def attend(req):
                 status = 2
             else:
                 Follow.objects.create(Follower_id=Id, user_id=userId)
+                status = 1
         return HttpResponse(status)
     except:
         return HttpResponse(status)
