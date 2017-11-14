@@ -699,9 +699,7 @@ def redetails(req):
     if req.method == 'GET':
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
-        labels = Project2ProjectLabel.objects.filter(project_id=projectId)
-        praises = Praise.objects.all()
-        follows = Follow.objects.all()
+
         comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
 
 
@@ -728,6 +726,10 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
+
+        labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        praises = Praise.objects.all()
+        follows = Follow.objects.all()
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
