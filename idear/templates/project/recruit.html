@@ -62,7 +62,8 @@
             {% endfor %}
         <a class="more">加载更多</a>
         </div>
-        <div class="home-right">
+        </div>
+            <div class="home-right">
             <div class="intro">
                 <img src="{% static 'creation/imgs/light.png' %}"
                      style="width:40px;height:40px;margin:-16px 0px 26px -10px">
@@ -81,7 +82,6 @@
                     <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
                 {% endfor %}
             </div>
-        </div>
         </div>
     </div>
 
