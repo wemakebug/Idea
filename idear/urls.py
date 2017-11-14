@@ -47,6 +47,7 @@ urlpatterns = [
     url(r'^release',views.release),
     url(r'^comment',views.comment),
     url(r'test', views.test),
+    url(r'^teamattend',views.teamattend),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

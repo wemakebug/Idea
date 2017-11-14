@@ -397,6 +397,31 @@ def teamdetails(req, teamid):
             return HttpResponse(json.dumps(result))
 
 
+@csrf_exempt
+def teamattend(req):
+    '''
+    团队详情的点赞
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'POST':
+        try:
+            Id = req.POST['Id']
+            userId = req.POST['userId']
+            FollowUser = Follow.objects.filter(Follower_id=Id, user_id=userId)
+            if len(FollowUser) > 0:
+                status = 2
+            else:
+                status = 1
+        except Exception as e:
+            return HttpResponse('404')
+        else:
+            print 123456
+            return HttpResponse(status)
+
+
+
+
 def teamhelpapplication(req, teamhelpid):
     '''
     团队帮助申请
@@ -795,41 +820,11 @@ def projects(req):
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
             comments = Comment.objects.fitler(project=id).order_by('Date')
-            user = project.user
-            # recruit_all = []
-            # for project in projects:
-            #     recruit = models.Recruit.objects.filter(project__Id=int(project.Id))
-            #     recruit_all.append(recruit)
-            # all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html',
-                                      {'comments': comments, 'user': user})
+                                      {'comments': comments})
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
-
-
-
-
-
-# def get_projects(req):
-#     if req.method == "GET":
-#         return Http404()
-#     if req.method == "POST":
-#         projects = Project.objects.all().order_by('Id')
-#         account = req.COOKIES.get('account')
-#         user = User.objects.filter(Account=account)
-#         recruits = []
-#         for project in projects:
-#             recruit = models.Recruit.objects.filter(project=project)
-#             recruits.append(recruit)
-#         project_all = zip(projects, recruits)
-#         if account:
-#             projects = ProjectUser.objects.get(user=user)
-#             return render_to_response('project/recruit.html', {'project_all': project_all})
-#         else:
-#             return render_to_response('project/recruit.html', {'project_all': project_all})
-
-
 ''' 招募项目相关页面结束'''
 
 '''个人中心相关页面'''

@@ -32,21 +32,30 @@
                     reply.slideDown("slow");
                  });
 
-                //               关注部分点击图片替换#}
-//
-//                   $("#putcomment").click(function(){
-//                       comment = $("#comment-content1").val()
-//                       if (comment=="")
-//                         alert("您的输入为空")
-//                       else
-//                       $.post("project_comment",{content:$("#comment-content1").val(),projectId:$("#projectId").val()},function(data){
-//                           if (data == 1)
-//                             location.reload()
-//                           else
-//                             alert("Sorry, 出现了一些问题")
-//                     })
-//
-// })
+
+                 $(".likebutton").click(function(){
+
+                     Id = $(this).attr("project")
+                     like = $(this)
+                     $.post("star", {userId: userId, starType: "2", Id: Id}, function (data) {
+                         if (data == 1)    //点赞成功
+                         {
+                             like.children().attr("src", "../static/project/imgs/liked.png")
+                             like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) + 1)
+                         }
+                         else if (data == 0)
+                             alert(data)
+                         else    //取消点赞成功
+                         {
+                             like.children().attr("src", "../static/project/imgs/like1.svg")
+                             like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) - 1)
+                         }
+
+                     });
+                 });
+
+  
+
 
 
 

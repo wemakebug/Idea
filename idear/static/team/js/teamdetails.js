@@ -1,13 +1,29 @@
 /**
  * Created by admin on 2017/7/23.
  */
-//点击按钮后发送跳转到指定页面的事件。
-$(document).ready(function() {
-    $("#petitionhelp").click(function () {
-        window.location.href = "teamhelpapplication";
-    });
-});
-//end跳到指定页面结束
+//预加载时判断该用户有没有关注
+
+
+$(function(){
+
+
+    $.cookie("user", 3);
+    userId = $.cookie("user");
+
+    var Id = window.location.href.split("/");
+    Id = Id[Id.length - 1];
+    $.post("/idear/teamattend",{userId: userId,Id:Id},function (data) {
+        if(data==1){
+             document.getElementById("praise-img11-dianzan").src="/static/team/imgs/xinxing.png";
+        }else if(data==2){
+             document.getElementById("praise-img11-dianzan").src="/static/team/imgs/redxin.png";
+        }
+
+    })
+
+
+
+})
 
 //判断评论输入框为空，不为空往后台添加记录
 $("#putcommentbutton").click(function () {
@@ -276,28 +292,28 @@ $(function () {
         var praise_txt1 = $("#praise-txt11-1");
         var num1=parseInt(praise_txt1.text());
         $.post("/idear/attend", {userId: userId,attendType: "3",Id:Id}, function (data) {
-            data = JSON.parse(data);
+            // data = JSON.parse(data);
             if (data == 1) {
-                alert(data)
-                $("img", $(this)).attr("src", "../../static/team/imgs/redxin.png");
-                // document.getElementById("praise-img11-dianzan").src="../static/team/imgs/xinxingshixin.png";
+                // $("#praise-img11-dianzan").attr("/static/team/imgs/redxin.png");
+                document.getElementById("praise-img11-dianzan").src="/static/team/imgs/redxin.png";
                 $("#praise-img11-1").addClass("animation");
                 praise_txt1.addClass("hover");
-                text_box1.show().html("<em class='add-animation'>+1</em>");
+                // text_box1.show().html("<em class='add-animation'>+1</em>");
                 $(".add-animation").addClass("hover");
-                num1 +=1;
-                praise_txt1.text(num1);
+                // num1 +=1;
+                // praise_txt1.text(num1);
                 window.location.reload();
             } else if (data == 0) {
                 alert("操作失败！");
+            //删除记录
             } else if(data == 2){
-                document.getElementById("praise-img11-dianzan").src="../static/team/imgs/xinxing.png";
+                document.getElementById("praise-img11-dianzan").src="/static/team/imgs/xinxing.png";
                 $("#praise-img11-1").addClass("animation");
                 praise_txt1.removeClass("hover");
-                text_box1.show().html("<em class='add-animation'>-1</em>");
+                // text_box1.show().html("<em class='add-animation'>-1</em>");
                 $(".add-animation").removeClass("hover");
-                num -= 1;
-                praise_txt1.text(num);
+                // num -= 1;
+                // praise_txt1.text(num);
                 window.location.reload();
             }
         })
