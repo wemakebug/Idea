@@ -23,6 +23,7 @@
                             <a class="tags" href="../projects?sign={{ label.projectLabel.Id }}"><span
                                     class="ribbon1"><span>{{ label.projectLabel.ProjectLabelName }}</span></span></a>
                         {% endfor %}
+                        <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
                         <div class="title">
                             <h5 id="rdpname"> {{ project.ProjectName }}</h5>
                             <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：第<span
@@ -261,17 +262,7 @@
         });
 
 
-        {#                关注部分点击图片替换#}
 
-        function changeImage(){
-            element = document.getElementById('rdcoimg');
-            if (element.src.match("collection0")) {
-                element.src = '{% static '/project/imgs/star.png' %}';
-            }
-            else {
-                element.src = '{% static '/creation/imgs/collection0.png' %}';
-            }
-        }
 
 
         {#招募进度条#}
@@ -312,10 +303,34 @@
             $("#rdpstatus").text(times);
         });
 
+        function changeImage(){
+                    element = document.getElementById('rdcoimg');
+                    if (element.src.match("collection0")) {
+                        element.src = '{% static '/project/imgs/star.png' %}';
+                    }
+                    else {
+                        element.src = '{% static '/creation/imgs/collection0.png' %}';
+                    }
+                }
+
+                $(".putcomment").click(function(){
+                      comment = $("#comment-content1").val()
+                      if (comment=="")
+                        alert("您的输入为空")
+                      else
+                      $.post("project_comment",{content:$("#comment-content1").val(),projectId:$("#projectId").val()},function(data){
+                          if (data == 1)
+                            location.reload()
+                          else
+                            alert("Sorry, 出现了一些问题")
+                    })
+
+})
 
 
+{##}
 {#        $("#rdputcomment").click(function (){#}
-{#            function CreateComment() {#}
+{#            function CreateComment(content) {#}
 {#            var c_main = document.createElement("div");#}
 {#            c_main.className = "cmain";#}
 {##}
@@ -397,17 +412,19 @@
 {#            c_all.insertBefore(c_main, cmain);#}
 {#            }#}
 {##}
-{#             comment = $("#comment-content1").val()#}
-{#             if (comment =="")#}
-{#             alert("您的输入为空")#}
-{#            else#}
-{#                 $.post("comment",#}
-{#                     {content:$("#comment-content1").val(),projectId:$("#projectId").val()},function(data) {#}
-{#                         if (data == 1)#}
-{#                             CreateComment(content)#}
-{#                         else#}
-{#                             alert("Sorry, 出现了一些问题")#}
-{#                     })#}
+{#            $.post('comment_creation',{#}
+{##}
+{#                "string": comment_content#}
+{#            }, function (data) {#}
+{#                data = JSON.parse(data);#}
+{#                if(data.status == 0){#}
+{#                    alert("Wrong");#}
+{#                }else {#}
+{#                    CreateComment(data);#}
+{#                }#}
+{##}
+{#    });#}
+{##}
 {##}
 {#        });#}
     </script>

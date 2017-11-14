@@ -638,13 +638,8 @@ def comment(req):
             models.Comment.objects.create(user = user ,creation = creation , Content = content)
             status = 1
             return HttpResponse(status)
-            projectId = req.POST["projectId"]
-            content = req.POST["content"]
-            user = models.User.objects.get(UserName=username)
-            project = models.Project.objects.get(pk=projectId)
-            models.Comment.objects.create(user=user, project=project, Content=content)
-            status = 2
-            return HttpResponse(status)
+
+
         except Exception as e:
             print(e)
             return HttpResponse(status)
@@ -736,20 +731,40 @@ def redetails(req):
 
 
     if req.method == "POST":
-        pass
-        # projectId = req.GET['projectId']
-        # project = Project.objects.get(Id=projectId)
-        # labels = Project2ProjectLabel.objects.filter(project_id=projectId)
-        # alllables = []  # 找出本创意所有的标签
-        # for label in labels:
-        #     alllables.append(label.projectLabel.Id)
-        # alllables = list(set(alllables))
-        #
-        # project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
-        # recruit = models.Recruit.objects.filter(project=projectId)
-        # return render_to_response('project/redetails.html',
-        #                           {"project": project, "project2projectLabels": project2projectLabel[:2],"comment":commentlist,
-        #                            "labels": labels[:3],"recruit":recruit})
+         pass
+
+@csrf_exempt
+def project_comment(req):
+    '''
+    项目评论
+    :param req:
+    :return:
+    '''
+    status = 0
+    if req.method == 'POST':
+        try:
+            username = "chris"
+            projectId = req.POST["projectId"]
+            content = req.POST["content"]
+            user = models.User.objects.get(UserName=username)
+            project = models.Project.objects.get(pk=projectId)
+            models.Comment.objects.create(user=user, prject=project, Content=content)
+            status = 2
+            return HttpResponse(status)
+
+
+        except Exception as e:
+            print(e)
+            return HttpResponse(status)
+
+    if req.method == 'GET':
+        content = "hello world"
+        username = "chris"
+        projectid = 3
+        user = models.User.objects.get("UserName=username")
+        project = models.Project.objects.get(pk=projectid)
+        models.Comment.objects.create(user=user, project=project, Content=content)
+        return HttpResponse("TRUE")
 
 
 @csrf_exempt
