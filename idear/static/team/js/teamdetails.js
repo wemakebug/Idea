@@ -2,9 +2,14 @@
  * Created by admin on 2017/7/23.
  */
 //预加载时判断该用户有没有关注
-function showpictur(){
+
+
+$(function(){
+
+
     $.cookie("user", 3);
     userId = $.cookie("user");
+
     var Id = window.location.href.split("/");
     Id = Id[Id.length - 1];
     $.post("/idear/teamattend",{userId: userId,Id:Id},function (data) {
@@ -15,7 +20,10 @@ function showpictur(){
         }
 
     })
-}
+
+
+
+})
 
 //判断评论输入框为空，不为空往后台添加记录
 $("#putcommentbutton").click(function () {

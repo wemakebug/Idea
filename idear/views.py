@@ -396,15 +396,14 @@ def teamdetails(req, teamid):
             models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
             return HttpResponse(json.dumps(result))
 
+
+@csrf_exempt
 def teamattend(req):
     '''
     团队详情的点赞
     :param req: 
     :return: 
     '''
-    if req.method == 'GET':
-        pass
-
     if req.method == 'POST':
         try:
             Id = req.POST['Id']
@@ -417,6 +416,7 @@ def teamattend(req):
         except Exception as e:
             return HttpResponse('404')
         else:
+            print 123456
             return HttpResponse(status)
 
 
