@@ -810,30 +810,6 @@ def projects(req):
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
-
-
-
-
-
-# def get_projects(req):
-#     if req.method == "GET":
-#         return Http404()
-#     if req.method == "POST":
-#         projects = Project.objects.all().order_by('Id')
-#         account = req.COOKIES.get('account')
-#         user = User.objects.filter(Account=account)
-#         recruits = []
-#         for project in projects:
-#             recruit = models.Recruit.objects.filter(project=project)
-#             recruits.append(recruit)
-#         project_all = zip(projects, recruits)
-#         if account:
-#             projects = ProjectUser.objects.get(user=user)
-#             return render_to_response('project/recruit.html', {'project_all': project_all})
-#         else:
-#             return render_to_response('project/recruit.html', {'project_all': project_all})
-
-
 ''' 招募项目相关页面结束'''
 
 '''个人中心相关页面'''

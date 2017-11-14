@@ -65,7 +65,7 @@
                               location.reload()
                           else
                               alert("Sorry, 出现了一些问题")
-                      }
+                      })
 });
 
 
