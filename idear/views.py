@@ -540,31 +540,32 @@ def attend(req):
         Id = req.POST['Id']
         userId = req.POST['userId']
         attendType = int(req.POST['attendType'])
-        print Id
-        print userId
-        print attendType
-        
+
         if attendType == 1:
-            try:
-                p = Follow.objects.get(creation_id=Id, user_id=userId).delete()
+            FollowCreation = Follow.objects.filter(creation_id = Id, user_id = userId)
+            if len(FollowCreation) > 0:
+                FollowCreation.delete()
                 status = 2
-            except:
-                p = Follow.objects.create(creation_id=Id, user_id=userId)
+            else:
+                Follow.objects.create(creation_id=Id, user_id=userId)
                 status = 1
+                
         elif attendType == 2:
-            try:
-                p = Follow.objects.get(project_id=Id, user_id=userId).delete()
+            FollowProject = Follow.objects.filter(project_id = Id, user_id = userId)
+            if len(FollowProject) > 0:
+                FollowProject.delete()
                 status = 2
-            except:
-                p = Follow.objects.create(project_id=Id, user_id=userId)
+            else:
+                Follow.objects.create(project_id=Id, user_id=userId)
                 status = 1
+
         elif attendType == 3:
-            try:
-                F = Follow.objects.get(user_id=userId, Follower_id=Id).delete()
+            FollowUser = Follow.objects.filter(Follower_id = Id, user_id = userId)
+            if len(FollowUser) > 0:
+                FollowUser.delete()
                 status = 2
-            except:
-                p = Follow.objects.create(user_id=userId, Follower_id=Id)
-                status = 1
+            else:
+                Follow.objects.create(Follower_id=Id, user_id=userId)
         return HttpResponse(status)
     except:
         return HttpResponse(status)
