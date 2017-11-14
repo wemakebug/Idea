@@ -14,10 +14,10 @@
                 $("#rdsubapply").click(function(){
                     $("#rdr-apply").slideUp("slow");
                 });
-               // 评论回复部分
-                $(".creply").click(function(){
-                    $("#commentreply").slideDown("slow");
-                });
+                //评论回复
+                $(".putcomment").click(function () {
+                    $(".commentreply").slideUp("slow");
+                })
 
                  $('.creply').click(function(){
                     var ele = this;
@@ -31,6 +31,7 @@
                     reply = $(reply);
                     reply.slideDown("slow");
                  });
+
 
 
                  $(".likebutton").click(function(){
@@ -53,6 +54,19 @@
 
                      });
                  });
+
+                 $("#putcomment").click(function(){
+                      comment = $("#comment-content1").val()
+                      if (comment=="")
+                        alert("您的输入为空")
+                      else
+                      $.post("comment",{content:$("#comment-content1").val(),projectId:$("#projectId").val()},function(data) {
+                          if (data == 1)
+                              location.reload()
+                          else
+                              alert("Sorry, 出现了一些问题")
+                      }
+});
 
 
 
