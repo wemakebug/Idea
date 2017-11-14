@@ -305,11 +305,8 @@ body, html {
 }
 .home-right {
     width: 300px;
-    /*float:rig%t;*/
-    margin-left:1240px;
-    top: 100px;
     position: fixed;
-    float: right;
+    margin-left: 1200px;
 }
 .home-right p,span{
     font-size: 15px;

@@ -33,7 +33,6 @@
                  });
 
 
-
                  $(".likebutton").click(function(){
 
                      Id = $(this).attr("project")
@@ -55,18 +54,7 @@
                      });
                  });
 
-                 $("#putcomment").click(function(){
-                      comment = $("#comment-content1").val()
-                      if (comment=="")
-                        alert("您的输入为空")
-                      else
-                      $.post("comment",{content:$("#comment-content1").val(),projectId:$("#projectId").val()},function(data) {
-                          if (data == 1)
-                              location.reload()
-                          else
-                              alert("Sorry, 出现了一些问题")
-                      }
-});
+  
 
 
 

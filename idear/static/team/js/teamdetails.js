@@ -174,7 +174,7 @@ $(".putcomment").click(function () {
     if (reply_comment === "" || reply_comment === undefined || reply_comment === null) {
         swal({
             title: "评论为空",
-            text: "按确定建后添加评论语",
+            text: "按确定建后添加评论 语",
             type: "warning"
         });
     } else {
