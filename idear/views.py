@@ -782,14 +782,8 @@ def projects(req):
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
             comments = Comment.objects.fitler(project=id).order_by('Date')
-            user = project.user
-            # recruit_all = []
-            # for project in projects:
-            #     recruit = models.Recruit.objects.filter(project__Id=int(project.Id))
-            #     recruit_all.append(recruit)
-            # all_recruit = zip(projects, recruit_all)
             return render_to_response('project/recruit.html',
-                                      {'comments': comments, 'user': user})
+                                      {'comments': comments})
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
