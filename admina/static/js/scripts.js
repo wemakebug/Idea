@@ -157,21 +157,19 @@
         $(this).parents(".panel").parent().remove();
     });
 
-
-
     // tool tips
-
     $('.tooltips').tooltip();
-
     // popovers
-
     $('.popovers').popover();
 
 
 
-
-
-
-
-
 })(jQuery);
+
+jQuery("li[name='right_head_select']").on('click',function () {
+    if(this.classList[0] === 'open'){
+        this.classList = ''
+    }else
+        this.classList = 'open';
+
+});

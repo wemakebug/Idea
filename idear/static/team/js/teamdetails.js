@@ -278,7 +278,8 @@ $(function () {
         $.post("/idear/attend", {userId: userId,attendType: "3",Id:Id}, function (data) {
             data = JSON.parse(data);
             if (data == 1) {
-                $("img", $(this)).attr("src", "../static/team/imgs/xinxingshixin.png");
+                alert(data)
+                $("img", $(this)).attr("src", "../../static/team/imgs/redxin.png");
                 // document.getElementById("praise-img11-dianzan").src="../static/team/imgs/xinxingshixin.png";
                 $("#praise-img11-1").addClass("animation");
                 praise_txt1.addClass("hover");
