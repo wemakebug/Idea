@@ -51,8 +51,8 @@ urlpatterns = [
 
      url(r'project_comment', views.project_comment),
 
-    url(r'^teamstar',views.teamstar),
+     url(r'^teamstar',views.teamstar),
 
- 
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
