@@ -765,31 +765,27 @@ def project_comment(req):
     :param req:
     :return:
     '''
-    status = 0
+
     if req.method == 'POST':
-        try:
-            username = "chris"
-            projectId = req.POST["projectId"]
-            content = req.POST["content"]
-            user = models.User.objects.get(UserName=username)
-            project = models.Project.objects.get(pk=projectId)
-            models.Comment.objects.create(user=user, prject=project, Content=content)
-            status = 2
-            return HttpResponse(status)
-
-
-        except Exception as e:
-            print(e)
-            return HttpResponse(status)
-
-    if req.method == 'GET':
-        content = "hello world"
+        projectId = req.POST["projectId"]
+        content = req.POST["content"]
         username = "chris"
-        projectid = 3
-        user = models.User.objects.get("UserName=username")
-        project = models.Project.objects.get(pk=projectid)
-        models.Comment.objects.create(user=user, project=project, Content=content)
-        return HttpResponse("TRUE")
+        result = {
+            "status": 1,
+            "string": None
+        }
+        try:
+            user = models.User.objects.get(UserName=username)
+            project = models.User.objects.get(Id=projectId)
+        except:
+            result["status"] = 0
+            result["content"] = "空"
+            return HttpResponse(json.dumps(result))
+        else:
+            models.Comment.objects.create(user=user, project=project, Content=content)
+            return HttpResponse(json.dumps(result))
+
+
 
 
 @csrf_exempt
