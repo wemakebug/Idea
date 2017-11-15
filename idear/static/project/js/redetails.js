@@ -14,10 +14,10 @@
                 $("#rdsubapply").click(function(){
                     $("#rdr-apply").slideUp("slow");
                 });
-               // 评论回复部分
-                $(".creply").click(function(){
-                    $("#commentreply").slideDown("slow");
-                });
+                //评论回复
+                $(".putcomment").click(function () {
+                    $(".commentreply").slideUp("slow");
+                })
 
                  $('.creply').click(function(){
                     var ele = this;
@@ -53,6 +53,8 @@
 
                      });
                  });
+
+
 
 
 
