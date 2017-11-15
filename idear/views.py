@@ -359,6 +359,7 @@ def teamdetails(req, teamid):
             this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
             counts = models.Follow.objects.filter(Follower=this_team).count()
+            teamcounts = models.Praise.objects.filter(user_prised=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
             commentlist = []
 
@@ -376,7 +377,7 @@ def teamdetails(req, teamid):
         except Exception as e:
             return Http404
 
-        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist})
+        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist,"teamstar":teamcounts})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
@@ -400,7 +401,7 @@ def teamdetails(req, teamid):
 @csrf_exempt
 def teamattend(req):
     '''
-    团队详情的点赞
+    团队详情的关注
     :param req: 
     :return: 
     '''
@@ -416,10 +417,27 @@ def teamattend(req):
         except Exception as e:
             return HttpResponse('404')
         else:
-            print 123456
             return HttpResponse(status)
-
-
+@csrf_exempt
+def teamstar(req):
+    '''
+    团队详情的点赞
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'POST':
+        try:
+            Id = req.POST['Id']
+            userId = req.POST['userId']
+            praiseUser = Praise.objects.filter(user_prised_id=Id, user_id=userId)
+            if len(praiseUser) > 0:
+                status = 2
+            else:
+                status = 1
+        except Exception as e:
+            return HttpResponse('404')
+        else:
+            return HttpResponse(status)
 
 
 def teamhelpapplication(req, teamhelpid):
@@ -634,13 +652,14 @@ def star(req):
 
             return HttpResponse(status)
         elif starType ==3:
-            try:
-                p = Praise.objects.get(Praise_id=Id, user_id=userId).delete()
+            PraiseUser = Praise.objects.filter(user_prised_id=Id, user_id=userId)
+            if len(PraiseUser) > 0:
+                PraiseUser.delete()
                 status = 2
-            except:
-                p = Praise.objects.create(Praise_id=Id, user_id=userId)
+            else:
+                Praise.objects.create(user_prised_id=Id, user_id=userId)
                 status = 1
-            return HttpResponse(status)
+        return HttpResponse(status)
     except Exception as e:
         print(e)
         return HttpResponse(status)
