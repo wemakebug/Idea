@@ -52,10 +52,10 @@ $('.creply').click(function(){
 
 
 //创意关注操作
-$(".block-hotfollow").click(function(){
+$(".home-b-collection").click(function(){
     Id = $(this).attr("creation")
     follow = $(this)
-    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
+    $.post("/idear/attend",{userId:userId,attendType:"1",Id:Id},function(data){
      if(data == 1)
          {
            follow.children().attr("src","../static/creation/imgs/collections.png")
@@ -65,7 +65,7 @@ $(".block-hotfollow").click(function(){
          alert(data)
      else
        {
-         follow.children().attr("src","../static/creation/imgs/collection1.png")
+         follow.children().attr("src","../static/creation/imgs/collection0.png")
          follow.children(".followspan").html(parseInt(follow.children(".followspan").html())-1)
        }
     })
@@ -73,15 +73,15 @@ $(".block-hotfollow").click(function(){
 })
 
 //创意点赞操作
- $(".block-hotlike").click(function(){
+ $(".praise").click(function(){
 
     Id = $(this).attr("creation")
     like = $(this)
-    $.post("star",{userId:userId,starType:"1",Id:Id},function(data){
+    $.post("/idear/star",{userId:userId,starType:"1",Id:Id},function(data){
      if(data == 1)    //点赞成功
          {
            like.children().attr("src","../static/creation/imgs/likes.png")
-           like.children(".likespan").html(parseInt(like.children(".likespan").html())+1)
+           like.children(".praise-txt").html(parseInt(like.children(".praise-txt").html())+1)
        }
      else if(data == 0)
          alert(data)
