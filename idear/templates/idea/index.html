@@ -26,7 +26,7 @@
             <img src="{% static 'idea/imgs/bg_top1.jpg'%}">
         </div>
         <div class="item">
-            <img src="{% static 'idea/imgs/bg_top.jpg'%}">
+            <img src="{% static 'idea/imgs/night_img.png'%}">
         </div>
     </div>
     <a class="carousel-control left top-content-control-left" href="#myCarousel" data-slide="prev"></a>
@@ -85,7 +85,7 @@
 						</div>
 					</div>
 					<div class="usage_one">
-                        <a href="team">
+                        <a href="/idear/team?sign=all">
 						    <div class="usage_icon4"></div>
                         </a>
 						<div class="usage_details">
@@ -101,14 +101,14 @@
 			</div>
             <div class="best_find">
                 <div class="line_one"></div>
-                <div class="box-two-name">
+                <div class="box-one-left">
 					<h2>WEEKLY<small>praise list</small></h2>
 				</div>
                 <div class="thumbs-up">
 
                     <div class="best_project">
                         <div class="pro">
-                            <a href="redetails/?projectId=4">
+                            <a href="#">
                                 <div class="pro_left_img">
                                     <img src="../../static/idea/imgs/best_img.png">
                                 </div>
@@ -196,57 +196,10 @@
 
             <div class="best_find">
                 <div class="line_one"></div>
-                <div class="box-two-name">
+                <div class="box-one-left">
 					<h2>WEEKLY<small>creation list</small></h2>
 				</div>
-                <div class="thumbs-up">
-
-{#                    <div class="best_project">#}
-{#                        <div class="pro">#}
-{#                            <a href="#">#}
-{#                                <div class="pro_left_img">#}
-{#                                    <img src="../../static/idea/imgs/best_img.png">#}
-{#                                </div>#}
-{#                            </a>#}
-{#                            <div class="pro_content">#}
-{#                                <div class="pro_label">#}
-{#                                    <a href="#" >#}
-{#                                        <p>大数据</p>#}
-{#                                        <p>互联网</p>#}
-{#                                    </a>#}
-{#                                </div>#}
-{#                                <div class="pro_name"><a href="#"><p>一个非常好的创意</p></a></div>#}
-{#                                <div class="pro_introduce">#}
-{#                                    <a href="#">#}
-{#                                        <p id="txt">今年六月，世界娱乐巨头米高梅集团（MGM Resorts）宣布扩大与麦肯的合作，将旗下多个娱乐场所和度假村纳入了创意清单之中。</p>#}
-{#                                    </a>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="pro_line"></div>#}
-{#                            <div class="pro_best">#}
-{#                                <ul>#}
-{#                                    <li>#}
-{#                                        <div class="pro_comment"></div>#}
-{#                                        <div class="comment_num"><p>123</p></div>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                        <div class="pro-thumbs-up"></div>#}
-{#                                        <div class="thumbs-up-num"><p>123</p></div>#}
-{#                                    </li>#}
-{#                                    <li>#}
-{#                                        <div class="pro-collection"></div>#}
-{#                                        <div class="collection-num"><p>123</p></div>#}
-{#                                    </li>#}
-{#                                </ul>#}
-{#                                <div class="pro_by">#}
-{#                                    <p>by&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">张张</a></p>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-                </div>
-                <div class="middle_line"></div>
-                <div class="collection">
+                <div class="thumbs-up-1">
                     <div class="collection_no2">
                         <div class="best_project">
                             <div class="pro">
@@ -286,11 +239,43 @@
                         </div>
                     {% endfor %}
                 </div>
+                <div class="middle_line"></div>
+                <div class="collection_1">
+                    <div class="creation_name">
+                        <p>一个非常好的创意</p>
+                    </div>
+                    <div class="creation_label">
+                        <p>互联网</p>
+                        <p>大数据</p>
+                        <p>数学建模</p>
+                    </div>
+                    <div class="creation_content">
+                        <p>
+                            Pantsula（潘苏拉），南非第一大民族祖鲁族语言，意即“摇摆如鱼得水”，是近年在南非风头正盛的街头舞种，甚至已经成为了约翰内斯堡贫民区风靡的生活方式。戴着渔夫帽、身着工装套装的舞者们飞快地踢踏、旋转、跳跃，随节奏控制舞步，无规则可循的肢体语言由此带出了特别的律动，时髦又带感。 你再仔细看看，上图这么清新可爱的涂鸦，可不是品牌logo的演变过程。 事情是这样的
+                        </p>
+                    </div>
+                    <div class="creation_line"></div>
+                    <div class="pro_best_1">
+                        <ul>
+                            <li>
+                                <div class="pro_comment"></div>
+                                <div class="comment_num"><p>123</p></div>
+                            </li>
+                            <li>
+                                <div class="pro-thumbs-up"></div>
+                                <div class="thumbs-up-num"><p>123</p></div>
+                            </li>
+                            <li>
+                                <div class="pro-collection"></div>
+                                <div class="collection-num"><p>123</p></div>
+                            </li>
+                        </ul>
+                        <div class="pro_by">
+                            <p>by&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">张张</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-
-
 			<div class="mainbox_two" >
                 <div class="line_thin"></div>
                 <div class="box-three-left">
@@ -323,12 +308,6 @@
 
                 </div>
             </div>
-            {% comment %}<div class="new_add">
-
-            </div>
-            <div class="mainbox_last" >
-                <div class=" dividing_line "></div>
-			</div>{% endcomment %}
 			<div class="mainbox_four">
 				<div class="mainbox_four_left">
 					<div class="main_open">

@@ -9,67 +9,70 @@
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
 {%endblock%}
 {%block content%}
-    <div class="first">
-        <div class="second_0">
-            {% for team in teams %}
-                <div class="border_0">
-                    <div class="photo_0" onclick="window.open('teamdetails/{{ team.Id }}')">
-                        <img src="/static/photos/{{ team.Img }}" style=" width: 100% ;height: 100%;border-radius: 6px;"  alt="">
-                    </div>
-                    <div class="referral">
-                        <h3 onclick="window.open('teamdetails/{{ team.Id }}')">{{ team.UserName }}</h3>
-                        <p >入驻时间：      {{ team.RegistTime }}</p>
-                    </div>
+    <div style="width: 100%">
+        <div class="first">
+            <div class="second_0">
+                {% for team in teams %}
+                    <div class="border_0">
+                        <div class="photo_0" onclick="window.open('teamdetails/{{ team.Id }}')">
+                            <img src="/static/photos/{{ team.Img }}" style=" width: 100% ;height: 100%;border-radius: 6px;"  alt="">
+                        </div>
+                        <div class="referral">
+                            <h3 onclick="window.open('teamdetails/{{ team.Id }}')">{{ team.UserName }}</h3>
+                            <p >入驻时间：      {{ team.RegistTime }}</p>
+                        </div>
 
-                    <div style="height: 50%">
-                        <div class="leftMatter">
-                            <div class="teamTag">
-                                团队标签：
-                                {% for User2 in User2UserLabel  %}
-                                        {% if User2.user.Id == team.Id %}
-                                            <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
-                                            <a style=" font-size: 14px;color: #7A8B8B;">{{ User2.userLabel.Name}}</a>
-                                        {% endif %}
+                        <div style="height: 50%">
+                            <div class="leftMatter">
+                                <div class="teamTag">
+                                    团队标签：
+                                    {% for User2 in User2UserLabel  %}
+                                            {% if User2.user.Id == team.Id %}
+                                                <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
+                                                <a style=" font-size: 14px;color: #7A8B8B;">{{ User2.userLabel.Name}}</a>
+                                            {% endif %}
                                     {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="content_0" onclick="window.open('teamdetails/{{ team.Id }}')">
+                                {{ team.Introduction }}
                             </div>
                         </div>
-                        <div class="content_0" onclick="window.open('teamdetails/{{ team.Id }}')">
-                            {{ team.Introduction }}
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
-                        <div class="praise" team="{{ team.Id }}">
-                            <span class="praise_0"><img src="../../static/team/imgs/zan.png" name="praise_img" /> </span>
-                            <span class="praise-txt">{{ team.Praised_User_set.count }}</span>
-                            <span  class="add-num"><em>+1</em></span>
-                        </div>
+                        <div class="feature">
+                            <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
+                            <div class="praise" team="{{ team.Id }}">
+                                <span class="praise_0"><img src="../../static/team/imgs/zan.png" name="praise_img" /> </span>
+                                <span class="praise-txt">{{ team.Praised_User_set.count }}</span>
+                                <span  class="add-num"><em>+1</em></span>
+                            </div>
 
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-            <a class="more_0">加载更多</a>
-            <div class="clear"></div>
-        </div>
-        <div class="broadSide" id="broadSide">
-            <div class="intro_1">
-                <img src="{% static 'creation/imgs/light.png' %}"
-                         style="width:40px;height:40px;margin:-20px 0px 26px -10px">
-                <img src="{% static '/idea/imgs/idea_logo.png' %}" style="width:40px;height:40px;margin:0">
-{#                <span>Team</span>#}
-                <p> 创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
+                {% endfor %}
+                <a class="more_0">加载更多</a>
+                <div class="clear"></div>
             </div>
-            <div class="classify">
-                <div class="tag">
-                    <img src="{% static '/creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
-                    <span>标签</span>
-                    <hr style="width: 100%">
-                    <a href="team?sign=all" sign="all"><span class="allsign">所有</span></a>
-                    {% for obj in labels %}
-                        <a href="team?sign={{ obj.Id }}" sign="{{ obj.Id }}">
-                            <span class="allsign">{{ obj.Name }}</span>
-                        </a>
-                    {% endfor %}
+            <div class="broadSide" id="broadSide">
+                <div class="intro_1">
+                    <img src="{% static 'creation/imgs/light.png' %}"
+                             style="width:40px;height:40px;margin:-20px 0px 26px -10px">
+                    <img src="{% static '/idea/imgs/idea_logo.png' %}" style="width:40px;height:40px;margin:0">
+    {#                <span>Team</span>#}
+                    <p> 创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
+                </div>
+                <div class="classify">
+                    <div class="tag">
+                        <img src="{% static '/creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                        <span>标签</span>
+                        <hr style="width: 100%">
+                        <a href="team?sign=all" sign="all"><span class="allsign">所有</span></a>
+                        {% for obj in labels %}
+                            <a href="team?sign={{ obj.Id }}" sign="{{ obj.Id }}">
+                                <span class="allsign">{{ obj.Name }}</span>
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

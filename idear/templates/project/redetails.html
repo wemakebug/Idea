@@ -23,6 +23,7 @@
                             <a class="tags" href="../projects?sign={{ label.projectLabel.Id }}"><span
                                     class="ribbon1"><span>{{ label.projectLabel.ProjectLabelName }}</span></span></a>
                         {% endfor %}
+                        <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
                         <div class="title">
                             <h5 id="rdpname"> {{ project.ProjectName }}</h5>
                             <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：第<span
@@ -139,7 +140,7 @@
                         <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                         <div class="carea">
                             <div class="tocomment">
-                                <textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>
+                                <textarea placeholder="" name ="putcomment" id="comment-content1" class="comment-text"></textarea>
                             </div>
                             <button class="putcomment" id="rdputcomment">评论</button>
                         </div>
@@ -166,8 +167,8 @@
                                     <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
                                 </div>
                                 <div class="commentreply" id="commentreply">
-                                    <textarea placeholder="" name="" class="commentreply-text"></textarea>
-                                    <button class="putcomment" id="putcomment">回复</button>
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomment" id="cputcomment">回复</button>
                                 </div>
                             </div>
                         </div>
@@ -191,8 +192,8 @@
                                     <p id="rdr-content">{{comment.Content}}</p>
                                 </div>
                                 <div class="commentreply" id="rcommentreply">
-                                    <textarea placeholder="" name="" class="commentreply-text"></textarea>
-                                    <button class="putcomment" id="putcomment">回复</button>
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomment" id="crputcomment">回复</button>
                                 </div>
                             </div>
                         </div>
@@ -261,19 +262,6 @@
         });
 
 
-        {#                关注部分点击图片替换#}
-
-        function changeImage(){
-            element = document.getElementById('rdcoimg');
-            if (element.src.match("collection0")) {
-                element.src = '{% static '/project/imgs/star.png' %}';
-            }
-            else {
-                element.src = '{% static '/creation/imgs/collection0.png' %}';
-            }
-        }
-
-
         {#招募进度条#}
         $(function () {
             var percent = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
@@ -312,102 +300,164 @@
             $("#rdpstatus").text(times);
         });
 
-        $("#rdputcomment").click(function (){
-            function CreateComment() {
-            var c_main = document.createElement("div");
-            c_main.className = "cmain";
+        function changeImage(){
+                    element = document.getElementById('rdcoimg');
+                    if (element.src.match("collection0")) {
+                        element.src = '{% static '/project/imgs/star.png' %}';
+                    }
+                    else {
+                        element.src = '{% static '/creation/imgs/collection0.png' %}';
+                    }
 
-            var cmain_cimg = document.createElement("img");
-            cmain_cimg.className = "c-img";
-            cmain_cimg.src = "/static/project/imgs/user.svg";
+                }
 
-            var cmain_commentbox = document.createElement("div");
-            cmain_commentbox.className = "comment-box";
+        $("#rdputcomment").click(function(){
+                    var reply_comment = document.getElementById("comment-content1").value;
+                    var projectid = window.location.href.split("=");
+                    projectid = projectid[projectid.length - 1];
+                    if (reply_comment === "" || reply_comment === undefined || reply_comment === null) {
+                         alert("请输入评论内容！")
+                    } else {
+                        $.post('project_comment',
+                            {
+                                "content": reply_comment,
+                                "projectId":projectid}, function (data) {
+{#                            data = JSON.parse(data);#}
 
-            var commentbox_commenthead = document.createElement("div");
-            commentbox_commenthead.className = "comment-head";
-
-            var commenthead_cname = document.createElement("h6");
-            commenthead_cname.className = "comment-name";
-
-            var commenthead_cdate = document.createElement("span");
-            commenthead_cdate.className = "cdate";
-
-            var commenthead_coption = document.createElement("div");
-            commenthead_coption.className = "c-option";
-
-            var coption_clike = document.createElement("img");
-            coption_clike.className = "clike";
-            coption_clike.src = "/static/project/imgs/like1.svg";
-
-            var coption_clikenum = document.createElement("span");
-            coption_clikenum.className = "clikenum";
-
-            var coption_creply = document.createElement("img");
-            coption_creply.className = "creply";
-            coption_creply.src = "/static/project/imgs/reply.svg";
-
-            var coption_creport = document.createElement("img");
-            coption_creport.className = "creport";
-            coption_creport.src = "/static/creation/imgs/report.png";
-
-            var commentbox_commentcontent = document.createElement("div");
-            commentbox_commentcontent.className = "comment-content";
-
-            var commentcontent_p = document.createElement("p");
-            commentcontent_p.textContent = "ASDASDASDAWDF";
-
-            var commentbox_commentreply = document.createElement("div");
-            commentbox_commentreply.className = "commentreply";
-            commentbox_commentreply.name = "commentreply";
-
-
-            var commentreply_text = document.createElement("textarea");
-            commentreply_text.className = "commentreply-text";
-
-            var commentreply_putcomment = document.createElement("button");
-            commentreply_putcomment.className = "putcomment";
-            commentreply_putcomment.textContent = "回复";
-
-            c_main.appendChild(cmain_cimg);
-            c_main.appendChild(cmain_commentbox);
-
-            cmain_commentbox.appendChild(commentbox_commenthead);
-            cmain_commentbox.appendChild(commentbox_commentcontent);
-            cmain_commentbox.appendChild(commentbox_commentreply);
-            commentbox_commenthead.appendChild(commenthead_cname);
-            commentbox_commenthead.appendChild(commenthead_cdate);
-            commentbox_commenthead.appendChild(commenthead_coption);
-            commenthead_coption.appendChild(coption_clike);
-            commenthead_coption.appendChild(coption_clikenum);
-            commenthead_coption.appendChild(coption_creport);
-            commenthead_coption.appendChild(coption_creply);
-            commentbox_commentcontent.appendChild(commentcontent_p);
-
-            commentbox_commentreply.appendChild(commentreply_text);
-            commentbox_commentreply.appendChild(commentreply_putcomment);
-
-            var comment_input = document.getElementById("comment-content1");
-            var comment_content = comment_input.value;
-            commentcontent_p.innerHTML = comment_content;
-            var c_all = document.getElementsByName("c-all")[0];
-            var cmain = document.getElementsByClassName("cmain")[0];
-            c_all.insertBefore(c_main, cmain);
-            }
-
-             comment = $("#comment-content1").val()
-             if (comment =="")
-             alert("您的输入为空")
-            else
-                 $.post("comment",
-                     {content:$("#comment-content1").val(),projectId:$("#projectId").val()},function(data) {
-                         if (data == 1)
-                             CreateComment(content)
-                         else
-                             alert("Sorry, 出现了一些问题")
-                     })
+                            if (data.status == 1) {
+                                 alert("Wrong");
+                            } else {
+                                $(".commentreply-text").val("");
+                                window.location.reload();
+                            }
+                        });
+                    }
 
         });
+        $(function () {
+                        $.cookie("user", 3);
+                        userId = $.cookie("user");
+
+                        $("#rdplike").click(function () {
+                            var Id = window.location.href.split("=");
+                            Id = Id[Id.length - 1];
+                            like = $("#rdlikebutton")
+                            $.post("star",{userId:userId,starType:"2",Id:Id},function(data) {
+                                if (data == 1)    //点赞成功
+                                {
+                                    like.children().attr("src", "/static/project/imgs/liked.png")
+                                    like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) + 1)
+                                }
+                                else if (data == 0)
+                                    alert(data)
+                                else    //取消点赞成功
+                                {
+                                    like.children().attr("src", "/static/project/imgs/like1.svg")
+                                    like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) - 1)
+                                }
+                            })
+                        });
+});
+
+{##}
+{#        $("#rdputcomment").click(function (){#}
+{#            function CreateComment(content) {#}
+{#            var c_main = document.createElement("div");#}
+{#            c_main.className = "cmain";#}
+{##}
+{#            var cmain_cimg = document.createElement("img");#}
+{#            cmain_cimg.className = "c-img";#}
+{#            cmain_cimg.src = "/static/project/imgs/user.svg";#}
+{##}
+{#            var cmain_commentbox = document.createElement("div");#}
+{#            cmain_commentbox.className = "comment-box";#}
+{##}
+{#            var commentbox_commenthead = document.createElement("div");#}
+{#            commentbox_commenthead.className = "comment-head";#}
+{##}
+{#            var commenthead_cname = document.createElement("h6");#}
+{#            commenthead_cname.className = "comment-name";#}
+{##}
+{#            var commenthead_cdate = document.createElement("span");#}
+{#            commenthead_cdate.className = "cdate";#}
+{##}
+{#            var commenthead_coption = document.createElement("div");#}
+{#            commenthead_coption.className = "c-option";#}
+{##}
+{#            var coption_clike = document.createElement("img");#}
+{#            coption_clike.className = "clike";#}
+{#            coption_clike.src = "/static/project/imgs/like1.svg";#}
+{##}
+{#            var coption_clikenum = document.createElement("span");#}
+{#            coption_clikenum.className = "clikenum";#}
+{##}
+{#            var coption_creply = document.createElement("img");#}
+{#            coption_creply.className = "creply";#}
+{#            coption_creply.src = "/static/project/imgs/reply.svg";#}
+{##}
+{#            var coption_creport = document.createElement("img");#}
+{#            coption_creport.className = "creport";#}
+{#            coption_creport.src = "/static/creation/imgs/report.png";#}
+{##}
+{#            var commentbox_commentcontent = document.createElement("div");#}
+{#            commentbox_commentcontent.className = "comment-content";#}
+{##}
+{#            var commentcontent_p = document.createElement("p");#}
+{#            commentcontent_p.textContent = "ASDASDASDAWDF";#}
+{##}
+{#            var commentbox_commentreply = document.createElement("div");#}
+{#            commentbox_commentreply.className = "commentreply";#}
+{#            commentbox_commentreply.name = "commentreply";#}
+{##}
+{##}
+{#            var commentreply_text = document.createElement("textarea");#}
+{#            commentreply_text.className = "commentreply-text";#}
+{##}
+{#            var commentreply_putcomment = document.createElement("button");#}
+{#            commentreply_putcomment.className = "putcomment";#}
+{#            commentreply_putcomment.textContent = "回复";#}
+{##}
+{#            c_main.appendChild(cmain_cimg);#}
+{#            c_main.appendChild(cmain_commentbox);#}
+{##}
+{#            cmain_commentbox.appendChild(commentbox_commenthead);#}
+{#            cmain_commentbox.appendChild(commentbox_commentcontent);#}
+{#            cmain_commentbox.appendChild(commentbox_commentreply);#}
+{#            commentbox_commenthead.appendChild(commenthead_cname);#}
+{#            commentbox_commenthead.appendChild(commenthead_cdate);#}
+{#            commentbox_commenthead.appendChild(commenthead_coption);#}
+{#            commenthead_coption.appendChild(coption_clike);#}
+{#            commenthead_coption.appendChild(coption_clikenum);#}
+{#            commenthead_coption.appendChild(coption_creport);#}
+{#            commenthead_coption.appendChild(coption_creply);#}
+{#            commentbox_commentcontent.appendChild(commentcontent_p);#}
+{##}
+{#            commentbox_commentreply.appendChild(commentreply_text);#}
+{#            commentbox_commentreply.appendChild(commentreply_putcomment);#}
+{##}
+{#            var comment_input = document.getElementById("comment-content1");#}
+{#            var comment_content = comment_input.value;#}
+{#            commentcontent_p.innerHTML = comment_content;#}
+{#            var c_all = document.getElementsByName("c-all")[0];#}
+{#            var cmain = document.getElementsByClassName("cmain")[0];#}
+{#            c_all.insertBefore(c_main, cmain);#}
+{#            }#}
+{##}
+{#            $.post('comment_creation',{#}
+{##}
+{#                "string": comment_content#}
+{#            }, function (data) {#}
+{#                data = JSON.parse(data);#}
+{#                if(data.status == 0){#}
+{#                    alert("Wrong");#}
+{#                }else {#}
+{#                    CreateComment(data);#}
+{#                }#}
+{##}
+{#    });#}
+{##}
+{##}
+{#        });#}
     </script>
 
 

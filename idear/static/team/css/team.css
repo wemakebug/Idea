@@ -70,7 +70,7 @@ html{
 	height: 70%;
 	width: 85%;
     line-height:25px;
-	margin: 4.5% auto 0;
+	margin: 0 auto 0;
 	z-index: 99;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -80,11 +80,11 @@ html{
     font-size: 14px;
     color: #7A8B8B;
     width: 85% ;
-    height: 10%;
+    height: 20%;
     margin: 3% 5% 0 9%;
 }
 .teamTag{
-    height: 80%;
+    height: auto;
     margin: -5px;
 }
 .repo-language-color {
@@ -387,7 +387,8 @@ html{
 .broadSide{
 	width: 300px;
 	position:fixed;
-	margin-left: 1200px;
+    float: left;
+	margin-left: 1040px;
 }
 .intro_1{
 	width: 100%;
