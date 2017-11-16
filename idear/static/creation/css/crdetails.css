@@ -244,16 +244,27 @@
 #praise-txt.hover{
     color: #539092;
 }
-.praise p {
+.praise span {
     line-height: 25px;
-    margin-top: -23px;
+    margin-top: -21px;
     position: absolute;
     text-align: left;
     width: 180px;
     height:0px;
     font-size:15px;
 	float: left;
-	margin-left: 30px;
+	margin-left:18px;
+}
+.praise p{
+	line-height: 25px;
+    margin-top: -21px;
+    position: absolute;
+    text-align: left;
+    width: 180px;
+    height:0px;
+    font-size:15px;
+	float: left;
+	margin-left:46px;
 }
 .praise img{
     width:25px;
@@ -584,7 +595,7 @@ h5 {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:   #ABCDCB;*/
+    background-color:   #ABCDCB;
 
 }
 .comment-name {
