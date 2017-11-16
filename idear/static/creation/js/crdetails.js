@@ -51,50 +51,49 @@ $('.creply').click(function(){
 
 
 
-// 创意关注操作
-// $(".block-hotfollow").click(function(){
-//    Id = $(this).attr("creation")
-//    follow = $(this)
-//    $.post("attend",{userId:userId,attendType:"1",Id:Id},function(data){
-//     if(data == 1)
-//         {
-//           follow.children().attr("src","../static/creation/imgs/collections.png")
-//           follow.children(".followspan").html(parseInt(follow.children(".followspan").html())+1)
-//       }
-//     else if(data == 0)
-//         alert(data)
-//     else
-//       {
-//         follow.children().attr("src","../static/creation/imgs/collection1.png")
-//         follow.children(".followspan").html(parseInt(follow.children(".followspan").html())-1)
-//       }
+//创意关注操作
+$(".home-b-collection").click(function(){
+    Id = $(this).attr("creation")
+    follow = $(this)
+    $.post("/idear/attend",{userId:userId,attendType:"1",Id:Id},function(data){
+     if(data == 1)
+         {
+           follow.children().attr("src","../static/creation/imgs/collections.png")
+           follow.children(".followspan").html(parseInt(follow.children(".followspan").html())+1)
+       }
+     else if(data == 0)
+         alert(data)
+     else
+       {
+         follow.children().attr("src","../static/creation/imgs/collection0.png")
+         follow.children(".followspan").html(parseInt(follow.children(".followspan").html())-1)
+       }
+    })
 
-// })
-
-// })
+})
 
 //创意点赞操作
-// $(".block-hotlike").click(function(){
+ $(".praise").click(function(){
 
-//    Id = $(this).attr("creation")
-//    like = $(this)
-//    $.post("star",{userId:userId,starType:"1",Id:Id},function(data){
-//     if(data == 1)    //点赞成功
-//         {
-//           like.children().attr("src","../static/creation/imgs/likes.png")
-//           like.children(".likespan").html(parseInt(like.children(".likespan").html())+1)
-//       }
-//     else if(data == 0)
-//         alert(data)
-//     else    //取消点赞成功
-//       {
-//         like.children().attr("src","../static/creation/imgs/like1.png")
-//         like.children(".likespan").html(parseInt(like.children(".likespan").html())-1)
-//       }
+    Id = $(this).attr("creation")
+    like = $(this)
+    $.post("/idear/star",{userId:userId,starType:"1",Id:Id},function(data){
+     if(data == 1)    //点赞成功
+         {
+           like.children().attr("src","../static/creation/imgs/likes.png")
+           like.children(".praise-txt").html(parseInt(like.children(".praise-txt").html())+1)
+       }
+     else if(data == 0)
+         alert(data)
+     else    //取消点赞成功
+       {
+         like.children().attr("src","../static/creation/imgs/like1.png")
+         like.children(".likespan").html(parseInt(like.children(".likespan").html())-1)
+       }
 
-// })
+ })
 
-// })
+ })
 
 
 

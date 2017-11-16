@@ -252,6 +252,8 @@
     width: 180px;
     height:0px;
     font-size:15px;
+	float: left;
+	margin-left: 30px;
 }
 .praise img{
     width:25px;
@@ -265,60 +267,7 @@
     -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
     -o-animation: myfirst 0.5s;	/* Opera */
 }
-#add-num{
-    display:none;
-}
 
-/*点赞图标放大动画开始*/
-@keyframes myfirst
-{
-    0%{
-        width:25px;
-        height:25px;
-    }
-    50%{
-        width:30px;
-        height:30px;
-    }
-    100% {
-        width:25px;
-        height:25px;
-    }
-}
-
-@keyframes mypraise
-{
-    0%{
-        top:-15px;
-        opacity: 0;
-        filter: Alpha(opacity=0);
-        -moz-opacity:0;
-    }
-    25%{
-        top:-20px;
-        opacity: 0.5;
-        filter: Alpha(opacity=50);
-        -moz-opacity:0.5;
-    }
-    50%{
-        top:-25px;
-        opacity: 1;
-        filter: Alpha(opacity=100);
-        -moz-opacity:1;
-    }
-    75%{
-        top:-30px;
-        opacity: 0.5;
-        filter: Alpha(opacity=50);
-        -moz-opacity:0.5;
-    }
-    100% {
-        top:-35px;
-        opacity: 0;
-        filter: Alpha(opacity=0);
-        -moz-opacity:0;
-    }
-}
 .home-b-user{
     width:660px;
     height:100px;
@@ -811,7 +760,24 @@ h5 {
 	border-radius: 0 0 4px 4px;
     background-color:  #ABCDCB;
 }
-
+.report-text{
+    width:84%;
+    margin:40px 0 0 8%;
+    height: 250px;
+    border-radius:5px;
+    resize:none;
+    border: 1px solid #c6c8ce;
+}
+.putreport{
+    width:50px;
+    height:30px;
+    float:right;
+    margin:10px 40px 0 0;
+    background-color: #3a87ad;
+    border:none;
+    border-radius:5px;
+    cursor: pointer;
+}
 /*评论回复文本框*/
 .commentreply{
     display:none;
@@ -836,3 +802,4 @@ h5 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid #c6c8ce;
 }
+
