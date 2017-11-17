@@ -88,7 +88,7 @@ $(".home-b-collection").click(function(){
      else    //取消点赞成功
        {
          like.children().attr("src","../static/creation/imgs/like1.png")
-         like.children(".likespan").html(parseInt(like.children(".likespan").html())-1)
+         like.children(".praise-txt").html(parseInt(like.children(".praise-txt").html())-1)
        }
 
  })
