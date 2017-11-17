@@ -24,7 +24,6 @@
 
                         <div style="height: 50%">
                             <div class="leftMatter">
-                                <div class="teamTag">
                                     团队标签：
                                     {% for User2 in User2UserLabel  %}
                                             {% if User2.user.Id == team.Id %}
@@ -32,7 +31,6 @@
                                                 <a style=" font-size: 14px;color: #7A8B8B;">{{ User2.userLabel.Name}}</a>
                                             {% endif %}
                                     {% endfor %}
-                                </div>
                             </div>
 
                             <div class="content_0" onclick="window.open('teamdetails/{{ team.Id }}')">
@@ -41,10 +39,10 @@
                         </div>
                         <div class="feature">
                             <button class="applyHelp" onclick="window.location.href='teamhelpapplication/{{ team.Id }}'">申请帮助</button>
-                            <div class="praise" team="{{ team.Id }}">
-                                <span class="praise_0"><img src="../../static/team/imgs/zan.png" name="praise_img" /> </span>
+                            <div class="praise" >
+                                <span class="praise_0" team="{{ team.Id }}"><img src="../../static/team/imgs/zan.png" name="praise_img" /> </span>
                                 <span class="praise-txt">{{ team.Praised_User_set.count }}</span>
-                                <span  class="add-num"><em>+1</em></span>
+                                <span class="add-num"><em>+1</em></span>
                             </div>
 
                         </div>

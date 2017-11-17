@@ -80,7 +80,9 @@ html{
     font-size: 14px;
     color: #7A8B8B;
     width: 85% ;
-    height: 20%;
+    height: 28%;
+    max-height: 28%;
+    overflow: hidden;
     margin: 3% 5% 0 9%;
 }
 .teamTag{
