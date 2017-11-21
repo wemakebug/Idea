@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^project/add$', views.project_add),
     url(r'^project/all/(?P<page>(\d+)?)$', views.project_all),
     url(r'^project/detail$', views.project_detail),
-    url(r'^project/recmanage$', views.project_recmanage),
+    url(r'^project/recmanage/$', views.project_recmanage),
     url(r'^project/recruit$', views.projet_recruit),
     url(r'^project/delete/(?P<deleteId>(\d+))', views.project_delete),
 

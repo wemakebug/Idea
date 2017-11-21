@@ -503,6 +503,7 @@ def crdetails(req):
         comments = Comment.objects.filter(creation_id = creationId).order_by("-Date")
 
 
+
         commentlist = []
 
         for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
