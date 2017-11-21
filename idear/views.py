@@ -660,6 +660,12 @@ def star(req):
             else:
                 Praise.objects.create(user_prised_id=Id, user_id=userId)
                 status = 1
+            # try:
+            #     PraiseUser = Praise.objects.get(user_prised_id=Id, user_id=userId).delete()
+            #     status = 2
+            # except:
+            #     PraiseUser = Praise.objects.create(user_prised_id=Id, user_id=userId)
+            #     status = 1
         return HttpResponse(status)
     except Exception as e:
         print(e)

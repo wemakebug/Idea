@@ -282,7 +282,7 @@ $(function () {
                 $("#praise-img11").addClass("animation");
                 praise_txt2.addClass("hover");
                 $(".add-animation").addClass("hover");
-                window.location.reload();
+                 window.location.reload();
             } else if (data == 0) {
                 alert("操作失败！");
             //删除记录

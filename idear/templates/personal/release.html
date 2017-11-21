@@ -72,18 +72,15 @@
         </div>
         <div class="rich_text" id="rich_text">
             <div id="summernote"></div>
-            <script>
-                $('#summernote').summernote({
-                    height:700,
-                    lang: 'zh-CN',
-                    focus:true,
-                     });
-            </script>
         </div>
         <div class="chance_type">
             <div class="input_num">
                 <p>所需人数</p>
                 <input autocomplete="off" type="text" placeholder="数字">
+            </div>
+            <div class="end_time">
+                <p>截止时间</p>
+
             </div>
             <div class="pro_label">
                 <div class="chance_label">
@@ -134,4 +131,11 @@
             }
         }
     </script>
+    <script>
+                $('#summernote').summernote({
+                    height:700,
+                    lang: 'zh-CN',
+                    focus:true,
+                     });
+            </script>
 {% endblock %}
