@@ -140,6 +140,7 @@
     height:400px;
     float: left;
     margin-left: 3%;
+    /*background: #e0e0e0;*/
     border-bottom: 1px solid #c9c9c9;
     border-top:1px solid #c9c9c9;
     border-left: 1px solid #c9c9c9;
@@ -242,9 +243,24 @@
     height: 100%;
     color:#295E6A;
 }
+.end_time{
+    width:100%;
+    height: 8%;
+    border-bottom: 1px solid #bbbbbb;
+}
+.end_time>p{
+    width: 31%;
+    min-width:31%;
+    height: 100%;
+    float:left;
+    margin-left: 2%;
+    line-height: 56px;
+    color:gray;
+}
 .pro_label{
     width: 100%;
-    height:640px;
+    height:84%;
+    /*background: #e0e0e0;*/
 }
 .chance_label{
     width: 100%;

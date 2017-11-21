@@ -42,7 +42,7 @@ html{
 .photo_0{
 	height: 26%;
 	width: 20%;
-	margin: 4% 6% 0;
+	margin: 4% 7% 0;
 	background-color:rgba(255, 255, 255, 0.6);
 	z-index: 99;
 	cursor:pointer;
@@ -67,10 +67,10 @@ html{
     color: #6b6b6b;
 	font-size: 14px;
     text-indent: 2em;
-	height: 69%;
+	height: 70%;
 	width: 85%;
     line-height:25px;
-	margin: 4.5% auto 0;
+	margin: 0 auto 0;
 	z-index: 99;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -80,11 +80,13 @@ html{
     font-size: 14px;
     color: #7A8B8B;
     width: 85% ;
-    height: 10%;
+    height: 28%;
+    max-height: 28%;
+    overflow: hidden;
     margin: 3% 5% 0 9%;
 }
 .teamTag{
-    height: 80%;
+    height: auto;
     margin: -5px;
 }
 .repo-language-color {
@@ -387,7 +389,8 @@ html{
 .broadSide{
 	width: 300px;
 	position:fixed;
-	margin-left: 1200px;
+    float: left;
+	margin-left: 66%;
 }
 .intro_1{
 	width: 100%;
