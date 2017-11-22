@@ -318,9 +318,9 @@ $(function () {
 
 //随机颜色标签圆球
 $(document).ready(function(){
-$('.repo-language-color').each(function() {
-    var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
-    $(this).css('background', col)
-})
+    $('.repo-language-color').each(function() {
+        var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
+        $(this).css('background', col)
+    })
 })
 
