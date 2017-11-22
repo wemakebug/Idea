@@ -418,8 +418,12 @@ def teamattend(req):
             return HttpResponse('404')
         else:
             return HttpResponse(status)
+    if req.method == 'GET':
+        pass
+
+
 @csrf_exempt
-def teamstar(req):
+def teamattend1(req):
     '''
     团队详情的点赞
     :param req: 
@@ -438,7 +442,8 @@ def teamstar(req):
             return HttpResponse('404')
         else:
             return HttpResponse(status)
-
+    if req.method == 'GET':
+        pass
 
 def teamhelpapplication(req, teamhelpid):
     '''
