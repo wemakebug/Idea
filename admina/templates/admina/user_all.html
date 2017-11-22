@@ -14,525 +14,66 @@
 
 {% block body %} {# body #}
 <div class="wrapper">
-    <ul class="directory-list">
-        <li><a href="#">a</a></li>
-        <li><a href="#">b</a></li>
-        <li><a href="#">c</a></li>
-        <li><a href="#">d</a></li>
-        <li><a href="#">e</a></li>
-        <li><a href="#">f</a></li>
-        <li><a href="#">g</a></li>
-        <li><a href="#">h</a></li>
-        <li><a href="#">i</a></li>
-        <li><a href="#">j</a></li>
-        <li><a href="#">k</a></li>
-        <li><a href="#">l</a></li>
-        <li><a href="#">m</a></li>
-        <li><a href="#">n</a></li>
-        <li><a href="#">o</a></li>
-        <li><a href="#">p</a></li>
-        <li><a href="#">q</a></li>
-        <li><a href="#">r</a></li>
-        <li><a href="#">s</a></li>
-        <li><a href="#">t</a></li>
-        <li><a href="#">u</a></li>
-        <li><a href="#">v</a></li>
-        <li><a href="#">w</a></li>
-        <li><a href="#">x</a></li>
-        <li><a href="#">y</a></li>
-        <li><a href="#">z</a></li>
-    </ul>
     <div class="directory-info-row">
         <div class="row">
-            <div class="col-md-6 col-sm-6">
+            {% for user in users %}
+                <div class="col-md-6 col-sm-6">
                 <div class="panel">
                     <div class="panel-body">
-                        <h4>Margarita Rose <span class="text-muted small"> - Graphics Designer</span></h4>
+                        <h4>{{ user.UserName }} <span class="text-muted small">
+                            {% if user.Identity == 2 %}
+                                - 团队
+                                {% elif user.Identity == 1 %}
+                                - 教师
+                                {% elif user.Identity == 0 %}
+                                - 学生
+                            {% endif %}
+                        </span></h4>
                         <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user2.png" alt="">
+                            <a class="pull-left" href="/admina/user/detail/{{ user.Id }}">
+                                <img class="thumb media-object" src="/static/photos/{{ user.Img }}" alt="头像暂未上传" style="height: 103px;width: 103px">
                             </a>
                             <div class="media-body">
                                 <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                                    <strong>账号： {{ user.Account }}</strong><br>
+                                    性别：{% if  user.Sex == 0 %}
+                                        男
+                                    {% else %}女
+                                    {% endif %}<br>
+                                    邮箱： {{ user.Email }} <br>
+                                    注册时间：{{ user.RegistTime }}<br>
+                                    <abbr title="Phone">电话：</abbr>{% if user.Phone %}{{ user.Phone }}{% else %}暂未填写{% endif %}<br>
                                 </address>
                                 <ul class="social-links">
                                     <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
                                     <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="/admina/user/detail/{{ user.Id }}" data-original-title="修改"><i class="fa fa-wrench"></i></a></li>
+                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" name="user_delete" id="id-{{ user.Id }}" data-original-title="删除"><i class="fa fa-times"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>john Doe <span class="text-muted small"> - Frontend Developer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user1.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Jonathan Smith <span class="text-muted small"> - CEO</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user3.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Margarita Rose <span class="text-muted small"> - Graphics Designer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user2.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>john Doe <span class="text-muted small"> - Frontend Developer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user1.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Jonathan Smith <span class="text-muted small"> - CEO</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user3.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Margarita Rose <span class="text-muted small"> - Graphics Designer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user2.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>john Doe <span class="text-muted small"> - Frontend Developer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user1.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Jonathan Smith <span class="text-muted small"> - CEO</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user3.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Margarita Rose <span class="text-muted small"> - Graphics Designer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user2.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>john Doe <span class="text-muted small"> - Frontend Developer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user1.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Jonathan Smith <span class="text-muted small"> - CEO</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user3.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Margarita Rose <span class="text-muted small"> - Graphics Designer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user2.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>john Doe <span class="text-muted small"> - Frontend Developer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user1.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Jonathan Smith <span class="text-muted small"> - CEO</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user3.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Margarita Rose <span class="text-muted small"> - Graphics Designer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user2.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>john Doe <span class="text-muted small"> - Frontend Developer</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user1.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6">
-                <div class="panel">
-                    <div class="panel-body">
-                        <h4>Jonathan Smith <span class="text-muted small"> - CEO</span></h4>
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="thumb media-object" src="/public/images/photos/user3.png" alt="">
-                            </a>
-                            <div class="media-body">
-                                <address>
-                                    <strong>ABCDE, Inc.</strong><br>
-                                    ABC Ave, Suite 14<br>
-                                    BucketLand, Australia <br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                <ul class="social-links">
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+            {% endfor %}
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+            <ul class="directory-list col-md-8">
+                {% for page in pages %}
+                    <li><a href="/admina/user/all/{{ page }}">{{ page }}</a></li>
+                {% endfor %}
+            </ul>
+        <div class="col-md-2"></div>
+    </div>
+
 </div>
 {% endblock %}
 
@@ -542,5 +83,20 @@
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
-
+<script type="text/javascript">
+    $("a[name='user_delete']").click(function () {
+        var deleteId = this.id.split('-')[1];
+        if(confirm("确认删除？")){
+            $.post(window.location.pathname,{"deleteId":deleteId}, function (res) {
+                res = JSON.parse(res);
+                if(res.status === 1){
+                    window.location.reload();
+                }else {
+                    alert(res.message);
+                    window.location.reload();
+                }
+            })
+        }
+    })
+</script>
 {% endblock %}

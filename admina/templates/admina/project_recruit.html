@@ -8,13 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/static/js/bootstrap-datepicker/css/datepicker-custom.css" />
 
 <!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
 {# css #}
 
 {% endblock %}
@@ -160,23 +154,13 @@
                 招募描述
             </header>
             <div class="panel-body">
-                <div class="form">
-                    <form class="cmxform form-horizontal adminex-form" >
-                        <div class="form-group" style="height: 500px">
-                            <label for="summernote2" class="control-label col-lg-2">进度描述</label>
-                            <div class="col-lg-10">
-                                <div id="summernote2"></div>
-                            </div>
-                            <script type="text/javascript">
-                                $('#summernote2').summernote({
-                                    height:500,
-                                });
-                            </script>
-                        </div>
-                    </form>
-                </div>
                 <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
+                                    <div class="col-md-12">
+                                        <textarea class="wysihtml5 form-control" rows="9"></textarea>
+                                    </div>
+                                </div>
+                <div class="form-group">
+                    <div class="col-lg-10">
                         <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="btn btn-default" type="button">取消</button>
                     </div>
@@ -195,9 +179,18 @@
 <script ype="text/javascript" src="/static/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 <script ype="text/javascript" src="/static/js/bootstrap-daterangepicker/moment.min.js"></script>
 
+    {% comment %} bootstrap-wysihtml {% endcomment %}
+<script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+
 <script src="/static/js/pickers-init.js"></script>
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
-
+<script>
+    jQuery(document).ready(function(){
+         $('.wysihtml5').wysihtml5();
+    });
+</script>
 {% endblock %}

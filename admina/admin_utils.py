@@ -6,6 +6,7 @@ def check_login():
     def decorator(func):
         @wraps(func)
         def inner(request, *args, **kwargs):
+
             try:
                 admin_uuid = request.session.get("admin_uuid")
                 admin_user = models.Admin.objects.get(Uuid=admin_uuid)
@@ -14,5 +15,7 @@ def check_login():
                 return render(request, 'admina/login.html')
             else:
                 return func(request, *args, **kwargs)
+
+
         return inner
     return decorator

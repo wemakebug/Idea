@@ -31,14 +31,15 @@ urlpatterns = [
     url(r'^logout$', views.logout),
 
     url(r'^project/add$', views.project_add),
-    url(r'^project/all$', views.project_all),
+    url(r'^project/all/(?P<page>(\d+)?)$', views.project_all),
     url(r'^project/detail$', views.project_detail),
-    url(r'^project/recmanage$', views.project_recmanage),
+    url(r'^project/recmanage/$', views.project_recmanage),
     url(r'^project/recruit$', views.projet_recruit),
+    url(r'^project/delete/(?P<deleteId>(\d+))', views.project_delete),
 
-    url(r'^user/add', views.user_add),
-    url(r'^user/all', views.user_all),
-    url(r'^user/detail', views.user_detail),
+    url(r'^user/add$', views.user_add),
+    url(r'^user/all/(?P<page>(\d+)?)$', views.user_all),
+    url(r'^user/detail/(?P<userid>(\d+)?)$', views.user_detail),
     url(r'^user/introduction$', views.user_introduction),
     url(r'^user/timeline$', views.user_timeline),
 
