@@ -30,11 +30,11 @@
                     <span id="praise-txt11-2" class="praise-txt11-2">评论</span>
                 </div>
                 <div class="praise11-1 praise1-1" >
-                     <span id="praise11-1" class="praise11-1"><img src="{% static 'team/imgs/xinxing.png' %}" id="praise-img11-dianzan" alt="图片不显示替代的文字内容" > </span>
+                     <span id="praise11-1" class="praise11-1"><img src="{% static 'team/imgs/xinxing.png' %}" id="praise-img11-guanzhu" alt="图片不显示替代的文字内容" > </span>
                      <span id="praise-txt11-1" class="praise-txt11-1">{{ counnt }}</span>
                 </div>
                 <div class="praise11 praise1" >
-                     <span id="praise11" class="praise11"><img src="{% static 'team/imgs/点赞.png' %}" id="praise-img11" /> </span>
+                     <span id="praise11" class="praise11"><img src="{% static 'team/imgs/dianzan.png' %}" id="praise-img11-dianzan" alt="图片不显示替代的文字内容"> </span>
                      <span id="praise-txt11" class="praise-txt11">{{ teamstar }}</span>
                 </div>
                 <div class="teamdetailadddiv">
@@ -111,7 +111,7 @@
                     </div>
                 </div>
 
-                {% for commentlist in comments%}
+                {% for commentlist in comments %}
                 <div class="c-all1" name="c-all">
                     <div class="cmain">
                         <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
@@ -130,8 +130,8 @@
                                 <p>{{commentlist|firstcommentcontent}}</p>
                             </div>
                             <div class="commentreply commentreplys" id="commentreplys">
-                                <textarea placeholder="" name=""  class="commentreply-text"></textarea>
-                                <button class="putcomment" id="putcomments" >回复</button>
+                                <textarea placeholder="说点什么吧...." name="putcomment"  class="commentreply-text"></textarea>
+                                <button class="putcomment putcomment_reply" id="putcomments" backgroundid="{{ commentlist|firstcomment|firstcommentId}}">回复</button>
                             </div>
                         </div>
                     </div>
