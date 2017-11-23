@@ -5,8 +5,6 @@
 
 
 $(function(){
-
-
     $.cookie("user", 3);
     userId = $.cookie("user");
 
@@ -215,23 +213,6 @@ for (var i = 0; i < aLi.length; i++) {
         });
     }
 //end
-//回复内容
-var aLi = document.querySelectorAll('.putcomment');
-for (var i = 0; i < aLi.length; i++) {
-        aLi[i].addEventListener('click', function(){
-            var cmain_commentreply = document.createElement("div");
-            cmain_commentreply.className = "commentreply";
-            cmain_commentreply.name = "commentreply";
-
-            var commentreply_text = document.createElement("textarea");
-            commentreply_text.className = "commentreply-text";
-
-            var commentreply_putcomment = document.createElement("button");
-            commentreply_putcomment.className = "putcomment";
-            commentreply_putcomment.textContent = "回复";
-
-
-        });
 //回复内容框显示
 $('.creply').click(function(){
     var ele = this;
@@ -286,6 +267,8 @@ $(function () {
     });
 });
 //end
+
+//团队点赞
  $(function () {
     $.cookie("user", 3);
     userId = $.cookie("user");
@@ -312,15 +295,13 @@ $(function () {
         })
     });
 });
-//团队点赞
 
 //end
 
 //随机颜色标签圆球
 $(document).ready(function(){
-    $('.repo-language-color').each(function() {
-        var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
-        $(this).css('background', col)
-    })
+$('.repo-language-color').each(function() {
+    var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
+    $(this).css('background', col)
 })
-
+});
