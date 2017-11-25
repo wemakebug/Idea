@@ -47,27 +47,18 @@
     <div class="main_pro_con" id="main_pro_con">
         <div class="add_img">
             <div class="chance_add">
-                {% comment %}<div class="add_cover"><img src="">
-                </div>{% endcomment %}
                 <div id="tbody">
                     <div>
                         <p>
-                            <input type="file" id="file" class="btn btn-default" style="height: 50px; width: 100px;" />
+                            <input type="file" id="file" class="btn btn-default" />
                             <br>
-                            <input type="button" value="读取图像" onclick="readAsDataURL()" class="btn btn-default" />
                         </p>
                     </div>
-                    <div id="result" name="result" style="width: 100px;height:100px;">图片显示区</div>
+                    <div id="result" name="result"></div>
+                    <p>
+                        <input type="button" value="上传封面图" onclick="readAsDataURL()" class="btn btn-default upload" />
+                    </p>
                 </div>
-                {% comment %}<div class="imgs_history">
-                    <div class="his-line"></div>
-                    <div class="picture_his">
-                        <p>图片历史库</p>
-                    </div>
-                </div>
-                <div class="pic_library">
-                    <a href="#"><p>我的图片库</p></a>
-                </div>{% endcomment %}
             </div>
         </div>
         <div class="rich_text" id="rich_text">
@@ -80,7 +71,13 @@
             </div>
             <div class="end_time">
                 <p>截止时间</p>
-
+                <div class='wrapper'>
+		            <div class="example" data-desc="A basic datepicker" id="basic">
+			            <p>
+				            <input id="flatpickr-tryme" placeholder="Try me..">
+			            </p>
+                    </div>
+	            </div>
             </div>
             <div class="pro_label">
                 <div class="chance_label">
@@ -99,21 +96,19 @@
 {% endblock %}
 
 {% block script %}
-
     <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
+    <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
     <script type="text/javascript" src={% static "base/js/base.js"%} ></script>
     <script type="text/javascript">
         var result = document.getElementById("result");
         var file = document.getElementById("file");
-
         //判断浏览器是否支持FileReader接口
-        if(typeof FileReader == 'undefined')  {
+        if(typeof FileReader === 'undefined')  {
             result.InnerHTML = "<p>你的浏览器不支持FileReader接口！</p>";
             //使选择控件不可操作
             file.setAttribute("disabled", "disabled"); //使得之前操作失效，重新启动
         }
-
         function readAsDataURL() {
             //检验是否为图像文件
             var file = document.getElementById("file").files[0];
@@ -132,10 +127,17 @@
         }
     </script>
     <script>
-                $('#summernote').summernote({
-                    height:700,
-                    lang: 'zh-CN',
-                    focus:true,
-                     });
-            </script>
+        $('#summernote').summernote({
+            height:700,
+            lang: 'zh-CN',
+            focus:true,
+             });
+    </script>
+    <script async>
+        function fp_ready(){
+            Flatpickr.l10n.firstDayOfWeek = 1;
+            document.getElementById("flatpickr-tryme").flatpickr();
+        }
+	</script>
+    <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
 {% endblock %}
