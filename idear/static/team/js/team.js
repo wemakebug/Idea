@@ -17,29 +17,29 @@ $(function() {
         $.cookie("user",3);
         userId = $.cookie("user");
         $("body").on("click",".praise_0",function () {
-            Id = $(this).attr("team");
+            var Id = $(this).attr("team");
             var praise_img = $(this).find("img");
             var text_box = $(this).siblings(".add-num");
             var praise_txt = $(this).siblings(".praise-txt");
             var num = parseInt(praise_txt.text());
-             $.post("star", {userId: userId,starType: "3",Id:Id}, function (data) {
-            data = JSON.parse(data);
-            if(praise_img.attr("src") == "../static/team/imgs/yizan.png"){
-                // $(this).html("<img src='{% static 'team/imgs/zan.png' %}'  name='praise_img' class='animation' />");
-               $(this).html("<img src='../static/team/imgs/zan.png' name='praise_img' class='animation' />");
+            $.post("/idear/star", {userId: userId,starType: "3",Id:Id}, function (data) {
+            if(data == 2){
+                $(this).html("<img src='../static/team/imgs/zan.png' name='praise_img' class='animation' />");
                 praise_txt.removeClass("hover");
                 text_box.show().html("<em class='add-animation'>-1</em>");
                 $(".add-animation").removeClass("hover");
                 num -=1;
                 praise_txt.text(num);
-            }else{
+            }else if(data == 0){
+                alert("操作失败！");
+            }else if(data == 1){
                 $(this).html("<img src='../static/team/imgs/yizan.png' name='praise_img' class='animation' />");
                 praise_txt.addClass("hover");
                 text_box.show().html("<em class='add-animation'>+1</em>");
                 $(".add-animation").addClass("hover");
                 num +=1;
                 praise_txt.text(num);
-                }
+            }
             });
 	    });
     });

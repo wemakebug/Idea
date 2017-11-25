@@ -355,12 +355,16 @@ def teamdetails(req, teamid):
     :return: 
     '''
     if req.method == 'GET':
+        username = "chris"
         try:
             this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
             counts = models.Follow.objects.filter(Follower=this_team).count()
             teamcounts = models.Praise.objects.filter(user_prised=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
+            user = models.User.objects.get(UserName=username)
+            comment_id = models.Comment.objects.filter(Q(commited_user_id=teamid) & Q(user=user))
+            print (comment_id)
             commentlist = []
 
             for comment in comments:
@@ -377,11 +381,10 @@ def teamdetails(req, teamid):
         except Exception as e:
             return Http404
 
-        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist,"teamstar":teamcounts})
+        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist,"teamstar":teamcounts,"id":comment_id})
     if req.method == 'POST':
         content = req.POST["string"]
         username = "chris"
-        reply_content = req.POST["reply_comment"]
         result = {
             "status": 1,
             "string": None
@@ -395,6 +398,29 @@ def teamdetails(req, teamid):
             return HttpResponse(json.dumps(result))
         else:
             models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def teamcomment(req):
+    if req.method == 'POST':
+        reply_content = req.POST["strings"]
+        teamid = req.POST["team_id"]
+        commentid = req.POST["comment_id"]
+        username = "chris"
+        result = {
+            "status": 1
+        }
+        try:
+            user = models.User.objects.get(UserName=username)
+            userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
+        except:
+            result["status"] = 0
+            result["string"] = "空"
+            return HttpResponse(json.dumps(result))
+        else:
+            hh = models.Comment.objects.create(user=user, commited_user=userteam, Content=reply_content, commentedId=commentid)
+            print hh
             return HttpResponse(json.dumps(result))
 
 
@@ -418,8 +444,12 @@ def teamattend(req):
             return HttpResponse('404')
         else:
             return HttpResponse(status)
+    if req.method == 'GET':
+        pass
+
+
 @csrf_exempt
-def teamstar(req):
+def teamattend1(req):
     '''
     团队详情的点赞
     :param req: 
@@ -438,7 +468,8 @@ def teamstar(req):
             return HttpResponse('404')
         else:
             return HttpResponse(status)
-
+    if req.method == 'GET':
+        pass
 
 def teamhelpapplication(req, teamhelpid):
     '''
@@ -501,6 +532,7 @@ def crdetails(req):
         creation = Creation.objects.get(Id=creationId)
         labels = Creation2ProjectLabel.objects.filter(creation_id=creationId)
         comments = Comment.objects.filter(creation_id = creationId).order_by("-Date")
+
 
 
         commentlist = []
@@ -659,6 +691,12 @@ def star(req):
             else:
                 Praise.objects.create(user_prised_id=Id, user_id=userId)
                 status = 1
+            # try:
+            #     PraiseUser = Praise.objects.get(user_prised_id=Id, user_id=userId).delete()
+            #     status = 2
+            # except:
+            #     PraiseUser = Praise.objects.create(user_prised_id=Id, user_id=userId)
+            #     status = 1
         return HttpResponse(status)
     except Exception as e:
         print(e)
