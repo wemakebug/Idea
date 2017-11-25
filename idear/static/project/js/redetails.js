@@ -13,9 +13,9 @@
                 //提交部分
                 var rdsubapply = document.getElementById("rdsubapply");
                 rdsubapply.onclick = function () {
-                    var content =document.getElementById("comment-content2").value;
+                    var content = document.getElementById("comment-content2").value;
+                    var projectid = document.getElementById("projectId").value;
                     if(content == ""){
-
                         layer.open({
                         type: 1,
                         offset: '200px',
@@ -30,11 +30,15 @@
                     });
                     }
                     else
-                    {$("#rdr-apply").slideUp("slow");}
+                    {
+                        $("#rdr-apply").slideUp("slow");
+                        $.post('/idear/recruit_apply',{
+                            "projectId":projectid,
+                            "describe":content,
+                        })
+                    }
 
                 };
-
-
 
                  $('.creply').click(function(){
                     var ele = this;
