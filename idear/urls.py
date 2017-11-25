@@ -48,7 +48,6 @@ urlpatterns = [
     url(r'^comment',views.comment),
     url(r'test', views.test),
     url(r'^teamattend',views.teamattend),
-    url(r'star', views.star),
     url(r'project_comment', views.project_comment),
     url(r'^teamstar',views.teamstar),
 

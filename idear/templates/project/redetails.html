@@ -130,7 +130,7 @@
                 </div>
             </div>
             <div class="middle"></div>
-
+            <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
             <div class="content-footer">
                 {#                评论部分#}
                 <div class="comment">
@@ -209,6 +209,8 @@
         <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
         <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
         <script type="text/javascript" src="{% static  'project/js/redetails.js' %}"></script>
+
+
     {% endblock %}
     <script>
         {#            项目举报#}
@@ -342,17 +344,17 @@
                             var Id = window.location.href.split("=");
                             Id = Id[Id.length - 1];
                             like = $("#rdlikebutton")
-                            $.post("star",{userId:userId,starType:"2",Id:Id},function(data) {
+                            $.post("/idear/star",{userId:userId,starType:"2",Id:Id},function(data) {
                                 if (data == 1)    //点赞成功
                                 {
-                                    like.children().attr("src", "/static/project/imgs/liked.png")
+                                    like.children().attr("src", "/static/project/imgs/liked.png");
                                     like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) + 1)
                                 }
                                 else if (data == 0)
                                     alert(data)
                                 else    //取消点赞成功
                                 {
-                                    like.children().attr("src", "/static/project/imgs/like1.svg")
+                                    like.children().attr("src", "/static/project/imgs/like1.svg");
                                     like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) - 1)
                                 }
                             })
