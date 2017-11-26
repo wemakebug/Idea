@@ -212,8 +212,11 @@
     -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
     -o-animation: myfirst 0.5s;	/* Opera */
 }
-.praise11-2 .hover , #add-num11-2 .add-animation.hover , #praise-txt11-2.hover{
+.praise11-2 .hover , .add-num11-2 .add-animation.hover , #praise-txt11-2.hover{
     color: #EB4F38;
+}
+.hovers{
+     color: #EB4F38;
 }
 #praise11-1{
     cursor :pointer;
@@ -240,10 +243,10 @@
     -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
     -o-animation: myfirst 0.5s;	/* Opera */
 }
-#add-num11-1{
+.add-num11-1{
     display:none;
 }
-#add-num11-1 .add-animation{
+.add-num11-1 .add-animation{
     color: #000;
     position:absolute;
     top:-15px;
@@ -258,7 +261,7 @@
     -o-animation: mypraise 0.5s ;	/* Opera */
     font-style:normal;
 }
-.praise11-1 .hover , #add-num11-1 .add-animation.hover , #praise-txt11-1.hover{
+.praise11-1 .hover , .add-num11-1 .add-animation.hover , #praise-txt11-1.hover{
     color: #EB4F38;
 }
 
@@ -490,10 +493,10 @@
     -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
     -o-animation: myfirst 0.5s;	/* Opera */
 }
-#add-num11{
+.add-num11{
     display:none;
 }
-#add-num11 .add-animation{
+.add-num11 .add-animation{
     color: #000;
     position:absolute;
     top:-15px;
@@ -508,7 +511,7 @@
     -o-animation: mypraise 0.5s ;	/* Opera */
     font-style:normal;
 }
-.praise11 .hover , #add-num11 .add-animation.hover , #praise-txt11.hover{
+.praise11 .hover , .add-num11 .add-animation.hover , #praise-txt11.hover{
     color: #EB4F38;
 }
 

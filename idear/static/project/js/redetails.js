@@ -11,17 +11,34 @@
                     $("#rdr-apply").slideUp("slow");
                 });
                 //提交部分
-                $("#rdsubapply").click(function(){
-                    var content =document.getElementById("comment-content2").value;
+                var rdsubapply = document.getElementById("rdsubapply");
+                rdsubapply.onclick = function () {
+                    var content = document.getElementById("comment-content2").value;
+                    var projectid = document.getElementById("projectId").value;
                     if(content == ""){
-
-                        alert("请输入申请内容！");
-
+                        layer.open({
+                        type: 1,
+                        offset: '200px',
+                        resize: false,
+                        move: false,
+                        area: ['250px', '250px'],
+                        content:'请填入申请理由',
+                        shade: 0.6,
+                        maxmin: false,
+                        anim: 0//0-6的动画形式，-1不开启
+                        ,
+                    });
                     }
                     else
-                    {$("#rdr-apply").slideUp("slow");}
-                });
+                    {
+                        $("#rdr-apply").slideUp("slow");
+                        $.post('/idear/recruit_apply',{
+                            "projectId":projectid,
+                            "describe":content,
+                        })
+                    }
 
+                };
 
                  $('.creply').click(function(){
                     var ele = this;
@@ -47,9 +64,9 @@
                     }
                     reply = $(reply);
                     var content = reply.children("#commentreplytext").val()
-                    alert(content);
+                    // alert(content);
                     if(content == ""){
-                        alert("请输入回复内容！");
+
                     }
                     else {
                         reply.slideUp("slow");
