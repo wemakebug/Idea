@@ -859,16 +859,15 @@ def recruit_apply(req):
     if req.method == 'POST':
         try:
             username = "chris"
-            projectId = req.POST["projectid"]
+            projectId = req.POST["projectId"]
             content = req.POST["describe"]
-            print(content)
             user = models.User.objects.get(UserName=username)
-            project = models.Project.objects.get(pk=projectId)
-            models.Apply.objects.create(user=user,recruit=project,Describe=content)
+            recruit = models.Recruit.objects.get(project=projectId)
+            models.Apply.objects.create(user=user, recruit=recruit, Describe=content)
             status = 1
-
+            return HttpResponse(status)
         except Exception as e:
-            print(e)
+            print(e.message)
 
         finally:
             return HttpResponse(status)
