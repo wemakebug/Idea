@@ -111,7 +111,7 @@
                     </div>
                 </div>
 
-                {% for commentlist in comments%}
+                {% for commentlist in comments %}
                 <div class="c-all1" name="c-all">
                     <div class="cmain">
                         <img class="c-img"  src="{% static 'project/imgs/user.svg'%}">
@@ -130,8 +130,8 @@
                                 <p>{{commentlist|firstcommentcontent}}</p>
                             </div>
                             <div class="commentreply commentreplys" id="commentreplys">
-                                <textarea placeholder="" name=""  class="commentreply-text"></textarea>
-                                <button class="putcomment" id="putcomments" >回复</button>
+                                <textarea placeholder="说点什么吧...." name="putcomment"  class="commentreply-text"></textarea>
+                                <button class="putcomment putcomment_reply" id="putcomments" backgroundid="{{ commentlist|firstcomment|firstcommentId}}">回复</button>
                             </div>
                         </div>
                     </div>
@@ -169,19 +169,4 @@
     <script type="text/javascript" src="{% static 'idea/js/sweet-alert.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'team/js/teamdetails.js' %}"></script>
     <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
-<script type="text/javascript">
-{#    $(function(){#}
-{#        var praise_txt2 = $("#praise-txt11");#}
-{#        $.post("/idear/teamstar",{userId: userId,Id:Id},function (adata) {#}
-{#        alert(adata);#}
-{#            if(adata == 1){#}
-{#                 document.getElementById("praise-img11-dianzan").src="/static/team/imgs/dianzan.png";#}
-{#            }else if(adata == 2){#}
-{#                 document.getElementById("praise-img11-dianzan").src="/static/team/imgs/redzan.png";#}
-{#                 praise_txt2.addClass("hover");#}
-{#            }#}
-{##}
-{#        });#}
-{#	});#}
-</script>
 {% endblock %}

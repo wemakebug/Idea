@@ -50,8 +50,9 @@ urlpatterns = [
     url(r'^teamattend$',views.teamattend),
     url(r'star', views.star),
     url(r'project_comment', views.project_comment),
-    url(r'^teamattend1$',views.teamattend1),
-
+    url(r'^teamattend1$', views.teamattend1),
+    url(r'^teamcomment$', views.teamcomment),
+    url(r'^recruit_apply$', views.recruit_apply),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

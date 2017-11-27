@@ -176,19 +176,23 @@ $("#putcommentbutton").click(function () {
 });
 //end评论添加记录结束
 //判断回复输入框为空，不为空往后台添加记录
-$(".putcomment").click(function () {
-    var reply_comment = document.getElementsByName("putcomment").value;
+$(".putcomment_reply").click(function () {
+    alert(ok);
+    var reply_comment = $(".commentreply-text").val();
     if (reply_comment === "" || reply_comment === undefined || reply_comment === null) {
         swal({
             title: "评论为空",
-            text: "按确定建后添加评论 语",
+            text: "按确定建后添加评论语",
             type: "warning"
         });
     } else {
         var teamid = window.location.href.split("/");
         teamid = teamid[teamid.length - 1];
-        $.post('/idear/teamdetails/' + teamid, {
-            "string": reply_comment
+        var comment_id = $(this).attr("backgroundid")
+        $.post('/idear/teamcomment', {
+            "strings": reply_comment,
+            "team_id":teamid,
+            "comment_id":comment_id
         }, function (data) {
             data = JSON.parse(data);
             if (data.status == 0) {
@@ -275,6 +279,7 @@ $("#praise11-1").click(function () {
 //end
 
 //团队点赞
+
 $("#praise11").click(function () {
     var Id = window.location.href.split("/");
     Id = Id[Id.length - 1];
@@ -299,6 +304,5 @@ $("#praise11").click(function () {
     })
 });
 //end
-
 
 

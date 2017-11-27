@@ -3,7 +3,6 @@
 }
 .item>img{
     width:100%;
-    height: 60%;
 }
 .middle{
     width:100%;
@@ -88,7 +87,7 @@ small {
 .usage_icon{
     width:22%;
     height:16%;
-    background-image: url('../imgs/recruit.png');
+    background-image: url('../imgs/recruit1.png');
     background-size: 100% 100%;
     margin-top:20%;
 }
@@ -99,14 +98,14 @@ small {
  .usage_icon2{
    width:22%;
     height:16%;
-    background-image: url('../imgs/start.png');
+    background-image: url('../imgs/start1.png');
     background-size:100% 100%;
     margin-top:20%;
 }
  .usage_icon3{
     width:22%;
     height:16%;
-    background-image: url('../imgs/creative1.png');
+    background-image: url('../imgs/creative.png');
     background-size:100% 100%;
     margin-top:20%;
 }
