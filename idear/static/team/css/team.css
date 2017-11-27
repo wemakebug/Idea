@@ -84,6 +84,7 @@ html{
     max-height: 28%;
     overflow: hidden;
     margin: 3% 5% 0 9%;
+    line-height: 20px;
 }
 .teamTag{
     height: auto;
@@ -388,7 +389,7 @@ html{
 
 .broadSide{
 	width: 300px;
-	position:fixed;
+	background-position-x:fixed;
     float: left;
 	margin-left: 66%;
 }
