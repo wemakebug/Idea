@@ -9,237 +9,27 @@ import uuid
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.conf.urls import handler404, handler500, handler403
 from django.views.decorators.http import require_http_methods
-
-# # Create your views here.
-#
-# def loginCheck(req):
-#     '''
-#     登陆状态验证
-#     :param req:
-#     :return: 验证失败直接调转登陆界面，成功则继续执行
-#     '''
-#     if req.session.get('account') == None:
-#         return render(req, '/exAdmin/login.html')
-#     else:
-#         pass
-#
-#
-# @csrf_exempt
-# def login(req):
-#     if req.method == "GET":
-#         if req.session.get('account') == None:
-#             return render_to_response('exAdmin/login.html')
-#         else:
-#             return render_to_response('second/User_detail.html')
-#     if req.method == "POST":
-#         result = {}
-#         account = req.POST["account"].lower().strip()
-#         password = req.POST["password"]
-#         if models.Admin.objects.filter(Account=account):
-#             user = models.Admin.objects.get(Account=account)
-#             if user.Password == password:
-#                 result['status'] = 1
-#                 req.session['account'] = account
-#                 result['account'] = account
-#                 result['message'] = '登陆成功'
-#                 return HttpResponse(json.dumps(result), content_type="application/json")
-#             elif user.Password != password:
-#                 result['status'] = 0
-#                 result['message'] = '用户名或密码错误'
-#                 return HttpResponse(json.dumps(result), content_type="application/json")
-#         else:
-#             result['status'] = 0
-#             result['message'] = '用户名或密码错误'
-#             return HttpResponse(json.dumps(result), content_type="application/json")
-#
-#
-# def logout(req):
-#     '''
-#     注销
-#     :param req:
-#     :return: login.html
-#     '''
-#     if req.method == "GET":
-#         if req.session.get('account') == None:
-#             pass
-#         else:
-#             del req.session['account']
-#         response = render_to_response('first/login.html')
-#         if req.COOKIES.get('account'):
-#             response.delete_cookie('account')
-#         else:
-#             pass
-#         return render_to_response('first/login.html')
-#     if req.method == "POST":
-#         pass
-#
-#
-# @csrf_exempt
-# def score_rank(req):
-#     if req.method == "GET":
-#         if "id" in req.GET:
-#             id = req.GET["id"]
-#             try:
-#                 models.Score.objects.get(pk=id).delete()
-#                 return HttpResponse("删除成功")  # 删除成功
-#             except Exception as e:
-#                 print(e)
-#                 return HttpResponse("数据异常，请刷新后重试")
-#         else:
-#             currentpage = 1
-#             dataperpage = 6
-#             scoreRank = models.Score.objects.all().order_by('-Id')
-#             page = Paginator(scoreRank, dataperpage)
-#             scoreRank = page.page(currentpage).object_list
-#
-#             L = []
-#             for i in range(0, scoreRank.count()):
-#                 info = {}
-#                 info["num"] = i + 1
-#                 info["score"] = scoreRank[i]
-#                 L.append(info)
-#
-#             return render_to_response('second/Score_rank.html', {'L': L })
-#     if req.method == "POST":
-#         id = req.POST["id"]
-#         Level = req.POST["Level"]
-#         Value = req.POST["Value"]
-#
-#         score = models.Score.objects.filter(pk=id)
-#         if score.exists():
-#             score = score[0]
-#         else:
-#             score = models.Score()
-#
-#         score.Level = Level
-#         score.Value = Value
-#
-#         try:
-#             score.save()
-#
-#             if id == "0":
-#                 return HttpResponse("保存成功")
-#             else:
-#                 return HttpResponse("修改成功")
-#         except Exception as e:
-#             print(e)
-#             return HttpResponse("数据异常，请刷新后重试")
-#
-#
-#
-# @csrf_exempt
-# def score_user(req, page):
-#     if req.method == "GET":
-#         currentpage = int(page)
-#         try:
-#             record_per_page = int(req.COOKIES.get('record_per_page'))
-#         except:
-#             record_per_page = 6
-#         scoreUser = models.User.objects.all().order_by('Id')
-#         scoreUser_count = models.User.objects.count()
-#         page = Paginator(scoreUser, record_per_page)
-#         scoreUser = page.page(currentpage).object_list
-#         return render_to_response('second/User_score.html', {'ScoreUser': scoreUser, 'count': scoreUser_count})
-#     if req.method == "POST":
-#         result = {}
-#         if req.session.get('account') == None:
-#             result['message'] = '无权访问'
-#             return HttpResponse(result['message'])
-#         else:
-#             try:
-#                 data = req.POST
-#
-#             except:
-#                 result['message'] = '获取数据异常'
-#                 return HttpResponse(result)
-#             else:
-#                 if data['search']:
-#                     return HttpResponse(data['search'])
-#                 else:
-#                     return HttpResponse('Baddata')
-#
-#
-#
-#
-# @csrf_exempt
-# def score_record(req):
-#     if req.method == "GET":
-#         if "id" in req.GET:
-#             id = req.GET["id"]
-#             try:
-#                 models.ScoreChange.objects.get(pk=id).delete()
-#                 return HttpResponse("删除成功")
-#             except Exception as e:
-#                 print(e)
-#                 return HttpResponse("数据异常，请刷新后重试")
-#         else:
-#             currentpage = 1
-#             scoreChanges = models.ScoreChange.objects.all().order_by('Id')
-#             users = models.User.objects.all()
-#             scores = models.Score.objects.all()
-#
-#             page = Paginator(scoreChanges, 6)
-#             scoreChanges = page.page(currentpage).object_list
-#
-#             L = []
-#             for i in range(0, scoreChanges.count()):
-#                 info = {}
-#                 info["num"] = i + 1
-#                 info["scoreChange"] = scoreChanges[i]
-#                 L.append(info)
-#
-#             return render_to_response('second/Score_record.html', {
-#                 'L': L, "users": users, "scores": scores
-#             })
-#     if req.method == "POST":
-#         id = req.POST["id"]
-#         user = req.POST["user"]
-#         score = req.POST["score"]
-#         Event = req.POST["Event"]
-#
-#         score_change = models.ScoreChange.objects.filter(pk=id)
-#         if score_change.exists():
-#             score_change = score_change[0]
-#         else:
-#             score_change = models.ScoreChange()
-#
-#         score_change.user_id = user
-#         score_change.score_id = score
-#         score_change.Event = Event
-#
-#         try:
-#             score_change.save()
-#             if id != "0":
-#                 return HttpResponse("创建成功")
-#             else:
-#                 return HttpResponse("修改成功")
-#         except Exception as e:
-#             print(e)
-#             return HttpResponse("数据异常，请刷新后重试")
-#
-#
-# @csrf_exempt
-# def UserManager(req):
-#     Users = models.User.objects.all().order_by('Id')
-#     UsersList = []
-#     for user in Users:
-#         OneUser = {}
-#         OneUser["UserName"] = user.UserName
-#         OneUser["Sex"] = user.Sex
-#         OneUser["RegistTime"] = str(user.RegistTime)
-#         OneUser["Score"] = user.Score
-#         UsersList.append(OneUser)
-#     return HttpResponse(json.dumps(UsersList))
-#
-# @csrf_exempt
-# def index(req):
-#     return render_to_response('base/Base.html')
-#
-
+from .admin_utils import check_login
+from django.template import RequestContext
+from django.core.paginator import Paginator
+import math
+from django.db.models import Q
 
 ''' 新后台相关页面视图'''
+@require_http_methods(["GET", "POST"])
+def page_not_found(request):
+    response = render_to_response('/base/404.html', context=RequestContext(request))
+    response.status_code = 404
+    return response
 
 @require_http_methods(["GET", "POST"])
+def permition_denied(request):
+    response = render_to_response('/base/500.html',context=RequestContext(request))
+    response.status_code = 500
+    return response
+
+@require_http_methods(["GET", "POST"])
+@csrf_exempt
 def login(req):
     if req.method == "GET":
         return render(req, 'admina/login.html')
@@ -263,15 +53,325 @@ def login(req):
             if admin.Password == passwd:
                 responseData["status"] = 1
                 responseData["message"] = "登陆成功"
-                req.session.set()
-                return HttpResponse(json.dumps(responseData))
+                admin.Uuid = uuid.uuid1()
+                admin.save()
+                req.session["admin_uuid"] = str(admin.Uuid)
+                response = HttpResponse(json.dumps(responseData))
+                response.set_cookie('admin_account', admin.Account)
+                return response
             else:
                 responseData["status"] = 0
                 responseData["message"] = "用户名或密码错误"
                 return HttpResponse(json.dumps(responseData))
 
-def user_detail(req):
-    return render(req, 'base/base.html')
+@require_http_methods(["GET"])
+@check_login()
+@csrf_exempt
+def logout(req):
+    responseData = {
+        'status': 1,
+        'message': 'success'
+    }
+    try:
+        del req.session["admin_uuid"]
+        response = HttpResponse(json.dumps(responseData))
+        response.set_cookie('admin_account', None)
+        return response
+    except Exception as e:
+        print(e)
+        responseData['status'] = 0
+        responseData['message'] = str(e)
+        return HttpResponse(json.dumps(responseData))
+
+
+# 用户管理
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def index(req):
+    if req.method == "GET":
+        return render(req, 'admina/index.html')
+    if req.method == "POST":
+        pass
+
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def user_add(req):
+    if req.method == "GET":
+        return render(req, 'admina/user_add.html')
+    if req.method == "POST":
+        pass
+
+
+
+
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def user_all(req, page=None):
+    ItemPerPage = 15
+    if req.method == "GET":
+        user_count = models.User.objects.count()
+        pages = math.ceil(user_count/ItemPerPage)
+        if(page):
+            users = models.User.objects.all()[(int(page)-1)*ItemPerPage:(int(page))*ItemPerPage]
+        else:
+            users = models.User.objects.all()[0:ItemPerPage]
+        return render(req, 'admina/user_all.html', {"users": users, 'pages': range(1, int(pages)+1)})
+    else:
+        deleteId = req.POST['deleteId']
+        resData = {
+            "status": 0,
+            "message": ""
+        }
+        try:
+            print("try to delete user with id= " + deleteId)
+            user = models.User.objects.get(Id=deleteId)
+            user.delete()
+        except:
+            print("Failed to delete User with id= " + deleteId)
+            resData["message"] = "服务器异常"
+            return HttpResponse(json.dumps(resData))
+        finally:
+            resData["status"] = 1
+            resData["message"] = "Success"
+            return HttpResponse(json.dumps(resData))
+
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def user_detail(req, userid=None):
+    if req.method == "GET":
+        if userid:
+            print("Try to find user with Id" + userid)
+            try:
+                user = models.User.objects.get(Id=userid)
+                user_labels = models.UserLabel.objects.all()
+            except Exception as e:
+                print(e)
+                return render(req, 'admina/user_all.html')
+            return render(req, 'admina/user_detail.html', {"user": user, "user_labels":user_labels})
+            pass
+        else:
+            return render(req, 'admina/user_all.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def user_introduction(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, "admina/user_introduction.html")
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def user_timeline(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, 'admina/user_timeline')
+
+
+# 项目管理
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def project_all(req, page=None):
+    if req.method == "GET":
+        itemPerPage = 12
+        projectCount = models.Project.objects.count()
+        Pages = math.ceil(projectCount / itemPerPage)
+        print("total page is " + str(Pages))
+
+        labels = models.ProjectLabel.objects.all()
+
+        if(page):
+            projects = models.Project.objects.all()[int(page-1)*itemPerPage:]
+        else:
+            projects = models.Project.objects.all()[:itemPerPage]
+
+        return render(req, 'admina/project_all.html', {"projects": projects, "Pages": range(1, int(Pages+1)),"Labels": labels})
+    else:
+        resData = {
+            "ProjectName": "",
+            "ProjsctStartTime": "",
+            "ImgPath": "",
+            "ProjectStatue":0,
+            "ProjectUserNumber": 0,
+            "projectUserId": "",
+            "projectUserName": "",
+
+            "status":0,
+            "message":""
+        }
+
+        projectId = req.POST["projectId"]
+        try:
+            print("try to find project with id " + str(projectId))
+            project = models.Project.objects.get(Id=projectId)
+            resData["ProjectName"] = project.ProjectName
+            resData["ProjsctStartTime"] = project.StartTime.strftime("%Y-%m-%d")
+            resData["ImgPath"] = str(project.Img)
+            resData["ProjectStatue"] = project.Statue
+            resData["ProjectUserNumber"] = project.Number
+            if(models.ProjectUser.objects.filter(Q(project=project) & Q(Identity=3))):
+                resData["projectUserName"] = models.ProjectUser.objects.filter(Q(project=project) & Q(Identity=3))[0].user.UserName
+                resData["projectUserId"]  = models.ProjectUser.objects.filter(Q(project=project) & Q(Identity=3))[0].user.Id
+
+            resData["status"] = 1
+            resData["message"] = "Success"
+        except Exception as e:
+            print(e)
+            resData["message"] = "服务器异常"
+            resData["status"] = 0
+        finally:
+            return HttpResponse(json.dumps(resData))
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["POST"])
+def project_delete(req, deleteId):
+    resData = {
+        "status": 0,
+        "message":""
+    }
+    try:
+        print("Try to delete Project with ID " + deleteId)
+        models.Project.objects.get(Id=deleteId).delete()
+        resData["message"] = "Success"
+        resData["status"] = 1
+    except Exception as e:
+        resData["message"] = "服务器异常"
+        resData["status"] = 0
+    finally:
+        return HttpResponse(json.dumps(resData))
+
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def project_add(req):
+    if req.method == "GET":
+        return render(req, 'admina/project_add.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def project_detail(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, 'admina/project_detail.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def project_recmanage(req, uid=None):
+    '''
+    招募
+    :param
+    :return:
+    '''
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, "admina/project_recmanage.html")
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def projet_recruit(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, "admina/project_recruit.html")
+    else:
+        pass
+
+
+# 标签管理
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def label_project(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, 'admina/label_project.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def label_user(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, 'admina/label_user.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def label_relation(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, '/admina/label_relation.html')
+    else:
+        pass
+
+#  创意管理
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def creation_all(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, 'admina/creation_all.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def creation_add(req, uid=None):
+    if req.method == "GET":
+        if uid:
+            pass
+        else:
+            return render(req, 'admina/creation_add.html')
+    else:
+        pass
+
 
 def Profile(req):
     if req.method == "GET":
@@ -330,15 +430,3 @@ def comment_list(req):
         return render(req, 'second/UserCommentList.html',{"result":result})
 
 
-
-
-
-@csrf_exempt
-def post(req):
-    if req.method == "POST":
-        print("ok")
-        data = {
-            "status": 0,
-            "message": "success"
-        }
-        return HttpResponse(json.dumps(data))

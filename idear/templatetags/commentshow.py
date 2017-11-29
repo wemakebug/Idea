@@ -18,3 +18,7 @@ def firstcommentcontent(value):
 @register.filter(name='leftcomment')
 def leftcomment(value):
     return value[1:]
+
+@register.filter(name='firstcommentId')
+def firstcommentId(value):
+    return value.Id

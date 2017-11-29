@@ -233,16 +233,47 @@
     position: relative;
 }
 
+<<<<<<< HEAD
 
 .praise p {
+=======
+#praise-txt{
+    float:left;
+    margin: 0 0 0 35px;
+    height:25px;
+    line-height:25px;
+    display: block;
+    font-size:15px;
+}
+#praise-txt.hover{
+    color: #539092;
+}
+.praise span {
+>>>>>>> 5ee2d99fc374978df931098d44ee47fddebec546
     line-height: 25px;
-    margin-top: -23px;
+    margin-top: -21px;
     position: absolute;
     text-align: left;
     width: 180px;
     font-size:15px;
+<<<<<<< HEAD
     float:left;
     margin-left:30px;
+=======
+	float: left;
+	margin-left:18px;
+}
+.praise p{
+	line-height: 25px;
+    margin-top: -21px;
+    position: absolute;
+    text-align: left;
+    width: 180px;
+    height:0px;
+    font-size:15px;
+	float: left;
+	margin-left:46px;
+>>>>>>> 5ee2d99fc374978df931098d44ee47fddebec546
 }
 .praise img{
     width:25px;
@@ -250,6 +281,15 @@
     display:block;
     margin: 0 auto;
 }
+<<<<<<< HEAD
+=======
+.praise img{
+    animation: myfirst 0.5s;
+    -moz-animation: myfirst 0.5s;	/* Firefox */
+    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+    -o-animation: myfirst 0.5s;	/* Opera */
+}
+>>>>>>> 5ee2d99fc374978df931098d44ee47fddebec546
 
 .home-b-user{
     width:660px;
@@ -754,6 +794,7 @@ h5 {
 	border-radius: 0 0 4px 4px;
     background-color:  #ABCDCB;
 }
+
 /*评论回复文本框*/
 .commentreply{
     display:none;
@@ -775,6 +816,7 @@ h5 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid #c6c8ce;
 }
+
 .report-text{
     width:84%;
     margin:40px 0 0 8%;
@@ -794,38 +836,3 @@ h5 {
     cursor: pointer;
 }
 
-.animation{
-    width:28px;
-    height:28px;
-    vertical-align:middle;
-    animation: myfirst 0.5s;
-    -moz-animation: myfirst 0.5s;	/* Firefox */
-    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
-    -o-animation: myfirst 0.5s;	/* Opera */
-}
-
-
-/*评论回复文本框*/
-.commentreply{
-    display:none;
-}
-.commentreplys{
-    width:100%;
-    height:40px;
-    margin: 10px 0 10px 0;
-    background-color:  #ABCDCB ;
-    -webkit-border-radius: 0 0 4px 4px;
-	-moz-border-radius: 0 0 4px 4px;
-	border-radius: 0 0 4px 4px;
-}
-
-.commentreply-text{
-    width:84%;
-    height: 30px;
-    margin:5px 0 0 5px;
-    border-radius:5px;
-    resize:none;
-    line-height:1.7;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border: 1px solid #c6c8ce;
-}

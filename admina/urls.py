@@ -27,14 +27,36 @@ urlpatterns = [
     # url(r'^label_user/(?P<page>\d+)$', reload.label_user),
     # url(r'^label_project/(?P<page>\d+)$', reload.label_project),
 
-    url(r'^login$',views.login),
-    # url(r'^index$', views.index),
+    url(r'^login$', views.login),
+    url(r'^logout$', views.logout),
+
+    url(r'^project/add$', views.project_add),
+    url(r'^project/all/(?P<page>(\d+)?)$', views.project_all),
+    url(r'^project/detail$', views.project_detail),
+    url(r'^project/recmanage/$', views.project_recmanage),
+    url(r'^project/recruit$', views.projet_recruit),
+    url(r'^project/delete/(?P<deleteId>(\d+))', views.project_delete),
+
+    url(r'^user/add$', views.user_add),
+    url(r'^user/all/(?P<page>(\d+)?)$', views.user_all),
+    url(r'^user/detail/(?P<userid>(\d+)?)$', views.user_detail),
+    url(r'^user/introduction$', views.user_introduction),
+    url(r'^user/timeline$', views.user_timeline),
+
+    url(r'^label/project$', views.label_project),
+    url(r'^label/user$',views.label_user),
+    url(r'^label/relation', views.label_relation),
+
+    url(r'^creation/all', views.creation_all),
+    url(r'^creation/add', views.creation_add),
+
+
     url(r'^user_detail$', views.user_detail),
     url(r'^profile$', views.Profile),
     url(r'^PhotoGallery$', views.PhotoGallary),
-    url(r'^post$', views.post),
-    url(r'comment_list', views.comment_list),
-
-
-
+    url(r'^$', views.index),
 ]
+
+handler404 = views.page_not_found
+
+handler500 = views.permition_denied

@@ -34,6 +34,8 @@ urlpatterns = [
     url(r'^apply$', views.apply),
     url(r'^recruit$', views.projects),
     url(r'^redetails/$', views.redetails),
+    url(r'^deprojects/$', views.deprojects),
+    url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
     url(r'^crdetails$', views.crdetails),
     url(r'^star$', views.star),
@@ -47,6 +49,12 @@ urlpatterns = [
     url(r'^release',views.release),
     url(r'^comment',views.comment),
     url(r'test', views.test),
+    url(r'^teamattend$',views.teamattend),
+    url(r'star', views.star),
+    url(r'project_comment', views.project_comment),
+    url(r'^teamattend1$', views.teamattend1),
+    url(r'^teamcomment$', views.teamcomment),
+    url(r'^recruit_apply$', views.recruit_apply),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

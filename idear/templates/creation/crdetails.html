@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
     <link rel="stylesheet" href="{% static '/creation/css/crdetails.css' %}">
 
-
 {% endblock %}
 {% load commentshow %}
 {% block content %}
@@ -49,17 +48,23 @@
     height:16px;">
                             <a href="#comment">评论</a>
                         </div>
-                        <div class="home-b-collection">
+                        <div class="home-b-collection" creation={{ creation.Id }}>
                             <img src="{% static '/creation/imgs/collection0.png' %}" style="width:16px;
     height:16px;">
-                            <a href="#">收藏</a>
+                            <a href="#">关注</a>
 
                         </div>
                     </div>
-                    <div class="praise">
-                        <a id="like" creation={{ creation.Id }}>
-                            <img src="{% static '/creation/imgs/likes.png' %}"></a>
-                        <p><span id="like-txt">{{creation.Praise_Creation_set.count}}</span>人觉得很赞</p>
+
+                    <div class="praise" creation={{ creation.Id }}>
+                        <img src="{% static '/creation/imgs/like1.png' %}" id="praise-img" >
+                        {% for praise in praises %}
+                            {% if praise.user_id == userId and praise.creation_id == creation.Id %}
+                                <img src="{% static 'creation/imgs/likes.png' %}" id="praise-img">
+                            {% endif %}
+                        {% endfor %}
+                        <span class="praise-txt">{{creation.Praise_Creation_set.count}}</span><p>人觉得很赞</p>
+
                     </div>
                 </div>
                 <div class="home-b-user">
@@ -162,10 +167,12 @@
                                       </div>
                                       <div class="comment-content">
                                          <p>{{commentlist|firstcommentcontent}}</p>
+
+                                         
                                       </div>
                                       <div class="commentreply commentreplys" id="commentreplys">
-                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
-                                          <button class="putcomment" id="putcomments" >回复</button>
+                                          <textarea placeholder="回复" name="" id="comment-content2" class="commentreply-text"></textarea>
+                                          <button class="putcomment" id="putcomments" backcommentId = {{commentlist|firstcomment|firstcommentId}} >回复</button>
                                       </div>
                                   </div>
                               </div>
@@ -267,5 +274,6 @@
 
 
 </script>
-
+    http://127.0.0.1:8000   /idear/redetails/?projectId=4
+    window.location.pathname
 {% endblock %}
