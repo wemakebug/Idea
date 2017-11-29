@@ -21,7 +21,19 @@ $("#putcomment").click(function(){
 
 })
 
+$("#putcomments").click(function(){
+  comment = $("#comment-content2").val()
+  if (comment=="")
+    alert("您的输入为空")
+  else
+  $.post("comment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
+      if (data == 1)
+        location.reload()
+      else
+        alert("Sorry, 出现了一些问题")
+})
 
+})
 
 $('.creply').click(function(){
     var ele = this;
