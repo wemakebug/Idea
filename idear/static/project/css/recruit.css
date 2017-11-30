@@ -1,17 +1,16 @@
 .bg_all {
     width: 80%;
     height:auto;
-    /*min-width: 1500px;*/
-    /*position: relative;*/
-    /*margin: 40px auto 0;*/
     overflow: hidden;
     margin: 66px auto 0;
+
 }
 body, html {
     background-color: #f1f1f1;
     transition: 0.2s ease-out;
     font-family: 幼圆;
-    /*position: absolute;*/
+    min-width: 1300px;
+    max-width: 3000px;
 }
 
 .bg_left {
@@ -20,12 +19,6 @@ body, html {
     height: auto;
     margin: 0 0 0 2.5%;
 }
-/*.bg_project{*/
-    /*float: left;*/
-    /*width: 75%;*/
-    /*height: auto;*/
-    /*margin: 0 0 0 2.5%;*/
-/*}*/
 .bg_right {
     float: left;
     width: 75%;
@@ -294,7 +287,6 @@ body, html {
     background: url('../imgs/progress.png') 0 0 repeat-x;
     border-radius: 10px;
 }
-
 .progress .green {
   background: #85c440;
   border-color: #78b337 #6ba031 #568128;
@@ -306,7 +298,7 @@ body, html {
 .home-right {
     width: 300px;
     position: fixed;
-    margin-left: 1200px;
+    margin-left: 900px;
 }
 .home-right p,span{
     font-size: 15px;
