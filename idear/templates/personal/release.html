@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
     <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
     <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <!-- include summernote css/js-->
@@ -126,6 +127,7 @@
 {% endblock %}
 
 {% block script %}
+    <script type="text/javascript" src={% static "personal/js/fileinput.min.js"%} ></script>
     <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
     <script type="text/javascript" src={% static "base/js/base.js"%} ></script>
     <script>
