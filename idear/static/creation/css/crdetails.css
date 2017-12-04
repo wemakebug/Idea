@@ -233,10 +233,7 @@
     position: relative;
 }
 
-<<<<<<< HEAD
 
-.praise p {
-=======
 #praise-txt{
     float:left;
     margin: 0 0 0 35px;
@@ -249,19 +246,15 @@
     color: #539092;
 }
 .praise span {
->>>>>>> 5ee2d99fc374978df931098d44ee47fddebec546
     line-height: 25px;
     margin-top: -21px;
     position: absolute;
     text-align: left;
     width: 180px;
     font-size:15px;
-<<<<<<< HEAD
     float:left;
-    margin-left:30px;
-=======
-	float: left;
-	margin-left:18px;
+    margin-left:18px;
+
 }
 .praise p{
 	line-height: 25px;
@@ -273,7 +266,7 @@
     font-size:15px;
 	float: left;
 	margin-left:46px;
->>>>>>> 5ee2d99fc374978df931098d44ee47fddebec546
+
 }
 .praise img{
     width:25px;
@@ -281,15 +274,7 @@
     display:block;
     margin: 0 auto;
 }
-<<<<<<< HEAD
-=======
-.praise img{
-    animation: myfirst 0.5s;
-    -moz-animation: myfirst 0.5s;	/* Firefox */
-    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
-    -o-animation: myfirst 0.5s;	/* Opera */
-}
->>>>>>> 5ee2d99fc374978df931098d44ee47fddebec546
+
 
 .home-b-user{
     width:660px;
@@ -567,7 +552,7 @@ h5 {
     width:11%;
     height:30px;
     margin-top:5px;
-	margin-right:10px;
+	margin-right:8px;
     background-color: #3a87ad;
     border:none;
     float:right;
@@ -575,7 +560,7 @@ h5 {
 }
 
 .cmain{
-    height:100px;
+    height:60px;
 }
 .c-img{
     display:block;
@@ -588,8 +573,12 @@ h5 {
     width:72%;
     float:left;
     margin-left:20px;
-    height:80px;
+    margin-bottom:20px;
+    height:auto;
 	position: relative;
+
+
+}
 }
 .comment-box:before,  .comment-box:after {
 	content: '';
@@ -610,7 +599,7 @@ h5 {
 }
 
 .comment-head {
-	height:40%;
+	height:35px;
 	width:100%;
     margin-top:5px;
 	border-bottom: 2px solid #E5E5E5;
@@ -807,7 +796,7 @@ h5 {
 	border-radius: 0 0 4px 4px;
 }
 .commentreply-text{
-    width:90%;
+    width:85%;
     height: 30px;
     margin:5px 0 0 5px;
     border-radius:5px;
