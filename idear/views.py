@@ -11,6 +11,7 @@ from admina.models import Creation2ProjectLabel, Creation, ProjectLabel, Comment
     Project2ProjectLabel, Project, Recruit
 from admina import models
 
+
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import uuid
 import re, base64
@@ -909,6 +910,57 @@ def projects(req):
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 ''' 招募项目相关页面结束'''
+
+''' 开发项目相关页面开始'''
+@csrf_exempt
+def deprojects(req):
+    '''
+    招募项目一级二级页面项目显示
+    '''
+    # try:
+    #     if req.method == 'GET':
+    #         sign = req.GET['sign']
+    #         #  如果是所有项目
+    #         if sign == "all":
+    #             projects = Project.objects.all().order_by("EndTime")
+    #         else:
+    #             projects = []
+    #             ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
+    #             for obj in ProjectLabelObjs:
+    #                 projects.append(obj.project)
+    #         #################
+    #         recruit_all = []
+    #         for project in projects:
+    #             recruit = models.Recruit.objects.filter(project__Id=project.Id)
+    #             recruit_all.append(recruit)
+    #
+    #         all_recruit = zip(projects, recruit_all)
+    #         return render_to_response('project/recruit.html', {'projectLabels': ProjectLabel.objects.all(), "all_recruit": all_recruit})
+    #     else:
+    #         id = req.POST['projectId']
+    #         project = get_object_or_404(Project, pk=id)
+    #         comments = Comment.objects.fitler(project=id).order_by('Date')
+    #         return render_to_response('project/recruit.html',
+    #                                   {'comments': comments})
+    # except Exception as e:
+    #     print(e)
+    #     return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+    if req.method == 'GET':
+        return render_to_response('project/deprojects.html')
+    if req.method == 'POST':
+        pass
+
+@csrf_exempt
+def dedetails(req):
+    if req.method == 'GET':
+        return render_to_response('project/dedetails.html')
+    if req.method == 'POST':
+        pass
+
+
+''' 开发项目相关页面结束'''
+
+
 
 '''个人中心相关页面'''
 

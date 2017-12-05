@@ -1,0 +1,176 @@
+ {% extends 'idea/Base.html' %}
+{% load static %}
+{% block title %}
+    <title>开发项目详情</title>
+{% endblock %}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
+    <link rel="stylesheet" href="{% static 'project/css/dedetails.css' %}">
+{% endblock %}
+{% block content %}
+     <div class="main">
+        <div class="content-all">
+            <div class="main-left">
+                <div class="content-top">
+                    <div class="content-main">
+
+                            <a class="tags" href="../projects?sign={{ label.projectLabel.Id }}"><span
+                                    class="ribbon1"><span> </span></span></a>
+
+                        <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
+                        <div class="title">
+                            <h5 id="rdpname">项目名称  </h5>
+                            <p class="ptime" id="rdptime"> 项目起止时间：2017.11.11-2017.12.12 </p>
+                        </div>
+                    </div>
+                    <div class="description">
+                        {#                            项目描述#}
+                        <div class="des" id="rdpdes">
+                            {{ project.Description }}
+                        </div>
+                    </div>
+                    <div class="option">
+                        <button class="likebutton" id="rdlikebutton">
+                            <img class="plike" id="rdplike" src="{% static '/project/imgs/like1.svg' %}">
+                            <span class="plikenum">{{project.Praise_Project_set.count}}</span>
+                        </button>
+                        <div class="op-tip">
+                            <div class="home-b-collection" id="rdcollection">
+                                <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
+                                     onclick="changeImage()"
+                                     style="width:25px;height:25px;vertical-align:middle;">
+                                <a>关注</a>
+                            </div>
+                            <div class="home-b-share">
+                                <a href="#" class="share-buttons" id="share-qq"></a>
+                                <a href="#" class="share-buttons" id="share-weixin"></a>
+                                <a href="#" class="share-buttons" id="share-weibo"></a>
+                                <a href="#" class="share-icon"><img src="{% static '/creation/imgs/share.png' %}"
+                                                                    style="width:25px;height:25px;vertical-align:middle;">
+                                    分享</a>
+                            </div>
+                            <div class="home-b-comment" id="comment11-22">
+                                <img src="{% static '/project/imgs/reply.svg' %}" id=""
+                                     style="width:25px;height:25px;vertical-align:middle;">
+                                <a>评论</a>
+                            </div>
+                            <div class="home-b-report" id="rdreport">
+                                <img src="{% static '/creation/imgs/report.png' %}"
+                                     style="width:20px;height:21px;vertical-align:middle;">
+                                <a>举报</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+{#                <div class="middle"></div>#}
+            </div>
+            <div class="main-right">
+                <div class="home-b-user">
+                    <div class="user-img">
+                        <img src="/static/photos/{{ creation.user.Img }}">
+                    </div>
+                    <div class="user-name">
+                        <p> 用户姓名</p>
+                        <div class="user-intro">
+                            <div class="user-score">
+                                <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
+                                <span>1000</span>
+                            </div>
+                            <div class="user-id">
+                                <img class="pimg" src="{% static 'project/imgs/id.svg'%}">
+                                <span>项目负责人</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#"><span class="user-follow">+</span></a>
+                </div>
+            </div>
+            <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
+            <div class="pro-message">
+                <div class="pr-header">
+                    <div class="ribbon"><span class="ribbon3">项目进度</span></div>
+                </div>
+            </div>
+            <div class="pro-message">
+                <div class="pr-header">
+                    <div class="ribbon"><span class="ribbon3">项目总结</span></div>
+                </div>
+            </div>
+            <div class="content-footer">
+                {#                评论部分#}
+                <div class="comment">
+                    <div class="comment1-1">评论专区</div>
+                    <div class="comment1-2"></div>
+                    <div class="ctop">
+                        <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
+                        <div class="carea">
+                            <div class="tocomment">
+                                <textarea placeholder="" name ="putcomment" id="comment-content1" class="comment-text"></textarea>
+                            </div>
+                            <button class="putcomment" id="rdputcomment">评论</button>
+                        </div>
+                    </div>
+
+                    <div class="c-all" name="c-all">
+                        <div class="cmain">
+                            <img class="c-img" id="rdimg" src="{% static 'project/imgs/user.svg' %}">
+                            {#                                  可以加hover点上变成网站logo#}
+                            <div class="comment-box">
+                                <div class="comment-head">
+                                    <h6 class="comment-name " id="rduname"><a href=" "> </a></h6>
+                                    <span class="cdate" id="rdcdate"> </span>
+                                    <div class="c-option">
+                                        <img class="clike" id="rdclike"
+                                             src="{% static 'project/imgs/like1.svg' %}"><span
+                                            class="clikenum">1111</span>
+                                        <img class="creply" id="rdcreply" src="{% static 'project/imgs/reply.svg' %}">
+                                        <img class="creport" id="rdcreport"
+                                             src="{% static 'creation/imgs/report.png' %}">
+                                    </div>
+                                </div>
+                                <div class="comment-content">
+                                    <p id="rdc-content"> </p>
+                                </div>
+                                <div class="commentreply" id="commentreply">
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomment" id="cputcomment">回复</button>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="c-reply">
+                            <img class="rc-img" src="{% static 'project/imgs/user.svg' %}">
+                            <div class="rcomment-box">
+                                <div class="rcomment-head">
+                                    <h6 class="rcomment-name "><a href=" ">  </a> 回复</h6>
+                                    <span class="rcdate"> </span>
+                                    <div class="r-option">
+                                        <img class="rclike" id="rdrclike"
+                                             src="{% static 'project/imgs/like1.svg' %}"><span
+                                            class="rclikenum">1111</span>
+                                        <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg' %}">
+                                        <img class="rcreport" id="rdrcreport"
+                                             src="{% static 'creation/imgs/report.png' %}">
+                                    </div>
+                                </div>
+                                <div class="rcomment-content">
+                                    <p id="rdr-content"> </p>
+                                </div>
+                                <div class="commentreply" id="rcommentreply">
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomment" id="crputcomment">回复</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
