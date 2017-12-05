@@ -1,16 +1,6 @@
  $(function() {
      $.cookie("user", 3);
      userId = $.cookie("user");
-     $(".praise_0").live(function () {
-         var Id = $(this).attr("team");
-         $.post("/idear/star", {userId: userId,starType: "3",Id:Id}, function (data) {
-            if(data == 1){
-
-            }else if(data ==2){
-
-            }
-         });
-     });
  });
 //加载更多
 $(function() {
@@ -27,6 +17,9 @@ $(function() {
     });
 });
 //点赞
+  $(function() {
+     $.cookie("user", 3);
+     userId = $.cookie("user");
         $("body").on("click",".praise_0",function () {
             var Id = $(this).attr("team");
             var praise_img = $(this).find("img");
@@ -53,7 +46,7 @@ $(function() {
             }
             });
 	    });
-
+ });
 //控制介绍字数
     $(document).ready(function () {
             $(".content_0").
