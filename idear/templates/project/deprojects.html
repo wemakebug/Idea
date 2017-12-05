@@ -5,57 +5,80 @@
 {%block title%}<title>开发项目</title>{%endblock%}
 
 {%block CSS%}
-    <link rel="stylesheet" href="{% static 'project/css/deprojects.css' %}">
+
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
+    <link rel="stylesheet" href="{% static 'project/css/deprojects.css' %}">
 
 {%endblock%}
 
 {% block content %}
-
-{%for project in projects%}
 <div class="bg_all">
-    <div class="bg_left">
-        <div class="project_top_1 project_top">
+        <div class="bg_left">
+            <div class="bg_project">
 
-            <a href="redetails">
-                <div class="project_top_1_left">
 
-                    <img src="{% static 'project/imgs/HeadImg.png'%}">
+                    <div class="project_top">
+                        <div style="display:none;width:100%;height: 100%"> </div>
+                        <a href="redetails?projectId= ">
+                            <div class="project_top_1_left">
+                                <img class="project_img" src="../../static/photos/ ">
+                            </div>
+                            <div class="project_top_1_right">
+                                <span class="project_top_1_right-span"> </span>
+                                <div class="project_Text_Bg">
+                                    <li class="FixText">截止时间:<p
+                                            class="FixText-right"> </p></li>
+                                    <li class="FixText">招募状态：<p class="FixText-right">正在进行</p></li>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="project_middle">
+                            <span class="project_middle_fix">所需人员标签：</span>
 
-                </div>
-                <div class="project_top_1_right">
-                    <h5>项目名称</h5>
-                    <p class="project_top_1_text">{{project.Description}}
-                    </p>
-                </div>
-            </a>
-            <div class="project_bottom_top">
-                <div class="project_bottom_left">
-                    <p class="FixText">项目名称：</p>
-                    <p class="FixText">招募人数：</p>
-                    <p class="FixText">招募状态：</p>
-                    <p class="FixText">时间:</p>
-                </div>
-                 <div class="project_bottom_right">
-                     <input  type="text"  value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input id="Number"type="text"  value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input type="text" id="State" value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input type="text" id="UserName" value="{{project.StartTime}}" readonly="readonly" class="VariableText"/>
-                 </div>
+                            <span class="project_middle_icon"></span>
+                            <span class="project_middle_text"> </span>
+
+                        <br>
+                        </div>
+                        <div class="project_bottom_top">
+                            <p class="project_top_1_text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+                            <div class="progress">
+                                <span class="green  "><span><li>当前招募进度： </li></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <a class="more">加载更多</a>
+            </div>
+        </div>
+            <div class="home-right">
+            <div class="intro">
+                <img src="{% static 'creation/imgs/light.png' %}"
+                     style="width:40px;height:40px;margin:-16px 0px 26px -10px">
+                <img src="{% static 'idea/imgs/idea_logo.png' %}"
+                     style="width:60px;height:40px;margin:0px 0px -10px 4px">
+                <p>&nbsp;&nbsp;&nbsp;创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
+                <button class="add">添加</button>
+            </div>
+
+            <div class="tag">
+                <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                <span>标签</span>
+                <hr>
+                <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
+                {% for obj in projectLabels %}
+                    <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
+                {% endfor %}
             </div>
         </div>
     </div>
-</div>
-{%endfor%}
-
-{% endblock %}
 
 
-{% block script %}
-{#<script>alert(project.Description)</script>#}
- <script type="text/javascript">
-
- </script>
 
 
 {% endblock %}
+
+
+
