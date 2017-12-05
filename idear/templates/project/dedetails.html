@@ -67,12 +67,15 @@
 {#                <div class="middle"></div>#}
             </div>
             <div class="main-right">
+                <div class="pr-header">
+                    <div class="ribbon"><span class="ribbon3">项目成员信息</span></div>
+                </div>
                 <div class="home-b-user">
                     <div class="user-img">
                         <img src="/static/photos/{{ creation.user.Img }}">
                     </div>
-                    <div class="user-name">
-                        <p> 用户姓名</p>
+                    <div class="user-message">
+                        <a href = "" class="user-name"> 用户姓名</a>
                         <div class="user-intro">
                             <div class="user-score">
                                 <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
@@ -84,8 +87,9 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#"><span class="user-follow">+</span></a>
+
                 </div>
+
             </div>
             <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
             <div class="pro-message">
@@ -169,6 +173,7 @@
             </div>
         </div>
     </div>
+    <div class="middle"></div>
 
 
 

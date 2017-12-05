@@ -1094,7 +1094,7 @@
 
 .cmain{
     height:150px;
-    max-height: 150px;
+    max-height: 112px;
 }
 .c-img{
     display:block;
@@ -1199,7 +1199,7 @@
 }
 .c-reply{
     width:88%;
-    height:100px;
+    height:85px;
     margin-left: 14.6%;
 }
 .rc-img{
