@@ -7,6 +7,7 @@
 $(function(){
     $.cookie("user", 3);
     userId = $.cookie("user");
+    var putcomment_reply = $(this);
     
     //随机颜色标签圆球
     $('.repo-language-color').each(function() {
@@ -177,8 +178,7 @@ $("#putcommentbutton").click(function () {
 //end评论添加记录结束
 //判断回复输入框为空，不为空往后台添加记录
 $(".putcomment_reply").click(function () {
-    alert(ok);
-    var reply_comment = $(".commentreply-text").val();
+    var reply_comment = $(this).prev(".commentreply-text").val();
     if (reply_comment === "" || reply_comment === undefined || reply_comment === null) {
         swal({
             title: "评论为空",
@@ -188,14 +188,14 @@ $(".putcomment_reply").click(function () {
     } else {
         var teamid = window.location.href.split("/");
         teamid = teamid[teamid.length - 1];
-        var comment_id = $(this).attr("backgroundid")
+        var comment_id = $(this).attr("backgroundid");
         $.post('/idear/teamcomment', {
             "strings": reply_comment,
             "team_id":teamid,
             "comment_id":comment_id
         }, function (data) {
             data = JSON.parse(data);
-            if (data.status == 0) {
+            if (data.status === 0) {
                 alert("Wrong");
             } else {
                 $(".commentreply-text").val("");
@@ -225,6 +225,19 @@ for (var i = 0; i < aLi.length; i++) {
             });
         });
     }
+
+$(".putreport").click(function () {
+    var report_text = $(".report-text").val();
+    if(report_text === "" || report_text === undefined || report_text === null){
+        swal({
+            title: "举报理由为空",
+            text: "按确定建后添加举报理由",
+            type: "warning"
+        });
+    }else{
+
+    }
+});
 //end
 //回复内容框显示
 $('.creply').click(function(){
