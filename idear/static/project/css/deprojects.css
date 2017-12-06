@@ -8,7 +8,6 @@
 body, html {
     background-color: #f1f1f1;
     transition: 0.2s ease-out;
-    font-family: 幼圆;
     min-width: 1300px;
     max-width: 3000px;
 }
@@ -206,8 +205,8 @@ body, html {
 .FixText-right {
     font-size: 13px;
     float: right;
-    margin-right: 50px;
-    width: 30%;
+    margin-right: 25px;
+    width: 60%;
     text-align: center;
 }
 .project_sign {
@@ -293,7 +292,7 @@ body, html {
   background-image: linear-gradient(to bottom, #b7dc8e 0%, #99ce5f 70%, #85c440 100%);
 }
 .home-right {
-    width: 300px;
+    width: 350px;
     position: fixed;
     margin-left: 63%;
 }
@@ -302,13 +301,16 @@ body, html {
 }
 .intro {
 	width:100%;
-	height:230px;
+	height:401px;
 	float:right;
 	margin-top: 30px;
 	background-color:#8bcfcc;
-	border-radius: 10px 70px;
 	box-shadow: 10px 10px 2px 2px #bdc3c7;
+    border-radius:10px 10px;
 	opacity:0.8;
+}
+.pro{
+    margin-top: 25px;
 }
 .tag {
 	width: 100%;
@@ -355,14 +357,6 @@ body, html {
 	background-color: #57cecd;
 
 }
-.intro p {
-	width:86%;
-	float:left;
-	margin-left:8%;
-	margin-top:5%;
-	text-align:left;
-	font-family:幼圆!important;
-}
 .add:active {
 	transform: translate(0px, 5px);
 	-webkit-transform: translate(0px, 5px);
@@ -403,6 +397,7 @@ body, html {
 }
 .more {
 	width:100%;
+    display:none;
 	height:30px;
 	text-align: center;
 	float:left;
@@ -419,4 +414,8 @@ body, html {
     color: -webkit-link;
     cursor: auto;
     text-decoration: underline;
+}
+.pro_comment{
+    width:15px;
+    height:15px;
 }
