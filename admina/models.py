@@ -144,6 +144,7 @@ class ProjectUser(models.Model):
 class Creation(models.Model):
     '''
     创意表
+    :IsUse 是否可用 1 为不可用 0 为可用
     '''
     Id = models.AutoField(primary_key=True)
     Date = models.DateTimeField(auto_now_add=True)
