@@ -295,7 +295,7 @@ body, html {
 .home-right {
     width: 300px;
     position: fixed;
-    margin-left: 66%;
+    margin-left: 63%;
 }
 .home-right p,span{
     font-size: 15px;
@@ -406,14 +406,11 @@ body, html {
 	height:30px;
 	text-align: center;
 	float:left;
-	margin-top:30px;
     cursor: pointer;
-	/*margin-left:125px;*/
 	margin-top:630px;
 	background-color:white;
 	border-radius: 3px;
 	box-shadow: 2px 2px 2px 2px #bdc3c7;
-    /*position: absolute;*/
 }
 .f-weight {
     font-weight: 500;
