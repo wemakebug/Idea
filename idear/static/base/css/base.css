@@ -65,12 +65,9 @@ ul li{
     text-align:center;
     line-height:66px;
     overflow:hidden;
-
 }
 .active{
     background: #29639F;
-    /*border-left:1px solid #cccccc;*/
-    /*border-right:1px solid #cccccc ;*/
 }
 .nav_main ul li:hover{
     background:#29639F;

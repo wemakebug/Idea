@@ -12,11 +12,30 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
-    $('.nav_main li a').each(function () {
-        $this = $(this);
-        if ($this[0].href == String(window.location.href)) {
-            $this.addClass('active');
-        }
+    // $('.nav_main li a').each(function () {
+    //     $this = $(this);
+    //     if ($this[0].href === String(window.location.href)) {
+    //         $this.addClass('active');
+    //     }
+    // });
+    $(function(){
+        var navLi=$('.nav_main li a') ;//此处填写你的导航html对象
+        var proAhref=$('.tag a');
+        var windowUrl=String(window.location.href); //获取当前url链接
+        navLi.each(function(){
+            $this = $(this);
+            var t = $this[0].href;
+            if(t === windowUrl) {
+                $(this).addClass('active');  //添加当前位置样式
+            }
+        });
+        // proAhref.each(function(){
+        //     $this = $(this);
+        //     var t = $this[0].href;
+        //     if(t === windowUrl) {
+        //         $('.index_recruit').addClass('active');  //添加当前位置样式
+        //     }
+        // });
     });
 
     var user_img = document.getElementById('user_img');
