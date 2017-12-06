@@ -5,57 +5,84 @@
 {%block title%}<title>开发项目</title>{%endblock%}
 
 {%block CSS%}
-    <link rel="stylesheet" href="{% static 'project/css/deprojects.css' %}">
+
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
+    <link rel="stylesheet" href="{% static 'project/css/deprojects.css' %}">
 
 {%endblock%}
 
 {% block content %}
-
-{%for project in projects%}
 <div class="bg_all">
-    <div class="bg_left">
-        <div class="project_top_1 project_top">
+        <div class="bg_left">
+            <div class="bg_project">
 
-            <a href="redetails">
-                <div class="project_top_1_left">
+                    <div class="project_top">
+                        <div style="display:none;width:100%;height: 100%"> </div>
+                        <a href="redetails?projectId= ">
+                            <div class="project_top_1_left">
+                                <img class="project_img" src="../../static/photos/ ">
+                            </div>
+                            <div class="project_top_1_right">
+                                <span class="project_top_1_right-span">艾沟煤 </span>
+                                <div class="project_Text_Bg">
+                                    <li class="FixText">起止时间:<p
+                                            class="FixText-right"> </p></li>
+                                    <li class="FixText">项目状态：<p class="FixText-right">正在进行</p></li>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="project_middle">
+                            <span class="project_middle_fix">项目标签：</span>
 
-                    <img src="{% static 'project/imgs/HeadImg.png'%}">
+                            <span class="project_middle_icon"></span>
+                            <span class="project_middle_text"> </span>
 
-                </div>
-                <div class="project_top_1_right">
-                    <h5>项目名称</h5>
-                    <p class="project_top_1_text">{{project.Description}}
-                    </p>
-                </div>
-            </a>
-            <div class="project_bottom_top">
-                <div class="project_bottom_left">
-                    <p class="FixText">项目名称：</p>
-                    <p class="FixText">招募人数：</p>
-                    <p class="FixText">招募状态：</p>
-                    <p class="FixText">时间:</p>
-                </div>
-                 <div class="project_bottom_right">
-                     <input  type="text"  value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input id="Number"type="text"  value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input type="text" id="State" value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input type="text" id="UserName" value="{{project.StartTime}}" readonly="readonly" class="VariableText"/>
-                 </div>
+                        <br>
+                        </div>
+                        <div class="project_bottom_top">
+                            <p class="project_top_1_text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新疆艾维尔沟煤具有镜质组含量高、黏结性强，但所得焦炭反应性高、热强度低的特性，是一种特殊的炼焦煤。本项目拟以密度离心法富集艾维尔沟煤中的镜质组，配入标准无烟煤（惰性组分）热解炼焦，采用液氮骤冷获得不同温度（200-1000… </p>
+                            <div class="progress">
+                                <span class="green  "><span><li>当前项目进度： </li></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <a class="more">加载更多</a>
             </div>
         </div>
+            <div class="home-right">
+                <div class="intro">
+
+                </div>
+
+                <div class="tag">
+                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                    <span>标签</span>
+                    <hr>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
+                    {% for obj in projectLabels %}
+                        <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
+                    {% endfor %}
+                </div>
+
+                <div class="tag">
+                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                    <span>类型</span>
+                    <hr>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">时间</span></a>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">点赞</span></a>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">评论</span></a>
+
+                </div>
+        </div>
     </div>
-</div>
-{%endfor%}
-
-{% endblock %}
 
 
-{% block script %}
-{#<script>alert(project.Description)</script>#}
- <script type="text/javascript">
-
- </script>
 
 
 {% endblock %}
+
+
+

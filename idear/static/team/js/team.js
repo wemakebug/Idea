@@ -1,3 +1,7 @@
+ $(function() {
+     $.cookie("user", 3);
+     userId = $.cookie("user");
+ });
 //加载更多
 $(function() {
     $(".border_0").slice(0, 6).show();
@@ -13,18 +17,21 @@ $(function() {
     });
 });
 //点赞
-    $(function(){
-        $.cookie("user",3);
-        userId = $.cookie("user");
+  $(function() {
+     $.cookie("user", 3);
+     userId = $.cookie("user");
         $("body").on("click",".praise_0",function () {
             var Id = $(this).attr("team");
+            var praise_0 = $(this);
             var praise_img = $(this).find("img");
             var text_box = $(this).siblings(".add-num");
             var praise_txt = $(this).siblings(".praise-txt");
             var num = parseInt(praise_txt.text());
             $.post("/idear/star", {userId: userId,starType: "3",Id:Id}, function (data) {
             if(data == 2){
-                $(this).html("<img src='../static/team/imgs/zan.png' name='praise_img' class='animation' />");
+                // $(this).html("<img src='../static/team/imgs/zan.png' name='praise_img' class='animation' />");
+                praise_img.addClass("animation");
+                praise_0.children().attr("src","../static/team/imgs/zan.png");
                 praise_txt.removeClass("hover");
                 text_box.show().html("<em class='add-animation'>-1</em>");
                 $(".add-animation").removeClass("hover");
@@ -33,7 +40,9 @@ $(function() {
             }else if(data == 0){
                 alert("操作失败！");
             }else if(data == 1){
-                $(this).html("<img src='../static/team/imgs/yizan.png' name='praise_img' class='animation' />");
+                // $(this).html("<img src='../static/team/imgs/yizan.png' name='praise_img' class='animation' />");
+                praise_img.addClass("animation");
+                praise_0.children().attr("src","../static/team/imgs/yizan.png");
                 praise_txt.addClass("hover");
                 text_box.show().html("<em class='add-animation'>+1</em>");
                 $(".add-animation").addClass("hover");
@@ -42,8 +51,7 @@ $(function() {
             }
             });
 	    });
-    });
-
+ });
 //控制介绍字数
     $(document).ready(function () {
             $(".content_0").

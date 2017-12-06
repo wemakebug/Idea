@@ -11,6 +11,7 @@ from admina.models import Creation2ProjectLabel, Creation, ProjectLabel, Comment
     Project2ProjectLabel, Project, Recruit
 from admina import models
 
+
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import uuid
 import re, base64
@@ -392,7 +393,7 @@ def teamdetails(req, teamid):
         try:
             user = models.User.objects.get(UserName=username)
             userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
-        except:
+        except Exception as e:
             result["status"] = 0
             result["string"] = "空"
             return HttpResponse(json.dumps(result))
@@ -414,13 +415,16 @@ def teamcomment(req):
         try:
             user = models.User.objects.get(UserName=username)
             userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
-        except:
+            Comment1 = models.Comment.objects.filter(Id=commentid)
+            print Comment1[0].Uuid
+        except Exception as e:
+            print(e.message)
             result["status"] = 0
             result["string"] = "空"
             return HttpResponse(json.dumps(result))
         else:
-            hh = models.Comment.objects.create(user=user, commited_user=userteam, Content=reply_content, commentedId=commentid)
-            print hh
+            # print(locals())
+            models.Comment.objects.create(user=user, commited_user=userteam, Content=reply_content,commentedId=Comment1[0].Uuid)
             return HttpResponse(json.dumps(result))
 
 

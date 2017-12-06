@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
     <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
     <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <!-- include summernote css/js-->
@@ -21,6 +22,9 @@
     <div class="release_pro">
         <div class="pro_edit">
             <h2>个人中心/新建项目</h2>
+        </div>
+        <div class="useInstr">
+            <div id="agreeing" class="input-use">使用说明</div>
         </div>
         <div class="pro_chance">
             <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>
@@ -42,9 +46,6 @@
         </div>
     </div>
     <div class="pro_status">
-        <div class="useInstr">
-            <input type="button" value="使用说明" id="agreeing" class="input-use">
-        </div>
         <div class="now_status">
             <p>状态：创建中</p>
         </div>
@@ -52,6 +53,9 @@
     <div class="main_pro_con" id="main_pro_con">
         <div class="add_img">
             <div class="chance_add">
+                <div class="pro_cover">
+                    <p>封面图</p>
+                </div>
                 <div id="tbody">
                     <div>
                         <p>
@@ -60,10 +64,6 @@
                             <br>
                         </p>
                     </div>
-{#                    <div id="result" name="result"></div>#}
-{#                    <p>#}
-{#                        <input type="button" value="上传封面图" onclick="readAsDataURL()" class="btn btn-default upload" />#}
-{#                    </p>#}
                 </div>
             </div>
         </div>
@@ -99,14 +99,12 @@
         </div>
     </div>
 </div>
-{#<div class="bulletWindow">#}
-{#</div>#}
 <div class="pop-up">
     <div class="pop_1">
         <p> 欢迎您，</p>
         <p id="username2" class="pop_user"></p>
     </div>
-    <div>
+    <div class="contInstruc">
         1.在开始发布项目前，请您认真阅读此说明，这将帮助您更好开启项目之旅。
         <br>
         2.系统默认项目公开程度为公开，您也可以选择隐私选项，系统将自动为您加密部分内容。
@@ -126,6 +124,7 @@
 {% endblock %}
 
 {% block script %}
+    <script type="text/javascript" src={% static "personal/js/fileinput.min.js"%} ></script>
     <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
     <script type="text/javascript" src={% static "base/js/base.js"%} ></script>
     <script>

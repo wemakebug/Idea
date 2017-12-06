@@ -1,8 +1,9 @@
 html{
-	height:auto;
+	height:100%;
+    margin:0px;
 	background: #f1f1f1 none repeat scroll 0 0;
 }
-.first {
+.teamShow {
 	/*position: relative;*/
 	font-family: 宋体;
     overflow: hidden;
@@ -17,7 +18,7 @@ html{
 	width:100%;
 	height: 15px;
 }
-.second_0{
+.thisLeft{
     float: left;
     width: 75%;
     height: auto;
@@ -84,6 +85,7 @@ html{
     max-height: 28%;
     overflow: hidden;
     margin: 3% 5% 0 9%;
+    line-height: 20px;
 }
 .teamTag{
     height: auto;
@@ -386,11 +388,11 @@ html{
     cursor: pointer;
 }
 
-.broadSide{
+.thisRight{
 	width: 300px;
 	position:fixed;
     float: left;
-	margin-left: 66%;
+	margin-left: 65%;
 }
 .intro_1{
 	width: 100%;
