@@ -35,20 +35,6 @@ $("#putcomments").click(function(){
 
 })
 
-    $("#putcomments").click(function(){
-    comment = $("#comment-content2").val()
-    if (comment=="")
-        alert("您的输入为空")
-    else
-    $.post("comment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
-        if (data == 1)
-            location.reload()
-        else
-            alert("Sorry, 出现了一些问题")
-    })
-
-})
-
 $('.creply').click(function(){
     var ele = this;
     var parent_div = ele.parentNode.parentNode.parentNode;
@@ -62,6 +48,18 @@ $('.creply').click(function(){
     reply.slideToggle("slow");
  });
 
+$('.rcreply').click(function(){
+    var ele = this;
+    var parent_div = ele.parentNode.parentNode.parentNode;
+    var reply = parent_div.lastChild;
+    if(reply.tagName === undefined){
+        reply = parent_div.childNodes[parent_div.childNodes.length-2];
+    }else {
+        reply = parent_div.lastChild;
+    }
+    reply = $(reply);
+    reply.slideToggle("slow");
+ });
 
 //创意关注操作
 $(".home-b-collection").click(function(){
