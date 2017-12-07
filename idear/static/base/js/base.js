@@ -63,23 +63,10 @@ $(document).ready(function () {
             } else if (result['status'] === 0) {
                 // var message = result['message'];
                 // alert(message);
-            } else {
-            }
-
+            } else {}
         });
-         // var cookie = {
-         // get:function(str){
-         // var cookies = {};
-         // document.cookie.split(';').forEach(function(item){
-         // var c = item.split('=');
-         // cookies[c[0]]=c[1];
-         // });
-         // return cookies[str] || "";
-         // }
-         // }
-         // document.querySelector("#username").innerHTML = cookie.get("username");
-         }
-    });
+    }
+});
 
 (function($){
     $.fn.typer = function(options){
@@ -106,7 +93,7 @@ $(document).ready(function () {
             defaults.replace.push(changer);
             var interval = setInterval(function(){
                 var $bintext = '';
-                if( position == indexOf ) {
+                if( position === indexOf ) {
                     $bintext = bintext(changer.length-1);
                     $this.html( $text.substr(0, normal.length) );
                     $this.append('<span>' + $bintext + '</span>')
