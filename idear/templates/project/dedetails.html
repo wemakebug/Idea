@@ -14,14 +14,14 @@
             <div class="main-left">
                 <div class="content-top">
                     <div class="content-main">
-
+                        {% for label in labels %}
                             <a class="tags" href="../projects?sign={{ label.projectLabel.Id }}"><span
-                                    class="ribbon1"><span> </span></span></a>
-
+                                    class="ribbon1"><span> {{ label.projectLabel.ProjectLabelName }}</span></span></a>
+                        {% endfor %}
                         <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
                         <div class="title">
-                            <h5 id="rdpname">项目名称  </h5>
-                            <p class="ptime" id="rdptime"> 项目起止时间：2017.11.11-2017.12.12 </p>
+                            <h5 id="rdpname">{{ project.ProjectName }} </h5>
+                            <p class="ptime" id="rdptime"> 项目起止时间： {{ project.StartTime | date:"Y.m.d" }}-{{ project.EndTime | date:"Y.m.d" }} </p>
                         </div>
                     </div>
                     <div class="description">
@@ -68,7 +68,7 @@
             </div>
             <div class="main-right">
                 <div class="pr-header">
-                    <div class="ribbon"><span class="ribbon3">项目成员信息</span></div>
+                    <div class="ribbon"><span class="ribbon3">成员信息</span></div>
                 </div>
                 <div class="home-b-user">
                     <div class="user-img">
@@ -96,16 +96,26 @@
                 <div class="pr-header">
                     <div class="ribbon"><span class="ribbon3">项目进度</span></div>
                 </div>
+                <div class="pr-detail">
+                {{ project.Progress }}
+                </div>
             </div>
             <div class="pro-message">
                 <div class="pr-header">
                     <div class="ribbon"><span class="ribbon3">项目总结</span></div>
                 </div>
+
+                <div class="pr-detail">
+                {{ project.Summary}}
+                </div>
             </div>
             <div class="content-footer">
                 {#                评论部分#}
                 <div class="comment">
-                    <div class="comment1-1">评论专区</div>
+{#                    <div class="comment1-1">评论专区</div>#}
+                    <div class="pr-header">
+                    <div class="ribbon"><span class="ribbon3">评论专区</span></div>
+                </div>
                     <div class="comment1-2"></div>
                     <div class="ctop">
                         <img class="u-img" src="{% static 'project/imgs/user.svg' %}">

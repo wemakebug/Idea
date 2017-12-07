@@ -902,7 +902,6 @@ def projects(req):
                 recruit_all.append(recruit)
 
             all_recruit = zip(projects, recruit_all)
-            print(all_recruit)
             return render_to_response('project/recruit.html', {'projectLabels': ProjectLabel.objects.all(), "all_recruit": all_recruit})
         else:
             id = req.POST['projectId']
@@ -920,14 +919,14 @@ def projects(req):
 @csrf_exempt
 def deprojects(req):
     '''
-    开发项目一级二级页面项目显示
+    开发项目一级页面项目显示
     '''
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = Project.objects.filter(  Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
+                projects = Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
             else:
                 projects = []
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
@@ -948,8 +947,22 @@ def deprojects(req):
 
 @csrf_exempt
 def dedetails(req):
+    '''
+    开发项目二级页面详情
+    '''
     if req.method == 'GET':
-        return render_to_response('project/dedetails.html')
+        projectId = req.GET['projectId']
+        project = Project.objects.get(Id=projectId)
+        labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        praises = Praise.objects.all()
+        follows = Follow.objects.all()
+        comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
+
+        alllables = []  # 找出本项目所有的标签
+        for label in labels:
+            alllables.append(label.projectLabel.Id)
+            alllables = list(set(alllables))
+        return render_to_response('project/dedetails.html',{"project":project,"labels": labels[:3],})
     if req.method == 'POST':
         pass
 
