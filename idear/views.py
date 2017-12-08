@@ -292,7 +292,7 @@ def logout(req):
     :return: 
     '''
     if req.method == "GET":
-        response = render_to_response('idea/index.html')
+        response = render_to_response('idea/Base.html')
         response.delete_cookie('username')
         response.delete_cookie('email')
         return response
