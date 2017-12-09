@@ -10,126 +10,127 @@
     <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
 
 
-
-
 {% endblock %}
+{% load commentshow %}
 {% block content %}
+
     <div class="main">
         <div class="content-all">
             <div class="main-left">
-                 <div class="content-top">
-
-                        <div class="content-main">
-                            {%for label in labels%}
-                                <a class="tags" href="../projects?sign={{label.projectLabel.Id}}"><span>{{label.projectLabel.ProjectLabelName}}</span></a>
-                            {% endfor%}
-                            <div class="title">
-                                <h5 id="rdpname"> {{ project.ProjectName }}</h5>
-                                <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：<span id="rdpstatus">第一次招募</span> </p>
+                <div class="content-top">
+                    <div class="content-main">
+                        {% for label in labels %}
+                            <a class="tags" href="../projects?sign={{ label.projectLabel.Id }}"><span
+                                    class="ribbon1"><span>{{ label.projectLabel.ProjectLabelName }}</span></span></a>
+                        {% endfor %}
+                        <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
+                        <div class="title">
+                            <h5 id="rdpname"> {{ project.ProjectName }}</h5>
+                            <p class="ptime" id="rdptime">{{ project.EndTime | date:"Y-m-d" }}&nbsp;&nbsp;|&nbsp; 项目状态：第<span
+                                    id="rdpstatus"> </span>次招募 </p>
+                        </div>
+                    </div>
+                    <div class="description">
+                        {#                            项目描述#}
+                        <div class="des" id="rdpdes">
+                            {{ project.Description }}
+                        </div>
+                    </div>
+                    <div class="option">
+                        <button class="likebutton" id="rdlikebutton">
+                            <img class="plike" id="rdplike" src="{% static '/project/imgs/like1.svg' %}">
+                            <span class="plikenum">{{project.Praise_Project_set.count}}</span>
+                        </button>
+                        <div class="op-tip">
+                            <div class="home-b-collection" id="rdcollection">
+                                <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
+                                     onclick="changeImage()"
+                                     style="width:25px;height:25px;vertical-align:middle;">
+                                <a>关注</a>
+                            </div>
+                            <div class="home-b-share">
+                                <a href="#" class="share-buttons" id="share-qq"></a>
+                                <a href="#" class="share-buttons" id="share-weixin"></a>
+                                <a href="#" class="share-buttons" id="share-weibo"></a>
+                                <a href="#" class="share-icon"><img src="{% static '/creation/imgs/share.png' %}"
+                                                                    style="width:25px;height:25px;vertical-align:middle;">
+                                    分享</a>
+                            </div>
+                            <div class="home-b-comment" id="comment11-22">
+                                <img src="{% static '/project/imgs/reply.svg' %}" id=""
+                                     style="width:25px;height:25px;vertical-align:middle;">
+                                <a>评论</a>
+                            </div>
+                            <div class="home-b-report" id="rdreport">
+                                <img src="{% static '/creation/imgs/report.png' %}"
+                                     style="width:20px;height:21px;vertical-align:middle;">
+                                <a>举报</a>
                             </div>
                         </div>
-                     <div class="description">
-{#                            项目描述#}
-                            <div class="des" id="rdpdes">
-                                {{ project.Description }}
-                            </div>
-                        </div>
-                     <div class="option">
-                            <button class="likebutton" id="rdlikebutton">
-                                <img class="plike" id="rdplike" src="{% static '/project/imgs/like1.svg' %}">
-                            </button>
-                            <div class="op-tip">
-                                <div class="home-b-collection" id="rdcollection">
-                                    <img src="{% static '/creation/imgs/collection0.png' %}"
-                                         style="width:25px;height:25px;vertical-align:middle;">
-                                    <a>关注</a>
-                                </div>
-                                <div class="home-b-share">
-                                    <a href="#" class="share-buttons" id="share-qq"></a>
-                                    <a href="#" class="share-buttons" id="share-weixin"></a>
-                                    <a href="#" class="share-buttons" id="share-weibo"></a>
-                                    <a href="#" class="share-icon"><img src="{% static '/creation/imgs/share.png' %}"
-                                                                        style="width:25px;height:25px;vertical-align:middle;">
-                                        分享</a>
-                                </div>
-                                <div class="home-b-comment" id="comment11-22">
-                                    <img src="{% static '/project/imgs/reply.svg' %}"
-                                         style="width:25px;height:25px;vertical-align:middle;">
-                                    <a>评论</a>
-                                </div>
-                                <div class="home-b-report"id="rdreport">
-                                    <img src="{% static '/creation/imgs/report.png' %}"
-                                         style="width:23px;height:24px;vertical-align:middle;">
-                                    <a>举报</a>
-                                </div>
-                            </div>
-                        </div>
-                 </div>
+                    </div>
+                </div>
 
-                 <div class="middle"></div>
+                <div class="middle"></div>
 
-                 <div class="content-middle">
-                           <!--此处为招募帖详细内容-->
-                     <div class="rmain">
-                         <div class="lastday">
+                <div class="content-middle">
+                    <!--此处为招募帖详细内容-->
+                    <div class="rmain">
+                        <div class="lastday">
                              <span class="size1">剩余时间<br>
-                                 <span class="size2" id="rdlastday">6</span>
+                                 <span class="size2" id="rdlastday"></span>
                                  <span class="size3">天</span>
                              </span>
-                         </div>
-                         <div class="rm-header">
-                                  <div class="ribbon"><span class="ribbon3">招募帖</span></div>
-                                  <p class="r-message" id="rdr-message">2017.04.20-2017.05.20&nbsp;&nbsp;|&nbsp; 预计招募人数：<span id="rdrpnumber">20 </span></p>
-                              </div>
-                         <div class="rm-nav">
-                                  <img class="rimg" src="{% static 'project/imgs/require.svg'%}">招募要求:
-                              </div>
-                         <div class="rcontent">
-                                    {# 招募要求#}
-                                  <div class="rcontent-main">
-                                      <ul>
-                                        <li>1、 根据需求实现静态页面交互效果；</li>
-                                        <li>2、熟悉各浏览器的特性和W3C相关标准，对浏览器引擎及JS引擎有一定研究；</li>
-                                        <li>3、熟悉HTTP协议，RestAPI以及WebSocket等通讯协议；</li>
-                                        <li>4、熟悉常见前端开发框架、类库，对其实现机制及原理有深入研究；</li>
-                                        <li>5、对Node.js，AngularJS等前沿开发框架有一定研究者优先。</li>
-                                      </ul>
-                                  </div>
-                                    {# 招募进度条#}
-                                  <div class="r-number">
-                                       <div class="progress-pie-chart" data-percent="50">
-                                       <div class="ppc-progress">
-                                            <div class="ppc-progress-fill"></div>
-                                       </div>
-                                       <div class="ppc-percents">
-                                             <div class="pcc-percents-wrapper">
-                                             <span>%</span>
-                                             </div>
-                                       </div>
-                                  </div>
-                                       <p class="r-progress">当前招募进度</p>
-                                  </div>
-                         </div>
-                     </div>
-                     <div class="rfooter">
-                               <div class="rfcontent">
-                                    <div class="rbutton" id="rdrbutton">申请加入</div>
-                               </div>
-                          </div>
-                 </div>
+                        </div>
+                        <div class="rm-header">
+                            <div class="ribbon"><span class="ribbon3">招募帖</span></div>
+                            <p class="r-message" id="rdr-message">
+                                {{ recruit.StartTime | date:"Y.m.d" }}-{{ recruit.EndTime | date:"Y.m.d" }}&nbsp;&nbsp;|&nbsp;
+                                预计招募人数：<span id="rdrpnumber">{{ recruit.PredictNumber }}</span>
+                            </p>
+                        </div>
+                        <div class="rm-nav">
+                            <img class="rimg" src="{% static 'project/imgs/require.svg' %}">招募要求:
+                        </div>
+                        <div class="rcontent">
+                            {# 招募要求#}
+                            <div class="rcontent-main">
+                                {{ recruit.Describe }}
+                            </div>
+                            {# 招募进度条#}
+                            <div class="r-number">
+                                <div class="progress-pie-chart" data-percent="{{ recruit.RecruitedNumber }}">
+                                    <div class="ppc-progress">
+                                        <div class="ppc-progress-fill"></div>
+                                    </div>
+                                    <div class="ppc-percents">
+                                        <div class="pcc-percents-wrapper">
+                                            <span>{{ recruit.RecruitedNumber }}/{{ recruit.PredictNumber }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="r-progress">当前招募进度</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rfooter">
+                        <div class="rfcontent">
+                            <div class="rbutton" id="rdrbutton">申请加入</div>
+                        </div>
+                    </div>
+                </div>
 
-                 <div class="r-apply" id="rdr-apply">
-                      <div class="applyhead">
-                          <div class="ribbon"><span class="ribbon4">请填入申请理由</span></div>
-                      </div>
-{#                     <p class="applyhead">请填入申请理由</p>#}
-                     <textarea placeholder="" name="" id="comment-content2" class="apply-text"></textarea>
-                     <img class="close" id="rdclose" src="{% static 'project/imgs/close.svg'%}">
-                     <button class="subapply" id="rdsubapply">提交</button>
-                 </div>
+                <div class="r-apply" id="rdr-apply">
+                    <div class="applyhead">
+                        <div class="ribbon"><span class="ribbon4">请填入申请理由</span></div>
+                    </div>
+
+                    <textarea placeholder="" name="" id="comment-content2" class="apply-text"></textarea>
+                    <img class="close" id="rdclose" src="{% static 'project/imgs/close.svg' %}">
+                    <button class="subapply" id="rdsubapply">提交</button>
+                </div>
             </div>
             <div class="middle"></div>
-
+            <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
             <div class="content-footer">
                 {#                评论部分#}
                 <div class="comment">
@@ -139,139 +140,177 @@
                         <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                         <div class="carea">
                             <div class="tocomment">
-                                <textarea placeholder="" name="" id="comment-content1" class="comment-text"></textarea>
+                                <textarea placeholder="" name ="putcomment" id="comment-content1" class="comment-text"></textarea>
                             </div>
-                            <button class="putcomment" id="putcomment">评论</button>
+                            <button class="putcomment" id="rdputcomment">评论</button>
                         </div>
                     </div>
+                    {% for commentlist in comment%}
                     <div class="c-all" name="c-all">
                         <div class="cmain">
-                                  <img class="c-img" id="rduimg" src="{% static 'project/imgs/user.svg'%}">
-{#                                  可以加hover点上变成网站logo#}
-                                  <div class="comment-box">
-                                      <div class="comment-head">
-                                          <h6 class="comment-name "id="rduname"><a href=" ">Agustin Ortiz</a></h6>
-                                          <span class="cdate" id="rdcdate">2017-11-11</span>
-                                          <div class="c-option">
-                                              <img class="clike" id="rdclike" src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>
-                                              <img class="creply" id="rdcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="creport" id="rdcreport" src="{% static 'creation/imgs/report.png'%}">
-                                          </div>
-                                      </div>
-                                      <div class="comment-content">
-                                         <p id="rdc-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                      </div>
-                                      <div class="commentreply" id="commentreply">
-                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
-                                          <button class="putcomment" id="putcomment">回复</button>
-                                      </div>
-                                  </div>
-                              </div>
-                        <div class="c-reply">
-                                  <img class="rc-img"  src="{% static 'project/imgs/user.svg'%}">
-                                  <div class="rcomment-box">
-                                      <div class="rcomment-head">
-                                          <h6 class="rcomment-name "><a href=" ">Agustin Ortiz</a>  回复</h6>
-                                          <span class="rcdate">2017-11-11</span>
-                                          <div class="r-option">
-                                              <img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>
-                                              <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
-                                          </div>
-                                      </div>
-                                      <div class="rcomment-content">
-                                         <p id="rdr-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                                      </div>
-                                      <div class="commentreply" id="rcommentreply">
-                                          <textarea placeholder="" name=""  class="commentreply-text"></textarea>
-                                          <button class="putcomment" id="putcomment">回复</button>
-                                      </div>
-                                  </div>
-                              </div>
+                            <img class="c-img" id="rdimg" src="{% static 'project/imgs/user.svg' %}">
+                            {#                                  可以加hover点上变成网站logo#}
+                            <div class="comment-box">
+                                <div class="comment-head">
+                                    <h6 class="comment-name " id="rduname"><a href=" ">{{commentlist|firstcomment}}</a></h6>
+                                    <span class="cdate" id="rdcdate">{{commentlist|firstcommenttime|date:"Y/m/d"}}</span>
+                                    <div class="c-option">
+                                        <img class="clike" id="rdclike"
+                                             src="{% static 'project/imgs/like1.svg' %}"><span
+                                            class="clikenum">1111</span>
+                                        <img class="creply" id="rdcreply" src="{% static 'project/imgs/reply.svg' %}">
+                                        <img class="creport" id="rdcreport"
+                                             src="{% static 'creation/imgs/report.png' %}">
+                                    </div>
+                                </div>
+                                <div class="comment-content">
+                                    <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
+                                </div>
+                                <div class="commentreply" id="commentreply">
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomment" id="cputcomment">回复</button>
+                                </div>
+                            </div>
+                        </div>
+                            {%for comment in commentlist|leftcomment%}
+                            <div class="c-reply">
+                            <img class="rc-img" src="{% static 'project/imgs/user.svg' %}">
+                            <div class="rcomment-box">
+                                <div class="rcomment-head">
+                                    <h6 class="rcomment-name "><a href=" "> {{comment.user.UserName}}</a> 回复</h6>
+                                    <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
+                                    <div class="r-option">
+                                        <img class="rclike" id="rdrclike"
+                                             src="{% static 'project/imgs/like1.svg' %}"><span
+                                            class="rclikenum">1111</span>
+                                        <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg' %}">
+                                        <img class="rcreport" id="rdrcreport"
+                                             src="{% static 'creation/imgs/report.png' %}">
+                                    </div>
+                                </div>
+                                <div class="rcomment-content">
+                                    <p id="rdr-content">{{comment.Content}}</p>
+                                </div>
+                                <div class="commentreply" id="rcommentreply">
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomment" id="crputcomment">回复</button>
+                                </div>
+                            </div>
+                        </div>
+                            {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
     <div class="middle"></div>
-
     {% block script %}
         <script type="text/javascript" src="{% static  'creation/js/jquery-1.8.3.min.js' %}"></script>
-        <script>
-{#            招募进度条#}
-            $(function () {
-                var $ppc = $('.progress-pie-chart'),
-                    percent = parseInt($ppc.data('percent')),
-                    deg = 360 * percent / 100;
-                if (percent > 50) {
-                    $ppc.addClass('gt-50');
-                }
-                if (percent > 100){
-                    deg = 360;
-                }
-                $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
-                  $('.ppc-percents span').html( percent + '/' +  100);
-{#                $('.ppc-percents span').html('1' + '/' + percent/100);#}
-{#                进度条中间显示计算 已招募人数/预计招募人数#}
-                });
-                $("#comment11-22").click(function () {
-                   document.getElementById("comment-content1").focus();
-                });
-{#                申请加入下拉#}
-                $("#rdrbutton").click(function(){
-                    $("#rdr-apply").slideDown("slow");
-                });
-{#                收起提交申请部分#}
-                $("#rdclose").click(function(){
-                    $("#rdr-apply").slideUp("slow");
-                });
-{#                 提交部分#}
-                $("#rdsubapply").click(function(){
-                    $("#rdr-apply").slideUp("slow");
-                });
-{#                评论回复部分#}
-                $("#rdcreply").click(function(){
-                    $("#commentreply").slideDown("slow");
-                });
-                $("#rdrcreply").click(function(){
-                    $("#rcommentreply").slideDown("slow");
-                });
-                   {#                评论生成下方div#}
-                $("#rdreport").click(function(){
-
-                    swal({
-                          input: 'textarea',
-                          showCancelButton: true
-                        }).then(function(result) {
-                          if (result) {
-                            swal(result);
-                          }
-                    });
+        <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
+        <script type="text/javascript" src="{% static  'project/js/redetails.js' %}"></script>
 
 
-                });
-                $("#rdcreport").click(function(){
-                    swal({
-                        html:true,
-                        title:"请选择举报理由",
-                        text:"请输入正确邮箱！",
-                        type:"input"
-                    })
-                });
-                $("#rdrcreport").click(function(){
-                    swal({
-                        html:true,
-                        title:"请选择举报理由",
-                        text:"请输入正确邮箱！",
-                        type:"input"
-                    })
-                });
-
-        </script>
-
-{#<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>#}
-    <script type="text/javascript" src="{% static '/project/js/sweetalert.js' %}"></script>
     {% endblock %}
+    <script>
+        {#招募进度条#}
+        $(function () {
+            var percent = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
+            deg = 360 * percent;
+            if (percent > 0.5) {
+                $ppc.addClass('gt-50');
+            }
+            if (percent > 1) {
+                deg = 360;
+            }
+            $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
+        });
+
+        {#招募帖倒计时部分#}
+        $(function () {
+            var nowtimestamp = Date.parse(new Date())/1000;
+            var EndTimeStamp = {{ EndTime }};
+            var result = (EndTimeStamp  - nowtimestamp);
+            var lastday = result/(3600*24);
+            $("#rdlastday").text(Math.ceil(lastday));
+        });
+
+       {# 招募次数阿拉伯数字转换#}
+        $(function(){
+            var t = {{ recruit.Times }};
+            var times;
+            switch(t)
+            {
+                case 1: times = "一";
+                break;
+                case 2: times = "二";
+                break;
+                case 3: times = "三";
+                break;
+            }
+            $("#rdpstatus").text(times);
+        });
+
+        function changeImage(){
+                    element = document.getElementById('rdcoimg');
+                    if (element.src.match("collection0")) {
+                        element.src = '{% static '/project/imgs/star.png' %}';
+                    }
+                    else {
+                        element.src = '{% static '/creation/imgs/collection0.png' %}';
+                    }
+
+                }
+
+
+                $(function () {
+                        $.cookie("user", 3);
+                        userId = $.cookie("user");
+
+                        $("#rdplike").click(function () {
+                            var Id = window.location.href.split("=");
+                            Id = Id[Id.length - 1];
+                            like = $("#rdlikebutton")
+                            $.post("/idear/star",{userId:userId,starType:"2",Id:Id},function(data) {
+                                if (data == 1)    //点赞成功
+                                {
+                                    like.children().attr("src", "/static/project/imgs/liked.png");
+                                    like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) + 1)
+                                }
+                                else if (data == 0)
+                                    alert(data)
+                                else    //取消点赞成功
+                                {
+                                    like.children().attr("src", "/static/project/imgs/like1.svg");
+                                    like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) - 1)
+                                }
+                            })
+                        });
+});
+                $("#rdputcomment").click(function(){
+                    var reply_comment = document.getElementById("comment-content1").value;
+                    var projectid = document.getElementById("projectId").value;
+
+                    if (reply_comment === "" || reply_comment === undefined || reply_comment === null) {
+                         alert("请输入评论内容！")
+                    } else {
+                        $.post('project_comment',
+                            {
+                                "content": reply_comment,
+                                "projectId":projectid}, function (data) {
+                             //data = JSON.parse(data);
+
+                            if (data.status == 1) {
+                                 alert("Wrong");
+                            } else {
+                                $(".commentreply-text").val("");
+                                window.location.reload();
+                            }
+                        });
+                    }
+        });
+    </script>
+
 
 
 {% endblock %}

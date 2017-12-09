@@ -1,0 +1,304 @@
+{% extends '../base/base.html' %}
+
+{% block title %}Admin-Index{% endblock %} {# title #}
+{% block css %}
+    {% load static %}
+<!--file upload-->
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
+
+<link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
+    <!--multi-select-->
+    <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+<!-- include summernote css/js-->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+{# css #}
+
+{% endblock %}
+
+{% block heading %}   {# heading #}
+<ul class="breadcrumb">
+    <h3>项目管理</h3>
+    <li class="active">新增项目</li>
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                项目添加
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" id="signupForm" >
+                        <div class="form-group ">
+                            <label for="firstname" class="control-label col-lg-2">项目名称</label>
+                            <div class="col-lg-5">
+                                <input class=" form-control" id="firstname" name="firstname" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="timepicker" class="control-label col-lg-2">项目开始时间</label>
+                            <div class="col-md-5 col-xs-11">
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label col-lg-2" >项目状态</label>
+                            <div class="col-lg-10">
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="1"> 未开始
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="2"> 初期招募
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="3"> 第一阶段进行中
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="3"> 二次招募
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="3"> 项目结束
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="timepicker2" class="control-label col-lg-2">项目结束时间</label>
+                            <div class="col-md-5 col-xs-11">
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker2"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label col-lg-2" >身份</label>
+                            <div class="col-lg-10">
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="1"> 学生
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="2"> 教师
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserIdentity" value="3"> 团队
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="email" class="control-label col-lg-2">邮箱</label>
+                            <div class="col-lg-5">
+                                <input class="form-control " id="email" name="email" type="email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label col-lg-2" >性别</label>
+                            <div class="col-lg-5">
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserSex" value="1"> 男
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="addUserSex" value="2"> 女
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="confirm_password" class="control-label col-lg-2">人数</label>
+                            <div class="col-lg-5">
+                                <div id="spinner4">
+                                    <div class="input-group" style="width:150px;">
+                                        <div class="spinner-buttons input-group-btn">
+                                            <button type="button" class="btn spinner-up btn-primary">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999">
+                                        <div class="spinner-buttons input-group-btn">
+                                            <button type="button" class="btn spinner-down btn-warning">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">项目封面图片</label>
+                            <div class="col-md-10">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                                                   <span class="btn btn-default btn-file">
+                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                   <input type="file" class="default" />
+                                                   </span>
+                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">项目标签选择</label>
+                            <div class="col-md-9">
+                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
+                                        name="my_multi_select1[]">
+                                    <option>Dallas Cowboys</option>
+                                    <option>New York Giants</option>
+                                    <option selected>Philadelphia Eagles</option>
+                                    <option selected>Washington Redskins</option>
+                                    <option>Chicago Bears</option>
+                                    <option>Detroit Lions</option>
+                                    <option>Green Bay Packers</option>
+                                    <option>Minnesota Vikings</option>
+                                    <option selected>Atlanta Falcons</option>
+                                    <option>Carolina Panthers</option>
+                                    <option>New Orleans Saints</option>
+                                    <option>Tampa Bay Buccaneers</option>
+                                    <option>Arizona Cardinals</option>
+                                    <option>St. Louis Rams</option>
+                                    <option>San Francisco 49ers</option>
+                                    <option>Seattle Seahawks</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-default" type="button">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                项目介绍修改
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" >
+                        <div class="form-group" style="height: 500px">
+                            <label for="summernote1" class="control-label col-lg-2">项目介绍</label>
+                            <div class="col-lg-10">
+                                <div id="summernote1"></div>
+                            </div>
+                            <script type="text/javascript">
+                                $('#summernote1').summernote({
+                                    height:500,
+                                });
+                            </script>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-default" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                项目进度描述修改
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" >
+                        <div class="form-group" style="height: 500px">
+                            <label for="summernote2" class="control-label col-lg-2">进度描述</label>
+                            <div class="col-lg-10">
+                                <div id="summernote2"></div>
+                            </div>
+                            <script type="text/javascript">
+                                $('#summernote2').summernote({
+                                    height:500,
+                                });
+                            </script>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-default" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                项目总结修改
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" >
+                        <div class="form-group" style="height: 500px">
+                            <label for="summernote3" class="control-label col-lg-2">项目总结</label>
+                            <div class="col-lg-10">
+                                <div id="summernote3"></div>
+                            </div>
+                            <script type="text/javascript">
+                                $('#summernote3').summernote({
+                                    height:500,
+                                });
+                            </script>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-default" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{# body #}
+
+{% endblock %}
+
+
+{% block midscript %}   {# midescript #}
+    <script ype="text/javascript" src="{% static '/js/bootstrap-datepicker/js/bootstrap-datepicker.js'%}"></script>
+    <script ype="text/javascript" src="{% static '/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'%}"></script>
+    <script ype="text/javascript" src="{% static '/js/bootstrap-daterangepicker/moment.min.js'%}"></script>
+    <script src="{% static '/js/pickers-init.js' %}"></script>
+    {# multiple select #}
+    <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.multi-select.js'%}"></script>
+    <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.quicksearch.js'%}"></script>
+    <script type="text/javascript">
+        $('#my_multi_select1').multiSelect();
+    </script>
+    <script src="{% static '/js/multi-select-init.js'%}"></script>
+
+{% endblock %}
+
+{% block lastscript %}  {# lastscript #}
+
+{% endblock %}

@@ -3,8 +3,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-{#    <meta http-equiv=content-type content="text/html;charset=utf-8">#}
-{#    <meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>#}
     {% load static %}
     {% block title %} {% endblock %}
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
@@ -20,7 +18,7 @@
                 <ul class="menu">
                     <li class="sel"><a href="/idear/index" ><p>首页</p></a></li>
                     <li class="index_recruit"><a href="/idear/projects?sign=all"><p>招募项目</p></a></li>
-                    <li class=""><a href="#" ><p>开发项目</p></a></li>
+                    <li class=""><a href="/idear/deprojects?sign=all" ><p>开发项目</p></a></li>
                     <li class="index_creations"><a href="/idear/creations?sign=all"><p>创意灵感</p></a></li>
                     <li class="index_team"><a href="/idear/team?sign=all"><p>常驻团队</p></a></li>
                 </ul>
@@ -33,42 +31,34 @@
 					<input id="search" type="submit" value="">
 			    </div>
 		    </div>
-			<div class="sidebar" id="login_status_false" style="display: none">
-				<a href="login">
-					<div class="rlogin"><p>登录</p></div>
-				</a>
-				<a href="regist">
-					<div class="rregsiter"><p>注册</p></div>
-				</a>
-			</div>
             <div class="user_hidden" id="login_status_true" style="display: none">
-                <div class="user_figure">
+                <div class="user_figure" id="user_figure" onmouseover="block()" onmouseout="none()">
                     <a href="#">
-                        <img src="/static/idea/imgs/imgs/Experiment .jpg" style="width: 100%;height: 100%;" id="user_img">
+                        <img id="user_img" src="" style="width: 40px;height: 40px;" >
                     </a>
                 </div>
-                <div class="list_hidden">
-                    <em>&#9670;</em>
+            </div>
+            <div class="list_all">
+                <div class="list_left"></div>
+                <div class="list_hidden" id="list_user" onmouseout="none()" onmouseover="block()">
                     <div class="list_content">
-                        <div class="list_creation">
-                            <div class="list_image"></div>
-                            <div class="list_name">
-                                <p><a href="#">user name</a></p>
-                            </div>
-                        </div>
-                        <div class="list_line"></div>
-                        <div class="list_main">
-                            <div class="main_block"><p><a href="#">Your message</a></p></div>
-                            <div class="main_block"><p><a href="#">Your profile</a></p></div>
-                            <div class="main_block"><p><a href="#">Your star</a></p></div>
-                        </div>
-                        <div class="list_line"></div>
-                        <div class="list_foot">
-                            <div class="setting"><p><a href="#">Settings</a></p></div>
-                            <div class="log_out"><p><a href="#">Sign out</a></p></div>
-                        </div>
+                        <div class="list_block" id="user_name" ><p id="username"></p></div>
+                        <div class="list_block" id="my_homepage" ><p><a href="homepage"  target=”_blank">我的主页</a></p></div>
+                        <div class="list_block" id="my_inspiration"><p><a href="#">我的灵感</a></p></div>
+                        <div class="list_block" id="my_pro"><p><a href="#">我的项目</a></p></div>
+                        <div class="list_block" id="my_follow"><p><a href="#">我关注的</a></p></div>
+                        <div class="list_block" id="my_settings"><p><a href="editprofile"  target=”_blank">设置</a></p></div>
+                        <div class="list_block" id="logout"><p><a href="">退出</a></p></div>
                     </div>
                 </div>
+            </div>
+            <div class="sidebar" id="login_status_false" style="display: none">
+                <a href="login">
+                    <div class="rlogin"><p>登录</p></div>
+                </a>
+                <a href="regist">
+                    <div class="rregsiter"><p>注册</p></div>
+                </a>
             </div>
 		</div>
 		<div class="nav-bottom">
@@ -103,8 +93,5 @@
     <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
-
-    <script>
-    </script>
 </body>
 </html>

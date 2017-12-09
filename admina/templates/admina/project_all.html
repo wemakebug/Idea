@@ -1,0 +1,157 @@
+{% extends '../base/base.html' %}
+
+{% block title %}Admin-Project{% endblock %} {# title #}
+
+{% block heading %}
+
+{# heading #}
+<ul class="breadcrumb">
+    <h3>项目管理</h3>
+    <li class="active">全部项目</li>
+</ul>
+{% endblock %}
+
+{% block body %} {# body #}
+<div class="wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    全部项目
+                    <span class="tools pull-right">
+                                <a href="" class="fa fa-chevron-down"></a>
+                                <a href="" class="fa fa-times"></a>
+                             </span>
+                </header>
+                <div class="panel-body">
+
+                    <ul id="filters" class="media-filter">
+                        <li><a href="#" data-filter="*"> All</a></li>
+                        {% for label in Labels %}
+                            <li><a href="#" data-filter="*"> {{ label.ProjectLabelName }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-folder-open" href=""></i> 添加</button>
+                    </div>
+
+
+
+                    <div id="gallery" class="media-gal">
+                        {% for project in projects %}
+                            <div class=" images audio item " >
+                            <a href="#myModal" data-toggle="modal">
+                                <img src="/static/photos/{{ project.Img }}" alt="项目图片" id="progect-{{ project.Id }}" name="projects"/>
+                            </a>
+                            <p>{{ project.ProjectName }} </p>
+                        </div>
+                        {% endfor %}
+                    <div class="col-md-12 text-center clearfix">
+                        <ul class="pagination">
+                            <li><a href="#">«</a></li>
+                            {% for page in Pages %}
+                                <li><a href="#">{{ page }}</a></li>
+                            {% endfor %}
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">项目详情</h4>
+                                </div>
+
+                                <div class="modal-body row">
+
+                                    <div class="col-md-5 img-modal" id="project_detail">
+                                        <img src="" alt="" id="project_detail_img_path">
+                                        <a href="" class="btn btn-white btn-sm" id="project_detail_link"><i class="fa fa-eye"></i>项目详情</a>
+                                        <p class="mtop10">项目名称<strong id="ptoject_detail_name">File Name:</strong></p>
+                                        <p><strong>项目负责人:</strong> <a href="#" id="project_user_detail">未知</a></p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label>项目名称</label>
+                                            <input id="name" value="img01.jpg" class="form-control" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label> 开始时间</label>
+                                            <input id="title" value="awesome image" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label> Description</label>
+                                            <textarea rows="2" class="form-control"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label> 项目人数</label>
+                                            <input id="user_number" value="images/gallery/img01.jpg" class="form-control" type="number">
+                                        </div>
+                                        <div class="pull-right">
+                                            <button class="btn btn-danger btn-sm" type="button" id="delete_project_btn">删除</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- modal -->
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block midscript %}   {# midescript #}
+{% endblock %}
+
+{% block lastscript %}  {# lastscript #}
+    <script type="text/javascript">
+        $("img[name='projects']").click(function () {
+           var projectid = this.id.split('-')[1];
+            $.post(window.location.pathname,{"projectId":projectid},function (res) {
+                res = JSON.parse(res);
+                if(res.status === 1){
+                    document.getElementById("project_detail_img_path").src = "/static/photos/" + res.ImgPath;
+                    document.getElementById("ptoject_detail_name").textContent = res.ProjectName;
+                    document.getElementById("project_detail_link").setAttribute("href","/admina/project/" + projectid);
+                    $("input[id='name']").get(0).value = res.ProjectName;
+                    $("input[id='title']").get(0).value = res.ProjsctStartTime;
+                    $("input[id='user_number']").get(0).value = res.ProjectUserNumber;
+                    $("a[id='project_user_detail']").get(0).textContent = res.projectUserName;
+                    $("a[id='project_user_detail']").get(0).setAttribute("href","/admina/user/detail/" + res.projectUserId);
+                    var delete_btn= document.getElementById("delete_project_btn")
+                    delete_btn.onclick = function () {
+                        if(confirm("确认删除？")){
+                            $.post("project/delete/" + projectid, {},function (res) {
+                                res = JSON.parse(res);
+                                if(res.status === 1){
+                                    alert(res.message);
+                                window.location.reload();
+                                }else if(res.status === 0){
+                                    alert(res.message);
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                        };
+
+                }else if (res.status === 0){
+                    alert(res.message);
+                    window.location.reload();
+                }
+            })
+
+
+        });
+    </script>
+{% endblock %}

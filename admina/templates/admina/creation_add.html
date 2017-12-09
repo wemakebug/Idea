@@ -1,0 +1,162 @@
+{% extends '../base/base.html' %}
+
+{% block title %}Admin-Index{% endblock %} {# title #}
+{% block css %}
+    {% load static %}
+<!--file upload-->
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap-fileupload.min.css" />
+
+<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-datepicker/css/datepicker-custom.css" />
+
+<link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+{# css #}
+
+{% endblock %}
+
+{% block heading %}   {# heading #}
+<ul class="breadcrumb">
+    <h3>创意管理</h3>
+    <li class="active">新增创意</li>
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                创意添加
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" id="signupForm" >
+                        <div class="form-group ">
+                            <label for="firstname" class="control-label col-lg-2">创意名称</label>
+                            <div class="col-lg-5">
+                                <input class=" form-control" id="firstname" name="firstname" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="timepicker2" class="control-label col-lg-2">创建时间</label>
+                            <div class="col-md-5 col-xs-11">
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker2"/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="email" class="control-label col-lg-2">邮箱</label>
+                            <div class="col-lg-5">
+                                <input class="form-control " id="email" name="email" type="email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label col-lg-2" >是否可用</label>
+                            <div class="col-lg-5">
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="IsUse" value="0">可用
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="IsUse" value="1">不可用
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">创意封面图片</label>
+                            <div class="col-md-10">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                                                   <span class="btn btn-default btn-file">
+                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                   <input type="file" class="default" />
+                                                   </span>
+                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">标签选择</label>
+                            <div class="col-md-9">
+                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
+                                        name="my_multi_select1[]">
+                                    {% for label in labels %}
+                                        <option value="{{ label.Id }}">{{ label.ProjectLabelName }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-default" type="button">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                创意描述修改
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" >
+                        <div class="form-group" style="height: 270px">
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control" rows="9"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-default" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{# body #}
+
+{% endblock %}
+
+
+{% block midscript %}   {# midescript #}
+    <script ype="text/javascript" src="/static/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script ype="text/javascript" src="/static/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script ype="text/javascript" src="/static/js/bootstrap-daterangepicker/moment.min.js"></script>
+    {# multiple select #}
+    <script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
+    <script src="/static/js/multi-select-init.js"></script>
+
+    <script src="/static/js/pickers-init.js"></script>
+
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+{% endblock %}
+
+{% block lastscript %}  {# lastscript #}
+<script>
+    jQuery(document).ready(function(){
+         $('.wysihtml5').wysihtml5(
+             {
+                 height:"500px;"
+             }
+         );
+    });
+</script>
+{% endblock %}
+

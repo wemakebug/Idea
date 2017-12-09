@@ -14,27 +14,51 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from admina import views as views, reload as reload
+from . import views as views, reload as reload
 urlpatterns = [
+
+    # url(r'^login$', views.login),
+    # url(r'^logout$', views.logout),
+    # url(r'^score_rank$', views.score_rank),
+    # url(r'^score_record$', views.score_record),
+    # url(r'^user_score/(?P<page>\d+)$', views.score_user),
+    # url(r'^user_detail$', reload.user_detail),
+    # url(r'^UserManager$', views.UserManager),
+    # url(r'^label_user/(?P<page>\d+)$', reload.label_user),
+    # url(r'^label_project/(?P<page>\d+)$', reload.label_project),
+
     url(r'^login$', views.login),
     url(r'^logout$', views.logout),
-    url(r'^score_rank$', views.score_rank),
-    url(r'^score_record$', views.score_record),
-    url(r'^user_score/(?P<page>\d+)$', views.score_user),
-    url(r'^user_detail$', reload.user_detail),
-    url(r'^UserManager$', views.UserManager),
-    url(r'^label_user$', reload.label_user),
-    url(r'^label_project$', reload.label_project),
 
-    # test urls  deleted  enable
-    url(r'util1$', reload.util1),
-    url(r'util2$', reload.util2),
-    url(r'util3$', reload.util3),
-    url(r'util4$', reload.util4),
-    url(r'util5$', reload.util5),
+    url(r'^project/add$', views.project_add),
+    url(r'^project/all/(?P<page>(\d+)?)$', views.project_all),
+    url(r'^project/detail$', views.project_detail),
+    url(r'^project/recmanage/$', views.project_recmanage),
+    url(r'^project/recruit$', views.projet_recruit),
+    url(r'^project/delete/(?P<deleteId>(\d+))', views.project_delete),
 
-    # this url should always in the last
-    url(r'^$', views.login),
+    url(r'^user/add$', views.user_add),
+    url(r'^user/all/(?P<page>(\d+)?)$', views.user_all),
+    url(r'^user/detail/(?P<userid>(\d+)?)$', views.user_detail),
+    url(r'^user/introduction$', views.user_introduction),
+    url(r'^user/timeline$', views.user_timeline),
+
+    url(r'^label/project$', views.label_project),
+    url(r'^label/user$',views.label_user),
+    url(r'^label/relation', views.label_relation),
+
+    url(r'^creation/all/(?P<page>(\d+)?)/(?P<category>(\d+)?)$', views.creation_all),
+    url(r'^creation/all/$', views.creation_all),
+    url(r'^creation/add', views.creation_add),
 
 
+
+    url(r'^user_detail$', views.user_detail),
+    url(r'^profile$', views.Profile),
+    url(r'^PhotoGallery$', views.PhotoGallary),
+    url(r'^$', views.index),
 ]
+
+handler404 = views.page_not_found
+
+handler500 = views.permition_denied

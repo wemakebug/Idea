@@ -1,0 +1,244 @@
+{% extends '../base/base.html' %}
+
+{% block title %}Admin-Index{% endblock %} {# title #}
+{% block css %}
+    {% load static %}
+<!--file upload-->
+<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
+
+<link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
+    <!--multi-select-->
+    <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+
+<!-- include libraries(jQuery, bootstrap) -->
+    <link rel="stylesheet" type="text/css" href="{% static  'js/bootstrap-wysihtml5/bootstrap-wysihtml5.css' %}" />
+{# css #}
+
+{% endblock %}
+
+{% block heading %}   {# heading #}
+<ul class="breadcrumb">
+    <h3>用户管理</h3>
+    <li>用户：{{ user.UserName }}</li>
+    <li class="active">用户详情</li>
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                用户详情
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal adminex-form" id="signupForm" >
+                        <div class="form-group ">
+                            <label for="firstname" class="control-label col-lg-2">用户名称</label>
+                            <div class="col-lg-5">
+                                <input class=" form-control" id="firstname" name="firstname" type="text"  value="{{ user.UserName }}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="timepicker" class="control-label col-lg-2">用户注册时间</label>
+                            <div class="col-md-5 col-xs-11">
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text"  id="timepicker" value="12-02-2012"/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="firstname" class="control-label col-lg-2">学校</label>
+                            <div class="col-lg-5">
+                                <input class=" form-control" id="firstname" name="firstname" type="text" value="{{ user.School }}"/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="firstname" class="control-label col-lg-2">学院</label>
+                            <div class="col-lg-5">
+                                <input class=" form-control" id="firstname" name="firstname" type="text" value="{{ user.Institude }}"/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="firstname" class="control-label col-lg-2">专业</label>
+                            <div class="col-lg-5">
+                                <input class=" form-control" id="firstname" name="firstname" type="text" value="{{ user.Major }}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label col-lg-2" >身份</label>
+                            <div class="col-lg-10">
+                                <label class="checkbox-inline">
+                                    {% if user.Identity == 0 %}
+                                        <input type="radio" name="addUserIdentity" value="0" checked> 学生
+                                        {% else %}
+                                        <input type="radio" name="addUserIdentity" value="0"> 学生
+                                    {% endif %}
+                                </label>
+                                <label class="checkbox-inline">
+                                    {% if user.Identity == 1 %}
+                                        <input type="radio" name="addUserIdentity" value="1" checked> 教师
+                                        {% else %}
+                                        <input type="radio" name="addUserIdentity" value="1"> 教师
+                                    {% endif %}
+                                </label>
+                                <label class="checkbox-inline">
+                                    {% if user.Identity == 2 %}
+                                        <input type="radio" name="addUserIdentity" value="2" checked> 团队
+                                        {% else %}
+                                        <input type="radio" name="addUserIdentity" value="2"> 团队
+                                    {% endif %}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="email" class="control-label col-lg-2">邮箱</label>
+                            <div class="col-lg-5">
+                                <input class="form-control " id="email" name="email" type="email"  value="{{ user.Email }}"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label col-lg-2" >性别</label>
+                            <div class="col-lg-5">
+                                <label class="checkbox-inline">
+                                    {% if user.Sex == 0 %}
+                                        <input type="radio" name="addUserSex" value="0" checked> 男
+                                        {% else %}
+                                        <input type="radio" name="addUserSex" value="0" checked> 男
+                                    {% endif %}
+                                </label>
+                                <label class="checkbox-inline">
+                                    {% if user.Sex == 1 %}
+                                        <input type="radio" name="addUserSex" value="1" checked> 女
+                                        {% else %}
+                                        <input type="radio" name="addUserSex" value="1" > 女
+                                    {% endif %}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="confirm_password" class="control-label col-lg-2">分值</label>
+                            <div class="col-lg-5">
+                                <div id="spinner4">
+                                    <div class="input-group" style="width:150px;">
+                                        <div class="spinner-buttons input-group-btn">
+                                            <button type="button" class="btn spinner-up btn-primary">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999" value="{{ user.Score }}">
+                                        <div class="spinner-buttons input-group-btn">
+                                            <button type="button" class="btn spinner-down btn-warning">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">用户图片</label>
+                            <div class="col-md-10">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        {% if user.Img %}
+                                            <img src="/static/photos/{{ user.Img }}" alt="用户头像" style="width: 150px;height: 200px;"/>
+                                            {% else %}
+                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="用户没有上传图片" />
+                                        {% endif %}
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                                                   <span class="btn btn-default btn-file">
+                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
+                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                   <input type="file" class="default" />
+                                                   </span>
+                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">用户标签选择</label>
+                            <div class="col-md-9">
+                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
+                                        name="my_multi_select1[]">
+                                    {% for user_label in user_labels %}
+                                        <option>{{ user_label.Name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-default" type="button">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                自我介绍
+            </header>
+            <div class="panel-body">
+                <div class="form-group">
+                        <div class="col-md-10 col-lg-offset-2">
+                            <textarea class="wysihtml5 form-control" rows="9"></textarea>
+                        </div>
+                </div>
+                <br>
+                <div class="form-group last">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-default" type="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{# body #}
+
+{% endblock %}
+
+
+{% block midscript %}   {# midescript #}
+    <script ype="text/javascript" src="{% static '/js/bootstrap-datepicker/js/bootstrap-datepicker.js'%}"></script>
+    <script ype="text/javascript" src="{% static '/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'%}"></script>
+    <script ype="text/javascript" src="{% static '/js/bootstrap-daterangepicker/moment.min.js'%}"></script>
+    <script type="text/javascript">
+        $('.default-date-picker').datepicker({
+        format: 'yyyy-mm-dd'
+        });
+{#        $('.default-date-picker').setDate({{ user.RegistTime }});#}
+{#        alert({{ user.RegistTime }});#}
+{#        alert("ok");#}
+    </script>
+    {# multiple select #}
+    <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.multi-select.js'%}"></script>
+    <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.quicksearch.js'%}"></script>
+    <script type="text/javascript">
+        $('#my_multi_select1').multiSelect();
+
+    </script>
+
+    {% comment %} bootstrap-wysihtml {% endcomment %}
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+{% endblock %}
+
+{% block lastscript %}  {# lastscript #}
+<script>
+    jQuery(document).ready(function(){
+         $('.wysihtml5').wysihtml5();
+    });
+</script>
+{% endblock %}

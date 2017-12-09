@@ -18,11 +18,9 @@ $(function() {
 
 
 $(function () {
-
 $.cookie("user",3)
 
 userId = $.cookie("user")
-
 
 // 创意关注操作
 $(".follow").click(function(){
@@ -45,6 +43,7 @@ $(".follow").click(function(){
 })
 
 })
+
 
 //创意点赞操作
 $(".like").click(function(){
@@ -70,4 +69,5 @@ $(".like").click(function(){
 })
 
 })
+
 

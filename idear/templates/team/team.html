@@ -9,63 +9,73 @@
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
 {%endblock%}
 {%block content%}
-    <div class="first">
-        <div class="second_0">
-            {% for team in teams %}
-                <div class="border_0">
-                    <div class="photo_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-                        <img src="{% static 'team/imgs/team.jpg' %}" style=" width: 100% ;height: 100%;border-radius: 6px;"  alt="">
-                    </div>
-                    <div class="referral">
-                        <h3 onclick="window.location.href='teamdetails/{{ team.Id }}'">{{ team.UserName }}</h3>
-                        <p >入驻时间：      {{ team.RegistTime }}</p>
-                    </div>
+    <div style="width: 100%">
+        <div class="teamShow">
+            <div class="thisLeft">
+                {% for team in teams %}
+                    <div class="border_0">
+                        <div class="photo_0" onclick="window.open('teamdetails/{{ team.Id }}')">
+                            <img src="/static/photos/{{ team.Img }}" style=" width: 100% ;height: 100%;border-radius: 6px;"  onerror="this.src='../../static/team/imgs/logo.jpg'" alt="">
+                        </div>
+                        <div class="referral">
+                            <h3 onclick="window.open('teamdetails/{{ team.Id }}')">{{ team.UserName }}</h3>
+                            <p >入驻时间：      {{ team.RegistTime }}</p>
+                        </div>
 
-                    <div style="height: 50%">
-                        <div class="leftMatter">
-                            <div class="teamTag">
-                                团队标签：
-                                <span class="repo-language-color pinned-repo-meta" style="background-color:#f1e05a;"></span>
-                                大数据
-                                <span class="repo-language-color pinned-repo-meta" style="background-color: #0b94ea;"></span>
-                                JavaScript
+                        <div style="height: 50%">
+                            <div class="leftMatter">
+                                    团队标签：
+                                    {% for User2 in User2UserLabel  %}
+                                            {% if User2.user.Id == team.Id %}
+                                                <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
+                                                <a style=" font-size: 14px;color: #7A8B8B;">{{ User2.userLabel.Name}}</a>
+                                            {% endif %}
+                                    {% endfor %}
+                            </div>
+
+                            <div class="content_0" onclick="window.open('teamdetails/{{ team.Id }}')">
+                                {{ team.Introduction }}
                             </div>
                         </div>
-                        <div class="content_0" onclick="window.location.href='teamdetails/{{ team.Id }}'">
-                            {{ team.Introduction }}
+                        <div class="feature">
+                            <button class="applyHelp" onclick="window.location.href='teamhelpapplication/{{ team.Id }}'">申请帮助</button>
+                            <div class="praise" >
+                                <span class="praise_0" team="{{ team.Id }}"><img src="../../static/team/imgs/zan.png" name="praise_img" /> </span>
+                                 {% for praise in praises %}
+                                    {% if praise.user_id == userId and praise.user_prised_id == user.Id %}
+                                        <img src="../../static/team/imgs/yizan.png" name="praise_img" />
+                                    {% endif %}
+                                {% endfor %}
+                                <span class="praise-txt">{{ team.Praised_User_set.count }}</span>
+                                <span class="add-num"><em>+1</em></span>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="feature">
-                        <button class="applyHelp" onclick="window.location.href='teamhelpapplication2'">申请帮助</button>
-                        <div class="praise" team="{{ team.Id }}">
-                            <span id="praise" class="praise_0"><img src="{% static '/team/imgs/zan.png' %}" id="praise-img" /> </span>
-                            <span id="praise-txt" class="praise-txt">1123{{Praise.project}}</span>
-                            <span id="add-num" class="add-num"><em>+1</em></span>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            <a class="more_0">加载更多</a>
-            <div class="clear"></div>
-        </div>
-        <div class="broadSide" id="broadSide">
-            <div class="intro_1">
-                <img src="{% static 'creation/imgs/light.png' %}"
-                         style="width:40px;height:40px;margin:-20px 0px 26px -10px">
-                <img src="{% static '/idea/imgs/idea_logo.png' %}" style="width:40px;height:40px;margin:0">
-{#                <span>Team</span>#}
-                <p> 创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
+                {% endfor %}
+                <a class="more_0">加载更多</a>
+                <div class="clear"></div>
             </div>
-            <div class="classify">
-                <div class="tag">
-                    <img src="{% static '/creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
-                    <span>标签</span>
-                    <hr style="width: 100%">
-                    <a href="team?sign=all" sign="all"><span class="allsign">所有</span></a>
-                    {% for obj in labels %}
-                        <a href="team?sign={{ obj.Id }}" sign="{{ obj.Id }}">
-                            <span class="allsign">{{ obj.Name }}</span></a>
-                    {% endfor %}
+            <div class="thisRight" id="broadSide">
+                <div class="intro_1">
+                    <img src="{% static 'creation/imgs/light.png' %}"
+                             style="width:40px;height:40px;margin:-20px 0px 26px -10px">
+                    <img src="{% static '/idea/imgs/idea_logo.png' %}" style="width:40px;height:40px;margin:0">
+    {#                <span>Team</span>#}
+                    <p> 创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
+                </div>
+                <div class="classify">
+                    <div class="tag">
+                        <img src="{% static '/creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                        <span>标签</span>
+                        <hr style="width: 100%">
+                        <a href="team?sign=all" sign="all"><span class="allsign">所有</span></a>
+                        {% for obj in labels %}
+                            <a href="team?sign={{ obj.Id }}" sign="{{ obj.Id }}">
+                                <span class="allsign">{{ obj.Name }}</span>
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,59 +83,6 @@
 {% endblock %}
 {%block script%}
     <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
-<script type="text/javascript">
-    $(function(){
-        $("#praise").live("click",function () {
-            var praise_img = $("#praise-img");
-            var text_box = $("#add-num");
-            var praise_txt = $("#praise-txt");
-            var num=parseInt(praise_txt.text());
-{#			alert("11111")#}
-            if(praise_img.attr("src") == ("{% static 'team/imgs/yizan.png' %}")){
-                $(this).html("<img src='{% static 'team/imgs/zan.png' %}' id='praise-img' class='animation' />");
-                praise_txt.removeClass("hover");
-                text_box.show().html("<em class='add-animation'>-1</em>");
-                $(".add-animation").removeClass("hover");
-                num -=1;
-                praise_txt.text(num)
-            }else{
-                $(this).html("<img src='{% static 'team/imgs/yizan.png' %}' id='praise-img' class='animation' />");
-                praise_txt.addClass("hover");
-                text_box.show().html("<em class='add-animation'>+1</em>");
-                $(".add-animation").addClass("hover");
-                num +=1;
-                praise_txt.text(num)
-            }
-        });
-	})
-
-
-$(function() {
-    $(".border_0").slice(0, 6).show();
-    if ($(".border_0").length <= 6) {
-        $(".more_0").hide();
-    }
-    $(".more_0").on('click',function(e) {
-        e.preventDefault();
-        $(".border_0:hidden").slice(0, 6).slideDown();
-        if ($(".border_0:hidden").length == 0) {
-            $(".more_0").fadeOut('slow');
-        }
-    });
-});
-
-    $(document).ready(function () {
-            $(".content_0").
-            each(function () {
-                var maxwidth = 136;
-                if ($(this).text().length > maxwidth) {
-                    $(this).text($(this).text().substring(0, maxwidth));
-                    $(this).html($(this).html() +'…')
-                    ;
-                }
-            });
-        });
-
-</script>
+    <script type="text/javascript" src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'team/js/team.js'%}"></script>
 {%endblock%}

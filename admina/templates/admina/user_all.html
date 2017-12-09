@@ -1,0 +1,102 @@
+{% extends '../base/base.html' %}
+
+{% block title %}Admin-User{% endblock %} {# title #}
+
+{% block heading %}   {# heading #}
+<ul class="breadcrumb">
+    <h3>用户管理</h3>
+    <li>
+        <a href="#">全部用户</a>
+    </li>
+    <li class="active">全部用户</li>
+</ul>
+{% endblock %}
+
+{% block body %} {# body #}
+<div class="wrapper">
+    <div class="directory-info-row">
+        <div class="row">
+            {% for user in users %}
+                <div class="col-md-6 col-sm-6">
+                <div class="panel">
+                    <div class="panel-body">
+                        <h4>{{ user.UserName }} <span class="text-muted small">
+                            {% if user.Identity == 2 %}
+                                - 团队
+                                {% elif user.Identity == 1 %}
+                                - 教师
+                                {% elif user.Identity == 0 %}
+                                - 学生
+                            {% endif %}
+                        </span></h4>
+                        <div class="media">
+                            <a class="pull-left" href="/admina/user/detail/{{ user.Id }}">
+                                <img class="thumb media-object" src="/static/photos/{{ user.Img }}" alt="头像暂未上传" style="height: 103px;width: 103px">
+                            </a>
+                            <div class="media-body">
+                                <address>
+                                    <strong>账号： {{ user.Account }}</strong><br>
+                                    性别：{% if  user.Sex == 0 %}
+                                        男
+                                    {% else %}女
+                                    {% endif %}<br>
+                                    邮箱： {{ user.Email }} <br>
+                                    注册时间：{{ user.RegistTime }}<br>
+                                    <abbr title="Phone">电话：</abbr>{% if user.Phone %}{{ user.Phone }}{% else %}暂未填写{% endif %}<br>
+                                </address>
+                                <ul class="social-links">
+                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="/admina/user/detail/{{ user.Id }}" data-original-title="修改"><i class="fa fa-wrench"></i></a></li>
+                                    <li><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" name="user_delete" id="id-{{ user.Id }}" data-original-title="删除"><i class="fa fa-times"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+            <ul class="directory-list col-md-8">
+                {% for page in pages %}
+                    <li><a href="/admina/user/all/{{ page }}">{{ page }}</a></li>
+                {% endfor %}
+            </ul>
+        <div class="col-md-2"></div>
+    </div>
+
+</div>
+{% endblock %}
+
+
+{% block midscript %}   {# midescript #}
+
+{% endblock %}
+
+{% block lastscript %}  {# lastscript #}
+<script type="text/javascript">
+    $("a[name='user_delete']").click(function () {
+        var deleteId = this.id.split('-')[1];
+        if(confirm("确认删除？")){
+            $.post(window.location.pathname,{"deleteId":deleteId}, function (res) {
+                res = JSON.parse(res);
+                if(res.status === 1){
+                    window.location.reload();
+                }else {
+                    alert(res.message);
+                    window.location.reload();
+                }
+            })
+        }
+    })
+</script>
+{% endblock %}
