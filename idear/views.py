@@ -928,7 +928,13 @@ def deprojects(req):
             #  如果是所有项目
             if sign == "all":
                 projects = Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
-                Project2ProjectLabels = Project2ProjectLabel.objects.filter(Q(project__Statue=3)|Q(project__Statue=5))
+                for project in projects:
+                    Labels = Project2ProjectLabel.objects.filter(project__Id=project.Id)
+                    alllables = []  # 找出本创意所有的标签
+                    for label in Labels:
+                        alllables.append(label.projectLabel.Id)
+                    alllables = list(set(alllables))
+                    project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
 
             else:
                 projects = []
@@ -936,7 +942,7 @@ def deprojects(req):
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
 
-            return render_to_response('project/deprojects.html', {'projectLabels': ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels":Project2ProjectLabels})
+            return render_to_response('project/deprojects.html', {'projectLabels': ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels":Project2ProjectLabel})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
