@@ -15,6 +15,7 @@ from admina import models
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import uuid
 import re, base64
+from django.utils.html import escapejs
 
 try:
     from StringIO import StringIO

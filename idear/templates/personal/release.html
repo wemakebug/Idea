@@ -151,4 +151,8 @@
         }
 	</script>
     <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
+    <script>
+        var sHTML = $('#summernote').code();
+        alert(sHTML);
+    </script>
 {% endblock %}
