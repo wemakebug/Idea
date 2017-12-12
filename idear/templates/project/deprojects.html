@@ -34,10 +34,10 @@
                         </a>
                         <div class="project_middle">
                             <span class="project_middle_fix">项目标签：</span>
-
-                            <span class="project_middle_icon"></span>
-                            <span class="project_middle_text"> </span>
-
+                            {%for re in  Project2ProjectLabels%}
+                                <span class="project_middle_icon"></span>
+                                <span class="project_middle_text">{{re.ProjectLabelName}}</span>
+                            {% endfor %}
                         <br>
                         </div>
                         <div class="project_bottom_top">

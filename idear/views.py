@@ -927,12 +927,15 @@ def deprojects(req):
             #  如果是所有项目
             if sign == "all":
                 projects = Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
+                Project2ProjectLabels = Project2ProjectLabel.objects.filter(Q(project__Statue=3)|Q(project__Statue=5))
+
             else:
                 projects = []
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-            return render_to_response('project/deprojects.html', {'projectLabels': ProjectLabel.objects.all(), "projects": projects})
+
+            return render_to_response('project/deprojects.html', {'projectLabels': ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels":Project2ProjectLabels})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
@@ -954,6 +957,7 @@ def dedetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        print(labels)
         praises = Praise.objects.all()
         follows = Follow.objects.all()
         comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
