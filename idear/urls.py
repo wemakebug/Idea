@@ -18,14 +18,16 @@ from idear import views as views
 from django.conf import settings
 from django.conf.urls.static import static
 
+app_name = 'idear'
+
 urlpatterns = [
-    url(r'^index$', views.index),
+    url(r'^index$', views.index, name='index'),
     url(r'^login$', views.login),
     url(r'^regist$', views.regist),
     url(r'^team$', views.team),
     url(r'^teamdetails$', views.teamdetails),
     url(r'^praise$',views.creations),
-    url(r'^teamdetails/(?P<teamid>\d+)$', views.teamdetails),
+    url(r'^teamdetails/(?P<teamid>\d+)/$', views.teamdetails),
     url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
     url(r'^forgetPassword$', views.forgetPassword),
