@@ -15,6 +15,7 @@ from admina import models
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import uuid
 import re, base64
+from django.utils.html import escapejs
 
 try:
     from StringIO import StringIO
@@ -292,7 +293,7 @@ def logout(req):
     :return: 
     '''
     if req.method == "GET":
-        response = render_to_response('idea/index.html')
+        response = render_to_response('idea/Base.html')
         response.delete_cookie('username')
         response.delete_cookie('email')
         return response
@@ -889,7 +890,7 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = Project.objects.all().order_by("EndTime")
+                projects = Project.objects.all().order_by("StartTime")
             else:
                 projects = []
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
@@ -915,48 +916,64 @@ def projects(req):
 ''' 招募项目相关页面结束'''
 
 ''' 开发项目相关页面开始'''
+
 @csrf_exempt
 def deprojects(req):
     '''
-    招募项目一级二级页面项目显示
+    开发项目一级页面项目显示
     '''
-    # try:
-    #     if req.method == 'GET':
-    #         sign = req.GET['sign']
-    #         #  如果是所有项目
-    #         if sign == "all":
-    #             projects = Project.objects.all().order_by("EndTime")
-    #         else:
-    #             projects = []
-    #             ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
-    #             for obj in ProjectLabelObjs:
-    #                 projects.append(obj.project)
-    #         #################
-    #         recruit_all = []
-    #         for project in projects:
-    #             recruit = models.Recruit.objects.filter(project__Id=project.Id)
-    #             recruit_all.append(recruit)
-    #
-    #         all_recruit = zip(projects, recruit_all)
-    #         return render_to_response('project/recruit.html', {'projectLabels': ProjectLabel.objects.all(), "all_recruit": all_recruit})
-    #     else:
-    #         id = req.POST['projectId']
-    #         project = get_object_or_404(Project, pk=id)
-    #         comments = Comment.objects.fitler(project=id).order_by('Date')
-    #         return render_to_response('project/recruit.html',
-    #                                   {'comments': comments})
-    # except Exception as e:
-    #     print(e)
-    #     return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
-    if req.method == 'GET':
-        return render_to_response('project/deprojects.html')
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                projects = Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
+                for project in projects:
+                    Labels = Project2ProjectLabel.objects.filter(project__Id=project.Id)
+                    alllables = []  # 找出本创意所有的标签
+                    for label in Labels:
+                        alllables.append(label.projectLabel.Id)
+                    alllables = list(set(alllables))
+                    project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
+
+            else:
+                projects = []
+                ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
+                for obj in ProjectLabelObjs:
+                    projects.append(obj.project)
+
+            return render_to_response('project/deprojects.html', {'projectLabels': ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels":Project2ProjectLabel})
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(Project, pk=id)
+            comments = Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/deprojects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
     if req.method == 'POST':
         pass
 
 @csrf_exempt
 def dedetails(req):
+    '''
+    开发项目二级页面详情
+    '''
     if req.method == 'GET':
-        return render_to_response('project/dedetails.html')
+        projectId = req.GET['projectId']
+        project = Project.objects.get(Id=projectId)
+        labels = Project2ProjectLabel.objects.filter(project_id=projectId)
+        print(labels)
+        praises = Praise.objects.all()
+        follows = Follow.objects.all()
+        comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
+
+        alllables = []  # 找出本项目所有的标签
+        for label in labels:
+            alllables.append(label.projectLabel.Id)
+            alllables = list(set(alllables))
+        return render_to_response('project/dedetails.html',{"project":project,"labels": labels[:3],})
     if req.method == 'POST':
         pass
 

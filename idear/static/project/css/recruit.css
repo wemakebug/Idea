@@ -8,7 +8,7 @@
 body, html {
     background-color: #f1f1f1;
     transition: 0.2s ease-out;
-    font-family: 幼圆;
+    /*font-family: 幼圆;*/
     min-width: 1300px;
     max-width: 3000px;
 }

@@ -352,12 +352,64 @@ def label_relation(req, uid=None):
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
-def creation_all(req, uid=None):
+def creation_all(req, page=None, category=None):
+    '''
+    :param page: 当前查询创意的页数
+    :param category: 当前查询的创意所含标签
+    '''
     if req.method == "GET":
-        if uid:
-            pass
+        itemsPerPage = 15
+        pages = math.ceil(float(models.Creation.objects.count()) / float(itemsPerPage)) # 计算页数
+        Labels = models.ProjectLabel.objects.all()
+        if page:
+            if category:
+                # 页数和分类同时存在
+                Creations = []
+                label = models.ProjectLabel.objects.get(Id=category)
+                pages = models.Creation2ProjectLabel.objects.filter(projectLabel=label).count()
+                Creation2ProjectLabels = models.Creation2ProjectLabel.objects.filter(projectLabel=label)[int(page-1)*itemsPerPage:int(page)*itemsPerPage]
+                for Creation2ProjectLabel in Creation2ProjectLabels:
+                    Creations.append(Creation2ProjectLabel.creation)
+                return render(req, 'admina/creation_all.html', {
+                    "Labels": Labels,
+                    "category": category,
+                    "pages": range(1, int(pages) + 1),
+                    "Creations": Creations,
+                })
+            else:
+                # 只存在页数
+                Creations = models.Creation.objects.all()[(int(page)-1)*itemsPerPage:int(page)*itemsPerPage]
+                return render(req, 'admina/creation_all.html', {
+                    "Labels": Labels,
+                    "category": category,
+                    "pages": range(1, int(pages) + 1),
+                    "Creations":Creations
+                })
         else:
-            return render(req, 'admina/creation_all.html')
+            if not category:
+                # 不存在页数同时不存在分类
+                Creations = models.Creation.objects.all()[:itemsPerPage]
+            else:
+                # 不存在页数但存在分类
+                try:
+                    Creations = []
+                    label = models.ProjectLabel.objects.get(Id=category)
+                    Creation2ProjectLabels = models.Creation2ProjectLabel.objects.filter(projectLabel=label)
+                    for Creation2ProjectLabel in Creation2ProjectLabels:
+                        Creations.append(Creation2ProjectLabel.creation)
+                except Exception as e:
+                    print(e)
+                    Creations = models.Creation.objects.all()[:itemsPerPage]
+
+            return render(req, 'admina/creation_all.html',
+                              {
+                                   "Creations": Creations,
+                                   "Labels": Labels,
+                                   "CurrentPage": page,
+                                   "category": category,
+                                   "pages": range(1, int(pages) + 1)
+                               }
+                          )
     else:
         pass
 
@@ -366,10 +418,13 @@ def creation_all(req, uid=None):
 @require_http_methods(["GET", "POST"])
 def creation_add(req, uid=None):
     if req.method == "GET":
+        labels = models.ProjectLabel.objects.all()
         if uid:
             pass
         else:
-            return render(req, 'admina/creation_add.html')
+            return render(req, 'admina/creation_add.html', {
+                "labels": labels,
+            })
     else:
         pass
 

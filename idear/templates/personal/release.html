@@ -46,9 +46,6 @@
         </div>
     </div>
     <div class="pro_status">
-{#        <div class="useInstr">#}
-{#            <input type="button" value="使用说明" id="agreeing" class="input-use">#}
-{#        </div>#}
         <div class="now_status">
             <p>状态：创建中</p>
         </div>
@@ -56,6 +53,9 @@
     <div class="main_pro_con" id="main_pro_con">
         <div class="add_img">
             <div class="chance_add">
+                <div class="pro_cover">
+                    <p>封面图</p>
+                </div>
                 <div id="tbody">
                     <div>
                         <p>
@@ -99,14 +99,12 @@
         </div>
     </div>
 </div>
-{#<div class="bulletWindow">#}
-{#</div>#}
 <div class="pop-up">
     <div class="pop_1">
         <p> 欢迎您，</p>
         <p id="username2" class="pop_user"></p>
     </div>
-    <div>
+    <div class="contInstruc">
         1.在开始发布项目前，请您认真阅读此说明，这将帮助您更好开启项目之旅。
         <br>
         2.系统默认项目公开程度为公开，您也可以选择隐私选项，系统将自动为您加密部分内容。
@@ -153,4 +151,8 @@
         }
 	</script>
     <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
+    <script>
+{#        var sHTML = $('#summernote').code();#}
+{#        alert(sHTML);#}
+    </script>
 {% endblock %}

@@ -18,7 +18,7 @@
         <div class="col-sm-12">
             <section class="panel">
                 <header class="panel-heading">
-                    全部项目
+                    全部创意
                     <span class="tools pull-right">
                                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                                 <a href="javascript:;" class="fa fa-times"></a>
@@ -27,116 +27,40 @@
                 <div class="panel-body">
 
                     <ul id="filters" class="media-filter">
-                        <li><a href="#" data-filter="*"> All</a></li>
-                        <li><a href="#" data-filter=".images">Images</a></li>
-                        <li><a href="#" data-filter=".audio">Audio</a></li>
-                        <li><a href="#" data-filter=".video">Video</a></li>
-                        <li><a href="#" data-filter=".documents">Documents</a></li>
+                        <div class="row">
+
+                            <li><a href="#" data-filter="*" > All</a></li>
+                            {% for label in Labels %}
+                                <li>
+                                    <a href="{{ label.Id }}" data-filter="*" >{{ label.ProjectLabelName | slice:"5" }}</a>
+                                </li>
+                            {% endfor %}
+                        </div>
                     </ul>
 
                     <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-check-square-o"></i> Select all</button>
                         <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i> Add New</button>
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash-o"></i> Delete</button>
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-upload"></i> Upload New File</button>
                     </div>
 
 
 
                     <div id="gallery" class="media-gal">
-                        <div class="images item " >
+                        {% for creation in Creations %}
+                            <div class="images item " >
                             <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" />
+                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" id="{{ creation.Id }}"/>
                             </a>
-                            <p>img01.jpg </p>
+                            <p>{{ creation.Name | slice:"10" }}</p>
                         </div>
-
-                        <div class=" audio item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image2.jpg'%}" alt="" />
-                            </a>
-                            <p>img02.jpg </p>
-                        </div>
-
-                        <div class=" video item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image3.jpg'%}" alt="" />
-                            </a>
-                            <p>img03.jpg </p>
-                        </div>
-
-                        <div class=" images audio item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image4.jpg'%}" alt="" />
-                            </a>
-                            <p>img04.jpg </p>
-                        </div>
-
-                        <div class=" images documents item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image5.jpg'%}" alt="" />
-                            </a>
-                            <p>img05.jpg </p>
-                        </div>
-
-                        <div class=" audio item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" />
-                            </a>
-                            <p>img01.jpg </p>
-                        </div>
-
-                        <div class=" documents item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image2.jpg'%}" alt="" />
-                            </a>
-                            <p>img02.jpg </p>
-                        </div>
-                        <div class=" video item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image3.jpg'%}" alt="" />
-                            </a>
-                            <p>img03.jpg </p>
-                        </div>
-
-                        <div class=" images item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image4.jpg'%}" alt="" />
-                            </a>
-                            <p>img04.jpg </p>
-                        </div>
-
-                        <div class=" documents item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image5.jpg'%}" alt="" />
-                            </a>
-                            <p>img05.jpg </p>
-                        </div>
-
-                        <div class=" video item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" />
-                            </a>
-                            <p>img01.jpg </p>
-                        </div>
-
-                        <div class="audio images item" >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image2.jpg'%}" alt="" />
-                            </a>
-                            <p>img02.jpg </p>
-                        </div>
-
+                        {% endfor %}
                     </div>
 
                     <div class="col-md-12 text-center clearfix">
                         <ul class="pagination">
                             <li><a href="#">«</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
+                            {% for page in pages %}
+                                <li><a href="#">{{ page }}</a></li>
+                            {% endfor %}
                             <li><a href="#">»</a></li>
                         </ul>
                     </div>

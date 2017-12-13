@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^apply$', views.apply),
     url(r'^recruit$', views.projects),
     url(r'^redetails/$', views.redetails),
-    url(r'^deprojects/$', views.deprojects),
+    url(r'^deprojects$', views.deprojects),
     url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
     url(r'^crdetails$', views.crdetails),

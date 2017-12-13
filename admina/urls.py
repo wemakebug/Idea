@@ -47,8 +47,10 @@ urlpatterns = [
     url(r'^label/user$',views.label_user),
     url(r'^label/relation', views.label_relation),
 
-    url(r'^creation/all', views.creation_all),
+    url(r'^creation/all/(?P<page>(\d+)?)/(?P<category>(\d+)?)$', views.creation_all),
+    url(r'^creation/all/$', views.creation_all),
     url(r'^creation/add', views.creation_add),
+
 
 
     url(r'^user_detail$', views.user_detail),

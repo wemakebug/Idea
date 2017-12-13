@@ -32,7 +32,8 @@ ul li{
 .header{
     width: 100%;
     height:66px;
-    background:#539092;
+    background:#7495B7;
+    /*background: #4F7EAE;*/
 }
 .logo{
     float:left;
@@ -64,15 +65,12 @@ ul li{
     text-align:center;
     line-height:66px;
     overflow:hidden;
-
 }
 .active{
-    background: #295E6A;
-    border-left:1px solid #cccccc;
-    border-right:1px solid #cccccc ;
+    background: #29639F;
 }
 .nav_main ul li:hover{
-    background:#295E6A;
+    background:#29639F;
 }
 .search1{
     float:left;
@@ -130,7 +128,7 @@ ul li{
     width: 20%;
     height: 40%;
     margin-top: 7.5%;
-    background:#295E6A ;
+    background:#29639F ;
     float: left;
     overflow: hidden;
     border-radius: 3px;
@@ -195,9 +193,8 @@ ul li{
     width:14%;
     margin-top:-67px;
     float: right;
-    /*background: rgb(255, 251, 240);*/
     height:920px;
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    background-color: #878D99;
 }
 .list_content{
     width:100%;
