@@ -5,10 +5,10 @@
 {%block title%}<title>开发项目</title>{%endblock%}
 
 {%block CSS%}
-
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
     <link rel="stylesheet" href="{% static 'project/css/deprojects.css' %}">
-
+    <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
 {%endblock%}
 
 {% block content %}
@@ -16,57 +16,116 @@
         <div class="bg_left">
             <div class="bg_project">
 
-                    <div class="project_top">
-                        <div style="display:none;width:100%;height: 100%"> </div>
-                        <a href="redetails?projectId= ">
+                     {% for project in projects %}
+                        <div class="project_top">
+                        <div style="display:none;width:100%;height: 100%">{{ project.Id }} </div>
+                        <a href="dedetails?projectId={{ project.Id }} ">
                             <div class="project_top_1_left">
-                                <img class="project_img" src="../../static/photos/ ">
+                                <img class="project_img" src="../../static/photos/{{ project.Img }} ">
                             </div>
                             <div class="project_top_1_right">
-                                <span class="project_top_1_right-span">艾沟煤 </span>
+                                <span class="project_top_1_right-span">{{ project.ProjectName }} </span>
                                 <div class="project_Text_Bg">
                                     <li class="FixText">起止时间:<p
-                                            class="FixText-right"> </p></li>
+                                            class="FixText-right"> {{ project.StartTime | date:"Y/m/d" }}--{{ project.EndTime | date:"Y/m/d" }}</p></li>
                                     <li class="FixText">项目状态：<p class="FixText-right">正在进行</p></li>
                                 </div>
                             </div>
                         </a>
                         <div class="project_middle">
                             <span class="project_middle_fix">项目标签：</span>
-
-                            <span class="project_middle_icon"></span>
-                            <span class="project_middle_text"> </span>
-
+                            {%for label in  Labels%}
+                                <span class="project_middle_icon"></span>
+                                <span class="project_middle_text">{{label.projectLabel.ProjectLabelName}}</span>
+                            {% endfor %}
                         <br>
                         </div>
                         <div class="project_bottom_top">
                             <p class="project_top_1_text">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新疆艾维尔沟煤具有镜质组含量高、黏结性强，但所得焦炭反应性高、热强度低的特性，是一种特殊的炼焦煤。本项目拟以密度离心法富集艾维尔沟煤中的镜质组，配入标准无烟煤（惰性组分）热解炼焦，采用液氮骤冷获得不同温度（200-1000… </p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{{ project.Description }} </p>
                             <div class="progress">
                                 <span class="green  "><span><li>当前项目进度： </li></span></span>
                             </div>
                         </div>
                     </div>
-
-
+                     {% endfor%}
                         <a class="more">加载更多</a>
             </div>
         </div>
             <div class="home-right">
-                <div class="intro">
+                <div id="myCarousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+{#                <ol class="carousel-indicators">#}
+{#                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>#}
+{#                    <li data-target="#myCarousel" data-slide-to="1"></li>#}
+{#                    <li data-target="#myCarousel" data-slide-to="2"></li>#}
+{#                </ol>#}
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
 
+                        <div class="best-pro">
+                            <div class="ribbon"><span class="ribbon2">最<br>多<br>点<br>赞</span></div>
+                            <div class="pro-logo">
+                        <img src="../../static/idea/imgs/best_img.png">
+                     </div>
+                            <div class="pro-label"><span>大数据</span><span>互联网</span></div>
+                            <div class="pro-label pro-name">项目名称</div>
+                            <div class="pro-label pro-des">
+                                 <p>今年六月，世界娱乐巨头米高梅集团（MGM Resorts）宣布扩大与麦肯的合作，将旗下多个娱乐场所和度假村纳入了创意清单之中。</p>
+                            </div>
+                            <div class="pro-bottom">
+                                <img class="pro-like" src="{% static 'project/imgs/like1.svg' %}" style="width:25px;height:25px;">
+                                <span>1111</span>
+                                <img class="pro-like" src="{% static 'project/imgs/reply.svg' %}" style="width:23px;height:20px;margin-top:5px">
+                                <span>1111</span>
+                                <img class="pro-like" src="{% static 'creation/imgs/collection0.png' %}" style="width:20px;height:20px;margin-top:2px">
+                                 <span>1111</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="best-pro">
+                            <div class="ribbon"><span class="ribbon2">最<br>多<br>评<br>论</span></div>
+                            <div class="pro-logo">
+                        <img src="../../static/idea/imgs/best_img.png">
+                     </div>
+                            <div class="pro-label"><span>大数据</span><span>互联网</span></div>
+                            <div class="pro-label pro-name">项目名称</div>
+                            <div class="pro-label pro-des">
+                                 <p>今年六月，世界娱乐巨头米高梅集团（MGM Resorts）宣布扩大与麦肯的合作，将旗下多个娱乐场所和度假村纳入了创意清单之中。</p>
+                            </div>
+                            <div class="pro-bottom">
+                                <img class="pro-like" src="{% static 'project/imgs/like1.svg' %}" style="width:25px;height:25px;">
+                                <span>1111</span>
+                                <img class="pro-like" src="{% static 'project/imgs/reply.svg' %}" style="width:23px;height:20px;margin-top:5px">
+                                <span>1111</span>
+                                <img class="pro-like" src="{% static 'creation/imgs/collection0.png' %}" style="width:20px;height:20px;margin-top:2px">
+                                 <span>1111</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+
+                    </div>
                 </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="carousel-control left" href="#myCarousel"
+                   data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel"
+                   data-slide="next">&rsaquo;</a>
+            </div>
 
-                <div class="tag">
+
+                  <div class="tag">
                     <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                     <span>标签</span>
                     <hr>
-                    <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
+                    <a href="deprojects?sign=all" sign="all"><span class="allsign">所有</span></a>
                     {% for obj in projectLabels %}
-                        <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
+                        <a href="deprojects?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
                     {% endfor %}
                 </div>
-
                 <div class="tag">
                     <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                     <span>类型</span>
@@ -74,12 +133,43 @@
                     <a href="recruit?sign=all" sign="all"><span class="allsign">时间</span></a>
                     <a href="recruit?sign=all" sign="all"><span class="allsign">点赞</span></a>
                     <a href="recruit?sign=all" sign="all"><span class="allsign">评论</span></a>
-
                 </div>
-        </div>
+            </div>
     </div>
-
-
+    {% block script %}
+        <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
+    <script>
+        //限制字符个数
+        $(document).ready(function () {
+            $(".project_top_1_text").each(function () {
+                var maxwidth = 150;
+                if ($(this).text().length > maxwidth) {
+                    $(this).text($(this).text().substring(0, maxwidth));
+                    $(this).html($(this).html() + '…')
+                    ;
+                }
+            });
+        });
+        //加载更多
+        $(function () {
+            $(".project_top").slice(0, 6).show();
+            if ($(".project_top").length <= 6) {
+                $(".more").hide();
+            }
+            $(".more").on('click', function (e) {
+                e.preventDefault();
+                $(".project_top:hidden").slice(0, 6).slideDown();
+                if ($(".project_top:hidden").length == 0) {
+                    $(".more").fadeOut('slow');
+                }
+            });
+        });
+        $('.project_middle_icon').each(function () {
+            var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
+            $(this).css('background', col)
+        });
+    </script>
+{% endblock %}
 
 
 {% endblock %}

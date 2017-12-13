@@ -15,7 +15,7 @@
     position: fixed;
     float:left;
     margin-left:60%;
-    background-color:#E3F3F7;
+    /*background-color:#E3F3F7;*/
 	-webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
@@ -24,10 +24,10 @@
 }
 .pro-message{
     width:65%;
-    height:400px;
+    height:auto;
     overflow: hidden;
     float:left;
-    background-color: #A5BFDD;
+    /*background-color: #A5BFDD;*/
     margin-left: 5%;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -111,6 +111,12 @@
 .user-name{
 	display:inline-block;
 }
-.ribbon3{
-	width:200px;
+
+.pr-detail{
+    width:90%;
+    height:auto;
+    margin-top: 90px;
+}
+.ctop{
+    margin-top: 50px;
 }
