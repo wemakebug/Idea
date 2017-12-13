@@ -990,11 +990,32 @@ def release(req):
 
 def editprofile(req):
     if req.method == 'GET':
-        return render_to_response('personal/editprofile.html')
+        email = req.COOKIES.get('email')
+        print(email)
+        username = req.COOKIES.get('username')
+        try:
+            user = models.User.objects.get(UserName=username)
+        except Exception as e:
+            print(e.message)
+        else:
+            return render_to_response('personal/editprofile.html',{"user":user})
     if req.method == 'POST':
         pass
+        # username = req.POST["username"]
+        # email = req.POST["email"]
+        # try:
+        #     user = models.User.objects.get(UserName=username)
+        # except Exception as e:
+        #     print(e.message)
+        #     result["status"] = 0
+        #     result["string"] = "空"
+        #     return HttpResponse(json.dumps(result))
+        # else:
+        #     # print(locals())
+        #     return HttpResponse(json.dumps(result))
 
 
 
 '''个人中心相关页面结束'''
+
 

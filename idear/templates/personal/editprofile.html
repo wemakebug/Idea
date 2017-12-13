@@ -66,40 +66,42 @@
                 <div class="personalinformation1-1">
                     <div class="personalinformation1-2">
                         用户昵称：
-                        <input type="text" placeholder="用户名" class="personalinput">
+                        <input type="text" placeholder="用户名" class="personalinput" id="personalinput" value="{{ user.UserName }}">
                     </div>
                     <div class="personalinformation1-3">
                         用户身份：
-                        <input type="text" class="personalinput1-1" onfocus=this.blur()>
+                        <div style="display:none;" id="identity">{{ user.Identity }}</div>
+
+                        <input type="text" class="personalinput1-1" id="personalinput1-1" onfocus=this.blur(); value="">
                     </div>
                     <div class="personalinformation1-4">
                         所属学校：
-                        <input type="text" placeholder="学校" class="personalinput1-2">
+                        <input type="text" placeholder="学校" class="personalinput1-2" id="personalinput1-2" value="{% if user.School %}{{ user.School }}{% else %}{% endif %}">
                     </div>
                     <div class="personalinformation1-5">
                         所在学院：
-                        <input type="text" class="personalinput1-3" placeholder="所在学院或是系" >
+                        <input type="text" class="personalinput1-3" placeholder="所在学院或是系" id="personalinput1-3" value="{{ user.Institude }}">
                     </div>
                     <div class="personalinformation1-6">
                         主修专业：
-                        <input type="text" class="personalinput1-4" placeholder="专业" >
+                        <input type="text" class="personalinput1-4" placeholder="专业" id="personalinput1-4" value="{{ user.Major }}">
                     </div>
                     <div class="personalinformation1-7">
                         用户等级：
-                        <input type="text" class="personalinput1-5" placeholder="分数" onfocus=this.blur()>
+                        <input type="text" class="personalinput1-5" placeholder="分数" onfocus=this.blur(); value="{{ user.Score }}">
                     </div>
                     <div class="personalinformation1-7">
                         注册时间：
-                        <input type="text" class="personalinput1-5" placeholder="注册时间" onfocus=this.blur()>
+                        <input type="text" class="personalinput1-5" placeholder="注册时间" onfocus=this.blur(); value="{{ user.RegistTime }}">
                     </div>
                     <div class="personalinformation1-8">
-                        <input type="radio" class="personalinput1-6" checked>男
-                        <input type="radio" class="personalinput1-6">女
-                        <input type="radio" class="personalinput1-6">保密
+                        <div style="display: none;" id="sex">{{ user.Sex }}</div>
+                        <input type="radio" class="personalinput1-6" name="personalinput1-6" id="boy" value="0">男
+                        <input type="radio" class="personalinput1-6" name="personalinput1-6" id="girl" value="1">女
                     </div>
                     <div class="personalinformation1-9">
                         <div style="line-height: 100px;width: 15%;text-align: center;float: left;margin-left: 90px;">个人描述：</div>
-                        <textarea class="personalinput1-7"></textarea>
+                        <textarea class="personalinput1-7">{{ user.Introduction }}</textarea>
                     </div>
                     <div class="personalinformation1-10">
                         <input type="button" class="personalinput1-8" value="保存">
@@ -137,5 +139,6 @@
 
 {% block script %}
     <script type="text/javascript" src="{% static 'team/js/jquery-1.12.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'personal/js/editprofile.js' %}"></script>
 {% endblock %}
