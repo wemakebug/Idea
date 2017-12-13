@@ -106,7 +106,7 @@ def get_user_img(req):
         result = {
             'status': 0,
             'message': None,
-            'img_path': None
+            'img_path': None,
         }
         try:
             email = req.COOKIES.get('email')
@@ -116,7 +116,6 @@ def get_user_img(req):
         except:
             result['status'] = 0
             result['message'] = '尚未登陆'
-
             return HttpResponse(json.dumps(result))
         else:
             try:

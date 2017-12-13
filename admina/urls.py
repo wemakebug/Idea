@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 """Idea URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -14,7 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from . import views as views, reload as reload
+from . import views as views
+from . import model_class
+
+app_name = 'admina'
+
 urlpatterns = [
 
     # url(r'^login$', views.login),
@@ -38,25 +43,37 @@ urlpatterns = [
     url(r'^project/delete/(?P<deleteId>(\d+))', views.project_delete),
 
     url(r'^user/add$', views.user_add),
-    url(r'^user/all/(?P<page>(\d+)?)$', views.user_all),
+    url(r'^user/all/(?P<page>(\d+)?)$', views.user_all, name='user_all'),
     url(r'^user/detail/(?P<userid>(\d+)?)$', views.user_detail),
     url(r'^user/introduction$', views.user_introduction),
     url(r'^user/timeline$', views.user_timeline),
 
     url(r'^label/project$', views.label_project),
     url(r'^label/user$',views.label_user),
-    url(r'^label/relation', views.label_relation),
 
-    url(r'^creation/all/(?P<page>(\d+)?)/(?P<category>(\d+)?)$', views.creation_all),
-    url(r'^creation/all/$', views.creation_all),
+    url(r'^creation/all/(?P<page>(\d+)?)(/)?(?P<category>(\d+)?)$', views.creation_all),
+    url(r'^creation/all/(?P<category>(\d+))?$', views.creation_all),
     url(r'^creation/add', views.creation_add),
 
+    url(r'^report/comment$', views.report_comment, name='report_comment'),
+    url(r'^report/user$', views.report_user, name='report_user'),
+    url(r'^report/project$', views.report_project, name='report_project'),
+    url(r'^report/creation$', views.report_creation, name='report_creation'),
 
+    url(r'^comment/all', views.comment_statistic, name='creation_statistic'),
+    url(r'^comment/project', views.comment_project, name='creation_project'),
+    url(r'^comment/user', views.comment_user, name='creation_user'),
+    url(r'^comment/creation', views.comment_creation, name='creation_creation'),
 
     url(r'^user_detail$', views.user_detail),
     url(r'^profile$', views.Profile),
     url(r'^PhotoGallery$', views.PhotoGallary),
     url(r'^$', views.index),
+
+
+    # 基于类的视图的url
+
+    url(r'^creationlist$', model_class.CreatinoDisplayAll.as_view(), name='creation-detail'),
 ]
 
 handler404 = views.page_not_found
