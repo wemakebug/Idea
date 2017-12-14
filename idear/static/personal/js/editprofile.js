@@ -56,5 +56,6 @@ $(".personalinput1-8").click(function () {
     var school = document.getElementById("personalinput1-2").value;
     var institude = document.getElementById("personalinput1-3").value;
     var major = document.getElementById("personalinput1-4").value;
+    
 
 });
