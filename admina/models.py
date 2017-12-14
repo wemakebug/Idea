@@ -65,7 +65,7 @@ class Project(models.Model):
     ProjectName = models.CharField(null=False, max_length=20, unique=True)
     Description = models.TextField(null=False)
     StartTime = models.DateTimeField(auto_now_add=True)
-    EndTime = models.DateTimeField(null=False, )
+    EndTime = models.DateTimeField(null=False)
     Statue = models.PositiveIntegerField(default=0)
     Number = models.PositiveIntegerField(default=1)
     Img = models.ImageField(upload_to='photos/%Y/%m/%d/project', null=True)
