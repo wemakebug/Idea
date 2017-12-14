@@ -268,7 +268,11 @@ def project_delete(req, deleteId):
 @require_http_methods(["GET", "POST"])
 def project_add(req):
     if req.method == "GET":
-        return render(req, 'admina/project_add.html')
+        projectLabels = models.ProjectLabel.objects.all().order_by("-Id")
+        return render(req, 'admina/project_add.html', {
+            "ProjectLabels": projectLabels,
+
+        })
     else:
         pass
 

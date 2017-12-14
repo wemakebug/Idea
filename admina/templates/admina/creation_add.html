@@ -1,18 +1,18 @@
 {% extends '../base/base.html' %}
 
-{% block title %}Admin-Index{% endblock %} {# title #}
+{% block title %}We创 - 创意添加{% endblock %} {# title #}
 {% block css %}
     {% load static %}
-<!--file upload-->
+    <!--file upload-->
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-fileupload.min.css" />
 
     <link rel="stylesheet" type="text/css" href="/static/js/bootstrap-datepicker/css/datepicker-custom.css" />
 
     <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
     <link rel="stylesheet" type="text/css" href="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
-{# css #}
-{# icheck #}
+    {# css #}
 
+    {# icheck css #}
     <link href="/static/js/iCheck/skins/flat/grey.css" rel="stylesheet">
     <link href="/static/js/iCheck/skins/flat/red.css" rel="stylesheet">
     <link href="/static/js/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -79,8 +79,8 @@
                                 <div class="controls col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                                 <span class="btn btn-default btn-file">
-                                                <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select file</span>
-                                                <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
+                                                <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换图片</span>
                                                 <input type="file" class="default" id="file_upload_img"/>
                                                 </span>
                                             <span class="fileupload-preview" style="margin-left:5px;"></span>
@@ -115,7 +115,7 @@
                 创意描述
             </header>
             <div class="panel-body">
-                <div class="form">
+                <div class="form-group">
                     <form class="cmxform form-horizontal adminex-form" >
                         <div class="form-group" style="height: 270px">
                             <div class="col-md-12">
@@ -172,8 +172,6 @@
              // 清空所有输入
             creation_init_time.value = ''
             creation_name.value = ''
-
-
         });
         sub_btn.onclick = function () {
             //提交页面数据
