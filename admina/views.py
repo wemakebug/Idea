@@ -6,15 +6,18 @@ from . import models
 import json
 from django.shortcuts import render, HttpResponse, Http404, render_to_response, HttpResponseRedirect
 import uuid
+from django.http import JsonResponse
+from django.views.generic.edit import DeleteView,UpdateView,CreateView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.conf.urls import handler404, handler500, handler403
 from django.views.decorators.http import require_http_methods
 from .admin_utils import check_login
 from django.template import RequestContext
 from django.core.paginator import Paginator
-from django import http
 import math
 from django.db.models import Q
+from django.utils.html import escapejs
+
 
 ''' 新后台相关页面视图'''
 @require_http_methods(["GET", "POST"])
@@ -265,7 +268,11 @@ def project_delete(req, deleteId):
 @require_http_methods(["GET", "POST"])
 def project_add(req):
     if req.method == "GET":
-        return render(req, 'admina/project_add.html')
+        projectLabels = models.ProjectLabel.objects.all().order_by("-Id")
+        return render(req, 'admina/project_add.html', {
+            "ProjectLabels": projectLabels,
+
+        })
     else:
         pass
 
@@ -317,10 +324,10 @@ def projet_recruit(req, uid=None):
 @require_http_methods(["GET", "POST"])
 def label_project(req, uid=None):
     if req.method == "GET":
-        if uid:
-            pass
-        else:
-            return render(req, 'admina/label_project.html')
+        Labels = models.ProjectLabel.objects.all().order_by('-Id')
+        return render(req, 'admina/label_project.html', {
+            'Labels': Labels
+        })
     else:
         pass
 
@@ -329,22 +336,13 @@ def label_project(req, uid=None):
 @require_http_methods(["GET", "POST"])
 def label_user(req, uid=None):
     if req.method == "GET":
-        if uid:
-            pass
-        else:
-            return render(req, 'admina/label_user.html')
-    else:
-        pass
+        Labels = models.UserLabel.objects.all().order_by("-Id")
+        ProjectLabels = models.ProjectLabel.objects.all().order_by("-Id")
+        return render(req, 'admina/label_user.html', {
+            'Labels': Labels,
+            'ProjectLabels': ProjectLabels,
 
-@csrf_exempt
-@check_login()
-@require_http_methods(["GET", "POST"])
-def label_relation(req, uid=None):
-    if req.method == "GET":
-        if uid:
-            pass
-        else:
-            return render(req, '/admina/label_relation.html')
+        })
     else:
         pass
 
@@ -412,22 +410,159 @@ def creation_all(req, page=None, category=None):
                           )
     else:
         pass
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def creation_category(req, page):
+    '''
+    创意分类视图
+    :param reqm:
+    :param page:
+    :return: Html to creation with specified category
+    '''
+    if req.method == "GET":
+        if not page:
+            return render(req, 'admina/creation_all.html')
+        else:
+            return render(req, 'admina/creation_all.html')
+    else:
+        return render(req, 'admina/creation_all.html')
+
 
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
 def creation_add(req, uid=None):
     if req.method == "GET":
+        users = models.User.objects.all().order_by("UserName")
         labels = models.ProjectLabel.objects.all()
         if uid:
             pass
         else:
             return render(req, 'admina/creation_add.html', {
                 "labels": labels,
+                "users": users,
+
             })
+    else:
+        ''' :type 添加创意'''
+        pass
+
+# 举报管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def report_comment(req):
+    '''
+    评论举报相关视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/report_comment.html')
     else:
         pass
 
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def report_creation(req):
+    '''
+    创意举报相关视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/report_creation.html')
+    else:
+        pass
+
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def report_user(req):
+    '''
+    用户举报相关视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/report_user.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def report_project(req):
+    '''
+    项目举报相关视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/report_project.html')
+    else:
+        pass
+
+# 评论管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def comment_statistic(req):
+    '''
+    用于显示评论统计状况的视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/comment_all.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def comment_creation(req):
+    '''
+    用于显示评论统计状况的视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/comment_creation.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def comment_project(req):
+    '''
+    用于显示评论统计状况的视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/creation_project.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def comment_user(req):
+    '''
+    用于显示评论统计状况的视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/creation_user.html')
+    else:
+        pass
+''' 将来可能弃用的代码 '''
 
 def Profile(req):
     if req.method == "GET":
@@ -472,6 +607,11 @@ def PhotoGallary(req):
             result["status"] = 1
             result["message"]="删除成功"
             return HttpResponse(json.dumps(result))
+
+
+''' 尝试使用类视图 '''
+class CreationDelete(DeleteView):
+    model = models.Creation
 
 """评论相关页面"""
 def comment_list(req):

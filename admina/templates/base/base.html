@@ -87,17 +87,16 @@
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-exclamation-circle"></i> <span>举报管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="#"> 评论举报</a></li>
-                        <li><a href="#"> 用户举报</a></li>
-                        <li><a href="#"> 项目举报</a></li>
-                        <li><a href="#"> 创意举报</a></li>
+                        <li><a href="{% url 'admina:report_comment'  %}"> 评论举报</a></li>
+                        <li><a href="{% url 'admina:report_user' %}"> 用户举报</a></li>
+                        <li><a href="{% url 'admina:report_project' %}"> 项目举报</a></li>
+                        <li><a href="{% url 'admina:report_creation' %}"> 创意举报</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-tags"></i> <span>标签管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="/admina/label/project"> 项目标签</a></li>
                         <li><a href="/admina/label/user"> 个人标签</a></li>
-                        <li><a href="/admina/label/relation"> 标签关联</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href="#"><i class="fa fa-comment"></i> <span>评论管理</span></a>
@@ -110,7 +109,7 @@
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-users"></i> <span>用户管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="/admina/user/all"> 全部用户</a></li>
+                        <li><a href="{% url 'admina:user_all'  2 %}"> 全部用户</a></li>
                         <li><a href="/admina/user/timeline"> 用户时间线</a></li>
                         <li><a href="/admina/user/detail"> 用户详情</a></li>
                         <li><a href="/admina/user/add"> 用户添加</a></li>
