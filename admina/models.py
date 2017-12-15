@@ -314,13 +314,13 @@ class Score(models.Model):
     Id = models.AutoField(primary_key=True)
     Level = models.PositiveIntegerField(default=0)
     Value = models.IntegerField(null=False, default=0)
+    ScoreRankName = models.CharField(null=True, max_length=15)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
 
 class ScoreChange(models.Model):
     '''
     分值变动记录表
-
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='ScoreChange_User_set', null=False)

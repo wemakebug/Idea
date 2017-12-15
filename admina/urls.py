@@ -52,7 +52,7 @@ urlpatterns = [
     url(r'^label/user$',views.label_user),
 
     url(r'^creation/all/(?P<page>(\d+)?)(/)?(?P<category>(\d+)?)$', views.creation_all),
-    url(r'^creation/all/(?P<category>(\d+))?$', views.creation_all),
+    url(r'^creation/all/(?P<category>(\d+))?$', views.creation_all, name='creation'),
     url(r'^creation/add', views.creation_add),
 
     url(r'^report/comment$', views.report_comment, name='report_comment'),
@@ -60,11 +60,16 @@ urlpatterns = [
     url(r'^report/project$', views.report_project, name='report_project'),
     url(r'^report/creation$', views.report_creation, name='report_creation'),
 
-    url(r'^comment/all', views.comment_statistic, name='creation_statistic'),
-    url(r'^comment/project', views.comment_project, name='creation_project'),
-    url(r'^comment/user', views.comment_user, name='creation_user'),
-    url(r'^comment/creation', views.comment_creation, name='creation_creation'),
+    url(r'^comment/all', views.comment_statistic, name='comment_statistic'),
+    url(r'^comment/project', views.comment_project, name='comment_project'),
+    url(r'^comment/user', views.comment_user, name='comment_user'),
+    url(r'^comment/creation', views.comment_creation, name='comment_creation'),
 
+    url(r'^score/rank$', views.score_rank, name='score_rank'),
+    url(r'^score/record$', views.score_record, name='score_record'),
+
+
+    # 将来可能弃用的视图
     url(r'^user_detail$', views.user_detail),
     url(r'^profile$', views.Profile),
     url(r'^PhotoGallery$', views.PhotoGallary),
