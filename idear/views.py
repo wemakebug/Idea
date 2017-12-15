@@ -1016,19 +1016,27 @@ def editprofile(req):
         else:
             return render_to_response('personal/editprofile.html',{"user":user})
     if req.method == 'POST':
-        pass
-        # username = req.POST["username"]
-        # email = req.POST["email"]
-        # try:
-        #     user = models.User.objects.get(UserName=username)
-        # except Exception as e:
-        #     print(e.message)
-        #     result["status"] = 0
-        #     result["string"] = "空"
-        #     return HttpResponse(json.dumps(result))
-        # else:
-        #     # print(locals())
-        #     return HttpResponse(json.dumps(result))
+        email = req.COOKIES.get('email')
+        username = req.POST["username"]
+        school = req.POST["school"]
+        institude = req.POST["institude"]
+        major = req.POST["major"]
+        sex = req.POST["sex"]
+        print (sex)
+        result={
+              "status":1,
+              "string":success
+        }
+        try:
+            models.User.objects.filter(Email=email).update(UserName = username,School = school,Institude = institude,Major = major,Sex = sex)
+        except Exception as e:
+            print(e.message)
+            result["status"] = 0
+            result["string"] = "空"
+            return HttpResponse(json.dumps(result))
+        else:
+            # print(locals())
+            return HttpResponse(json.dumps(result))
 
 
 

@@ -56,6 +56,16 @@ $(".personalinput1-8").click(function () {
     var school = document.getElementById("personalinput1-2").value;
     var institude = document.getElementById("personalinput1-3").value;
     var major = document.getElementById("personalinput1-4").value;
+    var sex = $('input:radio[name="personalinput1-6"]:checked').val();
+    $.post('/idear/editprofile',{username:username,school:school,institude:institude,major:major,sex:sex},function (data) {
+        data = JSON.parse(data);
+        if(data.status==1){
+            alert("修改成功");
+            window.location.reload();
+        }else{
+            alert("系统故障");
+        }
+    })
     
 
 });
