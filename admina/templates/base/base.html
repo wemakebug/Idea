@@ -79,10 +79,8 @@
                 </li>
                 <li class="menu-list"><a href="#"><i class="fa fa-lemon-o"></i> <span>分值管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="#"> Basic Table</a></li>
-                        <li><a href="#"> Advanced Table</a></li>
-                        <li><a href="#"> Responsive Table</a></li>
-                        <li><a href="#"> Edit Table</a></li>
+                        <li><a href="{% url 'admina:score_rank' %}"> 分值等级</a></li>
+                        <li><a href="{% url 'admina:score_record' %}"> 分值变动记录</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-exclamation-circle"></i> <span>举报管理</span></a>
@@ -101,16 +99,16 @@
                 </li>
                 <li class="menu-list"><a href="#"><i class="fa fa-comment"></i> <span>评论管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="#"> 评论总览</a></li>
-                        <li><a href="#"> 项目评论</a></li>
-                        <li><a href="#"> 创意评论</a></li>
-                        <li><a href="#"> 用户评论</a></li>
+                        <li><a href="{% url 'admina:comment_statistic' %}"> 评论总览</a></li>
+                        <li><a href="{% url 'admina:comment_project' %}"> 项目评论</a></li>
+                        <li><a href="{% url 'admina:comment_creation' %}"> 创意评论</a></li>
+                        <li><a href="{% url 'admina:comment_user' %}"> 用户评论</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-users"></i> <span>用户管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="{% url 'admina:user_all'  2 %}"> 全部用户</a></li>
-                        <li><a href="/admina/user/timeline"> 用户时间线</a></li>
+{#                        <li><a href="/admina/user/timeline"> 用户时间线</a></li>#}
                         <li><a href="/admina/user/detail"> 用户详情</a></li>
                         <li><a href="/admina/user/add"> 用户添加</a></li>
                         <li><a href="/admina/user/introduction"> 用户自我介绍</a></li>

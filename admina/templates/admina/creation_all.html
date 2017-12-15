@@ -48,7 +48,7 @@
                         {% for creation in Creations %}
                             <div class="images item " >
                             <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" id="{{ creation.Id }}"/>
+                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" id="creation-{{ creation.Id }}" name="creations"/>
                             </a>
                             <p>{{ creation.Name | slice:"10" }}</p>
                         </div>
@@ -78,13 +78,11 @@
 
                                     <div class="col-md-5 img-modal">
                                         <img src="{% static 'images/gallery/image1.jpg'%}" alt="">
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit Image</a>
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> View Full Size</a>
-
+                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i>编辑详情</a>
                                         <p class="mtop10"><strong>File Name:</strong> img01.jpg</p>
                                         <p><strong>File Type:</strong> jpg</p>
                                         <p><strong>Resolution:</strong> 300x200</p>
-                                        <p><strong>Uploaded By:</strong> <a href="#">ThemeBucket</a></p>
+                                        <p><strong>提出者:</strong> <a href="#">ThemeBucket</a></p>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
@@ -104,13 +102,11 @@
                                             <input id="link" value="images/gallery/img01.jpg" class="form-control">
                                         </div>
                                         <div class="pull-right">
-                                            <button class="btn btn-danger btn-sm" type="button">Delete</button>
-                                            <button class="btn btn-success btn-sm" type="button">Save changes</button>
+                                            <button class="btn btn-danger btn-sm" type="button">删除</button>
+                                            <button class="btn btn-success btn-sm" type="button">保存更改</button>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -144,7 +140,46 @@
             return false;
         });
     });
-</script>{# midescript #}
+    </script>
+
+    <script type="text/javascript">
+        $("img[name='creations']").click(function () {
+           var creationid = this.id.split('-')[1];
+            $.post(window.location.pathname,{"projectId":creationid},function (res) {
+                res = JSON.parse(res);
+                if(res.status === 1){
+                    document.getElementById("project_detail_img_path").src = "/static/photos/" + res.ImgPath;
+                    document.getElementById("ptoject_detail_name").textContent = res.ProjectName;
+                    document.getElementById("project_detail_link").setAttribute("href","/admina/project/" + projectid);
+                    $("input[id='name']").get(0).value = res.ProjectName;
+                    $("input[id='title']").get(0).value = res.ProjsctStartTime;
+                    $("input[id='user_number']").get(0).value = res.ProjectUserNumber;
+                    $("a[id='project_user_detail']").get(0).textContent = res.projectUserName;
+                    $("a[id='project_user_detail']").get(0).setAttribute("href","/admina/user/detail/" + res.projectUserId);
+                    var delete_btn= document.getElementById("delete_project_btn");
+                    delete_btn.onclick = function () {
+                        if(confirm("确认删除？")){
+                            $.post("project/delete/" + projectid, {},function (res) {
+                                res = JSON.parse(res);
+                                if(res.status === 1){
+                                    alert(res.message);
+                                window.location.reload();
+                                }else if(res.status === 0){
+                                    alert(res.message);
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                        };
+                }else if (res.status === 0){
+                    alert(res.message);
+                    window.location.reload();
+                }
+            })
+        });
+    </script>
+
+    {# midescript #}
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}

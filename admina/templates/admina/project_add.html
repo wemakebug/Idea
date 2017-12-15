@@ -3,22 +3,21 @@
 {% block title %}Admin-Index{% endblock %} {# title #}
 {% block css %}
     {% load static %}
-<!--file upload-->
-<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
-
-<link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
     <!--multi-select-->
-    <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/js/jquery-multi-select/css/multi-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css' %}" />
 
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-{# css #}
+    {# icheck css #}
+    <link href="/static/js/iCheck/skins/flat/grey.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/red.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/blue.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/yellow.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/purple.css" rel="stylesheet">
+    {# css #}
 
 {% endblock %}
 
@@ -131,44 +130,30 @@
                         <div class="form-group">
                             <label for="confirm_password" class="control-label col-lg-2">项目封面图片</label>
                             <div class="col-md-10">
-                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                <div class="controls col-md-9">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <span class="btn btn-default btn-file">
+                                                    <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换图片</span>
+                                                    <input type="file" class="default" id="file_upload_img"/>
+                                                </span>
+                                            <span class="fileupload-preview" style="margin-left:5px;"></span>
+                                            <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                                        </div>
                                     </div>
-                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                    <div>
-                                                   <span class="btn btn-default btn-file">
-                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                                   <input type="file" class="default" />
-                                                   </span>
-                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="confirm_password" class="control-label col-lg-2">项目标签选择</label>
-                            <div class="col-md-9">
-                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
-                                        name="my_multi_select1[]">
-                                    <option>Dallas Cowboys</option>
-                                    <option>New York Giants</option>
-                                    <option selected>Philadelphia Eagles</option>
-                                    <option selected>Washington Redskins</option>
-                                    <option>Chicago Bears</option>
-                                    <option>Detroit Lions</option>
-                                    <option>Green Bay Packers</option>
-                                    <option>Minnesota Vikings</option>
-                                    <option selected>Atlanta Falcons</option>
-                                    <option>Carolina Panthers</option>
-                                    <option>New Orleans Saints</option>
-                                    <option>Tampa Bay Buccaneers</option>
-                                    <option>Arizona Cardinals</option>
-                                    <option>St. Louis Rams</option>
-                                    <option>San Francisco 49ers</option>
-                                    <option>Seattle Seahawks</option>
-                                </select>
+                            <div class="col-sm-9 icheck ">
+                                {% for ProjectLabel in  ProjectLabels%}
+                                    <div class="flat-grey single-row">
+                                    <div class="radio ">
+                                        <input type="checkbox">
+                                        <label>{{ ProjectLabel.ProjectLabelName }}</label>
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="form-group">
@@ -190,18 +175,12 @@
                 项目介绍修改
             </header>
             <div class="panel-body">
-                <div class="form">
+                <div class="form-group">
                     <form class="cmxform form-horizontal adminex-form" >
-                        <div class="form-group" style="height: 500px">
-                            <label for="summernote1" class="control-label col-lg-2">项目介绍</label>
-                            <div class="col-lg-10">
-                                <div id="summernote1"></div>
+                        <div class="form-group" style="height: 270px">
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control" id="wysihtml5_1" rows="9"></textarea>
                             </div>
-                            <script type="text/javascript">
-                                $('#summernote1').summernote({
-                                    height:500,
-                                });
-                            </script>
                         </div>
                     </form>
                 </div>
@@ -222,18 +201,12 @@
                 项目进度描述修改
             </header>
             <div class="panel-body">
-                <div class="form">
+                <div class="form-group">
                     <form class="cmxform form-horizontal adminex-form" >
-                        <div class="form-group" style="height: 500px">
-                            <label for="summernote2" class="control-label col-lg-2">进度描述</label>
-                            <div class="col-lg-10">
-                                <div id="summernote2"></div>
+                        <div class="form-group" style="height: 270px">
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control" id="wysihtml5_2" rows="9"></textarea>
                             </div>
-                            <script type="text/javascript">
-                                $('#summernote2').summernote({
-                                    height:500,
-                                });
-                            </script>
                         </div>
                     </form>
                 </div>
@@ -255,19 +228,15 @@
             </header>
             <div class="panel-body">
                 <div class="form">
+                    <div class="form-group">
                     <form class="cmxform form-horizontal adminex-form" >
-                        <div class="form-group" style="height: 500px">
-                            <label for="summernote3" class="control-label col-lg-2">项目总结</label>
-                            <div class="col-lg-10">
-                                <div id="summernote3"></div>
+                        <div class="form-group" style="height: 270px">
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control"  id="wysihtml5_3" rows="9"></textarea>
                             </div>
-                            <script type="text/javascript">
-                                $('#summernote3').summernote({
-                                    height:500,
-                                });
-                            </script>
                         </div>
                     </form>
+                </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
@@ -296,9 +265,35 @@
         $('#my_multi_select1').multiSelect();
     </script>
     <script src="{% static '/js/multi-select-init.js'%}"></script>
+    {# icheck #}
+    <script src="/static/js/iCheck/jquery.icheck.js"></script>
+    <script src="/static/js/icheck-init.js"></script>
+    {#  fileupload   #}
+    <script type="text/javascript" src="/static/js/bootstrap-fileupload.min.js"></script>
+    {#  RichTextEditor #}
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
 
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
-
+<script>
+    jQuery(document).ready(function(){
+             $('#wysihtml5_1').wysihtml5(
+                 {
+                     height:"500px;"
+                 }
+             );
+             $('#wysihtml5_2').wysihtml5(
+                 {
+                     height:"500px;"
+                 }
+             );
+             $('#wysihtml5_3').wysihtml5(
+                 {
+                     height:"500px;"
+                 }
+             );
+    });
+</script>
 {% endblock %}

@@ -18,7 +18,7 @@ from idear import views as views
 from django.conf import settings
 from django.conf.urls.static import static
 
-app_name = 'idear'
+
 
 urlpatterns = [
     url(r'^index$', views.index, name='index'),

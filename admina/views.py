@@ -19,7 +19,7 @@ from django.db.models import Q
 from django.utils.html import escapejs
 
 
-''' 新后台相关页面视图'''
+''' 新后台相关页面视图 '''
 @require_http_methods(["GET", "POST"])
 def page_not_found(request):
     response = render_to_response('/base/404.html', context=RequestContext(request))
@@ -28,7 +28,7 @@ def page_not_found(request):
 
 @require_http_methods(["GET", "POST"])
 def permition_denied(request):
-    response = render_to_response('/base/500.html',context=RequestContext(request))
+    response = render_to_response('/base/500.html', context=RequestContext(request))
     response.status_code = 500
     return response
 
@@ -223,7 +223,6 @@ def project_all(req, page=None):
 
         projectId = req.POST["projectId"]
         try:
-            print("try to find project with id " + str(projectId))
             project = models.Project.objects.get(Id=projectId)
             resData["ProjectName"] = project.ProjectName
             resData["ProjsctStartTime"] = project.StartTime.strftime("%Y-%m-%d")
@@ -560,6 +559,29 @@ def comment_user(req):
     '''
     if req.method == "GET":
         return render(req, 'admina/creation_user.html')
+    else:
+        pass
+
+# 分值管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def score_rank(req):
+    if req.method == "GET":
+        return render(req, 'admina/score_rank.html', {
+
+        })
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def score_record(req):
+    if req.method == "GET":
+        return render(req, 'admina/score_record.html', {
+
+        })
     else:
         pass
 ''' 将来可能弃用的代码 '''
