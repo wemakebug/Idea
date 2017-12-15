@@ -374,7 +374,9 @@
 }
 .personalinformation1-9{
     width: 90%;
-    height: 100px;
+    height: 105px;
+    text-align: center;
+    line-height: 105px;
 }
 .personalinput1-7{
     border: 1px solid rgba(54, 54 ,54,0.3);
