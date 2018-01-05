@@ -568,7 +568,9 @@ def comment_user(req):
 @require_http_methods(["GET", "POST"])
 def score_rank(req):
     if req.method == "GET":
+        ranks = models.Score.objects.all().order_by("-Id")
         return render(req, 'admina/score_rank.html', {
+            "Ranks": ranks,
 
         })
     else:
@@ -584,6 +586,65 @@ def score_record(req):
         })
     else:
         pass
+
+
+# 关系管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def relation_praise(req):
+    '''
+    点赞管理相关视图， 对应 model ：Praise
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/relation_praise.html', {})
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def relation_attention(req):
+    '''
+    关注管理相关视图， 对应 model : Fellow
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/relation_attention.html', {})
+    else:
+        pass
+
+
+# 消息管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_type(req):
+    if req.method == "GET":
+        return render(req, 'admina/message_type.html', {})
+    else:
+        pass
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_send(req):
+    if req.method == "GET":
+        return render(req, 'admian/message_send.html', {})
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_manage(req):
+    if req.method == "GET":
+        return render(req, 'admian/message_manage.html', {})
+    else:
+        pass
+
 ''' 将来可能弃用的代码 '''
 
 def Profile(req):

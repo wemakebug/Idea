@@ -68,6 +68,10 @@ urlpatterns = [
     url(r'^score/rank$', views.score_rank, name='score_rank'),
     url(r'^score/record$', views.score_record, name='score_record'),
 
+    url(r'^relation/praise$', views.relation_praise, name='relation_praise'),
+    url(r'^relation/attention', views.relation_attention, name='relation_attention'),
+
+
 
     # 将来可能弃用的视图
     url(r'^user_detail$', views.user_detail),
