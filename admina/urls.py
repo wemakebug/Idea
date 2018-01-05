@@ -44,7 +44,7 @@ urlpatterns = [
 
     url(r'^user/add$', views.user_add),
     url(r'^user/all/(?P<page>(\d+)?)$', views.user_all, name='user_all'),
-    url(r'^user/detail/(?P<userid>(\d+)?)$', views.user_detail),
+    url(r'^user/detail/(?P<userid>(\d+)?)$', views.user_detail, name='user_detail'),
     url(r'^user/introduction$', views.user_introduction),
     url(r'^user/timeline$', views.user_timeline),
 
@@ -54,6 +54,8 @@ urlpatterns = [
     url(r'^creation/all/(?P<page>(\d+)?)(/)?(?P<category>(\d+)?)$', views.creation_all),
     url(r'^creation/all/(?P<category>(\d+))?$', views.creation_all, name='creation'),
     url(r'^creation/add', views.creation_add),
+    url(r'^creation/delete', views.creation_delete, name='creation_delete'),
+    url(r'^creation/modify', views.creation_modify),
 
     url(r'^report/comment$', views.report_comment, name='report_comment'),
     url(r'^report/user$', views.report_user, name='report_user'),
