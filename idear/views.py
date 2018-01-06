@@ -325,9 +325,7 @@ def team(req):
     '''
     if req.method == 'GET':
         ''' 标签查询'''
-
-
-        sign = req.GET["sign"]
+        sign = req.GET['sign']
         if sign == "all":
             teams = models.User.objects.filter(Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
