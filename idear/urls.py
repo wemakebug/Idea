@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
     url(r'^crdetails$', views.crdetails),
+    url(r'^crcreate$',views.crcreate),
     url(r'^star$', views.star),
     url(r'^attend$', views.attend),
     url(r'^service$', views.service),

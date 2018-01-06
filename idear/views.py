@@ -432,6 +432,19 @@ def crdetails(req):
 
 
 @csrf_exempt
+def crcreate(req):
+    '''
+    创意灵感创建页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        obj = models.ProjectLabel.objects.all()
+        return render_to_response('creation/crcreate.html', {"labels": obj})
+    if req.method == "POST":
+        pass
+
+@csrf_exempt
 def creations(req):
     '''
     创意灵感一级二级页面项目显示  
@@ -602,6 +615,8 @@ def comment(req):
         creation = models.Creation.objects.get(pk=creationid)
         models.Comment.objects.create(user=user, creation=creation, Content=content)
         return HttpResponse("TRUE")
+
+
 ''' 创意灵感 页面相关部分结束'''
 
 ''' 招募项目 相关页面开始'''
