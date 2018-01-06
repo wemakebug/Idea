@@ -176,3 +176,15 @@ MEDIAFILES_DIRS =[
 ]
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../idear/static/photos/').replace('\\', '/')
 
+
+''' Start of Emial SMTP  Settings '''
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '1337074512@qq.com'
+EMAIL_HOST_PASSWORD = 'zcmgutpwhjuzgdfa'
+DEFAULT_FROM_EMAIL = '1337074512@qq.com'
+# EMAIL_USE_SSL = True
+
+''' End of Email Smtp Settings '''

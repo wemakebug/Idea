@@ -60,11 +60,8 @@
                 <li><a href="#"><i class="fa fa-home"></i> <span>总览</span></a></li>
                 <li class="menu-list"><a href=""><i class="fa fa-laptop"></i> <span>关系管理(点赞，关注)</span></a>
                     <ul class="sub-menu-list">
-                        <li class="active"><a href="#"> Blank Page</a></li>
-                        <li><a href="#"> Boxed Page</a></li>
-                        <li><a href="#"> Sidebar Collapsed</a></li>
-                        <li><a href="#"> Horizontal Menu</a></li>
-
+                        <li><a href="{% url 'admina:relation_praise' %}"> 点赞管理</a></li>
+                        <li><a href="{% url 'admina:relation_attention' %}"> 关注管理</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href=""><i class="fa fa-bullhorn"></i> <span>消息管理</span></a>

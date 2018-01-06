@@ -34,7 +34,7 @@
         </div>
         <div class="headtopimages">
             <div class="headtopimages1">
-                <img src="{% static 'personal/imgs/touxiang.jpg'%}" style="width: 100%;height: 100%;border-radius: 140px;">
+                <img src="{% if user.Img %}/static/photos/{{ user.Img }}{% else %}{% static 'personal/imgs/touxiang.jpg'%}{% endif %}" style="width: 100%;height: 100%;border-radius: 140px;">
             </div>
         </div>
     </div>
@@ -44,22 +44,27 @@
 				<ul class="navigation-list ul-reset">
 					<li class="navigation-item ib">
 						<a href="#" class="navigation-link">
-							With the project
+							项目管理
 						</a>
 					</li>
 					<li class="navigation-item ib">
 						<a href="#" class="navigation-link">
-							inspiration
+							创意灵感
+						</a>
+					</li>
+					<li class="navigation-item ib">
+						<a href="unread_messages" class="navigation-link">
+                            未读消息
 						</a>
 					</li>
 					<li class="navigation-item ib">
 						<a href="#" class="navigation-link">
-                            Unread message
+							已读消息
 						</a>
 					</li>
-					<li class="navigation-item ib">
+                    <li class="navigation-item ib">
 						<a href="#" class="navigation-link">
-							Read the news
+							我的关注
 						</a>
 					</li>
 				</ul>
@@ -68,7 +73,8 @@
         <div class="project">
             <div class=""></div>
             <div class="project1"></div>
-            <div class="project1"></div>
+            {% block contents %}
+            {% endblock %}
         </div>
     </div>
 </div>

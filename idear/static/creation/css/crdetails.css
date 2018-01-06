@@ -124,7 +124,7 @@
 .home-b-title hr{
     margin-top:2px;
     color:#f1f1f1;
-    width:260px;
+    width:295px;
 }
 .text {
 	float: left;
@@ -233,6 +233,7 @@
     position: relative;
 }
 
+
 #praise-txt{
     float:left;
     margin: 0 0 0 35px;
@@ -250,10 +251,10 @@
     position: absolute;
     text-align: left;
     width: 180px;
-    height:0px;
     font-size:15px;
-	float: left;
-	margin-left:18px;
+    float:left;
+    margin-left:18px;
+
 }
 .praise p{
 	line-height: 25px;
@@ -265,6 +266,7 @@
     font-size:15px;
 	float: left;
 	margin-left:46px;
+
 }
 .praise img{
     width:25px;
@@ -272,12 +274,7 @@
     display:block;
     margin: 0 auto;
 }
-.praise img{
-    animation: myfirst 0.5s;
-    -moz-animation: myfirst 0.5s;	/* Firefox */
-    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
-    -o-animation: myfirst 0.5s;	/* Opera */
-}
+
 
 .home-b-user{
     width:660px;
@@ -443,25 +440,36 @@ h5 {
 .block-bottom-ava{
     float:left;
     width:40px;
-    margin-left:41px;
+    margin-left:40px;
+}
+.block-bottom-name{
+    float:left;
+    width: 90px;
+    margin-left: 6px;
+    margin-top: 20px;
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .block-bottom-hot{
-    width:60%;
-    float:left;
-    margin:-18px 0 0 120px;
+    width:auto;
+    float:right;
+    margin:23px 40px 0px 0px;
 }
 .block-hotlike{
-    width:26%;
-    float:left;
-    margin-left:45px;
+    width:auto;
+    float:right;
+    margin-right:2px;
 }
 .block-imglike{
     width:20px;
     height:20px;
 }
 .block-hotfollow{
-    width:26%;
-    float:left;
+    width:auto;
+    float:right;
+    margin-right: 2px;
 }
 .block-imgfollow{
     width:20px;
@@ -544,7 +552,7 @@ h5 {
     width:11%;
     height:30px;
     margin-top:5px;
-	margin-right:10px;
+	margin-right:8px;
     background-color: #3a87ad;
     border:none;
     float:right;
@@ -552,7 +560,7 @@ h5 {
 }
 
 .cmain{
-    height:100px;
+    height:60px;
 }
 .c-img{
     display:block;
@@ -565,8 +573,12 @@ h5 {
     width:72%;
     float:left;
     margin-left:20px;
-    height:80px;
+    margin-bottom:20px;
+    height:auto;
 	position: relative;
+
+
+}
 }
 .comment-box:before,  .comment-box:after {
 	content: '';
@@ -587,7 +599,7 @@ h5 {
 }
 
 .comment-head {
-	height:40%;
+	height:35px;
 	width:100%;
     margin-top:5px;
 	border-bottom: 2px solid #E5E5E5;
@@ -681,7 +693,7 @@ h5 {
     width:73%;
     float:left;
     margin-left:20px;
-    height:80px;
+    height:auto;
 	position: relative;
 }
 .rcomment-box:before,  .comment-box:after {
@@ -703,7 +715,7 @@ h5 {
 }
 
 .rcomment-head {
-	height:40%;
+	height:35px;
 	width:100%;
     margin-top:5px;
 	border-bottom: 2px solid #E5E5E5;
@@ -711,7 +723,7 @@ h5 {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #ABCDCB;*/
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
@@ -771,6 +783,29 @@ h5 {
 	border-radius: 0 0 4px 4px;
     background-color:  #ABCDCB;
 }
+
+/*评论回复文本框*/
+.commentreply{
+    display:none;
+    width:100%;
+    height:40px;
+    margin: 10px 0 10px 0;
+    background-color:  #ABCDCB ;
+    -webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+.commentreply-text{
+    width:85%;
+    height: 30px;
+    margin:5px 0 0 5px;
+    border-radius:5px;
+    resize:none;
+    line-height:1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid #c6c8ce;
+}
+
 .report-text{
     width:84%;
     margin:40px 0 0 8%;
@@ -788,29 +823,5 @@ h5 {
     border:none;
     border-radius:5px;
     cursor: pointer;
-}
-/*评论回复文本框*/
-.commentreply{
-    display:none;
-}
-.commentreplys{
-    width:100%;
-    height:40px;
-    margin: 10px 0 10px 0;
-    background-color:  #ABCDCB ;
-    -webkit-border-radius: 0 0 4px 4px;
-	-moz-border-radius: 0 0 4px 4px;
-	border-radius: 0 0 4px 4px;
-}
-
-.commentreply-text{
-    width:84%;
-    height: 30px;
-    margin:5px 0 0 5px;
-    border-radius:5px;
-    resize:none;
-    line-height:1.7;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border: 1px solid #c6c8ce;
 }
 

@@ -63,21 +63,18 @@ function login() {
 $("input[class='login_input']").click(function () {
     if ($("#email").val() !== "" && $("#password").val() !== "") {
         var email = $("input[id='email']").val();
-        var passwd = $("input[id='password']").val();
+        var passwd = $.trim($("input[id='password']").val());
         if (isemail(email)) {
             $.post("login", {
                 "email": email,
                 "password": passwd
             }, function (result) {
                 result = JSON.parse(result);
-                if (result["status"] === 0) {
-                    alert(result["message"]);
+                if (result.status === 0) {
+                    alert(result.message);
                     window.location.reload();
-                } else if (result["status"] === 1) {
-                   var username =  $.cookie('username', result["username"]);
-                    var email = $.cookie('email', result['email']);
-
-                    window.location.href =  '/idear/index'
+                } else if (result.status === 1) {
+                    window.location.href  = '/idear/index'
                 } else {
                     alert('服务器异常');
                     window.location.reload()
@@ -94,10 +91,3 @@ $("input[class='login_input']").click(function () {
 
     }
 });
-//回车键实现登录
-function keyLogin(){
-   if (event.keyCode==13){  //回车键的键值为13
-        document.getElementById("backjian").click(); //调用登录按钮的登录事件
-   }
-}
-
