@@ -33,7 +33,7 @@ ul li{
     width: 100%;
     height:66px;
     background:#7495B7;
-    /*background: #3D81C8;*/
+    /*background: #4F7EAE;*/
 }
 .logo{
     float:left;
@@ -65,12 +65,9 @@ ul li{
     text-align:center;
     line-height:66px;
     overflow:hidden;
-
 }
 .active{
     background: #29639F;
-    /*border-left:1px solid #cccccc;*/
-    /*border-right:1px solid #cccccc ;*/
 }
 .nav_main ul li:hover{
     background:#29639F;
@@ -131,7 +128,7 @@ ul li{
     width: 20%;
     height: 40%;
     margin-top: 7.5%;
-    background:#295E6A ;
+    background:#29639F ;
     float: left;
     overflow: hidden;
     border-radius: 3px;

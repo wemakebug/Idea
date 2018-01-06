@@ -21,7 +21,7 @@
 <div class="main_block">
     <div class="release_pro">
         <div class="pro_edit">
-            <h2>个人中心/新建项目</h2>
+            <h2>新建项目</h2>
         </div>
         <div class="useInstr">
             <div id="agreeing" class="input-use">使用说明</div>
@@ -29,7 +29,7 @@
         <div class="pro_chance">
             <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>
             <div class="chance_ownname"><a href="#"><p>暂存</p></a></div>
-            <div class="chance_ownname chance_release"><button><p>发布</p></button></div>
+            <div class="chance_ownname chance_release"><button class="releasePro"><p>发布</p></button></div>
         </div>
     </div>
     <div class="input_pro_title">
@@ -151,4 +151,8 @@
         }
 	</script>
     <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
+    <script>
+{#        var sHTML = $('#summernote').code();#}
+{#        alert(sHTML);#}
+    </script>
 {% endblock %}

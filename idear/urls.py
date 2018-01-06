@@ -18,14 +18,16 @@ from idear import views as views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
 urlpatterns = [
-    url(r'^index$', views.index),
+    url(r'^index$', views.index, name='index'),
     url(r'^login$', views.login),
     url(r'^regist$', views.regist),
     url(r'^team$', views.team),
     url(r'^teamdetails$', views.teamdetails),
     url(r'^praise$',views.creations),
-    url(r'^teamdetails/(?P<teamid>\d+)$', views.teamdetails),
+    url(r'^teamdetails/(?P<teamid>\d+)/$', views.teamdetails),
     url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
     url(r'^forgetPassword$', views.forgetPassword),
@@ -34,7 +36,7 @@ urlpatterns = [
     url(r'^apply$', views.apply),
     url(r'^recruit$', views.projects),
     url(r'^redetails/$', views.redetails),
-    url(r'^deprojects/$', views.deprojects),
+    url(r'^deprojects$', views.deprojects),
     url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
     url(r'^crdetails$', views.crdetails),
@@ -55,6 +57,7 @@ urlpatterns = [
     url(r'^teamattend1$', views.teamattend1),
     url(r'^teamcomment$', views.teamcomment),
     url(r'^recruit_apply$', views.recruit_apply),
+    url(r'^editprofile$',views.editprofile),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -6,17 +6,20 @@ from . import models
 import json
 from django.shortcuts import render, HttpResponse, Http404, render_to_response, HttpResponseRedirect
 import uuid
+from django.http import JsonResponse
+from django.views.generic.edit import DeleteView,UpdateView,CreateView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.conf.urls import handler404, handler500, handler403
 from django.views.decorators.http import require_http_methods
 from .admin_utils import check_login
 from django.template import RequestContext
 from django.core.paginator import Paginator
-from django import http
 import math
 from django.db.models import Q
+from django.utils.html import escapejs
 
-''' 新后台相关页面视图'''
+
+''' 新后台相关页面视图 '''
 @require_http_methods(["GET", "POST"])
 def page_not_found(request):
     response = render_to_response('/base/404.html', context=RequestContext(request))
@@ -25,7 +28,7 @@ def page_not_found(request):
 
 @require_http_methods(["GET", "POST"])
 def permition_denied(request):
-    response = render_to_response('/base/500.html',context=RequestContext(request))
+    response = render_to_response('/base/500.html', context=RequestContext(request))
     response.status_code = 500
     return response
 
@@ -220,7 +223,6 @@ def project_all(req, page=None):
 
         projectId = req.POST["projectId"]
         try:
-            print("try to find project with id " + str(projectId))
             project = models.Project.objects.get(Id=projectId)
             resData["ProjectName"] = project.ProjectName
             resData["ProjsctStartTime"] = project.StartTime.strftime("%Y-%m-%d")
@@ -265,7 +267,11 @@ def project_delete(req, deleteId):
 @require_http_methods(["GET", "POST"])
 def project_add(req):
     if req.method == "GET":
-        return render(req, 'admina/project_add.html')
+        projectLabels = models.ProjectLabel.objects.all().order_by("-Id")
+        return render(req, 'admina/project_add.html', {
+            "ProjectLabels": projectLabels,
+
+        })
     else:
         pass
 
@@ -317,10 +323,10 @@ def projet_recruit(req, uid=None):
 @require_http_methods(["GET", "POST"])
 def label_project(req, uid=None):
     if req.method == "GET":
-        if uid:
-            pass
-        else:
-            return render(req, 'admina/label_project.html')
+        Labels = models.ProjectLabel.objects.all().order_by('-Id')
+        return render(req, 'admina/label_project.html', {
+            'Labels': Labels
+        })
     else:
         pass
 
@@ -329,22 +335,13 @@ def label_project(req, uid=None):
 @require_http_methods(["GET", "POST"])
 def label_user(req, uid=None):
     if req.method == "GET":
-        if uid:
-            pass
-        else:
-            return render(req, 'admina/label_user.html')
-    else:
-        pass
+        Labels = models.UserLabel.objects.all().order_by("-Id")
+        ProjectLabels = models.ProjectLabel.objects.all().order_by("-Id")
+        return render(req, 'admina/label_user.html', {
+            'Labels': Labels,
+            'ProjectLabels': ProjectLabels,
 
-@csrf_exempt
-@check_login()
-@require_http_methods(["GET", "POST"])
-def label_relation(req, uid=None):
-    if req.method == "GET":
-        if uid:
-            pass
-        else:
-            return render(req, '/admina/label_relation.html')
+        })
     else:
         pass
 
@@ -352,27 +349,377 @@ def label_relation(req, uid=None):
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
-def creation_all(req, uid=None):
+def creation_all(req, page=None, category=None):
+    '''
+    :param page: 当前查询创意的页数
+    :param category: 当前查询的创意所含标签
+    '''
     if req.method == "GET":
-        if uid:
-            pass
+        itemsPerPage = 15
+        pages = math.ceil(float(models.Creation.objects.count()) / float(itemsPerPage)) # 计算页数
+        Labels = models.ProjectLabel.objects.all()
+        if page:
+            if category:
+                # 页数和分类同时存在
+                Creations = []
+                label = models.ProjectLabel.objects.get(Id=category)
+                pages = models.Creation2ProjectLabel.objects.filter(projectLabel=label).count()
+                Creation2ProjectLabels = models.Creation2ProjectLabel.objects.filter(projectLabel=label)[int(page-1)*itemsPerPage:int(page)*itemsPerPage]
+                for Creation2ProjectLabel in Creation2ProjectLabels:
+                    Creations.append(Creation2ProjectLabel.creation)
+                return render(req, 'admina/creation_all.html', {
+                    "Labels": Labels,
+                    "category": category,
+                    "pages": range(1, int(pages) + 1),
+                    "Creations": Creations,
+                })
+            else:
+                # 只存在页数
+                Creations = models.Creation.objects.all()[(int(page)-1)*itemsPerPage:int(page)*itemsPerPage]
+                return render(req, 'admina/creation_all.html', {
+                    "Labels": Labels,
+                    "category": category,
+                    "pages": range(1, int(pages) + 1),
+                    "Creations":Creations
+                })
+        else:
+            if not category:
+                # 不存在页数同时不存在分类
+                Creations = models.Creation.objects.all()[:itemsPerPage]
+            else:
+                # 不存在页数但存在分类
+                try:
+                    Creations = []
+                    label = models.ProjectLabel.objects.get(Id=category)
+                    Creation2ProjectLabels = models.Creation2ProjectLabel.objects.filter(projectLabel=label)
+                    for Creation2ProjectLabel in Creation2ProjectLabels:
+                        Creations.append(Creation2ProjectLabel.creation)
+                except Exception as e:
+                    print(e)
+                    Creations = models.Creation.objects.all()[:itemsPerPage]
+
+            return render(req, 'admina/creation_all.html',
+                              {
+                                   "Creations": Creations,
+                                   "Labels": Labels,
+                                   "CurrentPage": page,
+                                   "category": category,
+                                   "pages": range(1, int(pages) + 1)
+                               }
+                          )
+    else:
+        resData = {
+            "status": 0,
+            "message": "",
+            "creationImg": None,
+            "creationName": None,
+            "creationUserName": None,
+            "creationUserId": None
+        }
+        try:
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(Id=creationId)
+            resData["status"] = 1
+            resData["creationImg"] = creation.Img.url
+            resData["creationName"] = creation.Name
+            resData["creationUserName"] = creation.user.UserName
+            resData["creationUserId"] = creation.user.Id
+            resData["creationContent"] = creation.Describe
+        except Exception as e:
+            print(e)
+            resData["message"] = "获取数据异常"
+        return JsonResponse(resData)
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def creation_category(req, page):
+    '''
+    创意分类视图
+    :param reqm:
+    :param page:
+    :return: Html to creation with specified category
+    '''
+    if req.method == "GET":
+        if not page:
+            return render(req, 'admina/creation_all.html')
         else:
             return render(req, 'admina/creation_all.html')
     else:
-        pass
+        return render(req, 'admina/creation_all.html')
+
 
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
 def creation_add(req, uid=None):
     if req.method == "GET":
+        users = models.User.objects.all().order_by("UserName")
+        labels = models.ProjectLabel.objects.all()
         if uid:
             pass
         else:
-            return render(req, 'admina/creation_add.html')
+            return render(req, 'admina/creation_add.html', {
+                "labels": labels,
+                "users": users,
+
+            })
+    else:
+        ''' :type 添加创意'''
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["POST"])
+def creation_delete(req):
+    '''
+    删除创意,将IsUse状态置为False
+    :param req:
+    :return:
+    '''
+    resData = {
+        "status": 0,
+        "message": ""
+    }
+    try:
+        creationId = req.POST['creationId']
+        creation = models.Creation.objects.get(Id=creationId)
+        creation.IsUse = False
+        creation.save()
+        resData["status"] = 1
+        resData["message"] = "Success"
+    except Exception as e:
+        print(e)
+        resData["message"] = "服务器异常！"
+    return JsonResponse(resData)
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["POST"])
+def creation_modify(req):
+    '''
+    创意修改
+    :param req:
+    :return: Json 信息
+    '''
+    resData = {
+        "status": 0,
+        "message": ""
+    }
+    try:
+        creationId = req.POST["creationId"]
+        creationName = escapejs(req.POST["creationName"])
+        creationDesc = escapejs(req.POST["creationDesc"])
+        creation = models.Creation.objects.get(Id=creationId)
+        creation.Describe = creationDesc
+        creation.Name = creationName
+        creation.save()
+        resData["status"] = 1
+        resData["message"] = "success!"
+    except Exception as e:
+        print(e)
+        resData["message"] = "服务器异常!"
+    return JsonResponse(resData)
+
+# 举报管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def report_comment(req):
+    '''
+    评论举报相关视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/report_comment.html')
     else:
         pass
 
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def report_creation(req):
+    '''
+    创意举报相关视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/report_creation.html')
+    else:
+        pass
+
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def report_user(req):
+    '''
+    用户举报相关视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/report_user.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def report_project(req):
+    '''
+    项目举报相关视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/report_project.html')
+    else:
+        pass
+
+# 评论管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def comment_statistic(req):
+    '''
+    用于显示评论统计状况的视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/comment_all.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def comment_creation(req):
+    '''
+    用于显示评论统计状况的视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/comment_creation.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def comment_project(req):
+    '''
+    用于显示评论统计状况的视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/creation_project.html')
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def comment_user(req):
+    '''
+    用于显示评论统计状况的视图
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/creation_user.html')
+    else:
+        pass
+
+# 分值管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def score_rank(req):
+    if req.method == "GET":
+        ranks = models.Score.objects.all().order_by("-Id")
+        return render(req, 'admina/score_rank.html', {
+            "Ranks": ranks,
+
+        })
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def score_record(req):
+    if req.method == "GET":
+        return render(req, 'admina/score_record.html', {
+
+        })
+    else:
+        pass
+
+
+# 关系管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def relation_praise(req):
+    '''
+    点赞管理相关视图， 对应 model ：Praise
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/relation_praise.html', {})
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def relation_attention(req):
+    '''
+    关注管理相关视图， 对应 model : Fellow
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/relation_attention.html', {})
+    else:
+        pass
+
+
+# 消息管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_type(req):
+    if req.method == "GET":
+        return render(req, 'admina/message_type.html', {})
+    else:
+        pass
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_send(req):
+    if req.method == "GET":
+        return render(req, 'admian/message_send.html', {})
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_manage(req):
+    if req.method == "GET":
+        return render(req, 'admian/message_manage.html', {})
+    else:
+        pass
+
+''' 将来可能弃用的代码 '''
 
 def Profile(req):
     if req.method == "GET":
@@ -417,6 +764,11 @@ def PhotoGallary(req):
             result["status"] = 1
             result["message"]="删除成功"
             return HttpResponse(json.dumps(result))
+
+
+''' 尝试使用类视图 '''
+class CreationDelete(DeleteView):
+    model = models.Creation
 
 """评论相关页面"""
 def comment_list(req):

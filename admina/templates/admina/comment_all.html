@@ -1,0 +1,96 @@
+{% extends '../base/base.html' %}
+
+{% block title %}We创 - 评论总览{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/js/morris-chart/morris.css">
+{% endblock %}
+{% block heading %}
+<!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                评论总览
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">评论数据</a>
+                </li>
+                <li class="active"> 累计评论数据 </li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+{% endblock %}
+
+{% block body %}
+     <div class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Bar Chart
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            <div id="graph-bar"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Line Chart
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            <div id="graph-line"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Area Chart
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            <div id="graph-area-line"></div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-sm-6">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Donut Chart
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            <div id="graph-donut"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+{% endblock %}
+
+{% block midscript %}   {# midescript #}
+    <!--Morris Chart-->
+    <script src="/static/js/morris-chart/morris.js"></script>
+    <script src="/static/js/morris-chart/raphael-min.js"></script>
+    <script src="/static/js/morris-chart/morris.init.js"></script>
+{% endblock %}

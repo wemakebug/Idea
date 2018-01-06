@@ -6,10 +6,14 @@
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-fileupload.min.css" />
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'js/bootstrap-wysihtml5/bootstrap-wysihtml5.css'%}" />
 {% endblock %}
 {% block heading %}   {# heading #}
 <ul class="breadcrumb">
-    <h3>用户管理</h3>
+    <h3>后台管理</h3>
+    <li>
+        <a href="#">用户管理</a>
+    </li>
     <li class="active">添加用户</li>
 </ul>
 {% endblock %}
@@ -31,7 +35,7 @@
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="lastname" class="control-label col-lg-2">工号</label>
+                            <label for="lastname" class="control-label col-lg-2">工号 / 学号 / 团队代码</label>
                             <div class="col-lg-5">
                                 <input class=" form-control" id="lastname" name="lastname" type="text" />
                             </div>
@@ -97,43 +101,28 @@
                                 <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">分值</label>
-                            <div class="col-lg-5">
-                                <div id="spinner4">
-                                    <div class="input-group" style="width:150px;">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-up btn-primary">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-down btn-warning">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
+                        <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">用户头像</label>
+                            <div class="col-md-10">
+                                <div class="controls col-md-9">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <span class="btn btn-default btn-file">
+                                                <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
+                                                <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换图片</span>
+                                                <input type="file" class="default" id="file_upload_img"/>
+                                                </span>
+                                            <span class="fileupload-preview" style="margin-left:5px;"></span>
+                                            <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="confirm_password" class="control-label col-lg-2">头像</label>
-                            <div class="col-md-10">
-                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                            <div class="form-group">
+                                <label for="confirm_password" class="control-label col-lg-2">自我介绍</label>
+                                    <div class="col-md-10">
+                                        <textarea class="wysihtml5 form-control" rows="9"></textarea>
                                     </div>
-                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                    <div>
-                                                   <span class="btn btn-default btn-file">
-                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                                   <input type="file" class="default" />
-                                                   </span>
-                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -152,38 +141,46 @@
 
 
 {% block midscript %}   {# midescript #}
-<script type="text/javascript" src="/static/js/jquery.validate.min.js"></script>
-<script src="/static/user_statics/user_add_validation.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.validate.min.js"></script>
+    <script src="/static/user_statics/user_add_validation.js"></script>
 
-<!--ios7-->
-<script src="/static/js/ios-switch/switchery.js" ></script>
-<script src="/static/js/ios-switch/ios-init.js" ></script>
+    <!--ios7-->
+    <script src="/static/js/ios-switch/switchery.js" ></script>
+    <script src="/static/js/ios-switch/ios-init.js" ></script>
 
-<!--icheck -->
-<script src="/static/js/iCheck/jquery.icheck.js"></script>
-<script src="/static/js/icheck-init.js"></script>
+    <!--icheck -->
+    <script src="/static/js/iCheck/jquery.icheck.js"></script>
+    <script src="/static/js/icheck-init.js"></script>
 
-<!--multi-select-->
-<script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.multi-select.js"></script>
-<script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
-<script src="/static/js/multi-select-init.js"></script>
+    <!--multi-select-->
+    <script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
+    <script src="/static/js/multi-select-init.js"></script>
 
-<!--spinner-->
-<script type="text/javascript" src="/static/js/fuelux/js/spinner.min.js"></script>
-<script src="/static/js/spinner-init.js"></script>
+    <!--spinner-->
+    <script type="text/javascript" src="/static/js/fuelux/js/spinner.min.js"></script>
+    <script src="/static/js/spinner-init.js"></script>
 
-<!--file upload-->
-<script type="text/javascript" src="/static/js/bootstrap-fileupload.min.js"></script>
+    <!--file upload-->
+    <script type="text/javascript" src="/static/js/bootstrap-fileupload.min.js"></script>
 
-<!--tags input-->
-<script src="/static/js/jquery-tags-input/jquery.tagsinput.js"></script>
-<script src="/static/js/tagsinput-init.js"></script>
+    <!--tags input-->
+    <script src="/static/js/jquery-tags-input/jquery.tagsinput.js"></script>
+    <script src="/static/js/tagsinput-init.js"></script>
 
-<!--bootstrap input mask-->
-<script type="text/javascript" src="/static/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+    <!--bootstrap input mask-->
+    <script type="text/javascript" src="/static/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+
+    <!--bootstrap wysihtml editor-->
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
 
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
-
+<script>
+    jQuery(document).ready(function(){
+         $('.wysihtml5').wysihtml5();
+    });
+</script>
 {% endblock %}

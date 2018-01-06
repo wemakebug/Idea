@@ -4,9 +4,10 @@
     <title>首页</title>
 {%endblock%}
 {%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
     <link rel="stylesheet" href="{% static 'base/css/base.css'%}">
-    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+
 {%endblock%}
 {%block script%}
 
@@ -19,14 +20,26 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="{% static 'idea/imgs/bg_top.jpg'%}">
+        <div class="item active" >
+            <img src="{% static 'idea/imgs/bg_top.jpg'%}" >
+            <div class="img_words">
+                <h3>抛下书本上街去，即兴舞一支Pantsul</h3>
+                <div class="words_line"></div>
+            </div>
         </div>
         <div class="item">
             <img src="{% static 'idea/imgs/bg_top1.jpg'%}">
+            <div class="img_words">
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种舞蹈诞生于贫民区，具有鲜明的政治色彩</h3>
+            </div>
         </div>
         <div class="item">
             <img src="{% static 'idea/imgs/night_img.png'%}">
+            <div class="img_words">
+                <h3>通过这个实验</h3>
+                <h3>你会发现，当你开始聆听音乐时</h3>
+                <div class="words_line_3"></div>
+            </div>
         </div>
     </div>
     <a class="carousel-control left top-content-control-left" href="#myCarousel" data-slide="prev"></a>
@@ -45,7 +58,7 @@
 				</div>
 				<div class="usage">
 					<div class="usage_one">
-                        <a href="recruit?sign=all">
+                        <a href="projects?sign=all">
 						    <div class="usage_icon">
                             </div>
                         </a>
@@ -59,7 +72,7 @@
 						</div>
 					</div>
 					<div class="usage_one">
-                        <a href="release">
+                        <a href="/idear/release">
 						    <div class="usage_icon2"></div>
                         </a>
 						<div class="usage_details">

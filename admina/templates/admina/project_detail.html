@@ -6,15 +6,8 @@
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-fileupload.min.css" />
 
 <link rel="stylesheet" type="text/css" href="/static/js/bootstrap-datepicker/css/datepicker-custom.css" />
-
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    {% comment %} bootstrap-wysihtml {% endcomment %}
+<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
 {# css #}
 
 {% endblock %}
@@ -195,15 +188,9 @@
                 <div class="form">
                     <form class="cmxform form-horizontal adminex-form" >
                         <div class="form-group" style="height: 500px">
-                            <label for="summernote1" class="control-label col-lg-2">项目介绍</label>
-                            <div class="col-lg-10">
-                                <div id="summernote1"></div>
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control" rows="9"></textarea>
                             </div>
-                            <script type="text/javascript">
-                                $('#summernote1').summernote({
-                                    height:500,
-                                });
-                            </script>
                         </div>
                     </form>
                 </div>
@@ -227,15 +214,9 @@
                 <div class="form">
                     <form class="cmxform form-horizontal adminex-form" >
                         <div class="form-group" style="height: 500px">
-                            <label for="summernote2" class="control-label col-lg-2">进度描述</label>
-                            <div class="col-lg-10">
-                                <div id="summernote2"></div>
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control" rows="9"></textarea>
                             </div>
-                            <script type="text/javascript">
-                                $('#summernote2').summernote({
-                                    height:500,
-                                });
-                            </script>
                         </div>
                     </form>
                 </div>
@@ -259,15 +240,9 @@
                 <div class="form">
                     <form class="cmxform form-horizontal adminex-form" >
                         <div class="form-group" style="height: 500px">
-                            <label for="summernote3" class="control-label col-lg-2">项目总结</label>
-                            <div class="col-lg-10">
-                                <div id="summernote3"></div>
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control" rows="9"></textarea>
                             </div>
-                            <script type="text/javascript">
-                                $('#summernote3').summernote({
-                                    height:500,
-                                });
-                            </script>
                         </div>
                     </form>
                 </div>
@@ -299,5 +274,9 @@
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
-
+<script>
+    jQuery(document).ready(function(){
+         $('.wysihtml5').wysihtml5();
+    });
+</script>
 {% endblock %}

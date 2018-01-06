@@ -18,7 +18,7 @@
         <div class="col-sm-12">
             <section class="panel">
                 <header class="panel-heading">
-                    全部项目
+                    全部创意
                     <span class="tools pull-right">
                                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                                 <a href="javascript:;" class="fa fa-times"></a>
@@ -27,116 +27,45 @@
                 <div class="panel-body">
 
                     <ul id="filters" class="media-filter">
-                        <li><a href="#" data-filter="*"> All</a></li>
-                        <li><a href="#" data-filter=".images">Images</a></li>
-                        <li><a href="#" data-filter=".audio">Audio</a></li>
-                        <li><a href="#" data-filter=".video">Video</a></li>
-                        <li><a href="#" data-filter=".documents">Documents</a></li>
+                        <div class="row">
+
+                            <li><a href="#" data-filter="*" > All</a></li>
+                            {% for label in Labels %}
+                                <li>
+                                    <a href="{{ label.Id }}" data-filter="*" >{{ label.ProjectLabelName | slice:"5" }}</a>
+                                </li>
+                            {% endfor %}
+                        </div>
                     </ul>
 
                     <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-check-square-o"></i> Select all</button>
                         <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i> Add New</button>
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash-o"></i> Delete</button>
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-upload"></i> Upload New File</button>
                     </div>
 
 
 
                     <div id="gallery" class="media-gal">
-                        <div class="images item " >
+                        {% for creation in Creations %}
+                            <div class="images item " >
                             <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" />
-                            </a>
-                            <p>img01.jpg </p>
-                        </div>
+                                {% if creation.Img %}
+                                     <img src="/static{{ creation.Img.url }}" alt="" id="creation-{{ creation.Id }}" name="creations"/>
+                                {% else %}
+                                     <img src="{% static 'images/gallery/image1.jpg'%}" alt="" id="creation-{{ creation.Id }}" name="creations"/>
+                                {% endif %}
 
-                        <div class=" audio item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image2.jpg'%}" alt="" />
                             </a>
-                            <p>img02.jpg </p>
+                            <p>{{ creation.Name | slice:"10" }}</p>
                         </div>
-
-                        <div class=" video item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image3.jpg'%}" alt="" />
-                            </a>
-                            <p>img03.jpg </p>
-                        </div>
-
-                        <div class=" images audio item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image4.jpg'%}" alt="" />
-                            </a>
-                            <p>img04.jpg </p>
-                        </div>
-
-                        <div class=" images documents item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image5.jpg'%}" alt="" />
-                            </a>
-                            <p>img05.jpg </p>
-                        </div>
-
-                        <div class=" audio item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" />
-                            </a>
-                            <p>img01.jpg </p>
-                        </div>
-
-                        <div class=" documents item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image2.jpg'%}" alt="" />
-                            </a>
-                            <p>img02.jpg </p>
-                        </div>
-                        <div class=" video item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image3.jpg'%}" alt="" />
-                            </a>
-                            <p>img03.jpg </p>
-                        </div>
-
-                        <div class=" images item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image4.jpg'%}" alt="" />
-                            </a>
-                            <p>img04.jpg </p>
-                        </div>
-
-                        <div class=" documents item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image5.jpg'%}" alt="" />
-                            </a>
-                            <p>img05.jpg </p>
-                        </div>
-
-                        <div class=" video item " >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" />
-                            </a>
-                            <p>img01.jpg </p>
-                        </div>
-
-                        <div class="audio images item" >
-                            <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image2.jpg'%}" alt="" />
-                            </a>
-                            <p>img02.jpg </p>
-                        </div>
-
+                        {% endfor %}
                     </div>
 
                     <div class="col-md-12 text-center clearfix">
                         <ul class="pagination">
                             <li><a href="#">«</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
+                            {% for page in pages %}
+                                <li><a href="#">{{ page }}</a></li>
+                            {% endfor %}
                             <li><a href="#">»</a></li>
                         </ul>
                     </div>
@@ -147,52 +76,35 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Edit Media Gallery</h4>
+                                    <h4 class="modal-title">创意详情编辑</h4>
                                 </div>
 
                                 <div class="modal-body row">
 
                                     <div class="col-md-5 img-modal">
-                                        <img src="{% static 'images/gallery/image1.jpg'%}" alt="">
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit Image</a>
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-eye"></i> View Full Size</a>
-
-                                        <p class="mtop10"><strong>File Name:</strong> img01.jpg</p>
-                                        <p><strong>File Type:</strong> jpg</p>
-                                        <p><strong>Resolution:</strong> 300x200</p>
-                                        <p><strong>Uploaded By:</strong> <a href="#">ThemeBucket</a></p>
+                                        <img id="creation_detail_img_path" src="{% static 'images/gallery/image1.jpg'%}" alt="">
+                                        <p><trong>提出者:</trong> <a href="#" id="creation_detail_user">ThemeBucket</a></p>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <label> Name</label>
+                                            <label> 创意名称</label>
                                             <input id="name" value="img01.jpg" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label> Tittle Text</label>
-                                            <input id="title" value="awesome image" class="form-control">
+                                            <label> 创意描述</label>
+                                            <textarea rows="2" class="form-control" id="creation_detail_value"></textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label> Description</label>
-                                            <textarea rows="2" class="form-control"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label> Link URL</label>
-                                            <input id="link" value="images/gallery/img01.jpg" class="form-control">
                                         </div>
                                         <div class="pull-right">
-                                            <button class="btn btn-danger btn-sm" type="button">Delete</button>
-                                            <button class="btn btn-success btn-sm" type="button">Save changes</button>
+                                            <button class="btn btn-danger btn-sm" type="button" id="creation_delete_btn">删除</button>
+                                            <button class="btn btn-success btn-sm" type="button" id="creation_modify_btn">保存更改</button>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
                     <!-- modal -->
-
-                </div>
                 </section>
         </div>
     </div>
@@ -220,7 +132,60 @@
             return false;
         });
     });
-</script>{# midescript #}
+    </script>
+
+    <script type="text/javascript">
+        $("img[name='creations']").click(function () {
+           var creationid = this.id.split('-')[1];
+            $.post(window.location.pathname,{"creationId":creationid},function (res) {
+                res = JSON.parse(res);
+                if(res.status === 1){
+                    document.getElementById("creation_detail_img_path").src = "/static" + res.creationImg;
+                    document.getElementById("creation_detail_user").textContent = res.creationUserName;
+                    document.getElementById("creation_detail_user").setAttribute("href",  '/admina/user/detail/' + res.creationUserId.valueOf());
+                    document.getElementById("creation_detail_value").value = res.creationContent;
+                    $("input[id='name']").get(0).value = res.creationName;
+                    var delete_btn= document.getElementById("creation_delete_btn");
+                    delete_btn.onclick = function () {
+                        if(confirm("确认删除？")){
+                            $.post("creation/delete/", {"creationId": creationid},function (res) {
+                                res = JSON.parse(res);
+                                if(res.status === 1){
+                                    alert(res.message);
+                                window.location.reload();
+                                }else if(res.status === 0){
+                                    alert(res.message);
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                        };
+                }else if (res.status === 0){
+                    alert(res.message);
+{#                    window.location.reload();#}
+                }else {
+                    alert("获取数据异常！")
+                }
+            })
+        });
+        var modify_btn = document.getElementById("creation_modify_btn");
+        modify_btn.onclick = function () {
+            if(confirm("确认更改？")){
+                  $.post("creation/modify/", {"creationId": creationid, "creationName": $("input[id='name']").get(0).value, 'creationDesc':document.getElementById("creation_detail_value").value },function (res) {
+                                res = JSON.parse(res);
+                                if(res.status === 1){
+                                    alert(res.message);
+                                window.location.reload();
+                                }else if(res.status === 0){
+                                    alert(res.message);
+                                    window.location.reload();
+                                }
+                            });
+            }
+        }
+    </script>
+
+    {# midescript #}
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}

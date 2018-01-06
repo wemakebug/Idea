@@ -4,14 +4,20 @@
 {% block css %}
     {% load static %}
 <!--file upload-->
-<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
 
-<link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
-    <!--multi-select-->
-    <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
 
-<!-- include libraries(jQuery, bootstrap) -->
+    <!-- include libraries(jQuery, bootstrap) -->
     <link rel="stylesheet" type="text/css" href="{% static  'js/bootstrap-wysihtml5/bootstrap-wysihtml5.css' %}" />
+
+    {# icheck css #}
+    <link href="/static/js/iCheck/skins/flat/grey.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/red.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/blue.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/yellow.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/purple.css" rel="stylesheet">
 {# css #}
 
 {% endblock %}
@@ -125,7 +131,7 @@
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999" value="{{ user.Score }}">
+                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999" value="{{ user.Score }}" readonly>
                                         <div class="spinner-buttons input-group-btn">
                                             <button type="button" class="btn spinner-down btn-warning">
                                                 <i class="fa fa-minus"></i>
@@ -149,8 +155,8 @@
                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
                                                    <span class="btn btn-default btn-file">
-                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
+                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换</span>
                                                    <input type="file" class="default" />
                                                    </span>
                                         <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
@@ -159,21 +165,17 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="confirm_password" class="control-label col-lg-2">用户标签选择</label>
-                            <div class="col-md-9">
-                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
-                                        name="my_multi_select1[]">
-                                    {% for user_label in user_labels %}
-                                        <option>{{ user_label.Name }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-default" type="button">重置</button>
-                            </div>
+                            <label for="confirm_password" class="control-label col-lg-2">标签选择</label>
+                                 <div class="col-sm-9 icheck ">
+                                        {% for user_label in user_labels %}
+                                            <div class="flat-grey single-row">
+                                                        <div class="radio">
+                                                            <input type="checkbox" id="ProjectLabel-{{ user_label.Id }}">
+                                                            <label for="ProjectLabel-{{ user_label.Id }}">{{ user_label.Name }}</label>
+                                                        </div>
+                                                    </div>
+                                        {% endfor %}
+                                 </div>
                         </div>
                     </form>
                 </div>
@@ -193,11 +195,12 @@
                             <textarea class="wysihtml5 form-control" rows="9"></textarea>
                         </div>
                 </div>
-                <br>
-                <div class="form-group last">
-                    <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-default" type="button">取消</button>
+                <div class="form-group">
+                    <div class="form-group last">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-default" type="button">取消</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -224,10 +227,10 @@
     {# multiple select #}
     <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.multi-select.js'%}"></script>
     <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.quicksearch.js'%}"></script>
-    <script type="text/javascript">
-        $('#my_multi_select1').multiSelect();
 
-    </script>
+    {# icheck #}
+    <script src="/static/js/iCheck/jquery.icheck.js"></script>
+    <script src="/static/js/icheck-init.js"></script>
 
     {% comment %} bootstrap-wysihtml {% endcomment %}
     <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>

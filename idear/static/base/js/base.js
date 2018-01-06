@@ -12,11 +12,30 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
-    $('.nav_main li a').each(function () {
-        $this = $(this);
-        if ($this[0].href == String(window.location.href)) {
-            $this.addClass('active');
-        }
+    // $('.nav_main li a').each(function () {
+    //     $this = $(this);
+    //     if ($this[0].href === String(window.location.href)) {
+    //         $this.addClass('active');
+    //     }
+    // });
+    $(function(){
+        var navLi=$('.nav_main li a') ;//此处填写你的导航html对象
+        var proAhref=$('.tag a');
+        var windowUrl=String(window.location.href); //获取当前url链接
+        navLi.each(function(){
+            $this = $(this);
+            var t = $this[0].href;
+            if(t === windowUrl) {
+                $(this).addClass('active');  //添加当前位置样式
+            }
+        });
+        // proAhref.each(function(){
+        //     $this = $(this);
+        //     var t = $this[0].href;
+        //     if(t === windowUrl) {
+        //         $('.index_recruit').addClass('active');  //添加当前位置样式
+        //     }
+        // });
     });
 
     var user_img = document.getElementById('user_img');
@@ -44,23 +63,10 @@ $(document).ready(function () {
             } else if (result['status'] === 0) {
                 // var message = result['message'];
                 // alert(message);
-            } else {
-            }
-
+            } else {}
         });
-         // var cookie = {
-         // get:function(str){
-         // var cookies = {};
-         // document.cookie.split(';').forEach(function(item){
-         // var c = item.split('=');
-         // cookies[c[0]]=c[1];
-         // });
-         // return cookies[str] || "";
-         // }
-         // }
-         // document.querySelector("#username").innerHTML = cookie.get("username");
-         }
-    });
+    }
+});
 
 (function($){
     $.fn.typer = function(options){
@@ -87,7 +93,7 @@ $(document).ready(function () {
             defaults.replace.push(changer);
             var interval = setInterval(function(){
                 var $bintext = '';
-                if( position == indexOf ) {
+                if( position === indexOf ) {
                     $bintext = bintext(changer.length-1);
                     $this.html( $text.substr(0, normal.length) );
                     $this.append('<span>' + $bintext + '</span>')
