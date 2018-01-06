@@ -1025,7 +1025,7 @@ def editprofile(req):
         print (sex)
         result={
               "status":1,
-              "string":success
+              "string":'success'
         }
         try:
             models.User.objects.filter(Email=email).update(UserName = username,School = school,Institude = institude,Major = major,Sex = sex)
@@ -1037,6 +1037,13 @@ def editprofile(req):
         else:
             # print(locals())
             return HttpResponse(json.dumps(result))
+
+
+def unread_messages(req):
+    if req.method == 'GET':
+        return render_to_response('personal/unread_messages.html')
+    if req.method == 'POST':
+        pass
 
 
 
