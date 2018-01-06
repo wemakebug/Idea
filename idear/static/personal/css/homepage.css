@@ -186,11 +186,11 @@
     width: 100%;
     height: auto;
     text-align: center;
+    min-height: 600px;
 }
 .project1{
     width: 65%;
-    height: 300px;
-    border-top: solid 2px rgba(220,220,220,0.5);
+    border: solid 1px rgba(220,220,220,0.7);
 }
 .project2{
     
