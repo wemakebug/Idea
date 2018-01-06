@@ -1038,9 +1038,8 @@ def release(req):
 
 def editprofile(req):
     if req.method == 'GET':
-        email = req.session['user_email']
+        email = req.COOKIES.get('user_email')
         print(email)
-        username = req.session['user_username']
         try:
             user = models.User.objects.get(Email=email)
         except Exception as e:
@@ -1048,7 +1047,7 @@ def editprofile(req):
         else:
             return render_to_response('personal/editprofile.html',{"user":user})
     if req.method == 'POST':
-        email = req.session['user_email']
+        email = req.COOKIES.get('user_email')
         username = req.POST["username"]
         school = req.POST["school"]
         institude = req.POST["institude"]
@@ -1073,7 +1072,8 @@ def editprofile(req):
 
 def unread_messages(req):
     if req.method == 'GET':
-        message_content = models.Message.objects.filter(Q(IsRead = False))
+        email = req.COOKIES.get('user_email')
+        message_content = models.Message.objects.filter(Q(IsRead = False) & Q(user__Email = email))
         return render_to_response('personal/unread_messages.html',{"message_content":message_content})
     if req.method == 'POST':
         messageid = req.POST["messageid"]
