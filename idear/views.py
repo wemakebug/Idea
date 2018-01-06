@@ -808,20 +808,23 @@ def deprojects(req):
             if sign == "all":
                 projects = models.Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
                 for project in projects:
+
                     Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
                     alllables = []  # 找出本创意所有的标签
                     for label in Labels:
                         alllables.append(label.projectLabel.Id)
                     alllables = list(set(alllables))
                     project2projectLabel = models.Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
-
+ 
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
 
+
             return render_to_response('project/deprojects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels": models.Project2ProjectLabel})
+
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
@@ -839,12 +842,15 @@ def dedetails(req):
     '''
     if req.method == 'GET':
         projectId = req.GET['projectId']
+
+
         project = models.Project.objects.get(Id=projectId)
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
         print(labels)
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
+
 
         alllables = []  # 找出本项目所有的标签
         for label in labels:
