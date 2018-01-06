@@ -42,7 +42,7 @@
                         <div class="form-group ">
                             <label for="firstname" class="control-label col-lg-2">创意名称</label>
                             <div class="col-lg-5">
-                                <input class=" form-control" id="firstname" name="firstname" type="text" id="creation_name"/>
+                                <input class=" form-control" type="text" id="creation_name"/>
                             </div>
                         </div>
                         <div class="form-group ">
@@ -95,7 +95,7 @@
                                         {% for label in labels %}
                                             <div class="flat-grey single-row">
                                                         <div class="radio">
-                                                            <input type="checkbox" id="ProjectLabel-{{ label.Id }}">
+                                                            <input type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}">
                                                             <label for="ProjectLabel-{{ label.Id }}">{{ label.ProjectLabelName }}</label>
                                                         </div>
                                                     </div>
@@ -157,12 +157,13 @@
 
 {% block lastscript %}  {# lastscript #}
     <script>
-        var sub_btn = document.getElementById('creation_add_btn')
-        var creation_init_time = document.getElementById('creation_init_time')
-        var creation_name = document.getElementById('creation_name')
-        var creation_user = document.getElementById('creation_user')
-        var IsUseRadio = document.getElementsByName('IsUse')
-        var upload_img = document.getElementById('file_upload_img')
+        var sub_btn = document.getElementById('creation_add_btn');
+        var creation_init_time = document.getElementById('creation_init_time').value;
+        var creation_name = document.getElementById('creation_name').value; // 获取创意名称
+        var creation_user = document.getElementById('creation_user').value;
+        var IsUseRadio = document.getElementsByName('IsUse');
+        var LabelTags = document.getElementsByName('label_tags')
+        var upload_img = document.getElementById('file_upload_img');
         jQuery(document).ready(function(){
              $('.wysihtml5').wysihtml5(
                  {
@@ -175,10 +176,52 @@
         });
         sub_btn.onclick = function () {
             //提交页面数据
+
             var editor_value  =  $('.wysihtml5').val();  //获取富文本值
+            //手动处理上传文件格式
             var Img_input = document.getElementById('file_upload_img');
-            //手动处理文件格式
-            alert(Img_input.files[0].size)
+
+            //检查文件后缀
+            if(Img_input.files[0]){
+                var file_ext = Img_input.files[0].name.split('.');
+                file_ext = file_ext[file_ext.length - 1];
+                if(!Img_input.files[0] && file_ext !== "bmp" && file_ext!== "jpg" && file_ext!== "gif"){
+                alert('请添加正确的图片格式！ (gif|jpg|jpeg|bmp)')
+                }
+            }
+
+
+
+                // 获取 checked 的 radio
+            for(var i = 0;i< IsUseRadio.length; i++){
+                if(IsUseRadio[i].checked){
+                    var IsUse = IsUseRadio[i].value
+                }
+            }
+            var tags = [];
+            for(var j=0; j<LabelTags.length; j++){
+                if(LabelTags[j].checked){
+                    tags.push(LabelTags[j].value)
+                }
+            }
+
+            var data = new FormData();
+            data.append('creation_name', creation_name);
+            data.append('creation_init_time', creation_init_time);
+            data.append('creation_user', creation_user);
+            data.append('IsUse', IsUse);
+            if(Img_input.files[0]){
+                data.append('Img', Img_input.files[0]);
+            }
+            data.append('Tags', tags);
+            $.ajax({
+              url: '{% url 'admina:creation_add' %}',
+              type: 'POST',
+              data: data,
+              cache: false,
+              processData: false,
+              contentType: false
+            });
         }
     </script>
 

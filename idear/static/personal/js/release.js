@@ -58,10 +58,9 @@ $(document).ready(function () {
         var username = $.cookie('username');
         document.getElementById("username1").innerHTML = username;
         document.getElementById("username2").innerHTML = username;
-        return
+        return;
     }
 });
-
 
 
 

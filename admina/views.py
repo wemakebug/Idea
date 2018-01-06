@@ -467,7 +467,9 @@ def creation_add(req, uid=None):
             })
     else:
         ''' :type 添加创意'''
-        pass
+        print(req.POST)
+        print(req.FILES)
+        return HttpResponse(1)
 
 @csrf_exempt
 @check_login()
@@ -492,7 +494,8 @@ def creation_delete(req):
     except Exception as e:
         print(e)
         resData["message"] = "服务器异常！"
-    return JsonResponse(resData)
+    finally:
+        return JsonResponse(resData)
 
 @csrf_exempt
 @check_login()

@@ -52,10 +52,10 @@
     /*float:left;*/
     background-color:white;
     margin:100px 0 30px 15px;
-    box-shadow:1px 1px 1px 1px #9999;
-	-webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    /*box-shadow:1px 1px 1px 1px #9999;*/
+    /*-webkit-border-radius: 15px;*/
+    /*-moz-border-radius: 15px;*/
+    /*border-radius: 15px;*/
 }
 .user-img {
 	width:70px;
