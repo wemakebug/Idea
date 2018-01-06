@@ -9,14 +9,12 @@ from itertools import chain
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
-from django.utils.dateparse import parse_date, parse_datetime
-from django.utils import timezone
+from datetime import datetime
+from .Idea_util.getUserImg import decode_img
 from admina import models
 
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-import uuid
-import re, base64
 from django.utils.html import escapejs
 from django.views.decorators.http import require_http_methods
 
@@ -893,23 +891,24 @@ def release(req):
             'status': 0,
             'message': ''
         }
+
         ProjectName = req.POST["proTitle"]
-        # Img = req.POST["coverMap"]
+        img = req.POST["coverMap"]
+        base64Code = img.split(',')[1]
+        Img = decode_img(base64Code)
         Description = req.POST["rhtml"]
         Number = req.POST["numPerson"]
-        startTime = req.POST["nowTime"]
-        StartTime = startTime.replace('/','-')
-        print StartTime
+        StartTime = req.POST["nowTime"]
         endTime = req.POST["endTime"]
-        EndTime = endTime.replace('/','-')
-        print EndTime
+        # EndTime = endTime.replace('/', '-')
+        EndTime = datetime.strftime(endTime, '%Y-%m-%d ')
         proLabels = req.POST["proLabels"]
         Identity = 1
         try:
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
             project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
-                                                    StartTime=StartTime,EndTime=EndTime,Uuid=uuid.uuid4())
+                                                    StartTime=StartTime,EndTime=EndTime,Img=Img,Uuid=uuid.uuid4())
             project.save()
             for label in proLabels :
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
