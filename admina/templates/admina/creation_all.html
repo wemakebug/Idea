@@ -168,19 +168,20 @@
                 }
             })
         });
+
         var modify_btn = document.getElementById("creation_modify_btn");
         modify_btn.onclick = function () {
             if(confirm("确认更改？")){
                   $.post("creation/modify/", {"creationId": creationid, "creationName": $("input[id='name']").get(0).value, 'creationDesc':document.getElementById("creation_detail_value").value },function (res) {
-                                res = JSON.parse(res);
-                                if(res.status === 1){
-                                    alert(res.message);
+                            res = JSON.parse(res);
+                            if(res.status === 1){
+                                alert(res.message);
+                            window.location.reload();
+                            }else if(res.status === 0){
+                                alert(res.message);
                                 window.location.reload();
-                                }else if(res.status === 0){
-                                    alert(res.message);
-                                    window.location.reload();
-                                }
-                            });
+                            }
+                    });
             }
         }
     </script>

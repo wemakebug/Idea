@@ -428,7 +428,8 @@ def creation_all(req, page=None, category=None):
         except Exception as e:
             print(e)
             resData["message"] = "获取数据异常"
-        return JsonResponse(resData)
+        return HttpResponse(JsonResponse(resData)) # 诡异，去掉HttpResponse就不行,好像是因为默认编码的问题
+
 
 @csrf_exempt
 @check_login()

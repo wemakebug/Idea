@@ -81,7 +81,7 @@
                                                 <span class="btn btn-default btn-file">
                                                 <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
                                                 <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换图片</span>
-                                                <input type="file" class="default" id="file_upload_img"/>
+                                                <input type="file" class="default" id="file_upload_img" />
                                                 </span>
                                             <span class="fileupload-preview" style="margin-left:5px;"></span>
                                             <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
@@ -176,7 +176,9 @@
         sub_btn.onclick = function () {
             //提交页面数据
             var editor_value  =  $('.wysihtml5').val();  //获取富文本值
-            alert(upload_img.value)
+            var Img_input = document.getElementById('file_upload_img');
+            //手动处理文件格式
+            alert(Img_input.files[0].size)
         }
     </script>
 
