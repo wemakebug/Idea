@@ -849,7 +849,7 @@ def project_comment(req):
             username = "chris"
             projectid = 3
             user = models.User.objects.get("UserName=username")
-            peoject = model.Project.objects.get(pk=projectid)
+            peoject = models.Project.objects.get(pk=projectid)
             models.Comment.objects.create(user=user, project=project, Content=content)
             return HttpResponse("TRUE")
 
@@ -1001,7 +1001,16 @@ def release(req):
         obj = models.ProjectLabel.objects.all()
         return render_to_response('personal/release.html', {"labels": obj})
     if req.method == "POST":
-        pass
+        ProjectName = req.POST["proTitle"]
+        releaseUser = req.POST["releaseUser"]
+        Img = req.POST["coverMap"]
+        Description = req.POST["rhtml"]
+        Number = req.POST["numPerson"]
+        StartTime = req.POST["nowTime"]
+        EndTime = req.POST["endTime"]
+        proLabels = req.POST["proLabels"]
+        Statue = 1
+        return HttpResponse(json.dumps)
 
 
 def editprofile(req):
