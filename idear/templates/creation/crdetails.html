@@ -28,6 +28,7 @@
                     </div>
                     <div class="text">
                         <p>{{creation.Describe}}</p>
+                        <p>{{creation.Describe}}</p>
                     </div>
                     <div class="home-b-foot">
                         <div class="home-b-report" id="rdreport">
@@ -54,6 +55,7 @@
 
                         </div>
                     </div>
+
                     <div class="praise" creation={{ creation.Id }}>
                         <img src="{% static '/creation/imgs/like1.png' %}" id="praise-img" >
                         {% for praise in praises %}
@@ -62,6 +64,7 @@
                             {% endif %}
                         {% endfor %}
                         <span class="praise-txt">{{creation.Praise_Creation_set.count}}</span><p>人觉得很赞</p>
+
                     </div>
                 </div>
                 <div class="home-b-user">
@@ -81,7 +84,6 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#"><span class="user-follow">+</span></a>
                 </div>
             </div>
                 <div class="line">
@@ -107,23 +109,24 @@
                         <div class="block-bottom-ava">
                             <img src="/static/photos/{{ creation2crojectLabel.creation.user.Img }}" style="width:40px;height:40px">
                         </div>
+                        <div class="block-bottom-name">
+                            <a>{{creation2crojectLabel.creation.user.UserName}}</a>
+                        </div>
                         <div class="block-bottom-hot">
-                            <div class="block-hotlike" creation={{ creation2crojectLabel.creation.Id }}>
-                                        <img src="{% static 'creation/imgs/likes.png' %}"
-                                             style="width:18px;height:18px;margin-left: -23px ">
-                            <span class="likespan">{{ creation2crojectLabel.creation.Praise_Creation_set.count }}</span>
-                            </div>
                             <div class="block-hotfollow" creation={{ creation2crojectLabel.creation.Id }}>
                                         <img src="{% static 'creation/imgs/collections.png' %}"
-                                             style="width:18px;height:18px;margin-left: -23px ">
+                                             style="width:15px;height:15px;margin-left: 2px ">
                             <span class="followspan">{{ creation2crojectLabel.creation.Follow_Creation_set.count }}</span>
+                            </div>
+                            <div class="block-hotlike" creation={{ creation2crojectLabel.creation.Id }}>
+                                        <img src="{% static 'creation/imgs/likes.png' %}"
+                                             style="width:14px;height:14px;margin-left: -23px ">
+                            <span class="likespan">{{ creation2crojectLabel.creation.Praise_Creation_set.count }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
 {%endfor%}
-
-
 
 
             </div>
@@ -185,7 +188,11 @@
                                           </div>
                                       </div>
                                       <div class="rcomment-content">
-                                         <p>{{comment.Content}}</p>
+                                          <p id="rdr-content">{{comment.Content}}</p>
+                                </div>
+                                <div class="commentreply commentreplys" id="rcommentreplys">
+                                          <textarea placeholder="回复" name="" id="rcomment-content2" class="commentreply-text"></textarea>
+                                          <button class="putcomment" id="rputcomments" >回复</button>
                                       </div>
                                   </div>
                               </div>
@@ -262,6 +269,8 @@
                 '<button class="putreport" id="putreport">提交</button> '
             });
         });
+
+
 </script>
     http://127.0.0.1:8000   /idear/redetails/?projectId=4
     window.location.pathname
