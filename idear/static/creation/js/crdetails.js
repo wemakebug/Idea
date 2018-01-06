@@ -8,8 +8,8 @@ userId = $.cookie("user")
 
 
 $("#putcomment").click(function(){
-  comment = $("#comment-content1").val()
-  if (comment=="")
+  comment = $("#comment-content1").val() //获取评论中输入的内容
+  if (comment=="")    //内容为空
     alert("您的输入为空")
   else
   $.post("comment",{content:$("#comment-content1").val(),creationId:$("#creationId").val()},function(data){
@@ -22,11 +22,11 @@ $("#putcomment").click(function(){
 })
 
 $("#putcomments").click(function(){
-  comment = $("#comment-content2").val()
-  if (comment=="")
+  rcomment = $("#comment-content2").val()
+  if (rcomment=="")
     alert("您的输入为空")
   else
-  $.post("comment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
+  $.post("rcomment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
       if (data == 1)
         location.reload()
       else
@@ -34,6 +34,7 @@ $("#putcomments").click(function(){
 })
 
 })
+
 
 $('.creply').click(function(){
     var ele = this;
