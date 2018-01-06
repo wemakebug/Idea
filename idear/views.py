@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from itertools import chain
 import json
 import time
+import time
+from django.http import HttpResponseRedirect
+from django.conf import settings
+from django.core.mail import send_mail
 import uuid
 from itertools import chain
 
@@ -12,7 +16,6 @@ from django.db.models import Q
 from datetime import datetime
 from .Idea_util.getUserImg import decode_img
 from admina import models
-
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.utils.html import escapejs
@@ -32,8 +35,8 @@ from django.views.decorators.csrf import csrf_exempt
 def index(req):
     '''
     返回首页页面
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == "GET":
         project = models.Project.objects.all()
@@ -52,7 +55,7 @@ def index(req):
 def login(req):
     '''
     登陆界面的处理
-    :param req: 
+    :param req:
     :return: 
     '''
     if req.method == 'GET':
@@ -128,14 +131,105 @@ def get_user_img(req):
 @csrf_exempt
 def regist(req):
     '''
-    注册页面
+    注册页面发邮件
     :param req: 
     :return: 在客户端留下username 和 email 的cookie 以及uuid session
     '''
     if req.method == 'GET':
-        return render(req, 'idea/regist.html')
-    else:
-        pass
+        return render_to_response('idea/regist.html')
+    if req.method == "POST":
+        result = {
+            'message': None,
+            'status': 0,
+            'username': None,
+            'email': None,
+            'uuid': None
+        }
+        try:
+            email = req.POST['Email']
+            username = req.POST['UserName']
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败！'
+            return HttpResponse(json.dumps(result))
+        else:
+            if models.User.objects.filter(Email=email):
+                result['status'] = 1
+                result['message'] = '邮箱已经被注册'
+                return HttpResponse(json.dumps(result))
+            elif models.User.objects.filter(UserName=username):
+                result['status'] = 3
+                result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
+            else:
+                result['status'] = 2
+                result['message'] ='邮箱已验证完成'
+                img, code = generate_verify_image()
+                req.session['generate_verify_image'] = code
+                send_mail('欢迎注册WE创', '您的验证码是'+ str(code), '472303924@qq.com',
+                          [email],  fail_silently=True)
+                return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def inCode(req):
+    '''
+    注册页面判断验证码并注册
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('idea/regist.html')
+    if req.method == "POST":
+        result = {
+            'message': None,
+            'status': 0,
+            'username': None,
+            'emial': None,
+            'uuid': None
+        }
+        try:
+            username = req.POST['UserName']
+            email = req.POST['Email']
+            password = req.POST['Passwd']
+            incode = req.POST['incode']
+            sessionCode = req.session['generate_verify_image']
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+        else:
+            if models.User.objects.filter(Email=email):
+                result['status'] = 1
+                result['message'] = '邮箱已经被注册'
+                return HttpResponse(json.dumps(result))
+            elif models.User.objects.filter(UserName=username):
+                result['status'] = 2
+                result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
+            elif incode.lower() != sessionCode.lower():
+                result['status'] = 3
+                result['message'] = '验证码错误'
+                return HttpResponse(json.dumps(result))
+            else:
+                try:
+                    models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid4())
+                    user = models.User.objects.get(Email=email)
+                    user.Img = 'photos/2017/09/19/user/default_cdNstvn.jpg'
+                    req.session['uuid'] = str(user.Uuid)
+                    result['email'] = email
+                    result['username'] = username
+                    result['message'] = '注册成功，正在调转'
+                    result['status'] =4
+                    req.session['Email'] = Email
+                    response.set_cookie('Email', Email)
+                    return HttpResponse(json.dumps(result))
+                except Exception as e:
+                    print(e)
+                    result['status'] = 0
+                    result['message'] = '服务器异常!!'
+                    return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -189,9 +283,7 @@ def team(req):
     '''
     if req.method == 'GET':
         ''' 标签查询'''
-
-
-        sign = req.GET["sign"]
+        sign = req.GET['sign']
         if sign == "all":
             teams = models.User.objects.filter(Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
@@ -832,7 +924,7 @@ def deprojects(req):
                         alllables.append(label.projectLabel.Id)
                     alllables = list(set(alllables))
                     project2projectLabel = models.Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
- 
+
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
