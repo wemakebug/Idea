@@ -12,3 +12,20 @@ $(document).ready(function (){
         };
     }
 })
+
+
+$("#create_btn_ok").click(function(){
+    name = $(".input_title").val();
+    describe = $(".note-editable").val();
+    $.post("crcreate",{
+        "name":name,
+        "describe":describe
+    },function(data){
+        var data = JSON.parse(data);
+            if(data.status){
+
+            }
+
+    })
+})
+

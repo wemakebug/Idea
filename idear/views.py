@@ -575,10 +575,28 @@ def crcreate(req):
     :return:
     '''
     if req.method == 'GET':
+        user = models.User.objects.get(UserName=username)
+        models.Creation.objects.create(user=user, Name=name, Describe=describe)
         obj = models.ProjectLabel.objects.all()
-        return render_to_response('creation/crcreate.html', {"labels": obj})
+        return render_to_response('creation/crcreate.html', {"name":name,"describe":describe,"user":user,"labels": obj})
     if req.method == "POST":
-        pass
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        name = req.POST["name"]
+        describe = req.POST["describe"]
+        try:
+            creation = models.Creation.create();
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+        except Exception as e :
+            print(e)
+            result['message'] = str(e)
+        return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def creations(req):
