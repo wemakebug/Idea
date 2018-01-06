@@ -742,10 +742,12 @@ def recruit_apply(req):
     status = 0
     if req.method == 'POST':
         try:
-            username = "chris"
+            # username = "chris"
+            useremail = req.POST["user"]
+            print(useremail)
             projectId = req.POST["projectId"]
             content = req.POST["describe"]
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=useremail)
             recruit = models.Recruit.objects.get(project=projectId)
             models.Apply.objects.create(user=user, recruit=recruit, Describe=content)
             status = 1
@@ -815,7 +817,7 @@ def deprojects(req):
                         alllables.append(label.projectLabel.Id)
                     alllables = list(set(alllables))
                     project2projectLabel = models.Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
- 
+
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
