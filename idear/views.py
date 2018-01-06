@@ -929,19 +929,20 @@ def deprojects(req):
                 projects = Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
                 for project in projects:
                     Labels = Project2ProjectLabel.objects.filter(project__Id=project.Id)
-                    alllables = []  # 找出本创意所有的标签
-                    for label in Labels:
-                        alllables.append(label.projectLabel.Id)
-                    alllables = list(set(alllables))
-                    project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
+                    print Labels
+                    # alllables = []  # 找出本创意所有的标签
+                    # for label in Labels:
+                    #     alllables.append(label.projectLabel.Id)
+                    # alllables = list(set(alllables))
+                    # project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
 
             else:
                 projects = []
                 ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-
-            return render_to_response('project/deprojects.html', {'projectLabels': ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels":Project2ProjectLabel})
+            # , "Project2ProjectLabels":Project2ProjectLabel
+            return render_to_response('project/deprojects.html', {'projectLabels': ProjectLabel.objects.all() , "projects": projects})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(Project, pk=id)
@@ -963,7 +964,6 @@ def dedetails(req):
         projectId = req.GET['projectId']
         project = Project.objects.get(Id=projectId)
         labels = Project2ProjectLabel.objects.filter(project_id=projectId)
-        print(labels)
         praises = Praise.objects.all()
         follows = Follow.objects.all()
         comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
