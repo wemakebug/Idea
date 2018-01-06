@@ -442,7 +442,24 @@ def crcreate(req):
         obj = models.ProjectLabel.objects.all()
         return render_to_response('creation/crcreate.html', {"labels": obj})
     if req.method == "POST":
-        pass
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        name = req.POST["name"]
+        describe = req.POST["describe"]
+        try:
+            creation = models.Creation.objects.create(Name=name,Describe=describe);
+            creation.save()
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+        except Exception as e :
+            print(e)
+            result['message'] = str(e)
+        return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def creations(req):
