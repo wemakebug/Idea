@@ -893,17 +893,17 @@ def release(req):
 
 def editprofile(req):
     if req.method == 'GET':
-        email = req.COOKIES.get('email')
+        email = req.session['user_email']
         print(email)
-        username = req.COOKIES.get('username')
+        username = req.session['user_username']
         try:
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=email)
         except Exception as e:
             print(e.message)
         else:
             return render_to_response('personal/editprofile.html',{"user":user})
     if req.method == 'POST':
-        email = req.COOKIES.get('email')
+        email = req.session['user_email']
         username = req.POST["username"]
         school = req.POST["school"]
         institude = req.POST["institude"]
@@ -928,9 +928,24 @@ def editprofile(req):
 
 def unread_messages(req):
     if req.method == 'GET':
-        return render_to_response('personal/unread_messages.html')
+        message_content = models.Message.objects.filter(Q(IsRead = False))
+        return render_to_response('personal/unread_messages.html',{"message_content":message_content})
     if req.method == 'POST':
-        pass
+        messageid = req.POST["messageid"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            models.Message.objects.filter(Id = messageid)
+        except Exception as e:
+            print(e)
+            result["status"] = 0
+            result["string"] = "删除失败！"
+            return HttpResponse(json.dumps(result))
+        else:
+            # print(locals())
+            return HttpResponse(json.dumps(result))
 
 
 
