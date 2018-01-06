@@ -5,12 +5,13 @@ import json
 import time
 import time
 from django.http import HttpResponseRedirect
+from django.conf import settings
+from django.core.mail import send_mail
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
 from admina.models import Creation2ProjectLabel, Creation, ProjectLabel, Comment, User, Praise, Follow, ProjectUser, \
     Project2ProjectLabel, Project, Recruit
 from admina import models
-
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import uuid
@@ -231,9 +232,52 @@ def login(req):
 @csrf_exempt
 def regist(req):
     '''
-    注册页面
+    注册页面发邮件
     :param req: 
     :return: 在客户端留下username 和 email 的cookie 以及uuid session
+    '''
+    if req.method == 'GET':
+        return render_to_response('idea/regist.html')
+    if req.method == "POST":
+        result = {
+            'message': None,
+            'status': 0,
+            'username': None,
+            'email': None,
+            'uuid': None
+        }
+        try:
+            email = req.POST['Email']
+            username = req.POST['UserName']
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败！'
+            return HttpResponse(json.dumps(result))
+        else:
+            if models.User.objects.filter(Email=email):
+                result['status'] = 1
+                result['message'] = '邮箱已经被注册'
+                return HttpResponse(json.dumps(result))
+            elif models.User.objects.filter(UserName=username):
+                result['status'] = 3
+                result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
+            else:
+                result['status'] = 2
+                result['message'] ='邮箱已验证完成'
+                img, code = generate_verify_image()
+                req.session['generate_verify_image'] = code
+                send_mail('欢迎注册WE创', '您的验证码是'+ str(code), '472303924@qq.com',
+                          [email],  fail_silently=True)
+                return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def inCode(req):
+    '''
+    注册页面判断验证码并注册
+    :param req:
+    :return:
     '''
     if req.method == 'GET':
         return render_to_response('idea/regist.html')
@@ -249,33 +293,36 @@ def regist(req):
             username = req.POST['UserName']
             email = req.POST['Email']
             password = req.POST['Passwd']
+            incode = req.POST['incode']
+            sessionCode = req.session['generate_verify_image']
         except:
             result['status'] = 0
             result['message'] = '获取信息失败'
             return HttpResponse(json.dumps(result))
         else:
-            if not (varidate_char(username) and varidate_emial(email)):
-                result['message'] = '输入非法字符'
-                result['status'] = 0
-                return HttpResponse(json.dumps(result))
-            elif models.User.objects.filter(Email=email):
-                result['status'] = 0
+            if models.User.objects.filter(Email=email):
+                result['status'] = 1
                 result['message'] = '邮箱已经被注册'
                 return HttpResponse(json.dumps(result))
             elif models.User.objects.filter(UserName=username):
-                result['status'] = 0
+                result['status'] = 2
                 result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
+            elif incode.lower() != sessionCode.lower():
+                result['status'] = 3
+                result['message'] = '验证码错误'
                 return HttpResponse(json.dumps(result))
             else:
                 try:
-                    models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid1())
+                    models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid4())
                     user = models.User.objects.get(Email=email)
                     user.Img = 'photos/2017/09/19/user/default_cdNstvn.jpg'
                     req.session['uuid'] = str(user.Uuid)
                     result['email'] = email
                     result['username'] = username
                     result['message'] = '注册成功，正在调转'
-                    result['status'] = 1
+
+                    result['status'] =4
                     return HttpResponse(json.dumps(result))
                 except Exception as e:
                     print(e)

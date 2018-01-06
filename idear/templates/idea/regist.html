@@ -32,7 +32,7 @@
         {#            <p>好的创意应该大家分享</p>#}
         {#            <p>这里是大家的舞台，可以随意施展自己才华</p>#}
             </div>
-            <div class="center1-1" style="margin-top: 8px;">
+            <div class="center1-1 userNam" style="margin-top: 20px;">
         {#            <span class="register1-3">用户名：</span>#}
                 <input type="text" name="name" value="{{ name }}" id="registname" placeholder="用户名"  class="input1-1">
             </div>
@@ -42,25 +42,27 @@
             {#        </div>#}
             <div class="center1-1">
         {#            <span class="register1-4">邮箱：</span>#}
-                <input type="text" name="email" value="{{ email }}" id="registemail"  placeholder="请填写您的邮箱"
-                       class="input1-1">
+                <input type="text" name="email" value="{{ email }}" id="registemail"  placeholder="请填写您的邮箱" class="input1-1">
             </div>
             <div class="center1-1">
         {#            <span class="register1-4">密码：</span>#}
-                <input type="password" name="password" value="{{ password }}" placeholder="密码" id="registpassword"
-                       class="input1-1">
+                <input type="password" name="password" value="{{ password }}" placeholder="密码" id="registpassword" class="input1-1">
             </div>
             <div class="center1-1">
         {#            <span class="register1-5">确认密码：</span>#}
-                <input type="password" name="ConfirmPassword" value="{{ ConfirmPassword }}" placeholder="确认密码" id="ConfirmPassword"
-                       class="input1-1">
+                <input type="password" name="ConfirmPassword" value="{{ ConfirmPassword }}" placeholder="确认密码" id="ConfirmPassword" class="input1-1">
+            </div>
+            <div class="inCodes">
+        {#            <span class="register1-5">验证码：</span>#}
+                <input type="password" name="incode" value="{{ inCode }}" placeholder="验证码" id="incode" class="input1-1">
+                <input type="button" value="获取验证码" class="input1-21">
             </div>
             <div class="center1-4">
                 <input type="checkbox" name="opinion" value="{{ opinion }}" id="registopinion" class="input1-11">
                 <input type="button" value="我已阅读并同意《用户协议》" id="agreeing" class="input1-4">
             </div>
             <div class="center1-2">
-                <input type="button" value="注册" name="submit_btn" id="submit_btn" class="input1-2" onclick="registlogin()">
+                <input type="button" value="注  册" name="submit_btn" id="submit_btn" class="input1-2" onclick="registlogin()">
             </div>
         {#        <div class="center1-2">#}
         {#            <input type="button" value="重置" name="reset" id="reset" class="input1-3">#}
@@ -68,7 +70,7 @@
         {#        <div class="center1-1" style="clear: both;margin-top: 40px;">#}
         {#            已有账号，马上<a href="login" style="color: rgb(85, 107 ,47);text-decoration-color :rgb(0, 0 ,0);font-size: 20px;">登录</a>#}
         {#        </div>#}
-            <div style="width: 100%;height: 45px;line-height: 45px;font-size: 18px;margin-top: 60px;">
+            <div style="width: 100%;height: 45px;line-height: 45px;font-size: 18px;margin-top: 23px;">
                 <div style="width: 30%;height: 45px;line-height: 45px;float: left;margin-left: 32.5%;text-align: right;">
                     已有账号？<a href="login" style="text-decoration: none;">马上登录</a>
                 </div>

@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^index$', views.index, name='index'),
     url(r'^login$', views.login),
     url(r'^regist$', views.regist),
+    url(r'^inCode$', views.inCode),
     url(r'^team$', views.team),
     url(r'^teamdetails$', views.teamdetails),
     url(r'^praise$',views.creations),
