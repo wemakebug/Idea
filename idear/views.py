@@ -441,10 +441,8 @@ def crcreate(req):
     :return:
     '''
     if req.method == 'GET':
-        user = models.User.objects.get(UserName=username)
-        models.Creation.objects.create(user=user, Name=name, Describe=describe)
         obj = models.ProjectLabel.objects.all()
-        return render_to_response('creation/crcreate.html', {"name":name,"describe":describe,"user":user,"labels": obj})
+        return render_to_response('creation/crcreate.html', {"labels": obj})
     if req.method == "POST":
         result = {
             'status': 0,
@@ -453,7 +451,8 @@ def crcreate(req):
         name = req.POST["name"]
         describe = req.POST["describe"]
         try:
-            creation = models.Creation.create();
+            creation = models.Creation.objects.create(Name=name,Describe=describe);
+            creation.save()
             result = {
                 'status': 1,
                 'message': 'success',

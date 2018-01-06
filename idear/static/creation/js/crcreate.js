@@ -16,16 +16,15 @@ $(document).ready(function (){
 
 $("#create_btn_ok").click(function(){
     name = $(".input_title").val();
-    describe = $(".note-editable").val();
+    describe = $(".note-editable").get(0).innerHTML;
     $.post("crcreate",{
         "name":name,
         "describe":describe
     },function(data){
         var data = JSON.parse(data);
             if(data.status){
-
+                alert("成功")
             }
-
     })
 })
 
