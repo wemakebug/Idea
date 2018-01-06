@@ -1,0 +1,32 @@
+{%extends 'personal/homepage.html'%}
+{% load static %}
+{%block title%}
+   <title>我关注的</title>
+{%endblock%}
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/allfollow.css'%}">
+{%endblock%}
+
+{%block contents%}
+<div class="operationItem">
+    <ul>
+        <li>项目栏</li>
+        <li>灵感栏</li>
+        <li>用户栏</li>
+    </ul>
+</div>
+<div class="all_content">
+    <div class="mainConPro">
+
+    </div>
+</div>
+
+
+
+
+{%endblock%}
+
+{% block script %}
+    
+{% endblock %}

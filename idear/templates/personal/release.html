@@ -46,7 +46,9 @@
         <div class="pro_founder">
             <p>创建人：</p>
             <div class="owner_name">
-                <p id="username1"></p>
+                <p id="username1">
+                    {{ username }}
+                </p>
             </div>
         </div>
     </div>
@@ -107,7 +109,7 @@
 <div class="pop-up">
     <div class="pop_1">
         <p> 欢迎您，</p>
-        <p id="username2" class="pop_user"></p>
+        <p id="username2" class="pop_user">{{ username }}</p>
     </div>
     <div class="contInstruc">
         1.在开始发布项目前，请您认真阅读此说明，这将帮助您更好开启项目之旅。
@@ -160,16 +162,16 @@
     <script>
     document.getElementById('releasePro').onclick = function () {
         var proTitle = $(".input_title").val();
-        var releaseUser = getCookie('username');
         var coverMap = $(".file-preview-image").attr("src"); //封面图
         var rhtml = $(".note-editable").get(0).innerHTML;
+
         var numPerson = $("#numPerson").val();
         var endTime = $("#flatpickr-tryme").val();
-        var proLabels = [];
+        var proLabels = '';
         var oDiv = document.getElementsByName("chance_pro_label");
         for(var i = 0;i < oDiv.length;i ++){
             if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")
-                proLabels.push(oDiv[i].innerHTML);
+                proLabels+=oDiv[i].innerHTML + '*';
         }
         var d=new Date();
         var day=d.getDate();
@@ -178,13 +180,17 @@
         var nowTime = year + "/"+month + "/" + day;
         $.post("release",{
             "proTitle": proTitle,
-            "releaseUser": releaseUser,
             "coverMap": coverMap,
             "rhtml": rhtml,
             "numPerson": numPerson,
             "nowTime":nowTime,
             "endTime": endTime,
             "proLabels": proLabels
+        },function (data) {
+            var data = JSON.parse(data);
+            if(data.status){
+                alert("成功")
+            }
         })
     };
     </script>
