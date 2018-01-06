@@ -9,6 +9,8 @@ from itertools import chain
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
+from django.utils.dateparse import parse_date, parse_datetime
+from django.utils import timezone
 from admina import models
 
 
@@ -442,7 +444,24 @@ def crcreate(req):
         obj = models.ProjectLabel.objects.all()
         return render_to_response('creation/crcreate.html', {"labels": obj})
     if req.method == "POST":
-        pass
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        name = req.POST["name"]
+        describe = req.POST["describe"]
+        try:
+            creation = models.Creation.objects.create(Name=name,Describe=describe);
+            creation.save()
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+        except Exception as e :
+            print(e)
+            result['message'] = str(e)
+        return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def creations(req):
@@ -874,7 +893,7 @@ def homepage(req):
     if req.method == 'POST':
         pass
 
-
+@csrf_exempt
 def release(req):
     '''
     发布项目页面
@@ -883,18 +902,45 @@ def release(req):
     '''
     if req.method == 'GET':
         obj = models.ProjectLabel.objects.all()
-        return render_to_response('personal/release.html', {"labels": obj})
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return render_to_response('personal/release.html', {"labels": obj,"username":username})
     if req.method == "POST":
+        resData= {
+            'status': 0,
+            'message': ''
+        }
         ProjectName = req.POST["proTitle"]
-        releaseUser = req.POST["releaseUser"]
-        Img = req.POST["coverMap"]
+        # Img = req.POST["coverMap"]
         Description = req.POST["rhtml"]
         Number = req.POST["numPerson"]
-        StartTime = req.POST["nowTime"]
-        EndTime = req.POST["endTime"]
+        startTime = req.POST["nowTime"]
+        StartTime = startTime.replace('/','-')
+        print StartTime
+        endTime = req.POST["endTime"]
+        EndTime = endTime.replace('/','-')
+        print EndTime
         proLabels = req.POST["proLabels"]
-        Statue = 1
-        return HttpResponse(json.dumps)
+        Identity = 1
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
+                                                    StartTime=StartTime,EndTime=EndTime,Uuid=uuid.uuid4())
+            project.save()
+            for label in proLabels :
+                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
+                project2ProjectLabel.save()
+            ProjectUser = models.ProjectUser.objects.create(user=user,project=project,Identity=Identity)
+            ProjectUser.save()
+
+            resData['status'] = 1
+            resData['message'] = 'success'
+        except Exception as e :
+            print(e)
+            resData['message'] = str(e)
+        return HttpResponse(json.dumps(resData))
 
 
 def editprofile(req):
@@ -938,6 +984,12 @@ def unread_messages(req):
     if req.method == 'POST':
         pass
 
+
+def allfollow(req):
+    if req.method == 'GET':
+        return render_to_response('personal/allfollow.html')
+    if req.method == 'POST':
+        pass
 
 
 '''个人中心相关页面结束'''

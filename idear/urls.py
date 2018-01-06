@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^forgetPassword$', views.forgetPassword),
     url(r'^homepage$',views.homepage),
     url(r'^unread_messages$',views.unread_messages),
+    url(r'^allfollow$',views.allfollow),
     url(r'^editprofile$',views.editprofile),
     url(r'^apply$', views.apply),
     url(r'^recruit$', views.projects),
