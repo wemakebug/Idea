@@ -723,6 +723,7 @@ def project_comment(req):
         except Exception as e:
             print(e)
             return HttpResponse(status)
+
     if req.method == 'GET':
         content = "hello world"
         username = "chris"
@@ -878,7 +879,16 @@ def release(req):
         obj = models.ProjectLabel.objects.all()
         return render_to_response('personal/release.html', {"labels": obj})
     if req.method == "POST":
-        pass
+        ProjectName = req.POST["proTitle"]
+        releaseUser = req.POST["releaseUser"]
+        Img = req.POST["coverMap"]
+        Description = req.POST["rhtml"]
+        Number = req.POST["numPerson"]
+        StartTime = req.POST["nowTime"]
+        EndTime = req.POST["endTime"]
+        proLabels = req.POST["proLabels"]
+        Statue = 1
+        return HttpResponse(json.dumps)
 
 
 def editprofile(req):
@@ -914,6 +924,13 @@ def editprofile(req):
         else:
             # print(locals())
             return HttpResponse(json.dumps(result))
+
+
+def unread_messages(req):
+    if req.method == 'GET':
+        return render_to_response('personal/unread_messages.html')
+    if req.method == 'POST':
+        pass
 
 
 
