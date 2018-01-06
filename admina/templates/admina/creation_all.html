@@ -48,7 +48,12 @@
                         {% for creation in Creations %}
                             <div class="images item " >
                             <a href="#myModal" data-toggle="modal">
-                                <img src="{% static 'images/gallery/image1.jpg'%}" alt="" id="creation-{{ creation.Id }}" name="creations"/>
+                                {% if creation.Img %}
+                                     <img src="/static{{ creation.Img.url }}" alt="" id="creation-{{ creation.Id }}" name="creations"/>
+                                {% else %}
+                                     <img src="{% static 'images/gallery/image1.jpg'%}" alt="" id="creation-{{ creation.Id }}" name="creations"/>
+                                {% endif %}
+
                             </a>
                             <p>{{ creation.Name | slice:"10" }}</p>
                         </div>
@@ -71,39 +76,28 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Edit Media Gallery</h4>
+                                    <h4 class="modal-title">创意详情编辑</h4>
                                 </div>
 
                                 <div class="modal-body row">
 
                                     <div class="col-md-5 img-modal">
-                                        <img src="{% static 'images/gallery/image1.jpg'%}" alt="">
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i>编辑详情</a>
-                                        <p class="mtop10"><strong>File Name:</strong> img01.jpg</p>
-                                        <p><strong>File Type:</strong> jpg</p>
-                                        <p><strong>Resolution:</strong> 300x200</p>
-                                        <p><strong>提出者:</strong> <a href="#">ThemeBucket</a></p>
+                                        <img id="creation_detail_img_path" src="{% static 'images/gallery/image1.jpg'%}" alt="">
+                                        <p><trong>提出者:</trong> <a href="#" id="creation_detail_user">ThemeBucket</a></p>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <label> Name</label>
+                                            <label> 创意名称</label>
                                             <input id="name" value="img01.jpg" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label> Tittle Text</label>
-                                            <input id="title" value="awesome image" class="form-control">
+                                            <label> 创意描述</label>
+                                            <textarea rows="2" class="form-control" id="creation_detail_value"></textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label> Description</label>
-                                            <textarea rows="2" class="form-control"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label> Link URL</label>
-                                            <input id="link" value="images/gallery/img01.jpg" class="form-control">
                                         </div>
                                         <div class="pull-right">
-                                            <button class="btn btn-danger btn-sm" type="button">删除</button>
-                                            <button class="btn btn-success btn-sm" type="button">保存更改</button>
+                                            <button class="btn btn-danger btn-sm" type="button" id="creation_delete_btn">删除</button>
+                                            <button class="btn btn-success btn-sm" type="button" id="creation_modify_btn">保存更改</button>
                                         </div>
                                     </div>
                                 </div>
@@ -111,8 +105,6 @@
                         </div>
                     </div>
                     <!-- modal -->
-
-                </div>
                 </section>
         </div>
     </div>
@@ -145,21 +137,18 @@
     <script type="text/javascript">
         $("img[name='creations']").click(function () {
            var creationid = this.id.split('-')[1];
-            $.post(window.location.pathname,{"projectId":creationid},function (res) {
+            $.post(window.location.pathname,{"creationId":creationid},function (res) {
                 res = JSON.parse(res);
                 if(res.status === 1){
-                    document.getElementById("project_detail_img_path").src = "/static/photos/" + res.ImgPath;
-                    document.getElementById("ptoject_detail_name").textContent = res.ProjectName;
-                    document.getElementById("project_detail_link").setAttribute("href","/admina/project/" + projectid);
-                    $("input[id='name']").get(0).value = res.ProjectName;
-                    $("input[id='title']").get(0).value = res.ProjsctStartTime;
-                    $("input[id='user_number']").get(0).value = res.ProjectUserNumber;
-                    $("a[id='project_user_detail']").get(0).textContent = res.projectUserName;
-                    $("a[id='project_user_detail']").get(0).setAttribute("href","/admina/user/detail/" + res.projectUserId);
-                    var delete_btn= document.getElementById("delete_project_btn");
+                    document.getElementById("creation_detail_img_path").src = "/static" + res.creationImg;
+                    document.getElementById("creation_detail_user").textContent = res.creationUserName;
+                    document.getElementById("creation_detail_user").setAttribute("href",  '/admina/user/detail/' + res.creationUserId.valueOf());
+                    document.getElementById("creation_detail_value").value = res.creationContent;
+                    $("input[id='name']").get(0).value = res.creationName;
+                    var delete_btn= document.getElementById("creation_delete_btn");
                     delete_btn.onclick = function () {
                         if(confirm("确认删除？")){
-                            $.post("project/delete/" + projectid, {},function (res) {
+                            $.post("creation/delete/", {"creationId": creationid},function (res) {
                                 res = JSON.parse(res);
                                 if(res.status === 1){
                                     alert(res.message);
@@ -173,10 +162,28 @@
                         };
                 }else if (res.status === 0){
                     alert(res.message);
-                    window.location.reload();
+{#                    window.location.reload();#}
+                }else {
+                    alert("获取数据异常！")
                 }
             })
         });
+
+        var modify_btn = document.getElementById("creation_modify_btn");
+        modify_btn.onclick = function () {
+            if(confirm("确认更改？")){
+                  $.post("creation/modify/", {"creationId": creationid, "creationName": $("input[id='name']").get(0).value, 'creationDesc':document.getElementById("creation_detail_value").value },function (res) {
+                            res = JSON.parse(res);
+                            if(res.status === 1){
+                                alert(res.message);
+                            window.location.reload();
+                            }else if(res.status === 0){
+                                alert(res.message);
+                                window.location.reload();
+                            }
+                    });
+            }
+        }
     </script>
 
     {# midescript #}

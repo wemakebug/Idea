@@ -1,9 +1,5 @@
 
 $(function(){
-    // if(window.location.pathname !== '/idear/index'){
-	 //    window.location.href = '/idear/index';
-    // }
-
 	$(window).scroll(function(){
 		var scrollt = document.documentElement.scrollTop + document.body.scrollTop;
 		if( scrollt >300 ){

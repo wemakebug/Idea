@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 """Idea URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -17,7 +18,6 @@ from django.conf.urls import url, include
 from idear import views as views
 from django.conf import settings
 from django.conf.urls.static import static
-
 
 
 urlpatterns = [
@@ -40,24 +40,25 @@ urlpatterns = [
     url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
     url(r'^crdetails$', views.crdetails),
+    url(r'^crcreate$',views.crcreate),
     url(r'^star$', views.star),
     url(r'^attend$', views.attend),
     url(r'^service$', views.service),
     url(r'^advice$', views.advice),
     url(r'^logout$', views.logout),
-    url(r'^test/?(\d+)$', views.test),
-    url(r'^getimg', views.get_user_img),
     url(r'^ordinance',views.ordinance),
     url(r'^release',views.release),
     url(r'^comment',views.comment),
-    url(r'test', views.test),
     url(r'^teamattend$',views.teamattend),
     url(r'star', views.star),
     url(r'project_comment', views.project_comment),
     url(r'^teamattend1$', views.teamattend1),
     url(r'^teamcomment$', views.teamcomment),
     url(r'^recruit_apply$', views.recruit_apply),
-    url(r'^editprofile$',views.editprofile),
+    url(r'^editprofile$', views.editprofile),
+
+    # 工具函数
+    url(r'^getimg', views.get_user_img),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
