@@ -57,7 +57,7 @@
                                 <select class="form-control input-md" id="creation_user">
                                 <option></option>
                                 {%  for user in users %}
-                                    <option id="user-{{ user.Id }}">{{ user.UserName }}</option>
+                                    <option id="user-{{ user.Id }}" value="{{ user.Id }}">{{ user.UserName }}</option>
                                 {% endfor %}
                             </select>
                             </div>
@@ -160,7 +160,8 @@
         var sub_btn = document.getElementById('creation_add_btn');
         var creation_init_time = document.getElementById('creation_init_time').value;
         var creation_name = document.getElementById('creation_name').value; // 获取创意名称
-        var creation_user = document.getElementById('creation_user').value;
+        var creation_user = $(document.getElementById('creation_user')).val()
+
         var IsUseRadio = document.getElementsByName('IsUse');
         var LabelTags = document.getElementsByName('label_tags')
         var upload_img = document.getElementById('file_upload_img');
@@ -176,7 +177,6 @@
         });
         sub_btn.onclick = function () {
             //提交页面数据
-
             var editor_value  =  $('.wysihtml5').val();  //获取富文本值
             //手动处理上传文件格式
             var Img_input = document.getElementById('file_upload_img');
@@ -204,12 +204,14 @@
                     tags.push(LabelTags[j].value)
                 }
             }
+            // 获取 select 的 value值
+
 
             var data = new FormData();
             data.append('creation_name', creation_name);
             data.append('creation_init_time', creation_init_time);
             data.append('creation_user', creation_user);
-            data.append('IsUse', IsUse);
+            data.append('IsUse', IsUse || '');
             if(Img_input.files[0]){
                 data.append('Img', Img_input.files[0]);
             }

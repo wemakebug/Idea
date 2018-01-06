@@ -4,7 +4,7 @@ import random
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 try:
-    from StringIO import StringIO
+     import StringIO
 except ImportError:
     from io import StringIO
 
