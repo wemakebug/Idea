@@ -1,20 +1,22 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.views.decorators.csrf import csrf_exempt
+
 from . import models
 import json
-from django.shortcuts import render, HttpResponse, Http404, render_to_response, HttpResponseRedirect
+import math
 import uuid
+from datetime import datetime
+
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, HttpResponse, Http404, render_to_response
 from django.http import JsonResponse
-from django.views.generic.edit import DeleteView,UpdateView,CreateView
+from django.views.generic.edit import DeleteView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.conf.urls import handler404, handler500, handler403
 from django.views.decorators.http import require_http_methods
 from .admin_utils import check_login
 from django.template import RequestContext
-from django.core.paginator import Paginator
-import math
 from django.db.models import Q
 from django.utils.html import escapejs
 
@@ -466,8 +468,42 @@ def creation_add(req, uid=None):
 
             })
     else:
-        ''' :type 添加创意'''
-        pass
+        resData = {
+            "status": 0,
+            "message": ""
+        }
+        try:
+            data = req.POST
+            print data.get('creation_user')
+            creation_user_id = data.get('creation_user')
+            print data.get('creation_init_time')
+            creatino_init_time = data.get('creation_init_time')
+            print creatino_init_time
+            creation_is_use = data.get('IsUse')
+            creatino_init_time = data.get('creation_init_time')
+            creation_name = escapejs(data.get('creation_name'))
+            creation_tagids = data.get(u'Tags')
+            if(req.FILES[0]):
+                creation_img = req.FILES[0]
+            else:
+                creation_img = None
+            print creation_user_id, creation_is_use, creation_name, creation_name, creation_name, creation_tagids, creatino_init_time
+            if creatino_init_time:
+                creatino_init_time = datetime.strftime(creatino_init_time, '%d-%m-%Y ')
+            # if creation_is_use == 1:
+            #     creation_is_use = False
+            # else:
+            #     creation_is_use = True
+            # user = models.User.objects.get(Id=creation_user_id)
+            # creation = models.Creation.objects.create(
+            #     user=user,
+            #     IsUse=creation_is_use,
+            #     Date=creatino_init_time,
+            #     Name=creation_name,
+            #     Img=creation_img
+        except Exception as e:
+            print(e)
+        return HttpResponse(JsonResponse(resData))
 
 @csrf_exempt
 @check_login()
@@ -492,7 +528,8 @@ def creation_delete(req):
     except Exception as e:
         print(e)
         resData["message"] = "服务器异常！"
-    return JsonResponse(resData)
+    finally:
+        return JsonResponse(resData)
 
 @csrf_exempt
 @check_login()

@@ -13,9 +13,10 @@
                 //招募申请提交部分
                 var rdsubapply = document.getElementById("rdsubapply");
                 rdsubapply.onclick = function () {
-                    var content = document.getElementById("comment-content2").value;
+                    var content  = $(".note-editable").get(0 ).innerHTML;
+                    var user = getCookie('user_email');
                     var projectid = document.getElementById("projectId").value;
-                    if(content == ""){
+                    if(content == "<p><br></p>"){
                             layer.open({
                             type: 1,
                             offset: '200px',
@@ -33,7 +34,8 @@
                     {
                         $.post('/idear/recruit_apply',{
                             "projectId":projectid,
-                            "describe":content
+                            "describe":content,
+                            "user":user
                         },function (data) {
                              if(data == 1) {
                                  $("#rdr-apply").slideUp("slow");
@@ -134,5 +136,12 @@
                         '<button class="putreport" id="putreport">提交</button> '
                     });
                 }
+                function getCookie(name) {
+                    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+                    if (arr = document.cookie.match(reg))
+                        return unescape(arr[2]);
+                    else
+                        return null;
+}
 
 

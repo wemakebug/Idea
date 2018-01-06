@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from itertools import chain
 import json
 import time
+import time
+from django.http import HttpResponseRedirect
+from django.conf import settings
+from django.core.mail import send_mail
 import uuid
 from itertools import chain
 
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
+from datetime import datetime
+from .Idea_util.getUserImg import decode_img
 from admina import models
 
-
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-import uuid
-import re, base64
 from django.utils.html import escapejs
 from django.views.decorators.http import require_http_methods
 
@@ -32,8 +35,8 @@ from django.views.decorators.csrf import csrf_exempt
 def index(req):
     '''
     返回首页页面
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == "GET":
         project = models.Project.objects.all()
@@ -52,7 +55,7 @@ def index(req):
 def login(req):
     '''
     登陆界面的处理
-    :param req: 
+    :param req:
     :return: 
     '''
     if req.method == 'GET':
@@ -128,14 +131,105 @@ def get_user_img(req):
 @csrf_exempt
 def regist(req):
     '''
-    注册页面
+    注册页面发邮件
     :param req: 
     :return: 在客户端留下username 和 email 的cookie 以及uuid session
     '''
     if req.method == 'GET':
-        return render(req, 'idea/regist.html')
-    else:
-        pass
+        return render_to_response('idea/regist.html')
+    if req.method == "POST":
+        result = {
+            'message': None,
+            'status': 0,
+            'username': None,
+            'email': None,
+            'uuid': None
+        }
+        try:
+            email = req.POST['Email']
+            username = req.POST['UserName']
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败！'
+            return HttpResponse(json.dumps(result))
+        else:
+            if models.User.objects.filter(Email=email):
+                result['status'] = 1
+                result['message'] = '邮箱已经被注册'
+                return HttpResponse(json.dumps(result))
+            elif models.User.objects.filter(UserName=username):
+                result['status'] = 3
+                result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
+            else:
+                result['status'] = 2
+                result['message'] ='邮箱已验证完成'
+                img, code = generate_verify_image()
+                req.session['generate_verify_image'] = code
+                send_mail('欢迎注册WE创', '您的验证码是'+ str(code), '472303924@qq.com',
+                          [email],  fail_silently=True)
+                return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def inCode(req):
+    '''
+    注册页面判断验证码并注册
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('idea/regist.html')
+    if req.method == "POST":
+        result = {
+            'message': None,
+            'status': 0,
+            'username': None,
+            'emial': None,
+            'uuid': None
+        }
+        try:
+            username = req.POST['UserName']
+            email = req.POST['Email']
+            password = req.POST['Passwd']
+            incode = req.POST['incode']
+            sessionCode = req.session['generate_verify_image']
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+        else:
+            if models.User.objects.filter(Email=email):
+                result['status'] = 1
+                result['message'] = '邮箱已经被注册'
+                return HttpResponse(json.dumps(result))
+            elif models.User.objects.filter(UserName=username):
+                result['status'] = 2
+                result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
+            elif incode.lower() != sessionCode.lower():
+                result['status'] = 3
+                result['message'] = '验证码错误'
+                return HttpResponse(json.dumps(result))
+            else:
+                try:
+                    models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid4())
+                    user = models.User.objects.get(Email=email)
+                    user.Img = 'photos/2017/09/19/user/default_cdNstvn.jpg'
+                    req.session['uuid'] = str(user.Uuid)
+                    result['email'] = email
+                    result['username'] = username
+                    result['message'] = '注册成功，正在调转'
+                    result['status'] =4
+                    req.session['Email'] = Email
+                    response.set_cookie('Email', Email)
+                    return HttpResponse(json.dumps(result))
+                except Exception as e:
+                    print(e)
+                    result['status'] = 0
+                    result['message'] = '服务器异常!!'
+                    return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -189,9 +283,7 @@ def team(req):
     '''
     if req.method == 'GET':
         ''' 标签查询'''
-
-
-        sign = req.GET["sign"]
+        sign = req.GET['sign']
         if sign == "all":
             teams = models.User.objects.filter(Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
@@ -442,7 +534,24 @@ def crcreate(req):
         obj = models.ProjectLabel.objects.all()
         return render_to_response('creation/crcreate.html', {"labels": obj})
     if req.method == "POST":
-        pass
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        name = req.POST["name"]
+        describe = req.POST["describe"]
+        try:
+            creation = models.Creation.objects.create(Name=name,Describe=describe);
+            creation.save()
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+        except Exception as e :
+            print(e)
+            result['message'] = str(e)
+        return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def creations(req):
@@ -742,10 +851,12 @@ def recruit_apply(req):
     status = 0
     if req.method == 'POST':
         try:
-            username = "chris"
+            # username = "chris"
+            useremail = req.POST["user"]
+            print(useremail)
             projectId = req.POST["projectId"]
             content = req.POST["describe"]
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=useremail)
             recruit = models.Recruit.objects.get(project=projectId)
             models.Apply.objects.create(user=user, recruit=recruit, Describe=content)
             status = 1
@@ -808,6 +919,7 @@ def deprojects(req):
             if sign == "all":
                 projects = models.Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
                 for project in projects:
+
                     Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
                     alllables = []  # 找出本创意所有的标签
                     for label in Labels:
@@ -821,7 +933,9 @@ def deprojects(req):
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
 
+
             return render_to_response('project/deprojects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels": models.Project2ProjectLabel})
+
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
@@ -839,12 +953,15 @@ def dedetails(req):
     '''
     if req.method == 'GET':
         projectId = req.GET['projectId']
+
+
         project = models.Project.objects.get(Id=projectId)
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
         print(labels)
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
+
 
         alllables = []  # 找出本项目所有的标签
         for label in labels:
@@ -868,7 +985,7 @@ def homepage(req):
     if req.method == 'POST':
         pass
 
-
+@csrf_exempt
 def release(req):
     '''
     发布项目页面
@@ -877,18 +994,46 @@ def release(req):
     '''
     if req.method == 'GET':
         obj = models.ProjectLabel.objects.all()
-        return render_to_response('personal/release.html', {"labels": obj})
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return render_to_response('personal/release.html', {"labels": obj,"username":username})
     if req.method == "POST":
+        resData= {
+            'status': 0,
+            'message': ''
+        }
+
         ProjectName = req.POST["proTitle"]
-        releaseUser = req.POST["releaseUser"]
-        Img = req.POST["coverMap"]
+        img = req.POST["coverMap"]
+        base64Code = img.split(',')[1]
+        Img = decode_img(base64Code)
         Description = req.POST["rhtml"]
         Number = req.POST["numPerson"]
         StartTime = req.POST["nowTime"]
-        EndTime = req.POST["endTime"]
+        endTime = req.POST["endTime"]
+        # EndTime = endTime.replace('/', '-')
+        EndTime = datetime.strftime(endTime, '%Y-%m-%d ')
         proLabels = req.POST["proLabels"]
-        Statue = 1
-        return HttpResponse(json.dumps)
+        Identity = 1
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
+                                                    StartTime=StartTime,EndTime=EndTime,Img=Img,Uuid=uuid.uuid4())
+            project.save()
+            for label in proLabels :
+                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
+                project2ProjectLabel.save()
+            ProjectUser = models.ProjectUser.objects.create(user=user,project=project,Identity=Identity)
+            ProjectUser.save()
+
+            resData['status'] = 1
+            resData['message'] = 'success'
+        except Exception as e :
+            print(e)
+            resData['message'] = str(e)
+        return HttpResponse(json.dumps(resData))
 
 
 def editprofile(req):
@@ -947,6 +1092,12 @@ def unread_messages(req):
             # print(locals())
             return HttpResponse(json.dumps(result))
 
+
+def allfollow(req):
+    if req.method == 'GET':
+        return render_to_response('personal/allfollow.html')
+    if req.method == 'POST':
+        pass
 
 
 '''个人中心相关页面结束'''
