@@ -62,13 +62,6 @@ $(document).ready(function () {
     }
 });
 
-$(document).ready(function(){
-    $(".releasePro").click(function(){
-        var sHtml = $("#summernote").code();
-        alert(sHtml);
-    });
-});
-
 
 
 

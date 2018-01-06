@@ -29,7 +29,7 @@
         <div class="pro_chance">
             <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>
             <div class="chance_ownname"><a href="#"><p>暂存</p></a></div>
-            <div class="chance_ownname chance_release"><button class="releasePro"><p>发布</p></button></div>
+            <div class="chance_ownname chance_release"><button class="releasePro" id="release_btn"><p>发布</p></button></div>
         </div>
     </div>
     <div class="input_pro_title">
@@ -152,7 +152,10 @@
 	</script>
     <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
     <script>
-{#        var sHTML = $('#summernote').code();#}
-{#        alert(sHTML);#}
+       document.getElementById('release_btn').onclick=function () {
+           alert('well')
+           var textareaValue = $('.note-editable').get(0).innerHTML;
+           alert(textareaValue);
+       }
     </script>
 {% endblock %}
