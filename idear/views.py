@@ -844,14 +844,14 @@ def project_comment(req):
         except Exception as e:
             print(e)
             return HttpResponse(status)
-        if req.method == 'GET':
-            content = "hello world"
-            username = "chris"
-            projectid = 3
-            user = models.User.objects.get("UserName=username")
-            peoject = model.Project.objects.get(pk=projectid)
-            models.Comment.objects.create(user=user, project=project, Content=content)
-            return HttpResponse("TRUE")
+    if req.method == 'GET':
+        content = "hello world"
+        username = "chris"
+        projectid = 3
+        user = models.User.objects.get("UserName=username")
+        peoject = model.Project.objects.get(pk=projectid)
+        models.Comment.objects.create(user=user, project=project, Content=content)
+        return HttpResponse("TRUE")
 
 @csrf_exempt
 def recruit_apply(req):

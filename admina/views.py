@@ -408,7 +408,28 @@ def creation_all(req, page=None, category=None):
                                }
                           )
     else:
-        pass
+        resData = {
+            "status": 0,
+            "message": "",
+            "creationImg": None,
+            "creationName": None,
+            "creationUserName": None,
+            "creationUserId": None
+        }
+        try:
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(Id=creationId)
+            resData["status"] = 1
+            resData["creationImg"] = creation.Img.url
+            resData["creationName"] = creation.Name
+            resData["creationUserName"] = creation.user.UserName
+            resData["creationUserId"] = creation.user.Id
+            resData["creationContent"] = creation.Describe
+        except Exception as e:
+            print(e)
+            resData["message"] = "获取数据异常"
+        return JsonResponse(resData)
+
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
@@ -446,6 +467,59 @@ def creation_add(req, uid=None):
     else:
         ''' :type 添加创意'''
         pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["POST"])
+def creation_delete(req):
+    '''
+    删除创意,将IsUse状态置为False
+    :param req:
+    :return:
+    '''
+    resData = {
+        "status": 0,
+        "message": ""
+    }
+    try:
+        creationId = req.POST['creationId']
+        creation = models.Creation.objects.get(Id=creationId)
+        creation.IsUse = False
+        creation.save()
+        resData["status"] = 1
+        resData["message"] = "Success"
+    except Exception as e:
+        print(e)
+        resData["message"] = "服务器异常！"
+    return JsonResponse(resData)
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["POST"])
+def creation_modify(req):
+    '''
+    创意修改
+    :param req:
+    :return: Json 信息
+    '''
+    resData = {
+        "status": 0,
+        "message": ""
+    }
+    try:
+        creationId = req.POST["creationId"]
+        creationName = escapejs(req.POST["creationName"])
+        creationDesc = escapejs(req.POST["creationDesc"])
+        creation = models.Creation.objects.get(Id=creationId)
+        creation.Describe = creationDesc
+        creation.Name = creationName
+        creation.save()
+        resData["status"] = 1
+        resData["message"] = "success!"
+    except Exception as e:
+        print(e)
+        resData["message"] = "服务器异常!"
+    return JsonResponse(resData)
 
 # 举报管理相关视图
 @csrf_exempt
@@ -568,7 +642,9 @@ def comment_user(req):
 @require_http_methods(["GET", "POST"])
 def score_rank(req):
     if req.method == "GET":
+        ranks = models.Score.objects.all().order_by("-Id")
         return render(req, 'admina/score_rank.html', {
+            "Ranks": ranks,
 
         })
     else:
@@ -584,6 +660,65 @@ def score_record(req):
         })
     else:
         pass
+
+
+# 关系管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def relation_praise(req):
+    '''
+    点赞管理相关视图， 对应 model ：Praise
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/relation_praise.html', {})
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def relation_attention(req):
+    '''
+    关注管理相关视图， 对应 model : Fellow
+    :param req:
+    :return:
+    '''
+    if req.method == "GET":
+        return render(req, 'admina/relation_attention.html', {})
+    else:
+        pass
+
+
+# 消息管理相关视图
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_type(req):
+    if req.method == "GET":
+        return render(req, 'admina/message_type.html', {})
+    else:
+        pass
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_send(req):
+    if req.method == "GET":
+        return render(req, 'admian/message_send.html', {})
+    else:
+        pass
+
+@csrf_exempt
+@check_login()
+@require_http_methods(["GET", "POST"])
+def message_manage(req):
+    if req.method == "GET":
+        return render(req, 'admian/message_manage.html', {})
+    else:
+        pass
+
 ''' 将来可能弃用的代码 '''
 
 def Profile(req):
