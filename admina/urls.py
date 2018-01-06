@@ -53,7 +53,7 @@ urlpatterns = [
 
     url(r'^creation/all/(?P<page>(\d+)?)(/)?(?P<category>(\d+)?)$', views.creation_all),
     url(r'^creation/all/(?P<category>(\d+))?$', views.creation_all, name='creation'),
-    url(r'^creation/add', views.creation_add),
+    url(r'^creation/add', views.creation_add, name='creation_add'),
     url(r'^creation/delete', views.creation_delete, name='creation_delete'),
     url(r'^creation/modify', views.creation_modify),
 

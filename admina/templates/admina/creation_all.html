@@ -39,10 +39,8 @@
                     </ul>
 
                     <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-folder-open"></i> Add New</button>
+                        <button type="button" class="btn btn-primary btn-sm" id="add_new_btn"><i class="fa fa-folder-open"></i>新建创意</button>
                     </div>
-
-
 
                     <div id="gallery" class="media-gal">
                         {% for creation in Creations %}
@@ -168,7 +166,7 @@
                 }
             })
         });
-
+        //创意修改
         var modify_btn = document.getElementById("creation_modify_btn");
         modify_btn.onclick = function () {
             if(confirm("确认更改？")){
@@ -184,6 +182,11 @@
                     });
             }
         }
+        // 新建创意按钮
+    var add_new_btn = document.getElementById('add_new_btn')
+    add_new_btn.onclick = function () {
+            window.location.href = '{% url 'admina:creation_add' %}'
+    }
     </script>
 
     {# midescript #}
