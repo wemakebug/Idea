@@ -49,3 +49,41 @@ def get_user_img(req):
                     return HttpResponse(json.dumps(result))
                 else:
                     return HttpResponse(json.dumps(result))
+
+# -*- coding:utf-8 -*-
+import base64
+import cStringIO
+import PIL.Image
+import datetime
+def base64ToImg(base64Code ,filetype):
+    '''
+    转码base 生成图片，存储到文件
+    :param base64code:
+    :return:
+    '''
+    imgData = base64.b64decode(base64Code)
+    leniyimg = open('123.png', 'wb')
+    leniyimg.write(imgData)
+    leniyimg.close()
+
+def decode_img(img_base64):
+    '''
+    生成图片到内存
+    :param img_base64:
+    :return:
+    '''
+    decode_str = img_base64.decode("base64")
+    file_like = cStringIO.StringIO(decode_str)
+    img = PIL.Image.open(file_like)
+    # rgb_img[c, r] is the pixel values.
+    rgb_img = img.convert("RGB")
+    return rgb_img
+
+# with open('base64.txt', 'r') as file :
+#     file_content = file.read()
+#     imagetype = file_content.split(',')[0]
+#     imagetype = imagetype.split('/')[1].split(';')[0]
+#     base64Code = file_content.split(',')[1]
+#     # print base64Code
+#     print decode_img(base64Code)
+#     # base64ToImg(base64Code,imagetype)

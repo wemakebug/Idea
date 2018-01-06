@@ -60,6 +60,12 @@ class Project(models.Model):
     '''
     项目表
     1.Status 项目状态描述
+        0 : 暂存
+        1 初期招募
+        2 正在开发
+        3 二次招募
+        4. 完成项目
+        5 被举报不可用项目
     '''
     Id = models.AutoField(primary_key=True)
     ProjectName = models.CharField(null=False, max_length=20, unique=True)
@@ -105,6 +111,7 @@ class Project2ProjectLabel(models.Model):
 class UserLabel(models.Model):
     '''
     用户标签表
+    IsUse  false 代表不可用
     '''
     Id = models.AutoField(primary_key=True)
     projectLabel = models.ForeignKey(ProjectLabel, related_name='UserLabel_Project_set')
@@ -144,7 +151,7 @@ class ProjectUser(models.Model):
 class Creation(models.Model):
     '''
     创意表
-    :IsUse 是否可用 1 为不可用 0 为可用
+    :IsUse 是否可用 True 为不可用 False 为可用
     '''
     Id = models.AutoField(primary_key=True)
     Date = models.DateTimeField(auto_now_add=True)
@@ -179,7 +186,7 @@ class Recruit(models.Model):
     StartTime = models.DateTimeField(auto_now_add=True)
     EndTime = models.DateTimeField(null=True)
     Describe = models.TextField(null=False,)
-    State = models.PositiveIntegerField(default=0) ##
+    State = models.PositiveIntegerField(default=0)
     Times = models.PositiveIntegerField(default=1)
     PredictNumber = models.PositiveIntegerField(default=1)
     RecruitedNumber = models.PositiveIntegerField(default=0)
