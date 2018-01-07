@@ -64,7 +64,7 @@
                                      style="width:25px;height:25px;vertical-align:middle;">
                                 <a>评论</a>
                             </div>
-                            <div class="home-b-report" id="rdreport">
+                            <div class="home-b-report" id="rdpreport">
                                 <img src="{% static '/creation/imgs/report.png' %}"
                                      style="width:20px;height:21px;vertical-align:middle;">
                                 <a>举报</a>
@@ -256,7 +256,7 @@
         $(function () {
             var nowtimestamp = Date.parse(new Date())/1000;
             var EndTimeStamp = {{ EndTime }};
-            var result = (EndTimeStamp  - nowtimestamp);
+            var result = ( EndTimeStamp  - nowtimestamp);
             var lastday = result/(3600*24);
             $("#rdlastday").text(Math.ceil(lastday));
         });
