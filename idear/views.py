@@ -1137,10 +1137,9 @@ def perCreation(req):
     :return:
     '''
     if req.method == 'GET':
-        creation = models.Creation.objects.all()
         user_email = req.COOKIES.get('user_email')
-        username = models.User.objects.filter(Email=user_email)
-        return render_to_response('personal/perCreation.html',{"userName":username,"creation":creation})
+        creation = models.Creation.objects.filter(user__Email=user_email)
+        return render_to_response('personal/perCreation.html',{"creation":creation})
     if req.method == 'POST':
         pass
 '''个人中心相关页面结束'''
