@@ -59,6 +59,9 @@ urlpatterns = [
     url(r'^teamcomment$', views.teamcomment),
     url(r'^recruit_apply$', views.recruit_apply),
     url(r'^editprofile$', views.editprofile),
+    url(r'^get_follow_count$', views.get_follow_count),
+    url(r'^get_praise_count$', views.get_praise_count),
+    url(r'^get_user_name$', views.get_user_name),
 
     # 工具函数
     url(r'^getimg', views.get_user_img),

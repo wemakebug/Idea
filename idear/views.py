@@ -83,6 +83,7 @@ def login(req):
         response.set_cookie('user_email', user_email)
         return response
 
+
 @require_http_methods(["POST"])
 @csrf_exempt
 def get_user_img(req):
@@ -126,6 +127,96 @@ def get_user_img(req):
                 return HttpResponse(json.dumps(result))
             else:
                 return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_follow_count(req):
+    '''
+    动态获取关注数量
+    :param req: 
+    :return: 
+    '''
+
+    result = {
+        'status': 0,
+        'message': None,
+        'userfollow': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        userfollow = models.Follow.objects.filter(user=user).count()
+        result['userfollow'] = userfollow
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_praise_count(req):
+    '''
+    动态获取点赞数量
+    :param req: 
+    :return: 
+    '''
+
+    result = {
+        'status': 0,
+        'message': None,
+        'userpraise': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        userpraise = models.Praise.objects.filter(user=user).count()
+        result['userpraise'] = userpraise
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_user_name(req):
+    '''
+    动态获取用户名字
+    :param req: 
+    :return: 
+    '''
+
+    result = {
+        'status': 0,
+        'message': None,
+        'username': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        result['username'] = user.UserName
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+
+
 
 @require_http_methods(["GET", "POST"])
 @csrf_exempt
@@ -978,12 +1069,17 @@ def dedetails(req):
 
 '''个人中心相关页面'''
 
-
+@csrf_exempt
 def homepage(req):
     if req.method == 'GET':
-        return render_to_response('personal/homepage.html')
+        user_email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=user_email)
+        userfollow = models.Follow.objects.filter(user=user).count()
+        userpraise = models.Praise.objects.filter(user=user).count()
+        return render_to_response(['personal/homepage.html','personal/unread_messages.html'], {"user": user, "userfollow": userfollow, "userpraise": userpraise})
     if req.method == 'POST':
         pass
+
 
 @csrf_exempt
 def release(req):
@@ -1045,7 +1141,7 @@ def editprofile(req):
         except Exception as e:
             print(e.message)
         else:
-            return render_to_response('personal/editprofile.html',{"user":user})
+            return render_to_response('personal/editprofile.html', {"user": user})
     if req.method == 'POST':
         email = req.COOKIES.get('user_email')
         username = req.POST["username"]
@@ -1054,12 +1150,12 @@ def editprofile(req):
         major = req.POST["major"]
         sex = req.POST["sex"]
         print (sex)
-        result={
-              "status":1,
-              "string":'success'
+        result = {
+              "status": 1,
+              "string": 'success'
         }
         try:
-            models.User.objects.filter(Email=email).update(UserName = username,School = school,Institude = institude,Major = major,Sex = sex)
+            models.User.objects.filter(Email=email).update(UserName=username, School=school, Institude=institude, Major=major, Sex=sex)
         except Exception as e:
             print(e)
             result["status"] = 0
@@ -1073,8 +1169,11 @@ def editprofile(req):
 def unread_messages(req):
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
-        message_content = models.Message.objects.filter(Q(IsRead = False) & Q(user__Email = email))
-        return render_to_response('personal/unread_messages.html',{"message_content":message_content})
+        user = models.User.objects.get(Email=email)
+        message_content = models.Message.objects.filter(Q(user=user) & Q(IsRead=False))
+        userfollow = models.Follow.objects.filter(user=user).count()
+        userpraise = models.Praise.objects.filter(user=user).count()
+        return render_to_response('personal/unread_messages.html', {"message_content": message_content, "userfollow": userfollow, "userpraise": userpraise})
     if req.method == 'POST':
         messageid = req.POST["messageid"]
         result = {
@@ -1082,7 +1181,7 @@ def unread_messages(req):
             "string": 'success'
         }
         try:
-            models.Message.objects.filter(Id = messageid)
+            models.Message.objects.filter(Id=messageid)
         except Exception as e:
             print(e)
             result["status"] = 0
