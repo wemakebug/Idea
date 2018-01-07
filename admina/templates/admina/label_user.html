@@ -5,6 +5,7 @@
     {% load static %}
 <!--data table-->
 <link rel="stylesheet" href="{% static 'js/data-tables/DT_bootstrap.css'%}" />
+<link rel="stylesheet" type="text/css" href="{% static 'idea/css/sweet-alert.css' %}">
 {% endblock %}
 {% block heading %}   {# heading #}
 <ul class="breadcrumb">
@@ -60,7 +61,7 @@
                             <tbody>
                             {% for Label in Labels %}
                                 <tr class="">
-                                <td>{{ Label.Name }}</td>
+                                <td class="lableName_parent">{{ Label.Name }}</td>
                                     {% if Label.IsUse%}
                                         <td>可用</td>
                                     {% else %}
@@ -86,6 +87,8 @@
 <!--data table-->
 <script type="text/javascript" src="{% static 'js/data-tables/jquery.dataTables.js'%}"></script>
 <script type="text/javascript" src="{% static 'js/data-tables/DT_bootstrap.js'%}"></script>
+<script type="text/javascript" src="{% static 'idea/js/sweet-alert.min.js' %}"></script>
+
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
@@ -113,7 +116,7 @@
                 function editRow(oTable, nRow) {
                     var aData = oTable.fnGetData(nRow);
                     var jqTds = $('>td', nRow);
-                    jqTds[0].innerHTML = '<input type="text" class="form-control small" value="' + aData[0] + '">';
+                    jqTds[0].innerHTML = '<input type="text" class="form-control small lableName" value="' + aData[0] + '">';
 {#                    jqTds[1].innerHTML = '<input type="text" class="form-control small" value="' + aData[1] + '">';#}
                     jqTds[1].innerHTML = '<select id="IsUseSelect" class="form-control small" value="' + aData[1] + '"><option>可用</option><option>不可用</option></select>';
                     jqTds[2].innerHTML = '<select id="PlabelSelect" class="form-control small" value="' + aData[1] + '">{% for ProjectLabel in ProjectLabels %}<option>{{  ProjectLabel.ProjectLabelName}}</option>{% endfor %}</select>';
@@ -180,13 +183,26 @@
                 $('#editable-sample a.delete').live('click', function (e) {
                     e.preventDefault();
 
+                    //删除用户标签
                     if (confirm("确定删除这条记录 ?") == false) {
                         return;
+                    } else {
+                        var nRow = $(this).parents('tr')[0];
+{#                        alert(nRow.innerHTML)#}
+{#                        oTable.fnDeleteRow(nRow);#}
+                        var row = $('>td', nRow);
+                        var lableName = row[0].innerHTML;
+                        $.post('/admina/deletelabel/user', {"lableName": lableName}, function (data) {
+                            var jsonData = $.parseJSON(data);
+                            if(jsonData === 1){
+                                alert("删除成功！");
+                                location.reload();
+                            } else {
+                                alert("删除失败！");
+                                location.reload();
+                            }
+                        } );
                     }
-
-                    var nRow = $(this).parents('tr')[0];
-                    oTable.fnDeleteRow(nRow);
-                    alert("Deleted! Do not forget to do some ajax to sync with backend :)");
                 });
 
                 $('#editable-sample a.cancel').live('click', function (e) {
@@ -215,7 +231,30 @@
                         /* Editing this row and want to save it */
                         saveRow(oTable, nEditing);
                         nEditing = null;
-                        alert("在这里更新 :)");
+
+                        //添加用户标签
+                        var jqTds = $('>td', nRow);
+                        var lableName = jqTds[0].innerHTML;
+                        var isUse = jqTds[1].innerHTML;
+                        var prolableName = jqTds[2].innerHTML;
+                        if(lableName !== ""){
+                            $.post('/admina/label/user', {'lableName': lableName, 'isUse': isUse, 'projectLabel': prolableName}, function (data) {
+                                var jsonData = $.parseJSON(data);
+                                if(jsonData === 1){
+                                    alert("添加标签成功！");
+                                    location.reload();
+                                } else if(jsonData === -1){
+                                    alert("添加标签失败！");
+                                    location.reload();
+                                }
+                            })
+                        } else {
+                            swal({
+                                title:"请填写标签名称！",
+                                text:"请填写完整信息!",
+                                type:"warning"
+                            });
+                        }
                     } else {
                         /* No edit in progress - let's start one */
                         editRow(oTable, nRow);

@@ -1022,11 +1022,11 @@ def recruit_apply(req):
     status = 0
     if req.method == 'POST':
         try:
-            # username = "chris"
-            useremail = req.POST["user"]
-            print(useremail)
+
+            useremail = req.session.get('user_email')
             projectId = req.POST["projectId"]
             content = req.POST["describe"]
+            remove_script(content)
             user = models.User.objects.get(Email=useremail)
             recruit = models.Recruit.objects.get(project=projectId)
             models.Apply.objects.create(user=user, recruit=recruit, Describe=content)
