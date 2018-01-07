@@ -573,14 +573,20 @@ def crcreate(req):
         }
         name = req.POST["name"]
         describe = req.POST["describe"]
-        labels = req.POST["labels"]
+        isUse = req.POST["isUse"]
+        labels = req.POST["labels"].split("*")
 
         try:
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
-            creation = models.Creation.objects.create(user=user,Name=name,Describe=describe,Uuid=uuid.uuid4());
-            creation.save()
 
+            if isUse=="0":
+                isUse = False
+            else:
+                isUse = True
+
+            creation = models.Creation.objects.create(user=user, Name=name, Describe=describe,IsUse=isUse, Uuid=uuid.uuid4());
+            creation.save()
             for label in labels[:-1]:
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
                 creation2ProjectLabel = models.Creation2ProjectLabel.objects.create(projectLabel=Label, creation=creation)
@@ -594,6 +600,7 @@ def crcreate(req):
             print(e)
             result['message'] = str(e)
         return HttpResponse(json.dumps(result))
+
 
 
 @csrf_exempt
