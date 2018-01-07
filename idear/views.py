@@ -18,7 +18,7 @@ from .Idea_util.getUserImg import decode_img
 from admina import models
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.utils.html import escapejs
+from django.utils.html import escapejs,strip_tags
 from django.views.decorators.http import require_http_methods
 
 try:
@@ -532,7 +532,9 @@ def crcreate(req):
     '''
     if req.method == 'GET':
         obj = models.ProjectLabel.objects.all()
-        return render_to_response('creation/crcreate.html', {"labels": obj})
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return render_to_response('creation/crcreate.html', {"labels": obj,"username":username})
     if req.method == "POST":
         result = {
             'status': 0,
@@ -540,9 +542,19 @@ def crcreate(req):
         }
         name = req.POST["name"]
         describe = req.POST["describe"]
+        labels = req.POST["labels"]
+
         try:
-            creation = models.Creation.objects.create(Name=name,Describe=describe);
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            creation = models.Creation.objects.create(user=user,Name=name,Describe=describe,Uuid=uuid.uuid4());
             creation.save()
+
+            for label in labels[:-1]:
+                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                creation2ProjectLabel = models.Creation2ProjectLabel.objects.create(projectLabel=Label, creation=creation)
+                creation2ProjectLabel.save()
+
             result = {
                 'status': 1,
                 'message': 'success',
@@ -566,7 +578,7 @@ def creations(req):
             sign = req.GET['sign']
             # 如果是所有项目
             if sign == "all":
-                creations = models.Creation.objects.all().order_by("Date")
+                creations = models.Creation.objects.all().order_by("-Date")
             # 如果有特殊标签
             else:
                 CreationLabelObjs = models.Creation2ProjectLabel.objects.filter(projectLabel=sign)
