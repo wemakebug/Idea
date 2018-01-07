@@ -1,0 +1,41 @@
+{%extends 'personal/homepage.html'%}
+{% load static %}
+{%block title%}
+    <title>个人中心/创意灵感</title>
+{%endblock%}
+
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
+{%endblock%}
+
+{%block contents%}
+    <div style="width: 65%">
+        <table class="table table-striped" style="">
+            <thead>
+                <tr>
+                    <th style="text-align:center">
+                        <input type="checkbox"> 全选
+                    </th>
+                    <th style="text-align:center">名称</th>
+                    <th style="text-align:center">点赞数量</th>
+                    <th style="text-align:center">关注数量</th>
+                    <th style="text-align:center">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for creation in creName %}
+                <tr>
+                    <td style="text-align:center">
+                        <input type="checkbox"> 全选
+                    </td>
+                    <td style="text-align:center">{{ creation.Name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%endblock%}
+{% block script %}
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
+{% endblock %}

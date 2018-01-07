@@ -218,13 +218,13 @@ def inCode(req):
                     models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid4())
                     user = models.User.objects.get(Email=email)
                     user.Img = 'photos/2017/09/19/user/default_cdNstvn.jpg'
-                    req.session['uuid'] = str(user.Uuid)
+                    req.session['user_uuid'] = str(user.Uuid)
                     result['email'] = email
                     result['username'] = username
                     result['message'] = '注册成功，正在调转'
                     result['status'] =4
-                    req.session['Email'] = Email
-                    response.set_cookie('Email', Email)
+                    req.session['user_email'] = Email
+                    response.set_cookie('user_email', Email)
                     return HttpResponse(json.dumps(result))
                 except Exception as e:
                     print(e)
@@ -1083,7 +1083,19 @@ def allfollow(req):
     if req.method == 'POST':
         pass
 
-
+def perCreation(req):
+    '''
+    个人中心创意灵感
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        creation = models.Creation.objects.all()
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.filter(Email=user_email)
+        return render_to_response('personal/perCreation.html',{"userName":username,"creation":creation})
+    if req.method == 'POST':
+        pass
 '''个人中心相关页面结束'''
 
 
