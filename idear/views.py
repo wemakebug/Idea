@@ -7,9 +7,11 @@ from itertools import chain
 import json
 import time
 import time
+
 import uuid
 from itertools import chain
 import re
+
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
@@ -17,11 +19,13 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
 from datetime import datetime
+
 from .Idea_util.getUserImg import decode_img
+from .Idea_util.varidate import remove_script
 from admina import models
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.utils.html import escapejs
+from django.utils.html import escapejs,strip_tags
 from django.views.decorators.http import require_http_methods
 
 try:
@@ -86,6 +90,7 @@ def login(req):
         response.set_cookie('user_email', user_email)
         return response
 
+
 @require_http_methods(["POST"])
 @csrf_exempt
 def get_user_img(req):
@@ -129,6 +134,96 @@ def get_user_img(req):
                 return HttpResponse(json.dumps(result))
             else:
                 return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_follow_count(req):
+    '''
+    动态获取关注数量
+    :param req: 
+    :return: 
+    '''
+
+    result = {
+        'status': 0,
+        'message': None,
+        'userfollow': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        userfollow = models.Follow.objects.filter(user=user).count()
+        result['userfollow'] = userfollow
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_praise_count(req):
+    '''
+    动态获取点赞数量
+    :param req: 
+    :return: 
+    '''
+
+    result = {
+        'status': 0,
+        'message': None,
+        'userpraise': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        userpraise = models.Praise.objects.filter(user=user).count()
+        result['userpraise'] = userpraise
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_user_name(req):
+    '''
+    动态获取用户名字
+    :param req: 
+    :return: 
+    '''
+
+    result = {
+        'status': 0,
+        'message': None,
+        'username': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        result['username'] = user.UserName
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+
+
 
 @require_http_methods(["GET", "POST"])
 @csrf_exempt
@@ -224,8 +319,9 @@ def inCode(req):
                     result['username'] = username
                     result['message'] = '注册成功，正在调转'
                     result['status'] =4
-                    req.session['Email'] = Email
-                    response.set_cookie('Email', Email)
+                    req.session['user_email'] = email
+                    response = HttpResponse(json.dumps(result))
+                    response.set_cookie('user_email', email)
                     return HttpResponse(json.dumps(result))
                 except Exception as e:
                     print(e)
@@ -563,7 +659,9 @@ def crcreate(req):
     '''
     if req.method == 'GET':
         obj = models.ProjectLabel.objects.all()
-        return render_to_response('creation/crcreate.html', {"labels": obj})
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return render_to_response('creation/crcreate.html', {"labels": obj,"username":username})
     if req.method == "POST":
         result = {
             'status': 0,
@@ -571,9 +669,19 @@ def crcreate(req):
         }
         name = req.POST["name"]
         describe = req.POST["describe"]
+        labels = req.POST["labels"]
+
         try:
-            creation = models.Creation.objects.create(Name=name,Describe=describe);
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            creation = models.Creation.objects.create(user=user,Name=name,Describe=describe,Uuid=uuid.uuid4());
             creation.save()
+
+            for label in labels[:-1]:
+                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                creation2ProjectLabel = models.Creation2ProjectLabel.objects.create(projectLabel=Label, creation=creation)
+                creation2ProjectLabel.save()
+
             result = {
                 'status': 1,
                 'message': 'success',
@@ -597,7 +705,7 @@ def creations(req):
             sign = req.GET['sign']
             # 如果是所有项目
             if sign == "all":
-                creations = models.Creation.objects.all().order_by("Date")
+                creations = models.Creation.objects.all().order_by("-Date")
             # 如果有特殊标签
             else:
                 CreationLabelObjs = models.Creation2ProjectLabel.objects.filter(projectLabel=sign)
@@ -882,11 +990,11 @@ def recruit_apply(req):
     status = 0
     if req.method == 'POST':
         try:
-            # username = "chris"
-            useremail = req.POST["user"]
-            print(useremail)
+
+            useremail = req.session.get('user_email')
             projectId = req.POST["projectId"]
             content = req.POST["describe"]
+            remove_script(content)
             user = models.User.objects.get(Email=useremail)
             recruit = models.Recruit.objects.get(project=projectId)
             models.Apply.objects.create(user=user, recruit=recruit, Describe=content)
@@ -911,13 +1019,13 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.all().order_by("StartTime")
+                projects = models.Project.objects.all().order_by('-Id')
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-            #################
+
             recruit_all = []
             for project in projects:
                 recruit = models.Recruit.objects.filter(project__Id=project.Id)
@@ -1009,12 +1117,17 @@ def dedetails(req):
 
 '''个人中心相关页面'''
 
-
+@csrf_exempt
 def homepage(req):
     if req.method == 'GET':
-        return render_to_response('personal/homepage.html')
+        user_email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=user_email)
+        userfollow = models.Follow.objects.filter(user=user).count()
+        userpraise = models.Praise.objects.filter(user=user).count()
+        return render_to_response(['personal/homepage.html','personal/unread_messages.html'], {"user": user, "userfollow": userfollow, "userpraise": userpraise})
     if req.method == 'POST':
         pass
+
 
 @csrf_exempt
 def release(req):
@@ -1033,31 +1146,31 @@ def release(req):
             'status': 0,
             'message': ''
         }
-
         ProjectName = req.POST["proTitle"]
         img = req.POST["coverMap"]
         base64Code = img.split(',')[1]
-        Img = decode_img(base64Code)
+        fileext = img.split(',')[0].split(';')[0].split('/')[1]
+        Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"),fileext)
         Description = req.POST["rhtml"]
-        Number = req.POST["numPerson"]
-        StartTime = req.POST["nowTime"]
-        endTime = req.POST["endTime"]
-        # EndTime = endTime.replace('/', '-')
-        EndTime = datetime.strftime(endTime, '%Y-%m-%d ')
-        proLabels = req.POST["proLabels"]
+        Description = remove_script(Description)
+        Summary = Description
+        Number = int(req.POST["numPerson"])
+        EndTime = req.POST["endTime"]
+        EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
+        proLabels = req.POST["proLabels"].split('*')
+        Statue = int(req.POST["statue"])
         Identity = 1
         try:
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
             project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
-                                                    StartTime=StartTime,EndTime=EndTime,Img=Img,Uuid=uuid.uuid4())
+                                                    StartTime=datetime.now(), EndTime=EndTime,Statue=Statue,
+                                                    Img=Img,Summary=Summary,Progress=Summary,Uuid=uuid.uuid4())
             project.save()
-            for label in proLabels :
+            for label in proLabels[:-1] :
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
                 project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
-                project2ProjectLabel.save()
-            ProjectUser = models.ProjectUser.objects.create(user=user,project=project,Identity=Identity)
-            ProjectUser.save()
+            models.ProjectUser.objects.create(user=user,project=project,Identity=Identity).save()
 
             resData['status'] = 1
             resData['message'] = 'success'
@@ -1076,7 +1189,7 @@ def editprofile(req):
         except Exception as e:
             print(e.message)
         else:
-            return render_to_response('personal/editprofile.html',{"user":user})
+            return render_to_response('personal/editprofile.html', {"user": user})
     if req.method == 'POST':
         email = req.COOKIES.get('user_email')
         username = req.POST["username"]
@@ -1085,12 +1198,12 @@ def editprofile(req):
         major = req.POST["major"]
         sex = req.POST["sex"]
         print (sex)
-        result={
-              "status":1,
-              "string":'success'
+        result = {
+              "status": 1,
+              "string": 'success'
         }
         try:
-            models.User.objects.filter(Email=email).update(UserName = username,School = school,Institude = institude,Major = major,Sex = sex)
+            models.User.objects.filter(Email=email).update(UserName=username, School=school, Institude=institude, Major=major, Sex=sex)
         except Exception as e:
             print(e)
             result["status"] = 0
@@ -1104,8 +1217,11 @@ def editprofile(req):
 def unread_messages(req):
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
-        message_content = models.Message.objects.filter(Q(IsRead = False) & Q(user__Email = email))
-        return render_to_response('personal/unread_messages.html',{"message_content":message_content})
+        user = models.User.objects.get(Email=email)
+        message_content = models.Message.objects.filter(Q(user=user) & Q(IsRead=False))
+        userfollow = models.Follow.objects.filter(user=user).count()
+        userpraise = models.Praise.objects.filter(user=user).count()
+        return render_to_response('personal/unread_messages.html', {"message_content": message_content, "userfollow": userfollow, "userpraise": userpraise})
     if req.method == 'POST':
         messageid = req.POST["messageid"]
         result = {
@@ -1113,7 +1229,7 @@ def unread_messages(req):
             "string": 'success'
         }
         try:
-            models.Message.objects.filter(Id = messageid)
+            models.Message.objects.filter(Id=messageid)
         except Exception as e:
             print(e)
             result["status"] = 0
