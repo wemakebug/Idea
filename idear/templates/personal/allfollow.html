@@ -4,6 +4,7 @@
    <title>我关注的</title>
 {%endblock%}
 {%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/allfollow.css'%}">
 {%endblock%}
@@ -17,16 +18,155 @@
     </ul>
 </div>
 <div class="all_content">
-    <div class="mainConPro">
-
+    <div class="mainContentPro">
+        <div class="proCoverImg">
+            <img src="{% static 'personal/imgs/touxiang.jpg'%}">
+        </div>
+        <div class="proContent">
+            <div class="proName">
+                <p>这是一条不知名的项目</p>
+            </div>
+            <div class="proContentShow" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快点阅读是一款对话式小说阅读APP，APP提供丰富的短片故事资源，通过点屏阅读的方式，每个故事都通过对话消息展开情节。致力于让读者快速融入小说环境，提供全新的小说阅读的方式。
+            </div>
+            <div class="progressBar">
+                <div class="progress">
+                    <span class="green"><span><li>当前项目进度： </li></span></span>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="deletePro btn btn-default" aria-label="Left Align" href="javascript:void(0)" onclick="showDeleteModal(this)">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="mainContentPro">
+        <div class="proCoverImg">
+            <img src="{% static 'personal/imgs/touxiang.jpg'%}">
+        </div>
+        <div class="proContent">
+            <div class="proName">
+                <p>这是一条不知名的项目</p>
+            </div>
+            <div class="proContentShow" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快点阅读是一款对话式小说阅读APP，APP提供丰富的短片故事资源，通过点屏阅读的方式，每个故事都通过对话消息展开情节。致力于让读者快速融入小说环境，提供全新的小说阅读的方式。
+            </div>
+            <div class="progressBar">
+                <div class="progress">
+                    <span class="green"><span><li>当前项目进度： </li></span></span>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="deletePro btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="mainContentPro">
+        <div class="proCoverImg">
+            <img src="{% static 'personal/imgs/touxiang.jpg'%}">
+        </div>
+        <div class="proContent">
+            <div class="proName">
+                <p>这是一条不知名的项目</p>
+            </div>
+            <div class="proContentShow" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快点阅读是一款对话式小说阅读APP，APP提供丰富的短片故事资源，通过点屏阅读的方式，每个故事都通过对话消息展开情节。致力于让读者快速融入小说环境，提供全新的小说阅读的方式。
+            </div>
+            <div class="progressBar">
+                <div class="progress">
+                    <span class="green"><span><li>当前项目进度： </li></span></span>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="deletePro btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="mainContentPro">
+        <div class="proCoverImg">
+            <img src="{% static 'personal/imgs/touxiang.jpg'%}">
+        </div>
+        <div class="proContent">
+            <div class="proName">
+                <p>这是一条不知名的项目</p>
+            </div>
+            <div class="proContentShow" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快点阅读是一款对话式小说阅读APP，APP提供丰富的短片故事资源，通过点屏阅读的方式，每个故事都通过对话消息展开情节。致力于让读者快速融入小说环境，提供全新的小说阅读的方式。
+            </div>
+            <div class="progressBar">
+                <div class="progress">
+                    <span class="green"><span><li>当前项目进度： </li></span></span>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="deletePro btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
     </div>
 </div>
-
-
-
 
 {%endblock%}
 
 {% block script %}
-    
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
+    <script>
+    //限制字符个数
+        $(document).ready(function () {
+            $(".proContentShow").each(function () {
+                var maxwidth = 104;
+                if ($(this).text().length > maxwidth) {
+                    $(this).text($(this).text().substring(0, maxwidth));
+                    $(this).html($(this).html() + '…')
+                    ;
+                }
+            });
+        });
+    </script>
+    <script>
+    $(".deletePro").click(function () {
+        alert("删除成功！");
+    })
+    </script>
+
+
+    <script type="text/javascript">
+        $("img[name='projects']").click(function () {
+           var projectid = this.id.split('-')[1];
+            $.post(window.location.pathname,{"projectId":projectid},function (res) {
+                res = JSON.parse(res);
+                if(res.status === 1){
+                    document.getElementById("project_detail_img_path").src = "/static/photos/" + res.ImgPath;
+                    document.getElementById("ptoject_detail_name").textContent = res.ProjectName;
+                    document.getElementById("project_detail_link").setAttribute("href","/admina/project/detail/" + projectid);
+                    $("input[id='name']").get(0).value = res.ProjectName;
+                    $("input[id='title']").get(0).value = res.ProjsctStartTime;
+                    $("input[id='user_number']").get(0).value = res.ProjectUserNumber;
+                    $("a[id='project_user_detail']").get(0).textContent = res.projectUserName;
+                    $("a[id='project_user_detail']").get(0).setAttribute("href","/admina/user/detail/" + res.projectUserId);
+                    var delete_btn= document.getElementById("delete_project_btn")
+                    delete_btn.onclick = function () {
+                        if(confirm("确认删除？")){
+                            $.post("project/delete/" + projectid, {},function (res) {
+                                res = JSON.parse(res);
+                                if(res.status === 1){
+                                    alert(res.message);
+                                window.location.reload();
+                                }else if(res.status === 0){
+                                    alert(res.message);
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                        };
+
+                }else if (res.status === 0){
+                    alert(res.message);
+                    window.location.reload();
+                }
+            })
+
+
+        });
+    </script>
 {% endblock %}
