@@ -186,13 +186,9 @@
 .project{
     width: 100%;
     height: auto;
-    text-align: center;
     min-height: 600px;
 }
 .project1{
     width: 65%;
     border: solid 1px rgba(220,220,220,0.7);
-}
-.project2{
-    
 }

@@ -8,6 +8,7 @@ import json
 import time
 import time
 import uuid
+from .Idea_util.varidate import user_must_login
 from itertools import chain
 import re
 from django.http import HttpResponseRedirect
@@ -1175,6 +1176,7 @@ def release(req):
         return HttpResponse(json.dumps(resData))
 
 
+@csrf_exempt
 def editprofile(req):
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
@@ -1209,30 +1211,33 @@ def editprofile(req):
             return HttpResponse(json.dumps(result))
 
 
+@csrf_exempt
 def unread_messages(req):
     if req.method == 'GET':
-        email = req.COOKIES.get('user_email')
-        user = models.User.objects.get(Email=email)
-        message_content = models.Message.objects.filter(Q(user=user) & Q(IsRead=False))
-        userfollow = models.Follow.objects.filter(user=user).count()
-        userpraise = models.Praise.objects.filter(user=user).count()
-        return render_to_response('personal/unread_messages.html', {"message_content": message_content, "userfollow": userfollow, "userpraise": userpraise})
+        try:
+            email = req.COOKIES.get('user_email')
+            if email:
+                messageuse = models.Message.objects.filter(IsUse=True)
+                if messageuse:
+                    user = models.User.objects.get(Email=email)
+                    message_content = messageuse.filter(Q(user=user) & Q(IsRead=False))
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+            return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+        else:
+            return render_to_response('personal/unread_messages.html', {"message_content": message_content})
     if req.method == 'POST':
-        messageid = req.POST["messageid"]
+        messageId = req.POST["messageId"]
         result = {
             "status": 1,
             "string": 'success'
         }
-        try:
-            models.Message.objects.filter(Id=messageid)
-        except Exception as e:
-            print(e)
-            result["status"] = 0
-            result["string"] = "删除失败！"
-            return HttpResponse(json.dumps(result))
-        else:
-            # print(locals())
-            return HttpResponse(json.dumps(result))
+        message = models.Message.objects.get(Id=messageId)
+        message.IsUse = False
+        message.save()
+        return HttpResponse(json.dumps(result))
 
 
 def allfollow(req):
