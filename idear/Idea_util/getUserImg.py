@@ -78,6 +78,7 @@ def decode_img(img_base64, img_name,fileext):
     return rgb_img
 
 
+# # 以下为测试代码 暂时不用
 # with open('base64.txt', 'r') as file :
 #     file_content = file.read()
 #     imagetype = file_content.split(',')[0]

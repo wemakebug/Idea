@@ -1,21 +1,27 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from itertools import chain
 import json
 import time
 import time
 
+import uuid
+from itertools import chain
+import re
+
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
-import uuid
-from itertools import chain
-
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
 from datetime import datetime
+
 from .Idea_util.getUserImg import decode_img
+from .Idea_util.varidate import remove_script
 from admina import models
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -222,8 +228,9 @@ def inCode(req):
                     result['username'] = username
                     result['message'] = '注册成功，正在调转'
                     result['status'] =4
-                    req.session['Email'] = Email
-                    response.set_cookie('Email', Email)
+                    req.session['user_email'] = email
+                    response = HttpResponse(json.dumps(result))
+                    response.set_cookie('user_email', email)
                     return HttpResponse(json.dumps(result))
                 except Exception as e:
                     print(e)
@@ -257,6 +264,23 @@ def logout(req):
     return response
 
 
+@csrf_exempt
+def obtainVerify(req):
+    """
+    获取验证码
+    :param req: 
+    :return: 
+    """
+    sender = '472303924@qq.com'
+    if req.method == 'POST':
+        email = req.POST['email']
+        img, verify_str = generate_verify_image()
+        req.session['verify_str'] = verify_str
+        send_mail('欢迎进入WE创', '您的验证码为' + verify_str , sender, [email], fail_silently=True)
+        return render_to_response('idea/forgetPassword.html')
+
+
+@csrf_exempt
 def forgetPassword(req):
     '''
     忘记密码页面
@@ -264,11 +288,22 @@ def forgetPassword(req):
     :return: 
     '''
     if req.method == 'GET':
-        stream, strs = generate_verify_image(save_img=False)
-        # req.sessions['verifycode'] = strs
-        stream = base64.b64encode(stream.getvalue()).encode('ascii')
-        req.session['verificode'] = strs
-        return render_to_response('idea/forgetPassword.html', {'img': stream})
+        return render_to_response('idea/forgetPassword.html')
+
+    if req.method == 'POST':
+        email = req.POST['email']
+        newPassword = req.POST['newPassword']
+        identifyingcode = req.POST['identifyingcode']
+        verify_str = req.session['verify_str']
+        if verify_str == identifyingcode:
+            try:
+                models.User.objects.filter(Email=email).update(PassWord=newPassword)
+                data = 1        # 1: 重置密码成功
+            except:
+                data = -1       # -1: 重置密码失败
+        else:
+            data = -1
+    return HttpResponse(data)
 
 
 ''' 功能页面相关视图结束'''
@@ -1009,33 +1044,31 @@ def release(req):
         fileext = img.split(',')[0].split(';')[0].split('/')[1]
         Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"),fileext)
         Description = req.POST["rhtml"]
+        Description = remove_script(Description)
         Summary = Description
         Number = int(req.POST["numPerson"])
         EndTime = req.POST["endTime"]
         EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
         proLabels = req.POST["proLabels"].split('*')
-        Statue = 3
+        Statue = int(req.POST["statue"])
         Identity = 1
-        # try:
-        user_email = req.COOKIES.get('user_email')
-        user = models.User.objects.get(Email=user_email)
-        project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
-                                                StartTime=datetime.now(), EndTime=EndTime,Statue=Statue,
-                                                Img=Img,Summary=Summary,Progress=Summary,Uuid=uuid.uuid4())
-        project.save()
-        for label in proLabels[:-1] :
-            print label
-            Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
-            print 'ok'
-            project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
+                                                    StartTime=datetime.now(), EndTime=EndTime,Statue=Statue,
+                                                    Img=Img,Summary=Summary,Progress=Summary,Uuid=uuid.uuid4())
+            project.save()
+            for label in proLabels[:-1] :
+                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
+            models.ProjectUser.objects.create(user=user,project=project,Identity=Identity).save()
 
-        models.ProjectUser.objects.create(user=user,project=project,Identity=Identity).save()
-
-        resData['status'] = 1
-        resData['message'] = 'success'
-        # except Exception as e :
-        #     print(e)
-        #     resData['message'] = str(e)
+            resData['status'] = 1
+            resData['message'] = 'success'
+        except Exception as e :
+            print(e)
+            resData['message'] = str(e)
         return HttpResponse(json.dumps(resData))
 
 

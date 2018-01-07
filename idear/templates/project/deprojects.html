@@ -41,8 +41,9 @@
                         <br>
                         </div>
                         <div class="project_bottom_top">
-                            <p class="project_top_1_text">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{{ project.Description }} </p>
+                            <div class="project_top_1_text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{{ project.Description | safe}}
+                            </div>
                             <div class="progress">
                                 <span class="green  "><span><li>当前项目进度： </li></span></span>
                             </div>
