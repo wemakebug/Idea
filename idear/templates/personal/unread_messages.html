@@ -17,6 +17,8 @@
         <div style="float: left;width: 5%;height: 30px;"><span class="repo-language-color"></span></div>
         <div class="message_column1-1">{{ message.Content }}</div>
         <div style="display: none;" class="messageid">{{ message.Id }}</div>
+        <div style="width: 5%;line-height: 30px;">{{ message.Date }}</div>
+        <div style="width: 3%;line-height: 30px;">{{ message.Priority }}</div>
         <div class="message_column1-2">
             <input type="button" value="查看" class="btn btn-info btn-xs" id="petitionhelp" onclick="">
             <input type="button" value="删除" class="btn btn-danger btn-xs" id="petitionhelp" onclick="delete_message()">
@@ -30,4 +32,5 @@
 <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'idea/js/sweet-alert.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'personal/js/unread_message.js' %}"></script>
+<script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
 {% endblock %}
