@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
     url(r'^forgetPassword$', views.forgetPassword),
+    url(r'^obtainVerify$', views.obtainVerify),
     url(r'^homepage$',views.homepage),
     url(r'^unread_messages$',views.unread_messages),
     url(r'^allfollow$',views.allfollow),

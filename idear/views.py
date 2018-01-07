@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from itertools import chain
 import json
 import time
@@ -13,13 +16,11 @@ from itertools import chain
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
-from django.utils.dateparse import parse_date, parse_datetime
-from django.utils import timezone
+from datetime import datetime
+from .Idea_util.getUserImg import decode_img
 from admina import models
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-import uuid
-import re, base64
 from django.utils.html import escapejs
 from django.views.decorators.http import require_http_methods
 
@@ -258,6 +259,23 @@ def logout(req):
     return response
 
 
+@csrf_exempt
+def obtainVerify(req):
+    """
+    获取验证码
+    :param req: 
+    :return: 
+    """
+    sender = '472303924@qq.com'
+    if req.method == 'POST':
+        email = req.POST['email']
+        img, verify_str = generate_verify_image()
+        req.session['verify_str'] = verify_str
+        send_mail('欢迎进入WE创', '您的验证码为' + verify_str , sender, [email], fail_silently=True)
+        return render_to_response('idea/forgetPassword.html')
+
+
+@csrf_exempt
 def forgetPassword(req):
     '''
     忘记密码页面
@@ -265,11 +283,22 @@ def forgetPassword(req):
     :return: 
     '''
     if req.method == 'GET':
-        stream, strs = generate_verify_image(save_img=False)
-        # req.sessions['verifycode'] = strs
-        stream = base64.b64encode(stream.getvalue()).encode('ascii')
-        req.session['verificode'] = strs
-        return render_to_response('idea/forgetPassword.html', {'img': stream})
+        return render_to_response('idea/forgetPassword.html')
+
+    if req.method == 'POST':
+        email = req.POST['email']
+        newPassword = req.POST['newPassword']
+        identifyingcode = req.POST['identifyingcode']
+        verify_str = req.session['verify_str']
+        if verify_str == identifyingcode:
+            try:
+                models.User.objects.filter(Email=email).update(PassWord=newPassword)
+                data = 1        # 1: 重置密码成功
+            except:
+                data = -1       # -1: 重置密码失败
+        else:
+            data = -1
+    return HttpResponse(data)
 
 
 ''' 功能页面相关视图结束'''
@@ -853,10 +882,12 @@ def recruit_apply(req):
     status = 0
     if req.method == 'POST':
         try:
-            username = "chris"
+            # username = "chris"
+            useremail = req.POST["user"]
+            print(useremail)
             projectId = req.POST["projectId"]
             content = req.POST["describe"]
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=useremail)
             recruit = models.Recruit.objects.get(project=projectId)
             models.Apply.objects.create(user=user, recruit=recruit, Describe=content)
             status = 1
@@ -1002,23 +1033,24 @@ def release(req):
             'status': 0,
             'message': ''
         }
+
         ProjectName = req.POST["proTitle"]
-        # Img = req.POST["coverMap"]
+        img = req.POST["coverMap"]
+        base64Code = img.split(',')[1]
+        Img = decode_img(base64Code)
         Description = req.POST["rhtml"]
         Number = req.POST["numPerson"]
-        startTime = req.POST["nowTime"]
-        StartTime = startTime.replace('/','-')
-        print StartTime
+        StartTime = req.POST["nowTime"]
         endTime = req.POST["endTime"]
-        EndTime = endTime.replace('/','-')
-        print EndTime
+        # EndTime = endTime.replace('/', '-')
+        EndTime = datetime.strftime(endTime, '%Y-%m-%d ')
         proLabels = req.POST["proLabels"]
         Identity = 1
         try:
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
             project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
-                                                    StartTime=StartTime,EndTime=EndTime,Uuid=uuid.uuid4())
+                                                    StartTime=StartTime,EndTime=EndTime,Img=Img,Uuid=uuid.uuid4())
             project.save()
             for label in proLabels :
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
@@ -1037,17 +1069,16 @@ def release(req):
 
 def editprofile(req):
     if req.method == 'GET':
-        email = req.COOKIES.get('email')
+        email = req.COOKIES.get('user_email')
         print(email)
-        username = req.COOKIES.get('username')
         try:
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=email)
         except Exception as e:
             print(e.message)
         else:
             return render_to_response('personal/editprofile.html',{"user":user})
     if req.method == 'POST':
-        email = req.COOKIES.get('email')
+        email = req.COOKIES.get('user_email')
         username = req.POST["username"]
         school = req.POST["school"]
         institude = req.POST["institude"]
@@ -1072,9 +1103,25 @@ def editprofile(req):
 
 def unread_messages(req):
     if req.method == 'GET':
-        return render_to_response('personal/unread_messages.html')
+        email = req.COOKIES.get('user_email')
+        message_content = models.Message.objects.filter(Q(IsRead = False) & Q(user__Email = email))
+        return render_to_response('personal/unread_messages.html',{"message_content":message_content})
     if req.method == 'POST':
-        pass
+        messageid = req.POST["messageid"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            models.Message.objects.filter(Id = messageid)
+        except Exception as e:
+            print(e)
+            result["status"] = 0
+            result["string"] = "删除失败！"
+            return HttpResponse(json.dumps(result))
+        else:
+            # print(locals())
+            return HttpResponse(json.dumps(result))
 
 
 def allfollow(req):
