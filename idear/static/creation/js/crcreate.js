@@ -17,13 +17,13 @@ $(document).ready(function (){
 $("#create_btn_draft").click(function(){
     var name = $(".input_title").val();
     var labels = ''
-    var isUse = document.getElementsByName('isUse').value
     var labels_all = document.getElementsByName('content_pro_label')
     for(var i = 0;i < labels_all.length;i ++){
         if(labels_all[i].style.backgroundColor === "rgb(113, 148, 184)")
             labels+=labels_all[i].innerHTML+"*"
     }
     var describe = $(".note-editable").get(0).innerHTML;
+    var isUse = $('#create_btn_draft').val()
     $.post("crcreate",{
         "name":name,
         "describe":describe,
@@ -45,10 +45,12 @@ $("#create_btn_ok").click(function(){
             labels+=labels_all[i].innerHTML+"*"
     }
     var describe = $(".note-editable").get(0).innerHTML;
+    var isUse = $('#create_btn_ok').val()
     $.post("crcreate",{
         "name":name,
         "describe":describe,
-        "labels":labels
+        "labels":labels,
+        "isUse":isUse
     },function(data){
         var jsonData = $.parseJSON(data);
         alert("发布成功")

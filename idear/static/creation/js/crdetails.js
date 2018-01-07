@@ -1,11 +1,32 @@
+//
+//$(function () {
+//
+//$.cookie("user",3)
+//
+//userId = $.cookie("user")
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
 
-$(function () {
 
-$.cookie("user",3)
-
-userId = $.cookie("user")
-
-
+document.getElementById('report-text').onclick = function(){
+    alert('ok!!!!!')
+    var reason = $("#report-text").val()
+    if(reason=="")
+        alert("请填入举报理由")
+    else
+    $.post("crreport",{
+        "reason":reason
+    },function(data){
+        alert("提交成功")
+    })
+}
 
 $("#putcomment").click(function(){
   comment = $("#comment-content1").val() //获取评论中输入的内容
@@ -111,4 +132,4 @@ $(".home-b-collection").click(function(){
 
 
 
-})
+//})

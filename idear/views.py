@@ -608,6 +608,38 @@ def ordinance(req):
 ''' 创意灵感 页面相关部分开始'''
 
 
+@csrf_exempt
+def creations(req):
+    '''
+    创意灵感一级二级页面项目显示
+    '''
+
+    # userId = int(req.COOKIES.get('user'))
+    userId = 3
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            # 如果是所有项目
+            if sign == "all":
+                creations = models.Creation.objects.filter(IsUse=True).order_by("-Date")
+            # 如果有特殊标签
+            else:
+                CreationLabelObjs = models.Creation2ProjectLabel.objects.filter(projectLabel=sign)
+                creations = []
+                for obj in CreationLabelObjs:
+                    creations.append(obj.creation)
+
+            projectLabels = models.ProjectLabel.objects.all()
+            praises = models.Praise.objects.all()
+            follows = models.Follow.objects.all()
+            return render_to_response('creation/index.html',
+                                      {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
+                                       'follows': follows, 'praises': praises, 'IsUse': True})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+
+
 def crdetails(req):
     '''
     创意详情
@@ -676,13 +708,13 @@ def crcreate(req):
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
 
-            if isUse=="0":
+            if isUse=="暂存":
                 isUse = False
             else:
                 isUse = True
-
             creation = models.Creation.objects.create(user=user, Name=name, Describe=describe,IsUse=isUse, Uuid=uuid.uuid4());
             creation.save()
+
             for label in labels[:-1]:
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
                 creation2ProjectLabel = models.Creation2ProjectLabel.objects.create(projectLabel=Label, creation=creation)
@@ -698,41 +730,34 @@ def crcreate(req):
         return HttpResponse(json.dumps(result))
 
 
-
 @csrf_exempt
-def creations(req):
+def crreport(req):
     '''
-    创意灵感一级二级页面项目显示  
+    创意举报
+    :param req:
+    :return:
     '''
-    
-    # userId = int(req.COOKIES.get('user'))
-    userId = 3
-    try:
-        if req.method == 'GET':
-            sign = req.GET['sign']
-            # 如果是所有项目
-            if sign == "all":
-                creations = models.Creation.objects.all().order_by("-Date")
-            # 如果有特殊标签
-            else:
-                CreationLabelObjs = models.Creation2ProjectLabel.objects.filter(projectLabel=sign)
-                creations = []
-                for obj in CreationLabelObjs:
-                    creations.append(obj.creation)
-
-            projectLabels = models.ProjectLabel.objects.all()
-            praises = models.Praise.objects.all()
-            follows = models.Follow.objects.all()
-
-            return render_to_response('creation/index.html',
-                                      {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
-                                       'follows': follows, 'praises': praises})
-    except Exception as e:
-        print(e)
-        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+    status = 0
+    if req.method == 'POST':
+        reason = req.POST["reason"]
+        try:
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(pk=creationId)
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            models.Report.objects.create(user=user, creation=creation, Reason=reason)
+            status = 1
+            return HttpResponse(status)
 
 
+        except Exception as e:
+            print(e)
+            return HttpResponse(status)
 
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
 
 
 @csrf_exempt
