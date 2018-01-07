@@ -18,7 +18,7 @@
 
                             <a class="text" href="crdetails?creationId={{ creation.Id}}">
                                 <h5>{{ creation.Name }}</h5>
-                                <a class="text-x">{{ creation.Describe }}</a>
+                                <a class="text-x">{{ creation.Describe | safe}}</a>
                             </a>
                         </div>
                         <div class="block-head">

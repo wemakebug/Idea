@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from itertools import chain
 import json
 import time
 import time
+import uuid
+from itertools import chain
+import re
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
-import uuid
-from itertools import chain
-
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
@@ -18,7 +21,7 @@ from .Idea_util.getUserImg import decode_img
 from admina import models
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.utils.html import escapejs
+from django.utils.html import escapejs,strip_tags
 from django.views.decorators.http import require_http_methods
 
 try:
@@ -347,6 +350,23 @@ def logout(req):
     return response
 
 
+@csrf_exempt
+def obtainVerify(req):
+    """
+    获取验证码
+    :param req: 
+    :return: 
+    """
+    sender = '472303924@qq.com'
+    if req.method == 'POST':
+        email = req.POST['email']
+        img, verify_str = generate_verify_image()
+        req.session['verify_str'] = verify_str
+        send_mail('欢迎进入WE创', '您的验证码为' + verify_str , sender, [email], fail_silently=True)
+        return render_to_response('idea/forgetPassword.html')
+
+
+@csrf_exempt
 def forgetPassword(req):
     '''
     忘记密码页面
@@ -354,11 +374,22 @@ def forgetPassword(req):
     :return: 
     '''
     if req.method == 'GET':
-        stream, strs = generate_verify_image(save_img=False)
-        # req.sessions['verifycode'] = strs
-        stream = base64.b64encode(stream.getvalue()).encode('ascii')
-        req.session['verificode'] = strs
-        return render_to_response('idea/forgetPassword.html', {'img': stream})
+        return render_to_response('idea/forgetPassword.html')
+
+    if req.method == 'POST':
+        email = req.POST['email']
+        newPassword = req.POST['newPassword']
+        identifyingcode = req.POST['identifyingcode']
+        verify_str = req.session['verify_str']
+        if verify_str == identifyingcode:
+            try:
+                models.User.objects.filter(Email=email).update(PassWord=newPassword)
+                data = 1        # 1: 重置密码成功
+            except:
+                data = -1       # -1: 重置密码失败
+        else:
+            data = -1
+    return HttpResponse(data)
 
 
 ''' 功能页面相关视图结束'''
@@ -623,7 +654,9 @@ def crcreate(req):
     '''
     if req.method == 'GET':
         obj = models.ProjectLabel.objects.all()
-        return render_to_response('creation/crcreate.html', {"labels": obj})
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return render_to_response('creation/crcreate.html', {"labels": obj,"username":username})
     if req.method == "POST":
         result = {
             'status': 0,
@@ -631,9 +664,19 @@ def crcreate(req):
         }
         name = req.POST["name"]
         describe = req.POST["describe"]
+        labels = req.POST["labels"]
+
         try:
-            creation = models.Creation.objects.create(Name=name,Describe=describe);
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            creation = models.Creation.objects.create(user=user,Name=name,Describe=describe,Uuid=uuid.uuid4());
             creation.save()
+
+            for label in labels[:-1]:
+                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                creation2ProjectLabel = models.Creation2ProjectLabel.objects.create(projectLabel=Label, creation=creation)
+                creation2ProjectLabel.save()
+
             result = {
                 'status': 1,
                 'message': 'success',
@@ -657,7 +700,7 @@ def creations(req):
             sign = req.GET['sign']
             # 如果是所有项目
             if sign == "all":
-                creations = models.Creation.objects.all().order_by("Date")
+                creations = models.Creation.objects.all().order_by("-Date")
             # 如果有特殊标签
             else:
                 CreationLabelObjs = models.Creation2ProjectLabel.objects.filter(projectLabel=sign)

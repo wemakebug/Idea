@@ -6,10 +6,13 @@ from . import models
 import json
 import math
 import uuid
-from datetime import datetime
+import time
+import datetime
 
+
+from django.forms import forms
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render, HttpResponse, Http404, render_to_response
+from django.shortcuts import render, HttpResponse, Http404, render_to_response,HttpResponseRedirect,redirect
 from django.http import JsonResponse
 from django.views.generic.edit import DeleteView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -19,6 +22,7 @@ from .admin_utils import check_login
 from django.template import RequestContext
 from django.db.models import Q
 from django.utils.html import escapejs
+from django.core.urlresolvers import reverse
 
 
 ''' 新后台相关页面视图 '''
@@ -204,7 +208,7 @@ def project_all(req, page=None):
         labels = models.ProjectLabel.objects.all()
 
         if(page):
-            projects = models.Project.objects.all()[int(page-1)*itemPerPage:]
+            projects = models.Project.objects.all()[(int(page)-1)*itemPerPage:]
         else:
             projects = models.Project.objects.all()[:itemPerPage]
 
@@ -268,24 +272,104 @@ def project_delete(req, deleteId):
 @check_login()
 @require_http_methods(["GET", "POST"])
 def project_add(req):
+    '''
+    项目添加页面
+    :param req:
+    :return:
+    '''
     if req.method == "GET":
         projectLabels = models.ProjectLabel.objects.all().order_by("-Id")
+        user = models.User.objects.all()
         return render(req, 'admina/project_add.html', {
             "ProjectLabels": projectLabels,
-
+            "users": user,
         })
     else:
-        pass
+        resData = {
+            'status': 0,
+            'message': ''
+        }
+
+        post_data = req.POST
+        project_name = post_data.get('project_name')
+        poject_start_time = post_data.get('project_start_time')
+        project_status = post_data.get('project_status')
+        project_end_time = post_data.get('project_end_time')
+        project_predict_number = post_data.get('predict_number')
+        project_user_id = post_data.get('project_user')
+        project_tags = post_data.get('Tags')
+
+        # 处理数据
+
+        poject_start_time = poject_start_time.split('-')
+        poject_start_time = datetime.datetime(
+            int(poject_start_time[2]),
+            int(poject_start_time[1]),
+            int(poject_start_time[0]))
+        project_end_time = project_end_time.split('-')
+        project_end_time = datetime.datetime(
+            int(project_end_time[2]),
+            int(project_end_time[1]),
+            int(project_end_time[0]))
+
+        if req.FILES:
+            project_img = req.FILES.get('Img')
+        else:
+            project_img = None
+        if project_tags:
+            project_tags = project_tags.split(',')
+        else:
+            project_tags = []
+        project_introduction = post_data.get('project_introduction')
+        project_process = post_data.get('project_process')
+        project_summary = post_data.get('project_summary')
+
+    try:
+        user = models.User.objects.get(Id=project_user_id)
+        project = models.Project.objects.create(
+            ProjectName=project_name,
+            Description=project_introduction,
+            StartTime=poject_start_time,
+            EndTime=project_end_time,
+            Statue=project_status,
+            Number=project_predict_number,
+            Img=project_img,
+            Summary=project_summary,
+            Progress=project_process,
+            Uuid=uuid.uuid4()
+        )
+        project.save()
+        project_user = models.ProjectUser.objects.create(
+            user=user,
+            project=project,
+            Identity=1,
+            Uuid=uuid.uuid4()
+        )
+        project_user.save()
+
+        resData['status'] = 1
+        resData['message'] = 'success'
+    except Exception as e:
+        print e
+        resData['message'] = str(e)
+    return HttpResponse(JsonResponse(resData))
 
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
-def project_detail(req, uid=None):
+def project_detail(req, id=None):
     if req.method == "GET":
-        if uid:
-            pass
+        if id:
+            try:
+                project = models.Project.objects.get(Id=id)
+                return render(req, 'admina/project_detail.html', {
+                    'project': project
+                })
+            except Exception as e:
+                print(e)
+                return redirect(reverse('admina:project_all'))
         else:
-            return render(req, 'admina/project_detail.html')
+            return redirect(reverse('admina:project_all', args=(1,)))
     else:
         pass
 
@@ -456,6 +540,12 @@ def creation_category(req, page):
 @check_login()
 @require_http_methods(["GET", "POST"])
 def creation_add(req, uid=None):
+    '''
+    创意添加，暂时没有处理上传文件的格式
+    :param req:
+    :param uid:
+    :return:
+    '''
     if req.method == "GET":
         users = models.User.objects.all().order_by("UserName")
         labels = models.ProjectLabel.objects.all()
@@ -483,26 +573,44 @@ def creation_add(req, uid=None):
             creatino_init_time = data.get('creation_init_time')
             creation_name = escapejs(data.get('creation_name'))
             creation_tagids = data.get(u'Tags')
-            if(req.FILES[0]):
-                creation_img = req.FILES[0]
+            creation_descibe = data.get(u'creation_descibe')
+            print creation_tagids
+            print locals()
+            if(req.FILES):
+                creation_img = req.FILES.get('Img')
             else:
                 creation_img = None
-            print creation_user_id, creation_is_use, creation_name, creation_name, creation_name, creation_tagids, creatino_init_time
             if creatino_init_time:
-                creatino_init_time = datetime.strftime(creatino_init_time, '%d-%m-%Y ')
-            # if creation_is_use == 1:
-            #     creation_is_use = False
-            # else:
-            #     creation_is_use = True
-            # user = models.User.objects.get(Id=creation_user_id)
-            # creation = models.Creation.objects.create(
-            #     user=user,
-            #     IsUse=creation_is_use,
-            #     Date=creatino_init_time,
-            #     Name=creation_name,
-            #     Img=creation_img
+                creatino_init_time = creatino_init_time.split('-')
+                creatino_init_time = datetime.datetime(
+                    int(creatino_init_time[2]),
+                    int(creatino_init_time[1]),
+                    int(creatino_init_time[0]))
+            else:
+                creatino_init_time = datetime.datetime.now()
+            if int(creation_is_use) == 1:
+                creation_is_use = False
+            else:
+                creation_is_use = True
+            user = models.User.objects.get(Id=creation_user_id)
+            creation = models.Creation.objects.create(
+                user=user,
+                IsUse=creation_is_use,
+                Date=creatino_init_time,
+                Name=creation_name,
+                Img=creation_img,
+                Describe=creation_descibe
+            )
+            creation.save()
+            for tagid in creation_tagids.split(','):
+                tag = models.ProjectLabel.objects.get(Id=tagid)
+                creation2ProjectLabel = models.Creation2ProjectLabel.objects.create(creation=creation, projectLabel=tag)
+                creation2ProjectLabel.save()
+            resData['message'] = '创建成功'
+            resData['status'] = 1
         except Exception as e:
             print(e)
+            resData['message'] = str(e)
         return HttpResponse(JsonResponse(resData))
 
 @csrf_exempt
@@ -804,9 +912,6 @@ def PhotoGallary(req):
             return HttpResponse(json.dumps(result))
 
 
-''' 尝试使用类视图 '''
-class CreationDelete(DeleteView):
-    model = models.Creation
 
 """评论相关页面"""
 def comment_list(req):
