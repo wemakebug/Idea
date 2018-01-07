@@ -7,9 +7,11 @@ from itertools import chain
 import json
 import time
 import time
+
 import uuid
 from itertools import chain
 import re
+
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
@@ -17,7 +19,9 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
 from datetime import datetime
+
 from .Idea_util.getUserImg import decode_img
+from .Idea_util.varidate import remove_script
 from admina import models
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -315,8 +319,11 @@ def inCode(req):
                     result['username'] = username
                     result['message'] = '注册成功，正在调转'
                     result['status'] =4
-                    req.session['user_email'] = Email
-                    response.set_cookie('user_email', Email)
+
+                    req.session['user_email'] = email
+                    response = HttpResponse(json.dumps(result))
+                    response.set_cookie('user_email', email)
+
                     return HttpResponse(json.dumps(result))
                 except Exception as e:
                     print(e)
@@ -985,11 +992,11 @@ def recruit_apply(req):
     status = 0
     if req.method == 'POST':
         try:
-            # username = "chris"
-            useremail = req.POST["user"]
-            print(useremail)
+
+            useremail = req.session.get('user_email')
             projectId = req.POST["projectId"]
             content = req.POST["describe"]
+            remove_script(content)
             user = models.User.objects.get(Email=useremail)
             recruit = models.Recruit.objects.get(project=projectId)
             models.Apply.objects.create(user=user, recruit=recruit, Describe=content)
@@ -1014,13 +1021,13 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.all().order_by("StartTime")
+                projects = models.Project.objects.all().order_by('-Id')
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-            #################
+
             recruit_all = []
             for project in projects:
                 recruit = models.Recruit.objects.filter(project__Id=project.Id)
@@ -1141,31 +1148,31 @@ def release(req):
             'status': 0,
             'message': ''
         }
-
         ProjectName = req.POST["proTitle"]
         img = req.POST["coverMap"]
         base64Code = img.split(',')[1]
-        Img = decode_img(base64Code)
+        fileext = img.split(',')[0].split(';')[0].split('/')[1]
+        Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"),fileext)
         Description = req.POST["rhtml"]
-        Number = req.POST["numPerson"]
-        StartTime = req.POST["nowTime"]
-        endTime = req.POST["endTime"]
-        # EndTime = endTime.replace('/', '-')
-        EndTime = datetime.strftime(endTime, '%Y-%m-%d ')
-        proLabels = req.POST["proLabels"]
+        Description = remove_script(Description)
+        Summary = Description
+        Number = int(req.POST["numPerson"])
+        EndTime = req.POST["endTime"]
+        EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
+        proLabels = req.POST["proLabels"].split('*')
+        Statue = int(req.POST["statue"])
         Identity = 1
         try:
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
             project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
-                                                    StartTime=StartTime,EndTime=EndTime,Img=Img,Uuid=uuid.uuid4())
+                                                    StartTime=datetime.now(), EndTime=EndTime,Statue=Statue,
+                                                    Img=Img,Summary=Summary,Progress=Summary,Uuid=uuid.uuid4())
             project.save()
-            for label in proLabels :
+            for label in proLabels[:-1] :
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
                 project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
-                project2ProjectLabel.save()
-            ProjectUser = models.ProjectUser.objects.create(user=user,project=project,Identity=Identity)
-            ProjectUser.save()
+            models.ProjectUser.objects.create(user=user,project=project,Identity=Identity).save()
 
             resData['status'] = 1
             resData['message'] = 'success'

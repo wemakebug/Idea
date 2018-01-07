@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="input_pro_title">
-        <form>
+        <form enctype="multipart/form-data">
             <input class="input_title" placeholder="请在这里输入标题" autocomplete="off" type="text">
         </form>
     </div>
@@ -169,10 +169,13 @@
         var numPerson = $("#numPerson").val();
         var endTime = $("#flatpickr-tryme").val();
         var proLabels = '';
+        var statue = 3,
+            identity = 1;
         var oDiv = document.getElementsByName("chance_pro_label");
         for(var i = 0;i < oDiv.length;i ++){
             if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")
                 proLabels+=oDiv[i].innerHTML + '*';
+{#                proLabels.push(oDiv[i].innerHTML);#}
         }
         var d=new Date();
         var day=d.getDate();
@@ -186,7 +189,9 @@
             "numPerson": numPerson,
             "nowTime":nowTime,
             "endTime": endTime,
-            "proLabels": proLabels
+            "proLabels": proLabels,
+            "statue":statue,
+            "idetity":identity
         },function (data) {
             var data = JSON.parse(data);
             if(data.status){
