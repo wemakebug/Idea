@@ -314,14 +314,16 @@ def inCode(req):
                     models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid4())
                     user = models.User.objects.get(Email=email)
                     user.Img = 'photos/2017/09/19/user/default_cdNstvn.jpg'
-                    req.session['uuid'] = str(user.Uuid)
+                    req.session['user_uuid'] = str(user.Uuid)
                     result['email'] = email
                     result['username'] = username
                     result['message'] = '注册成功，正在调转'
                     result['status'] =4
+
                     req.session['user_email'] = email
                     response = HttpResponse(json.dumps(result))
                     response.set_cookie('user_email', email)
+
                     return HttpResponse(json.dumps(result))
                 except Exception as e:
                     print(e)
@@ -1279,6 +1281,34 @@ def allfollow(req):
         pass
 
 
+@csrf_exempt
+def perCreation(req):
+    '''
+    个人中心创意灵感
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        creation = models.Creation.objects.filter(Q(user__Email=user_email) & Q(IsUse=True))
+        return render_to_response('personal/perCreation.html',{"creation":creation})
+    if req.method == 'POST':
+        result={
+            'message': None,
+            'status': 0,
+            'creationId': None,
+            'uuid': None
+        }
+        try:
+            creationId = req.POST['creationId']
+            models.Creation.objects.filter(Id=creationId).update(IsUse=False)
+            result['status'] = 1
+            result['message'] = '更改成功'
+            return HttpResponse(json.dumps(result))
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
 '''个人中心相关页面结束'''
 
 
