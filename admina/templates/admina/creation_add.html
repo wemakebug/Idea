@@ -54,8 +54,7 @@
                         <div class="form-group ">
                             <label for="email" class="control-label col-lg-2">创意er</label>
                             <div class="col-lg-5">
-                                <select class="form-control input-md" id="creation_user">
-                                <option></option>
+                                <select class="form-control input-md" id="creation_user" required>
                                 {%  for user in users %}
                                     <option id="user-{{ user.Id }}" value="{{ user.Id }}">{{ user.UserName }}</option>
                                 {% endfor %}
@@ -66,7 +65,7 @@
                             <label class="col-sm-2 control-label col-lg-2" >是否可用</label>
                             <div class="col-lg-5">
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="IsUse" value="0">可用
+                                    <input type="radio" name="IsUse" value="0" checked>可用
                                 </label>
                                 <label class="checkbox-inline">
                                     <input type="radio" name="IsUse" value="1">不可用
@@ -95,7 +94,7 @@
                                         {% for label in labels %}
                                             <div class="flat-grey single-row">
                                                         <div class="radio">
-                                                            <input type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}">
+                                                            <input type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}" checked>
                                                             <label for="ProjectLabel-{{ label.Id }}">{{ label.ProjectLabelName }}</label>
                                                         </div>
                                                     </div>
@@ -186,7 +185,8 @@
                 var file_ext = Img_input.files[0].name.split('.');
                 file_ext = file_ext[file_ext.length - 1];
                 if(!Img_input.files[0] && file_ext !== "bmp" && file_ext!== "jpg" && file_ext!== "gif"){
-                alert('请添加正确的图片格式！ (gif|jpg|jpeg|bmp)')
+                alert('请添加正确的图片格式！ (gif|jpg|jpeg|bmp)') ;
+                return
                 }
             }
 
@@ -205,24 +205,37 @@
                 }
             }
             // 获取 select 的 value值
-
-
+            // 构造form
             var data = new FormData();
             data.append('creation_name', creation_name);
             data.append('creation_init_time', creation_init_time);
+            alert(creation_init_time)
             data.append('creation_user', creation_user);
+            data.append('creation_descibe', editor_value)
             data.append('IsUse', IsUse || '');
             if(Img_input.files[0]){
                 data.append('Img', Img_input.files[0]);
             }
             data.append('Tags', tags);
             $.ajax({
-              url: '{% url 'admina:creation_add' %}',
-              type: 'POST',
-              data: data,
-              cache: false,
-              processData: false,
-              contentType: false
+                url: '{% url 'admina:creation_add' %}',
+                type: 'POST',
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    data = JSON.parse(data)
+                    if(data.status === 1){
+                        alert(data.message)
+                    }else {
+                        alert(data.message)
+                    }
+                },
+                error:function () {
+                    alert("服务器异常")
+                }
+
             });
         }
     </script>

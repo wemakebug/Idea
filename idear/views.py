@@ -4,12 +4,12 @@ from itertools import chain
 import json
 import time
 import time
+import uuid
+from itertools import chain
+import re
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
-import uuid
-from itertools import chain
-
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
