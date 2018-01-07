@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from itertools import chain
 import json
 import time
@@ -256,6 +259,23 @@ def logout(req):
     return response
 
 
+@csrf_exempt
+def obtainVerify(req):
+    """
+    获取验证码
+    :param req: 
+    :return: 
+    """
+    sender = '472303924@qq.com'
+    if req.method == 'POST':
+        email = req.POST['email']
+        img, verify_str = generate_verify_image()
+        req.session['verify_str'] = verify_str
+        send_mail('欢迎进入WE创', '您的验证码为' + verify_str , sender, [email], fail_silently=True)
+        return render_to_response('idea/forgetPassword.html')
+
+
+@csrf_exempt
 def forgetPassword(req):
     '''
     忘记密码页面
@@ -263,11 +283,22 @@ def forgetPassword(req):
     :return: 
     '''
     if req.method == 'GET':
-        stream, strs = generate_verify_image(save_img=False)
-        # req.sessions['verifycode'] = strs
-        stream = base64.b64encode(stream.getvalue()).encode('ascii')
-        req.session['verificode'] = strs
-        return render_to_response('idea/forgetPassword.html', {'img': stream})
+        return render_to_response('idea/forgetPassword.html')
+
+    if req.method == 'POST':
+        email = req.POST['email']
+        newPassword = req.POST['newPassword']
+        identifyingcode = req.POST['identifyingcode']
+        verify_str = req.session['verify_str']
+        if verify_str == identifyingcode:
+            try:
+                models.User.objects.filter(Email=email).update(PassWord=newPassword)
+                data = 1        # 1: 重置密码成功
+            except:
+                data = -1       # -1: 重置密码失败
+        else:
+            data = -1
+    return HttpResponse(data)
 
 
 ''' 功能页面相关视图结束'''
