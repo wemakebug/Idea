@@ -4,6 +4,7 @@ from itertools import chain
 import json
 import time
 import time
+
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
@@ -880,13 +881,13 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.all().order_by("StartTime")
+                projects = models.Project.objects.all().order_by('-Id')
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-            #################
+
             recruit_all = []
             for project in projects:
                 recruit = models.Recruit.objects.filter(project__Id=project.Id)
@@ -1002,37 +1003,39 @@ def release(req):
             'status': 0,
             'message': ''
         }
-
         ProjectName = req.POST["proTitle"]
         img = req.POST["coverMap"]
         base64Code = img.split(',')[1]
-        Img = decode_img(base64Code)
+        fileext = img.split(',')[0].split(';')[0].split('/')[1]
+        Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"),fileext)
         Description = req.POST["rhtml"]
-        Number = req.POST["numPerson"]
-        StartTime = req.POST["nowTime"]
-        endTime = req.POST["endTime"]
-        # EndTime = endTime.replace('/', '-')
-        EndTime = datetime.strftime(endTime, '%Y-%m-%d ')
-        proLabels = req.POST["proLabels"]
+        Summary = Description
+        Number = int(req.POST["numPerson"])
+        EndTime = req.POST["endTime"]
+        EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
+        proLabels = req.POST["proLabels"].split('*')
+        Statue = 3
         Identity = 1
-        try:
-            user_email = req.COOKIES.get('user_email')
-            user = models.User.objects.get(Email=user_email)
-            project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
-                                                    StartTime=StartTime,EndTime=EndTime,Img=Img,Uuid=uuid.uuid4())
-            project.save()
-            for label in proLabels :
-                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
-                project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
-                project2ProjectLabel.save()
-            ProjectUser = models.ProjectUser.objects.create(user=user,project=project,Identity=Identity)
-            ProjectUser.save()
+        # try:
+        user_email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=user_email)
+        project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
+                                                StartTime=datetime.now(), EndTime=EndTime,Statue=Statue,
+                                                Img=Img,Summary=Summary,Progress=Summary,Uuid=uuid.uuid4())
+        project.save()
+        for label in proLabels[:-1] :
+            print label
+            Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+            print 'ok'
+            project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
 
-            resData['status'] = 1
-            resData['message'] = 'success'
-        except Exception as e :
-            print(e)
-            resData['message'] = str(e)
+        models.ProjectUser.objects.create(user=user,project=project,Identity=Identity).save()
+
+        resData['status'] = 1
+        resData['message'] = 'success'
+        # except Exception as e :
+        #     print(e)
+        #     resData['message'] = str(e)
         return HttpResponse(json.dumps(resData))
 
 

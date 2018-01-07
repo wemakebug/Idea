@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+from django.core.files.base import ContentFile
 from django.http import HttpResponse, Http404
 import json
 from admina import models
@@ -66,18 +67,16 @@ def base64ToImg(base64Code ,filetype):
     leniyimg.write(imgData)
     leniyimg.close()
 
-def decode_img(img_base64):
+def decode_img(img_base64, img_name,fileext):
     '''
     生成图片到内存
     :param img_base64:
     :return:
     '''
     decode_str = img_base64.decode("base64")
-    file_like = cStringIO.StringIO(decode_str)
-    img = PIL.Image.open(file_like)
-    # rgb_img[c, r] is the pixel values.
-    rgb_img = img.convert("RGB")
+    rgb_img = ContentFile(decode_str, img_name + "." + fileext)
     return rgb_img
+
 
 # with open('base64.txt', 'r') as file :
 #     file_content = file.read()
