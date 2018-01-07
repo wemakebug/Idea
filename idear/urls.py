@@ -71,5 +71,5 @@ urlpatterns = [
     # 工具函数
     url(r'^getimg', views.get_user_img),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
