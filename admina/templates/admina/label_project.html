@@ -111,7 +111,7 @@
                 function editRow(oTable, nRow) {
                     var aData = oTable.fnGetData(nRow);
                     var jqTds = $('>td', nRow);
-                    jqTds[0].innerHTML = '<input type="text" class="form-control small" value="' + aData[0] + '">';
+                    jqTds[0].innerHTML = '<input type="text" class="form-control small " value="' + aData[0] + '">';
 {#                    jqTds[1].innerHTML = '<input type="text" class="form-control small" value="' + aData[1] + '">';#}
                     jqTds[1].innerHTML = '<select id="IsUseSelect" class="form-control small" value="' + aData[1] + '"><option>可用</option><option>不可用</option></select>';
                     jqTds[2].innerHTML = '<a class="edit" href="">保存</a>';
@@ -211,7 +211,29 @@
                         /* Editing this row and want to save it */
                         saveRow(oTable, nEditing);
                         nEditing = null;
-                        alert("在这里更新 :)");
+                        //添加用户标签
+                        var jqTds = $('>td', nRow);
+                        var lableName = jqTds[0].innerHTML;
+                        var isUse = jqTds[1].innerHTML;
+                        if(lableName !== ""){
+                            $.post('/admina/label/project', {'lableName': lableName, 'isUse': isUse}, function (data) {
+                                var jsonData = $.parseJSON(data);
+                                if(jsonData === 1){
+                                    alert("添加标签成功！");
+                                    location.reload();
+                                } else if(jsonData === -1){
+                                    alert("添加标签失败！");
+                                    location.reload();
+                                }
+                            })
+                        } else {
+                            swal({
+                                title:"请填写标签名称！",
+                                text:"请填写完整信息!",
+                                type:"warning"
+                            });
+                        }
+
                     } else {
                         /* No edit in progress - let's start one */
                         editRow(oTable, nRow);

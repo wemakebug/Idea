@@ -336,11 +336,14 @@ body, html {
 	font-size: 15px;
 	text-decoration: none;
 }
+
 .tag span {
 	display: inline-block;
 	margin-bottom: 5px;
 	font-family:幼圆;
 }
+
+
 .allsign {
 	border: 1px solid #c0c5cd;
 	background-color: #eeeeee;
