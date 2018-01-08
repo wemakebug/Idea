@@ -49,6 +49,7 @@
 }
 .top-content-information{
     margin-top:66px;
+    min-width:1300px;
     width:100%;
 }
 .top-content-control-left{
