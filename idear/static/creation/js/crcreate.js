@@ -16,6 +16,7 @@ $(document).ready(function (){
 
 $("#create_btn_draft").click(function(){
     var name = $(".input_title").val();
+    var coverMap = $(".file-preview-image").attr("src"); //封面图
     var labels = ''
     var labels_all = document.getElementsByName('content_pro_label')
     for(var i = 0;i < labels_all.length;i ++){
@@ -26,6 +27,7 @@ $("#create_btn_draft").click(function(){
     var isUse = $('#create_btn_draft').val()
     $.post("crcreate",{
         "name":name,
+        "coverMap": coverMap,
         "describe":describe,
         "labels":labels,
         "isUse":isUse
@@ -38,6 +40,7 @@ $("#create_btn_draft").click(function(){
 
 $("#create_btn_ok").click(function(){
     var name = $(".input_title").val();
+    var coverMap = $(".file-preview-image").attr("src"); //封面图
     var labels = ''
     var labels_all = document.getElementsByName("content_pro_label")
     for(var i = 0;i < labels_all.length;i ++){
@@ -48,6 +51,7 @@ $("#create_btn_ok").click(function(){
     var isUse = $('#create_btn_ok').val()
     $.post("crcreate",{
         "name":name,
+        "coverMap": coverMap,
         "describe":describe,
         "labels":labels,
         "isUse":isUse

@@ -13,7 +13,7 @@ function getCookie(name) {
 
 $(document).ready(function () {
     $(function(){
-        var navLi=$('.nav_main li a') ;//此处填写你的导航html对象
+        var navLi=$('.menu_li a') ;//此处填写你的导航html对象
         var proAhref=$('.tag a');
         var windowUrl=String(window.location.href); //获取当前url链接
         navLi.each(function(){

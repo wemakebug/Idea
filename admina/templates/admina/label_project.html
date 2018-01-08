@@ -59,7 +59,7 @@
                             <tbody>
                             {% for Label in Labels %}
                                 <tr class="">
-                                <td>{{ Label.ProjectLabelName }}</td>
+                                <td id="{{ Label.Id }}">{{ Label.ProjectLabelName }}</td>
                                     {% if Label.IsUse%}
                                         <td>可用</td>
                                     {% else %}
@@ -178,11 +178,26 @@
 
                     if (confirm("确定删除这条记录 ?") == false) {
                         return;
+                    }else {
+                        var nRow = $(this).parents('tr')[0];
+{#                        alert(nRow.innerHTML)#}
+{#                        oTable.fnDeleteRow(nRow);#}
+                        var row = $('>td', nRow);
+                        var lableName = row[0].innerHTML;
+                        $.post('/admina/deletelabel/project', {"lableName": lableName}, function (data) {
+                            var jsonData = $.parseJSON(data);
+                            if(jsonData === 1){
+                                alert("删除成功！");
+                                location.reload();
+                            } else {
+                                alert("删除失败！");
+                                location.reload();
+                            }
+                        } );
                     }
 
                     var nRow = $(this).parents('tr')[0];
                     oTable.fnDeleteRow(nRow);
-                    alert("Deleted! Do not forget to do some ajax to sync with backend :)");
                 });
 
                 $('#editable-sample a.cancel').live('click', function (e) {
@@ -211,18 +226,30 @@
                         /* Editing this row and want to save it */
                         saveRow(oTable, nEditing);
                         nEditing = null;
-                        //添加用户标签
+
+
+                        //添加项目标签和编辑项目标签
                         var jqTds = $('>td', nRow);
                         var lableName = jqTds[0].innerHTML;
                         var isUse = jqTds[1].innerHTML;
+                        var lableId = jqTds[0].id;
+                        if(lableId === ""){
+                            lableId = -1;
+                        }
                         if(lableName !== ""){
-                            $.post('/admina/label/project', {'lableName': lableName, 'isUse': isUse}, function (data) {
+                            $.post('/admina/label/project', {'lableId':lableId, 'lableName': lableName, 'isUse': isUse}, function (data) {
                                 var jsonData = $.parseJSON(data);
                                 if(jsonData === 1){
                                     alert("添加标签成功！");
                                     location.reload();
                                 } else if(jsonData === -1){
                                     alert("添加标签失败！");
+                                    location.reload();
+                                } else if(jsonData === 0){
+                                    alert("标签修改成功！");
+                                    location.reload();
+                                } else {
+                                    alert("操作失误！");
                                     location.reload();
                                 }
                             })

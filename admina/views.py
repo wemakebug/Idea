@@ -422,6 +422,7 @@ def project_add(req):
         resData['message'] = str(e)
     return HttpResponse(JsonResponse(resData))
 
+
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
@@ -447,6 +448,7 @@ def project_detail(req, id=None):
     else:
         pass
 
+
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
@@ -463,6 +465,7 @@ def project_recmanage(req, uid=None):
             return render(req, "admina/project_recmanage.html")
     else:
         pass
+
 
 @csrf_exempt
 @check_login()
@@ -494,15 +497,22 @@ def label_project(req, uid=None):
             'Labels': Labels
         })
     if req.method == 'POST':
+        lableId = req.POST['lableId']
         lableName = req.POST['lableName']
         isUse = req.POST['isUse']
-        if isUse == '是':
+        if isUse == '可用':
             isUse = True
         else:
             isUse = False
         try:
-            models.ProjectLabel.objects.create(ProjectLabelName=lableName, IsUse=isUse)
-            data = 1
+            existingLable = models.ProjectLabel.objects.filter(Id=lableId)
+            print existingLable
+            if existingLable:
+                models.ProjectLabel.objects.filter(Id=lableId).update(ProjectLabelName=lableName, IsUse=isUse)
+                data = 0       # 0;修改标签
+            else:
+                models.ProjectLabel.objects.create(ProjectLabelName=lableName, IsUse=isUse)
+                data = 1       # 1：添加标签
         except Exception as e:
             print (e)
             data = -1
@@ -552,17 +562,23 @@ def label_user(req, uid=None):
 
         })
     if req.method == 'POST':
+        lableId = req.POST['lableId']
         lableName = req.POST['lableName']
         isUse = req.POST['isUse']
         ProjectLabelName = req.POST['projectLabel']
-        if isUse == '是':
+        if isUse == '可用':
             isUse = True
         else:
             isUse = False
         try:
+            existingLable = models.UserLabel.objects.filter(Id=lableId)
             projectLabel = models.ProjectLabel.objects.filter(ProjectLabelName=ProjectLabelName)[0]
-            models.UserLabel.objects.create(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
-            data = 1        # 1: 添加标签成功
+            if existingLable:
+                models.UserLabel.objects.filter(Id=lableId).update(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
+                data = 0        # 0：修改标签
+            else:
+                models.UserLabel.objects.create(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
+                data = 1        # 1: 添加标签成功
         except Exception as e:
             print(e)
             data = -1       # -1: 添加标签失败

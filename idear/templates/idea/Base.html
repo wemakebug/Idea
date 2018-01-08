@@ -5,25 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     {% load static %}
     {% block title %} {% endblock %}
+{#    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">#}
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
     {% block CSS %}{% endblock %}
     <title>首页</title>
 </head>
-<body >
+<body class="">
 	<div class="head">
     	<div class="header">
-			<div class="logo">
+			<div class="logo ">
 			</div>
-            <div class="nav_main" id="nav_1">
-                <ul class="menu">
-                    <li class="sel"><a href="/idear/index" ><p>首页</p></a></li>
-                    <li class="index_recruit"><a href="/idear/projects?sign=all"><p>招募项目</p></a></li>
-                    <li class=""><a href="/idear/deprojects?sign=all" ><p>开发项目</p></a></li>
-                    <li class="index_creations"><a href="/idear/creations?sign=all"><p>创意灵感</p></a></li>
-                    <li class="index_team"><a href="/idear/team?sign=all"><p>常驻团队</p></a></li>
-                </ul>
+            <div class="nav_main  " id="nav_1">
+                <div class="menu">
+                    <div class="menu_li "><a href="/idear/index" ><p>首页</p></a></div>
+                    <div class="menu_li index_recruit "><a href="/idear/projects?sign=all"><p>招募项目</p></a></div>
+                    <div class="menu_li "><a href="/idear/deprojects?sign=all" ><p>开发项目</p></a></div>
+                    <div class="menu_li index_creations "><a href="/idear/creations?sign=all"><p>创意灵感</p></a></div>
+                    <div class="menu_li index_team "><a href="/idear/team?sign=all"><p>常驻团队</p></a></div>
+                </div>
             </div>
-            <div class="search1">
+            <div class="search1  ">
 				<div class="searchbar">
                     <form>
       				    <input id="search-left" type="text" placeholder="搜索从这里开始..." autocomplete="off">
@@ -31,7 +32,15 @@
 					<input id="search" type="submit" value="">
 			    </div>
 		    </div>
-            <div class="user_hidden" id="login_status_true" style="display: none">
+            <div class="sidebar " id="login_status_false" style="display: none">
+                <a href="/idear/login">
+                    <div class="rlogin"><p>登录</p></div>
+                </a>
+                <a href="/idear/regist">
+                    <div class="rregsiter"><p>注册</p></div>
+                </a>
+            </div>
+            <div class="user_hidden " id="login_status_true" style="display: none">
                 <div class="user_figure" id="user_figure" onmouseover="block()" onmouseout="none()">
                     <a href="#">
                         <img id="user_img" src="" style="width: 40px;height: 40px;" >
@@ -52,24 +61,17 @@
                     </div>
                 </div>
             </div>
-            <div class="sidebar" id="login_status_false" style="display: none">
-                <a href="/idear/login">
-                    <div class="rlogin"><p>登录</p></div>
-                </a>
-                <a href="/idear/regist">
-                    <div class="rregsiter"><p>注册</p></div>
-                </a>
-            </div>
+
 		</div>
-		<div class="nav-bottom">
+		<div class="nav-bottom ">
 		</div>
 	</div>
 {% block content %}
 
 {% endblock %}
-<div class="footer_line">
+    <div class="footer_line ">
 </div>
-<div id="footer_con" class="footer_con">
+    <div id="footer_con " class="footer_con">
     <div id="container_footer">
         <ul>
             <li class="about"><a href="team"><p>关于我们</p></a></li>
@@ -92,6 +94,7 @@
 {% endblock %}
     <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
+{#    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>#}
     <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
 </body>
 </html>
