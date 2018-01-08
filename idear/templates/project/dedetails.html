@@ -98,7 +98,7 @@
                     <div class="ribbon"><span class="ribbon3">项目进度</span></div>
                 </div>
                 <div class="pr-detail">
-                {{ project.Progress }}
+                {{ project.Progress | safe }}
                 </div>
             </div>
             <div class="pro-message">
@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="pr-detail">
-                {{ project.Summary}}
+                {{ project.Summary | safe}}
                 </div>
             </div>
             <div class="content-footer">
