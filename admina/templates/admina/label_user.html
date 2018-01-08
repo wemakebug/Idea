@@ -61,7 +61,7 @@
                             <tbody>
                             {% for Label in Labels %}
                                 <tr class="">
-                                <td class="lableName_parent">{{ Label.Name }}</td>
+                                <td class="lableName_parent" id="{{ Label.Id }}">{{ Label.Name }}</td>
                                     {% if Label.IsUse%}
                                         <td>可用</td>
                                     {% else %}
@@ -237,14 +237,24 @@
                         var lableName = jqTds[0].innerHTML;
                         var isUse = jqTds[1].innerHTML;
                         var prolableName = jqTds[2].innerHTML;
+                        var lableId = jqTds[0].id;
+                        if(lableId === ""){
+                            lableId = -1;
+                        }
                         if(lableName !== ""){
-                            $.post('/admina/label/user', {'lableName': lableName, 'isUse': isUse, 'projectLabel': prolableName}, function (data) {
+                            $.post('/admina/label/user', {'lableId':lableId, 'lableName': lableName, 'isUse': isUse, 'projectLabel': prolableName}, function (data) {
                                 var jsonData = $.parseJSON(data);
                                 if(jsonData === 1){
                                     alert("添加标签成功！");
                                     location.reload();
                                 } else if(jsonData === -1){
                                     alert("添加标签失败！");
+                                    location.reload();
+                                } else if(jsonData === 0){
+                                    alert("修改标签成功！")
+                                    location.reload();
+                                } else{
+                                    alert("操作异常！");
                                     location.reload();
                                 }
                             })

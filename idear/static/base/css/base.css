@@ -7,7 +7,7 @@ body,div{
     padding:0;
 }
 body{
-    min-width:1300px;
+    min-width:1070px;
     max-width:3000px;
     overflow-x: hidden;
 }
@@ -26,7 +26,7 @@ ul li{
     z-index:9999;
     top:0px;
     text-align:left;
-    min-width:1300px;
+    min-width:1260px;
     max-width:3000px;
 }
 .header{
@@ -53,23 +53,25 @@ ul li{
     color:white;
     display:block;
 }
-.nav_main ul{
+.menu{
     width:100%;
     height:100%;
-    margin:0px;
+    /*margin:0px;*/
 }
-.nav_main ul li{
+.menu_li{
     width:17%;
     height:100%;
     float:left;
     text-align:center;
     line-height:66px;
+    /*margin-left: -15px;*/
+    /*margin-right: -15px;*/
     overflow:hidden;
 }
 .active{
     background: #29639F;
 }
-.nav_main ul li:hover{
+.menu_li:hover{
     background:#29639F;
 }
 .search1{
@@ -113,7 +115,7 @@ ul li{
     background-size: 100% 100%;
     float:left;
     position: relative;
-    left:-7%;
+    left:-4%;
     background-color:transparent;
     border:none;
     outline:none;
@@ -126,6 +128,7 @@ ul li{
 }
 .rlogin{
     width: 20%;
+    min-width: 37px;
     height: 40%;
     margin-top: 7.5%;
     background:#29639F ;
@@ -144,6 +147,7 @@ ul li{
 }
 .rregsiter {
     width: 20%;
+    min-width: 37px;
     height: 40%;
     margin-top: 7.5%;
     background: white;
