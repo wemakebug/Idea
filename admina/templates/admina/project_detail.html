@@ -24,7 +24,7 @@
 {% block heading %}   {# heading #}
 <ul class="breadcrumb">
     <h3>项目管理</h3>
-    <li class="active">新增项目</li>
+    <li class="active">项目修改 </li>
 </ul>
 {% endblock %}
 
@@ -41,54 +41,55 @@
                         <div class="form-group ">
                             <label for="firstname" class="control-label col-lg-2">项目名称</label>
                             <div class="col-lg-5">
-                                <input class=" form-control" id="project_name" name="project_name" type="text" required/>
+                                <input autocomplete="off" class=" form-control" id="project_name" name="project_name" type="text" required value="{{ project.ProjectName }}"/>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="timepicker" class="control-label col-lg-2">项目开始时间</label>
                             <div class="col-md-5 col-xs-11">
-                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="project_start_time"/>
+                                <input autocomplete="off" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="{{project.StartTime |date:"Y-m-d" }}"  id="project_start_time" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label col-lg-2" >项目状态</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-10" id="project_status_div" name="{{ project.Statue }}">
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="project_status" value="0" checked> 未开始
+                                    <input autocomplete="off" type="radio" name="project_status" value="0"> 未开始
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="project_status" value="1"> 初期招募
+                                    <input autocomplete="off" type="radio" name="project_status" value="1"> 初期招募
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="project_status" value="2"> 第一阶段进行中
+                                    <input autocomplete="off" type="radio" name="project_status" value="2"> 第一阶段进行中
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="project_status" value="3"> 二次招募
+                                    <input autocomplete="off" type="radio" name="project_status" value="3"> 二次招募
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="project_status" value="4"> 项目结束
+                                    <input autocomplete="off" type="radio" name="project_status" value="4"> 项目结束
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="project_status" value="5"> 异常项目
+                                    <input autocomplete="off" type="radio" name="project_status" value="5"> 异常项目
                                 </label>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="timepicker2" class="control-label col-lg-2">项目结束时间</label>
                             <div class="col-md-5 col-xs-11">
-                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="project_end_time" required>
+                                <input autocomplete="off" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value="{{project.EndTime |date:"Y-m-d" }}"  id="project_end_time" required>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="confirm_password" class="control-label col-lg-2">预计人数</label>
                             <div class="col-lg-5">
-                                <input class="form-control " id="predict_number" name="predict_number" type="number" max="10" min="0"/>
+                                <input autocomplete="off" class="form-control " id="predict_number" name="predict_number" type="number" max="10" min="0" value="{{project.Number}}"/>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="email" class="control-label col-lg-2">项目er</label>
                             <div class="col-lg-5">
                                 <select class="form-control input-md" id="project_user" required>
+                                <option id="user-{{ project.Id }}" value="{{ user.Id }}">{{ user.UserName }}</option>
                                 {%  for user in users %}
                                     <option id="user-{{ user.Id }}" value="{{ user.Id }}">{{ user.UserName }}</option>
                                 {% endfor %}
@@ -103,7 +104,7 @@
                                                 <span class="btn btn-default btn-file">
                                                     <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
                                                     <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换图片</span>
-                                                    <input type="file" class="default" id="file_upload_img"/>
+                                                    <input autocomplete="off" type="file" class="default" id="file_upload_img"/>
                                                 </span>
                                             <span class="fileupload-preview" style="margin-left:5px;"></span>
                                             <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
@@ -117,7 +118,7 @@
                                         {% for label in ProjectLabels %}
                                             <div class="flat-grey single-row">
                                                         <div class="radio">
-                                                            <input type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}" checked>
+                                                            <input autocomplete="off" type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}" checked>
                                                             <label for="ProjectLabel-{{ label.Id }}">{{ label.ProjectLabelName }}</label>
                                                         </div>
                                                     </div>
@@ -208,9 +209,6 @@
     <script ype="text/javascript" src="{% static '/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'%}"></script>
     <script ype="text/javascript" src="{% static '/js/bootstrap-daterangepicker/moment.min.js'%}"></script>
     <script src="{% static '/js/pickers-init.js' %}"></script>
-    {# multiple select #}
-    <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.multi-select.js'%}"></script>
-    <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.quicksearch.js'%}"></script>
     {# icheck #}
     <script src="/static/js/iCheck/jquery.icheck.js"></script>
     <script src="/static/js/icheck-init.js"></script>
@@ -240,6 +238,14 @@
                  height:"500px;"
              }
             );
+            // 初始化 radio 的值
+            var the_project_status = '{{ project.Statue }}';
+            var the_project_status_radio = document.getElementsByName('project_status');
+            for(var index = 0;index<the_project_status_radio.length;index++){
+                if(the_project_status_radio[index].value === the_project_status){
+                    the_project_status_radio[index].checked = !the_project_status_radio[index].checked
+                }
+            }
 
             // 检查正确性并提交代码
             $("#submit_btn").click(function () {
