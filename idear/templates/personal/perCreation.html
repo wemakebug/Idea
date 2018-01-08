@@ -37,7 +37,7 @@
                     <td class="tab1">{{ creation.LastChange }}</td>
                     <td class="tab1">
                         <button href="crdetails?creationId={{ creation.Id }}"  class=" btn btn-info" style="cursor :pointer">查看详情</button>
-                        <button style="cursor :pointer;" class="dele btn btn-danger">删除
+                        <button style="cursor :pointer;" class="dele btn btn-danger">删 除
                             <input type="text" value="{{ creation.Id }}" style="display:none;" >
                         </button>
 
@@ -46,10 +46,9 @@
                 {% endfor %}
             </tbody>
         </table>
-{#        <div class="dele1">#}
-{#            <input type="button" value="删 除" class="btn btn-primary" id="delete">#}
-{#            <input type="button" value="批量删除" class="btns btn btn-primary" id="moreDelete">#}
-{#        </div>#}
+        <div class="dele1">
+            <input type="button" value="添 加" class="btns btn btn-primary" id="addCreation" href="#">
+        </div>
     </div>
 {%endblock%}
 {% block script %}

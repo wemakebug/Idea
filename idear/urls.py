@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^teamdetails$', views.teamdetails),
     url(r'^praise$',views.creations),
     url(r'^teamdetails/(?P<teamid>\d+)/$', views.teamdetails),
-    url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
+    url(r'^teamhelpapplication/(?P<teamhelpid>\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
     url(r'^forgetPassword$', views.forgetPassword),
     url(r'^obtainVerify$', views.obtainVerify),
