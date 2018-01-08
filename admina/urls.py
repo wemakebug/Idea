@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url
 from . import views as views
 from . import model_class
 
@@ -42,7 +42,7 @@ urlpatterns = [
     url(r'^project/recruit$', views.projet_recruit),
     url(r'^project/delete/(?P<deleteId>(\d+))', views.project_delete),
 
-    url(r'^user/add$', views.user_add),
+    url(r'^user/add$', views.user_add, name='user_add'),
     url(r'^user/all/(?P<page>(\d+)?)$', views.user_all, name='user_all'),
     url(r'^user/detail/(?P<userid>(\d+)?)$', views.user_detail, name='user_detail'),
     url(r'^user/introduction$', views.user_introduction),
@@ -85,11 +85,9 @@ urlpatterns = [
     url(r'^$', views.index),
 
 
-    # 基于类的视图的url
-
-    url(r'^creationlist$', model_class.CreatinoDisplayAll.as_view(), name='creation-detail'),
+    # 基于类的视图的url 暂时弃用
+    url(r'^creationlist$', model_class.CreatinoDisplayAll.as_view(), name='creation_detail'),
 ]
 
 handler404 = views.page_not_found
-
 handler500 = views.permition_denied

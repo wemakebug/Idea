@@ -115,7 +115,7 @@
                             <label for="confirm_password" class="control-label col-lg-2">标签选择</label>
                                  <div class="col-sm-9 icheck ">
                                         {% for label in ProjectLabels %}
-                                            <div class="flat-grey single-row">
+                                            <div class="flat-grey checkbox-inline">
                                                         <div class="radio">
                                                             <input type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}" checked>
                                                             <label for="ProjectLabel-{{ label.Id }}">{{ label.ProjectLabelName }}</label>
@@ -248,12 +248,14 @@
                 var project_name = $('#project_name').val()
                 var project_start_time = $('#project_start_time').val()
                 var LabelTags = document.getElementsByName('label_tags')
+
                 // 获取 项目状态 checked 的 radio
                 for(var i = 0;i< project_status_radio.length; i++){
                     if(project_status_radio[i].checked){
                         var project_status = project_status_radio[i].value
                     }
                 }
+
                 var project_end_time = $('#project_end_time').val()
                 var predict_number = $('#predict_number').val();
                 var project_user = $('#project_user').val()
@@ -305,7 +307,7 @@
 
                 // 提交数据
                 $.ajax({
-                url: '{% url 'admina:creation_add' %}',
+                url: '{% url 'admina:project_add' %}',
                 type: 'POST',
                 data: data,
                 cache: false,

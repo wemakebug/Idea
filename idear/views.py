@@ -1104,7 +1104,6 @@ def deprojects(req):
             if sign == "all":
                 projects = models.Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
                 for project in projects:
-
                     Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
                     alllables = []  # 找出本创意所有的标签
                     for label in Labels:
@@ -1292,7 +1291,10 @@ def unread_messages(req):
 
 def allfollow(req):
     if req.method == 'GET':
-        return render_to_response('personal/allfollow.html')
+        email = req.COOKIES.get('user_email')
+
+        follows = models.Follow.objects.all()
+        return render_to_response('personal/allfollow.html',{"follows":follows})
     if req.method == 'POST':
         pass
 
