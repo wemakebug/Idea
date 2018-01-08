@@ -16,11 +16,12 @@
             <div class="row">
                 <div class="home-left">
                 {% for creation in creations %}
+                    {% if creation.IsUse == True %}
                     <div class="block" id="block">
 
                         <div class="block-content">
                         <div class="block-img">
-                            <img src="../../static/photos/{{ creation.Img }} " style="width:300px;height:240px;">
+                            <a href="crdetails?creationId={{ creation.Id}}"><img src="../../static/photos/{{ creation.Img }} " style="width:310px;height:240px;"></a>
                         </div>
                             <a class="block-title" href="crdetails?creationId={{ creation.Id}}">
                                 <h5>{{ creation.Name }}</h5>
@@ -77,6 +78,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                 {% endfor %}
 
             </div>
@@ -92,12 +94,14 @@
                 </div>
 
                 <div class="tag">
-                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
-                    <span>标签</span>
+                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px;float:left">
+                    <p>标签</p>
                     <hr>
                     <a href="creations?sign=all" sign="all"><span class="allsign">所有</span></a>
                     {% for obj in projectLabels %}
+
                         <a href="creations?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign">{{ obj.ProjectLabelName }}</span></a>
+
                     {% endfor %}
 
                 </div>

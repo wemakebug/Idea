@@ -5,6 +5,8 @@
 {%endblock%}
 {%block CSS%}
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/allfollow.css'%}">
 {%endblock%}
@@ -12,161 +14,105 @@
 {%block contents%}
 <div class="operationItem">
     <ul>
-        <li>项目栏</li>
-        <li>灵感栏</li>
-        <li>用户栏</li>
+        <li><a href="">项目栏</a></li>
+        <li><a href="">灵感栏</a></li>
+        <li><a href="">用户栏</a></li>
     </ul>
 </div>
 <div class="all_content">
-    <div class="mainContentPro">
-        <div class="proCoverImg">
-            <img src="{% static 'personal/imgs/touxiang.jpg'%}">
-        </div>
-        <div class="proContent">
-            <div class="proName">
-                <p>这是一条不知名的项目</p>
+    {% for follow in follows %}
+        {% if follow.project %}
+        <div class="mainContentPro">
+            <div class="proCoverImg">
+                {% if follow.statue == 1 or follow.statue == 3%}
+                <a href="redetails?projectId={{ follow.project.Id }} ">
+                    <img src="../../static/photos/{{ follow.project.Img }}">
+                </a>
+                {% else %}
+                <a href="dedetails?projectId={{ follow.project.Id }} ">
+                    <img src="../../static/photos/{{ follow.project.Img }}">
+                </a>
+                {% endif %}
             </div>
-            <div class="proContentShow" >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快点阅读是一款对话式小说阅读APP，APP提供丰富的短片故事资源，通过点屏阅读的方式，每个故事都通过对话消息展开情节。致力于让读者快速融入小说环境，提供全新的小说阅读的方式。
-            </div>
-            <div class="progressBar">
-                <div class="progress">
-                    <span class="green"><span><li>当前项目进度： </li></span></span>
+            <div class="proContent">
+                <div class="proName">
+                    <a href="redetails?projectId={{ follow.project.Id }} ">
+                        <p>{{ follow.project.ProjectName }}</p>
+                    </a>
+                </div>
+                <div class="proContentShow" >
+                    <a href="redetails?projectId={{ follow.project.Id }} ">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ follow.project.Description }}
+                        </p>
+                    </a>
+                </div>
+                <div class="progressBar">
+                    <div class="progress">
+                        <span class="green"><span><li>当前项目进度： </li></span></span>
+                    </div>
                 </div>
             </div>
+            <button type="button" class="deletePro btn btn-default" data-toggle="modal" data-target="#myModal" aria-label="Left Align" href="javascript:void(0)" onclick="showDeleteModal(this)">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
         </div>
-        <button type="button" class="deletePro btn btn-default" aria-label="Left Align" href="javascript:void(0)" onclick="showDeleteModal(this)">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </button>
-    </div>
-    <div class="mainContentPro">
-        <div class="proCoverImg">
-            <img src="{% static 'personal/imgs/touxiang.jpg'%}">
-        </div>
-        <div class="proContent">
-            <div class="proName">
-                <p>这是一条不知名的项目</p>
-            </div>
-            <div class="proContentShow" >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快点阅读是一款对话式小说阅读APP，APP提供丰富的短片故事资源，通过点屏阅读的方式，每个故事都通过对话消息展开情节。致力于让读者快速融入小说环境，提供全新的小说阅读的方式。
-            </div>
-            <div class="progressBar">
-                <div class="progress">
-                    <span class="green"><span><li>当前项目进度： </li></span></span>
-                </div>
-            </div>
-        </div>
-        <button type="button" class="deletePro btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </button>
-    </div>
-    <div class="mainContentPro">
-        <div class="proCoverImg">
-            <img src="{% static 'personal/imgs/touxiang.jpg'%}">
-        </div>
-        <div class="proContent">
-            <div class="proName">
-                <p>这是一条不知名的项目</p>
-            </div>
-            <div class="proContentShow" >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快点阅读是一款对话式小说阅读APP，APP提供丰富的短片故事资源，通过点屏阅读的方式，每个故事都通过对话消息展开情节。致力于让读者快速融入小说环境，提供全新的小说阅读的方式。
-            </div>
-            <div class="progressBar">
-                <div class="progress">
-                    <span class="green"><span><li>当前项目进度： </li></span></span>
-                </div>
-            </div>
-        </div>
-        <button type="button" class="deletePro btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </button>
-    </div>
-    <div class="mainContentPro">
-        <div class="proCoverImg">
-            <img src="{% static 'personal/imgs/touxiang.jpg'%}">
-        </div>
-        <div class="proContent">
-            <div class="proName">
-                <p>这是一条不知名的项目</p>
-            </div>
-            <div class="proContentShow" >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快点阅读是一款对话式小说阅读APP，APP提供丰富的短片故事资源，通过点屏阅读的方式，每个故事都通过对话消息展开情节。致力于让读者快速融入小说环境，提供全新的小说阅读的方式。
-            </div>
-            <div class="progressBar">
-                <div class="progress">
-                    <span class="green"><span><li>当前项目进度： </li></span></span>
-                </div>
-            </div>
-        </div>
-        <button type="button" class="deletePro btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </button>
-    </div>
+        {% endif %}
+    {% endfor %}
 </div>
+
 
 {%endblock%}
 
 {% block script %}
-    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
+    <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
     <script>
     //限制字符个数
-        $(document).ready(function () {
-            $(".proContentShow").each(function () {
-                var maxwidth = 104;
-                if ($(this).text().length > maxwidth) {
-                    $(this).text($(this).text().substring(0, maxwidth));
-                    $(this).html($(this).html() + '…')
-                    ;
-                }
-            });
+    $(document).ready(function () {
+        $(".proContentShow p").each(function () {
+            var maxwidth = 104;
+            if ($(this).text().length > maxwidth) {
+                $(this).text($(this).text().substring(0, maxwidth));
+                $(this).html($(this).html() + '…')
+                ;
+            }
         });
+    });
     </script>
     <script>
     $(".deletePro").click(function () {
-        alert("删除成功！");
-    })
-    </script>
-
-
-    <script type="text/javascript">
-        $("img[name='projects']").click(function () {
-           var projectid = this.id.split('-')[1];
-            $.post(window.location.pathname,{"projectId":projectid},function (res) {
-                res = JSON.parse(res);
-                if(res.status === 1){
-                    document.getElementById("project_detail_img_path").src = "/static/photos/" + res.ImgPath;
-                    document.getElementById("ptoject_detail_name").textContent = res.ProjectName;
-                    document.getElementById("project_detail_link").setAttribute("href","/admina/project/detail/" + projectid);
-                    $("input[id='name']").get(0).value = res.ProjectName;
-                    $("input[id='title']").get(0).value = res.ProjsctStartTime;
-                    $("input[id='user_number']").get(0).value = res.ProjectUserNumber;
-                    $("a[id='project_user_detail']").get(0).textContent = res.projectUserName;
-                    $("a[id='project_user_detail']").get(0).setAttribute("href","/admina/user/detail/" + res.projectUserId);
-                    var delete_btn= document.getElementById("delete_project_btn")
-                    delete_btn.onclick = function () {
-                        if(confirm("确认删除？")){
-                            $.post("project/delete/" + projectid, {},function (res) {
-                                res = JSON.parse(res);
-                                if(res.status === 1){
-                                    alert(res.message);
-                                window.location.reload();
-                                }else if(res.status === 0){
-                                    alert(res.message);
-                                    window.location.reload();
-                                }
-                            });
-                        }
-                        };
-
-                }else if (res.status === 0){
-                    alert(res.message);
-                    window.location.reload();
-                }
-            })
-
-
+        var messageId = $(this).val();
+        alert(messageId)
+        var show = layer.open({
+            type: 1,
+            offset: '200px',
+            resize: false,
+            move: false,
+            area: ['200px', '200px'],
+            title: ['确定删除此消息？', 'font-size:18px;text-align:center;'],
+            shade: 0.6,
+            maxmin: false,
+            anim: 0,//0-6的动画形式，-1不开启,
+            content: '<button class="putreport" id="deleteputreport">取消</button> ' + '<button class="putreport" id="putreport">确定</button> '
         });
+        $("#deleteputreport").click(function () {
+            layer.close(show);
+        });
+        $("#putreport").click(function () {
+            layer.close(show);
+            $.post("unread_messages",{"messageId":messageId},function (data) {
+                 data = JSON.parse(data);
+                 if(data.status === 0){
+                     alert("删除失败！");
+                 } else {
+                     alert("删除成功！");
+                 }
+            });
+        });
+    });
+    </script>
+    <script type="text/javascript">
+
     </script>
 {% endblock %}

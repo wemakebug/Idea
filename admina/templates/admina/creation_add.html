@@ -92,7 +92,7 @@
                             <label for="confirm_password" class="control-label col-lg-2">标签选择</label>
                                  <div class="col-sm-9 icheck ">
                                         {% for label in labels %}
-                                            <div class="flat-grey single-row">
+                                            <div class="flat-grey checkbox-inline">
                                                         <div class="radio">
                                                             <input type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}" checked>
                                                             <label for="ProjectLabel-{{ label.Id }}">{{ label.ProjectLabelName }}</label>

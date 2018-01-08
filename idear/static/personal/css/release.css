@@ -330,8 +330,8 @@
     line-height: 56px;
     color:gray;
 }
-.input_num input{
-    border:0;
+#numPerson{
+    border:1px solid transparent;
     width: 67%;
     height: 100%;
     color:#295E6A;
@@ -480,4 +480,6 @@
 }
 
 
-
+.border{
+    border-color:red;
+}
