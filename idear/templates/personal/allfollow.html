@@ -14,9 +14,9 @@
 {%block contents%}
 <div class="operationItem">
     <ul>
-        <li>项目栏</li>
-        <li>灵感栏</li>
-        <li>用户栏</li>
+        <li><a href="">项目栏</a></li>
+        <li><a href="">灵感栏</a></li>
+        <li><a href="">用户栏</a></li>
     </ul>
 </div>
 <div class="all_content">
@@ -24,16 +24,28 @@
         {% if follow.project %}
         <div class="mainContentPro">
             <div class="proCoverImg">
+                {% if follow.statue == 1 or follow.statue == 3%}
                 <a href="redetails?projectId={{ follow.project.Id }} ">
                     <img src="../../static/photos/{{ follow.project.Img }}">
                 </a>
+                {% else %}
+                <a href="dedetails?projectId={{ follow.project.Id }} ">
+                    <img src="../../static/photos/{{ follow.project.Img }}">
+                </a>
+                {% endif %}
             </div>
             <div class="proContent">
                 <div class="proName">
-                    <p>{{ follow.project.ProjectName }}</p>
+                    <a href="redetails?projectId={{ follow.project.Id }} ">
+                        <p>{{ follow.project.ProjectName }}</p>
+                    </a>
                 </div>
                 <div class="proContentShow" >
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ follow.project.Description }}
+                    <a href="redetails?projectId={{ follow.project.Id }} ">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ follow.project.Description }}
+                        </p>
+                    </a>
                 </div>
                 <div class="progressBar">
                     <div class="progress">
@@ -57,23 +69,21 @@
     <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
     <script>
     //限制字符个数
-        $(document).ready(function () {
-            $(".proContentShow").each(function () {
-                var maxwidth = 104;
-                if ($(this).text().length > maxwidth) {
-                    $(this).text($(this).text().substring(0, maxwidth));
-                    $(this).html($(this).html() + '…')
-                    ;
-                }
-            });
+    $(document).ready(function () {
+        $(".proContentShow p").each(function () {
+            var maxwidth = 104;
+            if ($(this).text().length > maxwidth) {
+                $(this).text($(this).text().substring(0, maxwidth));
+                $(this).html($(this).html() + '…')
+                ;
+            }
         });
+    });
     </script>
     <script>
-{#    $(".deletePro").click(function () {#}
-{#        alert("删除成功！");#}
-{#    })#}
     $(".deletePro").click(function () {
         var messageId = $(this).val();
+        alert(messageId)
         var show = layer.open({
             type: 1,
             offset: '200px',

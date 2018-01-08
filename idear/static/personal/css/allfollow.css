@@ -10,9 +10,11 @@
 }
 .operationItem>ul li{
     margin-bottom: 30px;
+}
+.operationItem>ul li a{
     color:gray;
 }
-.operationItem>ul li:hover{
+.operationItem>ul li a:hover{
     color: black;
 }
 .all_content{
@@ -79,6 +81,10 @@
     font-size: 0.9em;
     color: #334252;
     text-overflow: ellipsis;
+}
+.proContentShow a{
+    width: 100%;
+    height: 100%;
 }
 .progressBar{
     width: 98%;
