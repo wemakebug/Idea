@@ -1252,6 +1252,11 @@ def editprofile(req):
 
 @csrf_exempt
 def unread_messages(req):
+    '''
+    未读消息
+    :param req: 
+    :return: 
+    '''
     if req.method == 'GET':
         try:
             email = req.COOKIES.get('user_email')
@@ -1275,6 +1280,48 @@ def unread_messages(req):
         }
         message = models.Message.objects.get(Id=messageId)
         message.IsUse = False
+        message.save()
+        return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def read_message(req):
+    '''
+    已读消息
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'GET':
+        try:
+            email = req.COOKIES.get('user_email')
+            if email:
+                messageuser = models.Message.objects.filter(IsUse=True)
+                if messageuser:
+                    user = models.User.objects.get(Email=email)
+                    message_contents = messageuser.filter(Q(user=user) & Q(IsRead=True))
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+            return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+        else:
+            return render_to_response('personal/read_message.html', {"message_contents": message_contents})
+    if req.method == 'POST':
+        pass
+
+
+@csrf_exempt
+def examine_messages(req):
+    if req.method == 'GET':
+        pass
+    if req.method == 'POST':
+        messageId = req.POST["messageId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        message = models.Message.objects.get(Id=messageId)
+        message.IsRead = False
         message.save()
         return HttpResponse(json.dumps(result))
 

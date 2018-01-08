@@ -1,9 +1,9 @@
 /**
  * Created by Administrator on 2018/1/6.
  */
+//删除消息记录
 $(".delete").click(function () {
     var messageId= $(this).val();
-    console.log(messageId);
     var show = layer.open({
         type: 1,
         offset: '200px',
@@ -27,7 +27,28 @@ $(".delete").click(function () {
                  alert("删除失败！");
              } else {
                  alert("删除成功！");
+                 window.location.reload();
              }
         });
     });
+});
+
+
+//查看消息详情
+$(".examine").click(function () {
+    var messageId= $(this).val();
+    $.post("examine_messages",{"messageId":messageId},function (data) {
+         data = JSON.parse(data);
+         if(data.status === 0){
+             alert("删除失败！");
+         } else {
+             window.location.reload();
+         }
+    });
 })
+
+$(function() {
+    $('#myModal').modal({
+	    keyboard: true
+    })
+});
