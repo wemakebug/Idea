@@ -15,14 +15,15 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 })
 
 
-document.getElementById('report-text').onclick = function(){
-    alert('ok!!!!!')
-    var reason = $("#report-text").val()
+document.getElementById('submit-report').onclick = function(){
+    var reason = $("#message-text").val()
+    var creationId = $("#creationId").val()
     if(reason=="")
         alert("请填入举报理由")
     else
     $.post("crreport",{
-        "reason":reason
+        "reason":reason,
+        "creationId":creationId
     },function(data){
         alert("提交成功")
     })
