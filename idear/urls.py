@@ -47,6 +47,7 @@ urlpatterns = [
     url(r'^projects$', views.projects),
     url(r'^crdetails$', views.crdetails),
     url(r'^crcreate$',views.crcreate),
+    url(r'^crreport$',views.crreport),
     url(r'^star$', views.star),
     url(r'^attend$', views.attend),
     url(r'^service$', views.service),

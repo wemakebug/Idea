@@ -703,6 +703,10 @@ def crcreate(req):
             'message': '',
         }
         name = req.POST["name"]
+        img = req.POST["coverMap"]
+        base64Code = img.split(',')[1]
+        fileext = img.split(',')[0].split(';')[0].split('/')[1]
+        Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"), fileext)
         describe = req.POST["describe"]
         isUse = req.POST["isUse"]
         labels = req.POST["labels"].split("*")
@@ -715,7 +719,7 @@ def crcreate(req):
                 isUse = False
             else:
                 isUse = True
-            creation = models.Creation.objects.create(user=user, Name=name, Describe=describe,IsUse=isUse, Uuid=uuid.uuid4());
+            creation = models.Creation.objects.create(user=user, Name=name, Describe=describe,IsUse=isUse,Img=Img, Uuid=uuid.uuid4());
             creation.save()
 
             for label in labels[:-1]:
@@ -740,27 +744,34 @@ def crreport(req):
     :param req:
     :return:
     '''
-    status = 0
-    if req.method == 'POST':
-        reason = req.POST["reason"]
-        try:
-            creationId = req.POST["creationId"]
-            creation = models.Creation.objects.get(pk=creationId)
-            user_email = req.COOKIES.get('user_email')
-            user = models.User.objects.get(Email=user_email)
-            models.Report.objects.create(user=user, creation=creation, Reason=reason)
-            status = 1
-            return HttpResponse(status)
-
-
-        except Exception as e:
-            print(e)
-            return HttpResponse(status)
 
     if req.method == 'GET':
         user_email = req.COOKIES.get('user_email')
         username = models.User.objects.get(Email=user_email)
         return HttpResponse("TRUE")
+    if req.method == 'POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(pk=creationId)
+            reason = req.POST["reason"]
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            models.Report.objects.create(user=user, creation=creation, Reason=reason)
+
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+            return HttpResponse(json.dumps(result))
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
+
 
 
 @csrf_exempt
