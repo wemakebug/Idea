@@ -1,14 +1,14 @@
  //加载更多
 $(function() {
-    $(".block").slice(0, 9).show();
-    if ($(".block").length <= 9) {
-        $(".more").hide();
+    $("#block").slice(0, 9).show();
+    if ($("#block").length <= 9) {
+        $("#more").hide();
     }
-    $(".more").on('click',function(e) {
+    $("#more").on('click',function(e) {
         e.preventDefault();
-        $(".block:hidden").slice(0, 6).slideDown();
-        if ($(".block:hidden").length == 0) {
-            $(".more").fadeOut('slow');
+        $("#block:hidden").slice(0, 6).slideDown();
+        if ($("#block:hidden").length == 0) {
+            $("#more").fadeOut('slow');
         }
     });
 

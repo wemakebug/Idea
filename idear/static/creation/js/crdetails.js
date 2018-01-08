@@ -15,14 +15,15 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 })
 
 
-document.getElementById('report-text').onclick = function(){
-    alert('ok!!!!!')
-    var reason = $("#report-text").val()
+document.getElementById('submit-report').onclick = function(){
+    var reason = $("#message-text").val()
+    var creationId = $("#creationId").val()
     if(reason=="")
         alert("请填入举报理由")
     else
     $.post("crreport",{
-        "reason":reason
+        "reason":reason,
+        "creationId":creationId
     },function(data){
         alert("提交成功")
     })
@@ -127,7 +128,27 @@ $(".home-b-collection").click(function(){
 
  })
 
+/*cookie值转码*/
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
 
+/*创建人名称*/
+$(document).ready(function () {
+    var username = getCookie('username');
+    if (username === null || username === '') {
+
+    } else {
+        var email = $.cookie('email');
+        var username = $.cookie('username');
+        document.getElementById("username1").innerHTML = username;
+        return;
+    }
+});
 
 
 

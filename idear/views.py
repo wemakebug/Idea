@@ -732,6 +732,10 @@ def crcreate(req):
             'message': '',
         }
         name = req.POST["name"]
+        img = req.POST["coverMap"]
+        base64Code = img.split(',')[1]
+        fileext = img.split(',')[0].split(';')[0].split('/')[1]
+        Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"), fileext)
         describe = req.POST["describe"]
         isUse = req.POST["isUse"]
         labels = req.POST["labels"].split("*")
@@ -744,7 +748,7 @@ def crcreate(req):
                 isUse = False
             else:
                 isUse = True
-            creation = models.Creation.objects.create(user=user, Name=name, Describe=describe,IsUse=isUse, Uuid=uuid.uuid4());
+            creation = models.Creation.objects.create(user=user, Name=name, Describe=describe,IsUse=isUse,Img=Img, Uuid=uuid.uuid4());
             creation.save()
 
             for label in labels[:-1]:
@@ -769,27 +773,34 @@ def crreport(req):
     :param req:
     :return:
     '''
-    status = 0
-    if req.method == 'POST':
-        reason = req.POST["reason"]
-        try:
-            creationId = req.POST["creationId"]
-            creation = models.Creation.objects.get(pk=creationId)
-            user_email = req.COOKIES.get('user_email')
-            user = models.User.objects.get(Email=user_email)
-            models.Report.objects.create(user=user, creation=creation, Reason=reason)
-            status = 1
-            return HttpResponse(status)
-
-
-        except Exception as e:
-            print(e)
-            return HttpResponse(status)
 
     if req.method == 'GET':
         user_email = req.COOKIES.get('user_email')
         username = models.User.objects.get(Email=user_email)
         return HttpResponse("TRUE")
+    if req.method == 'POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(pk=creationId)
+            reason = req.POST["reason"]
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            models.Report.objects.create(user=user, creation=creation, Reason=reason)
+
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+            return HttpResponse(json.dumps(result))
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
+
 
 
 @csrf_exempt
@@ -998,6 +1009,7 @@ def redetails(req):
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
+        print(projectId)
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
@@ -1122,7 +1134,6 @@ def deprojects(req):
             if sign == "all":
                 projects = models.Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
                 for project in projects:
-
                     Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
                     alllables = []  # 找出本创意所有的标签
                     for label in Labels:
@@ -1281,6 +1292,11 @@ def editprofile(req):
 
 @csrf_exempt
 def unread_messages(req):
+    '''
+    未读消息
+    :param req: 
+    :return: 
+    '''
     if req.method == 'GET':
         try:
             email = req.COOKIES.get('user_email')
@@ -1308,11 +1324,84 @@ def unread_messages(req):
         return HttpResponse(json.dumps(result))
 
 
-def allfollow(req):
+@csrf_exempt
+def show_messages(req):
+    '''
+    
+    :param req: 
+    :return: 
+    '''
+    infoId = models.Message.objects.get(Id=req.POST['infoId'])
+    list = {}
+    list['Date'] = infoId.Date.strftime("%Y/%m/%d")
+    list['Priority'] = infoId.Priority
+    list['Content'] = infoId.Content
+    return HttpResponse(json.dumps(list))
+
+@csrf_exempt
+def read_message(req):
+    '''
+    已读消息
+    :param req: 
+    :return: 
+    '''
     if req.method == 'GET':
-        return render_to_response('personal/allfollow.html')
+        try:
+            email = req.COOKIES.get('user_email')
+            if email:
+                messageuser = models.Message.objects.filter(IsUse=True)
+                if messageuser:
+                    user = models.User.objects.get(Email=email)
+                    message_contents = messageuser.filter(Q(user=user) & Q(IsRead=True))
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+            return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+        else:
+            return render_to_response('personal/read_message.html', {"message_contents": message_contents})
     if req.method == 'POST':
         pass
+
+
+@csrf_exempt
+def examine_messages(req):
+    if req.method == 'GET':
+        pass
+    if req.method == 'POST':
+        messageId = req.POST["messageId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        message = models.Message.objects.get(Id=messageId)
+        message.IsRead = False
+        message.save()
+        return HttpResponse(json.dumps(result))
+
+@csrf_exempt
+def allFollow(req):
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/allFollow.html', {"follows":follows})
+    if req.method == 'POST':
+        proId = req.POST["proId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            project = models.Project.objects.get(Id=proId)
+            email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=user, project=project)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt

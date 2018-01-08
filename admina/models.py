@@ -315,8 +315,7 @@ class Report(models.Model):
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):
-        return self.comment.__unicode__()
-
+        return self.user.__unicode__()
 class Score(models.Model):
     '''
     分值等级表

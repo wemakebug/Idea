@@ -110,9 +110,62 @@ def index(req):
 @require_http_methods(["GET", "POST"])
 def user_add(req):
     if req.method == "GET":
-        return render(req, 'admina/user_add.html')
-    if req.method == "POST":
-        pass
+        userLabels = models.UserLabel.objects.filter(IsUse=True)
+        return render(req, 'admina/user_add.html', {
+            'UserLabels': userLabels
+        })
+    else:
+        resData = {
+            "status": 0,
+            "message": ""
+        }
+        # 获取传入数据
+        postData = req.POST
+        user_name = postData.get('user_name')
+        user_account = postData.get('user_account')
+        user_identity = postData.get('user_identity')
+        user_passwd = postData.get('user_passwd')
+        user_email = postData.get('user_email')
+        user_sex = postData.get('user_sex')
+        user_school = postData.get('user_school')
+        user_institutde = postData.get('user_institutde')
+        user_major = postData.get('user_major')
+        user_tags = postData.get('Tags').split(',')
+        user_introduction  = postData.get('user_introduction')
+
+        if req.FILES:
+            user_img = req.FILES[0]
+        else:
+            user_img = None
+
+        try:
+            user = models.User.objects.create(
+                UserName=user_name,
+                Account=user_account,
+                PassWord=user_passwd,
+                Identity=user_identity,
+                Sex=user_sex,
+                Email=user_email,
+                Img=user_img,
+                Introduction=user_introduction,
+                School=user_school,
+                Institude=user_institutde,
+                Major=user_major
+            )
+            user.save()
+            for label in user_tags:
+                user_label = models.UserLabel.objects.get(Id=label)
+                user2userlabel = models.User2UserLabel.objects.create(
+                    user=user,
+                    userLabel=user_label,
+                    Uuid=uuid.uuid4()
+                )
+                user2userlabel.save()
+            resData['status'] = 1
+            resData['message'] = 'success'
+        except Exception as e:
+            resData['message'] = str(e)
+        return HttpResponse(JsonResponse(resData))
 
 
 @csrf_exempt
@@ -152,6 +205,12 @@ def user_all(req, page=None):
 @check_login()
 @require_http_methods(["GET", "POST"])
 def user_detail(req, userid=None):
+    '''
+    获取用户详情
+    :param req:
+    :param userid:
+    :return:
+    '''
     if req.method == "GET":
         if userid:
             print("Try to find user with Id" + userid)
@@ -172,6 +231,12 @@ def user_detail(req, userid=None):
 @check_login()
 @require_http_methods(["GET", "POST"])
 def user_introduction(req, uid=None):
+    '''
+    编辑用户自我介绍
+    :param req:
+    :param uid:
+    :return:
+    '''
     if req.method == "GET":
         if uid:
             pass
@@ -184,6 +249,12 @@ def user_introduction(req, uid=None):
 @check_login()
 @require_http_methods(["GET", "POST"])
 def user_timeline(req, uid=None):
+    '''
+    用户时间线查询 后期功能
+    :param req:
+    :param uid:
+    :return:
+    '''
     if req.method == "GET":
         if uid:
             pass
@@ -300,14 +371,14 @@ def project_add(req):
 
         poject_start_time = poject_start_time.split('-')
         poject_start_time = datetime.datetime(
-            int(poject_start_time[2]),
+            int(poject_start_time[0]),
             int(poject_start_time[1]),
-            int(poject_start_time[0]))
+            int(poject_start_time[2]))
         project_end_time = project_end_time.split('-')
         project_end_time = datetime.datetime(
-            int(project_end_time[2]),
+            int(project_end_time[0]),
             int(project_end_time[1]),
-            int(project_end_time[0]))
+            int(project_end_time[2]))
 
         if req.FILES:
             project_img = req.FILES.get('Img')
@@ -351,6 +422,7 @@ def project_add(req):
         resData['message'] = str(e)
     return HttpResponse(JsonResponse(resData))
 
+
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
@@ -358,9 +430,15 @@ def project_detail(req, id=None):
     if req.method == "GET":
         if id:
             try:
+                users = models.User.objects.all()
+                projectLabels = models.ProjectLabel.objects.all()
                 project = models.Project.objects.get(Id=id)
+                project_user = models.ProjectUser.objects.get(project=project, Identity=0) # 这里的身份后期要改为 1
                 return render(req, 'admina/project_detail.html', {
-                    'project': project
+                    'project': project,
+                    'users': users,
+                    'ProjectLabels': projectLabels,
+                    'project_user': project_user
                 })
             except Exception as e:
                 print(e)
@@ -369,6 +447,7 @@ def project_detail(req, id=None):
             return redirect(reverse('admina:project_all', args=(1,)))
     else:
         pass
+
 
 @csrf_exempt
 @check_login()
@@ -386,6 +465,7 @@ def project_recmanage(req, uid=None):
             return render(req, "admina/project_recmanage.html")
     else:
         pass
+
 
 @csrf_exempt
 @check_login()
@@ -417,15 +497,22 @@ def label_project(req, uid=None):
             'Labels': Labels
         })
     if req.method == 'POST':
+        lableId = req.POST['lableId']
         lableName = req.POST['lableName']
         isUse = req.POST['isUse']
-        if isUse == '是':
+        if isUse == '可用':
             isUse = True
         else:
             isUse = False
         try:
-            models.ProjectLabel.objects.create(ProjectLabelName=lableName, IsUse=isUse)
-            data = 1
+            existingLable = models.ProjectLabel.objects.filter(Id=lableId)
+            print existingLable
+            if existingLable:
+                models.ProjectLabel.objects.filter(Id=lableId).update(ProjectLabelName=lableName, IsUse=isUse)
+                data = 0       # 0;修改标签
+            else:
+                models.ProjectLabel.objects.create(ProjectLabelName=lableName, IsUse=isUse)
+                data = 1       # 1：添加标签
         except Exception as e:
             print (e)
             data = -1
@@ -475,17 +562,23 @@ def label_user(req, uid=None):
 
         })
     if req.method == 'POST':
+        lableId = req.POST['lableId']
         lableName = req.POST['lableName']
         isUse = req.POST['isUse']
         ProjectLabelName = req.POST['projectLabel']
-        if isUse == '是':
+        if isUse == '可用':
             isUse = True
         else:
             isUse = False
         try:
+            existingLable = models.UserLabel.objects.filter(Id=lableId)
             projectLabel = models.ProjectLabel.objects.filter(ProjectLabelName=ProjectLabelName)[0]
-            models.UserLabel.objects.create(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
-            data = 1        # 1: 添加标签成功
+            if existingLable:
+                models.UserLabel.objects.filter(Id=lableId).update(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
+                data = 0        # 0：修改标签
+            else:
+                models.UserLabel.objects.create(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
+                data = 1        # 1: 添加标签成功
         except Exception as e:
             print(e)
             data = -1       # -1: 添加标签失败
@@ -667,9 +760,9 @@ def creation_add(req, uid=None):
             if creatino_init_time:
                 creatino_init_time = creatino_init_time.split('-')
                 creatino_init_time = datetime.datetime(
-                    int(creatino_init_time[2]),
+                    int(creatino_init_time[0]),
                     int(creatino_init_time[1]),
-                    int(creatino_init_time[0]))
+                    int(creatino_init_time[2]))
             else:
                 creatino_init_time = datetime.datetime.now()
             if int(creation_is_use) == 1:
