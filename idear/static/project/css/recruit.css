@@ -1,9 +1,16 @@
+.nav_main a{
+    font-size:1.6rem
+}
+.nav_main a:hover{
+    color:white;
+    text-decoration: none;
+}
+
 .bg_all {
     width: 80%;
     height:auto;
     overflow: hidden;
     margin: 66px auto 50px;
-
 }
 body, html {
     background-color: #f1f1f1;

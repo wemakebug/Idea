@@ -1,11 +1,19 @@
 body{
     background-color: #EEEEEE;
 }
-.main{
-    width:100%;
-    height:auto;
-    overflow:hidden;
-	}
+.main {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+ .nav_main a{
+    font-size:1.6rem
+}
+.nav_main a:hover{
+    color:white;
+    text-decoration: none;
+}
+
 .content-all{
     margin-top:100px;
     width:80%;

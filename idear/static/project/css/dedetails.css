@@ -1,3 +1,11 @@
+
+.nav_main a{
+    font-size:1.6rem
+}
+.nav_main a:hover{
+    color:white;
+    text-decoration: none;
+}
 .main-left{
     margin-left: 5%;
     width:65%;

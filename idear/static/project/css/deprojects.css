@@ -5,6 +5,14 @@
     margin: 66px auto 50px;
 
 }
+.nav_main a{
+    font-size:1.6rem
+}
+.nav_main a:hover{
+    color:white;
+    text-decoration: none;
+}
+
 body, html {
     background-color: #f1f1f1;
     transition: 0.2s ease-out;
@@ -336,7 +344,9 @@ body, html {
 	font-size: 15px;
 	text-decoration: none;
 }
-
+.tag img{
+    vertical-align:text-bottom;
+}
 .tag span {
 	display: inline-block;
 	margin-bottom: 5px;
