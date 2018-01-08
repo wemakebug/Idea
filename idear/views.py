@@ -1281,7 +1281,8 @@ def unread_messages(req):
 
 def allfollow(req):
     if req.method == 'GET':
-        return render_to_response('personal/allfollow.html')
+        follows = models.Follow.objects.all()
+        return render_to_response('personal/allfollow.html',{"follows":follows})
     if req.method == 'POST':
         pass
 
