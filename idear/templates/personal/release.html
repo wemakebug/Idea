@@ -132,7 +132,6 @@
 
 {% block script %}
     <script type="text/javascript" src={% static "personal/js/fileinput.min.js"%} ></script>
-
     <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
     <script type="text/javascript" src={% static "base/js/base.js"%} ></script>
     <script>
@@ -162,12 +161,31 @@
     <script>
     document.getElementById('releasePro').onclick = function () {
         var proTitle = $(".input_title").val();
+        if(!proTitle){
+            alert("项目名称不能为空！");
+            return ;
+        }
         var coverMap = $(".file-preview-image").attr("src"); //封面图
-
+        if(!coverMap){
+            alert("请加封面图！");
+            return ;
+        }
         var rhtml = $(".note-editable").get(0).innerHTML;
-        
+        if(!rhtml){
+            alert("项目内容不能为空！");
+            return ;
+        }
         var numPerson = $("#numPerson").val();
+        if(numPerson < "1"){
+            alert("所需人数请输入大于0的数字！");
+            $("#numPerson").css("border","1px solid red");
+            return ;
+        }
         var endTime = $("#flatpickr-tryme").val();
+        if(!endTime){
+            alert("请选择结束时间！");
+            return ;
+        }
         var proLabels = '';
         var statue = 3,
             identity = 1;
@@ -175,7 +193,10 @@
         for(var i = 0;i < oDiv.length;i ++){
             if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")
                 proLabels+=oDiv[i].innerHTML + '*';
-{#                proLabels.push(oDiv[i].innerHTML);#}
+        }
+        if(proLabels === ""){
+            alert("请选择标签！");
+            return;
         }
         var d=new Date();
         var day=d.getDate();

@@ -6,19 +6,19 @@
 {%block CSS%}
     <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
-    <link rel="stylesheet" href="{% static 'personal/css/read_message.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/unread_messages.css'%}">
 {%endblock%}
 
 {%block contents%}
-<div class="bigbox">
-{% for message in message_content %}
-    <div class="message_column">
+<div class="bigbox container-fluid">
+{% for message in message_contents %}
+    <div class="row">
         <div style="float: left;width: 5%;height: 30px;"><span class="repo-language-color"></span></div>
         <div class="message_column1-1">{{ message.Content }}</div>
-        <div style="width: 20%;line-height: 30px;float: left;">{{ message.Date }}</div>
+        <div style="width: 18%;line-height: 30px;float: left;">{{ message.Date }}</div>
         <div style="width: 10%;line-height: 30px;float: left;"><strong>消息等级:{{ message.Priority }}</strong></div>
         <div class="message_column1-2">
-            <button value="{{ message.Id }}" class="btn btn-info btn-xs" onclick="">查看</button>
+            <button value="{{ message.Id }}" class="btn btn-info btn-xs examine" onclick="">查看</button>
             <button value="{{ message.Id }}" class="btn btn-danger btn-xs delete" >删除</button>
         </div>
     </div>

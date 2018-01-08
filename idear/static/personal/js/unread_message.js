@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 2018/1/6.
  */
+//删除消息记录
 $(".delete").click(function () {
     var messageId= $(this).val();
     console.log(messageId);
@@ -27,7 +28,16 @@ $(".delete").click(function () {
                  alert("删除失败！");
              } else {
                  alert("删除成功！");
+                 window.location.reload();
              }
         });
     });
+});
+
+
+//查看消息详情
+$(".examine").click(function () {
+})
+$(".close_message").click(function () {
+    window.location.reload();
 })

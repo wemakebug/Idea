@@ -4,10 +4,12 @@
    <title>申请团队帮助表</title>
 {%endblock%}
 {%block CSS%}
+   <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
 
-     <!-- include summernote css/js-->
+
+    <!-- include summernote css/js-->
     <link href="{% static 'editor/summernote.css' %}" rel="stylesheet">
     <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
     <!-- include summernote-zn-CN -->
@@ -25,29 +27,37 @@
         <div class="application1-4">
             <div class="application1-5">
                 <strong>
-                    个人信息：
+                    信 息：
                 </strong>
             </div>
-            <div class="application1-6">
-                学院：
-                <input type="text" class="applicationinput1-1" value={{ teamhelp.Institude }}>
-            </div>
-            <div class="application1-7">
-                申请人：
-                <input type="text" class="applicationinput1-1" value={{ teamhelp.UserName }}>
-            </div>
-            <div class="application1-8">
-                专业：
-                <input type="text" class="applicationinput1-1" value={{ teamhelp.Major }}>
-            </div>
-            <div class="application1-9">
-                个人分数：
-                <input type="text" class="applicationinput1-1" value={{ teamhelp.Score }}>
-            </div>
-            <div class="application1-10">
-                联系方式：
-                <input type="text" class="applicationinput1-1" value={{ teamhelp.Phone }}>
-            </div>
+                <div class="application1-6">
+                    申请对象：
+                    <input type="text" class="applicationinput1-1" value={{ teamhelp.UserName }}>
+                    <input type="text" value="{{ teamhelp.Id }}" style="display: none" id="vals">
+                </div>
+
+            {% for users in users %}
+                <div class="application1-6">
+                    学院：
+                    <input type="text" class="applicationinput1-1" value={{ users.Institude }}>
+                </div>
+                <div class="application1-7">
+                    申请人：
+                    <input type="text" class="applicationinput1-1" value={{ users.UserName }}>
+                </div>
+                <div class="application1-8">
+                    专业：
+                    <input type="text" class="applicationinput1-1" value={{ users.Major }}>
+                </div>
+                <div class="application1-9">
+                    个人分数：
+                    <input type="text" class="applicationinput1-1" value={{ users.Score }}>
+                </div>
+                <div class="application1-10">
+                    联系方式：
+                    <input type="text" class="applicationinput1-1" value={{ users.Phone }}>
+                </div>
+            {% endfor %}
         </div>
         <div class="requestdetails">
             <div class="requestdetails1-1">
@@ -62,12 +72,8 @@
             </div>
         </div>
         <div class="submithelp1-1">
-            <div class="submithelp1-4">
-                <input type="button" value="取消申请" class="submithelp1-3" id="cancelhelp">
-            </div>
-            <div class="submithelp1-5">
-                <input type="button" value="提交申请" class="submithelp1-2" id="submithelp">
-            </div>
+            <input type="button" value="重 置" class="submithelp1-2 btn btn-primary"  onclick="window.location.reload()" id="reset">
+            <input type="button" value="提交申请" class="submithelp1-3 btn btn-primary" id="allpy" >
         </div>
     </div>
     <canvas id="canvas" class="teamhelpapplicationcanvas"></canvas>
@@ -84,7 +90,7 @@
     </script>
     <script>
         $('#summernote').summernote({
-            height: 700,
+            height: 380,
             lang: 'zh-CN',
             focus: true,
             toolbar: [
