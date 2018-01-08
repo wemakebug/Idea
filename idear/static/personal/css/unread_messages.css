@@ -1,5 +1,5 @@
 .bigbox{
-    width: 65%;
+    width: 100%;
     height: auto;
     margin-top: 14px;
 }
@@ -27,7 +27,7 @@
     float: left;
 }
 .message_column1-2{
-    width: 10%;
+    width: 12%;
     height: 30px;
     line-height: 30px;
     float: left;
