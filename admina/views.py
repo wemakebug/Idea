@@ -118,9 +118,6 @@ def user_add(req):
         pass
 
 
-
-
-
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
@@ -435,18 +432,67 @@ def projet_recruit(req, uid=None):
 @check_login()
 @require_http_methods(["GET", "POST"])
 def label_project(req, uid=None):
+    """
+    添加项目标签
+    :param req: 
+    :param uid: 
+    :return: 
+    """
     if req.method == "GET":
         Labels = models.ProjectLabel.objects.all().order_by('-Id')
         return render(req, 'admina/label_project.html', {
             'Labels': Labels
         })
-    else:
-        pass
+    if req.method == 'POST':
+        lableName = req.POST['lableName']
+        isUse = req.POST['isUse']
+        if isUse == '是':
+            isUse = True
+        else:
+            isUse = False
+        try:
+            models.ProjectLabel.objects.create(ProjectLabelName=lableName, IsUse=isUse)
+            data = 1
+        except Exception as e:
+            print (e)
+            data = -1
+        finally:
+            return HttpResponse(data)
+
+
+@csrf_exempt
+def deleteProjectLable(req):
+    """
+    删除项目标签
+    :param req: 
+    :return: 
+    """
+    if req.method == 'POST':
+        try:
+            ProjectLabelName = req.POST['lableName']
+            ProjectLabel = models.ProjectLabel.objects.get(ProjectLabelName=ProjectLabelName)
+            ProjectLabel.IsUse = False
+            ProjectLabel.save()
+            data = 1
+        except Exception as e:
+            print (e)
+            data = -1
+        finally:
+            return HttpResponse(data)
+
+
+
 
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
 def label_user(req, uid=None):
+    """
+    添加个人标签
+    :param req: 
+    :param uid: 
+    :return: 
+    """
     if req.method == "GET":
         Labels = models.UserLabel.objects.all().order_by("-Id")
         ProjectLabels = models.ProjectLabel.objects.all().order_by("-Id")
@@ -455,13 +501,51 @@ def label_user(req, uid=None):
             'ProjectLabels': ProjectLabels,
 
         })
-    else:
-        pass
+    if req.method == 'POST':
+        lableName = req.POST['lableName']
+        isUse = req.POST['isUse']
+        ProjectLabelName = req.POST['projectLabel']
+        if isUse == '是':
+            isUse = True
+        else:
+            isUse = False
+        try:
+            projectLabel = models.ProjectLabel.objects.filter(ProjectLabelName=ProjectLabelName)[0]
+            models.UserLabel.objects.create(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
+            data = 1        # 1: 添加标签成功
+        except Exception as e:
+            print(e)
+            data = -1       # -1: 添加标签失败
+        return HttpResponse(data)
+
+
+@csrf_exempt
+def deleteUserLable(req):
+    """
+    删除个人标签
+    :param req: 
+    :return: 
+    """
+    if req.method == 'POST':
+        try:
+            lableName = req.POST['lableName']
+            Lable = models.UserLabel.objects.get(Name=lableName)
+            Lable.IsUse = False
+            Lable.save()
+            data = 1    # 删除成功
+        except Exception as e:
+            print (e)
+            data = -1   # 删除失败
+        finally:
+            return HttpResponse(data)
+
+
+
 
 #  创意管理
-@csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
+@csrf_exempt
 def creation_all(req, page=None, category=None):
     '''
     :param page: 当前查询创意的页数

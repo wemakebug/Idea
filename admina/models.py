@@ -247,6 +247,7 @@ class Message(models.Model):
     Priority = models.PositiveIntegerField(default=0)
     Type = models.PositiveIntegerField(default=0)
     Date = models.DateTimeField(auto_now_add=True)
+    IsUse = models.BooleanField(default=True)
     IsRead = models.BooleanField(default=False)
     Content = models.TextField(null=False)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))

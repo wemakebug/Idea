@@ -7,7 +7,6 @@
 $(function(){
     $.cookie("user", 3);
     userId = $.cookie("user");
-    var putcomment_reply = $(this);
     
     //随机颜色标签圆球
     $('.repo-language-color').each(function() {

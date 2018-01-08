@@ -50,6 +50,9 @@ urlpatterns = [
 
     url(r'^label/project$', views.label_project),
     url(r'^label/user$',views.label_user),
+    url(r'^deletelabel/user$', views.deleteUserLable),
+    url(r'^deletelabel/project$', views.deleteProjectLable),
+
 
     url(r'^creation/all/(?P<page>(\d+)?)(/)?(?P<category>(\d+)?)$', views.creation_all),
     url(r'^creation/all/(?P<category>(\d+))?$', views.creation_all, name='creation'),
