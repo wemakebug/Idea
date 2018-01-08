@@ -1093,7 +1093,6 @@ def deprojects(req):
             if sign == "all":
                 projects = models.Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
                 for project in projects:
-
                     Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
                     alllables = []  # 找出本创意所有的标签
                     for label in Labels:

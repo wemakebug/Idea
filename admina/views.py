@@ -114,8 +114,58 @@ def user_add(req):
         return render(req, 'admina/user_add.html', {
             'UserLabels': userLabels
         })
-    if req.method == "POST":
-        pass
+    else:
+        resData = {
+            "status": 0,
+            "message": ""
+        }
+        # 获取传入数据
+        postData = req.POST
+        user_name = postData.get('user_name')
+        user_account = postData.get('user_account')
+        user_identity = postData.get('user_identity')
+        user_passwd = postData.get('user_passwd')
+        user_email = postData.get('user_email')
+        user_sex = postData.get('user_sex')
+        user_school = postData.get('user_school')
+        user_institutde = postData.get('user_institutde')
+        user_major = postData.get('user_major')
+        user_tags = postData.get('Tags').split(',')
+        user_introduction  = postData.get('user_introduction')
+
+        if req.FILES:
+            user_img = req.FILES[0]
+        else:
+            user_img = None
+
+        try:
+            user = models.User.objects.create(
+                UserName=user_name,
+                Account=user_account,
+                PassWord=user_passwd,
+                Identity=user_identity,
+                Sex=user_sex,
+                Email=user_email,
+                Img=user_img,
+                Introduction=user_introduction,
+                School=user_school,
+                Institude=user_institutde,
+                Major=user_major
+            )
+            user.save()
+            for label in user_tags:
+                user_label = models.UserLabel.objects.get(Id=label)
+                user2userlabel = models.User2UserLabel.objects.create(
+                    user=user,
+                    userLabel=user_label,
+                    Uuid=uuid.uuid4()
+                )
+                user2userlabel.save()
+            resData['status'] = 1
+            resData['message'] = 'success'
+        except Exception as e:
+            resData['message'] = str(e)
+        return HttpResponse(JsonResponse(resData))
 
 
 @csrf_exempt
