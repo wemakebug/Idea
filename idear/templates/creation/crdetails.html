@@ -122,9 +122,12 @@
 {%for creation2crojectLabel in creation2crojectLabels%}
                  <div class="similar-block">
                     <div class="block-main">
+                        <div class="block-img">
+                            <img src="../../static/photos/{{ creation2crojectLabel.creation.Img }} " style="width:100%;height:180px;">
+                        </div>
                         <a class="block-title" href="crdetails?creationId={{creation2crojectLabel.creation.Id}}">
                             <h5>{{creation2crojectLabel.creation.Name}}</h5>
-                        <a class="block-text">{{creation2crojectLabel.creation.Describe}}</a>
+                        <!--<a class="block-text">{{creation2crojectLabel.creation.Describe}}</a>-->
                         </a>
                     </div>
                     <div class="block-bottom">
