@@ -4,6 +4,7 @@
 //删除消息记录
 $(".delete").click(function () {
     var messageId= $(this).val();
+    console.log(messageId);
     var show = layer.open({
         type: 1,
         offset: '200px',
@@ -36,19 +37,7 @@ $(".delete").click(function () {
 
 //查看消息详情
 $(".examine").click(function () {
-    var messageId= $(this).val();
-    $.post("examine_messages",{"messageId":messageId},function (data) {
-         data = JSON.parse(data);
-         if(data.status === 0){
-             alert("删除失败！");
-         } else {
-             window.location.reload();
-         }
-    });
 })
-
-$(function() {
-    $('#myModal').modal({
-	    keyboard: true
-    })
-});
+$(".close_message").click(function () {
+    window.location.reload();
+})

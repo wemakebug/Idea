@@ -1296,6 +1296,20 @@ def unread_messages(req):
 
 
 @csrf_exempt
+def show_messages(req):
+    '''
+    
+    :param req: 
+    :return: 
+    '''
+    infoId = models.Message.objects.get(Id=req.POST['infoId'])
+    list = {}
+    list['Date'] = infoId.Date.strftime("%Y/%m/%d")
+    list['Priority'] = infoId.Priority
+    list['Content'] = infoId.Content
+    return HttpResponse(json.dumps(list))
+
+@csrf_exempt
 def read_message(req):
     '''
     已读消息
