@@ -980,6 +980,7 @@ def redetails(req):
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
+        print(projectId)
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
@@ -1288,15 +1289,29 @@ def unread_messages(req):
         message.save()
         return HttpResponse(json.dumps(result))
 
-
-def allfollow(req):
+@csrf_exempt
+def allFollow(req):
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
-
-        follows = models.Follow.objects.all()
-        return render_to_response('personal/allfollow.html',{"follows":follows})
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/allFollow.html', {"follows":follows})
     if req.method == 'POST':
-        pass
+        proId = req.POST["proId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            project = models.Project.objects.get(Id=proId)
+            email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=user, project=project)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt

@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^obtainVerify$', views.obtainVerify),
     url(r'^homepage$',views.homepage),
     url(r'^unread_messages$',views.unread_messages),
-    url(r'^allfollow$',views.allfollow),
+    url(r'^allFollow$',views.allFollow),
     url(r'^editprofile$',views.editprofile),
     url(r'^apply$', views.apply),
     url(r'^recruit$', views.projects),

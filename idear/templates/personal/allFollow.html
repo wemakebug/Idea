@@ -36,16 +36,30 @@
             </div>
             <div class="proContent">
                 <div class="proName">
+                {% if follow.statue == 1 or follow.statue == 3%}
                     <a href="redetails?projectId={{ follow.project.Id }} ">
                         <p>{{ follow.project.ProjectName }}</p>
                     </a>
+                    {% else %}
+                    <a href="dedetails?projectId={{ follow.project.Id }} ">
+                        <p>{{ follow.project.ProjectName }}</p>
+                    </a>
+                {% endif %}
                 </div>
                 <div class="proContentShow" >
+                    {% if follow.statue == 1 or follow.statue == 3%}
                     <a href="redetails?projectId={{ follow.project.Id }} ">
                         <p>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ follow.project.Description }}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ follow.project.Description |safe }}
                         </p>
                     </a>
+                    {% else %}
+                    <a href="dedetails?projectId={{ follow.project.Id }} ">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ follow.project.Description |safe}}
+                        </p>
+                    </a>
+                {% endif %}
                 </div>
                 <div class="progressBar">
                     <div class="progress">
@@ -53,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="deletePro btn btn-default" data-toggle="modal" data-target="#myModal" aria-label="Left Align" href="javascript:void(0)" onclick="showDeleteModal(this)">
+            <button type="button" class="deletePro btn btn-default" value="{{ follow.project.Id }}">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
         </div>
@@ -82,8 +96,7 @@
     </script>
     <script>
     $(".deletePro").click(function () {
-        var messageId = $(this).val();
-        alert(messageId)
+        var proId = $(this).val();
         var show = layer.open({
             type: 1,
             offset: '200px',
@@ -101,12 +114,12 @@
         });
         $("#putreport").click(function () {
             layer.close(show);
-            $.post("unread_messages",{"messageId":messageId},function (data) {
+            $.post("allFollow",{"proId":proId},function (data) {
                  data = JSON.parse(data);
                  if(data.status === 0){
                      alert("删除失败！");
                  } else {
-                     alert("删除成功！");
+                     window.location.reload();
                  }
             });
         });
