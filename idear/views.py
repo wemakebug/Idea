@@ -1385,26 +1385,6 @@ def read_message(req):
         return HttpResponse(json.dumps(result))
 
 
-# @csrf_exempt
-# def examine_messages(req):
-#     '''
-#     查看消息
-#     :param req:
-#     :return:
-#     '''
-#     if req.method == 'GET':
-#         pass
-#     if req.method == 'POST':
-#         messageId = req.POST["messageId"]
-#         result = {
-#             "status": 1,
-#             "string": 'success'
-#         }
-#         message = models.Message.objects.get(Id=messageId)
-#         message.IsRead = False
-#         message.save()
-#         return HttpResponse(json.dumps(result))
-
 
 @csrf_exempt
 def allFollow(req):
@@ -1469,33 +1449,94 @@ def personal_information(req):
     :return: 
     '''
     if req.method == 'GET':
-        return render_to_response('personal/personal_information.html')
+        try:
+            email = req.COOKIES.get('user_email')
+            print(email)
+            if email:
+                user = models.User.objects.get(Email=email)
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e.message)
+        else:
+            return render_to_response('personal/personal_information.html', {"user": user})
     if req.method == 'POST':
-        pass
+        personal_input = req.POST["personal_input"]
+        user_school = req.POST["user_school"]
+        user_college = req.POST["user_college"]
+        user_major = req.POST["user_major"]
+        sex = req.POST["sex"]
+        user_id = req.POST["user_id"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        information = models.User.objects.get(Id=user_id)
+        information.UserName = personal_input
+        information.School = user_school
+        information.Institude = user_college
+        information.Major = user_major
+        information.Sex = sex
+        information.save()
+        print (information)
+        return HttpResponse(json.dumps(result))
 
 
 def account_information(req):
     '''
-    个人信息
+    账号信息
     :param req: 
     :return: 
     '''
     if req.method == 'GET':
-        return render_to_response('personal/account_information.html')
+        if req.method == 'GET':
+            try:
+                email = req.COOKIES.get('user_email')
+                print(email)
+                if email:
+                    user = models.User.objects.get(Email=email)
+                else:
+                    return render_to_response('idea/index.html')
+            except Exception as e:
+                print(e.message)
+            else:
+                return render_to_response('personal/account_information.html', {"user": user})
     if req.method == 'POST':
         pass
 
 
 def change_password(req):
     '''
-    个人信息
+    更改密码
     :param req: 
     :return: 
     '''
     if req.method == 'GET':
-        return render_to_response('personal/change_password.html')
+        if req.method == 'GET':
+            try:
+                email = req.COOKIES.get('user_email')
+                if email:
+                    user = models.User.objects.get(Email=email)
+                else:
+                    return render_to_response('idea/index.html')
+            except Exception as e:
+                print(e.message)
+            else:
+                return render_to_response('personal/change_password.html', {"user": user})
     if req.method == 'POST':
-        pass
+        change_password_email = req.POST["change_password_email"]
+        old_password = req.POST["old_password"]
+        new_password = req.POST["new_password"]
+        confirm_password = req.POST["confirm_password"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            user_password = models.User.objects.get(Email=change_password_email)
+            if old_password == user_password.PassWord:
+                
+
 
 '''个人中心相关页面结束'''
 
