@@ -188,7 +188,7 @@ class Recruit(models.Model):
     project = models.ForeignKey(Project, related_name='Recruit_Project_set', null=False)
     StartTime = models.DateTimeField(auto_now_add=True)
     EndTime = models.DateTimeField(null=True)
-    Describe = models.TextField(null=False,)
+    Describe = models.TextField(null=False)
     State = models.PositiveIntegerField(default=0)
     Times = models.PositiveIntegerField(default=1)
     PredictNumber = models.PositiveIntegerField(default=1)
@@ -274,7 +274,9 @@ class Comment(models.Model):
     Content = models.TextField()
 
     IsUse = models.BooleanField(default=True)
+
     IsAdopt = models.BooleanField(default=False)
+
     Isreply = models.BooleanField(default=False)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
