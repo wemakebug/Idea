@@ -683,24 +683,18 @@ def crdetails(req):
         creation = models.Creation.objects.get(Id=creationId)
         labels = models.Creation2ProjectLabel.objects.filter(creation_id=creationId)
         comments = models.Comment.objects.filter(creation_id = creationId).order_by("-Date")
-
-
-
         commentlist = []
-
         for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
             if comment.commentedId is None:
                 newcomment = []   
                 newcomment.append(comment)
                 commentlist.append(newcomment) #    [[head],[head],[head],[head]]
 
-
         for comlist in commentlist:    # 对每个列表循环  结果: [ [head,hui,hui],[head,hui,hui],[head] ]
             for comment in comments:
                 if str(comlist[0].Uuid)==str(comment.commentedId):
                     comlist.append(comment)   
                        #   [[head,hui,hui],[head,hui,hui ],[head],[head]]
-
 
         alllables = []  # 找出本创意所有的标签
         for label in labels:
@@ -913,31 +907,36 @@ def comment(req):
     :param req:
     :return:
     '''
-    status = 0
+    if req.method =='GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
     if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
         try:
-            username = "chris"
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
             creationId = req.POST["creationId"]
             content = req.POST["content"]
-            user = models.User.objects.get(UserName=username)
             creation = models.Creation.objects.get(pk = creationId)
             models.Comment.objects.create(user = user ,creation = creation , Content = content)
-            status = 1
-            return HttpResponse(status)
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+
+            return HttpResponse(json.dumps(result))
 
 
         except Exception as e:
             print(e)
-            return HttpResponse(status)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
-    if req.method =='GET':
-        content = "hello world"
-        username = "chris"
-        creationid = 3
-        user = models.User.objects.get("UserName=username")
-        creation = models.Creation.objects.get(pk=creationid)
-        models.Comment.objects.create(user=user, creation=creation, Content=content)
-        return HttpResponse("TRUE")
+
 
 
 ''' 创意灵感 页面相关部分结束'''
@@ -987,21 +986,17 @@ def redetails(req):
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
-
-
         commentlist = []
-
         for comment in comments:
             if comment.commentedId is None:
                 newcomment = []
                 newcomment.append(comment)
                 commentlist.append(newcomment)
-
         for comlist in commentlist:
             for comment in comments:
                 if str(comlist[0].Uuid) == str(comment.commentedId):
                     comlist.append(comment)
-        alllables = []  # 找出本创意所有的标签
+        alllables = []  # 找出本项目所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
@@ -1013,8 +1008,6 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
-
-
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
@@ -1095,7 +1088,7 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.all().order_by('-Id')
+                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by("StartTime")
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
@@ -1132,7 +1125,7 @@ def deprojects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
+                projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("StartTime")
                 for project in projects:
                     Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
                     alllables = []  # 找出本创意所有的标签
