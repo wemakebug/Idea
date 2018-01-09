@@ -1297,7 +1297,7 @@ def unread_messages(req):
 @csrf_exempt
 def show_messages(req):
     '''
-    
+    展示未读消息详情
     :param req: 
     :return: 
     '''
@@ -1307,6 +1307,26 @@ def show_messages(req):
     list['Priority'] = infoId.Priority
     list['Content'] = infoId.Content
     return HttpResponse(json.dumps(list))
+
+
+@csrf_exempt
+def unread_read(req):
+    '''
+    未读消息点击查看置为已读
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'POST':
+        messageId = req.POST["infoId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        message = models.Message.objects.get(Id=messageId)
+        message.IsRead = True
+        message.save()
+        return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def read_message(req):
@@ -1331,23 +1351,36 @@ def read_message(req):
         else:
             return render_to_response('personal/read_message.html', {"message_contents": message_contents})
     if req.method == 'POST':
-        pass
-
-
-@csrf_exempt
-def examine_messages(req):
-    if req.method == 'GET':
-        pass
-    if req.method == 'POST':
         messageId = req.POST["messageId"]
         result = {
             "status": 1,
             "string": 'success'
         }
         message = models.Message.objects.get(Id=messageId)
-        message.IsRead = False
+        message.IsUse = False
         message.save()
         return HttpResponse(json.dumps(result))
+
+
+# @csrf_exempt
+# def examine_messages(req):
+#     '''
+#     查看消息
+#     :param req:
+#     :return:
+#     '''
+#     if req.method == 'GET':
+#         pass
+#     if req.method == 'POST':
+#         messageId = req.POST["messageId"]
+#         result = {
+#             "status": 1,
+#             "string": 'success'
+#         }
+#         message = models.Message.objects.get(Id=messageId)
+#         message.IsRead = False
+#         message.save()
+#         return HttpResponse(json.dumps(result))
 
 
 def allfollow(req):
