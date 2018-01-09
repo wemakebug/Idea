@@ -1466,6 +1466,44 @@ def perCreation(req):
             result['status'] = 0
             result['message'] = '获取信息失败'
             return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def personal_information(req):
+    '''
+    个人信息
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'GET':
+        return render_to_response('personal/personal_information.html')
+    if req.method == 'POST':
+        pass
+
+
+def account_information(req):
+    '''
+    个人信息
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'GET':
+        return render_to_response('personal/account_information.html')
+    if req.method == 'POST':
+        pass
+
+
+def change_password(req):
+    '''
+    个人信息
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'GET':
+        return render_to_response('personal/change_password.html')
+    if req.method == 'POST':
+        pass
+
 '''个人中心相关页面结束'''
 
 
