@@ -683,24 +683,18 @@ def crdetails(req):
         creation = models.Creation.objects.get(Id=creationId)
         labels = models.Creation2ProjectLabel.objects.filter(creation_id=creationId)
         comments = models.Comment.objects.filter(creation_id = creationId).order_by("-Date")
-
-
-
         commentlist = []
-
         for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
             if comment.commentedId is None:
                 newcomment = []   
                 newcomment.append(comment)
                 commentlist.append(newcomment) #    [[head],[head],[head],[head]]
 
-
         for comlist in commentlist:    # 对每个列表循环  结果: [ [head,hui,hui],[head,hui,hui],[head] ]
             for comment in comments:
                 if str(comlist[0].Uuid)==str(comment.commentedId):
                     comlist.append(comment)   
                        #   [[head,hui,hui],[head,hui,hui ],[head],[head]]
-
 
         alllables = []  # 找出本创意所有的标签
         for label in labels:
@@ -913,31 +907,36 @@ def comment(req):
     :param req:
     :return:
     '''
-    status = 0
+    if req.method =='GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
     if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
         try:
-            username = "chris"
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
             creationId = req.POST["creationId"]
             content = req.POST["content"]
-            user = models.User.objects.get(UserName=username)
             creation = models.Creation.objects.get(pk = creationId)
             models.Comment.objects.create(user = user ,creation = creation , Content = content)
-            status = 1
-            return HttpResponse(status)
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+
+            return HttpResponse(json.dumps(result))
 
 
         except Exception as e:
             print(e)
-            return HttpResponse(status)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
-    if req.method =='GET':
-        content = "hello world"
-        username = "chris"
-        creationid = 3
-        user = models.User.objects.get("UserName=username")
-        creation = models.Creation.objects.get(pk=creationid)
-        models.Comment.objects.create(user=user, creation=creation, Content=content)
-        return HttpResponse("TRUE")
+
 
 
 ''' 创意灵感 页面相关部分结束'''

@@ -274,7 +274,9 @@ class Comment(models.Model):
     Content = models.TextField()
 
     IsUse = models.BooleanField(default=True)
+
     IsAdopt = models.BooleanField(default=False)
+
     Isreply = models.BooleanField(default=False)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
