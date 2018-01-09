@@ -561,25 +561,54 @@ def teamattend1(req):
     if req.method == 'GET':
         pass
 
-def teamhelpapplication(req, teamhelpid):
+
+@csrf_exempt
+def teamhelpapplication(req, teamhelpid=None):
     '''
     团队帮助申请
     :param req: 
     :param teamhelpid: 
     :return: 
     '''
+    useremail = req.COOKIES.get('user_email')
     if req.method == 'GET':
         try:
             teamhelp = models.User.objects.get(Id=teamhelpid)
+
         except:
             return HttpResponse('404')
         else:
+            users = models.User.objects.filter(Email=useremail)
             if int(teamhelp.Identity) == 2:
-                return render_to_response('team/teamhelpapplication.html', {'teamhelp': teamhelp})
+                return render_to_response('team/teamhelpapplication.html', {'teamhelp': teamhelp,'users':users})
             else:
                 return HttpResponse('404')
     if req.method == 'POST':
-        pass
+        result = {
+            'message': None,
+            'status': 0,
+            'users': None,
+            'emial': None,
+            'describe':None,
+            'uuid': None
+        }
+
+        try:
+            email = req.POST['user_email']
+            describe = req.POST['sHTML']
+            users = models.User.objects.filter(Email=email)[0]
+
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+        else:
+            teamhelp = models.User.objects.get(Id=teamhelpid)
+            models.HelpApplication.objects.create(Email=email, AppliedTeam=teamhelp, Applier=users, Describe=describe)
+            result['status'] = 1
+            result['message'] = '成功'
+            return HttpResponse(json.dumps(result))
+
 
 
 def service(req):
@@ -980,6 +1009,7 @@ def redetails(req):
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
+        print(projectId)
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
@@ -1383,14 +1413,29 @@ def read_message(req):
 #         return HttpResponse(json.dumps(result))
 
 
-def allfollow(req):
+@csrf_exempt
+def allFollow(req):
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
-
-        follows = models.Follow.objects.all()
-        return render_to_response('personal/allfollow.html',{"follows":follows})
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/allFollow.html', {"follows":follows})
     if req.method == 'POST':
-        pass
+        proId = req.POST["proId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            project = models.Project.objects.get(Id=proId)
+            email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=user, project=project)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt

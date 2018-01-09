@@ -1,28 +1,32 @@
 {% extends 'idea/Base.html'%}
 {% load static %}
 {%block title%}
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>常驻团队</title>
 {%endblock%}
 {%block CSS%}
     <link rel="stylesheet" href="{% static 'team/css/team.css'%}">
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
+    <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
 {%endblock%}
 {%block content%}
     <div style="width: 100%">
         <div class="teamShow">
-            <div class="thisLeft">
+            <div class="thisLeft container">
                 {% for team in teams %}
-                    <div class="border_0">
-                        <div class="photo_0" onclick="window.open('teamdetails/{{ team.Id }}')">
-                            <img src="/static/photos/{{ team.Img }}" style=" width: 100% ;height: 100%;border-radius: 6px;"  onerror="this.src='../../static/team/imgs/logo.jpg'" alt="">
+                    <div class="border_0 row" style="margin-left: 68px">
+                        <div class="row">
+                            <div class="photo_0 col-xs-6 col-md-3 " onclick="window.open('teamdetails/{{ team.Id }}')">
+                                <img src="/static/photos/{{ team.Img }}" style=" width: 100% ;height: 100%;border-radius: 6px;"  onerror="this.src='../../static/team/imgs/logo.jpg'" alt="">
+                            </div>
+                            <div class="referral col-xs-12 col-md-8">
+                                <h3 onclick="window.open('teamdetails/{{ team.Id }}')">{{ team.UserName }}</h3>
+                                <p >入驻时间：{{ team.RegistTime }}</p>
+                            </div>
                         </div>
-                        <div class="referral">
-                            <h3 onclick="window.open('teamdetails/{{ team.Id }}')">{{ team.UserName }}</h3>
-                            <p >入驻时间：      {{ team.RegistTime }}</p>
-                        </div>
-
-                        <div style="height: 50%">
+                        <div class="row" style="height: 50%">
                             <div class="leftMatter">
                                     团队标签：
                                     {% for User2 in User2UserLabel  %}
@@ -33,12 +37,14 @@
                                     {% endfor %}
                             </div>
 
-                            <div class="content_0" onclick="window.open('teamdetails/{{ team.Id }}')">
+                            <div class="content_0 lead row" onclick="window.open('teamdetails/{{ team.Id }}')" style="margin-left: 43px">
                                 {{ team.Introduction }}
                             </div>
                         </div>
-                        <div class="feature">
-                            <button class="applyHelp" onclick="window.location.href='teamhelpapplication/{{ team.Id }}'">申请帮助</button>
+                        <div class="feature row" >
+                            <button class="applyHelp btn btn-primary" id="applyHelp" >申请帮助
+                                <input type="text" value="{{ team.Id }}" style="display: none">
+                            </button>
                             <div class="praise" >
                                 <span class="praise_0" team="{{ team.Id }}"><img src="../../static/team/imgs/zan.png" name="praise_img" /> </span>
                                  {% for praise in praises %}
@@ -49,15 +55,14 @@
                                 <span class="praise-txt">{{ team.Praised_User_set.count }}</span>
                                 <span class="add-num"><em>+1</em></span>
                             </div>
-
                         </div>
                     </div>
                 {% endfor %}
                 <a class="more_0">加载更多</a>
                 <div class="clear"></div>
             </div>
-            <div class="thisRight" id="broadSide">
-                <div class="intro_1">
+            <div class="thisRight row" id="broadSide" style="margin-left: 1140px">
+                <div class="intro_1 ">
                     <img src="{% static 'creation/imgs/light.png' %}"
                              style="width:40px;height:40px;margin:-20px 0px 26px -10px">
                     <img src="{% static '/idea/imgs/idea_logo.png' %}" style="width:40px;height:40px;margin:0">
@@ -82,7 +87,7 @@
     </div>
 {% endblock %}
 {%block script%}
-    <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <script type="text/javascript" src="{% static 'team/js/team.js'%}"></script>
+
 {%endblock%}

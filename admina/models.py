@@ -358,7 +358,7 @@ class HelpApplication(models.Model):
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):
-        return self.Id
+        return str(self.Id)
 
 
 class UserImageForge(models.Model):
