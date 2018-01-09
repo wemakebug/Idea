@@ -1,17 +1,18 @@
 {%extends 'personal/homepage.html'%}
 {% load static %}
 {%block title%}
-   <title>我关注的</title>
+   <title>即时关注</title>
 {%endblock%}
 {%block CSS%}
+    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/allfollow.css'%}">
     <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
-    <link rel="stylesheet" href="{% static 'personal/css/allfollow.css'%}">
 {%endblock%}
 
 {%block contents%}
+
 <div class="operationItem">
     <ul>
         <li><a href="">项目栏</a></li>
@@ -24,36 +25,36 @@
         {% if follow.project %}
         <div class="mainContentPro">
             <div class="proCoverImg">
-                {% if follow.statue == 1 or follow.statue == 3%}
-                <a href="redetails?projectId={{ follow.project.Id }} ">
-                    <img src="../../static/photos/{{ follow.project.Img }}">
+                {% if follow.project.Statue == 1 or follow.project.Statue == 3%}
+                <a href="redetails/?projectId={{ follow.project.Id }} ">
+                    <img src="/static/photos/{{ follow.project.Img }}">
                 </a>
-                {% else %}
+                {% elif follow.project.Statue == 2 or follow.project.Statue == 4 %}
                 <a href="dedetails?projectId={{ follow.project.Id }} ">
-                    <img src="../../static/photos/{{ follow.project.Img }}">
+                    <img src="/static/photos/{{ follow.project.Img }}">
                 </a>
                 {% endif %}
             </div>
             <div class="proContent">
                 <div class="proName">
-                {% if follow.statue == 1 or follow.statue == 3%}
+                {% if follow.project.Statue == 1 or follow.project.Statue == 3%}
                     <a href="redetails?projectId={{ follow.project.Id }} ">
                         <p>{{ follow.project.ProjectName }}</p>
                     </a>
-                    {% else %}
+                    {% elif follow.project.Statue == 2 or follow.project.Statue == 4 %}
                     <a href="dedetails?projectId={{ follow.project.Id }} ">
                         <p>{{ follow.project.ProjectName }}</p>
                     </a>
                 {% endif %}
                 </div>
                 <div class="proContentShow" >
-                    {% if follow.statue == 1 or follow.statue == 3%}
+                    {% if follow.project.Statue == 1 or follow.project.Statue == 3%}
                     <a href="redetails?projectId={{ follow.project.Id }} ">
                         <p>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ follow.project.Description |safe }}
                         </p>
                     </a>
-                    {% else %}
+                    {% elif follow.project.Statue == 2 or follow.project.Statue == 4 %}
                     <a href="dedetails?projectId={{ follow.project.Id }} ">
                         <p>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ follow.project.Description |safe}}
@@ -74,7 +75,6 @@
         {% endif %}
     {% endfor %}
 </div>
-
 
 {%endblock%}
 
@@ -124,8 +124,5 @@
             });
         });
     });
-    </script>
-    <script type="text/javascript">
-
     </script>
 {% endblock %}
