@@ -987,21 +987,17 @@ def redetails(req):
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
-
-
         commentlist = []
-
         for comment in comments:
             if comment.commentedId is None:
                 newcomment = []
                 newcomment.append(comment)
                 commentlist.append(newcomment)
-
         for comlist in commentlist:
             for comment in comments:
                 if str(comlist[0].Uuid) == str(comment.commentedId):
                     comlist.append(comment)
-        alllables = []  # 找出本创意所有的标签
+        alllables = []  # 找出本项目所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
@@ -1013,8 +1009,6 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
-
-
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
@@ -1095,7 +1089,7 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.all().order_by('-Id')
+                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by("StartTime")
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
@@ -1132,7 +1126,7 @@ def deprojects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
+                projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("StartTime")
                 for project in projects:
                     Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
                     alllables = []  # 找出本创意所有的标签
