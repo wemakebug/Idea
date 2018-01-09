@@ -42,9 +42,7 @@ $(document).ready(function () {
                 document.getElementById('user_img').style.src= user_img.src;
             } else if (result['status'] === 0) {
                 alert(result.message)
-            } else {
-
-            }
+            } else {}
         });
     }
 });

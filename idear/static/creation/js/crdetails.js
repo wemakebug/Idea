@@ -16,29 +16,34 @@ function getCookie(name) {
 //获取评论框旁的用户头像
 $(document).ready(function () {
     var user_img = document.getElementById('u-img');
+
     $.post('getimg', function (result) {
         result = JSON.parse(result);
+
         if (result['status'] === 1) {
             var img_path = result['img_path'];
             var message = result['message'];
             user_img.src = '/static' + img_path;
             document.getElementById('user_img').style.src= user_img.src;
         } else if (result['status'] === 0) {
-            alert(result.message)
+            var img_path = 'photos/2017/09/19/user/default.jpg';
+            user_img.src = '/static/photos/' + img_path;
+
         }
     });
 });
 
-$("#rdreport").click(function(){
-    var username = getCookie('username');
-    if (username === null || username === '') {
-        var conf = confirm("请先登录")
-        if(conf==true)
-        window.location.href="login"
-        else
-        window.location.reload()
-    }
-})
+//$("#rdreport").click(function(){
+//    var username = getCookie('username');
+//    if (username === null || username === '') {
+//        var conf = confirm("请先登录")
+//        if(conf==true)
+//        window.location.href="login"
+//        else
+//        window.location.reload()
+//
+//    }
+//})
 
 
 document.getElementById('submit-report').onclick = function(){
@@ -60,10 +65,6 @@ $("#putcomment").click(function(){
   var content = $("#comment-content1").val() //获取评论中输入的内容
   var username = getCookie('username');
   var creationId = $("#creationId").val()
-    if (username === null || username === '') {
-        alert("请先登录")
-        window.location.href="login"
-    }
     if (content=="")    //内容为空
         alert("您的输入为空")
     else

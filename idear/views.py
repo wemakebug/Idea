@@ -1422,11 +1422,32 @@ def read_message(req):
 
 @csrf_exempt
 def allFollow(req):
+    '''
+    总关注页面
+    :param req:
+    :return:
+    '''
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
         user = models.User.objects.get(Email=email)
         follows = models.Follow.objects.filter(Q(user=user))
-        return render_to_response('personal/allFollow.html', {"follows":follows})
+        return render_to_response(['personal/profollow.html ','personal/creationfollow.html'], {"follows": follows})
+    if req.method == 'POST':
+        pass
+
+
+@csrf_exempt
+def profollow(req):
+    '''
+    关注项目页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/profollow.html ', {"follows": follows})
     if req.method == 'POST':
         proId = req.POST["proId"]
         result = {
@@ -1443,6 +1464,81 @@ def allFollow(req):
             print(e)
             result['message'] = e
         return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def creationfollow(req):
+    '''
+    关注灵感页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/creationfollow.html', {"follows": follows})
+    if req.method == 'POST':
+        creationId = req.POST["creationId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            creation = models.Creation.objects.get(Id=creationId)
+            email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=user, creation=creation)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
+
+
+
+@csrf_exempt
+def userfollow(req):
+    '''
+    关注用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('personal/userfollow.html')
+    if req.method == 'POST':
+        pass
+
+
+@csrf_exempt
+def following_user(req):
+    '''
+    我关注用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/following_user.html',{"follows": follows})
+    if req.method == 'POST':
+        pass
+
+@csrf_exempt
+def follower_user(req):
+    '''
+    关注我的用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/follower_user.html',{"follows": follows})
+    if req.method == 'POST':
+        pass
 
 
 @csrf_exempt
