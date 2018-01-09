@@ -62,8 +62,13 @@
             str += "消息等级：" + jsonData.Priority +"<br><br>";
             str += "消息内容：" + jsonData.Content + "<br><br>";
             $(".modal-body").empty().append(str);
+        });
+        $.post("unread_read",{"infoId":infoId},function (result) {
+            result = JSON.parse(result);
+            if(result.status === 0){
+                alert("查看失败！");
+            }
         })
-
     })
 </script>
 {% endblock %}

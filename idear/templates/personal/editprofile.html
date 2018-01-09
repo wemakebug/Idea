@@ -4,61 +4,68 @@
    <title>编辑资料</title>
 {%endblock%}
 {% block CSS %}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/editprofile.css'%}">
 {% endblock %}
 
 {% block content %}
-    <div class="edithole">
-        <div class="editbigbox">
-            <div class="editright">
-                编辑资料
-            </div>
-            <div class="editleft">
-                <input type="button" value="返回主页" id="backhomepage" class="editleft1-1">
+    <div class="edithole container-fluid">
+        <div class="container">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-xs-6" style="text-align: center;line-height:60px">
+                    <h4>编辑资料</h4>
+                </div>
+                <div class="col-xs-6" style="text-align: center;line-height: 60px;">
+                    <input type="button" value="返回主页" id="backhomepage" class="editleft1-1">
+                </div>
             </div>
         </div>
-        <div class="editcontent">
-            <div class="editcontent1-1">
-                <table class="editcontent1-2">
-                    <tr><td id="editcontent1-3"><a href="#" class="editcontent1-3 editcontent11-3" id="editcontent1-33">个人信息</a></td></tr>
-                    <tr><td id="editcontent1-4"><a href="#" class="editcontent1-4" id="editcontent1-44">账号信息</a></td></tr>
-                    <tr><td id="editcontent1-5"><a href="#" class="editcontent1-5" id="editcontent1-55">更改密码</a></td></tr>
-                </table>
-            </div>
+        <div class="container">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">编辑资料</a></li>
+                <li><a href="#">SVN</a></li>
+                <li><a href="#">iOS</a></li>
+                <li><a href="#">VB.Net</a></li>
+                <li><a href="#">Java</a></li>
+                <li><a href="#">PHP</a></li>
+            </ul>
+        </div>
+        <div class="row">
             <div style="width: 1px;height: 690px;background-color:rgba(190,190,190,0.9);float: left; "></div>
-            <div class="editmaincontect publicclass1-1" id="editmaincontect">
-                <div class="accountinf">账号信息</div>
-                <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>
-                <div class="editmaincontect1-1">
-                    <div class="editmaincontect1-2">
-                        手机号码：{% if user.Phone %}{{ user.Phone }}{% else %}{{ "空" }}{% endif %}
-                    </div>
-                    <div class="editmaincontect1-3"><a href="#" class="editmaincontect1-4">修改手机号码</a></div>
-                    <div class="useremail">用户邮箱：{{ user.Email }}</div>
-                    <div class="myheadpicture">
-                        <div class="myheadpicture1-2">
-                            我的头像：
-                        </div>
-                        <div class="myheadpicture1-1">
-                            <img src="{% if user.Img %}/static/photos/{{ user.Img }}{% else %}{% static 'personal/imgs/touxiang.jpg'%}{% endif %}" style="height: 100%;height: 100%;border-radius: 50px;border: 1px solid #96CDCD;">
-                        </div>
-                        <div class="changepicture">
-                            <a href="#" class="changepicture1-1">上传新头像</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="thirdaccount">
-                    第三方账号关联
-                </div>
-                <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>
-                <div class="correlationaccount">
-                    <div class="correlationaccount1-1">QQ</div>
-                    <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联QQ账号</a></div>
-                    <div class="correlationaccount1-1">微博</div>
-                    <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微博账号</a></div>
-                    <div class="correlationaccount1-1">微信</div>
-                    <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微信账号</a></div>
-                </div>
+            <div class="col-xs-12 col-md-8" id="editmaincontect">
+{#                <div class="accountinf">账号信息</div>#}
+{#                <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>#}
+{#                <div class="editmaincontect1-1">#}
+{#                    <div class="editmaincontect1-2">#}
+{#                        手机号码：{% if user.Phone %}{{ user.Phone }}{% else %}{{ "空" }}{% endif %}#}
+{#                    </div>#}
+{#                    <div class="editmaincontect1-3"><a href="#" class="editmaincontect1-4">修改手机号码</a></div>#}
+{#                    <div class="useremail">用户邮箱：{{ user.Email }}</div>#}
+{#                    <div class="myheadpicture">#}
+{#                        <div class="myheadpicture1-2">#}
+{#                            我的头像：#}
+{#                        </div>#}
+{#                        <div class="myheadpicture1-1">#}
+{#                            <img src="{% if user.Img %}/static/photos/{{ user.Img }}{% else %}{% static 'personal/imgs/touxiang.jpg'%}{% endif %}" style="height: 100%;height: 100%;border-radius: 50px;border: 1px solid #96CDCD;">#}
+{#                        </div>#}
+{#                        <div class="changepicture">#}
+{#                            <a href="#" class="changepicture1-1">上传新头像</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="thirdaccount">#}
+{#                    第三方账号关联#}
+{#                </div>#}
+{#                <div style="width: 90%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 5%;"></div>#}
+{#                <div class="correlationaccount">#}
+{#                    <div class="correlationaccount1-1">QQ</div>#}
+{#                    <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联QQ账号</a></div>#}
+{#                    <div class="correlationaccount1-1">微博</div>#}
+{#                    <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微博账号</a></div>#}
+{#                    <div class="correlationaccount1-1">微信</div>#}
+{#                    <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微信账号</a></div>#}
+{#                </div>#}
             </div>
             <div class="personalinformation" id="personalinformation">
                 <div class="personalinf">个人信息</div>
@@ -134,11 +141,14 @@
                 </div>
             </div>
         </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block script %}
-    <script type="text/javascript" src="{% static 'team/js/jquery-1.12.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
     <script type="text/javascript" src="{% static 'idea/js/jquery.cookie.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'personal/js/editprofile.js' %}"></script>
 {% endblock %}
