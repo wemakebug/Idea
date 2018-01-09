@@ -1096,19 +1096,21 @@ def projects(req):
             #  如果是所有项目
             if sign == "all":
                 projects = models.Project.objects.all().order_by('-Id')
-            else:
-                projects = []
-                ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
-                for obj in ProjectLabelObjs:
-                    projects.append(obj.project)
 
-            recruit_all = []
-            for project in projects:
-                recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                recruit_all.append(recruit)
-
-            all_recruit = zip(projects, recruit_all)
-            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all(), "all_recruit": all_recruit})
+            # else:
+            #
+            #     projects = []
+            #     ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
+            #     for obj in ProjectLabelObjs:
+            #         projects.append(obj.project)
+            #
+            # recruit_all = []
+            # for project in projects:
+            #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
+            #     recruit_all.append(recruit)
+            #
+            # all_recruit = zip(projects, recruit_all)
+            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all()[:4],  "projects":projects})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
