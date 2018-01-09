@@ -4,14 +4,26 @@
 //$.cookie("user",3)
 //
 //userId = $.cookie("user")
-$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
+
+/*cookie值转码*/
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+
+
+$("#rdreport").click(function(){
+    var username = getCookie('username');
+    if (username === null || username === '') {
+        var conf = confirm("请先登录")
+        if(conf==true)
+        window.location.href="login"
+        else
+        window.location.reload()
+    }
 })
 
 
@@ -26,21 +38,26 @@ document.getElementById('submit-report').onclick = function(){
         "creationId":creationId
     },function(data){
         alert("提交成功")
+        window.location.reload()
     })
 }
 
 $("#putcomment").click(function(){
   comment = $("#comment-content1").val() //获取评论中输入的内容
-  if (comment=="")    //内容为空
-    alert("您的输入为空")
-  else
-  $.post("comment",{content:$("#comment-content1").val(),creationId:$("#creationId").val()},function(data){
-      if (data == 1)
-        location.reload()
-      else 
-        alert("Sorry, 出现了一些问题")
-})
-
+  var username = getCookie('username');
+    if (username === null || username === '') {
+        alert("请先登录")
+        window.location.href="login"
+    }
+    if (comment=="")    //内容为空
+        alert("您的输入为空")
+    else
+        $.post("comment",{content:$("#comment-content1").val(),creationId:$("#creationId").val()},function(data){
+        if (data == 1)
+            location.reload()
+        else
+            alert("Sorry, 出现了一些问题")
+    })
 })
 
 $("#putcomments").click(function(){
@@ -48,7 +65,7 @@ $("#putcomments").click(function(){
   if (rcomment=="")
     alert("您的输入为空")
   else
-  $.post("rcomment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
+  $.post("comment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
       if (data == 1)
         location.reload()
       else
@@ -127,28 +144,6 @@ $(".home-b-collection").click(function(){
  })
 
  })
-
-/*cookie值转码*/
-function getCookie(name) {
-    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-    if (arr = document.cookie.match(reg))
-        return unescape(arr[2]);
-    else
-        return null;
-}
-
-/*创建人名称*/
-$(document).ready(function () {
-    var username = getCookie('username');
-    if (username === null || username === '') {
-
-    } else {
-        var email = $.cookie('email');
-        var username = $.cookie('username');
-        document.getElementById("username1").innerHTML = username;
-        return;
-    }
-});
 
 
 

@@ -42,7 +42,7 @@
 	width:80px;
 }
 .tags span::before {
-	background: #539092 none repeat scroll 0 0;
+	background: #337ab7 none repeat scroll 0 0;
 	height: 4px;
 	left: -6px;
 	top: 0;
@@ -54,7 +54,7 @@
 	position: absolute;
 }
 .tags span::after {
-	background: #205d67 none repeat scroll 0 0;
+	background: #337ab7 none repeat scroll 0 0;
 	border-radius: 8px 8px 0 0;
 	height: 4px;
 	left: -8px;
@@ -67,7 +67,7 @@
 	position: absolute;
 }
 .tags span {
-	background: #6EABAD none repeat scroll 0 0;
+	background: #488fcc none repeat scroll 0 0;
 	border-radius:0px 8px 5px 5px;
 	display: inline-block;
 	float: right;
@@ -84,7 +84,7 @@
 	color:white;
 }
 .tags span:hover{
-    background: #539092 none repeat scroll 0 0;
+    background: #337ab7 none repeat scroll 0 0;
 }
 .home-b-head {
 	width:100%;
@@ -353,14 +353,14 @@
 	font-size: 30px;
 	font-weight: bold;
 	margin: 4% 4% 0 0;
-	padding: 0px 10px;
+	padding: 0px 14px;
 }
 .user-follow:hover {
-	color:#007776;
+	color:#23527c;
 }
 .line {
     position:fixed;
-    background-color:rgba(95,158,160,0.6);
+    background-color:#7495B7;
     width:3px;
     height:320px;
     float:left;
@@ -405,7 +405,7 @@
 
 }
 .block-title:hover{
-    color:#539092;
+    color:#23527c;
 }
 
 .block-title{
@@ -520,7 +520,7 @@ h5 {
 .comment1-2{
 	width: 100%;
 	height: 2px;
-	background-color: rgba(95,158,160,0.6);
+	background-color: #7495B7;
 }
 .ctop{
     width:100%;
@@ -563,6 +563,7 @@ h5 {
     border:none;
     float:right;
     border-radius:5px;
+    color:white;
 }
 
 .cmain{
