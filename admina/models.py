@@ -149,7 +149,7 @@ class ProjectUser(models.Model):
     Evaluate = models.TextField()
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
     def __unicode__(self):
-        return self.project
+        return self.project.__unicode__()
 
 class Creation(models.Model):
     '''
@@ -182,7 +182,14 @@ class Creation2ProjectLabel(models.Model):
 class Recruit(models.Model):
     '''
     招募表
-    state ： 1 2 3
+    State ：
+        0 可用
+        1 不可用
+    Times :
+        1 第一次招募
+        2 第二次招募
+        3 招募结束
+        0 招募未开始
     '''
     Id = models.AutoField(primary_key=True)
     project = models.ForeignKey(Project, related_name='Recruit_Project_set', null=False)
@@ -274,7 +281,6 @@ class Comment(models.Model):
     Content = models.TextField()
 
     IsUse = models.BooleanField(default=True)
-
     IsAdopt = models.BooleanField(default=False)
 
     Isreply = models.BooleanField(default=False)

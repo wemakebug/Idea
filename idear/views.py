@@ -1088,20 +1088,34 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by("StartTime")
-            else:
-                projects = []
-                ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
-                for obj in ProjectLabelObjs:
-                    projects.append(obj.project)
+                projects = models.Project.objects.all().order_by('-Id')
 
-            recruit_all = []
-            for project in projects:
-                recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                recruit_all.append(recruit)
-
-            all_recruit = zip(projects, recruit_all)
-            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all(), "all_recruit": all_recruit})
+            #     projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by("StartTime")
+            # else:
+            #     projects = []
+            #     ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
+            #     for obj in ProjectLabelObjs:
+            #         projects.append(obj.project)
+            #
+            # recruit_all = []
+            # for project in projects:
+            #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
+            #     recruit_all.append(recruit)
+            #
+            # else:
+            #
+            #     projects = []
+            #     ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
+            #     for obj in ProjectLabelObjs:
+            #         projects.append(obj.project)
+            #
+            # recruit_all = []
+            # for project in projects:
+            #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
+            #     recruit_all.append(recruit)
+            #
+            # all_recruit = zip(projects, recruit_all)
+            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all()[:4],  "projects":projects})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
@@ -1287,8 +1301,8 @@ def editprofile(req):
 def unread_messages(req):
     '''
     未读消息
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == 'GET':
         try:
@@ -1321,8 +1335,8 @@ def unread_messages(req):
 def show_messages(req):
     '''
     展示未读消息详情
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     infoId = models.Message.objects.get(Id=req.POST['infoId'])
     list = {}
@@ -1336,8 +1350,8 @@ def show_messages(req):
 def unread_read(req):
     '''
     未读消息点击查看置为已读
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == 'POST':
         messageId = req.POST["infoId"]
@@ -1355,8 +1369,8 @@ def unread_read(req):
 def read_message(req):
     '''
     已读消息
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == 'GET':
         try:
@@ -1388,11 +1402,32 @@ def read_message(req):
 
 @csrf_exempt
 def allFollow(req):
+    '''
+    总关注页面
+    :param req:
+    :return:
+    '''
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
         user = models.User.objects.get(Email=email)
         follows = models.Follow.objects.filter(Q(user=user))
-        return render_to_response('personal/allFollow.html', {"follows":follows})
+        return render_to_response(['personal/profollow.html ','personal/creationfollow.html'], {"follows": follows})
+    if req.method == 'POST':
+        pass
+
+
+@csrf_exempt
+def profollow(req):
+    '''
+    关注项目页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/profollow.html ', {"follows": follows})
     if req.method == 'POST':
         proId = req.POST["proId"]
         result = {
@@ -1409,6 +1444,81 @@ def allFollow(req):
             print(e)
             result['message'] = e
         return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def creationfollow(req):
+    '''
+    关注灵感页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/creationfollow.html', {"follows": follows})
+    if req.method == 'POST':
+        creationId = req.POST["creationId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            creation = models.Creation.objects.get(Id=creationId)
+            email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=user, creation=creation)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
+
+
+
+@csrf_exempt
+def userfollow(req):
+    '''
+    关注用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('personal/userfollow.html')
+    if req.method == 'POST':
+        pass
+
+
+@csrf_exempt
+def following_user(req):
+    '''
+    我关注用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/following_user.html',{"follows": follows})
+    if req.method == 'POST':
+        pass
+
+@csrf_exempt
+def follower_user(req):
+    '''
+    关注我的用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/follower_user.html',{"follows": follows})
+    if req.method == 'POST':
+        pass
 
 
 @csrf_exempt
@@ -1445,8 +1555,8 @@ def perCreation(req):
 def personal_information(req):
     '''
     个人信息
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == 'GET':
         try:
@@ -1484,9 +1594,15 @@ def personal_information(req):
 
 def account_information(req):
     '''
+<<<<<<< HEAD
     账号信息
     :param req: 
     :return: 
+=======
+    个人信息
+    :param req:
+    :return:
+>>>>>>> 9e174637288ccc200812e1db29f848933f8d7a82
     '''
     if req.method == 'GET':
         if req.method == 'GET':
@@ -1507,9 +1623,15 @@ def account_information(req):
 
 def change_password(req):
     '''
+<<<<<<< HEAD
     更改密码
     :param req: 
     :return: 
+=======
+    个人信息
+    :param req:
+    :return:
+>>>>>>> 9e174637288ccc200812e1db29f848933f8d7a82
     '''
     if req.method == 'GET':
         if req.method == 'GET':
@@ -1524,17 +1646,18 @@ def change_password(req):
             else:
                 return render_to_response('personal/change_password.html', {"user": user})
     if req.method == 'POST':
-        change_password_email = req.POST["change_password_email"]
-        old_password = req.POST["old_password"]
-        new_password = req.POST["new_password"]
-        confirm_password = req.POST["confirm_password"]
-        result = {
-            "status": 1,
-            "string": 'success'
-        }
-        try:
-            user_password = models.User.objects.get(Email=change_password_email)
-            if old_password == user_password.PassWord:
+        pass
+        # change_password_email = req.POST["change_password_email"]
+        # old_password = req.POST["old_password"]
+        # new_password = req.POST["new_password"]
+        # confirm_password = req.POST["confirm_password"]
+        # result = {
+        #     "status": 1,
+        #     "string": 'success'
+        # }
+        # try:
+        #     user_password = models.User.objects.get(Email=change_password_email)
+        #     if old_password == user_password.PassWord:
                 
 
 

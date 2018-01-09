@@ -4,6 +4,7 @@
     <title>开发项目详情</title>
 {% endblock %}
 {% block CSS %}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/dedetails.css' %}">
@@ -37,6 +38,11 @@
                             <span class="plikenum">{{project.Praise_Project_set.count}}</span>
                         </button>
                         <div class="op-tip">
+                            <div class="home-b-more" id="rdmore">
+                                <img src="{% static '/project/imgs/more.png' %}"
+                                     style="width:25px;height:25px;margin-bottom: 4px">
+                                <a>了解更多</a>
+                            </div>
                             <div class="home-b-collection" id="rdcollection">
                                 <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
                                      onclick="changeImage()"
@@ -73,7 +79,7 @@
                 </div>
                 <div class="home-b-user">
                     <div class="user-img">
-                        <img src="/static/photos/{{ creation.user.Img }}">
+                        <img src="/static/photos/{{ project.user.Img }}">
                     </div>
                     <div class="user-message">
                         <a href = "" class="user-name"> 用户姓名</a>
@@ -93,7 +99,7 @@
 
             </div>
             <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
-            <div class="pro-message">
+            <div class="pro-message" style="display:none">
                 <div class="pr-header">
                     <div class="ribbon"><span class="ribbon3">项目进度</span></div>
                 </div>
@@ -101,7 +107,7 @@
                 {{ project.Progress | safe }}
                 </div>
             </div>
-            <div class="pro-message">
+            <div class="pro-message" style="display:none">
                 <div class="pr-header">
                     <div class="ribbon"><span class="ribbon3">项目总结</span></div>
                 </div>
@@ -115,9 +121,10 @@
                 <div class="comment">
 {#                    <div class="comment1-1">评论专区</div>#}
                     <div class="pr-header">
-                    <div class="ribbon"><span class="ribbon3">评论专区</span></div>
+                        <div class="ribbon"><span class="ribbon3">评论专区</span></div>
+                    </div>
                 </div>
-                    <div class="comment1-2"></div>
+
                     <div class="ctop">
                         <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                         <div class="carea">
@@ -185,6 +192,11 @@
         </div>
     </div>
     <div class="middle"></div>
+    {% block script %}
+         <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+         <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
+         <script type="text/javascript" src="{% static  'project/js/dedetails.js' %}"></script>
+    {% endblock %}
 
 
 

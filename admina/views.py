@@ -134,7 +134,7 @@ def user_add(req):
         user_introduction  = postData.get('user_introduction')
 
         if req.FILES:
-            user_img = req.FILES[0]
+            user_img = req.FILES.get('Img')
         else:
             user_img = None
 
@@ -174,7 +174,7 @@ def user_add(req):
 def user_all(req, page=None):
     ItemPerPage = 15
     if req.method == "GET":
-        user_count = models.User.objects.count()
+        user_count = models.User.objects.exclude(Q(Identity=3)).count()
         pages = math.ceil(user_count/ItemPerPage)
         if(page):
             users = models.User.objects.all()[(int(page)-1)*ItemPerPage:(int(page))*ItemPerPage]
@@ -190,7 +190,10 @@ def user_all(req, page=None):
         try:
             print("try to delete user with id= " + deleteId)
             user = models.User.objects.get(Id=deleteId)
-            user.delete()
+            user.Identity = 3
+            resData['status'] = 1
+            resData['message'] = 'success!'
+            return HttpResponse(json.dumps(resData))
         except:
             print("Failed to delete User with id= " + deleteId)
             resData["message"] = "服务器异常"
@@ -346,6 +349,10 @@ def project_add(req):
     :return:
     '''
     if req.method == "GET":
+        if req.COOKIES.get('1111'):
+            2333333333
+        else:
+            return login(req)
         projectLabels = models.ProjectLabel.objects.all().order_by("-Id")
         user = models.User.objects.all()
         return render(req, 'admina/project_add.html', {
@@ -433,7 +440,7 @@ def project_detail(req, id=None):
                 users = models.User.objects.all()
                 projectLabels = models.ProjectLabel.objects.all()
                 project = models.Project.objects.get(Id=id)
-                project_user = models.ProjectUser.objects.get(project=project, Identity=0) # 这里的身份后期要改为 1
+                project_user = models.ProjectUser.objects.filter(project=project, Identity=1) or None # 这里的身份后期要改为 1 目前好多项目的项目用户不存在
                 return render(req, 'admina/project_detail.html', {
                     'project': project,
                     'users': users,
@@ -442,7 +449,7 @@ def project_detail(req, id=None):
                 })
             except Exception as e:
                 print(e)
-                return redirect(reverse('admina:project_all'))
+                return redirect(reverse('admina:project_all', args=(1,)))
         else:
             return redirect(reverse('admina:project_all', args=(1,)))
     else:
@@ -470,14 +477,84 @@ def project_recmanage(req, uid=None):
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])
-def projet_recruit(req, uid=None):
+def project_recruit(req, uid=None):
+    '''
+    招募表管理，若 uid 存在为修改，否则为创建
+    :param req:
+    :param uid:
+    :return:
+    '''
     if req.method == "GET":
         if uid:
             pass
         else:
-            return render(req, "admina/project_recruit.html")
+            try:
+                projects = models.Project.objects.all()
+            except Exception as e:
+                print(e)
+                projects = None
+            return render(req, "admina/project_recruit.html",{
+                'Projects': projects
+            })
     else:
-        pass
+        # uid 不存在未新建， uid存在为修改
+        if uid:
+            pass
+        else:
+            resData = {
+                "status": 1,
+                "message": ""
+            }
+            data = req.POST
+            recruit_project_id = data.get('recruit_project')
+            recruit_start_time = data.get('recruit_start_time')
+            recruit_state = data.get('recruit_state')
+            recruit_end_time = data.get('recruit_end_time')
+            is_use = data.get('is_use')
+            recruit_predict_number = data.get('recruit_predict_number')
+            recruit_number = data.get('recruit_number')
+            recruit_describe = data.get('recruit_describe')
+
+            try:
+                recruit_project = models.Project.objects.get(Id=recruit_project_id)
+
+                if recruit_start_time:
+                    recruit_start_time = recruit_start_time.split('-')
+                    recruit_start_time = datetime.datetime(
+                        int(recruit_start_time[0]),
+                        int(recruit_start_time[1]),
+                        int(recruit_start_time[2]),
+                    )
+                else:
+                    recruit_start_time = None
+                if recruit_end_time:
+                    recruit_end_time = recruit_start_time.split('-')
+                    recruit_end_time = datetime.datetime(
+                        int(recruit_end_time[0]),
+                        int(recruit_end_time[1]),
+                        int(recruit_end_time[2]),
+                    )
+                else:
+                    recruit_end_time = None
+
+                recruit = models.Recruit.objects.create(
+                    project=recruit_project,
+                    StartTime=recruit_start_time,
+                    EndTime=recruit_end_time,
+                    Describe=recruit_describe,
+                    Times=recruit_state,
+                    State=is_use,
+                    PredictNumber=recruit_predict_number,
+                    RecruitedNumber=recruit_number
+                )
+                recruit.save()
+                resData['status'] = 1
+                resData['message'] = 'success'
+
+            except Exception as e:
+                print(e)
+                resData['message'] = str(e)
+            return HttpResponse(JsonResponse(resData))
 
 
 # 标签管理
@@ -612,64 +689,23 @@ def deleteUserLable(req):
 @check_login()
 @require_http_methods(["GET", "POST"])
 @csrf_exempt
-def creation_all(req, page=None, category=None):
+def creation_all(req, page=1, category=None):
     '''
     :param page: 当前查询创意的页数
-    :param category: 当前查询的创意所含标签
     '''
+    page = int(page) or 1
     if req.method == "GET":
-        itemsPerPage = 15
-        pages = math.ceil(float(models.Creation.objects.count()) / float(itemsPerPage)) # 计算页数
+        itemsPerPage = 18
+        pages = math.ceil(float(models.Creation.objects.count()) / float(itemsPerPage))# 计算页数
+        print pages
         Labels = models.ProjectLabel.objects.all()
-        if page:
-            if category:
-                # 页数和分类同时存在
-                Creations = []
-                label = models.ProjectLabel.objects.get(Id=category)
-                pages = models.Creation2ProjectLabel.objects.filter(projectLabel=label).count()
-                Creation2ProjectLabels = models.Creation2ProjectLabel.objects.filter(projectLabel=label)[int(page-1)*itemsPerPage:int(page)*itemsPerPage]
-                for Creation2ProjectLabel in Creation2ProjectLabels:
-                    Creations.append(Creation2ProjectLabel.creation)
-                return render(req, 'admina/creation_all.html', {
-                    "Labels": Labels,
-                    "category": category,
-                    "pages": range(1, int(pages) + 1),
-                    "Creations": Creations,
-                })
-            else:
-                # 只存在页数
-                Creations = models.Creation.objects.all()[(int(page)-1)*itemsPerPage:int(page)*itemsPerPage]
-                return render(req, 'admina/creation_all.html', {
-                    "Labels": Labels,
-                    "category": category,
-                    "pages": range(1, int(pages) + 1),
-                    "Creations":Creations
-                })
-        else:
-            if not category:
-                # 不存在页数同时不存在分类
-                Creations = models.Creation.objects.all()[:itemsPerPage]
-            else:
-                # 不存在页数但存在分类
-                try:
-                    Creations = []
-                    label = models.ProjectLabel.objects.get(Id=category)
-                    Creation2ProjectLabels = models.Creation2ProjectLabel.objects.filter(projectLabel=label)
-                    for Creation2ProjectLabel in Creation2ProjectLabels:
-                        Creations.append(Creation2ProjectLabel.creation)
-                except Exception as e:
-                    print(e)
-                    Creations = models.Creation.objects.all()[:itemsPerPage]
-
-            return render(req, 'admina/creation_all.html',
-                              {
-                                   "Creations": Creations,
-                                   "Labels": Labels,
-                                   "CurrentPage": page,
-                                   "category": category,
-                                   "pages": range(1, int(pages) + 1)
-                               }
-                          )
+        Creations = models.Creation.objects.all()[(page-1)*itemsPerPage:page*itemsPerPage]
+        return render(req, 'admina/creation_all.html', {
+            "Labels": Labels,
+            "category": category,
+            "pages": range(1, int(int(pages) + 1)),
+            "Creations": Creations
+        })
     else:
         resData = {
             "status": 0,
@@ -1090,6 +1126,7 @@ def PhotoGallary(req):
 
 
 
+"""评论相关页面"""
 """评论相关页面"""
 def comment_list(req):
     """用户相关的评论"""
