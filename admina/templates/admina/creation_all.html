@@ -44,12 +44,12 @@
 
                     <div id="gallery" class="media-gal">
                         {% for creation in Creations %}
-                            <div class="images item " >
-                            <a href="#myModal" data-toggle="modal">
+                            <div class="images item " name="creatino_div" id="creation-{{ creation.Id }}">
+                            <a href="#myModal" data-toggle="modal" >
                                 {% if creation.Img %}
-                                     <img src="/static{{ creation.Img.url }}" alt="" id="creation-{{ creation.Id }}" name="creations"/>
+                                     <img src="/static{{ creation.Img.url }}" alt=""  name="creations"/>
                                 {% else %}
-                                     <img src="{% static 'images/gallery/image1.jpg'%}" alt="" id="creation-{{ creation.Id }}" name="creations"/>
+                                     <img src="{% static 'images/gallery/image1.jpg'%}" alt="" name="creations"/>
                                 {% endif %}
 
                             </a>
@@ -62,7 +62,7 @@
                         <ul class="pagination">
                             <li><a href="#">«</a></li>
                             {% for page in pages %}
-                                <li><a href="#">{{ page }}</a></li>
+                                <li><a href="/admina/creation/all/{{ page }}">{{ page }}</a></li>
                             {% endfor %}
                             <li><a href="#">»</a></li>
                         </ul>
@@ -133,7 +133,7 @@
     </script>
 
     <script type="text/javascript">
-        $("img[name='creations']").click(function () {
+        $("div[name='creatino_div']").click(function () {
            var creationid = this.id.split('-')[1];
             $.post(window.location.pathname,{"creationId":creationid},function (res) {
                 res = JSON.parse(res);

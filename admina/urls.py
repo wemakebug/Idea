@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^project/all/(?P<page>(\d+)?)$', views.project_all, name='project_all'),
     url(r'^project/detail/(?P<id>(\d+)?)$', views.project_detail),
     url(r'^project/recmanage/$', views.project_recmanage),
-    url(r'^project/recruit$', views.projet_recruit),
+    url(r'^project/recruit$', views.project_recruit, name='project_recruit'),
     url(r'^project/delete/(?P<deleteId>(\d+))', views.project_delete),
 
     url(r'^user/add$', views.user_add, name='user_add'),
@@ -54,8 +54,7 @@ urlpatterns = [
     url(r'^deletelabel/project$', views.deleteProjectLable),
 
 
-    url(r'^creation/all/(?P<page>(\d+)?)(/)?(?P<category>(\d+)?)$', views.creation_all),
-    url(r'^creation/all/(?P<category>(\d+))?$', views.creation_all, name='creation'),
+    url(r'^creation/all/(?P<page>(\d+)?)$', views.creation_all, name='creation_all'),
     url(r'^creation/add', views.creation_add, name='creation_add'),
     url(r'^creation/delete', views.creation_delete, name='creation_delete'),
     url(r'^creation/modify', views.creation_modify),

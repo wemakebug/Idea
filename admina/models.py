@@ -30,6 +30,7 @@ class User(models.Model):
         0 学生
         1 教师
         2 团队
+
     2.性别表示
         0 男
         1 女
@@ -59,6 +60,7 @@ class User(models.Model):
 class Project(models.Model):
     '''
     项目表
+    1.Status 项目状态描述
     1.Status 项目状态描述
         0 : 暂存
         1 初期招募
@@ -148,8 +150,9 @@ class ProjectUser(models.Model):
     Identity = models.PositiveIntegerField(default=0)
     Evaluate = models.TextField()
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
+
     def __unicode__(self):
-        return self.project
+        return self.project.__unicode__()
 
 class Creation(models.Model):
     '''
@@ -182,17 +185,27 @@ class Creation2ProjectLabel(models.Model):
 class Recruit(models.Model):
     '''
     招募表
-    state ： 1 2 3
+    State ：
+        0 可用
+        1 不可用
+    Times :
+        1 第一次招募
+        2 第二次招募
+        3 招募结束
+        0 招募未开始
     '''
     Id = models.AutoField(primary_key=True)
     project = models.ForeignKey(Project, related_name='Recruit_Project_set', null=False)
     StartTime = models.DateTimeField(auto_now_add=True)
     EndTime = models.DateTimeField(null=True)
     Describe = models.TextField(null=False,)
+
     State = models.PositiveIntegerField(default=0)
     Times = models.PositiveIntegerField(default=1)
+
     PredictNumber = models.PositiveIntegerField(default=1)
     RecruitedNumber = models.PositiveIntegerField(default=0)
+
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):

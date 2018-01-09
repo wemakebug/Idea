@@ -36,109 +36,63 @@
                         <div class="form-group ">
                             <label for="firstname" class="control-label col-lg-2">项目名称</label>
                             <div class="col-lg-5">
-                                <select class="form-control m-bot15">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
+                                <select class="form-control m-bot15" id="recruit_project">
+                                    {% for project in Projects %}
+                                        <option value="{{ project.Id }}">{{ project.ProjectName }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="timepicker" class="control-label col-lg-2">招募开始时间</label>
                             <div class="col-md-5 col-xs-11">
-                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker"/>
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="recruit_start_time"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label col-lg-2" >招募状态</label>
                             <div class="col-lg-10">
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="1"> 未开始
+                                    <input type="radio" name="recruit_state" value="0"> 未开始
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="2"> 初期招募
+                                    <input type="radio" name="recruit_state" value="1"> 初期招募
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="3"> 二次招募
+                                    <input type="radio" name="recruit_state" value="2"> 二次招募
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="4"> 三次招募
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="5"> 招募结束
+                                    <input type="radio" name="recruit_state" value="3"> 招募结束
                                 </label>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="timepicker2" class="control-label col-lg-2">招募结束时间</label>
                             <div class="col-md-5 col-xs-11">
-                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker2"/>
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="recruit_end_time"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label col-lg-2" >身份</label>
+                            <label class="col-sm-2 control-label col-lg-2" >是否可用</label>
                             <div class="col-lg-10">
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="1"> 学生
+                                    <input type="radio" name="is_use" value="0">可用
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="2"> 教师
+                                    <input type="radio" name="is_use" value="1"> 不可用
                                 </label>
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="3"> 团队
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="email" class="control-label col-lg-2">邮箱</label>
-                            <div class="col-lg-5">
-                                <input class="form-control " id="email" name="email" type="email" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">预计人数</label>
-                            <div class="col-lg-5">
-                                <div id="spinner4">
-                                    <div class="input-group" style="width:150px;">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-up btn-primary">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-down btn-warning">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">已招募人数</label>
-                            <div class="col-lg-5">
-                                <div id="spinner4">
-                                    <div class="input-group" style="width:150px;">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-up btn-primary">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-down btn-warning">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-default" type="button">重置</button>
+                            <label for="email" class="control-label col-lg-2">预计招募人数</label>
+                            <div class="col-md-5 col-xs-11">
+                                <input class="form-control form-control-inline input-medium" type="number" value="" id="recruit_predict_number"/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="email" class="control-label col-lg-2">已招募人数</label>
+                            <div class="col-md-5 col-xs-11">
+                                <input class="form-control form-control-inline input-medium" type="number" value="" id="recruit_number"/>
                             </div>
                         </div>
                     </form>
@@ -160,9 +114,13 @@
                         </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-lg-10">
-                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-default" type="button">取消</button>
+                    <div class="col-lg-10" >
+                        <div class="col-md-5 col-xs-11 ">
+                            <button class="btn btn-primary center" type="submit">保存</button>
+                        </div>
+                        <div class="col-md-5 col-xs-11">
+                            <button class="btn btn-default center" type="button">取消</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -189,8 +147,51 @@
 
 {% block lastscript %}  {# lastscript #}
 <script>
+    // 初始化富文本
     jQuery(document).ready(function(){
          $('.wysihtml5').wysihtml5();
+    });
+
+    // 提取数据
+    var recruit_project = $('#recruit_project').val()
+    var recruit_start_time = $('#recruit_start_time').val()
+    var recruit_state = $("input[name='recruit_state'][checked]").val();
+    var recruit_end_time = $('#recruit_end_time').val()
+    var is_use = $("input[name='is_use'][checked]").val();
+    var recruit_predict_number = $('#recruit_predict_number').val()
+    var recruit_number = $('#recruit_number').val()
+    var recruit_describe = $('.wysihtml5').val()
+
+    // 封装数据
+    var data = new FormData();
+    data.append('recruit_project', recruit_project)
+    data.append('recruit_start_time', recruit_start_time)
+    daat.append('recruit_state', recruit_state)
+    daat.append('recruit_end_time', recruit_end_time)
+    daat.append('is_use', is_use)
+    daat.append('recruit_predict_number', recruit_predict_number)
+    daat.append('recruit_number', recruit_number)
+    daat.append('recruit_describe', recruit_describe)
+
+    // 提交数据
+    $.ajax({
+        url: '{% url 'admina:project_recruit' %}',
+        type: 'POST',
+        data: data,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success:function(data){
+            data = JSON.parse(data)
+            if(data.status === 1){
+                alert(data.message)
+            }else {
+                alert(data.message)
+            }
+        },
+        error:function () {
+            alert("服务器异常")
+        }
     });
 </script>
 {% endblock %}
