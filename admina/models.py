@@ -30,7 +30,6 @@ class User(models.Model):
         0 学生
         1 教师
         2 团队
-
     2.性别表示
         0 男
         1 女
@@ -60,7 +59,6 @@ class User(models.Model):
 class Project(models.Model):
     '''
     项目表
-    1.Status 项目状态描述
     1.Status 项目状态描述
         0 : 暂存
         1 初期招募
@@ -150,7 +148,6 @@ class ProjectUser(models.Model):
     Identity = models.PositiveIntegerField(default=0)
     Evaluate = models.TextField()
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
-
     def __unicode__(self):
         return self.project.__unicode__()
 
@@ -198,14 +195,11 @@ class Recruit(models.Model):
     project = models.ForeignKey(Project, related_name='Recruit_Project_set', null=False)
     StartTime = models.DateTimeField(auto_now_add=True)
     EndTime = models.DateTimeField(null=True)
-    Describe = models.TextField(null=False,)
-
+    Describe = models.TextField(null=False)
     State = models.PositiveIntegerField(default=0)
     Times = models.PositiveIntegerField(default=1)
-
     PredictNumber = models.PositiveIntegerField(default=1)
     RecruitedNumber = models.PositiveIntegerField(default=0)
-
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):
@@ -288,6 +282,7 @@ class Comment(models.Model):
 
     IsUse = models.BooleanField(default=True)
     IsAdopt = models.BooleanField(default=False)
+
     Isreply = models.BooleanField(default=False)
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
@@ -371,7 +366,7 @@ class HelpApplication(models.Model):
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
 
     def __unicode__(self):
-        return self.Id
+        return str(self.Id)
 
 
 class UserImageForge(models.Model):

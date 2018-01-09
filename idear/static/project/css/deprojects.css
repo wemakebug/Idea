@@ -336,7 +336,9 @@ body, html {
 	font-size: 15px;
 	text-decoration: none;
 }
-
+.tag img{
+    vertical-align:text-bottom;
+}
 .tag span {
 	display: inline-block;
 	margin-bottom: 5px;

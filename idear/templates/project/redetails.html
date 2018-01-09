@@ -4,10 +4,11 @@
     <title>招募项目详情</title>
 {% endblock %}
 {% block CSS %}
-    <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
      <!-- include summernote css/js-->
     <link href="{% static 'editor/summernote.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
 
 
@@ -49,6 +50,7 @@
                                 <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
                                      onclick="changeImage()"
                                      style="width:25px;height:25px;vertical-align:middle;">
+
                                 <a>关注</a>
                             </div>
                             <div class="home-b-share">
@@ -67,7 +69,29 @@
                             <div class="home-b-report" id="rdpreport">
                                 <img src="{% static '/creation/imgs/report.png' %}"
                                      style="width:20px;height:21px;vertical-align:middle;">
-                                <a>举报</a>
+                                 <a type="button" class="btn btn-primary report" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">举报</a>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                 <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4>请填入举报理由</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form>
+                                      <div class="form-group">
+                                        <label for="message-text" class="control-label">举报理由:</label>
+                                        <textarea class="form-control" id="message-text"></textarea>
+                                      </div>
+                                    </form>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                                    <button type="button" class="btn btn-primary" id="submit-report">提交</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -139,8 +163,10 @@
             <div class="content-footer">
                 {#                评论部分#}
                 <div class="comment">
-                    <div class="comment1-1">评论专区</div>
-                    <div class="comment1-2"></div>
+                    <div class="pr-header">
+                        <div class="ribbon"><span class="ribbon3">评论专区</span></div>
+                    </div>
+
                     <div class="ctop">
                         <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                         <div class="carea">
@@ -214,7 +240,6 @@
          <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
          <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
          <script type="text/javascript" src="{% static  'project/js/redetails.js' %}"></script>
-
          <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
         <!-- include summernote-zn-CN -->
         <script src="{% static 'editor/lang/summernote-zh-CN.js' %}"></script>
@@ -270,8 +295,6 @@
                 case 1: times = "一";
                 break;
                 case 2: times = "二";
-                break;
-                case 3: times = "三";
                 break;
             }
             $("#rdpstatus").text(times);

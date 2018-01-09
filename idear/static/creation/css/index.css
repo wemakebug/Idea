@@ -3,12 +3,11 @@
 	margin:0px;
 	background-color:#f1f1f1
 }
+
 .home-content{
     margin-top:66px;
 }
-.nav_main a{
-    font-size:1.7rem
-}
+
 .content-inner{
     padding-left: 30px !important;
     padding-right: 30px !important;
@@ -32,26 +31,32 @@
 .intro {
 	width:300px;
 	height:230px;
-	background-color:#b0dedb;
+	background-color:#a6d0e4;
 	border-radius: 10px 70px;
 	box-shadow: 10px 10px 2px 2px #bdc3c7;
 	opacity:0.8;
 }
 .tag {
-	width: 100%;
+	width: 95%;
 	height:auto;
 	float:right;
+}
+.tag p{
+    margin-left: 4px;
+    font-size: 18px;
+    float: left;
+    margin-top: 30px;
 }
 .tag hr {
 	border: 0;
 	border-top: 1px solid #c0c5cd;
 	margin-bottom: 15px;
-	margin-top: 10px;
+	margin-top: 65px;
 	position: relative;
 }
 .tag hr:before {
 	content: '';
-	width: 60px;
+	width: 62px;
 	height: 4px;
 	background-color: #57cecd;
 	position: absolute;
@@ -89,7 +94,7 @@
 	font-family:幼圆;
 }
 .block {
-	width:300px;
+	width:310px;
 	height:370px;
 	float:left;
     margin-right: 35px;
@@ -103,7 +108,7 @@
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 .block-user {
-	width:180px;
+	width:172px;
 	height:48px;
 	float:left;
 }
@@ -114,7 +119,7 @@
 
 .name {
 	float:left;
-	width:80px;
+	width:109px;
 	height:20px;
 	overflow:hidden;
 }
@@ -128,15 +133,15 @@ h5 {
 	width: 100%;
 }
 .block-bottom {
-	width:300px;
+	width:310px;
 	height:48px;
 	float:left;
 }
 .block-hot{
     float:right;
-    width:100px;
-    height:40px;
-    margin:20px 18px 0px 0px;
+    width:120px;
+    height:48px;
+    margin-right:18px;
 }
 .usedfollow {
 	float:right;
@@ -194,13 +199,14 @@ h5 {
 
 .follow {
 	float:right;
-	margin: -1px 0 0 5px;
+	margin-top: 22px
 }
 .follow span {
 	font-size:15px;
 }
 .like {
 	float:right;
+	margin-top:22px;
 	margin-right: 5px;
 }
 .like span {
@@ -223,15 +229,15 @@ h5 {
 	-webkit-transform: translate(0px, 5px);
 }
 .add {
-	background-color: #57cecd;
+	background-color: #43bbd6;
 	border: medium none;
-	border-radius: 3px;
-	box-shadow: 0 5px 0 0 #2ca4bf;
+	border-radius: 2px;
+	box-shadow: 3px 3px 2px 3px #2ca4bf;
 	color: #eeeeee;
 	float: left;
 	height: 33px;
-	margin-left: 180px;
-	margin-top: 10px;
+	margin-left: 198px;
+	margin-top: 18px;
 	width: 70px;
 	font-family: 幼圆;
 	font-size:17px;

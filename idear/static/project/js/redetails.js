@@ -16,34 +16,12 @@
                     var content  = $(".note-editable").get(0 ).innerHTML;
                     var user = getCookie('user_email');
                     if(user === null || user ===''){
-                         layer.open({
-                                type: 1,
-                                offset: '200px',
-                                resize: false,
-                                move: false,
-                                area: ['250px', '250px'],
-                                content: '请填入申请理由',
-                                shade: 0.6,
-                                maxmin: false,
-                                anim: 0//0-6的动画形式，-1不开启
-                                ,
-                            });
+                        alert("请您登陆")
                     }
                     else {
                         var projectid = document.getElementById("projectId").value;
                         if (content == "<p><br></p>") {
-                            layer.open({
-                                type: 1,
-                                offset: '200px',
-                                resize: false,
-                                move: false,
-                                area: ['250px', '250px'],
-                                content: '请填入申请理由',
-                                shade: 0.6,
-                                maxmin: false,
-                                anim: 0//0-6的动画形式，-1不开启
-                                ,
-                            });
+                             alert("请输入申请内容")
                         }
                         else {
                             $.post('/idear/recruit_apply', {
@@ -57,12 +35,11 @@
                                     alert("wrong");
                                 }
                             });
-
                         }
                     }
                 };
 
-                 $('.creply').click(function(){
+                $('.creply').click(function(){
                     var ele = this;
                     var parent_div = ele.parentNode.parentNode.parentNode;
                     var reply = parent_div.lastChild;
@@ -100,99 +77,85 @@
                 preport.onclick = function(){
                     var user = getCookie('user_email');
                     if(user === null || user ===''){
-                         layer.open({
-                                type: 1,
-                                offset: '200px',
-                                resize: false,
-                                move: false,
-                                area: ['250px', '250px'],
-                                content: '请您登录',
-                                shade: 0.6,
-                                maxmin: false,
-                                anim: 0//0-6的动画形式，-1不开启
-                                ,
-                            });
+                          alert("请您登陆")
                     }
-                    else{
-                        layer.open({
-                        type: 1,
-                        offset: '200px',
-                        resize: false,
-                        move: false,
-                        area: ['500px', '400px'],
-                        title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
-                        shade: 0.6,
-                        maxmin: false,
-                        anim: 0//0-6的动画形式，-1不开启
-                        , content: '<textarea placeholder="" name="" id="" class="report-text"></textarea> ' +
-                        '<button class="preport" id="pputreport">提交</button> '
-                         }
-                        var preport = document.getElementsByClassName("report-text").value;
-
+                    else {
+                //          $('#exampleModal').on('show.bs.modal', function (event) {
+                //       var button = $(event.relatedTarget) // Button that triggered the modal
+                //       var recipient = button.data('whatever') // Extract info from data-* attributes
+                //       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                //       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                //       var modal = $(this)
+                //       modal.find('.modal-title').text('New message to ' + recipient)
+                //       modal.find('.modal-body input').val(recipient)
+                // })
+                    }
 
                 };
                  //评论举报
 
-                var creport = document.getElementById("rdcreport");
-                creport.onclick = function(){
-                    var user = getCookie('user_email');
-                    if(user === null || user ===''){
-                         layer.open({
-                                type: 1,
-                                offset: '200px',
-                                resize: false,
-                                move: false,
-                                area: ['250px', '250px'],
-                                content: '请您登录',
-                                shade: 0.6,
-                                maxmin: false,
-                                anim: 0//0-6的动画形式，-1不开启
-                                ,
-                            });
-                    }
-                    else {
-                        layer.open({
-                            type: 1,
-                            offset: '200px',
-                            resize: false,
-                            move: false,
-                            area: ['500px', '400px'],
-                            title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
-                            shade: 0.6,
-                            maxmin: false,
-                            anim: 0//0-6的动画形式，-1不开启
-                            ,
-                            content: '<textarea placeholder="" name="" id="comment-content2" class="report-text"></textarea> ' +
-                            '<button class="putreport" id="putreport">提交</button> '
-                        });
-
-                    }
-
-                }
+                // var creport = document.getElementById("rdcreport");
+                // creport.onclick = function(){
+                //     var user = getCookie('user_email');
+                //     if(user === null || user ===''){
+                //          layer.open({
+                //                 type: 1,
+                //                 offset: '200px',
+                //                 resize: false,
+                //                 move: false,
+                //                 area: ['250px', '250px'],
+                //                 content: '请您登录',
+                //                 shade: 0.6,
+                //                 maxmin: false,
+                //                 anim: 0//0-6的动画形式，-1不开启
+                //                 ,
+                //             });
+                //     }
+                //     else {
+                //         layer.open({
+                //             type: 1,
+                //             offset: '200px',
+                //             resize: false,
+                //             move: false,
+                //             area: ['500px', '400px'],
+                //             title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                //             shade: 0.6,
+                //             maxmin: false,
+                //             anim: 0//0-6的动画形式，-1不开启
+                //             ,
+                //             content: '<textarea placeholder="" name="" id="comment-content2" class="report-text"></textarea> ' +
+                //             '<button class="putreport" id="putreport">提交</button> '
+                //         });
+                //
+                //     }
+                //
+                // }
 
                 //评论回复举报
-                var rcreport = document.getElementById("rdrcreport");
-                rcreport.onclick = function(){
-                    layer.open({
-                        type: 1,
-                        offset: '200px',
-                        resize: false,
-                        move: false,
-                        area: ['500px', '400px'],
-                        title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
-                        shade: 0.6,
-                        maxmin: false,
-                        anim: 0//0-6的动画形式，-1不开启
-                        , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
-                        '<button class="putreport" id="putreport">提交</button> '
-                    });
-                }
+                // var rcreport = document.getElementById("rdrcreport");
+                // rcreport.onclick = function(){
+                //     layer.open({
+                //         type: 1,
+                //         offset: '200px',
+                //         resize: false,
+                //         move: false,
+                //         area: ['500px', '400px'],
+                //         title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                //         shade: 0.6,
+                //         maxmin: false,
+                //         anim: 0//0-6的动画形式，-1不开启
+                //         , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+                //         '<button class="putreport" id="putreport">提交</button> '
+                //     });
+                // }
+
                 function getCookie(name) {
                     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
                     if (arr = document.cookie.match(reg))
                         return unescape(arr[2]);
                     else
                         return null;
-}
+                }
+
 
 

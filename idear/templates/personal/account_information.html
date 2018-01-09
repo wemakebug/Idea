@@ -1,0 +1,60 @@
+{%extends 'personal/editprofile.html'%}
+{% load static %}
+{%block title%}
+   <title>账号信息</title>
+{%endblock%}
+
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap-theme.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/editprofile.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/account_information.css'%}">
+{%endblock%}
+
+{%block personalcontent%}
+    <div class="container">
+        <div class="row" style="margin-top: 20px;color: rgba(0,0,0,0.6);">
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 ">
+                手机号码：{% if user.Phone %}{{ user.Phone }}{% else %}{{ "空" }}{% endif %}
+            </div>
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 "><a href="#" class="editmaincontect1-4">修改手机号码</a></div>
+        </div>
+        <div class="row" style="margin-top: 20px;color: rgba(0,0,0,0.6);">
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 ">用户邮箱：{{ user.Email }}</div>
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 "></div>
+        </div>
+        <div class="row" style="margin-top: 20px;color: rgba(0,0,0,0.6);">
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 ">
+                我的头像：
+            </div>
+            <div class="col-xs-6 col-sm-3 ">
+                <div style="width: 60px;height: 60px;float: left;">
+                    <img src="{% if user.Img %}/static/photos/{{ user.Img }}{% else %}{% static 'personal/imgs/touxiang.jpg'%}{% endif %}" style="height: 100%;height: 100%;border-radius: 50px;border: 1px solid #96CDCD;">
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 ">
+                <a href="#" class="changepicture1-1">上传新头像</a>
+            </div>
+        </div>
+        <div class="thirdaccount">
+            第三方账号关联
+        </div>
+        <div style="width: 68%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 20%;"></div>
+        <div class="correlationaccount">
+            <div class="correlationaccount1-1">QQ</div>
+            <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联QQ账号</a></div>
+            <div class="correlationaccount1-1">微博</div>
+            <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微博账号</a></div>
+            <div class="correlationaccount1-1">微信</div>
+            <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微信账号</a></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

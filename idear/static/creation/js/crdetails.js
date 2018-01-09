@@ -4,14 +4,40 @@
 //$.cookie("user",3)
 //
 //userId = $.cookie("user")
-$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
+
+/*cookie值转码*/
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+//获取评论框旁的用户头像
+$(document).ready(function () {
+    var user_img = document.getElementById('u-img');
+    $.post('getimg', function (result) {
+        result = JSON.parse(result);
+        if (result['status'] === 1) {
+            var img_path = result['img_path'];
+            var message = result['message'];
+            user_img.src = '/static' + img_path;
+            document.getElementById('user_img').style.src= user_img.src;
+        } else if (result['status'] === 0) {
+            alert(result.message)
+        }
+    });
+});
+
+$("#rdreport").click(function(){
+    var username = getCookie('username');
+    if (username === null || username === '') {
+        var conf = confirm("请先登录")
+        if(conf==true)
+        window.location.href="login"
+        else
+        window.location.reload()
+    }
 })
 
 
@@ -26,21 +52,28 @@ document.getElementById('submit-report').onclick = function(){
         "creationId":creationId
     },function(data){
         alert("提交成功")
+        window.location.reload()
     })
 }
 
 $("#putcomment").click(function(){
-  comment = $("#comment-content1").val() //获取评论中输入的内容
-  if (comment=="")    //内容为空
-    alert("您的输入为空")
-  else
-  $.post("comment",{content:$("#comment-content1").val(),creationId:$("#creationId").val()},function(data){
-      if (data == 1)
-        location.reload()
-      else 
-        alert("Sorry, 出现了一些问题")
-})
-
+  var content = $("#comment-content1").val() //获取评论中输入的内容
+  var username = getCookie('username');
+  var creationId = $("#creationId").val()
+    if (username === null || username === '') {
+        alert("请先登录")
+        window.location.href="login"
+    }
+    if (content=="")    //内容为空
+        alert("您的输入为空")
+    else
+        $.post("comment",{
+        "content":content,
+        "username":username,
+        "creationId":creationId
+        },function(data){
+            location.reload()
+    })
 })
 
 $("#putcomments").click(function(){
@@ -48,13 +81,9 @@ $("#putcomments").click(function(){
   if (rcomment=="")
     alert("您的输入为空")
   else
-  $.post("rcomment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
-      if (data == 1)
-        location.reload()
-      else
-        alert("Sorry, 出现了一些问题")
-})
-
+  $.post("comment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
+    location.reload()
+  })
 })
 
 
@@ -127,8 +156,6 @@ $(".home-b-collection").click(function(){
  })
 
  })
-
-
 
 
 

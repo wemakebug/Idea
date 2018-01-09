@@ -40,7 +40,15 @@ $("#create_btn_draft").click(function(){
 
 $("#create_btn_ok").click(function(){
     var name = $(".input_title").val();
+    if(name == ""){
+        alert("请添加创意标题")
+        return
+    }
     var coverMap = $(".file-preview-image").attr("src"); //封面图
+    if(!coverMap){
+        alert("请添加封面图")
+        return
+    }
     var labels = ''
     var labels_all = document.getElementsByName("content_pro_label")
     for(var i = 0;i < labels_all.length;i ++){
@@ -48,6 +56,14 @@ $("#create_btn_ok").click(function(){
             labels+=labels_all[i].innerHTML+"*"
     }
     var describe = $(".note-editable").get(0).innerHTML;
+    if(describe="<p><br></p>"){
+        alert("请添加创意内容")
+        return
+    }
+    if(labels == ""){
+        alert("请添加创意标签")
+        return
+    }
     var isUse = $('#create_btn_ok').val()
     $.post("crcreate",{
         "name":name,

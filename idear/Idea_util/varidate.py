@@ -33,6 +33,7 @@ def varidate_emial(str, max_length=20):
         return True
     else:
         return False
+
 def remove_script(value):
     '''去除文本中包含的script标签'''
     re_script = re.compile('<\s*script[^>]*>[^<]*<\s*/\s*script\s*>', re.I)

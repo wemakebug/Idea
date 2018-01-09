@@ -4,86 +4,96 @@
     <title>招募项目</title>
 {% endblock %}
 {% block CSS %}
-    <link rel="stylesheet" href="{% static 'project/css/recruit.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'project/css/buttons.css' %}">
-    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'project/css/recruit.css' %}">
+{#    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">#}
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
 {% endblock %}
 {% block content %}
-    <div class="bg_all">
-        <div class="bg_left">
-        <div class="bg_project">
-            {% for project,recruits in all_recruit %}
-                {% for recruit in recruits %}
-                    <div class="project_top">
-                        <div style="display:none;width:100%;height: 100%">{{ project.Id }}</div>
-                        <a href="redetails?projectId={{ project.Id }}">
-                            <div class="project_top_1_left">
-                                <img class="project_img" src="../../static/photos/{{ project.Img }}">
-                            </div>
-                            <div class="project_top_1_right">
-                                <span class="project_top_1_right-span">{{ project.ProjectName }}</span>
-                                <div class="project_Text_Bg">
-                                    <li class="FixText">截止时间:<p
-                                            class="FixText-right">{{ recruit.EndTime | date:"Y/m/d" }}</p></li>
-                                    <li class="FixText">招募状态：<p class="FixText-right">{{ recruit.State }}</p></li>
-{#                                    此处通过js显示项目招募状态#}
+    <div class="home-content">
+        <div class="content_inner">
+            <div class="container-fluid">
+
+                    <div class="home-left">
+                        {% for project in projects%}
+                            <div class="block" id="block">
+
+                                <div class="block-title">
+                                    <h5>{{ project.ProjectName }}</h5>
+                                </div>
+                                <div class="block-img">
+                                    <a href="redetails?projectId={{ project.Id }}">
+                                    <img class="project_img" src="../../static/photos/{{ project.Img }}">
+                                    </a>
+                                </div>
+                                <div class="block-status">
+                                     <span>项目类型：招募项目</span>
+                                </div>
+                                <div class="block-tag">
+                                    <span class="project_middle_fix">项目标签：</span>
+                                    {% for re in projectLabels %}
+                                    <span class="project_middle_icon"></span>
+                                    <span class="project_middle_text">{{re.ProjectLabelName }}</span>
+                                    {% endfor %}
                                 </div>
                             </div>
-                        </a>
-                        <div class="project_middle">
-                            <span class="project_middle_fix">所需人员标签：</span>
-                            {% for re in projectLabels %}
-                            <span class="project_middle_icon"></span>
-                            <span class="project_middle_text">{{re.ProjectLabelName }}</span>
-                            {% endfor %}
-                        <br>
-                        </div>
-                        <div class="project_bottom_top">
-                            <p class="project_top_1_text">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ project.Description }}</p>
-                            <div class="progress">
-                                <span class="green {{ project.Id }}"><span><li>当前招募进度：{{ recruit.RecruitedNumber }}/{{ recruit.PredictNumber }}</li></span></span>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                    <script>
-                        //计算进度条宽度
-                        $(function () {
-                            var project_people = {{ recruit.RecruitedNumber }} /{{ recruit.PredictNumber }};
-                            var project_percent = project_people * 100;
-                            var project_plan = project_percent + '%';
-                            $(".{{ project.Id }}").add().css("width", project_plan);
-                        });
-                    </script>
-                {% endfor %}
-            {% endfor %}
-        <a class="more">加载更多</a>
-        </div>
-        </div>
-            <div class="home-right">
-            <div class="intro">
-                <img src="{% static 'creation/imgs/light.png' %}"
-                     style="width:40px;height:40px;margin:-16px 0px 26px -10px">
-                <img src="{% static 'idea/imgs/idea_logo.png' %}"
-                     style="width:60px;height:40px;margin:0px 0px -10px 4px">
-                <p>&nbsp;&nbsp;&nbsp;创意是传统的叛逆，是打破常规的哲学，是思维碰撞，智慧对接，是具有新颖性和创造性的想法。来这里寻找和发布属于你的创意灵感！</p>
-                <button class="add">添加</button>
-            </div>
+                     <div class="home-right">
+             <div class="best-pro">
+                <div class="ribbon"><span class="ribbon2">金<br>牌<br>项<br>目</span></div>
+                <div class="pro-logo">
+                    <img src="../../static/idea/imgs/best_img.png">
+                </div>
+                <div class="pro-label"><span>大数据</span><span>互联网</span></div>
+                <div class="pro-label pro-name">项目名称</div>
+                <div class="pro-label pro-des">
+                     <p>今年六月，世界娱乐巨头米高梅集团（MGM Resorts）宣布扩大与麦肯的合作，将旗下多个娱乐场所和度假村纳入了创意清单之中。</p>
+                </div>
+                <div class="pro-bottom">
+                    <img class="pro-like" src="{% static 'project/imgs/like1.svg' %}" style="width:25px;height:25px;">
+                    <span>1111</span>
+                    <img class="pro-like" src="{% static 'project/imgs/reply.svg' %}" style="width:23px;height:20px;margin-top:5px">
+                    <span>1111</span>
+                    <img class="pro-like" src="{% static 'creation/imgs/collection0.png' %}" style="width:20px;height:20px;margin-top:2px">
+                     <span>1111</span>
+                </div>
+             </div>
+             <div class="tag">
+                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                    <span>状态</span>
+                    <hr>
+                    <a href="project?sign=all" sign="all"><span class="allsign">所有</span></a>
+                    <a href="project?sign=recruit " sign="recruit "><span class="allsign">招募项目</span></a>
+                    <a href="project?sign=all" sign="all"><span class="allsign">开发项目</span></a>
 
-            <div class="tag">
+                </div>
+             <div class="tag">
                 <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                 <span>标签</span>
                 <hr>
-                <a href="recruit?sign=all" sign="all"><span class="allsign">所有</span></a>
+
                 {% for obj in projectLabels %}
-                    <a href="recruit?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
+                    <a href="project?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
                 {% endfor %}
             </div>
+             <div class="tag">
+                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                    <span>类型</span>
+                    <hr>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">开始时间</span></a>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">点赞</span></a>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">评论</span></a>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">最近更新</span></a>
+                </div>
+
+        </div>
+
+
         </div>
     </div>
-
+     <div style="height:50px"></div>
 {% endblock %}
 {% block script %}
 
