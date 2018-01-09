@@ -8,14 +8,24 @@
     float: left;
     margin-top: 30px;
 }
+
 .operationItem>ul li{
     margin-bottom: 30px;
 }
-.operationItem>ul li a{
+.operationItem>ul li a {
     color:gray;
 }
 .operationItem>ul li a:hover{
     color: black;
+}
+.proSort{
+    /*display: none;*/
+    margin-top:10px;
+    margin-left: 20px;
+}
+.userSort{
+    margin-top:10px;
+    margin-left: 20px;
 }
 .all_content{
     width: 67%;
@@ -23,10 +33,13 @@
     min-height: 400px;
     float: left;
     margin-left: 17%;
+    margin-bottom: 20px;
 }
 .mainContentPro{
-    width: 45%;
-    height: 180px;
+    /*width: 20.9%;*/
+    /*height: 275px;*/
+    width: 16%;
+    height: 230px;
     background: #EFECEA;
     float: left;
     margin-left: 3%;
@@ -34,8 +47,8 @@
     /*box-shadow: 2px 2px 0px #DDDDDD;*/
 }
 .proCoverImg{
-    width: 24%;
-    margin-left: 2%;
+    width: 90%;
+    margin-left: 5%;
     float: left;
     height: 74%;
     margin-top: 4%;
@@ -54,123 +67,21 @@
 .proContent{
     width: 70%;
     float: right;
-    margin-right: 3%;
-    height: 77%;
+    margin-right: 15%;
+    height: 10%;
     margin-top: 2%;
-}
-.proName{
-    min-width: 50%;
-    width:auto;
-    height: 18%;
-    margin-top: 2.5%;
-    float: left;
-    margin-left: 1%;
-    max-width:300px ;
+    display:block;
     overflow: hidden;
+    text-align:center;
+    line-height: 27.5px;
 }
-.proName>p{
+.proContent>p{
     font-size: 1em;
     color: #334252;
 }
-.proContentShow{
-    float: left;
-    margin-left: 1%;
-    width: 98%;
-    height: 45.5%;
-    overflow: hidden;
-    font-size: 0.9em;
-    color: #334252;
-    text-overflow: ellipsis;
-}
-.proContentShow a{
-    width: 100%;
-    height: 100%;
-}
-.progressBar{
-    width: 98%;
-    height: 23%;
-    float: left;
-    margin-left: 1%;
-    margin-top: 1%;
-}
-
-.progress {
-    height: 20px;
-    border-radius: 10px;
-    width: 80%;
-    float:left;
-    margin-top: 3%;
-    overflow: hidden;
-    bottom: 10px;
-    background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
-}
-
-.progress > span {
-    position: relative;
-    float: left;
-    /*margin: -5% 20px;*/
-    min-width: 30px;
-    height: 18px;
-    z-index: 10;
-    line-height: 16px;
-    text-align: right;
-    background: #cccccc;
-    border: 1px solid;
-    border-color: #bfbfbf #b3b3b3 #9e9e9e;
-    border-radius: 10px;
-    background-image: -webkit-linear-gradient(top, #f0f0f0 0%, #dbdbdb 70%, #cccccc 100%);
-    background-image: -moz-linear-gradient(top, #f0f0f0 0%, #dbdbdb 70%, #cccccc 100%);
-    background-image: -o-linear-gradient(top, #f0f0f0 0%, #dbdbdb 70%, #cccccc 100%);
-    background-image: linear-gradient(to bottom, #f0f0f0 0%, #dbdbdb 70%, #cccccc 100%);
-    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.progress > span > span {
-    padding: 0 8px;
-    font-size: 11px;
-    font-weight: bold;
-    color: #404040;
-    color: rgba(0, 0, 0, 0.7);
-    text-shadow: 0 1px rgba(255, 255, 255, 0.4);
-    /*text-align: center;*/
-    left: 0;
-    position: absolute;
-    z-index: 999;
-    overflow: auto;
-}
-.progress > span > span>li{
-    /*position: absolute;*/
-    width: 200px;
-    height: 100%;
-    display: block;
-    z-index: 222;
-
-}
-.progress > span:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    height: 18px;
-    background: url('../imgs/progress.png') 0 0 repeat-x;
-    border-radius: 10px;
-}
-.progress .green {
-  background: #85c440;
-  border-color: #78b337 #6ba031 #568128;
-  background-image: -webkit-linear-gradient(top, #b7dc8e 0%, #99ce5f 70%, #85c440 100%);
-  background-image: -moz-linear-gradient(top, #b7dc8e 0%, #99ce5f 70%, #85c440 100%);
-  background-image: -o-linear-gradient(top, #b7dc8e 0%, #99ce5f 70%, #85c440 100%);
-  background-image: linear-gradient(to bottom, #b7dc8e 0%, #99ce5f 70%, #85c440 100%);
-}
-
 .deletePro{
     width: 30px;
-    height: 30px;
+    height: 25px;
     float: right;
     margin-left: 64%;
     border:none;
@@ -182,7 +93,9 @@
 ::before{
     margin-left: -5px;
 }
-
+.addsty{
+    color: black !important;
+}
 
 
 

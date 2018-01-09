@@ -1,0 +1,60 @@
+.userClass{
+    width: 80%;
+    height: 50px;
+    margin-top: 10px;
+}
+.following{
+    width: 40%;
+    height: 90%;
+    float: left;
+    margin-left: 9%;
+}
+.following>a p{
+    width: 50%;
+    float: right;
+    height: 100%;
+    background: #e0e0e0;
+    text-align: center;
+    line-height: 45px;
+    color: gray;
+}
+.following>a p:hover{
+    color: black;
+}
+.follower{
+    width: 40%;
+    height: 90%;
+    float: right;
+    margin-right: 9%;
+}
+.follower>a p{
+    width: 50%;
+    float: left;
+    height: 100%;
+    background: #e0e0e0;
+    text-align: center;
+    line-height: 45px;
+    color: gray;
+}
+.follower>a p:hover{
+    color:black;
+}
+.userContent{
+    width: 100%;
+    min-height: 500px;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
