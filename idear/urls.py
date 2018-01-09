@@ -36,7 +36,7 @@ urlpatterns = [
     url(r'^homepage$', views.homepage),
     url(r'^unread_messages$', views.unread_messages),
     url(r'^show_messages$', views.show_messages),
-    url(r'^examine_messages$', views.examine_messages),
+    url(r'^unread_read$', views.unread_read),
     url(r'^read_message$', views.read_message),
     url(r'^allFollow$',views.allFollow),
     url(r'^editprofile$',views.editprofile),
