@@ -5,7 +5,7 @@
 {% endblock %}
 {% block CSS %}
 
-    <link rel="stylesheet" href="{% static 'base/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
      <!-- include summernote css/js-->
     <link href="{% static 'editor/summernote.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
@@ -69,7 +69,7 @@
                             <div class="home-b-report" id="rdpreport">
                                 <img src="{% static '/creation/imgs/report.png' %}"
                                      style="width:20px;height:21px;vertical-align:middle;">
-                                 <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">举报</a>
+                                 <a type="button" class="btn btn-primary report" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">举报</a>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                                  <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -163,8 +163,10 @@
             <div class="content-footer">
                 {#                评论部分#}
                 <div class="comment">
-                    <div class="comment1-1">评论专区</div>
-                    <div class="comment1-2"></div>
+                    <div class="pr-header">
+                        <div class="ribbon"><span class="ribbon3">评论专区</span></div>
+                    </div>
+
                     <div class="ctop">
                         <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
                         <div class="carea">
@@ -293,8 +295,6 @@
                 case 1: times = "一";
                 break;
                 case 2: times = "二";
-                break;
-                case 3: times = "三";
                 break;
             }
             $("#rdpstatus").text(times);
