@@ -167,7 +167,7 @@
                         <img class="u-img" id="u-img" src="/static/photos/{{ user.Img }}">
                         <div class="carea">
                             <div class="tocomment">
-                                <textarea placeholder="输入评论内容" name="" id="comment-content1" class="comment-text"></textarea>
+                                <textarea placeholder="输入评论内容" autocomplete="off" name="" id="comment-content1" class="comment-text"></textarea>
                             </div>
                             <button class="putcomment" id="putcomment">评论</button>
                         </div>
@@ -194,7 +194,7 @@
                                          <p>{{commentlist|firstcommentcontent}}</p>
                                       </div>
                                       <div class="commentreply commentreplys" id="commentreplys">
-                                          <textarea placeholder="回复" name="" id="comment-content2" class="commentreply-text"></textarea>
+                                          <textarea placeholder="回复" name="" autocomplete="off" id="comment-content2" class="commentreply-text"></textarea>
                                           <button class="putcomment putcomments" id="putcomments" backcommentId = {{commentlist|firstcomment|firstcommentUuid}} >回复</button>
                                       </div>
                                   </div>
@@ -217,7 +217,7 @@
                                           <p id="rdr-content">{{comment.Content}}</p>
                                 </div>
                                 <div class="commentreply commentreplys" id="rcommentreplys">
-                                          <textarea placeholder="回复" name="" id="rcomment-content2" class="commentreply-text"></textarea>
+                                          <textarea placeholder="回复" name="" autocomplete="off" id="rcomment-content2" class="commentreply-text"></textarea>
                                           <button class="putcomment" id="rputcomments" >回复</button>
                                       </div>
                                   </div>

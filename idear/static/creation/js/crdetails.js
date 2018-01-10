@@ -84,7 +84,6 @@ $(".putcomments").click(function(){
   var username = getCookie('username');
   var creationId = $("#creationId").val()
   var commentedId = $(this).attr("backcommentId");
-  alert(commentedId)
   if (content == "")
     alert("您的输入为空")
   else
