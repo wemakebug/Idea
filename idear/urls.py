@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^ordinance',views.ordinance),
     url(r'^release',views.release),
     url(r'^comment',views.comment),
+    url(r'^rcomment',views.rcomment),
     url(r'^teamattend$',views.teamattend),
     url(r'star', views.star),
 

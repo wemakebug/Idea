@@ -920,9 +920,9 @@ def comment(req):
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
             creationId = req.POST["creationId"]
-            content = req.POST["content"]
             creation = models.Creation.objects.get(pk = creationId)
-            models.Comment.objects.create(user = user ,creation = creation , Content = content)
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, creation=creation, Content=content, Uuid=uuid.uuid4())
             result = {
                 'status': 1,
                 'message': 'success',
@@ -936,7 +936,42 @@ def comment(req):
             result['message'] = str(e)
             return HttpResponse(json.dumps(result))
 
+@csrf_exempt
+def rcomment(req):
+    '''
+    创意评论回复
+    :param req:
+    :return:
+    '''
+    if req.method =='GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
+    if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(pk = creationId)
+            commentedId = req.POST["commentedId"]
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, creation=creation, Content=content, commentedId=commentedId, Uuid=uuid.uuid4())
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
 
+            return HttpResponse(json.dumps(result))
+
+
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
 
 ''' 创意灵感 页面相关部分结束'''
