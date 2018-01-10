@@ -66,6 +66,7 @@ urlpatterns = [
     url(r'^ordinance',views.ordinance),
     url(r'^release',views.release),
     url(r'^comment',views.comment),
+    url(r'^rcomment',views.rcomment),
     url(r'^teamattend$',views.teamattend),
     url(r'star', views.star),
 
@@ -80,6 +81,7 @@ urlpatterns = [
     url(r'^personal_information$', views.personal_information),
     url(r'^account_information$', views.account_information),
     url(r'^change_password$', views.change_password),
+    url(r'^personal_label$', views.personal_label),
 
 
     # 工具函数
