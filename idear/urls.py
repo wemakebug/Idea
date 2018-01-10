@@ -45,6 +45,7 @@ urlpatterns = [
     url(r'^following_user$',views.following_user),
     url(r'^follower_user$',views.follower_user),
     url(r'^editprofile$',views.editprofile),
+
     url(r'^apply$', views.apply),
     url(r'^project$', views.projects),
     url(r'project_comment', views.project_comment),
@@ -52,6 +53,8 @@ urlpatterns = [
     url(r'^deprojects$', views.deprojects),
     url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
+    url(r'^recruit$', views.recruit),
+    # url(r'^starttime$', views.starttime),
     url(r'^crdetails$', views.crdetails),
     url(r'^crcreate$',views.crcreate),
     url(r'^crreport$',views.crreport),
@@ -63,6 +66,7 @@ urlpatterns = [
     url(r'^ordinance',views.ordinance),
     url(r'^release',views.release),
     url(r'^comment',views.comment),
+    url(r'^rcomment',views.rcomment),
     url(r'^teamattend$',views.teamattend),
     url(r'star', views.star),
 
@@ -77,6 +81,7 @@ urlpatterns = [
     url(r'^personal_information$', views.personal_information),
     url(r'^account_information$', views.account_information),
     url(r'^change_password$', views.change_password),
+    url(r'^personal_label$', views.personal_label),
 
 
     # 工具函数

@@ -918,9 +918,9 @@ def comment(req):
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
             creationId = req.POST["creationId"]
-            content = req.POST["content"]
             creation = models.Creation.objects.get(pk = creationId)
-            models.Comment.objects.create(user = user ,creation = creation , Content = content)
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, creation=creation, Content=content, Uuid=uuid.uuid4())
             result = {
                 'status': 1,
                 'message': 'success',
@@ -934,7 +934,42 @@ def comment(req):
             result['message'] = str(e)
             return HttpResponse(json.dumps(result))
 
+@csrf_exempt
+def rcomment(req):
+    '''
+    创意评论回复
+    :param req:
+    :return:
+    '''
+    if req.method =='GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
+    if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(pk = creationId)
+            commentedId = req.POST["commentedId"]
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, creation=creation, Content=content, commentedId=commentedId, Uuid=uuid.uuid4())
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
 
+            return HttpResponse(json.dumps(result))
+
+
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
 
 ''' 创意灵感 页面相关部分结束'''
@@ -980,6 +1015,9 @@ def redetails(req):
     if req.method == 'GET':
         projectId = req.GET['projectId']
         project = models.Project.objects.get(Id=projectId)
+        user = models.ProjectUser.objects.get(project_id=projectId)
+        print(user.user)
+        user = user.user
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
@@ -1007,7 +1045,7 @@ def redetails(req):
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
         return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
+                                   "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
 
     if req.method == "POST":
@@ -1025,7 +1063,8 @@ def project_comment(req):
     status = 0
     if req.method == 'POST':
         try:
-            username = "chris"
+            useremail = req.session.get('user_email')
+            username = models.User.objects.get(Email=useremail)
             projectId = req.POST["projectId"]
             content = req.POST["content"]
             user = models.User.objects.get(UserName=username)
@@ -1086,33 +1125,16 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.all().order_by('-Id')
+                projects = models.Project.objects.all().order_by('Id')
 
-            #     projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by("StartTime")
-            # else:
-            #     projects = []
-            #     ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
-            #     for obj in ProjectLabelObjs:
-            #         projects.append(obj.project)
-            #
-            # recruit_all = []
-            # for project in projects:
-            #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
-            #     recruit_all.append(recruit)
-            #
-            # else:
-            #
-            #     projects = []
-            #     ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
-            #     for obj in ProjectLabelObjs:
-            #         projects.append(obj.project)
-            #
-            # recruit_all = []
-            # for project in projects:
-            #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
-            #     recruit_all.append(recruit)
-            #
-            # all_recruit = zip(projects, recruit_all)
+
+
+            else:
+                projects = []
+                ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
+                for obj in ProjectLabelObjs:
+                    projects.append(obj.project)
+
             return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all()[:4],  "projects":projects})
         else:
             id = req.POST['projectId']
@@ -1124,6 +1146,28 @@ def projects(req):
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 ''' 招募项目相关页面结束'''
+@csrf_exempt
+def recruit(req):
+    '''
+    招募项目一级二级页面项目显示
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by('Id')
+
+            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all()[:4],  "projects":projects})
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/recruit.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 ''' 开发项目相关页面开始'''
 
@@ -1138,22 +1182,8 @@ def deprojects(req):
             #  如果是所有项目
             if sign == "all":
                 projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("StartTime")
-                for project in projects:
-                    Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
-                    alllables = []  # 找出本创意所有的标签
-                    for label in Labels:
-                        alllables.append(label.projectLabel.Id)
-                    alllables = list(set(alllables))
-                    project2projectLabel = models.Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
 
-            else:
-                projects = []
-                ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
-                for obj in ProjectLabelObjs:
-                    projects.append(obj.project)
-
-
-            return render_to_response('project/deprojects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels": models.Project2ProjectLabel})
+            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects})
 
         else:
             id = req.POST['projectId']
@@ -1280,8 +1310,8 @@ def editprofile(req):
         sex = req.POST["sex"]
         print (sex)
         result = {
-              "status": 1,
-              "string": 'success'
+            "status": 0,
+            "string": ''
         }
         try:
             models.User.objects.filter(Email=email).update(UserName=username, School=school, Institude=institude, Major=major, Sex=sex)
@@ -1320,13 +1350,19 @@ def unread_messages(req):
     if req.method == 'POST':
         messageId = req.POST["messageId"]
         result = {
-            "status": 1,
-            "string": 'success'
+            "status": 0,
+            "string": ''
         }
-        message = models.Message.objects.get(Id=messageId)
-        message.IsUse = False
-        message.save()
-        return HttpResponse(json.dumps(result))
+        try:
+            message = models.Message.objects.get(Id=messageId)
+            message.IsUse = False
+            message.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
@@ -1354,13 +1390,19 @@ def unread_read(req):
     if req.method == 'POST':
         messageId = req.POST["infoId"]
         result = {
-            "status": 1,
-            "string": 'success'
+            "status": 0,
+            "string": ''
         }
-        message = models.Message.objects.get(Id=messageId)
-        message.IsRead = True
-        message.save()
-        return HttpResponse(json.dumps(result))
+        try:
+            message = models.Message.objects.get(Id=messageId)
+            message.IsRead = True
+            message.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
@@ -1388,13 +1430,19 @@ def read_message(req):
     if req.method == 'POST':
         messageId = req.POST["messageId"]
         result = {
-            "status": 1,
-            "string": 'success'
+            "status": 0,
+            "string": ''
         }
-        message = models.Message.objects.get(Id=messageId)
-        message.IsUse = False
-        message.save()
-        return HttpResponse(json.dumps(result))
+        try:
+            message = models.Message.objects.get(Id=messageId)
+            message.IsUse = False
+            message.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
 
 
 
@@ -1545,7 +1593,7 @@ def perCreation(req):
         creation = models.Creation.objects.filter(Q(user__Email=user_email) & Q(IsUse=True))
         return render_to_response('personal/perCreation.html',{"creation":creation})
     if req.method == 'POST':
-        result={
+        result = {
             'message': None,
             'status': 0,
             'creationId': None,
@@ -1589,32 +1637,36 @@ def personal_information(req):
         user_major = req.POST["user_major"]
         sex = req.POST["sex"]
         user_id = req.POST["user_id"]
+        remove_script(personal_input)
+        remove_script(user_school)
+        remove_script(user_college)
+        remove_script(user_major)
         result = {
-            "status": 1,
-            "string": 'success'
+            "status": 0,
+            "string": ''
         }
-        information = models.User.objects.get(Id=user_id)
-        information.UserName = personal_input
-        information.School = user_school
-        information.Institude = user_college
-        information.Major = user_major
-        information.Sex = sex
-        information.save()
-        print (information)
-        return HttpResponse(json.dumps(result))
+        try:
+            information = models.User.objects.get(Id=user_id)
+            information.UserName = personal_input
+            information.School = user_school
+            information.Institude = user_college
+            information.Major = user_major
+            information.Sex = sex
+            information.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
 
 
+@csrf_exempt
 def account_information(req):
     '''
-<<<<<<< HEAD
     账号信息
     :param req: 
-    :return: 
-=======
-    个人信息
-    :param req:
     :return:
->>>>>>> 9e174637288ccc200812e1db29f848933f8d7a82
     '''
     if req.method == 'GET':
         if req.method == 'GET':
@@ -1626,24 +1678,22 @@ def account_information(req):
                 else:
                     return render_to_response('idea/index.html')
             except Exception as e:
-                print(e.message)
+                print(e)
+                result['status'] = 0
+                result['message'] = '更改失败'
             else:
                 return render_to_response('personal/account_information.html', {"user": user})
     if req.method == 'POST':
         pass
 
 
+@csrf_exempt
 def change_password(req):
     '''
-<<<<<<< HEAD
+
     更改密码
     :param req: 
     :return: 
-=======
-    个人信息
-    :param req:
-    :return:
->>>>>>> 9e174637288ccc200812e1db29f848933f8d7a82
     '''
     if req.method == 'GET':
         if req.method == 'GET':
@@ -1654,26 +1704,69 @@ def change_password(req):
                 else:
                     return render_to_response('idea/index.html')
             except Exception as e:
-                print(e.message)
+                print(e)
             else:
                 return render_to_response('personal/change_password.html', {"user": user})
     if req.method == 'POST':
-        pass
-        # change_password_email = req.POST["change_password_email"]
-        # old_password = req.POST["old_password"]
-        # new_password = req.POST["new_password"]
-        # confirm_password = req.POST["confirm_password"]
-        # result = {
-        #     "status": 1,
-        #     "string": 'success'
-        # }
-        # try:
-        #     user_password = models.User.objects.get(Email=change_password_email)
-        #     if old_password == user_password.PassWord:
-                
+        change_password_email = req.POST["change_password_email"]
+        old_password = req.POST["old_password"]
+        new_password = req.POST["new_password"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user_password = models.User.objects.get(Email=change_password_email)
+            if user_password.PassWord == old_password:
+                user_password.PassWord = new_password
+                user_password.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print(e)
+        else:
+            return HttpResponse(json.dumps(result))
 
+
+@csrf_exempt
+def personal_label(req):
+    if req.method == 'GET':
+        try:
+            email = req.COOKIES.get('user_email')
+            if email:
+                user_lable = models.UserLabel.objects.all()
+                user = models.User.objects.get(Email=email)
+                user_show_label = models.User2UserLabel.objects.filter(user=user)
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+        else:
+            return render_to_response('personal/personal_label.html', {"user_lable": user_lable, "user": user,"user_show_label":user_show_label})
+    if req.method == 'POST':
+        proLabels = req.POST["proLabels"].split('*')
+        label_mark = req.POST["label_mark"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user = models.User.objects.get(Email=label_mark)
+            for label in proLabels[:-1]:
+                user_label = models.UserLabel.objects.get(Name=label)
+            repeat_label = models.User2UserLabel.objects.filter(user=user)
+            print(repeat_label[0].userLabel)
+
+            label = models.User2UserLabel.objects.create(user=user, userLabel=user_label).save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+        return HttpResponse(json.dumps(result))
 
 '''个人中心相关页面结束'''
+
 
 
 

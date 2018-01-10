@@ -630,7 +630,13 @@ h5 {
 	float: left;
 	color: #999;
 	font-size: 13px;
-	margin: 6px 0 10px 20px;
+	margin: 6px 0px 0px 20px;
+}
+.ctime{
+	float: left;
+	color: #999;
+	font-size: 13px;
+	margin: 6px 0px 0px 5px;
 }
 .c-option{
     float:right;
@@ -698,6 +704,7 @@ h5 {
     width:73%;
     float:left;
     margin-left:20px;
+    margin-top:20px;
     height:auto;
 	position: relative;
 }
@@ -745,11 +752,17 @@ h5 {
 	float: left;
 	color: #999;
 	font-size: 13px;
-	margin: 6px 0 10px 20px;
+	margin: 6px 0px 0px 20px;
+}
+.rctime{
+	float: left;
+	color: #999;
+	font-size: 13px;
+	margin: 6px 0px 0px 5px;
 }
 .r-option{
     float:right;
-    width:31%;
+    width:17%;
     height:100%;
 }
 .rclike{
