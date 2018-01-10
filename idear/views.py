@@ -124,13 +124,14 @@ def get_user_img(req):
                 result['status'] = 1
                 result['message'] = '路径获取成功'
                 img_path = user.Img.url
-                print(img_path)
                 result['img_path'] = img_path
+                print img_path
             except Exception as e:
                 print(e)
                 result['status'] = 1
                 result['message'] = '用户暂未上传图片'
-                img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
+                img_path = '/photos/photos/2017/09/12/user/None.png'
+                print img_path
                 result['img_path'] = img_path
                 return HttpResponse(json.dumps(result))
             else:
@@ -345,15 +346,12 @@ def logout(req):
         "status": 0,
         "message": ''
     }
-    try:
-        del req.session['user_email']
-        del req.session['user_uuid']
-        resData['status'] = 1
-        resData['message'] = "已删除 session"
-    except Exception as e:
-        print(e)
-        resData['message'] = "用户尚未登陆"
-    response = HttpResponse(JsonResponse())
+    del req.session['user_email']
+    del req.session['user_uuid']
+    resData['status'] = 1
+    resData['message'] = "已删除 session"
+    resData['message'] = "用户尚未登陆"
+    response = HttpResponse(JsonResponse(resData))
     response.delete_cookie('user_email')
     return response
 
