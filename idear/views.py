@@ -1507,7 +1507,6 @@ def userfollow(req):
     if req.method == 'POST':
         pass
 
-
 @csrf_exempt
 def following_user(req):
     '''
@@ -1518,10 +1517,25 @@ def following_user(req):
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
         user = models.User.objects.get(Email=email)
-        follows = models.Follow.objects.filter(Q(user=user))
+        follows = models.Follow.objects.filter(Q(Follower=user))
         return render_to_response('personal/following_user.html',{"follows": follows})
     if req.method == 'POST':
-        pass
+        following_Id = req.POST["following_Id"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            following_user = models.User.objects.get(Id=following_Id)
+            email = req.COOKIES.get('user_email')
+            follower = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=following_user,Follower=follower)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def follower_user(req):
