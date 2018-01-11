@@ -23,15 +23,22 @@
                                     <h5>{{ project.ProjectName }}</h5>
                                 </div>
                                 <div class="block-img">
-                                    <a
+                                     {% if project.Statue in recruit%}
+                                          <a href="redetails?projectId={{ project.Id }}">
+                                       {% else %}
+                                          <a href="dedetails?projectId={{ project.Id }}">
+                                     {% endif %}
 
-
-                                            href="redetails?projectId={{ project.Id }}">
                                     <img class="project_img" src="../../static/photos/{{ project.Img }}">
                                     </a>
                                 </div>
                                 <div class="block-status">
-                                     <span>项目类型：招募项目</span>
+                                     {% if project.Statue in recruit%}
+                                         <span>项目类型: 招募项目 </span>
+                                       {% else %}
+                                         <span>项目类型: 开发项目 </span>
+                                    {% endif %}
+
                                 </div>
                                 <div class="block-tag">
                                     <span class="project_middle_fix">项目标签：</span>
@@ -41,6 +48,7 @@
                                     {% endfor %}
                                 </div>
                             </div>
+
                         {% endfor %}
                     </div>
                      <div class="home-right">
@@ -101,17 +109,7 @@
 {% block script %}
 
     <script>
-        //限制字符个数
-        $(document).ready(function () {
-            $(".project_top_1_text").each(function () {
-                var maxwidth = 150;
-                if ($(this).text().length > maxwidth) {
-                    $(this).text($(this).text().substring(0, maxwidth));
-                    $(this).html($(this).html() + '…')
-                    ;
-                }
-            });
-        });
+
         //加载更多
         $(function () {
             $(".project_top").slice(0, 6).show();
@@ -130,6 +128,8 @@
             var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
             $(this).css('background', col)
         });
+
+
     </script>
 {% endblock %}
 

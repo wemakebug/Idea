@@ -29,9 +29,11 @@
                         <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
                         <div class="title">
                             <h5 id="rdpname"> {{ project.ProjectName }}</h5>
-                            <p class="ptime" id="rdptime"> 项目负责人：<span><a href="">  {{ user }}</a></span>&nbsp;|&nbsp; 项目状态：第<span
-                                    id="rdpstatus"> {{ project.Statue }}</span>次招募 </p>
-
+                            {% if project.Statue in 1 %}
+                                <p class="ptime" id="rdptime"> 项目负责人：<span><a href="">  {{ user }}</a></span>&nbsp;|&nbsp; 项目状态：初期招募  </p>
+                                {% else %}
+                                    <p class="ptime" id="rdptime"> 项目负责人：<span><a href="">  {{ user }}</a></span>&nbsp;|&nbsp; 项目状态：第二次招募 </p>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="description">
@@ -237,6 +239,7 @@
             }
             $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
         });
+        //富文本
         $('#summernote').summernote({
             height: 500,
             lang: 'zh-CN',
@@ -261,20 +264,6 @@
             var result = ( EndTimeStamp  - nowtimestamp);
             var lastday = result/(3600*24);
             $("#rdlastday").text(Math.ceil(lastday));
-        });
-
-       {# 招募次数阿拉伯数字转换#}
-        $(function(){
-            var t = {{ recruit.Times }};
-            var times;
-            switch(t)
-            {
-                case 1: times = "一";
-                break;
-                case 2: times = "二";
-                break;
-            }
-            $("#rdpstatus").text(times);
         });
 
         function changeImage(){
