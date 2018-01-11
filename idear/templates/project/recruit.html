@@ -14,11 +14,9 @@
     <div class="home-content">
         <div class="content_inner">
             <div class="container-fluid">
-
                     <div class="home-left">
                         {% for project in projects%}
                             <div class="block" id="block">
-
                                 <div class="block-title">
                                     <h5>{{ project.ProjectName }}</h5>
                                 </div>
@@ -86,7 +84,7 @@
                             <hr>
 
                             {% for obj in projectLabels %}
-                                <a href="project?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
+                                <a href="project?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag">{{ obj.ProjectLabelName }}</span></a>
                             {% endfor %}
                         </div>
                          <div class="tag">
@@ -100,8 +98,8 @@
                          </div>
 
                 </div>
-
             </div>
+
         </div>
     </div>
      <div style="height:50px"></div>
@@ -110,24 +108,9 @@
 
     <script>
 
-        //加载更多
-        $(function () {
-            $(".project_top").slice(0, 6).show();
-            if ($(".project_top").length <= 6) {
-                $(".more").hide();
-            }
-            $(".more").on('click', function (e) {
-                e.preventDefault();
-                $(".project_top:hidden").slice(0, 6).slideDown();
-                if ($(".project_top:hidden").length == 0) {
-                    $(".more").fadeOut('slow');
-                }
-            });
-        });
-        $('.project_middle_icon').each(function () {
-            var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
-            $(this).css('background', col)
-        });
+
+
+
 
 
     </script>
