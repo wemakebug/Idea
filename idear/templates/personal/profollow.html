@@ -13,7 +13,7 @@
 {%endblock%}
 
 {% block followScolumn %}
-
+<div class="proAllFollows">
 {% for follow in follows %}
     {% if follow.project %}
     <div class="mainContentPro">
@@ -52,7 +52,10 @@
     </div>
     {% endif %}
 {% endfor %}
-
+</div>
+<div class="loadMore">
+    <p>加载更多</p>
+</div>
 {% endblock %}
 
 {% block script %}

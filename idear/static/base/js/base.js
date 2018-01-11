@@ -134,11 +134,11 @@ $(document).ready(function () {
 
 var logout = document.getElementById("logout");
 logout.onclick = function () {
-    $.post("/idear/logout/",{},function (data) {
+    $.post("/idear/logout",{},function (data) {
          data = JSON.parse(data);
          if(data.status === 1){
              alert("退出成功！");
-             // window.location.reload();
+             window.location.href  = '/idear/index';
          }
     });
 };

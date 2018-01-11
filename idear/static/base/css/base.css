@@ -191,6 +191,7 @@ ul li{
     margin-left: 2%;
     overflow: hidden;
     border-radius: 3px;
+    cursor:pointer;
 }
 .logout p{
     width:100%;

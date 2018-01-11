@@ -114,3 +114,12 @@
 
 
 
+/*删除弹框样式*/
+
+.putreport{
+    width: 80px;
+    height: 30px;
+    margin-left: 50px;
+    margin-top:15px;
+}
+
