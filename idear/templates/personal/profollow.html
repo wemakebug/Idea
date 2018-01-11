@@ -13,7 +13,7 @@
 {%endblock%}
 
 {% block followScolumn %}
-
+<div class="proAllFollows">
 {% for follow in follows %}
     {% if follow.project %}
     <div class="mainContentPro">
@@ -39,13 +39,23 @@
             </a>
             {% endif %}
         </div>
+        <div class="proStatue">
+            {% if follow.project.Statue == 1 or follow.project.Statue == 3%}
+            <p>招募项目</p>
+            {% elif follow.project.Statue == 2 or follow.project.Statue == 4 %}
+            <p>开发项目</p>
+            {% endif %}
+        </div>
         <button type="button" class="deletePro btn btn-default" value="{{ follow.project.Id }}">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </button>
     </div>
     {% endif %}
 {% endfor %}
-
+</div>
+<div class="loadMore">
+    <p>加载更多</p>
+</div>
 {% endblock %}
 
 {% block script %}
