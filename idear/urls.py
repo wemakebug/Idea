@@ -78,6 +78,7 @@ urlpatterns = [
     url(r'^account_information$', views.account_information),
     url(r'^change_password$', views.change_password),
     url(r'^personal_label$', views.personal_label),
+    url(r'^user_delete_personal_label$', views.user_delete_personal_label),
 
 
     # 工具函数

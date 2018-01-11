@@ -1704,17 +1704,20 @@ def change_password(req):
 def personal_label(req):
     if req.method == 'GET':
         try:
+            label_list = []
             email = req.COOKIES.get('user_email')
             if email:
                 user_lable = models.UserLabel.objects.all()
                 user = models.User.objects.get(Email=email)
                 user_show_label = models.User2UserLabel.objects.filter(user=user)
+                for user_show in user_show_label:
+                    label_list.append(user_show.userLabel.Name)
             else:
                 return render_to_response('idea/index.html')
         except Exception as e:
             print(e)
         else:
-            return render_to_response('personal/personal_label.html', {"user_lable": user_lable, "user": user,"user_show_label":user_show_label})
+            return render_to_response('personal/personal_label.html', {"user_lable": user_lable, "user": user, "user_show_label":user_show_label, "label_list":label_list})
     if req.method == 'POST':
         proLabels = req.POST["proLabels"].split('*')
         label_mark = req.POST["label_mark"]
@@ -1726,10 +1729,7 @@ def personal_label(req):
             user = models.User.objects.get(Email=label_mark)
             for label in proLabels[:-1]:
                 user_label = models.UserLabel.objects.get(Name=label)
-            repeat_label = models.User2UserLabel.objects.filter(user=user)
-            print(repeat_label[0].userLabel)
-
-            label = models.User2UserLabel.objects.create(user=user, userLabel=user_label).save()
+                models.User2UserLabel.objects.create(user=user, userLabel=user_label).save()
             result['status'] = 1
             result['string'] = 'success'
         except Exception as e:
@@ -1737,6 +1737,26 @@ def personal_label(req):
             result['message'] = str(e)
         return HttpResponse(json.dumps(result))
 
+
+@csrf_exempt
+def user_delete_personal_label(req):
+    if req.method == 'POST':
+        label = req.POST["label"]
+        label_mark = req.POST["label_mark"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user = models.User.objects.get(Email=label_mark)
+            user_label = models.UserLabel.objects.get(Name=label)
+            models.User2UserLabel.objects.filter(user=user, userLabel=user_label).delete()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print(e)
+        else:
+            return HttpResponse(json.dumps(result))
 '''个人中心相关页面结束'''
 
 
