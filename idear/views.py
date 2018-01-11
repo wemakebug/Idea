@@ -1015,7 +1015,6 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = models.Project.objects.get(Id=projectId)
         user = models.ProjectUser.objects.get(project_id=projectId)
-        print(user.user)
         user = user.user
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
         praises = models.Praise.objects.all()
@@ -1124,17 +1123,16 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.all().order_by('Id')
-
-
-
+                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=2)|Q(Statue=3)|Q(Statue=4)).order_by('Id')
+                # projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1,3]
             else:
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-
-            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all()[:4],  "projects":projects})
+                recruit = [1, 3]
+            return render_to_response('project/recruit.html', {'projectLabels':models.ProjectLabel.objects.all() ,"projects":projects,"recruit":recruit })
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
@@ -1156,8 +1154,9 @@ def recruit(req):
             #  如果是所有项目
             if sign == "all":
                 projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by('Id')
-
-            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all()[:4],  "projects":projects})
+                projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1, 3]
+            return render_to_response('project/recruit.html', {'projectLabels':projectLabels[:4],"projects":projects,"recruit":recruit})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
@@ -1180,9 +1179,10 @@ def deprojects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("StartTime")
-
-            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects})
+                projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("Id")
+                projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1, 3]
+            return render_to_response('project/recruit.html', {'projectLabels': projectLabels ,"projects": projects,"recruit":recruit})
 
         else:
             id = req.POST['projectId']
@@ -1194,6 +1194,28 @@ def deprojects(req):
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
+def starttime(req):
+    '''
+    开发项目一级页面项目显示
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                projects = models.Project.objects.all().order_by("StartTime")
+                recruit = [1, 3]
+            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects,"recruit":recruit})
+
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/deprojects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 @csrf_exempt
 def dedetails(req):
     '''

@@ -54,7 +54,7 @@ urlpatterns = [
     url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
     url(r'^recruit$', views.recruit),
-    # url(r'^starttime$', views.starttime),
+    url(r'^starttime$', views.starttime),
     url(r'^crdetails$', views.crdetails),
     url(r'^crcreate$',views.crcreate),
     url(r'^crreport$',views.crreport),

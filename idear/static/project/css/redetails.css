@@ -50,7 +50,7 @@ body{
     position: relative;
     display: inline-block;
     text-align: center;
-    background:  #539092;
+    background:  #7495B7;
     font-size: 1em;
     line-height: 1px;
     padding: 26px 8px 15px;
@@ -67,7 +67,7 @@ body{
     display: block;
 }
 .tags span:before {
-    background: #539092;
+    background: #7495B7;
     height: 4px;
     width: 6px;
     left: -6px;
