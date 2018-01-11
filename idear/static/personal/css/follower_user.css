@@ -6,7 +6,7 @@
 }
 .userMessage{
     width: 12%;
-    height: 240px;
+    height: 230px;
     float: left;
     margin-left: 4%;
     margin-top: 3%;
@@ -18,7 +18,7 @@
 }
 .followUserImg{
     width: 90%;
-    height: 45%;
+    height: 47%;
     border-radius: 70px;
     margin-top: 15%;
 }
@@ -38,7 +38,7 @@
 }
 .followUserName{
     width: 90%;
-    height: 15%;
+    max-height: 60px;
     /*border:1px solid black;*/
     /*float: left;*/
     display: block;
@@ -50,7 +50,6 @@
 .followUserName p{
     width: 90%;
     margin-left: 5%;
-    height: 67%;
     color: black;
     overflow: hidden;
     margin-top: 6%;
