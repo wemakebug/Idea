@@ -1015,7 +1015,8 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = models.Project.objects.get(Id=projectId)
         user = models.ProjectUser.objects.get(project_id=projectId)
-        user = user.user
+
+
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
@@ -1042,7 +1043,17 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
-        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+
+        try:
+            useremail = req.session.get('user_email')
+            preuser = models.User.objects.get(Email=useremail)
+            print(preuser.Img)
+            return render_to_response('project/redetails.html',
+                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user": user, "recruit": recruit, "EndTime": timeStamp,
+                                   'follows': follows, 'praises': praises, "comment": commentlist,"preuser":preuser })
+        except:
+            return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
 
@@ -1086,6 +1097,44 @@ def project_comment(req):
         return HttpResponse("TRUE")
 
 @csrf_exempt
+def prcomment(req):
+    '''
+    项目评论回复
+    :param req:
+    :return:
+    '''
+    if req.method =='GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
+    if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            projectId = req.POST["projectId"]
+            print(projectId)
+            project = models.Project.objects.get(pk = projectId)
+            commentedId = req.POST["commentedId"]
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, project=project, Content=content, commentedId=commentedId, Uuid=uuid.uuid4())
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+
+            return HttpResponse(json.dumps(result))
+
+
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
+
+@csrf_exempt
 def recruit_apply(req):
     '''
        招募项目申请
@@ -1116,7 +1165,7 @@ def recruit_apply(req):
 @csrf_exempt
 def projects(req):
     '''
-    招募项目一级二级页面项目显示
+    项目一级页面显示
     '''
     try:
         if req.method == 'GET':
@@ -1146,7 +1195,7 @@ def projects(req):
 @csrf_exempt
 def recruit(req):
     '''
-    招募项目一级二级页面项目显示
+    招募项目筛选项目显示
     '''
     try:
         if req.method == 'GET':
@@ -1172,7 +1221,7 @@ def recruit(req):
 @csrf_exempt
 def deprojects(req):
     '''
-    开发项目一级页面项目显示
+    开发项目 筛选
     '''
     try:
         if req.method == 'GET':
@@ -1227,7 +1276,7 @@ def dedetails(req):
 
         project = models.Project.objects.get(Id=projectId)
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
-        print(labels)
+
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")

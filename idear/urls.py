@@ -55,6 +55,9 @@ urlpatterns = [
     url(r'^projects$', views.projects),
     url(r'^recruit$', views.recruit),
     url(r'^starttime$', views.starttime),
+    url(r'^recruit_apply$', views.recruit_apply),
+    url(r'^prcomment$',views.prcomment),
+
     url(r'^crdetails$', views.crdetails),
     url(r'^crcreate$',views.crcreate),
     url(r'^crreport$',views.crreport),
@@ -72,7 +75,7 @@ urlpatterns = [
 
     url(r'^teamattend1$', views.teamattend1),
     url(r'^teamcomment$', views.teamcomment),
-    url(r'^recruit_apply$', views.recruit_apply),
+
     url(r'^editprofile$', views.editprofile),
     url(r'^perCreation$', views.perCreation),
     url(r'^get_follow_count$', views.get_follow_count),
