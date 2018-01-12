@@ -16,13 +16,17 @@
     <input type="hidden" value="{{ user.Email }}" id="label_mark">
         <div style="width: 80%;margin-top: 20px;height: 100px;">
             {% for user_show in user_show_label %}
-                <span class="allsign1">{{ user_show.userLabel }}</span>
+                <span class="allsign1" name="personal_label" alt="提示" title="点击删除此标签">{{ user_show.userLabel }}</span>
             {% endfor %}
         </div>
         <div style="border-bottom: 1px dashed #BEBEBE " ></div>
         <div class="tag">
             {% for label in user_lable %}
-                <span class="allsign" name="label_name">{{ label.Name }}</span>
+                {% if label.Name in label_list %}
+                    <span class="allsign" name="label_name" style="display: none;">{{ label.Name }}</span>
+                {% else %}
+                    <span class="allsign" name="label_name">{{ label.Name }}</span>
+                {% endif %}
             {% endfor %}
         </div>
         <div style="text-align: center;margin-top: 200px;">
@@ -41,6 +45,8 @@
             var lables = $(this);
             lables.css('background-color',col);
         });
+
+
         $(".personalinput1-8").click(function () {
             var label_mark = $("#label_mark").val();
             var proLabels = '';
@@ -60,5 +66,17 @@
                 }
             })
         });
+
+         $(".allsign1").dblclick(function(){
+             var label = $(this).html();
+             var label_mark = $("#label_mark").val();
+             $.post("user_delete_personal_label",{"label":label,"label_mark":label_mark},function (data) {
+                var data = JSON.parse(data);
+                if(data.status ===1 ){
+{#                    $(this).addClass("active");#}
+                    window.location.reload();
+                }
+             });
+         });
     </script>
 {% endblock %}

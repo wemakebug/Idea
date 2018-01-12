@@ -19,7 +19,11 @@
     <div class="userMessage">
         <div class="followUserImg"   >
             <a href="#">
+                {% if follow.user.Img %}
                 <img src="/static/photos/{{ follow.user.Img }}">
+                {% else %}
+                <img src="/static/photos/photos/user/None.png">
+                {% endif %}
             </a>
         </div>
         <div class="followUserName">
@@ -45,8 +49,8 @@
             offset: '200px',
             resize: false,
             move: false,
-            area: ['200px', '200px'],
-            title: ['确定删除此消息？', 'font-size:18px;text-align:center;'],
+            area: ['300px', '100px'],
+            title: ['确定取消此关注？', 'font-size:18px;text-align:center;background:#000000;color:white;'],
             shade: 0.6,
             maxmin: false,
             anim: 0,//0-6的动画形式，-1不开启,
