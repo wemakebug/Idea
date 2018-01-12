@@ -1133,12 +1133,12 @@ def projects(req):
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
                 recruit = [1, 3]
-            return render_to_response('project/recruit.html', {'projectLabels':models.ProjectLabel.objects.all() ,"projects":projects,"recruit":recruit })
+            return render_to_response('project/projects.html', {'projectLabels':models.ProjectLabel.objects.all() , "projects":projects, "recruit":recruit})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
             comments = models.Comment.objects.fitler(project=id).order_by('Date')
-            return render_to_response('project/recruit.html',
+            return render_to_response('project/projects.html',
                                       {'comments': comments})
     except Exception as e:
         print(e)
@@ -1157,12 +1157,12 @@ def recruit(req):
                 projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by('Id')
                 projectLabels = models.ProjectLabel.objects.all()
                 recruit = [1, 3]
-            return render_to_response('project/recruit.html', {'projectLabels':projectLabels[:4],"projects":projects,"recruit":recruit})
+            return render_to_response('project/projects.html', {'projectLabels': projectLabels[:4], "projects":projects, "recruit":recruit})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
             comments = models.Comment.objects.fitler(project=id).order_by('Date')
-            return render_to_response('project/recruit.html',
+            return render_to_response('project/projects.html',
                                       {'comments': comments})
     except Exception as e:
         print(e)
@@ -1183,7 +1183,7 @@ def deprojects(req):
                 projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("Id")
                 projectLabels = models.ProjectLabel.objects.all()
                 recruit = [1, 3]
-            return render_to_response('project/recruit.html', {'projectLabels': projectLabels ,"projects": projects,"recruit":recruit})
+            return render_to_response('project/projects.html', {'projectLabels': projectLabels , "projects": projects, "recruit":recruit})
 
         else:
             id = req.POST['projectId']
@@ -1206,7 +1206,7 @@ def starttime(req):
             if sign == "all":
                 projects = models.Project.objects.all().order_by("StartTime")
                 recruit = [1, 3]
-            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects,"recruit":recruit})
+            return render_to_response('project/projects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects, "recruit":recruit})
 
         else:
             id = req.POST['projectId']
