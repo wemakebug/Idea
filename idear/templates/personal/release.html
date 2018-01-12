@@ -82,7 +82,8 @@
                 </div>
             </div>
             <div class="recruitPost">
-
+                <p>招募贴：</p>
+                <textarea name="textarea" class="postCon" cols="21" rows="12" placeholder="请在这里输入文本"></textarea>
             </div>
         </div>
         <div class="rich_text" id="rich_text">
@@ -142,9 +143,9 @@
 {% endblock %}
 
 {% block script %}
-{#    <script type="text/javascript" src={% static "personal/js/fileinput.min.js"%} ></script>#}
-{#    <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>#}
-{#    <script type="text/javascript" src={% static "base/js/base.js"%} ></script>#}
+    <script type="text/javascript" src={% static "personal/js/fileinput.min.js"%} ></script>
+    <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
+    <script type="text/javascript" src={% static "base/js/base.js"%} ></script>
     <script>
         $('#summernote').summernote({
             height: 700,
