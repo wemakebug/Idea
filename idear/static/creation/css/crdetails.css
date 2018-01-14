@@ -167,7 +167,9 @@
     margin-top:24%;
     font-size:15px;
 }
-
+.btn-style{
+    padding: 0px;
+}
 .home-b-comment{
     float:right;
     width:62px;
