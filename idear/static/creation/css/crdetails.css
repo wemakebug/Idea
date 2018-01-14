@@ -167,7 +167,9 @@
     margin-top:24%;
     font-size:15px;
 }
-
+.btn-style{
+    padding: 0px;
+}
 .home-b-comment{
     float:right;
     width:62px;
@@ -501,7 +503,7 @@ h5 {
 .c-all{
     width:100%;
     height:auto;
-    margin-bottom:40px;
+    margin-bottom:50px;
 }
 .ctitle{
     width:100%;
@@ -568,6 +570,8 @@ h5 {
 
 .cmain{
     height:60px;
+    margin-bottom:-22px
+    margin-top:40px
 }
 .c-img{
     display:block;
@@ -671,6 +675,7 @@ h5 {
 .comment-content {
 	width:100%;
 	height: auto;
+	word-wrap:break-word;
 	font-size: 15px;
     line-height:30px;
 	color: #595959;
