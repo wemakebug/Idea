@@ -16,7 +16,8 @@
                     var content  = $(".note-editable").get(0 ).innerHTML;
                     var user = getCookie('user_email');
                     if(user === null || user ===''){
-                        alert("请您登陆")
+                        alert("请您登陆");
+                        window.location.href="/idear/regist";
                     }
                     else {
                         var projectid = document.getElementById("projectId").value;
@@ -39,6 +40,36 @@
                     }
                 };
 
+                var rdputcomment  = document.getElementById("rdputcomment");
+                rdputcomment.onclick = function(){
+                    var reply_comment = document.getElementById("comment-content1").value;
+                    var projectid = document.getElementById("projectId").value;
+                    var user = getCookie('user_email');
+                    if(user === null || user ===''){
+                          alert("请您登陆");
+                        window.location.href="/idear/regist";
+                    }
+                    else {
+                        if (reply_comment === "" || reply_comment === undefined || reply_comment === null) {
+                         alert("请输入评论内容！")
+                    } else {
+                        $.post('project_comment',
+                            {
+                                "content": reply_comment,
+                                "projectId":projectid}, function (data) {
+                             //data = JSON.parse(data);
+
+                            if (data.status == 1) {
+                                 alert("Wrong");
+                            } else {
+                                $(".commentreply-text").val("");
+                                window.location.reload();
+                            }
+                        });
+                    }
+                }
+         };
+
                 $('.creply').click(function(){
                     var ele = this;
                     var parent_div = ele.parentNode.parentNode.parentNode;
@@ -51,8 +82,11 @@
                     reply = $(reply);
                     reply.slideDown("slow");
                  });
-                $('#cputcomment').click(function(){
 
+                var putcomments  = document.getElementsByClassName("putcomments");
+                for (var i = 0; i < putcomments.length; i ++) {
+                    putcomments[i].onclick = function(){
+                 // $(".putcomments").click(function(){
                     var ele = this;
                     var parent_div = ele.parentNode.parentNode;
                     var reply = parent_div.lastChild;
@@ -63,14 +97,69 @@
                     }
                     reply = $(reply);
                     var content = reply.children("#commentreplytext").val()
-                    // alert(content);
-                    if(content == ""){
+                    var commentedId = $(this).attr("backcommentId");
+                    var username = getCookie('user_email');
+                    var projectId = $("#projectId").val()
 
+                     if(username === null || username ===''){
+                          alert("请您登陆");
+                        window.location.href="/idear/regist";
                     }
-                    else {
-                        reply.slideUp("slow");
+                    else{
+                        if(content == ""){
+                            alert("请输入评论内容")
+                        }
+                        else {
+                            $.post('/idear/prcomment',{
+                            "content":content,
+                            "username":username,
+                            "projectId":projectId,
+                            "commentedId":commentedId
+                            },function(data){
+                            location.reload()
+                          })
+                            reply.slideUp("slow");
+                        }
                     }
-                 });
+                 };
+                }
+                // putcomments.onclick = function(){
+                //  // $(".putcomments").click(function(){
+                //     var ele = this;
+                //     var parent_div = ele.parentNode.parentNode;
+                //     var reply = parent_div.lastChild;
+                //     if(reply.tagName === undefined){
+                //         reply = parent_div.childNodes[parent_div.childNodes.length-2];
+                //     }else {
+                //         reply = parent_div.lastChild;
+                //     }
+                //     reply = $(reply);
+                //     var content = reply.children("#commentreplytext").val()
+                //     var commentedId = $(this).attr("backcommentId");
+                //     var username = getCookie('user_email');
+                //     var projectId = $("#projectId").val()
+                //
+                //      if(username === null || username ===''){
+                //           alert("请您登陆");
+                //         window.location.href="/idear/regist";
+                //     }
+                //     else{
+                //         if(content == ""){
+                //             alert("请输入评论内容")
+                //         }
+                //         else {
+                //             $.post('/idear/prcomment',{
+                //             "content":content,
+                //             "username":username,
+                //             "projectId":projectId,
+                //             "commentedId":commentedId
+                //             },function(data){
+                //             location.reload()
+                //           })
+                //             reply.slideUp("slow");
+                //         }
+                //     }
+                //  };
                 //项目举报
 
                 var preport = document.getElementById("rdpreport");
@@ -78,60 +167,66 @@
                     var user = getCookie('user_email');
                     if(user === null || user ===''){
                           alert("请您登陆")
+                        window.location.href="/idear/regist";
                     }
                     else {
-                //          $('#exampleModal').on('show.bs.modal', function (event) {
-                //       var button = $(event.relatedTarget) // Button that triggered the modal
-                //       var recipient = button.data('whatever') // Extract info from data-* attributes
-                //       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                //       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                //       var modal = $(this)
-                //       modal.find('.modal-title').text('New message to ' + recipient)
-                //       modal.find('.modal-body input').val(recipient)
-                // })
+                            layer.open({
+                            type: 1,
+                            offset: '200px',
+                            resize: false,
+                            move: false,
+                            area: ['500px', '400px'],
+                            title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                            shade: 0.6,
+                            maxmin: false,
+                            anim: 0//0-6的动画形式，-1不开启
+                            ,
+                            content: '<textarea placeholder="" name="" id="comment-content2" class="report-text"></textarea> ' +
+                            '<button class="putreport" id="putreport">提交</button> '
+                        });
                     }
 
                 };
-                 //评论举报
+                 // 评论举报
 
-                // var creport = document.getElementById("rdcreport");
-                // creport.onclick = function(){
-                //     var user = getCookie('user_email');
-                //     if(user === null || user ===''){
-                //          layer.open({
-                //                 type: 1,
-                //                 offset: '200px',
-                //                 resize: false,
-                //                 move: false,
-                //                 area: ['250px', '250px'],
-                //                 content: '请您登录',
-                //                 shade: 0.6,
-                //                 maxmin: false,
-                //                 anim: 0//0-6的动画形式，-1不开启
-                //                 ,
-                //             });
-                //     }
-                //     else {
-                //         layer.open({
-                //             type: 1,
-                //             offset: '200px',
-                //             resize: false,
-                //             move: false,
-                //             area: ['500px', '400px'],
-                //             title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
-                //             shade: 0.6,
-                //             maxmin: false,
-                //             anim: 0//0-6的动画形式，-1不开启
-                //             ,
-                //             content: '<textarea placeholder="" name="" id="comment-content2" class="report-text"></textarea> ' +
-                //             '<button class="putreport" id="putreport">提交</button> '
-                //         });
-                //
-                //     }
-                //
-                // }
+                var creport = document.getElementById("rdcreport");
+                creport.onclick = function(){
+                    var user = getCookie('user_email');
+                    if(user === null || user ===''){
+                         layer.open({
+                                type: 1,
+                                offset: '200px',
+                                resize: false,
+                                move: false,
+                                area: ['250px', '250px'],
+                                content: '请您登录',
+                                shade: 0.6,
+                                maxmin: false,
+                                anim: 0//0-6的动画形式，-1不开启
+                                ,
+                            });
+                    }
+                    else {
+                        layer.open({
+                            type: 1,
+                            offset: '200px',
+                            resize: false,
+                            move: false,
+                            area: ['500px', '400px'],
+                            title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                            shade: 0.6,
+                            maxmin: false,
+                            anim: 0//0-6的动画形式，-1不开启
+                            ,
+                            content: '<textarea placeholder="" name="" id="comment-content2" class="report-text"></textarea> ' +
+                            '<button class="putreport" id="putreport">提交</button> '
+                        });
 
-                //评论回复举报
+                    }
+
+                }
+
+                // 评论回复举报
                 // var rcreport = document.getElementById("rdrcreport");
                 // rcreport.onclick = function(){
                 //     layer.open({
@@ -156,6 +251,9 @@
                     else
                         return null;
                 }
+
+         //
+
 
 
 

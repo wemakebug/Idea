@@ -2,6 +2,8 @@
     width: 15%;
     float: right;
     min-height: 400px;
+    /*position: fixed;*/
+    /*margin-left: 1550px;*/
 
 }
 .operationItem>ul {
@@ -75,15 +77,27 @@
     text-align:center;
     line-height: 27.5px;
 }
-.proContent>p{
+.proContent>a p{
     font-size: 1em;
     color: #334252;
+    font-family: 幼圆;
+}
+.proStatue{
+    width: 54%;
+    height: 25px;
+    float: left;
+}
+.proStatue>p{
+    width: 100%;
+    height: 100%;
+    line-height: 25px;
+    font-size: 0.8em;
+    font-family: 幼圆;
 }
 .deletePro{
     width: 30px;
     height: 25px;
     float: right;
-    margin-left: 64%;
     border:none;
     background: transparent;
 }
@@ -99,4 +113,13 @@
 
 
 
+
+/*删除弹框样式*/
+
+.putreport{
+    width: 80px;
+    height: 30px;
+    margin-left: 50px;
+    margin-top:15px;
+}
 

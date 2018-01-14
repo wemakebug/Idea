@@ -50,7 +50,7 @@ body{
     position: relative;
     display: inline-block;
     text-align: center;
-    background:  #539092;
+    background:  #7495B7;
     font-size: 1em;
     line-height: 1px;
     padding: 26px 8px 15px;
@@ -67,7 +67,7 @@ body{
     display: block;
 }
 .tags span:before {
-    background: #539092;
+    background: #7495B7;
     height: 4px;
     width: 6px;
     left: -6px;
@@ -169,7 +169,7 @@ body{
     float:left;
     width:75px;
     font-size:18px;
-    margin-top: 2px;
+    margin: 2px 0 0 18px;
 }
 
 .home-b-share {
@@ -682,6 +682,16 @@ body{
     border-radius:5px;
     cursor: pointer;
 }
+.putcomments{
+    width:8%;
+    height:30px;
+    margin-top:5px;
+    background-color: #3a87ad;
+    border:none;
+    float:right;
+    border-radius:5px;
+    cursor: pointer;
+}
 .cmain{
     height:auto;
     margin-bottom: 25px;
@@ -938,17 +948,6 @@ body{
     resize:none;
     border: 1px solid #c6c8ce;
 }
-.preport{
-    width:50px;
-    height:30px;
-    float:right;
-    margin:10px 40px 0 0;
-    background-color: #3a87ad;
-    border:none;
-    border-radius:5px;
-    cursor: pointer;
-}
-
 .animation{
     width:28px;
     height:28px;
@@ -961,11 +960,7 @@ body{
 .word{
     margin: 5px 0 0 5px;
 }
-.report{
 
-    font-size:18px;
-
-}
 .pr-header{
     width: 55%;
     height: 40px;
@@ -975,4 +970,14 @@ body{
     margin-left: -6px;
     /* overflow: hidden; */
     font-size: 15px;
+}
+.putreport{
+     width: 50px;
+    height: 30px;
+    float: right;
+    margin: 10px 40px 0 0;
+    background-color: #3a87ad;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

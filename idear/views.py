@@ -124,13 +124,12 @@ def get_user_img(req):
                 result['status'] = 1
                 result['message'] = '路径获取成功'
                 img_path = user.Img.url
-                print(img_path)
                 result['img_path'] = img_path
             except Exception as e:
                 print(e)
                 result['status'] = 1
                 result['message'] = '用户暂未上传图片'
-                img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
+                img_path = '/photos/photos/user/None.png'
                 result['img_path'] = img_path
                 return HttpResponse(json.dumps(result))
             else:
@@ -345,17 +344,15 @@ def logout(req):
         "status": 0,
         "message": ''
     }
-    try:
-        del req.session['user_email']
-        del req.session['user_uuid']
-        resData['status'] = 1
-        resData['message'] = "已删除 session"
-    except Exception as e:
-        print(e)
-        resData['message'] = "用户尚未登陆"
-    response = HttpResponse(JsonResponse())
+    del req.session['user_email']
+    del req.session['user_uuid']
+    resData['status'] = 1
+    resData['message'] = "已删除 session"
+    # resData['message'] = "用户尚未登陆"
+    response = HttpResponse(JsonResponse(resData))
     response.delete_cookie('user_email')
     return response
+
 
 
 @csrf_exempt
@@ -1017,6 +1014,9 @@ def redetails(req):
     if req.method == 'GET':
         projectId = req.GET['projectId']
         project = models.Project.objects.get(Id=projectId)
+        user = models.ProjectUser.objects.get(project_id=projectId)
+
+
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
@@ -1043,8 +1043,18 @@ def redetails(req):
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
-        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
+
+        try:
+            useremail = req.session.get('user_email')
+            preuser = models.User.objects.get(Email=useremail)
+            print(preuser.Img)
+            return render_to_response('project/redetails.html',
+                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user": user, "recruit": recruit, "EndTime": timeStamp,
+                                   'follows': follows, 'praises': praises, "comment": commentlist,"preuser":preuser })
+        except:
+            return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
 
     if req.method == "POST":
@@ -1062,7 +1072,8 @@ def project_comment(req):
     status = 0
     if req.method == 'POST':
         try:
-            username = "chris"
+            useremail = req.session.get('user_email')
+            username = models.User.objects.get(Email=useremail)
             projectId = req.POST["projectId"]
             content = req.POST["content"]
             user = models.User.objects.get(UserName=username)
@@ -1084,6 +1095,44 @@ def project_comment(req):
         project = models.Project.objects.get(pk=projectid)
         models.Comment.objects.create(user=user, project=project, Content=content)
         return HttpResponse("TRUE")
+
+@csrf_exempt
+def prcomment(req):
+    '''
+    项目评论回复
+    :param req:
+    :return:
+    '''
+    if req.method =='GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
+    if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            projectId = req.POST["projectId"]
+            print(projectId)
+            project = models.Project.objects.get(pk = projectId)
+            commentedId = req.POST["commentedId"]
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, project=project, Content=content, commentedId=commentedId, Uuid=uuid.uuid4())
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+
+            return HttpResponse(json.dumps(result))
+
+
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
 @csrf_exempt
 def recruit_apply(req):
@@ -1116,81 +1165,73 @@ def recruit_apply(req):
 @csrf_exempt
 def projects(req):
     '''
-    招募项目一级二级页面项目显示
+    项目一级页面显示
     '''
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.all().order_by('-Id')
-
-            #     projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by("StartTime")
-            # else:
-            #     projects = []
-            #     ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
-            #     for obj in ProjectLabelObjs:
-            #         projects.append(obj.project)
-            #
-            # recruit_all = []
-            # for project in projects:
-            #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
-            #     recruit_all.append(recruit)
-            #
-            # else:
-            #
-            #     projects = []
-            #     ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
-            #     for obj in ProjectLabelObjs:
-            #         projects.append(obj.project)
-            #
-            # recruit_all = []
-            # for project in projects:
-            #     recruit = models.Recruit.objects.filter(project__Id=project.Id)
-            #     recruit_all.append(recruit)
-            #
-            # all_recruit = zip(projects, recruit_all)
-            return render_to_response('project/recruit.html', {'projectLabels': models.ProjectLabel.objects.all()[:4],  "projects":projects})
+                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=2)|Q(Statue=3)|Q(Statue=4)).order_by('Id')
+                # projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1,3]
+            else:
+                projects = []
+                ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
+                for obj in ProjectLabelObjs:
+                    projects.append(obj.project)
+                recruit = [1, 3]
+            return render_to_response('project/projects.html', {'projectLabels':models.ProjectLabel.objects.all() , "projects":projects, "recruit":recruit})
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
             comments = models.Comment.objects.fitler(project=id).order_by('Date')
-            return render_to_response('project/recruit.html',
+            return render_to_response('project/projects.html',
                                       {'comments': comments})
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 ''' 招募项目相关页面结束'''
+@csrf_exempt
+def recruit(req):
+    '''
+    招募项目筛选项目显示
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by('Id')
+                projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1, 3]
+            return render_to_response('project/projects.html', {'projectLabels': projectLabels[:4], "projects":projects, "recruit":recruit})
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/projects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 ''' 开发项目相关页面开始'''
 
 @csrf_exempt
 def deprojects(req):
     '''
-    开发项目一级页面项目显示
+    开发项目 筛选
     '''
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("StartTime")
-                for project in projects:
-                    Labels = models.Project2ProjectLabel.objects.filter(project__Id=project.Id)
-                    alllables = []  # 找出本创意所有的标签
-                    for label in Labels:
-                        alllables.append(label.projectLabel.Id)
-                    alllables = list(set(alllables))
-                    project2projectLabel = models.Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)
-
-            else:
-                projects = []
-                ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
-                for obj in ProjectLabelObjs:
-                    projects.append(obj.project)
-
-
-            return render_to_response('project/deprojects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects,"Project2ProjectLabels": models.Project2ProjectLabel})
+                projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("Id")
+                projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1, 3]
+            return render_to_response('project/projects.html', {'projectLabels': projectLabels , "projects": projects, "recruit":recruit})
 
         else:
             id = req.POST['projectId']
@@ -1202,6 +1243,28 @@ def deprojects(req):
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
+def starttime(req):
+    '''
+    开发项目一级页面项目显示
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                projects = models.Project.objects.all().order_by("StartTime")
+                recruit = [1, 3]
+            return render_to_response('project/projects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects, "recruit":recruit})
+
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/deprojects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 @csrf_exempt
 def dedetails(req):
     '''
@@ -1213,7 +1276,7 @@ def dedetails(req):
 
         project = models.Project.objects.get(Id=projectId)
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
-        print(labels)
+
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
@@ -1269,6 +1332,7 @@ def release(req):
         fileext = img.split(',')[0].split(';')[0].split('/')[1]
         Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"),fileext)
         Description = req.POST["rhtml"]
+        recruit = req.POST["recruit"]
         Description = remove_script(Description)
         Summary = Description
         Number = int(req.POST["numPerson"])
@@ -1277,6 +1341,10 @@ def release(req):
         proLabels = req.POST["proLabels"].split('*')
         Statue = int(req.POST["statue"])
         Identity = 1
+        State = 1
+        Time = 1
+        RecruitedNumber = 0
+        print EndTime
         try:
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
@@ -1287,8 +1355,11 @@ def release(req):
             for label in proLabels[:-1] :
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
                 project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
+            project2ProjectLabel.save()
             models.ProjectUser.objects.create(user=user,project=project,Identity=Identity).save()
-
+            models.Recruit.objects.create(project=project,StartTime=datetime.now(), EndTime=EndTime,Describe=recruit,
+                                          State=State,Times=Time,PredictNumber=Number,RecruitedNumber=RecruitedNumber,
+                                          Uuid=uuid.uuid4()).save()
             resData['status'] = 1
             resData['message'] = 'success'
         except Exception as e :
@@ -1676,20 +1747,19 @@ def account_information(req):
     :return:
     '''
     if req.method == 'GET':
-        if req.method == 'GET':
-            try:
-                email = req.COOKIES.get('user_email')
-                print(email)
-                if email:
-                    user = models.User.objects.get(Email=email)
-                else:
-                    return render_to_response('idea/index.html')
-            except Exception as e:
-                print(e)
-                result['status'] = 0
-                result['message'] = '更改失败'
+        try:
+            email = req.COOKIES.get('user_email')
+            print(email)
+            if email:
+                user = models.User.objects.get(Email=email)
             else:
-                return render_to_response('personal/account_information.html', {"user": user})
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+            # result['status'] = 0
+            # result['message'] = '更改失败'
+        else:
+            return render_to_response('personal/account_information.html', {"user": user})
     if req.method == 'POST':
         pass
 
@@ -1739,17 +1809,20 @@ def change_password(req):
 def personal_label(req):
     if req.method == 'GET':
         try:
+            label_list = []
             email = req.COOKIES.get('user_email')
             if email:
                 user_lable = models.UserLabel.objects.all()
                 user = models.User.objects.get(Email=email)
                 user_show_label = models.User2UserLabel.objects.filter(user=user)
+                for user_show in user_show_label:
+                    label_list.append(user_show.userLabel.Name)
             else:
                 return render_to_response('idea/index.html')
         except Exception as e:
             print(e)
         else:
-            return render_to_response('personal/personal_label.html', {"user_lable": user_lable, "user": user,"user_show_label":user_show_label})
+            return render_to_response('personal/personal_label.html', {"user_lable": user_lable, "user": user, "user_show_label":user_show_label, "label_list":label_list})
     if req.method == 'POST':
         proLabels = req.POST["proLabels"].split('*')
         label_mark = req.POST["label_mark"]
@@ -1761,10 +1834,7 @@ def personal_label(req):
             user = models.User.objects.get(Email=label_mark)
             for label in proLabels[:-1]:
                 user_label = models.UserLabel.objects.get(Name=label)
-            repeat_label = models.User2UserLabel.objects.filter(user=user)
-            print(repeat_label[0].userLabel)
-
-            label = models.User2UserLabel.objects.create(user=user, userLabel=user_label).save()
+                models.User2UserLabel.objects.create(user=user, userLabel=user_label).save()
             result['status'] = 1
             result['string'] = 'success'
         except Exception as e:
@@ -1772,6 +1842,26 @@ def personal_label(req):
             result['message'] = str(e)
         return HttpResponse(json.dumps(result))
 
+
+@csrf_exempt
+def user_delete_personal_label(req):
+    if req.method == 'POST':
+        label = req.POST["label"]
+        label_mark = req.POST["label_mark"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user = models.User.objects.get(Email=label_mark)
+            user_label = models.UserLabel.objects.get(Name=label)
+            models.User2UserLabel.objects.filter(user=user, userLabel=user_label).delete()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print(e)
+        else:
+            return HttpResponse(json.dumps(result))
 '''个人中心相关页面结束'''
 
 

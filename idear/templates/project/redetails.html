@@ -6,8 +6,13 @@
 {% block CSS %}
 
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
-     <!-- include summernote css/js-->
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
+    <!-- include summernote css/js-->
     <link href="{% static 'editor/summernote.css' %}" rel="stylesheet">
+    <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
+    <!-- include summernote-zn-CN -->
+    <script src="{% static 'editor/lang/summernote-zh-CN.js' %}"></script>
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
 
@@ -23,21 +28,23 @@
                 <div class="content-top">
                     <div class="content-main">
                         {% for label in labels %}
-                            <a class="tags" href="../projects?sign={{ label.projectLabel.Id }}"><span
+                            <a class="tags"  href="../project?sign={{ label.projectLabel.Id }}" sign="{{label.projectLabel.Id }}"><span
                                     class="ribbon1"><span>{{ label.projectLabel.ProjectLabelName }}</span></span></a>
                         {% endfor %}
                         <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
                         <div class="title">
                             <h5 id="rdpname"> {{ project.ProjectName }}</h5>
-                            <p class="ptime" id="rdptime"> 项目负责人：<span><a href=""> 边伯贤</a></span>&nbsp;|&nbsp; 项目状态：第<span
-                                    id="rdpstatus"> </span>次招募 </p>
-
+                            {% if project.Statue in 1 %}
+                                <p class="ptime" id="rdptime"> 项目负责人：<span><a href="">  {{ user.user }}</a></span>&nbsp;|&nbsp; 项目状态：初期招募  </p>
+                                {% else %}
+                                    <p class="ptime" id="rdptime"> 项目负责人：<span><a href="">  {{ user.user }}</a></span>&nbsp;|&nbsp; 项目状态：第二次招募 </p>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="description">
                         {#                            项目描述#}
                         <div class="des" id="rdpdes">
-                            {{ project.Description }}
+                            {{ project.Description | safe }}
                         </div>
                     </div>
                     <div class="option">
@@ -50,7 +57,6 @@
                                 <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
                                      onclick="changeImage()"
                                      style="width:25px;height:25px;vertical-align:middle;">
-
                                 <a>关注</a>
                             </div>
                             <div class="home-b-share">
@@ -69,29 +75,7 @@
                             <div class="home-b-report" id="rdpreport">
                                 <img src="{% static '/creation/imgs/report.png' %}"
                                      style="width:20px;height:21px;vertical-align:middle;">
-                                 <a type="button" class="btn btn-primary report" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">举报</a>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                                 <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4>请填入举报理由</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    <form>
-                                      <div class="form-group">
-                                        <label for="message-text" class="control-label">举报理由:</label>
-                                        <textarea class="form-control" id="message-text"></textarea>
-                                      </div>
-                                    </form>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                                    <button type="button" class="btn btn-primary" id="submit-report">提交</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                                <a>举报</a>
                             </div>
                         </div>
                     </div>
@@ -168,7 +152,7 @@
                     </div>
 
                     <div class="ctop">
-                        <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
+                        <img class="u-img"  src="/static/photos/{{ preuser.Img }}">
                         <div class="carea">
                             <div class="tocomment">
                                 <textarea placeholder="" name ="putcomment" id="comment-content1" class="comment-text"></textarea>
@@ -199,7 +183,7 @@
                                 </div>
                                 <div class="commentreply" id="commentreply">
                                     <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
-                                    <button class="putcomment" id="cputcomment">回复</button>
+                                    <button class="putcomments" id="cputcomment" backcommentId = {{commentlist|firstcomment|firstcommentUuid}}>回复</button>
                                 </div>
                             </div>
                         </div>
@@ -224,7 +208,7 @@
                                 </div>
                                 <div class="commentreply" id="rcommentreply">
                                     <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
-                                    <button class="putcomment" id="crputcomment">回复</button>
+                                    <button class="putcomments" id="crputcomment">回复</button>
                                 </div>
                             </div>
                         </div>
@@ -237,15 +221,8 @@
     </div>
     <div class="middle"></div>
     {% block script %}
-         <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
-         <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
-         <script type="text/javascript" src="{% static  'project/js/redetails.js' %}"></script>
-         <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
-        <!-- include summernote-zn-CN -->
-        <script src="{% static 'editor/lang/summernote-zh-CN.js' %}"></script>
         <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
-
-
+        <script type="text/javascript" src="{% static  'project/js/redetails.js' %}"></script>
     {% endblock %}
     <script>
         {#招募进度条#}
@@ -260,6 +237,7 @@
             }
             $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
         });
+        //富文本
         $('#summernote').summernote({
             height: 500,
             lang: 'zh-CN',
@@ -286,20 +264,6 @@
             $("#rdlastday").text(Math.ceil(lastday));
         });
 
-       {# 招募次数阿拉伯数字转换#}
-        $(function(){
-            var t = {{ recruit.Times }};
-            var times;
-            switch(t)
-            {
-                case 1: times = "一";
-                break;
-                case 2: times = "二";
-                break;
-            }
-            $("#rdpstatus").text(times);
-        });
-
         function changeImage(){
                     element = document.getElementById('rdcoimg');
                     if (element.src.match("collection0")) {
@@ -312,9 +276,9 @@
                 }
 
 
-                $(function () {
-                        $.cookie("user", 3);
-                        userId = $.cookie("user");
+        $(function () {
+{#                        $.cookie("user", 3);#}
+{#                        userId = $.cookie("user");#}
 
                         $("#rdplike").click(function () {
                             var Id = window.location.href.split("=");
@@ -336,28 +300,7 @@
                             })
                         });
 });
-                $("#rdputcomment").click(function(){
-                    var reply_comment = document.getElementById("comment-content1").value;
-                    var projectid = document.getElementById("projectId").value;
 
-                    if (reply_comment === "" || reply_comment === undefined || reply_comment === null) {
-                         alert("请输入评论内容！")
-                    } else {
-                        $.post('project_comment',
-                            {
-                                "content": reply_comment,
-                                "projectId":projectid}, function (data) {
-                             //data = JSON.parse(data);
-
-                            if (data.status == 1) {
-                                 alert("Wrong");
-                            } else {
-                                $(".commentreply-text").val("");
-                                window.location.reload();
-                            }
-                        });
-                    }
-        });
     </script>
 
 

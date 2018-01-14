@@ -4,18 +4,16 @@
    <title>发布项目</title>
 {%endblock%}
 {% block CSS %}
-    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
     <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
-    <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
-    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'idea/css/sweet-alert.css' %}">
-    <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <!-- include summernote css/js-->
     <link href="{% static 'editor/summernote.css' %}" rel="stylesheet">
     <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
     <!-- include summernote-zn-CN -->
     <script src="{% static 'editor/lang/summernote-zh-CN.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
+    <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
 {% endblock %}
 
 {% block content %}
@@ -72,6 +70,10 @@
                         </p>
                     </div>
                 </div>
+            </div>
+            <div class="recruitPost">
+                <p>招募贴：</p>
+                <textarea name="textarea" class="postCon" cols="21" rows="12" placeholder="请在这里输入文本"></textarea>
             </div>
         </div>
         <div class="rich_text" id="rich_text">
@@ -170,6 +172,15 @@
             alert("请加封面图！");
             return ;
         }
+        var statue ,
+            identity = 1;
+        var recruit = $(".postCon").val();
+        if(recruit === ''){
+            statue = 2;
+        }else{
+            statue = 1;
+        }
+
         var rhtml = $(".note-editable").get(0).innerHTML;
         if(!rhtml){
             alert("项目内容不能为空！");
@@ -187,8 +198,6 @@
             return ;
         }
         var proLabels = '';
-        var statue = 1,
-            identity = 1;
         var oDiv = document.getElementsByName("chance_pro_label");
         for(var i = 0;i < oDiv.length;i ++){
             if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")
@@ -212,6 +221,7 @@
             "endTime": endTime,
             "proLabels": proLabels,
             "statue":statue,
+            "recruit":recruit,
             "idetity":identity
         },function (data) {
             var data = JSON.parse(data);

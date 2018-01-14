@@ -8,6 +8,7 @@ $(function () {
         if(data.status === 1){
             var userfollow = data.userfollow;
             $("#followid").after(userfollow);
+            // $("#followme").after(userfollow);
         }else{
             alert("系统异常！");
         }

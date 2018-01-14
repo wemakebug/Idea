@@ -45,6 +45,7 @@ urlpatterns = [
     url(r'^following_user$',views.following_user),
     url(r'^follower_user$',views.follower_user),
     url(r'^editprofile$',views.editprofile),
+
     url(r'^apply$', views.apply),
     url(r'^project$', views.projects),
     url(r'project_comment', views.project_comment),
@@ -52,6 +53,11 @@ urlpatterns = [
     url(r'^deprojects$', views.deprojects),
     url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
+    url(r'^recruit$', views.recruit),
+    url(r'^starttime$', views.starttime),
+    url(r'^recruit_apply$', views.recruit_apply),
+    url(r'^prcomment$',views.prcomment),
+
     url(r'^crdetails$', views.crdetails),
     url(r'^crcreate$',views.crcreate),
     url(r'^crreport$',views.crreport),
@@ -69,7 +75,7 @@ urlpatterns = [
 
     url(r'^teamattend1$', views.teamattend1),
     url(r'^teamcomment$', views.teamcomment),
-    url(r'^recruit_apply$', views.recruit_apply),
+
     url(r'^editprofile$', views.editprofile),
     url(r'^perCreation$', views.perCreation),
     url(r'^get_follow_count$', views.get_follow_count),
@@ -79,6 +85,7 @@ urlpatterns = [
     url(r'^account_information$', views.account_information),
     url(r'^change_password$', views.change_password),
     url(r'^personal_label$', views.personal_label),
+    url(r'^user_delete_personal_label$', views.user_delete_personal_label),
 
 
     # 工具函数
