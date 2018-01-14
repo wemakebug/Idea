@@ -682,6 +682,16 @@ body{
     border-radius:5px;
     cursor: pointer;
 }
+.putcomments{
+    width:8%;
+    height:30px;
+    margin-top:5px;
+    background-color: #3a87ad;
+    border:none;
+    float:right;
+    border-radius:5px;
+    cursor: pointer;
+}
 .cmain{
     height:auto;
     margin-bottom: 25px;

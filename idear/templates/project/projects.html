@@ -1,60 +1,122 @@
 {% extends 'idea/Base.html' %}
 {% load static %}
-
-
-{%block title%}<title>项目</title>{%endblock%}
-
-{%block CSS%}
-    <link rel="stylesheet" href="{% static 'project/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
-{%endblock%}
-
+{% block title %}
+    <title>招募项目</title>
+{% endblock %}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'project/css/projects.css' %}">
+{#    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">#}
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+{% endblock %}
 {% block content %}
+    <div class="home-content">
+        <div class="content_inner">
+            <div class="container-fluid">
+                    <div class="home-left">
+                        {% for project in projects%}
+                            <div class="block" id="block">
+                                <div class="block-title">
+                                    <h5>{{ project.ProjectName }}</h5>
+                                </div>
+                                <div class="block-img">
+                                     {% if project.Statue in recruit%}
+                                          <a href="redetails?projectId={{ project.Id }}">
+                                       {% else %}
+                                          <a href="dedetails?projectId={{ project.Id }}">
+                                     {% endif %}
 
-{%for project in projects%}
-<div class="bg_all">
-    <div class="bg_left">
-        <div class="project_top_1 project_top">
+                                    <img class="project_img" src="../../static/photos/{{ project.Img }}">
+                                    </a>
+                                </div>
+                                <div class="block-status">
+                                     {% if project.Statue in recruit%}
+                                         <span>项目类型: 招募项目 </span>
+                                       {% else %}
+                                         <span>项目类型: 开发项目 </span>
+                                    {% endif %}
 
-            <a href="redetails">
-                <div class="project_top_1_left">
+                                </div>
+                                <div class="block-tag">
+                                    <span class="project_middle_fix">项目标签：</span>
+                                    {% for re in projectLabels %}
+                                    <span class="project_middle_icon"></span>
+                                    <span class="project_middle_text">{{re.ProjectLabelName }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
 
-                    <img src="{% static 'project/imgs/HeadImg.png'%}">
+                        {% endfor %}
+                    </div>
+                     <div class="home-right">
+                         <div class="best-pro">
+                            <div class="ribbon"><span class="ribbon2">金<br>牌<br>项<br>目</span></div>
+                            <div class="pro-logo">
+                                <img src="../../static/idea/imgs/best_img.png">
+                            </div>
+                            <div class="pro-label"><span>大数据</span><span>互联网</span></div>
+                            <div class="pro-label pro-name">项目名称</div>
+                            <div class="pro-label pro-des">
+                                 <p>今年六月，世界娱乐巨头米高梅集团（MGM Resorts）宣布扩大与麦肯的合作，将旗下多个娱乐场所和度假村纳入了创意清单之中。</p>
+                            </div>
+                            <div class="pro-bottom">
+                                <img class="pro-like" src="{% static 'project/imgs/like1.svg' %}" style="width:25px;height:25px;">
+                                <span>1111</span>
+                                <img class="pro-like" src="{% static 'project/imgs/reply.svg' %}" style="width:23px;height:20px;margin-top:5px">
+                                <span>1111</span>
+                                <img class="pro-like" src="{% static 'creation/imgs/collection0.png' %}" style="width:20px;height:20px;margin-top:2px">
+                                 <span>1111</span>
+                            </div>
+                         </div>
+                         <div class="tag">
+                                <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                                <span>状态</span>
+                                <hr>
+                                <a href="project?sign=all" sign="all"><span class="allsign">所有</span></a>
+                                <a href="recruit?sign=all" sign="all"><span class="allsign">招募项目</span></a>
+                                <a href="deprojects?sign=all" sign="all"><span class="allsign">开发项目</span></a>
+
+                         </div>
+                         <div class="tag">
+                            <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                            <span>标签</span>
+                            <hr>
+
+                            {% for obj in projectLabels %}
+                                <a href="project?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag">{{ obj.ProjectLabelName }}</span></a>
+                            {% endfor %}
+                        </div>
+                         <div class="tag">
+                                <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                                <span>类型</span>
+                                <hr>
+                                <a href="starttime?sign=all" sign="all"><span class="allsign">开始时间</span></a>
+                                <a href="recruit?sign=all" sign="all"><span class="allsign">点赞</span></a>
+                                <a href="recruit?sign=all" sign="all"><span class="allsign">评论</span></a>
+            {#                    <a href="recruit?sign=all" sign="all"><span class="allsign">最近更新</span></a>#}
+                         </div>
 
                 </div>
-                <div class="project_top_1_right">
-                    <h5>项目名称</h5>
-                    <p class="project_top_1_text">{{project.Description}}
-                    </p>
-                </div>
-            </a>
-            <div class="project_bottom_top">
-                <div class="project_bottom_left">
-                    <p class="FixText">项目名称：</p>
-                    <p class="FixText">招募人数：</p>
-                    <p class="FixText">招募状态：</p>
-                    <p class="FixText">时间:</p>
-                </div>
-                 <div class="project_bottom_right">
-                     <input  type="text"  value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input id="Number"type="text"  value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input type="text" id="State" value="{{project.Number}}" readonly="readonly" class="VariableText"/>
-                     <input type="text" id="UserName" value="{{project.StartTime}}" readonly="readonly" class="VariableText"/>
-                 </div>
             </div>
+
         </div>
     </div>
-</div>
-{%endfor%}
-
+     <div style="height:50px"></div>
 {% endblock %}
-
-
 {% block script %}
-{#<script>alert(project.Description)</script>#}
- <script type="text/javascript">
 
- </script>
+    <script>
+
+         $('.project_middle_icon').each(function () {
+                    var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
+                    $(this).css('background', col)
+                });
 
 
+
+
+
+    </script>
 {% endblock %}
+
