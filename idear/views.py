@@ -13,6 +13,7 @@ from .Idea_util.varidate import user_must_login
 from itertools import chain
 import re
 
+from django.views.decorators.http import require_http_methods
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
@@ -1683,6 +1684,7 @@ def personal_information(req):
 
 
 @csrf_exempt
+@require_http_methods(["GET", "POST"])
 def account_information(req):
     '''
     账号信息
@@ -1704,7 +1706,48 @@ def account_information(req):
         else:
             return render_to_response('personal/account_information.html', {"user": user})
     if req.method == 'POST':
-        pass
+        telphone = req.POST["telphone"]
+        user_mark = req.POST["user_mark"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        remove_script(telphone)
+        try:
+            user_telphone = models.User.objects.get(Id=user_mark)
+            user_telphone.Phone = telphone
+            user_telphone.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def account_information_imgs(req):
+    if req.method == 'POST':
+        postData = req.POST
+        user_mark = postData.get("user_mark")
+        if req.FILES:
+            user_img = req.FILES.get('Img')
+        else:
+            user_img = None
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user_telphone = models.User.objects.get(Id=user_mark)
+            user_telphone.Img = user_img
+            user_telphone.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            result['message'] = str(e)
+        else:
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
