@@ -177,51 +177,51 @@
 
                     {% for commentlist in comments%}
                     <div class="c-all" name="c-all">
-                              <div class="cmain" name="cmain">
-                                  <img class="c-img" id="c-img" src="/static/photos/{{ commentlist | firstcommentimg }}">
-                                  <div class="comment-box" id="comment-box">
-                                      <div class="comment-head">
-                                          <h6 class="comment-name " id="comment-name"><a href=" " >{{commentlist|firstcomment}}</a></h6>
-                                          <span class="cdate">{{commentlist|firstcommenttime|date:"Y/m/d"}}</span>
-                                          <span class="ctime">{{commentlist|firstcommenttime|date:"H:i:s"}}</span>
-                                          <div class="c-option">
-                                              <!--<img class="clike" id="rdclike" src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>-->
-                                              <img class="creply" id="rdcreply" src="{% static 'creation/imgs/reply.svg'%}">
-                                              <img class="creport" id="rdcreport" src="{% static 'creation/imgs/report.png'%}">
-                                          </div>
-                                      </div>
-                                      <div class="comment-content">
-                                         <p>{{commentlist|firstcommentcontent}}</p>
-                                      </div>
-                                      <div class="commentreply commentreplys" id="commentreplys">
-                                          <textarea placeholder="回复" name="" autocomplete="off" id="comment-content2" class="commentreply-text"></textarea>
-                                          <button class="putcomment putcomments" id="putcomments" backcommentId = {{commentlist|firstcomment|firstcommentUuid}} >回复</button>
+                          <div class="cmain" name="cmain">
+                              <img class="c-img" id="c-img" src="/static/photos/{{ commentlist | firstcommentimg }}">
+                              <div class="comment-box" id="comment-box">
+                                  <div class="comment-head">
+                                      <h6 class="comment-name " id="comment-name"><a href=" " >{{commentlist|firstcomment}}</a></h6>
+                                      <span class="cdate">{{commentlist|firstcommenttime|date:"Y/m/d"}}</span>
+                                      <span class="ctime">{{commentlist|firstcommenttime|date:"H:i:s"}}</span>
+                                      <div class="c-option">
+                                          <!--<img class="clike" id="rdclike" src="{% static 'project/imgs/like1.svg'%}"><span class="clikenum">1111</span>-->
+                                          <img class="creply" id="rdcreply" src="{% static 'creation/imgs/reply.svg'%}">
+                                          <img class="creport" id="rdcreport" src="{% static 'creation/imgs/report.png'%}">
                                       </div>
                                   </div>
-                              </div>
-                              {%for comment in commentlist|leftcomment%}
-                              <div class="c-reply">
-                                  <img class="rc-img" id="user-img" src="/static/photos/{{comment.user.Img}}">
-                                  <div class="rcomment-box">
-                                      <div class="rcomment-head">
-                                          <h6 class="rcomment-name " id="rcomment-name"><a href=" ">{{comment.user.UserName}}</a>  回复</h6>
-                                          <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
-                                          <span class="rctime">{{comment.Date|date:"H:i:s"}}</span>
-                                          <div class="r-option">
-                                              <!--<img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>-->
-                                              <img class="rcreply"   id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
-                                              <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
-                                          </div>
-                                      </div>
-                                      <div class="rcomment-content">
-                                          <p id="rdr-content">{{comment.Content}}</p>
-                                </div>
-                                <div class="commentreply commentreplys" id="rcommentreplys">
-                                          <textarea placeholder="回复" name="" autocomplete="off" id="rcomment-content2" class="commentreply-text"></textarea>
-                                          <button class="putcomment" id="rputcomments" >回复</button>
-                                      </div>
+                                  <div class="comment-content">
+                                     <p>{{commentlist|firstcommentcontent}}</p>
+                                  </div>
+                                  <div class="commentreply commentreplys" id="commentreplys">
+                                      <textarea placeholder="回复" name="" autocomplete="off" id="comment-content2" class="commentreply-text"></textarea>
+                                      <button class="putcomment putcomments" id="putcomments" backcommentId = {{commentlist|firstcomment|firstcommentUuid}} >回复</button>
                                   </div>
                               </div>
+                          </div>
+                          {%for comment in commentlist|leftcomment%}
+                          <div class="c-reply">
+                              <img class="rc-img" id="user-img" src="/static/photos/{{comment.user.Img}}">
+                              <div class="rcomment-box">
+                                  <div class="rcomment-head">
+                                      <h6 class="rcomment-name " id="rcomment-name"><a href=" ">{{comment.user.UserName}}</a>  回复</h6>
+                                      <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
+                                      <span class="rctime">{{comment.Date|date:"H:i:s"}}</span>
+                                      <div class="r-option">
+                                          <!--<img class="rclike" id="rdrclike"  src="{% static 'project/imgs/like1.svg'%}"><span class="rclikenum">1111</span>-->
+                                          <img class="rcreply"   id="rdrcreply" src="{% static 'project/imgs/reply.svg'%}">
+                                          <img class="rcreport" id="rdrcreport" src="{% static 'creation/imgs/report.png'%}">
+                                      </div>
+                                  </div>
+                                  <div class="rcomment-content">
+                                      <p id="rdr-content">{{comment.Content}}</p>
+                            </div>
+                            <div class="commentreply commentreplys" id="rcommentreplys">
+                                      <textarea placeholder="回复" name="" autocomplete="off" id="rcomment-content2" class="commentreply-text"></textarea>
+                                      <button class="putcomment" id="rputcomments" >回复</button>
+                                  </div>
+                              </div>
+                          </div>
                               {%endfor%}
 
 
