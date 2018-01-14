@@ -244,7 +244,8 @@
 }
 .postCon{
     /*margin-top: 20px;*/
-     resize:none;
+    width: 100%;
+    resize:none;
 }
 .file-preview-frame{
     width: 92%;

@@ -1332,6 +1332,7 @@ def release(req):
         fileext = img.split(',')[0].split(';')[0].split('/')[1]
         Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"),fileext)
         Description = req.POST["rhtml"]
+        recruit = req.POST["recruit"]
         Description = remove_script(Description)
         Summary = Description
         Number = int(req.POST["numPerson"])
@@ -1340,6 +1341,10 @@ def release(req):
         proLabels = req.POST["proLabels"].split('*')
         Statue = int(req.POST["statue"])
         Identity = 1
+        State = 1
+        Time = 1
+        RecruitedNumber = 0
+        print EndTime
         try:
             user_email = req.COOKIES.get('user_email')
             user = models.User.objects.get(Email=user_email)
@@ -1350,8 +1355,11 @@ def release(req):
             for label in proLabels[:-1] :
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
                 project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
+            project2ProjectLabel.save()
             models.ProjectUser.objects.create(user=user,project=project,Identity=Identity).save()
-
+            models.Recruit.objects.create(project=project,StartTime=datetime.now(), EndTime=EndTime,Describe=recruit,
+                                          State=State,Times=Time,PredictNumber=Number,RecruitedNumber=RecruitedNumber,
+                                          Uuid=uuid.uuid4()).save()
             resData['status'] = 1
             resData['message'] = 'success'
         except Exception as e :

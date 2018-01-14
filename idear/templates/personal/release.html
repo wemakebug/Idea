@@ -4,26 +4,16 @@
    <title>发布项目</title>
 {%endblock%}
 {% block CSS %}
-{#    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">#}
-{#<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>#}
-{#<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>#}
-{##}
-{#<!-- include summernote css/js-->#}
-{#<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">#}
-{#<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>#}
-    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
     <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
-
-
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <!-- include summernote css/js-->
     <link href="{% static 'editor/summernote.css' %}" rel="stylesheet">
     <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
     <!-- include summernote-zn-CN -->
     <script src="{% static 'editor/lang/summernote-zh-CN.js' %}"></script>
-        <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
-    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
+    <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
 {% endblock %}
 
 {% block content %}
@@ -163,74 +153,82 @@
             ]
         });
     </script>
-{#    <script async>#}
-{#        function fp_ready(){#}
-{#            Flatpickr.l10n.firstDayOfWeek = 1;#}
-{#            document.getElementById("flatpickr-tryme").flatpickr();#}
-{#        }#}
-{#	</script>#}
-{#    <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>#}
-{#    <script>#}
-{#    document.getElementById('releasePro').onclick = function () {#}
-{#        var proTitle = $(".input_title").val();#}
-{#        if(!proTitle){#}
-{#            alert("项目名称不能为空！");#}
-{#            return ;#}
-{#        }#}
-{#        var coverMap = $(".file-preview-image").attr("src"); //封面图#}
-{#        if(!coverMap){#}
-{#            alert("请加封面图！");#}
-{#            return ;#}
-{#        }#}
-{#        var rhtml = $(".note-editable").get(0).innerHTML;#}
-{#        if(!rhtml){#}
-{#            alert("项目内容不能为空！");#}
-{#            return ;#}
-{#        }#}
-{#        var numPerson = $("#numPerson").val();#}
-{#        if(numPerson < "1"){#}
-{#            alert("所需人数请输入大于0的数字！");#}
-{#            $("#numPerson").css("border","1px solid red");#}
-{#            return ;#}
-{#        }#}
-{#        var endTime = $("#flatpickr-tryme").val();#}
-{#        if(!endTime){#}
-{#            alert("请选择结束时间！");#}
-{#            return ;#}
-{#        }#}
-{#        var proLabels = '';#}
-{#        var statue = 1,#}
-{#            identity = 1;#}
-{#        var oDiv = document.getElementsByName("chance_pro_label");#}
-{#        for(var i = 0;i < oDiv.length;i ++){#}
-{#            if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")#}
-{#                proLabels+=oDiv[i].innerHTML + '*';#}
-{#        }#}
-{#        if(proLabels === ""){#}
-{#            alert("请选择标签！");#}
-{#            return;#}
-{#        }#}
-{#        var d=new Date();#}
-{#        var day=d.getDate();#}
-{#        var month=d.getMonth() + 1;#}
-{#        var year=d.getFullYear();#}
-{#        var nowTime = year + "-"+month + "-" + day;#}
-{#        $.post("release",{#}
-{#            "proTitle": proTitle,#}
-{#            "coverMap": coverMap,#}
-{#            "rhtml": rhtml,#}
-{#            "numPerson": numPerson,#}
-{#            "nowTime":nowTime,#}
-{#            "endTime": endTime,#}
-{#            "proLabels": proLabels,#}
-{#            "statue":statue,#}
-{#            "idetity":identity#}
-{#        },function (data) {#}
-{#            var data = JSON.parse(data);#}
-{#            if(data.status){#}
-{#                alert("成功")#}
-{#            }#}
-{#        })#}
-{#    };#}
-{#    </script>#}
+    <script async>
+        function fp_ready(){
+            Flatpickr.l10n.firstDayOfWeek = 1;
+            document.getElementById("flatpickr-tryme").flatpickr();
+        }
+	</script>
+    <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
+    <script>
+    document.getElementById('releasePro').onclick = function () {
+        var proTitle = $(".input_title").val();
+        if(!proTitle){
+            alert("项目名称不能为空！");
+            return ;
+        }
+        var coverMap = $(".file-preview-image").attr("src"); //封面图
+        if(!coverMap){
+            alert("请加封面图！");
+            return ;
+        }
+        var statue ,
+            identity = 1;
+        var recruit = $(".postCon").val();
+        if(recruit === ''){
+            statue = 2;
+        }else{
+            statue = 1;
+        }
+
+        var rhtml = $(".note-editable").get(0).innerHTML;
+        if(!rhtml){
+            alert("项目内容不能为空！");
+            return ;
+        }
+        var numPerson = $("#numPerson").val();
+        if(numPerson < "1"){
+            alert("所需人数请输入大于0的数字！");
+            $("#numPerson").css("border","1px solid red");
+            return ;
+        }
+        var endTime = $("#flatpickr-tryme").val();
+        if(!endTime){
+            alert("请选择结束时间！");
+            return ;
+        }
+        var proLabels = '';
+        var oDiv = document.getElementsByName("chance_pro_label");
+        for(var i = 0;i < oDiv.length;i ++){
+            if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")
+                proLabels+=oDiv[i].innerHTML + '*';
+        }
+        if(proLabels === ""){
+            alert("请选择标签！");
+            return;
+        }
+        var d=new Date();
+        var day=d.getDate();
+        var month=d.getMonth() + 1;
+        var year=d.getFullYear();
+        var nowTime = year + "-"+month + "-" + day;
+        $.post("release",{
+            "proTitle": proTitle,
+            "coverMap": coverMap,
+            "rhtml": rhtml,
+            "numPerson": numPerson,
+            "nowTime":nowTime,
+            "endTime": endTime,
+            "proLabels": proLabels,
+            "statue":statue,
+            "recruit":recruit,
+            "idetity":identity
+        },function (data) {
+            var data = JSON.parse(data);
+            if(data.status){
+                alert("成功")
+            }
+        })
+    };
+    </script>
 {% endblock %}
