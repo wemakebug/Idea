@@ -49,9 +49,19 @@
 
 .home-b-user{
     width:90%;
-    height:100px;
+    height:85px;
     background-color:white;
     margin:100px 0 30px 15px;
+    box-shadow:1px 1px 1px 1px #9999;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+.home-b-joiner{
+    width:90%;
+    height:85px;
+    background-color:white;
+    margin:20px 0 0 15px;
     box-shadow:1px 1px 1px 1px #9999;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -171,4 +181,8 @@
 }
 .ribbon3{
     top:10px;
+}
+.pr-detail p{
+    display:block;
+    margin:20px;
 }

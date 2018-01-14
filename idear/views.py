@@ -1045,7 +1045,7 @@ def redetails(req):
         timeStamp = int(time.mktime(timeArray))
 
         try:
-            useremail = req.session.get('user_email')
+            useremail = req.COOKIES.get('user_email')
             preuser = models.User.objects.get(Email=useremail)
             print(preuser.Img)
             return render_to_response('project/redetails.html',
@@ -1273,8 +1273,9 @@ def dedetails(req):
     if req.method == 'GET':
         projectId = req.GET['projectId']
 
-
         project = models.Project.objects.get(Id=projectId)
+        user = models.ProjectUser.objects.get(project_id=projectId)
+
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
 
         praises = models.Praise.objects.all()
@@ -1286,7 +1287,7 @@ def dedetails(req):
         for label in labels:
             alllables.append(label.projectLabel.Id)
             alllables = list(set(alllables))
-        return render_to_response('project/dedetails.html',{"project":project,"labels": labels[:3],})
+        return render_to_response('project/dedetails.html',{"project":project,"labels": labels[:3],"user":user})
     if req.method == 'POST':
         pass
 
