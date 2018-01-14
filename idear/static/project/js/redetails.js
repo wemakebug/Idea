@@ -123,44 +123,24 @@
                     }
                  };
                 }
-                // putcomments.onclick = function(){
-                //  // $(".putcomments").click(function(){
-                //     var ele = this;
-                //     var parent_div = ele.parentNode.parentNode;
-                //     var reply = parent_div.lastChild;
-                //     if(reply.tagName === undefined){
-                //         reply = parent_div.childNodes[parent_div.childNodes.length-2];
-                //     }else {
-                //         reply = parent_div.lastChild;
-                //     }
-                //     reply = $(reply);
-                //     var content = reply.children("#commentreplytext").val()
-                //     var commentedId = $(this).attr("backcommentId");
-                //     var username = getCookie('user_email');
-                //     var projectId = $("#projectId").val()
-                //
-                //      if(username === null || username ===''){
-                //           alert("请您登陆");
-                //         window.location.href="/idear/regist";
-                //     }
-                //     else{
-                //         if(content == ""){
-                //             alert("请输入评论内容")
-                //         }
-                //         else {
-                //             $.post('/idear/prcomment',{
-                //             "content":content,
-                //             "username":username,
-                //             "projectId":projectId,
-                //             "commentedId":commentedId
-                //             },function(data){
-                //             location.reload()
-                //           })
-                //             reply.slideUp("slow");
-                //         }
-                //     }
-                //  };
-                //项目举报
+
+                 $(document).ready(function () {
+                    var user_img = document.getElementById('u-img');
+
+                    $.post('/idear/getimg', function (result) {
+                        result = JSON.parse(result);
+                        if (result['status'] === 1) {
+                            var img_path = result['img_path'];
+
+                            var message = result['message'];
+                            user_img.src = '/static' + img_path;
+                        } else if (result['status'] === 0) {
+                            var img_path = 'photos/2017/09/19/user/default.jpg';
+                            user_img.src = '/static/photos/' + img_path;
+
+                        }
+                    });
+            });
 
                 var preport = document.getElementById("rdpreport");
                 preport.onclick = function(){
