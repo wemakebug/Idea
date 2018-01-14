@@ -27,8 +27,8 @@
         </div>
         <div class="pro_chance">
             <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>
-            <div class="chance_ownname"><a href="#"><p>暂存</p></a></div>
-            <div class="chance_ownname chance_release">
+            <div class="chance_ownname " id="temporary"><p>暂存</p></div>
+            <div class="chance_ownname chance_release ">
                 <button class="releasePro" id="releasePro">
                     <p>发布</p>
                 </button>
@@ -161,7 +161,8 @@
 	</script>
     <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
     <script>
-    document.getElementById('releasePro').onclick = function () {
+    //暂存
+    document.getElementById('temporary').onclick = function () {
         var proTitle = $(".input_title").val();
         if(!proTitle){
             alert("项目名称不能为空！");
@@ -172,15 +173,9 @@
             alert("请加封面图！");
             return ;
         }
-        var statue ,
+        var statue = 0 ,
             identity = 1;
         var recruit = $(".postCon").val();
-        if(recruit === ''){
-            statue = 2;
-        }else{
-            statue = 1;
-        }
-
         var rhtml = $(".note-editable").get(0).innerHTML;
         if(!rhtml){
             alert("项目内容不能为空！");
@@ -226,7 +221,76 @@
         },function (data) {
             var data = JSON.parse(data);
             if(data.status){
-                alert("成功")
+                alert("暂存成功")
+            }
+        })
+    };
+    //发布
+    document.getElementById('releasePro').onclick = function () {
+        var proTitle = $(".input_title").val();
+        if(!proTitle){
+            alert("项目名称不能为空！");
+            return ;
+        }
+        var coverMap = $(".file-preview-image").attr("src"); //封面图
+        if(!coverMap){
+            alert("请加封面图！");
+            return ;
+        }
+        var statue ,
+            identity = 1;
+        var recruit = $(".postCon").val();
+        if(recruit === ''){
+            statue = 2;
+        }else{
+            statue = 1;
+        }
+        var rhtml = $(".note-editable").get(0).innerHTML;
+        if(!rhtml){
+            alert("项目内容不能为空！");
+            return ;
+        }
+        var numPerson = $("#numPerson").val();
+        if(numPerson < "1"){
+            alert("所需人数请输入大于0的数字！");
+            $("#numPerson").css("border","1px solid red");
+            return ;
+        }
+        var endTime = $("#flatpickr-tryme").val();
+        if(!endTime){
+            alert("请选择结束时间！");
+            return ;
+        }
+        var proLabels = '';
+        var oDiv = document.getElementsByName("chance_pro_label");
+        for(var i = 0;i < oDiv.length;i ++){
+            if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")
+                proLabels+=oDiv[i].innerHTML + '*';
+        }
+        if(proLabels === ""){
+            alert("请选择标签！");
+            return;
+        }
+        var d=new Date();
+        var day=d.getDate();
+        var month=d.getMonth() + 1;
+        var year=d.getFullYear();
+        var nowTime = year + "-"+month + "-" + day;
+        $.post("release",{
+            "proTitle": proTitle,
+            "coverMap": coverMap,
+            "rhtml": rhtml,
+            "numPerson": numPerson,
+            "nowTime":nowTime,
+            "endTime": endTime,
+            "proLabels": proLabels,
+            "statue":statue,
+            "recruit":recruit,
+            "idetity":identity
+        },function (data) {
+            var data = JSON.parse(data);
+            if(data.status){
+                alert("发布成功")
             }
         })
     };

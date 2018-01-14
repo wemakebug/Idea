@@ -1334,7 +1334,7 @@ def release(req):
         Description = req.POST["rhtml"]
         recruit = req.POST["recruit"]
         Description = remove_script(Description)
-        Summary = Description
+        # Summary = Description
         Number = int(req.POST["numPerson"])
         EndTime = req.POST["endTime"]
         EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
@@ -1350,7 +1350,7 @@ def release(req):
             user = models.User.objects.get(Email=user_email)
             project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
                                                     StartTime=datetime.now(), EndTime=EndTime,Statue=Statue,
-                                                    Img=Img,Summary=Summary,Progress=Summary,Uuid=uuid.uuid4())
+                                                    Img=Img,Uuid=uuid.uuid4())
             project.save()
             for label in proLabels[:-1] :
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
