@@ -17,7 +17,7 @@
                     var user = getCookie('user_email');
                     if(user === null || user ===''){
                         alert("请您登陆");
-                        window.location.href="/idear/regist";
+                        window.location.href="/idear/login";
                     }
                     else {
                         var projectid = document.getElementById("projectId").value;
@@ -47,7 +47,7 @@
                     var user = getCookie('user_email');
                     if(user === null || user ===''){
                           alert("请您登陆");
-                        window.location.href="/idear/regist";
+                        window.location.href="/idear/login";
                     }
                     else {
                         if (reply_comment === "" || reply_comment === undefined || reply_comment === null) {
@@ -86,7 +86,6 @@
                 var putcomments  = document.getElementsByClassName("putcomments");
                 for (var i = 0; i < putcomments.length; i ++) {
                     putcomments[i].onclick = function(){
-                 // $(".putcomments").click(function(){
                     var ele = this;
                     var parent_div = ele.parentNode.parentNode;
                     var reply = parent_div.lastChild;
@@ -103,7 +102,7 @@
 
                      if(username === null || username ===''){
                           alert("请您登陆");
-                        window.location.href="/idear/regist";
+                        window.location.href="/idear/login";
                     }
                     else{
                         if(content == ""){
@@ -144,10 +143,11 @@
 
                 var preport = document.getElementById("rdpreport");
                 preport.onclick = function(){
+
                     var user = getCookie('user_email');
                     if(user === null || user ===''){
                           alert("请您登陆")
-                        window.location.href="/idear/regist";
+                        window.location.href="/idear/login";
                     }
                     else {
                             layer.open({
@@ -164,9 +164,36 @@
                             content: '<textarea placeholder="" name="" id="comment-content2" class="report-text"></textarea> ' +
                             '<button class="putreport" id="putreport">提交</button> '
                         });
-                    }
 
+                             var projectId = $("#projectId").val()
+                             var username = getCookie('user_email');
+                             var putreport = document.getElementById("putreport");
+                             putreport.onclick = function(){
+                             var reason = document.getElementById("comment-content2").value;
+                             if(username === null || username ===''){
+                                 alert("请您登陆");
+                                 window.location.href="/idear/login";
+                             }
+                             else {
+                                 if (content == "") {
+                                     alert("请您填入举报内容！");
+                                 }
+                                 else {
+                                     layer.close(layer.index);
+                                     $.post("/idear/preport", {
+                                         "reason": reason,
+                                         "projectId": projectId
+                                     }, function (data) {
+                                         alert("提交成功")
+                                         window.location.reload()
+                                     });
+                                 }
+                             }
+                        };
+                    }
                 };
+
+
                  // 评论举报
 
                 var creport = document.getElementById("rdcreport");
@@ -232,7 +259,7 @@
                         return null;
                 }
 
-         //
+
 
 
 
