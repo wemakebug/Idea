@@ -16,7 +16,7 @@
     <input type="hidden" value="{{ user.Email }}" id="label_mark">
         <div style="width: 80%;margin-top: 20px;height: 100px;">
             {% for user_show in user_show_label %}
-                <span class="allsign1" name="personal_label" alt="提示" title="点击删除此标签">{{ user_show.userLabel }}</span>
+                <span class="allsign1" name="personal_label" alt="提示" title="双击删除此标签">{{ user_show.userLabel }}</span>
             {% endfor %}
         </div>
         <div style="border-bottom: 1px dashed #BEBEBE " ></div>
@@ -39,6 +39,7 @@
     <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'personal/js/personal_label.js' %}"></script>
     <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/editprofile.js' %}"></script>
     <script>
         $(".allsign").on("click",function () {
             var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';

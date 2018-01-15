@@ -83,6 +83,7 @@ urlpatterns = [
     url(r'^get_user_name$', views.get_user_name),
     url(r'^personal_information$', views.personal_information),
     url(r'^account_information$', views.account_information),
+    url(r'^account_information_imgs$', views.account_information_imgs),
     url(r'^change_password$', views.change_password),
     url(r'^personal_label$', views.personal_label),
     url(r'^user_delete_personal_label$', views.user_delete_personal_label),

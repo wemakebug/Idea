@@ -13,6 +13,7 @@ from .Idea_util.varidate import user_must_login
 from itertools import chain
 import re
 
+from django.views.decorators.http import require_http_methods
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
@@ -1045,7 +1046,7 @@ def redetails(req):
         timeStamp = int(time.mktime(timeArray))
 
         try:
-            useremail = req.session.get('user_email')
+            useremail = req.COOKIES.get('user_email')
             preuser = models.User.objects.get(Email=useremail)
             print(preuser.Img)
             return render_to_response('project/redetails.html',
@@ -1273,8 +1274,9 @@ def dedetails(req):
     if req.method == 'GET':
         projectId = req.GET['projectId']
 
-
         project = models.Project.objects.get(Id=projectId)
+        user = models.ProjectUser.objects.get(project_id=projectId)
+
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
 
         praises = models.Praise.objects.all()
@@ -1286,7 +1288,7 @@ def dedetails(req):
         for label in labels:
             alllables.append(label.projectLabel.Id)
             alllables = list(set(alllables))
-        return render_to_response('project/dedetails.html',{"project":project,"labels": labels[:3],})
+        return render_to_response('project/dedetails.html',{"project":project,"labels": labels[:3],"user":user})
     if req.method == 'POST':
         pass
 
@@ -1334,7 +1336,7 @@ def release(req):
         Description = req.POST["rhtml"]
         recruit = req.POST["recruit"]
         Description = remove_script(Description)
-        Summary = Description
+        # Summary = Description
         Number = int(req.POST["numPerson"])
         EndTime = req.POST["endTime"]
         EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
@@ -1350,7 +1352,7 @@ def release(req):
             user = models.User.objects.get(Email=user_email)
             project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
                                                     StartTime=datetime.now(), EndTime=EndTime,Statue=Statue,
-                                                    Img=Img,Summary=Summary,Progress=Summary,Uuid=uuid.uuid4())
+                                                    Img=Img,Uuid=uuid.uuid4())
             project.save()
             for label in proLabels[:-1] :
                 Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
@@ -1740,6 +1742,7 @@ def personal_information(req):
 
 
 @csrf_exempt
+@require_http_methods(["GET", "POST"])
 def account_information(req):
     '''
     账号信息
@@ -1761,7 +1764,48 @@ def account_information(req):
         else:
             return render_to_response('personal/account_information.html', {"user": user})
     if req.method == 'POST':
-        pass
+        telphone = req.POST["telphone"]
+        user_mark = req.POST["user_mark"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        remove_script(telphone)
+        try:
+            user_telphone = models.User.objects.get(Id=user_mark)
+            user_telphone.Phone = telphone
+            user_telphone.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def account_information_imgs(req):
+    if req.method == 'POST':
+        postData = req.POST
+        user_mark = postData.get("user_mark")
+        if req.FILES:
+            user_img = req.FILES.get('Img')
+        else:
+            user_img = None
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user_telphone = models.User.objects.get(Id=user_mark)
+            user_telphone.Img = user_img
+            user_telphone.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            result['message'] = str(e)
+        else:
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
