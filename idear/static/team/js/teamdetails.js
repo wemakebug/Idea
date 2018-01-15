@@ -5,20 +5,27 @@
 
 
 $(function(){
-    $.cookie("user", 3);
-    userId = $.cookie("user");
-    
+    var strcookie = document.cookie;
+    var arrcookie = strcookie.split("; ");
+    for ( var i = 0; i < arrcookie.length; i++) {
+        var user_email = arrcookie[i].split("=");
+    }
+    user_email = user_email[user_email.length - 1];
+    // alert(user_email);
+
+    // $.cookie("user", 3);
+    // userId = $.cookie("user");
     //随机颜色标签圆球
     $('.repo-language-color').each(function() {
         var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
-        $(this).css('background', col)
+        $(this).css('background', col);
     });
     
     var Id = window.location.href.split("/");
     Id = Id[Id.length - 1];
     var praise_txt1 = $("#praise-txt11-1");
     var praise_txt2 = $("#praise-txt11");
-    $.post("/idear/teamattend",{userId: userId,Id:Id},function (data) {
+    $.post("/idear/teamattend",{user_email: user_email,Id:Id},function (data) {
         if(data== 1){
              document.getElementById("praise-img11-guanzhu").src="/static/team/imgs/xinxing.png";
         }else if(data== 2){
@@ -28,7 +35,7 @@ $(function(){
 
     });
 
-    $.post("/idear/teamattend1",{userId: userId,Id:Id},function (status) {
+    $.post("/idear/teamattend1",{user_email: user_email,Id:Id},function (status) {
         if(status == 1){
              document.getElementById("praise-img11-dianzan").src="/static/team/imgs/dianzan.png";
         }else if(status == 2){
@@ -263,11 +270,17 @@ $("#comment11-2").click(function () {
 //团队详情关注
 
 $("#praise11-1").click(function () {
+    var strcookie = document.cookie;
+    var arrcookie = strcookie.split("; ");
+    for ( var i = 0; i < arrcookie.length; i++) {
+        var user_email = arrcookie[i].split("=");
+    }
+    user_email = user_email[user_email.length - 1];
     var Id = window.location.href.split("/");
     Id = Id[Id.length - 1];
     var praise_txt1 = $("#praise-txt11-1");
     var num1=parseInt(praise_txt1.text());
-    $.post("/idear/attend", {"userId": userId,"attendType": "3","Id":Id}, function (data) {
+    $.post("/idear/user_attend_team", {"user_email": user_email,"attendType": "3","Id":Id}, function (data) {
         if (data == 1) {
             
             // $(this).html("<img src='/static/team/imgs/redxin.png' id='praise-img11-1' class='animation' />");
@@ -293,11 +306,17 @@ $("#praise11-1").click(function () {
 //团队点赞
 
 $("#praise11").click(function () {
+    var strcookie = document.cookie;
+    var arrcookie = strcookie.split("; ");
+    for ( var i = 0; i < arrcookie.length; i++) {
+        var user_email = arrcookie[i].split("=");
+    }
+    user_email = user_email[user_email.length - 1];
     var Id = window.location.href.split("/");
     Id = Id[Id.length - 1];
     var praise_txt2 = $("#praise-txt11");
     var num2=parseInt(praise_txt2.text());
-    $.post("/idear/star", {userId: userId,starType: "3",Id:Id}, function (data) {
+    $.post("/idear/star", {user_email: user_email,starType: "3",Id:Id}, function (data) {
 
         if (data == 1) {
             document.getElementById("praise-img11-dianzan").setAttribute("src", "/static/team/imgs/redzan.png");

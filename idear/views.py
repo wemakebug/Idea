@@ -440,14 +440,15 @@ def teamdetails(req, teamid):
     :return: 
     '''
     if req.method == 'GET':
-        username = "chris"
+        email = req.COOKIES.get('user_email')
+        # username = "chris"
         try:
             this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
             counts = models.Follow.objects.filter(Follower=this_team).count()
             teamcounts = models.Praise.objects.filter(user_prised=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=email)
             comment_id = models.Comment.objects.filter(Q(commited_user_id=teamid) & Q(user=user))
             print (comment_id)
             commentlist = []
