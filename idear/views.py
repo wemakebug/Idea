@@ -1016,8 +1016,6 @@ def redetails(req):
         projectId = req.GET['projectId']
         project = models.Project.objects.get(Id=projectId)
         user = models.ProjectUser.objects.get(project_id=projectId)
-
-
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
@@ -1310,24 +1308,44 @@ def dedetails(req):
     '''
     if req.method == 'GET':
         projectId = req.GET['projectId']
-
         project = models.Project.objects.get(Id=projectId)
         user = models.ProjectUser.objects.get(project_id=projectId)
-
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
-
         praises = models.Praise.objects.all()
         follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
-
-
+        commentlist = []
+        for comment in comments:
+            if comment.commentedId is None:
+                newcomment = []
+                newcomment.append(comment)
+                commentlist.append(newcomment)
+        for comlist in commentlist:
+            for comment in comments:
+                if str(comlist[0].Uuid) == str(comment.commentedId):
+                    comlist.append(comment)
         alllables = []  # 找出本项目所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
-            alllables = list(set(alllables))
-        return render_to_response('project/dedetails.html',{"project":project,"labels": labels[:3],"user":user})
-    if req.method == 'POST':
-        pass
+        alllables = list(set(alllables))
+        project2projectLabel = models.Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+
+
+        try:
+            useremail = req.COOKIES.get('user_email')
+            preuser = models.User.objects.get(Email=useremail)
+            print(preuser.Img)
+            return render_to_response('project/dedetails.html',
+                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user": user,
+                                   'follows': follows, 'praises': praises, "comment": commentlist,"preuser":preuser })
+        except:
+            return render_to_response('project/dedetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user":user,'follows': follows,'praises': praises,"comment":commentlist,})
+
+
+    if req.method == "POST":
+         pass
 
 
 ''' 开发项目相关页面结束'''
