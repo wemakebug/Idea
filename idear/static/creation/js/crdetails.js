@@ -49,15 +49,6 @@ $(document).ready(function () {
 
 document.getElementById('submit-report').onclick = function(){
     var user = getCookie('u-img');
-    alert(user)
-        if(user === null || user ===''){
-            var conf = confirm("请您登录")
-            if(conf == true)
-                window.location.href(login())
-            else
-                return
-        }
-
     var reason = $("#message-text").val()
     var creationId = $("#creationId").val()
 
