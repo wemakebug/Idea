@@ -222,12 +222,11 @@ h5 {
 	font-size:15px;
 }
 .more {
-	width:918px;
+	width:96%;
 	height:30px;
 	text-align: center;
 	float:left;
 	margin-top:30px;
-	margin-left:65px;
 	margin-bottom:2%;
 	background-color:white;
 	border-radius: 3px;

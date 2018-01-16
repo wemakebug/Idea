@@ -302,7 +302,7 @@ body{
     font-weight:bold;
     line-height: 50px;
     padding-left: 15px;
-    background: #ABCDCB;
+    background: #7495B7;
     left: -2px;
     top: 30px
 }
@@ -313,7 +313,7 @@ body{
 .ribbon3:before {
    height: 0;
    width: 0;
-   border-bottom: 8px solid  #ABCDCB ;
+   border-bottom: 8px solid #7495B7 ;
    border-left: 8px solid transparent;
    top: -8px;
    left: 0;
@@ -323,7 +323,7 @@ body{
    width: 0;
    border-top: 25px solid transparent;
    border-bottom: 25px solid transparent;
-   border-left: 15px solid #ABCDCB;
+   border-left: 15px solid #7495B7;
    right: -15px;
 }
 .lastday{
@@ -403,7 +403,7 @@ body{
   position: relative;
 }
 .progress-pie-chart.gt-50 {
-  background-color: #81ce97;
+  background-color: #7495B7;
 }
 .ppc-progress {
       content: "";
@@ -425,7 +425,7 @@ body{
       width: 200px;
       height: 200px;
       clip: rect(0, 100px, 200px, 0);
-      background: #81ce97;
+      background: #7495B7;
       transform: rotate(60deg);
 }
 .gt-50 .ppc-progress {
@@ -452,7 +452,7 @@ body{
   display: block;
   font-size: 2.6em;
   font-weight: bold;
-  color: #81ce97;
+  color:  #7495B7;
 }
 
 .pcc-percents-wrapper {
@@ -477,7 +477,7 @@ body{
 			position: relative;
 			color: rgba(255,255,255,1);
 			text-decoration: none;
-			background-color: rgb(83, 144, 146);
+			background-color:  #7495B7;
 			font-family: 'Yanone Kaffeesatz';
 			font-weight: 700;
 			font-size: 25px;
@@ -486,9 +486,9 @@ body{
 			-webkit-border-radius: 8px;
 			-moz-border-radius: 8px;
 			border-radius: 5px;
-			-webkit-box-shadow: 0px 9px 0px rgb(83, 130, 146), 0px 9px 25px rgba(0,0,0,.7);
-			-moz-box-shadow: 0px 9px 0px rgb(83, 130, 146), 0px 9px 25px rgba(0,0,0,.7);
-			box-shadow: 0px 9px 0px rgb(83, 130, 146), 0px 9px 25px rgba(0,0,0,.7);
+			-webkit-box-shadow: 0px 9px 0px rgb(116, 149, 183), 0px 9px 25px rgba(0,0,0,.7);
+			-moz-box-shadow: 0px 9px 0px rgb(116, 149, 183), 0px 9px 25px rgba(0,0,0,.7);
+			box-shadow: 0px 9px 0px rgb(116, 149, 183), 0px 9px 25px rgba(0,0,0,.7);
 			text-align: center;
 			-webkit-transition: all .1s ease;
 			-moz-transition: all .1s ease;
@@ -499,9 +499,9 @@ body{
 
 /*单击按键后变化*/
 .rbutton:active {
-    -webkit-box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
-    -moz-box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
-    box-shadow: 0 3px 0   #539092, 0 3px 6px   #539092;
+    -webkit-box-shadow: 0 3px 0   #7495B7, 0 3px 6px   #7495B7;
+    -moz-box-shadow: 0 3px 0   #7495B7, 0 3px 6px   #7495B7;
+    box-shadow: 0 3px 0   #7495B7, 0 3px 6px   #7495B7;
 }
 .rfooter{
     width:100%;
@@ -541,7 +541,7 @@ body{
     font-weight:bold;
     line-height: 50px;
     padding-left: 15px;
-    background: #ABCDCB;
+    background: #7495B7;
     left: -2px;
     top: 30px
 }
@@ -552,7 +552,7 @@ body{
 .ribbon4:before {
    height: 0;
    width: 0;
-   border-bottom: 8px solid  #ABCDCB ;
+   border-bottom: 8px solid   #7495B7;
    border-left: 8px solid transparent;
    top: -8px;
    left: 0;
@@ -562,8 +562,8 @@ body{
    width: 0;
    border-top: 25px solid transparent;
    border-bottom: 25px solid transparent;
-   border-left: 15px solid #ABCDCB;
-   right: -13px;
+   border-left: 15px solid #7495B7;
+   right: -15px;
 }
 
 .apply-text{
@@ -676,7 +676,7 @@ body{
     width:8%;
     height:30px;
     margin-top:5px;
-    background-color: #3a87ad;
+    background-color: #7495B7;
     border:none;
     float:right;
     border-radius:5px;
@@ -717,13 +717,13 @@ body{
 	display: block;
 	border-width: 10px 12px 10px 0;
 	border-style: solid;
-	/*border-color: transparent  #8BCFCC;*/
-	top: 15px;
+	border-color: transparent  #a5bad0;
+	top: 12px;
 	left: -13px;
 }
 .comment-box:before {
 	border-width: 11px 13px 11px 0;
-	border-color: transparent rgba(0,0,0,0.05);
+	border-color: transparent #a5bad0;
 	left: -12px;
 }
 .comment-head {
@@ -735,7 +735,7 @@ body{
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:   #ABCDCB;
+    background-color: #a5bad0;
 
 }
 .comment-name {
@@ -799,7 +799,7 @@ body{
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:   #ABCDCB;
+    background-color: #a5bad0;
 }
 /*评论回复*/
 .c-reply{
@@ -829,7 +829,7 @@ body{
 	position: relative;
     left:20px;
 }
-.rcomment-box:before,  .comment-box:after {
+.rcomment-box:before,  .rcomment-box:after {
 	content: '';
 	height: 0;
 	width: 0;
@@ -837,13 +837,13 @@ body{
 	display: block;
 	border-width: 10px 12px 10px 0;
 	border-style: solid;
-	border-color: transparent  #8BCFCC;
+	border-color: transparent  #a5bad0;
 	top: 10px;
 	left: -11px;
 }
 .rcomment-box:before {
 	border-width: 11px 13px 11px 0;
-	border-color: transparent  #ABCDCB;
+	border-color: transparent  #a5bad0;
 	left: -12px;
 }
 .rcomment-head {
@@ -855,7 +855,7 @@ body{
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    background-color:  #ABCDCB;
+    background-color:  #a5bad0;
 }
 .rcomment-name {
 	color: #283035;
@@ -917,7 +917,7 @@ body{
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
-    background-color:  #ABCDCB;
+    background-color: #a5bad0;
 }
 /*评论回复文本框*/
 .commentreply{

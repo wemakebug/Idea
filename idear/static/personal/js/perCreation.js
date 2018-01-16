@@ -18,20 +18,28 @@
 //
 // });
 $(function () {
+    var num;
     $(".dele").click(function () {
-         var creationId = $(this).children().val();
-         var data = {'creationId':creationId}
-         $.post('perCreation',data,function (result) {
-             result = JSON.parse(result)
-             if(result.status == 1){
-                 alert("删除成功");
-                 $(this).parent().parent().fadeOut("show");
-                 window.location.reload();
-
-             }else {
-                 alert("删除错误")
-             }
-
-         });
+        var creationId = $(this).children().val();
+        var data = {'creationId': creationId};
+        num = $(this).index();
+        $(".pop").fadeIn('fast');
+        $(".popBottom").on('click', 'span', function (event) {
+            event.preventDefault();
+            if ($(this).hasClass('confirm')) {
+                $.post('perCreation', data, function (result) {
+                    result = JSON.parse(result);
+                    if (result.status == 1) {
+                        $(this).parent().parent().fadeOut("show");
+                        window.location.reload();
+                    } else {
+                        alert("删除错误")
+                    }
+                });
+            } else {
+                $(".pop").fadeOut();
+                num = "";
+            }
+        });
     });
 });
