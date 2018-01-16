@@ -1,0 +1,59 @@
+{%extends 'personal/homepage.html'%}
+{% load static %}
+{%block title%}
+    <title>个人中心/创意灵感</title>
+{%endblock%}
+
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/PM.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
+{%endblock%}
+
+{%block contents%}
+    <div style="width:65%;">
+        {% for projects in project %}
+            <div style="" class="pm_border">
+                <div style="height: 65%">
+                    <img src="/static/photos/{{ projects.Img }}" alt="" class="photo_1">
+                </div>
+                 <div  style="height: 12%; overflow:hidden;">
+                    <h5>{{ projects.ProjectName}}</h5>
+                </div>
+                <div>项目类型：
+                    {% if projects.Statue == 0 %}暂存项目
+                    {% elif projects.Statue == 1 %}初期招募
+                    {% elif projects.Statue == 2 %}正在开发
+                    {% elif projects.Statue == 3 %}二次招募
+                    {% elif projects.Statue == 4 %}完成项目
+                    {% endif %}
+                </div>
+                <div>
+                    <button onclick="window.open('crdetails?creationId={{ creation.Id }}')"  class=" btn btn-info" style="cursor :pointer">查看详情</button>
+                    <button style="cursor :pointer;" class="dele btn btn-danger">删 除
+                        <input type="text" value="{{ creation.Id }}" style="display:none;" >
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="pop">
+        <div class="popMain">
+            <div class="popTop"></div>
+            <div class="popMiddle">
+                <p>是否确认删除？</p>
+            </div>
+            <div class="popBottom">
+                <span class="confirm">确认</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div>
+    </div>
+
+{%endblock%}
+{% block script %}
+    <script type="text/javascript" src="{% static 'team/js/jquery-1.12.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/PM.js'%}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
+{% endblock %}

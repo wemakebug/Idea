@@ -36,11 +36,10 @@
                     <td class="tab1">{{ creation.Date }}</td>
                     <td class="tab1">{{ creation.LastChange }}</td>
                     <td class="tab1">
-                        <button href="crdetails?creationId={{ creation.Id }}"  class=" btn btn-info" style="cursor :pointer">查看详情</button>
+                        <button onclick="window.open('crdetails?creationId={{ creation.Id }}')"  class=" btn btn-info" style="cursor :pointer">查看详情</button>
                         <button style="cursor :pointer;" class="dele btn btn-danger">删 除
                             <input type="text" value="{{ creation.Id }}" style="display:none;" >
                         </button>
-
                     </td>
                 </tr>
                 {% endfor %}
@@ -69,4 +68,5 @@
     <script type="text/javascript" src="{% static 'team/js/jquery-1.12.0.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <script type="text/javascript" src="{% static 'personal/js/perCreation.js'%}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
 {% endblock %}

@@ -1747,6 +1747,25 @@ def perCreation(req):
             return HttpResponse(json.dumps(result))
 
 
+
+@csrf_exempt
+def PM(req):
+    '''
+    个人中心项目管理
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        projectUser = models.ProjectUser.objects.filter(user__Email=user_email)
+        project = []
+        for obj in projectUser:
+            project.append(obj.project)
+        return render_to_response('personal/PM.html',{'project':project})
+    if req.method == 'POST':
+        pass
+
+
 @csrf_exempt
 def personal_information(req):
     '''
