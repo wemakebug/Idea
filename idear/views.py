@@ -1,20 +1,34 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from itertools import chain
 import json
 import time
 import time
+
+import uuid
+from .Idea_util.varidate import user_must_login
+from itertools import chain
+import re
+
+from django.views.decorators.http import require_http_methods
 from django.http import HttpResponseRedirect
+from django.conf import settings
+from django.core.mail import send_mail
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, HttpResponse, render_to_response, get_object_or_404, Http404
 from django.db.models import Q
-from admina.models import Creation2ProjectLabel, Creation, ProjectLabel, Comment, User, Praise, Follow, ProjectUser, \
-    Project2ProjectLabel, Project, Recruit
+from datetime import datetime
+
+from .Idea_util.getUserImg import decode_img
+from .Idea_util.varidate import remove_script
 from admina import models
 
-
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-import uuid
-import re, base64
+from django.utils.html import escapejs,strip_tags
+from django.views.decorators.http import require_http_methods
 
 try:
     from StringIO import StringIO
@@ -26,143 +40,12 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
-
-
-
-
-
-
 ''' 页面统一功能视图'''
-
-
-@csrf_exempt
-def Check_User_Cookie(req):
-    '''
-    登陆验证函数，如需登陆，调此函数即可，仍需调试
-    @:return 状态值，可通过为true
-    @:COOKIE name = User_acconunt
-    @:COOKIE name = UUID
-    '''
-    loginStatus = False
-    try:
-        user_cookie = req.COOKIES["email"]
-        user_uuid_code = req.COOKIES["uuid"]
-        try:
-            user = models.User.objects.get(Email=user_cookie)
-            if user_uuid_code == user_uuid_code:
-                loginStatus = True
-                return loginStatus
-        except:
-            return loginStatus
-    except:
-        return loginStatus
-
-
-def varidate_char(str, max_length=20):
-    '''
-    非法字符验证
-    :param sql: 
-    :param max_length: 
-    :return: False  表示字符串中含有非法字符    True 表示字符串中不含有非法字符
-    '''
-    if len(str) > max_length:
-        return False
-    dirty_stuff = ["\"", "\\", "/", "*", "'", "=", "-", "#", ";", "<", ">", "+", "%", "$", "(", ")", "%", "@", "!"]
-    for char in str:
-        if char in dirty_stuff:
-            return False
-    return True
-
-
-def varidate_emial(str, max_length=20):
-    '''
-    邮箱格式验证
-    :param str: 
-    :param max_length: 
-    :return: 
-    '''
-    if len(str) > max_length:
-        return False
-    if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", str) != None:
-        return True
-    else:
-        return False
-
-
-@csrf_exempt
-def get_user_img(req):
-    '''
-    动态获取用户图片
-    :param req: 
-    :return: 
-    '''
-    if req.method == "GET":
-        # user = models.User.objects.get(Email='chris156@123.com')
-        # img = str(user.Img)
-        # print img
-        # return HttpResponse('ok')
-        return Http404
-    elif req.method == "POST":
-        result = {
-            'status': 0,
-            'message': None,
-            'img_path': None
-        }
-        try:
-            email = req.COOKIES.get('email')
-            print(email)
-            username = req.COOKIES.get('username')
-            print(username)
-        except:
-            result['status'] = 0
-            result['message'] = '尚未登陆'
-
-            return HttpResponse(json.dumps(result))
-        else:
-            try:
-                user = models.User.objects.get(UserName=username)
-            except Exception as e:
-                print(e)
-                result['status'] = 0
-                result['message'] = '获取数据异常'
-                return HttpResponse(json.dumps(result))
-            else:
-                try:
-                    result['status'] = 1
-                    result['message'] = '路径获取成功'
-                    img_path = user.Img.url
-                    print(img_path)
-                    result['img_path'] = img_path
-                except Exception as e:
-                    print(e)
-                    result['status'] = 1
-                    result['message'] = '用户暂未上传图片'
-                    img_path = 'photos/2017/09/19/user/default_cdNstvn.jpg'
-                    result['img_path'] = img_path
-                    return HttpResponse(json.dumps(result))
-                else:
-                    return HttpResponse(json.dumps(result))
-
-
-@csrf_exempt
-def test(req, param):
-    ''''
-    测试页面
-    '''
-    if req.method == "GET":
-        teams = models.User.objects.all().filter(Identity=2)
-
-        return render_to_response('team/test.html', {'teams': teams})
-    if req.method == "POST":
-        data = req.POST["data"]
-        return HttpResponse(data)
-
-
 def index(req):
     '''
     返回首页页面
-    :param req: 
-    :return: 
+    :param req:
+    :return:
     '''
     if req.method == "GET":
         project = models.Project.objects.all()
@@ -175,65 +58,224 @@ def index(req):
     if req.method == "POST":
         pass
 
-
+# 权限管理
+@require_http_methods(["GET", "POST"])
 @csrf_exempt
 def login(req):
     '''
     登陆界面的处理
+    :param req:
+    :return: 
+    '''
+    if req.method == 'GET':
+        return render(req, 'idea/login.html')
+    else:
+        resData = {
+            'status': 0,
+            'message': ''
+        }
+        try:
+            user_email = req.POST['email']
+            passwd = str(req.POST['password'])
+            user = models.User.objects.get(Email=user_email)
+            user.Uuid = uuid.uuid4()  # 防止异地登陆
+            if user.PassWord == passwd.strip():
+                req.session['user_email'] = user_email
+                req.session['user_uuid'] = str(user.Uuid)
+                resData['status'] = 1
+                resData['message'] = 'success'
+            else:
+                resData['message'] = '邮箱或密码错误'
+        except Exception as e:
+            print(e)
+        response = HttpResponse(JsonResponse(resData))
+        response.set_cookie('user_email', user_email)
+        return response
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_user_img(req):
+    '''
+    动态获取用户图片
+    :param req:
+    :return:
+    '''
+    result = {
+        'status': 0,
+        'message': None,
+        'img_path': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        try:
+            user = models.User.objects.get(Email=email)
+        except Exception as e:
+            print(e)
+            result['status'] = 0
+            result['message'] = '获取数据异常'
+            return HttpResponse(json.dumps(result))
+        else:
+            try:
+                result['status'] = 1
+                result['message'] = '路径获取成功'
+                img_path = user.Img.url
+                result['img_path'] = img_path
+            except Exception as e:
+                print(e)
+                result['status'] = 1
+                result['message'] = '用户暂未上传图片'
+                img_path = '/photos/photos/user/None.png'
+                result['img_path'] = img_path
+                return HttpResponse(json.dumps(result))
+            else:
+                return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_follow_count(req):
+    '''
+    动态获取关注数量
     :param req: 
     :return: 
     '''
-    if req.method == "GET":
-        return render_to_response('idea/login.html')
+
+    result = {
+        'status': 0,
+        'message': None,
+        'userfollow': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        userfollow = models.Follow.objects.filter(user=user).count()
+        result['userfollow'] = userfollow
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_praise_count(req):
+    '''
+    动态获取点赞数量
+    :param req: 
+    :return: 
+    '''
+
+    result = {
+        'status': 0,
+        'message': None,
+        'userpraise': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        userpraise = models.Praise.objects.filter(user=user).count()
+        result['userpraise'] = userpraise
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def get_user_name(req):
+    '''
+    动态获取用户名字
+    :param req: 
+    :return: 
+    '''
+
+    result = {
+        'status': 0,
+        'message': None,
+        'username': None,
+    }
+    try:
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        result['username'] = user.UserName
+        result['status'] = 1
+        result['message'] = '显示数量'
+    except:
+        result['status'] = 0
+        result['message'] = '尚未登陆'
+        return HttpResponse(json.dumps(result))
+    else:
+        return HttpResponse(json.dumps(result))
+
+
+
+
+
+@require_http_methods(["GET", "POST"])
+@csrf_exempt
+def regist(req):
+    '''
+    注册页面发邮件
+    :param req: 
+    :return: 在客户端留下username 和 email 的cookie 以及uuid session
+    '''
+    if req.method == 'GET':
+        return render_to_response('idea/regist.html')
     if req.method == "POST":
-        # req.setCharactorEcoding("utf-8")
-        result = {}
-        result['email'] = None
-        result['status'] = None
-        result['message'] = ''
-        result['username'] = None
-        result['uuid'] = None
+        result = {
+            'message': None,
+            'status': 0,
+            'username': None,
+            'email': None,
+            'uuid': None
+        }
         try:
-            email = req.POST['email']
-            password = req.POST['password']
-        except Exception as e:
-            print(email)
+            email = req.POST['Email']
+            username = req.POST['UserName']
+        except:
             result['status'] = 0
-            result['message'] = '获取信息失败'
+            result['message'] = '获取信息失败！'
             return HttpResponse(json.dumps(result))
         else:
-            if varidate_emial(email):
-                if models.User.objects.filter(Q(Email=email)):
-                    user = models.User.objects.get(Email=email)
-                    if user.PassWord == password:
-                        user.Uuid = uuid.uuid1()
-                        result['status'] = 1
-                        result['username'] = user.UserName
-                        result['email'] = email
-                        req.session['uuid'] = str(user.Uuid)
-                        result['message'] = '登陆成功'
-                        return HttpResponse(json.dumps(result))
-                    elif user.PassWord != password:
-                        result['status'] = 0
-                        result['message'] = '用户名或密码错误'
-                        return HttpResponse(json.dumps(result))
-                else:
-                    result['status'] = 0
-                    result['message'] = '用户名或密码错误'
-                    return HttpResponse(json.dumps(result))
+            if models.User.objects.filter(Email=email):
+                result['status'] = 1
+                result['message'] = '邮箱已经被注册'
+                return HttpResponse(json.dumps(result))
+            elif models.User.objects.filter(UserName=username):
+                result['status'] = 3
+                result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
             else:
-                result['status'] = 0
-                result['message'] = '帐号格式不正确'
-                message = "message"
+                result['status'] = 2
+                result['message'] ='邮箱已验证完成'
+                img, code = generate_verify_image()
+                req.session['generate_verify_image'] = code
+                send_mail('欢迎注册WE创', '您的验证码是'+ str(code), '472303924@qq.com',
+                          [email],  fail_silently=True)
                 return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
-def regist(req):
+def inCode(req):
     '''
-    注册页面
-    :param req: 
-    :return: 在客户端留下username 和 email 的cookie 以及uuid session
+    注册页面判断验证码并注册
+    :param req:
+    :return:
     '''
     if req.method == 'GET':
         return render_to_response('idea/regist.html')
@@ -249,33 +291,40 @@ def regist(req):
             username = req.POST['UserName']
             email = req.POST['Email']
             password = req.POST['Passwd']
+            incode = req.POST['incode']
+            sessionCode = req.session['generate_verify_image']
         except:
             result['status'] = 0
             result['message'] = '获取信息失败'
             return HttpResponse(json.dumps(result))
         else:
-            if not (varidate_char(username) and varidate_emial(email)):
-                result['message'] = '输入非法字符'
-                result['status'] = 0
-                return HttpResponse(json.dumps(result))
-            elif models.User.objects.filter(Email=email):
-                result['status'] = 0
+            if models.User.objects.filter(Email=email):
+                result['status'] = 1
                 result['message'] = '邮箱已经被注册'
                 return HttpResponse(json.dumps(result))
             elif models.User.objects.filter(UserName=username):
-                result['status'] = 0
+                result['status'] = 2
                 result['message'] = '姓名已被注册'
+                return HttpResponse(json.dumps(result))
+            elif incode.lower() != sessionCode.lower():
+                result['status'] = 3
+                result['message'] = '验证码错误'
                 return HttpResponse(json.dumps(result))
             else:
                 try:
-                    models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid1())
+                    models.User.objects.create(Email=email, UserName=username, PassWord=password, Uuid=uuid.uuid4())
                     user = models.User.objects.get(Email=email)
                     user.Img = 'photos/2017/09/19/user/default_cdNstvn.jpg'
-                    req.session['uuid'] = str(user.Uuid)
+                    req.session['user_uuid'] = str(user.Uuid)
                     result['email'] = email
                     result['username'] = username
                     result['message'] = '注册成功，正在调转'
-                    result['status'] = 1
+                    result['status'] =4
+
+                    req.session['user_email'] = email
+                    response = HttpResponse(json.dumps(result))
+                    response.set_cookie('user_email', email)
+
                     return HttpResponse(json.dumps(result))
                 except Exception as e:
                     print(e)
@@ -285,19 +334,45 @@ def regist(req):
 
 
 @csrf_exempt
+@require_http_methods(["POST"])
 def logout(req):
     '''
     注销界面
     :param req: 
     :return: 
     '''
-    if req.method == "GET":
-        response = render_to_response('idea/Base.html')
-        response.delete_cookie('username')
-        response.delete_cookie('email')
-        return response
+    resData = {
+        "status": 0,
+        "message": ''
+    }
+    del req.session['user_email']
+    del req.session['user_uuid']
+    resData['status'] = 1
+    resData['message'] = "已删除 session"
+    # resData['message'] = "用户尚未登陆"
+    response = HttpResponse(JsonResponse(resData))
+    response.delete_cookie('user_email')
+    return response
 
 
+
+@csrf_exempt
+def obtainVerify(req):
+    """
+    获取验证码
+    :param req: 
+    :return: 
+    """
+    sender = '472303924@qq.com'
+    if req.method == 'POST':
+        email = req.POST['email']
+        img, verify_str = generate_verify_image()
+        req.session['verify_str'] = verify_str
+        send_mail('欢迎进入WE创', '您的验证码为' + verify_str , sender, [email], fail_silently=True)
+        return render_to_response('idea/forgetPassword.html')
+
+
+@csrf_exempt
 def forgetPassword(req):
     '''
     忘记密码页面
@@ -305,11 +380,22 @@ def forgetPassword(req):
     :return: 
     '''
     if req.method == 'GET':
-        stream, strs = generate_verify_image(save_img=False)
-        # req.sessions['verifycode'] = strs
-        stream = base64.b64encode(stream.getvalue()).encode('ascii')
-        req.session['verificode'] = strs
-        return render_to_response('idea/forgetPassword.html', {'img': stream})
+        return render_to_response('idea/forgetPassword.html')
+
+    if req.method == 'POST':
+        email = req.POST['email']
+        newPassword = req.POST['newPassword']
+        identifyingcode = req.POST['identifyingcode']
+        verify_str = req.session['verify_str']
+        if verify_str == identifyingcode:
+            try:
+                models.User.objects.filter(Email=email).update(PassWord=newPassword)
+                data = 1        # 1: 重置密码成功
+            except:
+                data = -1       # -1: 重置密码失败
+        else:
+            data = -1
+    return HttpResponse(data)
 
 
 ''' 功能页面相关视图结束'''
@@ -325,9 +411,7 @@ def team(req):
     '''
     if req.method == 'GET':
         ''' 标签查询'''
-
-
-        sign = req.GET["sign"]
+        sign = req.GET['sign']
         if sign == "all":
             teams = models.User.objects.filter(Identity=2)
             User2UserLabel = models.User2UserLabel.objects.all()
@@ -356,14 +440,15 @@ def teamdetails(req, teamid):
     :return: 
     '''
     if req.method == 'GET':
-        username = "chris"
+        email = req.COOKIES.get('user_email')
+        # username = "chris"
         try:
             this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
             labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
             counts = models.Follow.objects.filter(Follower=this_team).count()
             teamcounts = models.Praise.objects.filter(user_prised=this_team).count()
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=email)
             comment_id = models.Comment.objects.filter(Q(commited_user_id=teamid) & Q(user=user))
             print (comment_id)
             commentlist = []
@@ -416,7 +501,7 @@ def teamcomment(req):
             user = models.User.objects.get(UserName=username)
             userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
             Comment1 = models.Comment.objects.filter(Id=commentid)
-            print Comment1[0].Uuid
+            print(Comment1[0].Uuid)
         except Exception as e:
             print(e.message)
             result["status"] = 0
@@ -439,7 +524,7 @@ def teamattend(req):
         try:
             Id = req.POST['Id']
             userId = req.POST['userId']
-            FollowUser = Follow.objects.filter(Follower_id=Id, user_id=userId)
+            FollowUser = models.Follow.objects.filter(Follower_id=Id, user_id=userId)
             if len(FollowUser) > 0:
                 status = 2
             else:
@@ -463,7 +548,7 @@ def teamattend1(req):
         try:
             Id = req.POST['Id']
             userId = req.POST['userId']
-            praiseUser = Praise.objects.filter(user_prised_id=Id, user_id=userId)
+            praiseUser = models.Praise.objects.filter(user_prised_id=Id, user_id=userId)
             if len(praiseUser) > 0:
                 status = 2
             else:
@@ -475,25 +560,54 @@ def teamattend1(req):
     if req.method == 'GET':
         pass
 
-def teamhelpapplication(req, teamhelpid):
+
+@csrf_exempt
+def teamhelpapplication(req, teamhelpid=None):
     '''
     团队帮助申请
     :param req: 
     :param teamhelpid: 
     :return: 
     '''
+    useremail = req.COOKIES.get('user_email')
     if req.method == 'GET':
         try:
             teamhelp = models.User.objects.get(Id=teamhelpid)
+
         except:
             return HttpResponse('404')
         else:
+            users = models.User.objects.filter(Email=useremail)
             if int(teamhelp.Identity) == 2:
-                return render_to_response('team/teamhelpapplication.html', {'teamhelp': teamhelp})
+                return render_to_response('team/teamhelpapplication.html', {'teamhelp': teamhelp,'users':users})
             else:
                 return HttpResponse('404')
     if req.method == 'POST':
-        pass
+        result = {
+            'message': None,
+            'status': 0,
+            'users': None,
+            'emial': None,
+            'describe':None,
+            'uuid': None
+        }
+
+        try:
+            email = req.POST['user_email']
+            describe = req.POST['sHTML']
+            users = models.User.objects.filter(Email=email)[0]
+
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+        else:
+            teamhelp = models.User.objects.get(Id=teamhelpid)
+            models.HelpApplication.objects.create(Email=email, AppliedTeam=teamhelp, Applier=users, Describe=describe)
+            result['status'] = 1
+            result['message'] = '成功'
+            return HttpResponse(json.dumps(result))
+
 
 
 def service(req):
@@ -525,6 +639,38 @@ def ordinance(req):
 ''' 创意灵感 页面相关部分开始'''
 
 
+@csrf_exempt
+def creations(req):
+    '''
+    创意灵感一级二级页面项目显示
+    '''
+
+    # userId = int(req.COOKIES.get('user'))
+    userId = 3
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            # 如果是所有项目
+            if sign == "all":
+                creations = models.Creation.objects.filter(IsUse=True).order_by("-Date")
+            # 如果有特殊标签
+            else:
+                CreationLabelObjs = models.Creation2ProjectLabel.objects.filter(projectLabel=sign)
+                creations = []
+                for obj in CreationLabelObjs:
+                    creations.append(obj.creation)
+
+            projectLabels = models.ProjectLabel.objects.all()
+            praises = models.Praise.objects.all()
+            follows = models.Follow.objects.all()
+            return render_to_response('creation/index.html',
+                                      {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
+                                       'follows': follows, 'praises': praises, 'IsUse': True})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+
+
 def crdetails(req):
     '''
     创意详情
@@ -533,20 +679,15 @@ def crdetails(req):
     '''
     if req.method == 'GET':
         creationId = req.GET['creationId']
-        creation = Creation.objects.get(Id=creationId)
-        labels = Creation2ProjectLabel.objects.filter(creation_id=creationId)
-        comments = Comment.objects.filter(creation_id = creationId).order_by("-Date")
-
-
-
+        creation = models.Creation.objects.get(Id=creationId)
+        labels = models.Creation2ProjectLabel.objects.filter(creation_id=creationId)
+        comments = models.Comment.objects.filter(creation_id = creationId).order_by("-Date")
         commentlist = []
-
         for comment in comments:    #将所有的第一条回复添加进来 结果:[[head],[head]]
             if comment.commentedId is None:
                 newcomment = []   
                 newcomment.append(comment)
                 commentlist.append(newcomment) #    [[head],[head],[head],[head]]
-
 
         for comlist in commentlist:    # 对每个列表循环  结果: [ [head,hui,hui],[head,hui,hui],[head] ]
             for comment in comments:
@@ -554,13 +695,12 @@ def crdetails(req):
                     comlist.append(comment)   
                        #   [[head,hui,hui],[head,hui,hui ],[head],[head]]
 
-
         alllables = []  # 找出本创意所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
 
-        creation2crojectLabels = Creation2ProjectLabel.objects.filter(projectLabel_id__in = alllables)    #所有相关标签的 所有的 标签2项目
+        creation2crojectLabels = models.Creation2ProjectLabel.objects.filter(projectLabel_id__in = alllables)    #所有相关标签的 所有的 标签2项目
         return render_to_response('creation/crdetails.html',{"creation":creation,"comments":commentlist,"creation2crojectLabels":creation2crojectLabels[:2],"labels":labels[:3]})
 
     if req.method == "POST":
@@ -568,39 +708,128 @@ def crdetails(req):
 
 
 @csrf_exempt
-def creations(req):
+def crcreate(req):
     '''
-    创意灵感一级二级页面项目显示  
+    创意灵感创建页面
+    :param req:
+    :return:
     '''
-    
-    # userId = int(req.COOKIES.get('user'))
-    userId = 3
-    try:
-        if req.method == 'GET':
-            sign = req.GET['sign']
-            # 如果是所有项目
-            if sign == "all":
-                creations = Creation.objects.all().order_by("Date")
-            # 如果有特殊标签
+    if req.method == 'GET':
+        obj = models.ProjectLabel.objects.all()
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return render_to_response('creation/crcreate.html', {"labels": obj,"username":username})
+    if req.method == "POST":
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        name = req.POST["name"]
+        img = req.POST["coverMap"]
+        base64Code = img.split(',')[1]
+        fileext = img.split(',')[0].split(';')[0].split('/')[1]
+        Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"), fileext)
+        describe = req.POST["describe"]
+        isUse = req.POST["isUse"]
+        labels = req.POST["labels"].split("*")
+
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+
+            if isUse=="暂存":
+                isUse = False
             else:
-                CreationLabelObjs = Creation2ProjectLabel.objects.filter(projectLabel=sign)
-                creations = []
-                for obj in CreationLabelObjs:
-                    creations.append(obj.creation)
+                isUse = True
+            creation = models.Creation.objects.create(user=user, Name=name, Describe=describe,IsUse=isUse,Img=Img, Uuid=uuid.uuid4());
+            creation.save()
 
-            projectLabels = ProjectLabel.objects.all()
-            praises = Praise.objects.all()
-            follows = Follow.objects.all()
+            for label in labels[:-1]:
+                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                creation2ProjectLabel = models.Creation2ProjectLabel.objects.create(projectLabel=Label, creation=creation)
+                creation2ProjectLabel.save()
 
-            return render_to_response('creation/index.html',
-                                      {'creations': creations, 'projectLabels': projectLabels, 'userId': userId,
-                                       'follows': follows, 'praises': praises})
-    except Exception as e:
-        print(e)
-        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+        except Exception as e :
+            print(e)
+            result['message'] = str(e)
+        return HttpResponse(json.dumps(result))
 
 
+@csrf_exempt
+def crreport(req):
+    '''
+    创意举报
+    :param req:
+    :return:
+    '''
 
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
+    if req.method == 'POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(pk=creationId)
+            reason = req.POST["reason"]
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            models.Report.objects.create(user=user, creation=creation, Reason=reason)
+
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+            return HttpResponse(json.dumps(result))
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
+
+@csrf_exempt
+def rdcreport(req):
+    '''
+    创意评论举报
+    :param req:
+    :return:
+    '''
+
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
+    if req.method == 'POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+
+            rdcreason = req.POST["rdcreason"]
+            commentId = req.POST["commentId"]
+            print(commentId)
+            comment = models.Comment.objects.get(pk=commentId)
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            models.Report.objects.create(user=user, comment=comment, Reason=rdcreason, Uuid=uuid.uuid4())
+
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+            return HttpResponse(json.dumps(result))
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
@@ -621,30 +850,30 @@ def attend(req):
         attendType = int(req.POST['attendType'])
 
         if attendType == 1:
-            FollowCreation = Follow.objects.filter(creation_id = Id, user_id = userId)
+            FollowCreation = models.Follow.objects.filter(creation_id = Id, user_id = userId)
             if len(FollowCreation) > 0:
                 FollowCreation.delete()
                 status = 2
             else:
-                Follow.objects.create(creation_id=Id, user_id=userId)
+                models.Follow.objects.create(creation_id=Id, user_id=userId)
                 status = 1
                 
         elif attendType == 2:
-            FollowProject = Follow.objects.filter(project_id = Id, user_id = userId)
+            FollowProject = models.Follow.objects.filter(project_id = Id, user_id = userId)
             if len(FollowProject) > 0:
                 FollowProject.delete()
                 status = 2
             else:
-                Follow.objects.create(project_id=Id, user_id=userId)
+                models.Follow.objects.create(project_id=Id, user_id=userId)
                 status = 1
 
         elif attendType == 3:
-            FollowUser = Follow.objects.filter(Follower_id = Id, user_id = userId)
+            FollowUser = models.Follow.objects.filter(Follower_id = Id, user_id = userId)
             if len(FollowUser) > 0:
                 FollowUser.delete()
                 status = 2
             else:
-                Follow.objects.create(Follower_id=Id, user_id=userId)
+                models.Follow.objects.create(Follower_id=Id, user_id=userId)
                 status = 1
         return HttpResponse(status)
     except:
@@ -672,28 +901,28 @@ def star(req):
         starType = int(req.POST["starType"])
         if starType == 1:    #如果是创意
             try:
-                p = Praise.objects.get(creation_id=Id, user_id=userId).delete()    #尝试取消点赞
+                p = models.Praise.objects.get(creation_id=Id, user_id=userId).delete()    #尝试取消点赞
                 status = 2
             except:
-                p = Praise.objects.create(creation_id=Id, user_id=userId)
+                p = models.Praise.objects.create(creation_id=Id, user_id=userId)
                 status = 1
             return HttpResponse(status)
         elif starType ==2:
             try:
-                p = Praise.objects.get(project_id=Id, user_id=userId).delete()
+                p = models.Praise.objects.get(project_id=Id, user_id=userId).delete()
                 status = 2
             except:
-                p = Praise.objects.create(project_id=Id, user_id=userId)
+                p = models.Praise.objects.create(project_id=Id, user_id=userId)
                 status = 1
 
             return HttpResponse(status)
         elif starType ==3:
-            PraiseUser = Praise.objects.filter(user_prised_id=Id, user_id=userId)
+            PraiseUser = models.Praise.objects.filter(user_prised_id=Id, user_id=userId)
             if len(PraiseUser) > 0:
                 PraiseUser.delete()
                 status = 2
             else:
-                Praise.objects.create(user_prised_id=Id, user_id=userId)
+                models.Praise.objects.create(user_prised_id=Id, user_id=userId)
                 status = 1
             # try:
             #     PraiseUser = Praise.objects.get(user_prised_id=Id, user_id=userId).delete()
@@ -713,31 +942,73 @@ def comment(req):
     :param req:
     :return:
     '''
-    status = 0
+    if req.method =='GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
     if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
         try:
-            username = "chris"
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
             creationId = req.POST["creationId"]
-            content = req.POST["content"]
-            user = models.User.objects.get(UserName=username)
             creation = models.Creation.objects.get(pk = creationId)
-            models.Comment.objects.create(user = user ,creation = creation , Content = content)
-            status = 1
-            return HttpResponse(status)
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, creation=creation, Content=content, Uuid=uuid.uuid4())
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+
+            return HttpResponse(json.dumps(result))
 
 
         except Exception as e:
             print(e)
-            return HttpResponse(status)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
+@csrf_exempt
+def rcomment(req):
+    '''
+    创意评论回复
+    :param req:
+    :return:
+    '''
     if req.method =='GET':
-        content = "hello world"
-        username = "chris"
-        creationid = 3
-        user = models.User.objects.get("UserName=username")
-        creation = models.Creation.objects.get(pk=creationid)
-        models.Comment.objects.create(user=user, creation=creation, Content=content)
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
         return HttpResponse("TRUE")
+    if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            creationId = req.POST["creationId"]
+            creation = models.Creation.objects.get(pk = creationId)
+            commentedId = req.POST["commentedId"]
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, creation=creation, Content=content, commentedId=commentedId, Uuid=uuid.uuid4())
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+
+            return HttpResponse(json.dumps(result))
+
+
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
+
+
 ''' 创意灵感 页面相关部分结束'''
 
 ''' 招募项目 相关页面开始'''
@@ -780,44 +1051,87 @@ def redetails(req):
     '''
     if req.method == 'GET':
         projectId = req.GET['projectId']
-        project = Project.objects.get(Id=projectId)
-        labels = Project2ProjectLabel.objects.filter(project_id=projectId)
-        praises = Praise.objects.all()
-        follows = Follow.objects.all()
-        comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
-
-
+        project = models.Project.objects.get(Id=projectId)
+        user = models.ProjectUser.objects.get(project_id=projectId)
+        labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
+        praises = models.Praise.objects.all()
+        follows = models.Follow.objects.all()
+        comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
         commentlist = []
-
         for comment in comments:
             if comment.commentedId is None:
                 newcomment = []
                 newcomment.append(comment)
                 commentlist.append(newcomment)
-
         for comlist in commentlist:
             for comment in comments:
                 if str(comlist[0].Uuid) == str(comment.commentedId):
                     comlist.append(comment)
-        alllables = []  # 找出本创意所有的标签
+        alllables = []  # 找出本项目所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
         alllables = list(set(alllables))
-        project2projectLabel = Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+        project2projectLabel = models.Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
+        print(projectId)
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
 
-
-        return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
+        try:
+            useremail = req.COOKIES.get('user_email')
+            preuser = models.User.objects.get(Email=useremail)
+            print(preuser.Img)
+            return render_to_response('project/redetails.html',
+                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user": user, "recruit": recruit, "EndTime": timeStamp,
+                                   'follows': follows, 'praises': praises, "comment": commentlist,"preuser":preuser })
+        except:
+            return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
 
 
     if req.method == "POST":
          pass
+
+
+@csrf_exempt
+def preport(req):
+        '''
+        项目举报
+        :param req:
+        :return:
+        '''
+
+        if req.method == 'GET':
+            user_email = req.COOKIES.get('user_email')
+            username = models.User.objects.get(Email=user_email)
+            return HttpResponse("TRUE")
+        if req.method == 'POST':
+            result = {
+                'status': 0,
+                'message': '',
+            }
+            try:
+                projectId = req.POST["projectId"]
+                project = models.Project.objects.get(pk=projectId)
+                reason = req.POST["reason"]
+                user_email = req.COOKIES.get('user_email')
+                user = models.User.objects.get(Email=user_email)
+                models.Report.objects.create(user=user, project=project, Reason=reason)
+
+                result = {
+                    'status': 1,
+                    'message': 'success',
+                }
+                return HttpResponse(json.dumps(result))
+            except Exception as e:
+                print(e)
+                result['message'] = str(e)
+                return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
 def project_comment(req):
@@ -831,7 +1145,8 @@ def project_comment(req):
     status = 0
     if req.method == 'POST':
         try:
-            username = "chris"
+            useremail = req.session.get('user_email')
+            username = models.User.objects.get(Email=useremail)
             projectId = req.POST["projectId"]
             content = req.POST["content"]
             user = models.User.objects.get(UserName=username)
@@ -844,14 +1159,53 @@ def project_comment(req):
         except Exception as e:
             print(e)
             return HttpResponse(status)
-        if req.method == 'GET':
-            content = "hello world"
-            username = "chris"
-            projectid = 3
-            user = models.User.objects.get("UserName=username")
-            peoject = model.Project.objects.get(pk=projectid)
-            models.Comment.objects.create(user=user, project=project, Content=content)
-            return HttpResponse("TRUE")
+
+    if req.method == 'GET':
+        content = "hello world"
+        username = "chris"
+        projectid = 3
+        user = models.User.objects.get("UserName=username")
+        project = models.Project.objects.get(pk=projectid)
+        models.Comment.objects.create(user=user, project=project, Content=content)
+        return HttpResponse("TRUE")
+
+@csrf_exempt
+def prcomment(req):
+    '''
+    项目评论回复
+    :param req:
+    :return:
+    '''
+    if req.method =='GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
+    if req.method =='POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            projectId = req.POST["projectId"]
+            print(projectId)
+            project = models.Project.objects.get(pk = projectId)
+            commentedId = req.POST["commentedId"]
+            content = req.POST["content"]
+            models.Comment.objects.create(user=user, project=project, Content=content, commentedId=commentedId, Uuid=uuid.uuid4())
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+
+            return HttpResponse(json.dumps(result))
+
+
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
 @csrf_exempt
 def recruit_apply(req):
@@ -862,10 +1216,12 @@ def recruit_apply(req):
     status = 0
     if req.method == 'POST':
         try:
-            username = "chris"
+
+            useremail = req.session.get('user_email')
             projectId = req.POST["projectId"]
             content = req.POST["describe"]
-            user = models.User.objects.get(UserName=username)
+            remove_script(content)
+            user = models.User.objects.get(Email=useremail)
             recruit = models.Recruit.objects.get(project=projectId)
             models.Apply.objects.create(user=user, recruit=recruit, Describe=content)
             status = 1
@@ -882,42 +1238,85 @@ def recruit_apply(req):
 @csrf_exempt
 def projects(req):
     '''
-    招募项目一级二级页面项目显示
+    项目一级页面显示
     '''
     try:
         if req.method == 'GET':
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = Project.objects.all().order_by("StartTime")
+                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=2)|Q(Statue=3)|Q(Statue=4)).order_by('Id')
+                # projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1,3]
             else:
                 projects = []
-                ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
+                ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
-            #################
-            recruit_all = []
-            for project in projects:
-                recruit = models.Recruit.objects.filter(project__Id=project.Id)
-                recruit_all.append(recruit)
-
-            all_recruit = zip(projects, recruit_all)
-            return render_to_response('project/recruit.html', {'projectLabels': ProjectLabel.objects.all(), "all_recruit": all_recruit})
+                recruit = [1, 3]
+            return render_to_response('project/projects.html', {'projectLabels':models.ProjectLabel.objects.all() , "projects":projects, "recruit":recruit})
         else:
             id = req.POST['projectId']
-            project = get_object_or_404(Project, pk=id)
-            comments = Comment.objects.fitler(project=id).order_by('Date')
-            return render_to_response('project/recruit.html',
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/projects.html',
                                       {'comments': comments})
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 ''' 招募项目相关页面结束'''
+@csrf_exempt
+def recruit(req):
+    '''
+    招募项目筛选项目显示
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=3)).order_by('Id')
+                projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1, 3]
+            return render_to_response('project/projects.html', {'projectLabels': projectLabels[:4], "projects":projects, "recruit":recruit})
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/projects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
 ''' 开发项目相关页面开始'''
 
 @csrf_exempt
 def deprojects(req):
+    '''
+    开发项目 筛选
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                projects = models.Project.objects.filter(Q(Statue=2)|Q(Statue=4)).order_by("Id")
+                projectLabels = models.ProjectLabel.objects.all()
+                recruit = [1, 3]
+            return render_to_response('project/projects.html', {'projectLabels': projectLabels , "projects": projects, "recruit":recruit})
+
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/deprojects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+
+def starttime(req):
     '''
     开发项目一级页面项目显示
     '''
@@ -926,25 +1325,19 @@ def deprojects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = Project.objects.filter(Q(Statue=3)|Q(Statue=5)).order_by("StartTime")
-            else:
-                projects = []
-                ProjectLabelObjs = Project2ProjectLabel.objects.filter(projectLabel=sign)
-                for obj in ProjectLabelObjs:
-                    projects.append(obj.project)
-            return render_to_response('project/deprojects.html', {'projectLabels': ProjectLabel.objects.all(), "projects": projects})
+                projects = models.Project.objects.all().order_by("StartTime")
+                recruit = [1, 3]
+            return render_to_response('project/projects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects, "recruit":recruit})
+
         else:
             id = req.POST['projectId']
-            project = get_object_or_404(Project, pk=id)
-            comments = Comment.objects.fitler(project=id).order_by('Date')
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
             return render_to_response('project/deprojects.html',
                                       {'comments': comments})
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
-    if req.method == 'POST':
-        pass
-
 @csrf_exempt
 def dedetails(req):
     '''
@@ -952,19 +1345,44 @@ def dedetails(req):
     '''
     if req.method == 'GET':
         projectId = req.GET['projectId']
-        project = Project.objects.get(Id=projectId)
-        labels = Project2ProjectLabel.objects.filter(project_id=projectId)
-        praises = Praise.objects.all()
-        follows = Follow.objects.all()
-        comments = Comment.objects.filter(project_id=projectId).order_by("-Date")
-
+        project = models.Project.objects.get(Id=projectId)
+        user = models.ProjectUser.objects.get(project_id=projectId)
+        labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
+        praises = models.Praise.objects.all()
+        follows = models.Follow.objects.all()
+        comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
+        commentlist = []
+        for comment in comments:
+            if comment.commentedId is None:
+                newcomment = []
+                newcomment.append(comment)
+                commentlist.append(newcomment)
+        for comlist in commentlist:
+            for comment in comments:
+                if str(comlist[0].Uuid) == str(comment.commentedId):
+                    comlist.append(comment)
         alllables = []  # 找出本项目所有的标签
         for label in labels:
             alllables.append(label.projectLabel.Id)
-            alllables = list(set(alllables))
-        return render_to_response('project/dedetails.html',{"project":project,"labels": labels[:3],})
-    if req.method == 'POST':
-        pass
+        alllables = list(set(alllables))
+        project2projectLabel = models.Project2ProjectLabel.objects.filter(projectLabel_id__in=alllables)  # 所有相关标签的 所有标签2项目
+
+
+        try:
+            useremail = req.COOKIES.get('user_email')
+            preuser = models.User.objects.get(Email=useremail)
+            print(preuser.Img)
+            return render_to_response('project/dedetails.html',
+                                  {"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user": user,
+                                   'follows': follows, 'praises': praises, "comment": commentlist,"preuser":preuser })
+        except:
+            return render_to_response('project/dedetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
+                                   "labels": labels[:3], "user":user,'follows': follows,'praises': praises,"comment":commentlist,})
+
+
+    if req.method == "POST":
+         pass
 
 
 ''' 开发项目相关页面结束'''
@@ -973,14 +1391,19 @@ def dedetails(req):
 
 '''个人中心相关页面'''
 
-
+@csrf_exempt
 def homepage(req):
     if req.method == 'GET':
-        return render_to_response('personal/homepage.html')
+        user_email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=user_email)
+        userfollow = models.Follow.objects.filter(user=user).count()
+        userpraise = models.Praise.objects.filter(user=user).count()
+        return render_to_response(['personal/homepage.html','personal/unread_messages.html'], {"user": user, "userfollow": userfollow, "userpraise": userpraise})
     if req.method == 'POST':
         pass
 
 
+@csrf_exempt
 def release(req):
     '''
     发布项目页面
@@ -989,18 +1412,595 @@ def release(req):
     '''
     if req.method == 'GET':
         obj = models.ProjectLabel.objects.all()
-        return render_to_response('personal/release.html', {"labels": obj})
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return render_to_response('personal/release.html', {"labels": obj,"username":username})
     if req.method == "POST":
-        pass
+        resData= {
+            'status': 0,
+            'message': ''
+        }
+        ProjectName = req.POST["proTitle"]
+        img = req.POST["coverMap"]
+        base64Code = img.split(',')[1]
+        fileext = img.split(',')[0].split(';')[0].split('/')[1]
+        Img = decode_img(base64Code, datetime.strftime(datetime.now(), "%Y-%m-%d=%H:%M:%S"),fileext)
+        Description = req.POST["rhtml"]
+        recruit = req.POST["recruit"]
+        Description = remove_script(Description)
+        # Summary = Description
+        Number = int(req.POST["numPerson"])
+        EndTime = req.POST["endTime"]
+        EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
+        proLabels = req.POST["proLabels"].split('*')
+        Statue = int(req.POST["statue"])
+        Identity = 1
+        State = 1
+        Time = 1
+        RecruitedNumber = 0
+        print EndTime
+        try:
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            project = models.Project.objects.create(ProjectName=ProjectName,Description=Description,Number=Number,
+                                                    StartTime=datetime.now(), EndTime=EndTime,Statue=Statue,
+                                                    Img=Img,Uuid=uuid.uuid4())
+            project.save()
+            for label in proLabels[:-1] :
+                Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                project2ProjectLabel = models.Project2ProjectLabel.objects.create(projectLabel=Label,project= project,Uuid=uuid.uuid4() )
+            project2ProjectLabel.save()
+            models.ProjectUser.objects.create(user=user,project=project,Identity=Identity).save()
+            models.Recruit.objects.create(project=project,StartTime=datetime.now(), EndTime=EndTime,Describe=recruit,
+                                          State=State,Times=Time,PredictNumber=Number,RecruitedNumber=RecruitedNumber,
+                                          Uuid=uuid.uuid4()).save()
+            resData['status'] = 1
+            resData['message'] = 'success'
+        except Exception as e :
+            print(e)
+            resData['message'] = str(e)
+        return HttpResponse(json.dumps(resData))
 
 
+@csrf_exempt
 def editprofile(req):
     if req.method == 'GET':
-        return render_to_response('personal/editprofile.html')
+        email = req.COOKIES.get('user_email')
+        print(email)
+        try:
+            user = models.User.objects.get(Email=email)
+        except Exception as e:
+            print(e.message)
+        else:
+            return render_to_response('personal/editprofile.html', {"user": user})
+    if req.method == 'POST':
+        email = req.COOKIES.get('user_email')
+        username = req.POST["username"]
+        school = req.POST["school"]
+        institude = req.POST["institude"]
+        major = req.POST["major"]
+        sex = req.POST["sex"]
+        print (sex)
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            models.User.objects.filter(Email=email).update(UserName=username, School=school, Institude=institude, Major=major, Sex=sex)
+        except Exception as e:
+            print(e)
+            result["status"] = 0
+            result["string"] = "空"
+            return HttpResponse(json.dumps(result))
+        else:
+            # print(locals())
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def unread_messages(req):
+    '''
+    未读消息
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        try:
+            email = req.COOKIES.get('user_email')
+            if email:
+                messageuse = models.Message.objects.filter(IsUse=True)
+                if messageuse:
+                    user = models.User.objects.get(Email=email)
+                    message_content = messageuse.filter(Q(user=user) & Q(IsRead=False))
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+            return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+        else:
+            return render_to_response('personal/unread_messages.html', {"message_content": message_content})
+    if req.method == 'POST':
+        messageId = req.POST["messageId"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            message = models.Message.objects.get(Id=messageId)
+            message.IsUse = False
+            message.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def show_messages(req):
+    '''
+    展示未读消息详情
+    :param req:
+    :return:
+    '''
+    infoId = models.Message.objects.get(Id=req.POST['infoId'])
+    list = {}
+    list['Date'] = infoId.Date.strftime("%Y/%m/%d")
+    list['Priority'] = infoId.Priority
+    list['Content'] = infoId.Content
+    return HttpResponse(json.dumps(list))
+
+
+@csrf_exempt
+def unread_read(req):
+    '''
+    未读消息点击查看置为已读
+    :param req:
+    :return:
+    '''
+    if req.method == 'POST':
+        messageId = req.POST["infoId"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            message = models.Message.objects.get(Id=messageId)
+            message.IsRead = True
+            message.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def read_message(req):
+    '''
+    已读消息
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        try:
+            email = req.COOKIES.get('user_email')
+            if email:
+                messageuser = models.Message.objects.filter(IsUse=True)
+                if messageuser:
+                    user = models.User.objects.get(Email=email)
+                    message_contents = messageuser.filter(Q(user=user) & Q(IsRead=True))
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+            return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+        else:
+            return render_to_response('personal/read_message.html', {"message_contents": message_contents})
+    if req.method == 'POST':
+        messageId = req.POST["messageId"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            message = models.Message.objects.get(Id=messageId)
+            message.IsUse = False
+            message.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+
+@csrf_exempt
+def allFollow(req):
+    '''
+    总关注页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response(['personal/profollow.html ','personal/creationfollow.html'], {"follows": follows})
     if req.method == 'POST':
         pass
 
 
+@csrf_exempt
+def profollow(req):
+    '''
+    关注项目页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/profollow.html ', {"follows": follows})
+    if req.method == 'POST':
+        proId = req.POST["proId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            project = models.Project.objects.get(Id=proId)
+            email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=user, project=project)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
 
+
+@csrf_exempt
+def creationfollow(req):
+    '''
+    关注灵感页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/creationfollow.html', {"follows": follows})
+    if req.method == 'POST':
+        creationId = req.POST["creationId"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            creation = models.Creation.objects.get(Id=creationId)
+            email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=user, creation=creation)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
+
+
+
+@csrf_exempt
+def userfollow(req):
+    '''
+    关注用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('personal/userfollow.html')
+    if req.method == 'POST':
+        pass
+
+@csrf_exempt
+def following_user(req):
+    '''
+    我关注用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(Follower=user))
+        return render_to_response('personal/following_user.html',{"follows": follows})
+    if req.method == 'POST':
+        following_Id = req.POST["following_Id"]
+        result = {
+            "status": 1,
+            "string": 'success'
+        }
+        try:
+            following_user = models.User.objects.get(Id=following_Id)
+            email = req.COOKIES.get('user_email')
+            follower = models.User.objects.get(Email=email)
+            follow = models.Follow.objects.get(user=following_user,Follower=follower)
+            follow.delete()
+        except Exception as e:
+            print(e)
+            result['message'] = e
+        return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def follower_user(req):
+    '''
+    关注我的用户页面
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        email = req.COOKIES.get('user_email')
+        user = models.User.objects.get(Email=email)
+        follows = models.Follow.objects.filter(Q(user=user))
+        return render_to_response('personal/follower_user.html',{"follows": follows})
+    if req.method == 'POST':
+        pass
+
+
+@csrf_exempt
+def perCreation(req):
+    '''
+    个人中心创意灵感
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        creation = models.Creation.objects.filter(Q(user__Email=user_email) & Q(IsUse=True))
+        return render_to_response('personal/perCreation.html',{"creation":creation})
+    if req.method == 'POST':
+        result = {
+            'message': None,
+            'status': 0,
+            'creationId': None,
+            'uuid': None
+        }
+        try:
+            creationId = req.POST['creationId']
+            models.Creation.objects.filter(Id=creationId).update(IsUse=False)
+            result['status'] = 1
+            result['message'] = '更改成功'
+            return HttpResponse(json.dumps(result))
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def personal_information(req):
+    '''
+    个人信息
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        try:
+            email = req.COOKIES.get('user_email')
+            print(email)
+            if email:
+                user = models.User.objects.get(Email=email)
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e.message)
+        else:
+            return render_to_response('personal/personal_information.html', {"user": user})
+    if req.method == 'POST':
+        personal_input = req.POST["personal_input"]
+        user_school = req.POST["user_school"]
+        user_college = req.POST["user_college"]
+        user_major = req.POST["user_major"]
+        sex = req.POST["sex"]
+        user_id = req.POST["user_id"]
+        remove_script(personal_input)
+        remove_script(user_school)
+        remove_script(user_college)
+        remove_script(user_major)
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            information = models.User.objects.get(Id=user_id)
+            information.UserName = personal_input
+            information.School = user_school
+            information.Institude = user_college
+            information.Major = user_major
+            information.Sex = sex
+            information.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+@require_http_methods(["GET", "POST"])
+def account_information(req):
+    '''
+    账号信息
+    :param req: 
+    :return:
+    '''
+    if req.method == 'GET':
+        try:
+            email = req.COOKIES.get('user_email')
+            print(email)
+            if email:
+                user = models.User.objects.get(Email=email)
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+            # result['status'] = 0
+            # result['message'] = '更改失败'
+        else:
+            return render_to_response('personal/account_information.html', {"user": user})
+    if req.method == 'POST':
+        telphone = req.POST["telphone"]
+        user_mark = req.POST["user_mark"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        remove_script(telphone)
+        try:
+            user_telphone = models.User.objects.get(Id=user_mark)
+            user_telphone.Phone = telphone
+            user_telphone.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print (e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def account_information_imgs(req):
+    if req.method == 'POST':
+        postData = req.POST
+        user_mark = postData.get("user_mark")
+        if req.FILES:
+            user_img = req.FILES.get('Img')
+        else:
+            user_img = None
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user_telphone = models.User.objects.get(Id=user_mark)
+            user_telphone.Img = user_img
+            user_telphone.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            result['message'] = str(e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def change_password(req):
+    '''
+
+    更改密码
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'GET':
+        if req.method == 'GET':
+            try:
+                email = req.COOKIES.get('user_email')
+                if email:
+                    user = models.User.objects.get(Email=email)
+                else:
+                    return render_to_response('idea/index.html')
+            except Exception as e:
+                print(e)
+            else:
+                return render_to_response('personal/change_password.html', {"user": user})
+    if req.method == 'POST':
+        change_password_email = req.POST["change_password_email"]
+        old_password = req.POST["old_password"]
+        new_password = req.POST["new_password"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user_password = models.User.objects.get(Email=change_password_email)
+            if user_password.PassWord == old_password:
+                user_password.PassWord = new_password
+                user_password.save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print(e)
+        else:
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def personal_label(req):
+    if req.method == 'GET':
+        try:
+            label_list = []
+            email = req.COOKIES.get('user_email')
+            if email:
+                user_lable = models.UserLabel.objects.all()
+                user = models.User.objects.get(Email=email)
+                user_show_label = models.User2UserLabel.objects.filter(user=user)
+                for user_show in user_show_label:
+                    label_list.append(user_show.userLabel.Name)
+            else:
+                return render_to_response('idea/index.html')
+        except Exception as e:
+            print(e)
+        else:
+            return render_to_response('personal/personal_label.html', {"user_lable": user_lable, "user": user, "user_show_label":user_show_label, "label_list":label_list})
+    if req.method == 'POST':
+        proLabels = req.POST["proLabels"].split('*')
+        label_mark = req.POST["label_mark"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user = models.User.objects.get(Email=label_mark)
+            for label in proLabels[:-1]:
+                user_label = models.UserLabel.objects.get(Name=label)
+                models.User2UserLabel.objects.create(user=user, userLabel=user_label).save()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+        return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def user_delete_personal_label(req):
+    if req.method == 'POST':
+        label = req.POST["label"]
+        label_mark = req.POST["label_mark"]
+        result = {
+            "status": 0,
+            "string": ''
+        }
+        try:
+            user = models.User.objects.get(Email=label_mark)
+            user_label = models.UserLabel.objects.get(Name=label)
+            models.User2UserLabel.objects.filter(user=user, userLabel=user_label).delete()
+            result['status'] = 1
+            result['string'] = 'success'
+        except Exception as e:
+            print(e)
+        else:
+            return HttpResponse(json.dumps(result))
 '''个人中心相关页面结束'''
+
+
+
+
 

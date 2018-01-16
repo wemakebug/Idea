@@ -1,0 +1,83 @@
+{%extends 'personal/editprofile.html'%}
+{% load static %}
+{%block title%}
+   <title>个人标签</title>
+{%endblock%}
+
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap-theme.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/editprofile.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/personal_label.css'%}">
+{%endblock%}
+
+{%block personalcontent%}
+    <div class="container">
+    <input type="hidden" value="{{ user.Email }}" id="label_mark">
+        <div style="width: 80%;margin-top: 20px;height: 100px;">
+            {% for user_show in user_show_label %}
+                <span class="allsign1" name="personal_label" alt="提示" title="双击删除此标签">{{ user_show.userLabel }}</span>
+            {% endfor %}
+        </div>
+        <div style="border-bottom: 1px dashed #BEBEBE " ></div>
+        <div class="tag">
+            {% for label in user_lable %}
+                {% if label.Name in label_list %}
+                    <span class="allsign" name="label_name" style="display: none;">{{ label.Name }}</span>
+                {% else %}
+                    <span class="allsign" name="label_name">{{ label.Name }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div style="text-align: center;margin-top: 200px;">
+            <input type="button" class="personalinput1-8" id="save_personal_information" value="保存">
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/personal_label.js' %}"></script>
+    <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/editprofile.js' %}"></script>
+    <script>
+        $(".allsign").on("click",function () {
+            var col = 'rgb' + '(' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ',' + Math.ceil(Math.random() * 245) + ')';
+            var lables = $(this);
+            lables.css('background-color',col);
+        });
+
+
+        $(".personalinput1-8").click(function () {
+            var label_mark = $("#label_mark").val();
+            var proLabels = '';
+            var oDiv = document.getElementsByName("label_name");
+            for(var i = 0;i < oDiv.length;i ++){
+                if(oDiv[i].style.backgroundColor != "")
+                    proLabels+=oDiv[i].innerHTML + '*';
+            }
+            $.post("personal_label",{
+                "proLabels": proLabels,
+                "label_mark":label_mark
+            },function (data) {
+                var data = JSON.parse(data);
+                if(data.status === 1){
+                    alert("成功");
+                    window.location.reload();
+                }
+            })
+        });
+
+         $(".allsign1").dblclick(function(){
+             var label = $(this).html();
+             var label_mark = $("#label_mark").val();
+             $.post("user_delete_personal_label",{"label":label,"label_mark":label_mark},function (data) {
+                var data = JSON.parse(data);
+                if(data.status ===1 ){
+{#                    $(this).addClass("active");#}
+                    window.location.reload();
+                }
+             });
+         });
+    </script>
+{% endblock %}

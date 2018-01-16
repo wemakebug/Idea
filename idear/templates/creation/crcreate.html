@@ -1,0 +1,101 @@
+{%extends 'idea/Base.html'%}
+{% load static %}
+{%block title%}
+   <title>添加创意</title>
+{%endblock%}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'creation/css/crcreate.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
+    <!-- include summernote css/js-->
+    <link href="{% static 'editor/summernote.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="create_content">
+        <div class="create_edit">
+            <h2>编辑创意</h2>
+        </div>
+        <div class="create_btn">
+            <input type="button" class="create_btn_draft" id="create_btn_draft" value="暂存">
+            <input type="button" class="create_btn_ok" id = "create_btn_ok" value="发布">
+        </div>
+    </div>
+    <div class="content_title">
+        <form>
+            <input class="input_title" placeholder="请在这里输入标题"  type="text">
+        </form>
+    </div>
+    <div class="content_owner">
+        <div class="content_founder">
+            <p>创建人：</p>
+            <div class="owner_name">
+                <p id="username1">{{ username }}</p>
+            </div>
+        </div>
+    </div>
+
+        <div class="add_img">
+            <div class="chance_add">
+                <div class="pro_cover">
+                    <p>封面图</p>
+                </div>
+                <div id="tbody">
+                    <div>
+                        <p>
+                            <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
+        data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="rich_text" id="rich_text">
+        <div id="summernote"></div>
+    </div>
+    <div class="content_type">
+            <div class="content_label">
+                <p class="content_label_exh">标签</p>
+                <p class="content_must">必选</p>
+            </div>
+            <div class="label_name">
+                {% for obj in labels %}
+                    <div class="content_pro_label" name="content_pro_label" onclick="Myfunction()">{{ obj.ProjectLabelName}}</div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/fileinput.min.js'%}" ></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'creation/js/crcreate.js' %}"></script>
+    <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
+    <!-- include summernote-zn-CN -->
+    <script src="{% static 'editor/lang/summernote-zh-CN.js' %}"></script>
+    <script>
+        $('#summernote').summernote({
+            height: 700,
+            lang: 'zh-CN',
+            focus: true,
+            toolbar: [
+                ['style', ['style', 'paragraph']],
+                ['fontname', ['fontname','fontsize','height']],
+                ['table', ['table']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['help']]
+            ]
+        });
+
+    </script>
+
+{% endblock %}

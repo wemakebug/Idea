@@ -1,0 +1,141 @@
+{%extends 'personal/editprofile.html'%}
+{% load static %}
+{%block title%}
+   <title>账号信息</title>
+{%endblock%}
+
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap-theme.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/editprofile.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/account_information.css'%}">
+{%endblock%}
+
+{%block personalcontent%}
+    <div class="container">
+    <input type="hidden" value="{{ user.Id }}" class="user_mark" id="user_mark">
+        <div class="row" style="margin-top: 20px;color: rgba(0,0,0,0.6);">
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 ">
+                手机号码：{% if user.Phone %}{{ user.Phone }}{% else %}{{ "空" }}{% endif %}
+            </div>
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 "><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">修改手机号码</button>
+{#                <a href="#" class="editmaincontect1-4" data-toggle="modal" data-target="#myModal">修改手机号码</a></div>#}
+            </div>
+        <!-- 静态框 -->
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            修改手机号码
+                        </h4>
+                    </div>
+                    <div class="modal-body" style="text-align: center;">
+                        <input type="text" class="personalinput1-5" placeholder="原手机号码" onfocus=this.blur(); value="{% if user.Phone %}{{ user.Phone }}{% else %}{{ "空" }}{% endif %}">
+                        <input type="text" class="personalinput1-5 new_telphone" placeholder="新手机号码" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary submit_change">
+                            提交更改
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <div class="row" style="margin-top: 20px;color: rgba(0,0,0,0.6);">
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 ">用户邮箱：{% if user.Email %}{{ user.Email }}{% else %}{{ "空" }}{% endif %}</div>
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 "></div>
+        </div>
+        <div class="row" style="margin-top: 20px;color: rgba(0,0,0,0.6);">
+            <div class="col-xs-6 col-sm-3 "></div>
+            <div class="col-xs-6 col-sm-3 ">
+                我的头像：
+            </div>
+            <div class="col-xs-6 col-sm-3 ">
+                <div style="width: 60px;height: 60px;float: left;">
+                    <img src="{% if user.Img %}/static/photos/{{ user.Img }}{% else %}{% static 'personal/imgs/touxiang.jpg'%}{% endif %}" style="height: 100%;width:100%;border-radius: 50px;border: 1px solid #96CDCD;">
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 ">
+                <a class="file">选择文件
+                    <input autocomplete="off" type="file" class="" id="file_upload_img">
+                </a>
+{#                <button class="btn btn-primary btn-xs user_img" id="user_img">上传新头像</button>#}
+{#                <a href="#" class="changepicture1-1">上传新头像</a>#}
+            </div>
+        </div>
+        <div class="thirdaccount">
+            第三方账号关联
+        </div>
+        <div style="width: 68%;height: 1px;background-color:rgba(190,190,190,0.9); margin-left: 20%;"></div>
+        <div class="correlationaccount">
+            <div class="correlationaccount1-1">QQ</div>
+            <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联QQ账号</a></div>
+            <div class="correlationaccount1-1">微博</div>
+            <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微博账号</a></div>
+            <div class="correlationaccount1-1">微信</div>
+            <div class="correlationaccount1-2"><a href="#" class="correlationaccount1-3">关联微信账号</a></div>
+        </div>
+        <div class="row" style="text-align: center;margin-top: 30px;">
+            <input type="button" class="personalinput1-8" id="user_add_submit" value="保存">
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/bootstrap-fileupload.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/editprofile.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/account_information.js' %}"></script>
+<script>
+document.getElementById('user_add_submit').onclick=function () {
+    var Img_input = document.getElementById('file_upload_img');
+    var user_mark = document.getElementById("user_mark").value;
+    //检查文件后缀
+    if(Img_input.files[0]){
+        var file_ext = Img_input.files[0].name.split('.');
+        file_ext = file_ext[file_ext.length - 1];
+        if(!Img_input.files[0] && file_ext !== "bmp" && file_ext!== "jpg" && file_ext!== "gif"){
+            alert('请添加正确的图片格式！ (gif|jpg|jpeg|bmp)') ;
+            return;
+        }
+    }
+    var data = new FormData();
+    if(Img_input.files[0]){
+        data.append('Img', Img_input.files[0]);
+    }
+        data.append("user_mark",user_mark);
+    $.ajax({
+        url: '/idear/account_information_imgs',
+        type: 'POST',
+        data: data,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success:function(data){
+            data = JSON.parse(data);
+            if(data.status === 1){
+                alert(data.string);
+                window.location.reload();
+            }else {
+                alert(data.message);
+                window.location.reload();
+            }
+        },
+        error:function () {
+            alert("服务器异常")
+        }
+    });
+};
+</script>
+{% endblock %}

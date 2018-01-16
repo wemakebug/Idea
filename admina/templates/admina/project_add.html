@@ -3,22 +3,21 @@
 {% block title %}Admin-Index{% endblock %} {# title #}
 {% block css %}
     {% load static %}
-<!--file upload-->
-<link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
-
-<link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap-fileupload.min.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-datepicker/css/datepicker-custom.css'%}" />
     <!--multi-select-->
-    <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/js/jquery-multi-select/css/multi-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css' %}" />
 
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-{# css #}
+    {# icheck css #}
+    <link href="/static/js/iCheck/skins/flat/grey.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/red.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/blue.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/yellow.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/purple.css" rel="stylesheet">
+    {# css #}
 
 {% endblock %}
 
@@ -42,139 +41,107 @@
                         <div class="form-group ">
                             <label for="firstname" class="control-label col-lg-2">项目名称</label>
                             <div class="col-lg-5">
-                                <input class=" form-control" id="firstname" name="firstname" type="text" />
+                                <input class=" form-control" id="project_name" name="project_name" type="text" required/>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="timepicker" class="control-label col-lg-2">项目开始时间</label>
                             <div class="col-md-5 col-xs-11">
-                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker"/>
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="project_start_time"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label col-lg-2" >项目状态</label>
                             <div class="col-lg-10">
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="1"> 未开始
+                                    <input type="radio" name="project_status" value="0" checked> 未开始
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="2"> 初期招募
+                                    <input type="radio" name="project_status" value="1"> 初期招募
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="3"> 第一阶段进行中
+                                    <input type="radio" name="project_status" value="2"> 第一阶段进行中
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="3"> 二次招募
+                                    <input type="radio" name="project_status" value="3"> 二次招募
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="3"> 项目结束
+                                    <input type="radio" name="project_status" value="4"> 项目结束
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="project_status" value="5"> 异常项目
                                 </label>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="timepicker2" class="control-label col-lg-2">项目结束时间</label>
                             <div class="col-md-5 col-xs-11">
-                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker2"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label col-lg-2" >身份</label>
-                            <div class="col-lg-10">
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="1"> 学生
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="2"> 教师
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="3"> 团队
-                                </label>
+                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="project_end_time" required>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="email" class="control-label col-lg-2">邮箱</label>
+                            <label for="confirm_password" class="control-label col-lg-2">预计人数</label>
                             <div class="col-lg-5">
-                                <input class="form-control " id="email" name="email" type="email" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label col-lg-2" >性别</label>
-                            <div class="col-lg-5">
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="addUserSex" value="1"> 男
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="radio" name="addUserSex" value="2"> 女
-                                </label>
+                                <input class="form-control " id="predict_number" name="predict_number" type="number" max="10" min="0"/>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">人数</label>
+                            <label for="email" class="control-label col-lg-2">项目er</label>
                             <div class="col-lg-5">
-                                <div id="spinner4">
-                                    <div class="input-group" style="width:150px;">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-up btn-primary">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-down btn-warning">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <select class="form-control input-md" id="project_user" required>
+                                {%  for user in users %}
+                                    <option id="user-{{ user.Id }}" value="{{ user.Id }}">{{ user.UserName }}</option>
+                                {% endfor %}
+                            </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="confirm_password" class="control-label col-lg-2">项目封面图片</label>
                             <div class="col-md-10">
-                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                <div class="controls col-md-9">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <span class="btn btn-default btn-file">
+                                                    <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换图片</span>
+                                                    <input type="file" class="default" id="file_upload_img"/>
+                                                </span>
+                                            <span class="fileupload-preview" style="margin-left:5px;"></span>
+                                            <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                                        </div>
                                     </div>
-                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                    <div>
-                                                   <span class="btn btn-default btn-file">
-                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                                   <input type="file" class="default" />
-                                                   </span>
-                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="confirm_password" class="control-label col-lg-2">项目标签选择</label>
-                            <div class="col-md-9">
-                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
-                                        name="my_multi_select1[]">
-                                    <option>Dallas Cowboys</option>
-                                    <option>New York Giants</option>
-                                    <option selected>Philadelphia Eagles</option>
-                                    <option selected>Washington Redskins</option>
-                                    <option>Chicago Bears</option>
-                                    <option>Detroit Lions</option>
-                                    <option>Green Bay Packers</option>
-                                    <option>Minnesota Vikings</option>
-                                    <option selected>Atlanta Falcons</option>
-                                    <option>Carolina Panthers</option>
-                                    <option>New Orleans Saints</option>
-                                    <option>Tampa Bay Buccaneers</option>
-                                    <option>Arizona Cardinals</option>
-                                    <option>St. Louis Rams</option>
-                                    <option>San Francisco 49ers</option>
-                                    <option>Seattle Seahawks</option>
-                                </select>
-                            </div>
+                            <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">标签选择</label>
+                                 <div class="col-sm-9 icheck ">
+                                        {% for label in ProjectLabels %}
+                                            <div class="flat-grey checkbox-inline">
+                                                        <div class="radio">
+                                                            <input type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}" checked>
+                                                            <label for="ProjectLabel-{{ label.Id }}">{{ label.ProjectLabelName }}</label>
+                                                        </div>
+                                                    </div>
+                                        {% endfor %}
+                                 </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-default" type="button">重置</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                项目介绍新增
+            </header>
+            <div class="panel-body">
+                <div class="form-group">
+                    <form class="cmxform form-horizontal adminex-form" >
+                        <div class="form-group" style="height: 270px">
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control" id="wysihtml5_1" rows="9"></textarea>
                             </div>
                         </div>
                     </form>
@@ -187,29 +154,17 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                项目介绍修改
+                项目进度描述新增
             </header>
             <div class="panel-body">
-                <div class="form">
+                <div class="form-group">
                     <form class="cmxform form-horizontal adminex-form" >
-                        <div class="form-group" style="height: 500px">
-                            <label for="summernote1" class="control-label col-lg-2">项目介绍</label>
-                            <div class="col-lg-10">
-                                <div id="summernote1"></div>
+                        <div class="form-group" style="height: 270px">
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control" id="wysihtml5_2" rows="9"></textarea>
                             </div>
-                            <script type="text/javascript">
-                                $('#summernote1').summernote({
-                                    height:500,
-                                });
-                            </script>
                         </div>
                     </form>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-default" type="button">取消</button>
-                    </div>
                 </div>
             </div>
         </section>
@@ -219,60 +174,24 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                项目进度描述修改
+                项目总新增
             </header>
             <div class="panel-body">
                 <div class="form">
+                    <div class="form-group">
                     <form class="cmxform form-horizontal adminex-form" >
-                        <div class="form-group" style="height: 500px">
-                            <label for="summernote2" class="control-label col-lg-2">进度描述</label>
-                            <div class="col-lg-10">
-                                <div id="summernote2"></div>
+                        <div class="form-group" style="height: 270px">
+                            <div class="col-md-12">
+                                    <textarea class="wysihtml5 form-control"  id="wysihtml5_3" rows="9"></textarea>
                             </div>
-                            <script type="text/javascript">
-                                $('#summernote2').summernote({
-                                    height:500,
-                                });
-                            </script>
                         </div>
                     </form>
                 </div>
-                <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-default" type="button">取消</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <section class="panel">
-            <header class="panel-heading">
-                项目总结修改
-            </header>
-            <div class="panel-body">
-                <div class="form">
-                    <form class="cmxform form-horizontal adminex-form" >
-                        <div class="form-group" style="height: 500px">
-                            <label for="summernote3" class="control-label col-lg-2">项目总结</label>
-                            <div class="col-lg-10">
-                                <div id="summernote3"></div>
-                            </div>
-                            <script type="text/javascript">
-                                $('#summernote3').summernote({
-                                    height:500,
-                                });
-                            </script>
-                        </div>
-                    </form>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button class="btn btn-default" type="button">取消</button>
+                        <button class="btn btn-primary" id="submit_btn">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-default" >取消</button>
                     </div>
                 </div>
             </div>
@@ -292,13 +211,121 @@
     {# multiple select #}
     <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.multi-select.js'%}"></script>
     <script type="text/javascript" src="{% static '/js/jquery-multi-select/js/jquery.quicksearch.js'%}"></script>
-    <script type="text/javascript">
-        $('#my_multi_select1').multiSelect();
-    </script>
-    <script src="{% static '/js/multi-select-init.js'%}"></script>
+    {# icheck #}
+    <script src="/static/js/iCheck/jquery.icheck.js"></script>
+    <script src="/static/js/icheck-init.js"></script>
+    {#  fileupload   #}
+    <script type="text/javascript" src="/static/js/bootstrap-fileupload.min.js"></script>
+    {#  RichTextEditor #}
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
 
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
+<script>
+    jQuery(document).ready(function(){
+            $('#wysihtml5_1').wysihtml5(
+             {
+                 height:"500px;"
+             }
+            );
+            $('#wysihtml5_2').wysihtml5(
+             {
+                 height:"500px;"
+             }
+            );
+            $('#wysihtml5_3').wysihtml5(
+             {
+                 height:"500px;"
+             }
+            );
 
+            // 检查正确性并提交代码
+            $("#submit_btn").click(function () {
+                // 检查输入值的正确性
+                var project_status_radio = document.getElementsByName('project_status')
+                var project_name = $('#project_name').val()
+                var project_start_time = $('#project_start_time').val()
+                var LabelTags = document.getElementsByName('label_tags')
+
+                // 获取 项目状态 checked 的 radio
+                for(var i = 0;i< project_status_radio.length; i++){
+                    if(project_status_radio[i].checked){
+                        var project_status = project_status_radio[i].value
+                    }
+                }
+
+                var project_end_time = $('#project_end_time').val()
+                var predict_number = $('#predict_number').val();
+                var project_user = $('#project_user').val()
+
+                var Img_input = document.getElementById('file_upload_img');
+
+                //检查文件后缀
+                if(Img_input.files[0]){
+                    var file_ext = Img_input.files[0].name.split('.');
+                    file_ext = file_ext[file_ext.length - 1];
+                    if(!Img_input.files[0] && file_ext !== "bmp" && file_ext!== "jpg" && file_ext!== "gif"){
+                    alert('请添加正确的图片格式！ (gif|jpg|jpeg|bmp)') ;
+                    return
+                    }
+                }
+
+                // 获取项目标签
+                var tags = [];
+                for(var j=0; j<LabelTags.length; j++){
+                    if(LabelTags[j].checked){
+                        tags.push(LabelTags[j].value)
+                    }
+                }
+                var project_introduction = $('#wysihtml5_1').val();
+                var project_process = $('#wysihtml5_2').val();
+                var project_summary = $('#wysihtml5_3').val();
+
+                //检查空值，封装到 form
+                if(!(project_name && predict_number && project_user)){
+                    alert("必填项缺失");
+                    return ;
+                }
+                //封装数据
+                var data = new FormData();
+                data.append('project_name', project_name)
+                data.append('project_start_time', project_start_time)
+                data.append('project_status', project_status)
+                data.append('project_end_time', project_end_time)
+                data.append('predict_number', predict_number)
+                data.append('project_user', project_user)
+                if(Img_input.files[0]){
+                    data.append('Img', Img_input.files[0]);
+                }
+                data.append('Tags', tags);
+
+                data.append('project_introduction', project_introduction)
+                data.append('project_process', project_process)
+                data.append('project_summary', project_summary)
+
+                // 提交数据
+                $.ajax({
+                url: '{% url 'admina:project_add' %}',
+                type: 'POST',
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    data = JSON.parse(data)
+                    if(data.status === 1){
+                        alert(data.message)
+                    }else {
+                        alert(data.message)
+                    }
+                },
+                error:function () {
+                    alert("服务器异常")
+                }
+            });
+            })
+    });
+</script>
 {% endblock %}

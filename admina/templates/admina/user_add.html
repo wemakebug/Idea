@@ -6,10 +6,17 @@
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-fileupload.min.css" />
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'js/bootstrap-wysihtml5/bootstrap-wysihtml5.css'%}" />
+
+    {# icheck css #}
+    <link href="/static/js/iCheck/skins/flat/grey.css" rel="stylesheet">
 {% endblock %}
 {% block heading %}   {# heading #}
 <ul class="breadcrumb">
-    <h3>用户管理</h3>
+    <h3>后台管理</h3>
+    <li>
+        <a href="#">用户管理</a>
+    </li>
     <li class="active">添加用户</li>
 </ul>
 {% endblock %}
@@ -23,126 +30,125 @@
             </header>
             <div class="panel-body">
                 <div class="form">
-                    <form class="cmxform form-horizontal adminex-form" id="signupForm" >
+                    <form class="cmxform form-horizontal adminex-form" id="" >
                         <div class="form-group ">
-                            <label for="firstname" class="control-label col-lg-2">用户名</label>
+                            <label for="user_name" class="control-label col-lg-2">用户名</label>
                             <div class="col-lg-5">
-                                <input class=" form-control" id="firstname" name="firstname" type="text" />
+                                <input autocomplete="off" class=" form-control" id="user_name" name="user_name" type="text" />
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="lastname" class="control-label col-lg-2">工号</label>
+                            <label for="user_identity" class="control-label col-lg-2">工号 / 学号 / 团队代码</label>
                             <div class="col-lg-5">
-                                <input class=" form-control" id="lastname" name="lastname" type="text" />
+                                <input autocomplete="off" class=" form-control" id="user_account" name="user_account" type="text" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label col-lg-2" >身份</label>
                             <div class="col-lg-10">
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="1"> 学生
+                                    <input autocomplete="off" type="radio" name="user_identity" value="0" checked> 学生
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="2"> 教师
+                                    <input autocomplete="off" type="radio" name="user_identity" value="1"> 教师
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserIdentity" value="3"> 团队
+                                    <input autocomplete="off" type="radio" name="user_identity" value="2"> 团队
                                 </label>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="password" class="control-label col-lg-2">密码</label>
+                            <label for="user_password" class="control-label col-lg-2">密码</label>
                             <div class="col-lg-5">
-                                <input class="form-control " id="password" name="password" type="password" />
+                                <input autocomplete="off" class="form-control " id="user_password" name="password" type="password" />
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">确认密码</label>
+                            <label for="user_confirm_password" class="control-label col-lg-2">确认密码</label>
                             <div class="col-lg-5">
-                                <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
+                                <input autocomplete="off" class="form-control " id="user_confirm_password" name="confirm_password" type="password" />
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="email" class="control-label col-lg-2">邮箱</label>
+                            <label for="user_email" class="control-label col-lg-2">邮箱</label>
                             <div class="col-lg-5">
-                                <input class="form-control " id="email" name="email" type="email" />
+                                <input autocomplete="off" class="form-control " id="user_email" name="user_email" type="email" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label col-lg-2" >性别</label>
                             <div class="col-lg-5">
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserSex" value="1"> 男
+                                    <input autocomplete="off" type="radio" name="user_sex" value="0" checked> 男
                                 </label>
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="addUserSex" value="2"> 女
+                                    <input autocomplete="off" type="radio" name="user_sex" value="1"> 女
                                 </label>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">学校</label>
+                            <label for="user_school" class="control-label col-lg-2">学校</label>
                             <div class="col-lg-5">
-                                <input class="form-control " id="user_school" name="user_school" type="text" />
+                                <input autocomplete="off" class="form-control " id="user_school" name="user_school" type="text" />
                             </div>
                         </div>
                         <div class="form-group ">
-                        <label for="confirm_password" class="control-label col-lg-2">学院</label>
+                        <label for="user_institude" class="control-label col-lg-2">学院</label>
                         <div class="col-lg-5">
-                            <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
+                            <input autocomplete="off" class="form-control " id="user_institude" name="user_institude" type="text" />
                         </div>
                     </div>
                         <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">专业</label>
+                            <label for="user_major" class="control-label col-lg-2">专业</label>
                             <div class="col-lg-5">
-                                <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">分值</label>
-                            <div class="col-lg-5">
-                                <div id="spinner4">
-                                    <div class="input-group" style="width:150px;">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-up btn-primary">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="spinner-input form-control" maxlength="8" aria-valuemax="99999999">
-                                        <div class="spinner-buttons input-group-btn">
-                                            <button type="button" class="btn spinner-down btn-warning">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <input autocomplete="off" class="form-control " id="user_major" name="user_major" type="text" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="confirm_password" class="control-label col-lg-2">头像</label>
+                            <label for="confirm_password" class="control-label col-lg-2">标签选择</label>
+                                 <div class="col-sm-9 icheck ">
+                                        {% for label in UserLabels %}
+                                            <div class="flat-grey checkbox-inline">
+                                                        <div class="radio">
+                                                            <input autocomplete="off" autocomplete="off" type="checkbox" id="UserLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}" checked>
+                                                            <label for="UserLabel-{{ label.Id }}">{{ label.Name }}</label>
+                                                        </div>
+                                                    </div>
+                                        {% endfor %}
+                                 </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="control-label col-lg-2">用户头像</label>
                             <div class="col-md-10">
-                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                <div class="controls col-md-9">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <span class="btn btn-default btn-file">
+                                                <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
+                                                <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换图片</span>
+                                                <input autocomplete="off" type="file" class="default" id="file_upload_img"/>
+                                                </span>
+                                            <span class="fileupload-preview" style="margin-left:5px;"></span>
+                                            <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                                        </div>
                                     </div>
-                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                    <div>
-                                                   <span class="btn btn-default btn-file">
-                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                                   <input type="file" class="default" />
-                                                   </span>
-                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-default" type="button">重置</button>
+                            <div class="form-group">
+                                <label for="confirm_password" class="control-label col-lg-2">自我介绍</label>
+                                    <div class="col-md-10">
+                                        <textarea class="wysihtml5 form-control" rows="9"></textarea>
+                                    </div>
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-primary" id='user_add_submit'>保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-default">重置</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -152,38 +158,121 @@
 
 
 {% block midscript %}   {# midescript #}
-<script type="text/javascript" src="/static/js/jquery.validate.min.js"></script>
-<script src="/static/user_statics/user_add_validation.js"></script>
 
-<!--ios7-->
-<script src="/static/js/ios-switch/switchery.js" ></script>
-<script src="/static/js/ios-switch/ios-init.js" ></script>
-
-<!--icheck -->
-<script src="/static/js/iCheck/jquery.icheck.js"></script>
-<script src="/static/js/icheck-init.js"></script>
-
-<!--multi-select-->
-<script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.multi-select.js"></script>
-<script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
-<script src="/static/js/multi-select-init.js"></script>
-
-<!--spinner-->
-<script type="text/javascript" src="/static/js/fuelux/js/spinner.min.js"></script>
-<script src="/static/js/spinner-init.js"></script>
-
-<!--file upload-->
-<script type="text/javascript" src="/static/js/bootstrap-fileupload.min.js"></script>
-
-<!--tags input-->
-<script src="/static/js/jquery-tags-input/jquery.tagsinput.js"></script>
-<script src="/static/js/tagsinput-init.js"></script>
-
-<!--bootstrap input mask-->
-<script type="text/javascript" src="/static/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+    <!--file upload-->
+    <script type="text/javascript" src="/static/js/bootstrap-fileupload.min.js"></script>
+    {# icheck #}
+    <script src="/static/js/iCheck/jquery.icheck.js"></script>
+    <script src="/static/js/icheck-init.js"></script>
+    <!--bootstrap wysihtml editor-->
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
 
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
+<script>
+    jQuery(document).ready(function(){
+        var progress_bar = document.getElementById('progressbar')
+        progress_bar.style.display = 'none'
+         $('.wysihtml5').wysihtml5();
+        document.getElementById('user_add_submit').onclick=function () {
+            progress_bar.style.display = ''
+         //获取输入值
+            var user_name = $("#user_name").val();
+            var user_account = $("#user_account").val();
 
+            // 获取 用户身份 checked 的 radio
+            var user_identity_radio = document.getElementsByName('user_identity')
+            for(var i = 0;i< user_identity_radio.length; i++){
+                if(user_identity_radio[i].checked){
+                    var user_identity = user_identity_radio[i].value
+                }
+            }
+
+            var user_passwd = $('#user_password').val()
+            var user_confirm_password = $('#user_confirm_password').val()
+            if(user_passwd !== user_confirm_password){
+                alert("两次输入的密码不一致")
+                return ;
+            }
+            var user_email = $('#user_email').val()
+
+            //获取用户性别的radio
+            var user_sex_raido = document.getElementsByName('user_sex')
+            for(var i = 0;i< user_sex_raido.length; i++){
+                if(user_sex_raido[i].checked){
+                    var user_sex = user_sex_raido[i].value
+                }
+            }
+
+            var user_school = $("#user_school").val()
+            var user_institutde = $("#user_institude").val()
+            var user_major = $("#user_major").val()
+
+            var LabelTags = document.getElementsByName('label_tags')
+            var tags = [];
+            for(var j=0; j<LabelTags.length; j++){
+                if(LabelTags[j].checked){
+                    tags.push(LabelTags[j].value)
+                }
+            }
+            // 获取用户头像
+            var Img_input = document.getElementById('file_upload_img')
+            //检查文件后缀
+            if(Img_input.files[0]){
+                var file_ext = Img_input.files[0].name.split('.');
+                file_ext = file_ext[file_ext.length - 1];
+                if(!Img_input.files[0] && file_ext !== "bmp" && file_ext!== "jpg" && file_ext!== "gif"){
+                alert('请添加正确的图片格式！ (gif|jpg|jpeg|bmp)') ;
+                return
+                }
+            }
+
+            // 获取用户自我介绍内容
+            var user_introduction = $('.wysihtml5').val()
+            
+            // 构造form后提交后台
+
+            //封装数据
+            var data = new FormData();
+            data.append('user_name', user_name)
+            data.append('user_account', user_account)
+            data.append('user_identity', user_identity)
+            data.append('user_passwd', user_passwd)
+            data.append('user_email', user_email)
+            data.append('user_sex', user_sex)
+            data.append('user_school', user_school)
+            data.append('user_institutde', user_institutde)
+            data.append('user_major', user_major)
+
+            if(Img_input.files[0]){
+                data.append('Img', Img_input.files[0]);
+            }
+            data.append('Tags', tags);
+            data.append('user_introduction', user_introduction)
+
+            //提交数据
+            $.ajax({
+                url: '{% url 'admina:user_add' %}',
+                type: 'POST',
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    data = JSON.parse(data)
+                    if(data.status === 1){
+                        alert(data.message)
+                    }else {
+                        alert(data.message)
+                    }
+                },
+                error:function () {
+                    alert("服务器异常")
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}

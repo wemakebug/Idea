@@ -1,0 +1,75 @@
+{%extends 'personal/userfollow.html'%}
+{% load static %}
+{%block title%}
+   <title>即时关注</title>
+{%endblock%}
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/allfollow.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/userfollow.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/following_user.css'%}">
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
+{%endblock%}
+
+{% block userFollow %}
+{% for follow in follows %}
+    {% if follow.user %}
+    <div class="userMessage">
+        <div class="followUserImg"   >
+            <a href="#">
+                {% if follow.user.Img %}
+                <img src="/static/photos/{{ follow.user.Img }}">
+                {% else %}
+                <img src="/static/photos/photos/user/None.png">
+                {% endif %}
+            </a>
+        </div>
+        <div class="followUserName">
+            <p>{{ follow.user.UserName }}</p>
+        </div>
+        <button class="deleteConcern"  value="{{ follow.user.Id }}">
+            <p>取消关注</p>
+        </button>
+    </div>
+        {% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'personal/js/allFollow.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
+    <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
+    <script>
+    $(".deleteConcern").click(function () {
+        var following_Id = $(this).val();
+        var show = layer.open({
+            type: 1,
+            offset: '200px',
+            resize: false,
+            move: false,
+            area: ['300px', '100px'],
+            title: ['确定取消此关注？', 'font-size:18px;text-align:center;background:#000000;color:white;'],
+            shade: 0.6,
+            maxmin: false,
+            anim: 0,//0-6的动画形式，-1不开启,
+            content: '<button class="putreport" id="deleteputreport">取消</button> ' + '<button class="putreport" id="putreport">确定</button> '
+        });
+        $("#deleteputreport").click(function () {
+            layer.close(show);
+        });
+        $("#putreport").click(function () {
+            layer.close(show);
+            $.post("following_user",{"following_Id":following_Id},function (data) {
+                 data = JSON.parse(data);
+                 if(data.status === 0){
+                     alert("删除失败！");
+                 } else {
+                     window.location.reload();
+                 }
+            });
+        });
+    });
+    </script>
+{% endblock %}

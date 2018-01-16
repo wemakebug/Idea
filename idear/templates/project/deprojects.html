@@ -5,9 +5,10 @@
 {%block title%}<title>开发项目</title>{%endblock%}
 
 {%block CSS%}
-
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'idea/css/index.css'%}">
     <link rel="stylesheet" href="{% static 'project/css/deprojects.css' %}">
+
     <script src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
 {%endblock%}
 
@@ -34,15 +35,16 @@
                         </a>
                         <div class="project_middle">
                             <span class="project_middle_fix">项目标签：</span>
-
-                            <span class="project_middle_icon"></span>
-                            <span class="project_middle_text"> </span>
-
+                            {%for label in  Labels%}
+                                <span class="project_middle_icon"></span>
+                                <span class="project_middle_text">{{label.projectLabel.ProjectLabelName}}</span>
+                            {% endfor %}
                         <br>
                         </div>
                         <div class="project_bottom_top">
-                            <p class="project_top_1_text">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{{ project.Description }} </p>
+                            <div class="project_top_1_text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{{ project.Description | safe}}
+                            </div>
                             <div class="progress">
                                 <span class="green  "><span><li>当前项目进度： </li></span></span>
                             </div>
@@ -53,52 +55,26 @@
             </div>
         </div>
             <div class="home-right">
-                 <div class="intro">
-                     <div class="best_project">
-                        <div class="pro">
-                            <a href="#">
-                                <div class="pro_left_img">
-                                    <img src="../../static/idea/imgs/best_img.png">
-                                </div>
-                            </a>
-                            <div class="pro_content">
-                                <div class="pro_label">
-                                    <a href="#" >
-                                        <p>大数据</p>
-                                        <p>互联网</p>
-                                    </a>
-                                </div>
-                                <div class="pro_name"><a href="#"><p>一个非常好的项目</p></a></div>
-                                <div class="pro_introduce">
-                                    <a href="#">
-                                        <p id="txt">今年六月，世界娱乐巨头米高梅集团（MGM Resorts）宣布扩大与麦肯的合作，将旗下多个娱乐场所和度假村纳入了创意清单之中。</p>
-                                    </a>
-                                </div>
+                  <div class="best-pro">
+                            <div class="ribbon"><span class="ribbon2">金<br>牌<br>项<br>目</span></div>
+                            <div class="pro-logo">
+                                <img src="../../static/idea/imgs/best_img.png">
                             </div>
-                            <div class="pro_line"></div>
-                            <div class="pro_best">
-                                <ul>
-                                    <li>
-                                        <div class="pro_comment"></div>
-                                        <div class="comment_num"><p>123</p></div>
-                                    </li>
-                                    <li>
-                                        <div class="pro-thumbs-up"></div>
-                                        <div class="thumbs-up-num"><p>123</p></div>
-                                    </li>
-                                    <li>
-                                        <div class="pro-collection"></div>
-                                        <div class="collection-num"><p>123</p></div>
-                                    </li>
-                                </ul>
-                                <div class="pro_by">
-                                    <p>by&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">张张</a></p>
-                                </div>
+                            <div class="pro-label"><span>大数据</span><span>互联网</span></div>
+                            <div class="pro-label pro-name">项目名称</div>
+                            <div class="pro-label pro-des">
+                                 <p>今年六月，世界娱乐巨头米高梅集团（MGM Resorts）宣布扩大与麦肯的合作，将旗下多个娱乐场所和度假村纳入了创意清单之中。</p>
+                            </div>
+                            <div class="pro-bottom">
+                                <img class="pro-like" src="{% static 'project/imgs/like1.svg' %}" style="width:25px;height:25px;">
+                                <span>1111</span>
+                                <img class="pro-like" src="{% static 'project/imgs/reply.svg' %}" style="width:23px;height:20px;margin-top:5px">
+                                <span>1111</span>
+                                <img class="pro-like" src="{% static 'creation/imgs/collection0.png' %}" style="width:20px;height:20px;margin-top:2px">
+                                 <span>1111</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="tag">
+                  <div class="tag">
                     <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                     <span>标签</span>
                     <hr>
@@ -107,7 +83,6 @@
                         <a href="deprojects?sign={{ obj.Id }}" sign="{{ obj.Id }}"><span class="allsign" id="choose_Tag" onclick="chooseTag()">{{ obj.ProjectLabelName }}</span></a>
                     {% endfor %}
                 </div>
-
                 <div class="tag">
                     <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
                     <span>类型</span>
@@ -115,13 +90,20 @@
                     <a href="recruit?sign=all" sign="all"><span class="allsign">时间</span></a>
                     <a href="recruit?sign=all" sign="all"><span class="allsign">点赞</span></a>
                     <a href="recruit?sign=all" sign="all"><span class="allsign">评论</span></a>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">最近更新</span></a>
+                </div>
+                <div class="tag">
+                    <img src="{% static 'creation/imgs/tag.png' %}" style="width:20px;height:20px;margin-top:30px">
+                    <span>状态</span>
+                    <hr>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">招募项目</span></a>
+                    <a href="recruit?sign=all" sign="all"><span class="allsign">开发项目</span></a>
 
                 </div>
-        </div>
+            </div>
     </div>
-
-        {% block script %}
-
+    {% block script %}
+        <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
     <script>
         //限制字符个数
         $(document).ready(function () {

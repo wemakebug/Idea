@@ -2,7 +2,10 @@
 	height:100%;
 	margin:0px;
 }
-.container-b {
+.nav_main a{
+    font-size:1.6rem
+}
+.container-fluid {
 	width: 100%;
 	height:auto;
 	overflow:hidden;
@@ -35,11 +38,11 @@
 }
 .tags {
 	float:right;
-	margin:-2px 25px 0 0;
-	width:60px;
+	margin:-2px 6px 0 0;
+	width:80px;
 }
 .tags span::before {
-	background: #539092 none repeat scroll 0 0;
+	background: #337ab7 none repeat scroll 0 0;
 	height: 4px;
 	left: -6px;
 	top: 0;
@@ -51,7 +54,7 @@
 	position: absolute;
 }
 .tags span::after {
-	background: #205d67 none repeat scroll 0 0;
+	background: #337ab7 none repeat scroll 0 0;
 	border-radius: 8px 8px 0 0;
 	height: 4px;
 	left: -8px;
@@ -64,7 +67,7 @@
 	position: absolute;
 }
 .tags span {
-	background: #6EABAD none repeat scroll 0 0;
+	background: #488fcc none repeat scroll 0 0;
 	border-radius:0px 8px 5px 5px;
 	display: inline-block;
 	float: right;
@@ -81,7 +84,7 @@
 	color:white;
 }
 .tags span:hover{
-    background: #539092 none repeat scroll 0 0;
+    background: #337ab7 none repeat scroll 0 0;
 }
 .home-b-head {
 	width:100%;
@@ -124,7 +127,7 @@
 .home-b-title hr{
     margin-top:2px;
     color:#f1f1f1;
-    width:260px;
+    width:295px;
 }
 .text {
 	float: left;
@@ -133,6 +136,11 @@
 	width: 70%;
 	color:gray;
 }
+.text img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .text h1 {
 	margin-top:50px;
 	font-family:宋体;
@@ -158,6 +166,9 @@
     width:62px;
     margin-top:24%;
     font-size:15px;
+}
+.btn-style{
+    padding: 0px;
 }
 .home-b-comment{
     float:right;
@@ -233,6 +244,7 @@
     position: relative;
 }
 
+
 #praise-txt{
     float:left;
     margin: 0 0 0 35px;
@@ -250,10 +262,10 @@
     position: absolute;
     text-align: left;
     width: 180px;
-    height:0px;
     font-size:15px;
-	float: left;
-	margin-left:18px;
+    float:left;
+    margin-left:18px;
+
 }
 .praise p{
 	line-height: 25px;
@@ -265,6 +277,7 @@
     font-size:15px;
 	float: left;
 	margin-left:46px;
+
 }
 .praise img{
     width:25px;
@@ -272,12 +285,7 @@
     display:block;
     margin: 0 auto;
 }
-.praise img{
-    animation: myfirst 0.5s;
-    -moz-animation: myfirst 0.5s;	/* Firefox */
-    -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
-    -o-animation: myfirst 0.5s;	/* Opera */
-}
+
 
 .home-b-user{
     width:660px;
@@ -347,16 +355,16 @@
 	font-size: 30px;
 	font-weight: bold;
 	margin: 4% 4% 0 0;
-	padding: 0px 10px;
+	padding: 0px 14px;
 }
 .user-follow:hover {
-	color:#007776;
+	color:#23527c;
 }
 .line {
     position:fixed;
-    background-color:rgba(95,158,160,0.6);
+    background-color:#7495B7;
     width:3px;
-    height:280px;
+    height:320px;
     float:left;
     margin-left:880px;
     margin-top:30px;
@@ -381,7 +389,7 @@
 }
 .similar-block{
     background-color:white;
-    width:280px;
+    width:250px;
     height:280px;
     box-shadow: 0px 5px 25px 0px #d3e0e2;
     border-radius: 8px;
@@ -392,25 +400,22 @@
     color:#539092;
 }
 .block-main{
-    width:80%;
-    float:left;
-    margin:10% 0 0 10%;
+    width:100%;
+    height:215px;
     font-family:幼圆;
     font-size:23px;
 
 }
-.block-main {
-    text-align:left;
-}
 .block-title:hover{
-    color:#539092;
+    color:#23527c;
 }
 
 .block-title{
     float:left;
+    margin-top:2%;
 	margin-left:12px;
 	width:91%;
-	height:50px;
+	height:45px;
     overflow:hidden;
     line-height:24px;
 }
@@ -429,39 +434,50 @@
 	color:gray;
 }
 h5 {
-	font-size: 18px;
+	font-size: 16px;
 	font-family: 幼圆;
 	width: 100%;
 }
 .block-bottom{
     width:100%;
-    height:50px;
+    height:45px;
     float:left;
-    margin-top:9%;
+    margin-top:2%;
     font-size: 13px;
 }
 .block-bottom-ava{
     float:left;
     width:40px;
-    margin-left:41px;
+    margin-left:12px;
+}
+.block-bottom-name{
+    float:left;
+    width: 90px;
+    margin-left: 6px;
+    margin-top: 20px;
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .block-bottom-hot{
-    width:60%;
-    float:left;
-    margin:-18px 0 0 120px;
+    width:90px;
+    float:right;
+    margin:20px 12px 0px 0px;
 }
 .block-hotlike{
-    width:26%;
-    float:left;
-    margin-left:45px;
+    width:auto;
+    float:right;
+    margin-right:2px;
 }
 .block-imglike{
     width:20px;
     height:20px;
 }
 .block-hotfollow{
-    width:26%;
-    float:left;
+    width:auto;
+    float:right;
+    margin-right: 2px;
 }
 .block-imgfollow{
     width:20px;
@@ -487,7 +503,7 @@ h5 {
 .c-all{
     width:100%;
     height:auto;
-    margin-bottom:40px;
+    margin-bottom:50px;
 }
 .ctitle{
     width:100%;
@@ -506,7 +522,7 @@ h5 {
 .comment1-2{
 	width: 100%;
 	height: 2px;
-	background-color: rgba(95,158,160,0.6);
+	background-color: #7495B7;
 }
 .ctop{
     width:100%;
@@ -544,15 +560,18 @@ h5 {
     width:11%;
     height:30px;
     margin-top:5px;
-	margin-right:10px;
+	margin-right:8px;
     background-color: #3a87ad;
     border:none;
     float:right;
     border-radius:5px;
+    color:white;
 }
 
 .cmain{
-    height:100px;
+    height:60px;
+    margin-bottom:-22px
+    margin-top:40px
 }
 .c-img{
     display:block;
@@ -565,9 +584,11 @@ h5 {
     width:72%;
     float:left;
     margin-left:20px;
-    height:80px;
+    margin-bottom:20px;
+    height:auto;
 	position: relative;
 }
+
 .comment-box:before,  .comment-box:after {
 	content: '';
 	height: 0;
@@ -587,7 +608,7 @@ h5 {
 }
 
 .comment-head {
-	height:40%;
+	height:35px;
 	width:100%;
     margin-top:5px;
 	border-bottom: 2px solid #E5E5E5;
@@ -613,11 +634,17 @@ h5 {
 	float: left;
 	color: #999;
 	font-size: 13px;
-	margin: 6px 0 10px 20px;
+	margin: 6px 0px 0px 20px;
+}
+.ctime{
+	float: left;
+	color: #999;
+	font-size: 13px;
+	margin: 6px 0px 0px 5px;
 }
 .c-option{
     float:right;
-    width:28%;
+    width:15%;
     height:100%;
 }
 .clike{
@@ -648,6 +675,7 @@ h5 {
 .comment-content {
 	width:100%;
 	height: auto;
+	word-wrap:break-word;
 	font-size: 15px;
     line-height:30px;
 	color: #595959;
@@ -681,7 +709,8 @@ h5 {
     width:73%;
     float:left;
     margin-left:20px;
-    height:80px;
+    margin-top:20px;
+    height:auto;
 	position: relative;
 }
 .rcomment-box:before,  .comment-box:after {
@@ -703,7 +732,7 @@ h5 {
 }
 
 .rcomment-head {
-	height:40%;
+	height:35px;
 	width:100%;
     margin-top:5px;
 	border-bottom: 2px solid #E5E5E5;
@@ -711,7 +740,7 @@ h5 {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
-    /*background-color:  #ABCDCB;*/
+    background-color:  #ABCDCB;
 }
 .rcomment-name {
 	color: #283035;
@@ -728,11 +757,17 @@ h5 {
 	float: left;
 	color: #999;
 	font-size: 13px;
-	margin: 6px 0 10px 20px;
+	margin: 6px 0px 0px 20px;
+}
+.rctime{
+	float: left;
+	color: #999;
+	font-size: 13px;
+	margin: 6px 0px 0px 5px;
 }
 .r-option{
     float:right;
-    width:31%;
+    width:17%;
     height:100%;
 }
 .rclike{
@@ -771,6 +806,29 @@ h5 {
 	border-radius: 0 0 4px 4px;
     background-color:  #ABCDCB;
 }
+
+/*评论回复文本框*/
+.commentreply{
+    display:none;
+    width:100%;
+    height:40px;
+    margin: 10px 0 10px 0;
+    background-color:  #ABCDCB ;
+    -webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+.commentreply-text{
+    width:85%;
+    height: 30px;
+    margin:5px 0 0 5px;
+    border-radius:5px;
+    resize:none;
+    line-height:1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid #c6c8ce;
+}
+
 .report-text{
     width:84%;
     margin:40px 0 0 8%;
@@ -788,29 +846,5 @@ h5 {
     border:none;
     border-radius:5px;
     cursor: pointer;
-}
-/*评论回复文本框*/
-.commentreply{
-    display:none;
-}
-.commentreplys{
-    width:100%;
-    height:40px;
-    margin: 10px 0 10px 0;
-    background-color:  #ABCDCB ;
-    -webkit-border-radius: 0 0 4px 4px;
-	-moz-border-radius: 0 0 4px 4px;
-	border-radius: 0 0 4px 4px;
-}
-
-.commentreply-text{
-    width:84%;
-    height: 30px;
-    margin:5px 0 0 5px;
-    border-radius:5px;
-    resize:none;
-    line-height:1.7;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border: 1px solid #c6c8ce;
 }
 

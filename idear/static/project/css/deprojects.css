@@ -292,9 +292,9 @@ body, html {
   background-image: linear-gradient(to bottom, #b7dc8e 0%, #99ce5f 70%, #85c440 100%);
 }
 .home-right {
-    width: 350px;
+    width: 360px;
     position: fixed;
-    margin-left: 63%;
+    margin:30px 0 0 63%;
 }
 .home-right p,span{
     font-size: 15px;
@@ -336,11 +336,16 @@ body, html {
 	font-size: 15px;
 	text-decoration: none;
 }
+.tag img{
+    vertical-align:text-bottom;
+}
 .tag span {
 	display: inline-block;
 	margin-bottom: 5px;
 	font-family:幼圆;
 }
+
+
 .allsign {
 	border: 1px solid #c0c5cd;
 	background-color: #eeeeee;
@@ -415,7 +420,84 @@ body, html {
     cursor: auto;
     text-decoration: underline;
 }
-.pro_comment{
-    width:15px;
-    height:15px;
+.best-pro{
+    width:100%;
+    height:360px;
+    /*margin-top: 30px;*/
+    border-radius:15px;
+    box-shadow:10px 10px 5px #c0c7d0;
+    overflow: hidden;
+}
+.pro-logo{
+    margin-right:75px;
+    width:230px;
+    height:150px;
+}
+.pro-logo img{
+    margin-top:5px;
+    width:100%;
+    height:145px;
+}
+.pro-logo:hover{
+    transform:scale(1.05);
+    -ms-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    -webkit-transform:scale(1.05);
+    -o-transform:scale(1.1);
+    -moz-box-shadow: 5px 5px 4px #888888;
+    box-shadow: 5px 5px 4px #888888;
+    transition: 0.2s ease-out;
+}
+.pro-label{
+    margin-right:75px;
+    width:230px;
+    margin-top: 5px;
+}
+.pro-label span{
+    margin-right: 20px;
+}
+.pro-name{
+    font-size: 25px;
+}
+.pro-des{
+    height:100px;
+    overflow: hidden;
+    border-bottom: 1px solid #e0e0e0;
+}
+.ribbon2 {
+  display: inline-block;
+  width: 45px;
+  padding: 10px 0;
+  background: #7495B7;
+  top: 3px;
+  left: 310px;
+  position: absolute;
+  text-align: center;
+  font-size: 20px;
+  border-top-left-radius: 3px;
+}
+.ribbon2:after {
+    content: "";
+    position: absolute;
+}
+.ribbon2:after {
+    height: 0;
+    width: 0;
+    border-left: 22px solid #7495B7;
+    border-right: 23px solid #7495B7;
+    border-bottom: 30px solid transparent;
+    bottom: -30px;
+    left: 0;
+}
+.pro-bottom{
+    width:250px;
+    height:20px;
+}
+.pro-bottom span{
+    display: inline-block;
+    margin: 3px 5px 0 2px;
+    float:left;
+}
+.pro-like{
+    float:left;
 }

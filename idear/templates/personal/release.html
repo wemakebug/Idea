@@ -4,36 +4,39 @@
    <title>发布项目</title>
 {%endblock%}
 {% block CSS %}
-    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
     <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
-    <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
-    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
-    <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <!-- include summernote css/js-->
     <link href="{% static 'editor/summernote.css' %}" rel="stylesheet">
     <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
     <!-- include summernote-zn-CN -->
     <script src="{% static 'editor/lang/summernote-zh-CN.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
+    <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
 {% endblock %}
 
 {% block content %}
 <div class="main_block">
     <div class="release_pro">
         <div class="pro_edit">
-            <h2>个人中心/新建项目</h2>
+            <h2>新建项目</h2>
         </div>
         <div class="useInstr">
             <div id="agreeing" class="input-use">使用说明</div>
         </div>
         <div class="pro_chance">
             <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>
-            <div class="chance_ownname"><a href="#"><p>暂存</p></a></div>
-            <div class="chance_ownname chance_release"><button><p>发布</p></button></div>
+            <div class="chance_ownname " id="temporary"><p>暂存</p></div>
+            <div class="chance_ownname chance_release ">
+                <button class="releasePro" id="releasePro">
+                    <p>发布</p>
+                </button>
+            </div>
         </div>
     </div>
     <div class="input_pro_title">
-        <form>
+        <form enctype="multipart/form-data">
             <input class="input_title" placeholder="请在这里输入标题" autocomplete="off" type="text">
         </form>
     </div>
@@ -41,7 +44,9 @@
         <div class="pro_founder">
             <p>创建人：</p>
             <div class="owner_name">
-                <p id="username1"></p>
+                <p id="username1">
+                    {{ username }}
+                </p>
             </div>
         </div>
     </div>
@@ -66,14 +71,18 @@
                     </div>
                 </div>
             </div>
+            <div class="recruitPost">
+                <p>招募贴：</p>
+                <textarea name="textarea" class="postCon" cols="21" rows="12" placeholder="请在这里输入文本"></textarea>
+            </div>
         </div>
         <div class="rich_text" id="rich_text">
-            <div id="summernote"></div>
+            <div id="summernote" name="content"></div>
         </div>
         <div class="chance_type">
             <div class="input_num">
                 <p>所需人数</p>
-                <input autocomplete="off" type="text" placeholder="数字">
+                <input autocomplete="off" type="text" placeholder="数字" id="numPerson">
             </div>
             <div class="end_time">
                 <p>截止时间</p>
@@ -92,7 +101,7 @@
                 </div>
                 <div class="label_name">
                     {% for obj in labels %}
-                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()">{{ obj.ProjectLabelName}}</div>
+                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()" value="{{ obj.ProjectLabelName }}">{{ obj.ProjectLabelName}}</div>
                     {% endfor %}
                 </div>
             </div>
@@ -102,7 +111,7 @@
 <div class="pop-up">
     <div class="pop_1">
         <p> 欢迎您，</p>
-        <p id="username2" class="pop_user"></p>
+        <p id="username2" class="pop_user">{{ username }}</p>
     </div>
     <div class="contInstruc">
         1.在开始发布项目前，请您认真阅读此说明，这将帮助您更好开启项目之旅。
@@ -151,4 +160,139 @@
         }
 	</script>
     <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
+    <script>
+    //暂存
+    document.getElementById('temporary').onclick = function () {
+        var proTitle = $(".input_title").val();
+        if(!proTitle){
+            alert("项目名称不能为空！");
+            return ;
+        }
+        var coverMap = $(".file-preview-image").attr("src"); //封面图
+        if(!coverMap){
+            alert("请加封面图！");
+            return ;
+        }
+        var statue = 0 ,
+            identity = 1;
+        var recruit = $(".postCon").val();
+        var rhtml = $(".note-editable").get(0).innerHTML;
+        if(!rhtml){
+            alert("项目内容不能为空！");
+            return ;
+        }
+        var numPerson = $("#numPerson").val();
+        if(numPerson < "1"){
+            alert("所需人数请输入大于0的数字！");
+            $("#numPerson").css("border","1px solid red");
+            return ;
+        }
+        var endTime = $("#flatpickr-tryme").val();
+        if(!endTime){
+            alert("请选择结束时间！");
+            return ;
+        }
+        var proLabels = '';
+        var oDiv = document.getElementsByName("chance_pro_label");
+        for(var i = 0;i < oDiv.length;i ++){
+            if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")
+                proLabels+=oDiv[i].innerHTML + '*';
+        }
+        if(proLabels === ""){
+            alert("请选择标签！");
+            return;
+        }
+        var d=new Date();
+        var day=d.getDate();
+        var month=d.getMonth() + 1;
+        var year=d.getFullYear();
+        var nowTime = year + "-"+month + "-" + day;
+        $.post("release",{
+            "proTitle": proTitle,
+            "coverMap": coverMap,
+            "rhtml": rhtml,
+            "numPerson": numPerson,
+            "nowTime":nowTime,
+            "endTime": endTime,
+            "proLabels": proLabels,
+            "statue":statue,
+            "recruit":recruit,
+            "idetity":identity
+        },function (data) {
+            var data = JSON.parse(data);
+            if(data.status){
+                alert("暂存成功")
+            }
+        })
+    };
+    //发布
+    document.getElementById('releasePro').onclick = function () {
+        var proTitle = $(".input_title").val();
+        if(!proTitle){
+            alert("项目名称不能为空！");
+            return ;
+        }
+        var coverMap = $(".file-preview-image").attr("src"); //封面图
+        if(!coverMap){
+            alert("请加封面图！");
+            return ;
+        }
+        var statue ,
+            identity = 1;
+        var recruit = $(".postCon").val();
+        if(recruit === ''){
+            statue = 2;
+        }else{
+            statue = 1;
+        }
+        var rhtml = $(".note-editable").get(0).innerHTML;
+        if(!rhtml){
+            alert("项目内容不能为空！");
+            return ;
+        }
+        var numPerson = $("#numPerson").val();
+        if(numPerson < "1"){
+            alert("所需人数请输入大于0的数字！");
+            $("#numPerson").css("border","1px solid red");
+            return ;
+        }
+        var endTime = $("#flatpickr-tryme").val();
+        if(!endTime){
+            alert("请选择结束时间！");
+            return ;
+        }
+        var proLabels = '';
+        var oDiv = document.getElementsByName("chance_pro_label");
+        for(var i = 0;i < oDiv.length;i ++){
+            if(oDiv[i].style.backgroundColor === "rgb(113, 148, 184)")
+                proLabels+=oDiv[i].innerHTML + '*';
+        }
+        if(proLabels === ""){
+            alert("请选择标签！");
+            return;
+        }
+        var d=new Date();
+        var day=d.getDate();
+        var month=d.getMonth() + 1;
+        var year=d.getFullYear();
+        var nowTime = year + "-"+month + "-" + day;
+        $.post("release",{
+            "proTitle": proTitle,
+            "coverMap": coverMap,
+            "rhtml": rhtml,
+            "numPerson": numPerson,
+            "nowTime":nowTime,
+            "endTime": endTime,
+            "proLabels": proLabels,
+            "statue":statue,
+            "recruit":recruit,
+            "idetity":identity
+        },function (data) {
+            var data = JSON.parse(data);
+            if(data.status){
+                alert("发布成功")
+            }
+        })
+    };
+    </script>
 {% endblock %}

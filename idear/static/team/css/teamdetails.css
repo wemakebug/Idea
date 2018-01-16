@@ -1167,6 +1167,9 @@
     float:left;
     margin-top:6px;
 }
+.clike:hover{
+    cursor: pointer;
+}
 .clikenum{
     display:inline-block;
     float:left;
@@ -1180,11 +1183,17 @@
     float:left;
     margin:7px 10px 0 10%;
 }
+.creport:hover{
+    cursor: pointer;
+}
 .creply{
     width:20px;
     height:20px;
     float:left;
     margin:8px 0 0 10%;
+}
+.creply:hover{
+    cursor: pointer;
 }
 .comment-content {
 	width:100%;
@@ -1280,6 +1289,9 @@
     float:left;
     margin-top:8px;
 }
+.rclike:hover{
+    cursor: pointer;
+}
 .rclikenum{
     display:inline-block;
     float:left;
@@ -1293,11 +1305,17 @@
     float:left;
     margin:7px 10px 0 10%;
 }
+.rcreport:hover{
+    cursor: pointer;
+}
 .rcreply{
     width:20px;
     height:20px;
     float:left;
     margin:8px 0 0 10%;
+}
+.rcreply:hover{
+    cursor: pointer;
 }
 .rcomment-content {
 	width:100%;

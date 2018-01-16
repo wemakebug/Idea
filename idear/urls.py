@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 """Idea URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,43 +19,82 @@ from idear import views as views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    url(r'^index$', views.index),
+    url(r'^index$', views.index, name='index'),
     url(r'^login$', views.login),
     url(r'^regist$', views.regist),
+    url(r'^inCode$', views.inCode),
     url(r'^team$', views.team),
     url(r'^teamdetails$', views.teamdetails),
     url(r'^praise$',views.creations),
-    url(r'^teamdetails/(?P<teamid>\d+)$', views.teamdetails),
-    url(r'^teamhelpapplication/?(\d+)$', views.teamhelpapplication),
+    url(r'^teamdetails/(?P<teamid>\d+)/$', views.teamdetails),
+    url(r'^teamhelpapplication/(?P<teamhelpid>\d+)$', views.teamhelpapplication),
     url(r'^creations$', views.creations),
     url(r'^forgetPassword$', views.forgetPassword),
-    url(r'^homepage$',views.homepage),
+    url(r'^obtainVerify$', views.obtainVerify),
+    url(r'^homepage$', views.homepage),
+    url(r'^unread_messages$', views.unread_messages),
+    url(r'^show_messages$', views.show_messages),
+    url(r'^unread_read$', views.unread_read),
+    url(r'^read_message$', views.read_message),
+    url(r'^allFollow$',views.allFollow),
+    url(r'^profollow$',views.profollow),
+    url(r'^creationfollow$',views.creationfollow),
+    url(r'^userfollow$',views.userfollow),
+    url(r'^following_user$',views.following_user),
+    url(r'^follower_user$',views.follower_user),
     url(r'^editprofile$',views.editprofile),
+
     url(r'^apply$', views.apply),
-    url(r'^recruit$', views.projects),
+    url(r'^project$', views.projects),
+    url(r'project_comment', views.project_comment),
     url(r'^redetails/$', views.redetails),
     url(r'^deprojects$', views.deprojects),
     url(r'^dedetails/$', views.dedetails),
     url(r'^projects$', views.projects),
+    url(r'^recruit$', views.recruit),
+    url(r'^starttime$', views.starttime),
+    url(r'^recruit_apply$', views.recruit_apply),
+    url(r'^prcomment$',views.prcomment),
+    url(r'^preport$',views.preport),
+
+
     url(r'^crdetails$', views.crdetails),
+    url(r'^crcreate$',views.crcreate),
+    url(r'^crreport$',views.crreport),
+    url(r'^rdcreport$',views.rdcreport),
     url(r'^star$', views.star),
     url(r'^attend$', views.attend),
     url(r'^service$', views.service),
     url(r'^advice$', views.advice),
     url(r'^logout$', views.logout),
-    url(r'^test/?(\d+)$', views.test),
-    url(r'^getimg', views.get_user_img),
     url(r'^ordinance',views.ordinance),
     url(r'^release',views.release),
     url(r'^comment',views.comment),
-    url(r'test', views.test),
+    url(r'^rcomment',views.rcomment),
     url(r'^teamattend$',views.teamattend),
     url(r'star', views.star),
-    url(r'project_comment', views.project_comment),
+
     url(r'^teamattend1$', views.teamattend1),
     url(r'^teamcomment$', views.teamcomment),
-    url(r'^recruit_apply$', views.recruit_apply),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^editprofile$', views.editprofile),
+    url(r'^perCreation$', views.perCreation),
+    url(r'^get_follow_count$', views.get_follow_count),
+    url(r'^get_praise_count$', views.get_praise_count),
+    url(r'^get_user_name$', views.get_user_name),
+    url(r'^personal_information$', views.personal_information),
+    url(r'^account_information$', views.account_information),
+    url(r'^account_information_imgs$', views.account_information_imgs),
+    url(r'^change_password$', views.change_password),
+    url(r'^personal_label$', views.personal_label),
+    url(r'^user_delete_personal_label$', views.user_delete_personal_label),
+
+
+    # 工具函数
+    url(r'^getimg', views.get_user_img),
+]
+
+
 

@@ -1,6 +1,6 @@
  //加载更多
 $(function() {
-    $(".block").slice(0, 9).show();
+    $(".block").slice(9).hide();
     if ($(".block").length <= 9) {
         $(".more").hide();
     }
@@ -11,16 +11,9 @@ $(function() {
             $(".more").fadeOut('slow');
         }
     });
-
-    // var content_input = document.getElementById("comment-content1");
-    // content_input.value = "";
 });
 
 
-$(function () {
-$.cookie("user",3)
-
-userId = $.cookie("user")
 
 // 创意关注操作
 $(".follow").click(function(){
@@ -68,6 +61,6 @@ $(".like").click(function(){
 
 })
 
-})
+
 
 

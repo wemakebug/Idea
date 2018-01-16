@@ -1,0 +1,85 @@
+{%extends 'personal/editprofile.html'%}
+{% load static %}
+{%block title%}
+   <title>个人信息</title>
+{%endblock%}
+
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap-theme.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/editprofile.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/personal_information.css'%}">
+{%endblock%}
+
+{%block personalcontent%}
+    <input type="hidden" value="{{ user.Id }}" id="user_id">
+    <div class="container" style="min-width: 1024px;">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">用户昵称：</div>
+            <div class="col-xs-12 col-md-8">
+                <input type="text" placeholder="用户名" class="personalinput" id="personal_input" value="{% if user.UserName %}{{ user.UserName }}{% else %}{% endif %}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">用户身份：</div>
+            <input type="hidden" value="{{ user.Identity }}" id="identity">
+            <div class="col-xs-12 col-md-8">
+                <input type="text" class="personalinput1-1" id="personalinput1-1" onfocus=this.blur(); value="{% if user.Identity == 0 %}{{ "学生" }}{% elif user.Identity == 1 %}{{ "教师" }}{% else %}{{ "团队" }}{% endif %}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">所属学校：</div>
+            <div class="col-xs-12 col-md-8">
+                <input type="text" placeholder="学校" class="personalinput1-2" id="user_school" value="{% if user.School %}{{ user.School }}{% else %}{% endif %}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">所在学院：</div>
+            <div class="col-xs-12 col-md-8">
+                <input type="text" class="personalinput1-3" placeholder="所在学院或是系" id="user_college" value="{% if user.Institude %}{{ user.Institude }}{% else %}{% endif %}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">主修专业：</div>
+            <div class="col-xs-12 col-md-8">
+                <input type="text" class="personalinput1-4" placeholder="专业" id="user_major" value="{% if user.Major %}{{ user.Major }}{% else %}{% endif %}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">用户等级：</div>
+            <div class="col-xs-12 col-md-8">
+                <input type="text" class="personalinput1-5" placeholder="分数" onfocus=this.blur(); value="{{ user.Score }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">注册时间：</div>
+            <div class="col-xs-12 col-md-8">
+                <input type="text" class="personalinput1-5" placeholder="注册时间" onfocus=this.blur(); value="{{ user.RegistTime }}">
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">性别：</div>
+            <div class="col-xs-12 col-md-8" style="text-align: left;line-height: 50px;">
+                <input type="hidden" value="{{ user.Sex }}" id="sex">
+                <input type="radio" class="personalinput1-6" name="personalinput1-6" id="boy" value="0">男
+                <input type="radio" class="personalinput1-6" name="personalinput1-6" id="girl" value="1">女
+            </div>
+        </div>
+{#        <div class="row">#}
+{#            <div class="col-xs-6 col-md-4" style="text-align: right;line-height: 50px;">个人描述：</div>#}
+{#            <div class="col-xs-12 col-md-8">#}
+{#                <textarea class="personalinput1-7">{% if user.Introduction %}{{ user.Introduction }}{% else %}{% endif %}</textarea>#}
+{#            </div>#}
+{#        </div>#}
+        <div class="row" style="text-align: center;margin-top: 20px;">
+            <input type="button" class="personalinput1-8" id="save_personal_information" value="保存">
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'idea/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/personal_infomation.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/editprofile.js' %}"></script>
+    <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
+{% endblock %}

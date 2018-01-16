@@ -1,56 +1,62 @@
  html,body {
 	height:100%;
 	margin:0px;
+	background-color:#f1f1f1
 }
-.container-a {
-	width: 100%;
-	height:auto;
-	overflow:hidden;
-	margin: 0 auto;
-	margin-top:66px;
-	background-color:#f1f1f1;
+
+.home-content{
+    margin-top:66px;
 }
-.home {
-	width:1400px;
-	height:auto;
+
+.content-inner{
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    padding-bottom: 30px;
+    padding-top: 40px !important;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
 }
+
 .home-left {
-	width:70%;
+	width:78%;
 	float:left;
-	margin-left:2.5%;
-	min-height:855px;
 }
 .home-right {
-    position:fixed;
-	width:280px;
-	float:left;
-	margin-left:1040px;
+    /*position:fixed;*/
+	width:22%;
+	float:right;
+
 }
 .intro {
-	width:100%;
+	width:300px;
 	height:230px;
-	float:right;
-	margin-top: 30px;
-	background-color:#8bcfcc;
+	background-color:#a6d0e4;
 	border-radius: 10px 70px;
 	box-shadow: 10px 10px 2px 2px #bdc3c7;
 	opacity:0.8;
 }
 .tag {
-	width: 100%;
+	width: 95%;
 	height:auto;
 	float:right;
+}
+.tag p{
+    margin-left: 4px;
+    font-size: 18px;
+    float: left;
+    margin-top: 30px;
 }
 .tag hr {
 	border: 0;
 	border-top: 1px solid #c0c5cd;
 	margin-bottom: 15px;
-	margin-top: 10px;
+	margin-top: 65px;
 	position: relative;
 }
 .tag hr:before {
 	content: '';
-	width: 60px;
+	width: 62px;
 	height: 4px;
 	background-color: #57cecd;
 	position: absolute;
@@ -88,37 +94,33 @@
 	font-family:幼圆;
 }
 .block {
-	display:none;
-	width:29%;
-	height:330px;
+	width:310px;
+	height:370px;
 	float:left;
-	margin-top: 30px;
-	margin-left:3.2%;
-	margin-bottom:0.5%;
+    margin-right: 35px;
+	margin-bottom:35px;
 	border-radius:8px;
 	background-color: rgb(255, 255, 255);
     box-shadow: 8px 8px 5px #d3e0e2;
-    transition: 0.2s ease-out;
 }
 .block:hover{
     box-shadow: 8px 8px 5px #c0c7d0;
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
-.block-head {
-	width:100%;
-	height:18%;
+.block-user {
+	width:172px;
+	height:48px;
+	float:left;
 }
 .ava {
 	float: left;
-	padding: 10px 10px 5px 30px;
+	padding: 5px 5px 0 18px;
 }
-.ava span {
-	margin-top:2%;
-}
+
 .name {
 	float:left;
-	width:180px;
-	height:20px;
+	width:109px;
+	height:22px;
 	overflow:hidden;
 }
 a {
@@ -126,15 +128,20 @@ a {
 	color: #444;
 }
 h5 {
-	font-size: 18px;
+	font-size: 20px;
 	font-family: 幼圆;
 	width: 100%;
 }
-.block-hot {
-	width:140px;
-	height:80px;
+.block-bottom {
+	width:310px;
+	height:48px;
 	float:left;
-	margin-left:120px;
+}
+.block-hot{
+    float:right;
+    width:120px;
+    height:48px;
+    margin-right:18px;
 }
 .usedfollow {
 	float:right;
@@ -164,23 +171,32 @@ h5 {
 	float:left;
 	margin-left:15px;
 }
-.abstract {
-	width:100%;
-	height:68%;
+.block-img figure img{
+    opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
 }
-.text {
+.block-img figure:hover img{
+    opacity:0.9;
+}
+
+.block-content {
+	width:100%;
+	height:84%;
+}
+.block-title {
     float:left;
-	margin:25px 0 0 30px;
-	width:80%;
+	margin:16px 0 0 20px;
+	width:88%;
 	height:50px;
     overflow:hidden;
     line-height:24px;
 }
-.text-x {
+.block-intro {
 	float:left;
 	margin:10px 0 0 30px;
 	width: 80%;
-	height: 107px;
+	height: 45px;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 5;
@@ -192,25 +208,25 @@ h5 {
 
 .follow {
 	float:right;
-	margin: -1px 0 0 5px;
+	margin-top: 22px
 }
 .follow span {
 	font-size:15px;
 }
 .like {
 	float:right;
+	margin-top:22px;
 	margin-right: 5px;
 }
 .like span {
 	font-size:15px;
 }
 .more {
-	width:918px;
+	width:96%;
 	height:30px;
 	text-align: center;
 	float:left;
 	margin-top:30px;
-	margin-left:65px;
 	margin-bottom:2%;
 	background-color:white;
 	border-radius: 3px;
@@ -221,15 +237,15 @@ h5 {
 	-webkit-transform: translate(0px, 5px);
 }
 .add {
-	background-color: #57cecd;
+	background-color: #43bbd6;
 	border: medium none;
-	border-radius: 3px;
-	box-shadow: 0 5px 0 0 #2ca4bf;
+	border-radius: 2px;
+	box-shadow: 3px 3px 2px 3px #2ca4bf;
 	color: #eeeeee;
 	float: left;
 	height: 33px;
-	margin-left: 180px;
-	margin-top: 10px;
+	margin-left: 198px;
+	margin-top: 18px;
 	width: 70px;
 	font-family: 幼圆;
 	font-size:17px;

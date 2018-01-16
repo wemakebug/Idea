@@ -4,10 +4,13 @@
     <title>开发项目详情</title>
 {% endblock %}
 {% block CSS %}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'idea/css/index.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/redetails.css' %}">
     <link rel="stylesheet" href="{% static 'project/css/dedetails.css' %}">
+
 {% endblock %}
+{% load commentshow %}
 {% block content %}
      <div class="main">
         <div class="content-all">
@@ -27,7 +30,7 @@
                     <div class="description">
                         {#                            项目描述#}
                         <div class="des" id="rdpdes">
-                            {{ project.Description }}
+                            {{ project.Description | safe}}
                         </div>
                     </div>
                     <div class="option">
@@ -36,6 +39,11 @@
                             <span class="plikenum">{{project.Praise_Project_set.count}}</span>
                         </button>
                         <div class="op-tip">
+                            <div class="home-b-more" id="rdmore">
+                                <img src="{% static '/project/imgs/more.png' %}"
+                                     style="width:25px;height:25px;margin-bottom: 4px">
+                                <a>了解更多</a>
+                            </div>
                             <div class="home-b-collection" id="rdcollection">
                                 <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
                                      onclick="changeImage()"
@@ -55,7 +63,7 @@
                                      style="width:25px;height:25px;vertical-align:middle;">
                                 <a>评论</a>
                             </div>
-                            <div class="home-b-report" id="rdreport">
+                            <div class="home-b-report" id="rdpreport">
                                 <img src="{% static '/creation/imgs/report.png' %}"
                                      style="width:20px;height:21px;vertical-align:middle;">
                                 <a>举报</a>
@@ -72,10 +80,10 @@
                 </div>
                 <div class="home-b-user">
                     <div class="user-img">
-                        <img src="/static/photos/{{ creation.user.Img }}">
+                        <img src="/static/photos/{{ user.user.Img }}">
                     </div>
                     <div class="user-message">
-                        <a href = "" class="user-name"> 用户姓名</a>
+                        <a href = "" class="user-name"> {{ user.user }}</a>
                         <div class="user-intro">
                             <div class="user-score">
                                 <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
@@ -89,36 +97,60 @@
                     </div>
 
                 </div>
+                <div class="home-b-joiner">
+                    <div class="user-img">
+                        <img src="/static/photos/{{ project.user.Img }}">
+                    </div>
+                    <div class="user-message">
+                        <a href = "" class="user-name">项目参与者 </a>
+                        <div class="user-intro">
+                            <div class="user-score">
+                                <img class="pimg" src="{% static 'project/imgs/score.svg'%}">
+                                <span>1000</span>
+                            </div>
+                            <div class="user-id">
+                                <img class="pimg" src="{% static 'project/imgs/id.svg'%}">
+                                <span>项目参与者</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+{#                <div class="otherpeople">#}
+{#                    <div class="box-body">#}
+{##}
+{#                    </div>#}
+{#                </div>#}
 
             </div>
             <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
-            <div class="pro-message">
+            <div class="pro-message" style="display:none">
                 <div class="pr-header">
                     <div class="ribbon"><span class="ribbon3">项目进度</span></div>
                 </div>
-                <div class="pr-detail">
-                {{ project.Progress }}
+                <div class="pr-detail" id="pr-progress">
+                {{ project.Progress | safe }}
                 </div>
             </div>
-            <div class="pro-message">
+            <div class="pro-message" style="display:none">
                 <div class="pr-header">
                     <div class="ribbon"><span class="ribbon3">项目总结</span></div>
                 </div>
 
-                <div class="pr-detail">
-                {{ project.Summary}}
+                <div class="pr-detail" id="pr-summary">
+                {{ project.Summary | safe}}
                 </div>
             </div>
-            <div class="content-footer">
+
+        <div class="content-footer">
                 {#                评论部分#}
                 <div class="comment">
-{#                    <div class="comment1-1">评论专区</div>#}
                     <div class="pr-header">
-                    <div class="ribbon"><span class="ribbon3">评论专区</span></div>
-                </div>
-                    <div class="comment1-2"></div>
+                        <div class="ribbon"><span class="ribbon3">评论专区</span></div>
+                    </div>
+
                     <div class="ctop">
-                        <img class="u-img" src="{% static 'project/imgs/user.svg' %}">
+                        <img class="u-img" id="u-img"  src="/static/photos/{{ preuser.Img }}">
                         <div class="carea">
                             <div class="tocomment">
                                 <textarea placeholder="" name ="putcomment" id="comment-content1" class="comment-text"></textarea>
@@ -126,15 +158,15 @@
                             <button class="putcomment" id="rdputcomment">评论</button>
                         </div>
                     </div>
-
+                    {% for commentlist in comment%}
                     <div class="c-all" name="c-all">
                         <div class="cmain">
-                            <img class="c-img" id="rdimg" src="{% static 'project/imgs/user.svg' %}">
+                            <img class="c-img" id="rdimg" src= "/static/photos/{{ commentlist | firstcommentimg }}">
                             {#                                  可以加hover点上变成网站logo#}
                             <div class="comment-box">
                                 <div class="comment-head">
-                                    <h6 class="comment-name " id="rduname"><a href=" "> </a></h6>
-                                    <span class="cdate" id="rdcdate"> </span>
+                                    <h6 class="comment-name " id="rduname"><a href=" ">{{commentlist|firstcomment}}</a></h6>
+                                    <span class="cdate" id="rdcdate">{{commentlist|firstcommenttime|date:"Y/m/d"}}</span>
                                     <div class="c-option">
                                         <img class="clike" id="rdclike"
                                              src="{% static 'project/imgs/like1.svg' %}"><span
@@ -145,21 +177,21 @@
                                     </div>
                                 </div>
                                 <div class="comment-content">
-                                    <p id="rdc-content"> </p>
+                                    <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
                                 </div>
                                 <div class="commentreply" id="commentreply">
                                     <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
-                                    <button class="putcomment" id="cputcomment">回复</button>
+                                    <button class="putcomments" id="cputcomment" backcommentId = {{commentlist|firstcomment|firstcommentUuid}}>回复</button>
                                 </div>
                             </div>
                         </div>
-
+                            {%for comment in commentlist|leftcomment%}
                             <div class="c-reply">
-                            <img class="rc-img" src="{% static 'project/imgs/user.svg' %}">
+                            <img class="rc-img" src= "/static/photos/{{comment.user.Img}}">
                             <div class="rcomment-box">
                                 <div class="rcomment-head">
-                                    <h6 class="rcomment-name "><a href=" ">  </a> 回复</h6>
-                                    <span class="rcdate"> </span>
+                                    <h6 class="rcomment-name "><a href=" "> {{comment.user.UserName}}</a> 回复</h6>
+                                    <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
                                     <div class="r-option">
                                         <img class="rclike" id="rdrclike"
                                              src="{% static 'project/imgs/like1.svg' %}"><span
@@ -170,21 +202,50 @@
                                     </div>
                                 </div>
                                 <div class="rcomment-content">
-                                    <p id="rdr-content"> </p>
+                                    <p id="rdr-content">{{comment.Content}}</p>
                                 </div>
                                 <div class="commentreply" id="rcommentreply">
                                     <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
-                                    <button class="putcomment" id="crputcomment">回复</button>
+                                    <button class="putcomments" id="crputcomment">回复</button>
                                 </div>
                             </div>
                         </div>
+                            {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
+            </div>
             </div>
         </div>
     </div>
     <div class="middle"></div>
+    {% block script %}
+         <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+         <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
+         <script type="text/javascript" src="{% static  'project/js/common.js' %}"></script>
+         <script type="text/javascript" src="{% static  'project/js/dedetails.js' %}"></script>
+    {% endblock %}
+    <script>
+        $(document).ready(function () {
 
+
+            var process = "{{ project.Progress | safe }}";
+
+            var summary = "{{ project.Summary | safe}}";
+
+            if( process == "None"){
+                $("#pr-progress").empty();
+                $("#pr-progress").append('<p>该项目暂无进度信息！</p>');
+
+            }
+            if( summary == "None"){
+                $("#pr-summary").empty();
+                 $("#pr-summary").append('<p>该项目暂无总结信息！</p>');
+
+            }
+
+        })
+    </script>
 
 
 {% endblock %}

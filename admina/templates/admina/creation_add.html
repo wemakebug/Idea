@@ -1,16 +1,24 @@
 {% extends '../base/base.html' %}
 
-{% block title %}Admin-Index{% endblock %} {# title #}
+{% block title %}We创 - 创意添加{% endblock %} {# title #}
 {% block css %}
     {% load static %}
-<!--file upload-->
-<link rel="stylesheet" type="text/css" href="/static/css/bootstrap-fileupload.min.css" />
+    <!--file upload-->
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-fileupload.min.css" />
 
-<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-datepicker/css/datepicker-custom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/js/bootstrap-datepicker/css/datepicker-custom.css" />
 
-<link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
-<link rel="stylesheet" type="text/css" href="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
-{# css #}
+    <link rel="stylesheet" type="text/css" href="{% static 'js/jquery-multi-select/css/multi-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+    {# css #}
+
+    {# icheck css #}
+    <link href="/static/js/iCheck/skins/flat/grey.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/red.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/blue.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/yellow.css" rel="stylesheet">
+    <link href="/static/js/iCheck/skins/flat/purple.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -34,26 +42,30 @@
                         <div class="form-group ">
                             <label for="firstname" class="control-label col-lg-2">创意名称</label>
                             <div class="col-lg-5">
-                                <input class=" form-control" id="firstname" name="firstname" type="text" />
+                                <input class=" form-control" type="text" id="creation_name"/>
                             </div>
                         </div>
                         <div class="form-group ">
                             <label for="timepicker2" class="control-label col-lg-2">创建时间</label>
                             <div class="col-md-5 col-xs-11">
-                                <input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker2"/>
+                                <input id="creation_init_time" class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" value=""  id="timepicker2"/>
                             </div>
                         </div>
                         <div class="form-group ">
-                            <label for="email" class="control-label col-lg-2">邮箱</label>
+                            <label for="email" class="control-label col-lg-2">创意er</label>
                             <div class="col-lg-5">
-                                <input class="form-control " id="email" name="email" type="email" />
+                                <select class="form-control input-md" id="creation_user" required>
+                                {%  for user in users %}
+                                    <option id="user-{{ user.Id }}" value="{{ user.Id }}">{{ user.UserName }}</option>
+                                {% endfor %}
+                            </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label col-lg-2" >是否可用</label>
                             <div class="col-lg-5">
                                 <label class="checkbox-inline">
-                                    <input type="radio" name="IsUse" value="0">可用
+                                    <input type="radio" name="IsUse" value="0" checked>可用
                                 </label>
                                 <label class="checkbox-inline">
                                     <input type="radio" name="IsUse" value="1">不可用
@@ -63,38 +75,31 @@
                         <div class="form-group">
                             <label for="confirm_password" class="control-label col-lg-2">创意封面图片</label>
                             <div class="col-md-10">
-                                <div class="fileupload fileupload-new" data-provides="fileupload">
-                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                <div class="controls col-md-9">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <span class="btn btn-default btn-file">
+                                                <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
+                                                <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换图片</span>
+                                                <input type="file" class="default" id="file_upload_img" />
+                                                </span>
+                                            <span class="fileupload-preview" style="margin-left:5px;"></span>
+                                            <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                                        </div>
                                     </div>
-                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                    <div>
-                                                   <span class="btn btn-default btn-file">
-                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select image</span>
-                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                                   <input type="file" class="default" />
-                                                   </span>
-                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> Remove</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="confirm_password" class="control-label col-lg-2">标签选择</label>
-                            <div class="col-md-9">
-                                <select multiple="multiple" class="multi-select" id="my_multi_select1"
-                                        name="my_multi_select1[]">
-                                    {% for label in labels %}
-                                        <option value="{{ label.Id }}">{{ label.ProjectLabelName }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-default" type="button">重置</button>
-                            </div>
+                                 <div class="col-sm-9 icheck ">
+                                        {% for label in labels %}
+                                            <div class="flat-grey checkbox-inline">
+                                                        <div class="radio">
+                                                            <input type="checkbox" id="ProjectLabel-{{ label.Id }}" name="label_tags" value="{{ label.Id }}" checked>
+                                                            <label for="ProjectLabel-{{ label.Id }}">{{ label.ProjectLabelName }}</label>
+                                                        </div>
+                                                    </div>
+                                        {% endfor %}
+                                 </div>
                         </div>
                     </form>
                 </div>
@@ -106,10 +111,10 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                创意描述修改
+                创意描述
             </header>
             <div class="panel-body">
-                <div class="form">
+                <div class="form-group">
                     <form class="cmxform form-horizontal adminex-form" >
                         <div class="form-group" style="height: 270px">
                             <div class="col-md-12">
@@ -120,7 +125,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" type="submit">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-primary" type="submit" id="creation_add_btn">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="btn btn-default" type="button">取消</button>
                     </div>
                 </div>
@@ -137,26 +142,105 @@
     <script ype="text/javascript" src="/static/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script ype="text/javascript" src="/static/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
     <script ype="text/javascript" src="/static/js/bootstrap-daterangepicker/moment.min.js"></script>
-    {# multiple select #}
-    <script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.multi-select.js"></script>
-    <script type="text/javascript" src="/static/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
-    <script src="/static/js/multi-select-init.js"></script>
-
     <script src="/static/js/pickers-init.js"></script>
-
+    {# icheck #}
+    <script src="/static/js/iCheck/jquery.icheck.js"></script>
+    <script src="/static/js/icheck-init.js"></script>
+    {# fiel upload  #}
+    <script type="text/javascript" src="/static/js/bootstrap-fileupload.min.js"></script>
+    {# eidtor #}
     <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
-<script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
 {% endblock %}
 
 {% block lastscript %}  {# lastscript #}
-<script>
-    jQuery(document).ready(function(){
-         $('.wysihtml5').wysihtml5(
-             {
-                 height:"500px;"
-             }
-         );
-    });
-</script>
+    <script>
+        var sub_btn = document.getElementById('creation_add_btn');
+        var creation_init_time = document.getElementById('creation_init_time').value;
+        var creation_name = document.getElementById('creation_name').value; // 获取创意名称
+        var creation_user = $(document.getElementById('creation_user')).val()
+
+        var IsUseRadio = document.getElementsByName('IsUse');
+        var LabelTags = document.getElementsByName('label_tags')
+        var upload_img = document.getElementById('file_upload_img');
+        jQuery(document).ready(function(){
+             $('.wysihtml5').wysihtml5(
+                 {
+                     height:"500px;"
+                 }
+             );
+             // 清空所有输入
+            creation_init_time.value = ''
+            creation_name.value = ''
+        });
+        sub_btn.onclick = function () {
+            //提交页面数据
+            var editor_value  =  $('.wysihtml5').val();  //获取富文本值
+            //手动处理上传文件格式
+            var Img_input = document.getElementById('file_upload_img');
+
+            //检查文件后缀
+            if(Img_input.files[0]){
+                var file_ext = Img_input.files[0].name.split('.');
+                file_ext = file_ext[file_ext.length - 1];
+                if(!Img_input.files[0] && file_ext !== "bmp" && file_ext!== "jpg" && file_ext!== "gif"){
+                alert('请添加正确的图片格式！ (gif|jpg|jpeg|bmp)') ;
+                return
+                }
+            }
+
+
+
+                // 获取 checked 的 radio
+            for(var i = 0;i< IsUseRadio.length; i++){
+                if(IsUseRadio[i].checked){
+                    var IsUse = IsUseRadio[i].value
+                }
+            }
+            var tags = [];
+            for(var j=0; j<LabelTags.length; j++){
+                if(LabelTags[j].checked){
+                    tags.push(LabelTags[j].value)
+                }
+            }
+            // 获取 select 的 value值
+
+            // 构造form
+            var data = new FormData();
+            data.append('creation_name', creation_name);
+            data.append('creation_init_time', creation_init_time);
+            alert(creation_init_time)
+            data.append('creation_user', creation_user);
+            data.append('creation_descibe', editor_value)
+            data.append('IsUse', IsUse || '');
+            if(Img_input.files[0]){
+                data.append('Img', Img_input.files[0]);
+            }
+            data.append('Tags', tags);
+            $.ajax({
+                url: '{% url 'admina:creation_add' %}',
+                type: 'POST',
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    data = JSON.parse(data)
+                    if(data.status === 1){
+                        alert(data.message)
+                    }else {
+                        alert(data.message)
+                    }
+                },
+                error:function () {
+                    alert("服务器异常")
+                }
+            });
+        }
+    </script>
+
+    {#  新建创意的提交功能 #}
+
 {% endblock %}
 

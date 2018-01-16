@@ -1,0 +1,365 @@
+.input_title::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #5681B0; opacity:1;
+}
+
+.input_title::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #5681B0;opacity:1;
+}
+
+.input_title:-ms-input-placeholder{
+    color: #5681B0;opacity:1;
+}
+
+.input_title::-webkit-input-placeholder{
+    color: #5681B0;opacity:1;
+}
+.container-fluid{
+    margin-top: 67px;
+}
+.create_content{
+    background-color:#fafafa;
+    width: 100%;
+    height: 100px;
+    display: block;
+    /*margin-top: 6%;*/
+}
+
+.create_edit{
+    width: 20%;
+    height:100%;
+    float: left;
+    margin-left: 7%;
+}
+.create_edit h2{
+    height: 48%;
+    margin-top:6%;
+    border: 1px solid transparent;
+    float: right;
+    color: #1d2129;
+    text-align: center;
+    line-height: 47px;
+    font-size: 1.4em;
+    font-family:幼圆;
+}
+.create_btn{
+    width: 20%;
+    height:44%;
+    margin-top: 1.5%;
+    float: right;
+    margin-right:15% ;
+}
+#openness{
+    cursor: pointer;
+}
+.create_btn_draft{
+    width: 30%;
+    height: 90%;
+    margin-left: 2.5%;
+    border:1px solid #000000;
+    cursor: pointer;
+    text-align: center;
+    line-height: 36px;
+    background: #fafafa;
+    color:#000000;
+    font-size: 1em;
+}
+
+.create_btn_ok{
+    width: 30%;
+    height: 90%;
+    margin-left: 2.5%;
+    border:0;
+    cursor: pointer;
+    text-align: center;
+    line-height: 36px;
+    background: #000000;
+    color:#ffffff;
+    font-size: 1em;
+}
+.content_title{
+    width: 30%;
+    height: 60px;
+    margin-top: 2%;
+
+}
+.input_title{
+    width: 100%;
+    height: 100%;
+    border-top:none;
+    border-left:none ;
+    border-right:none ;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: 幼圆;
+    box-shadow: 6px 6px 4px #e6e6fa;
+}
+.input_title:hover{
+    box-shadow: 6px 6px 4px #c0c7d0;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.content_owner{
+    width: 20%;
+    height: 40px;
+}
+.content_founder{
+    width: 100%;
+    height: 100%;
+}
+.content_founder>p{
+    width: 49%;
+    height: 100%;
+    text-align: right;
+    line-height: 40px;
+    float: left;
+    color: #bbbbbb;
+}
+.owner_name{
+    width: 51%;
+    height: 100%;
+    float: right;
+}
+.owner_name>p{
+    width: 100%;
+    height:100%;
+    color:#bbbbbb;
+    overflow: hidden;
+    text-align: left;
+    line-height: 40px;
+}
+.pro_status{
+    width: 100%;
+    height:35px;
+    margin-top: 1%;
+}
+.useInstr{
+    min-width: 98px;
+    height: 100%;
+    float: left;
+}
+.input-use{
+    /*border: 1px solid #bbbbbb;*/
+    width: 100%;
+    margin-top: 13%;
+    font-size: 1em;
+    float: right;
+    color: #bbbbbb;
+    padding: .25em .5em .3125em;
+    -webkit-transition: all .100s;
+    transition: all .100s;
+    cursor:pointer;
+}
+.input-use:hover{
+    /*border-color: #376391;*/
+    color:#376391;
+}
+.input-group .form-control:first-child{
+    width: 60%;
+}
+.file-caption .file-caption-name{
+
+    height: 34px;
+}
+.modal-content{
+    margin-top: 66px;
+}
+
+.file-caption{
+    float: left;
+
+}
+.file-caption.form-control.kv-fileinput-caption.icon-visible{
+    width:66%;
+}
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle){
+    height: 34px;
+}
+.hidden-xs{
+    display: none;
+}
+.glyphicon-file{
+    display: none;
+}
+.glyphicon-plus-sign{
+    display: none;
+}
+.input-group-btn{
+    float: left;
+    /*margin-right: 31%;*/
+}
+.now_status{
+    width: 35%;
+    height:100%;
+    float:right;
+}
+.now_status p{
+    width: 100%;
+    height: 100%;
+    font-family: 幼圆;
+    text-align: center;
+    line-height: 35px;
+}
+.add_img{
+    width: 15%;
+    height:400px;
+    float: left;
+    margin-left: 13%;
+    margin-top:2%;
+    border-bottom: 1px solid #c9c9c9;
+    border-top:1px solid #c9c9c9;
+    border-left: 1px solid #c9c9c9;
+}
+.chance_add{
+    width: 90%;
+    height:70%;
+    margin-top:4%;
+}
+.pro_cover{
+    width:100%;
+    height: 8%;
+}
+.pro_cover p{
+    font-family: 幼圆;
+}
+#result{
+    width: 190px;
+    height:200px;
+    border:1px dashed gray;
+}
+#result>img{
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+}
+#file{
+    width: 100%;
+    border-radius: 0;
+}
+.upload{
+    width: 100%;
+    margin-top: 40px;
+    border-radius:0 ;
+}
+.add_cover{
+    width: 100%;
+    height: 90%;
+    background: url('../imgs/addimgs.png');
+    background-size:100% 100% ;
+}
+.add_cover img{
+    width: 100%;
+    height: 100%;
+    background-size:100% 100% ;
+    border: 0;
+}
+.add_cover h2{
+    width: 100%;
+    height: 30%;
+    text-align: center;
+    line-height: 64.8px;
+    font-family: 幼圆;
+    color: #ffffff;
+}
+.imgs_history{
+    width: 100%;
+    height: 11%;
+    margin-top: 6.5%;
+}
+.his-line{
+    width:60%;
+    height:1px;
+    margin-top: 8%;
+    background: #295E6A;
+    float: left;
+}
+.picture_his{
+    width: 40%;
+    height: 100%;
+    float: right;
+}
+.picture_his p{
+    width: 100%;
+    height:100%;
+    text-align: center;
+    line-height: 45px;
+}
+.pic_library{
+    width: 100%;;
+    height: 11%;
+    border-bottom: 1px solid #c9c9c9;
+    border-top:1px solid #c9c9c9;
+    background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+}
+.pic_library p{
+    width:80%;
+    height: 100%;
+    line-height: 54px;
+    margin-left: 4%;
+    color: #295E6A;
+}
+.rich_text{
+    width: 44%;
+    height: auto;
+    min-height: 900px;
+    float: left;
+    margin:2% 0 0 0;
+}
+.content_type{
+    width: 15%;
+    height: 500px;
+    float: left;
+    margin-top:2%;
+    border-bottom: 1px solid #c9c9c9;
+    border-top:1px solid #c9c9c9;
+    border-right: 1px solid #c9c9c9;
+}
+
+.content_label{
+    width: 100%;
+    height:59px;
+    border-bottom:1px solid #bbbbbb;
+}
+.content_label_exh{
+    width: 31%;
+    min-width:81px;
+    margin-left:5%;
+    color:gray;
+    font-size:20px;
+}
+.content_must{
+    width:58%;
+    font-size: 0.9em;
+    text-align: right;
+    color:#295E6A;
+}
+.content_label P{
+    height:100%;
+    line-height: 57px;
+    float: left;
+}
+.label_name{
+    width: 90%;
+    height: 92.5%;
+    margin-top:5%;
+    overflow: auto;/*超出显示滚动条*/
+}
+.content_pro_label{
+    min-width: 30%;
+    width:auto;
+    max-width: 100%;
+    overflow: hidden;
+    height: 38px;
+    border: 1px solid #bbbbbb;
+    color:gray;
+    font-size: 0.95em;
+    font-family: 幼圆;
+    margin-left: 2.5%;
+    margin-top: 12px;
+    float: left;
+    text-align: center;
+    line-height: 36px;
+    cursor: pointer;
+}
+.content_pro_label:hover{
+    border-color: #7194B8;
+}
+

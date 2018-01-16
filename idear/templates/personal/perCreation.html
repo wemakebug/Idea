@@ -1,0 +1,72 @@
+{%extends 'personal/homepage.html'%}
+{% load static %}
+{%block title%}
+    <title>个人中心/创意灵感</title>
+{%endblock%}
+
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/perCreation.css'%}">
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
+{%endblock%}
+
+{%block contents%}
+    <div style="width: 65%">{% csrf_token %}
+        <table class=" table table-striped">
+            <thead>
+                <tr>
+{#                    <th class="tab1" >#}
+{#                        <input type="checkbox" id="chkAll"> 全选#}
+{#                    </th>#}
+                    <th class="tab1">名称</th>
+                    <th class="tab1">创建时间</th>
+                    <th class="tab1">最近更改时间</th>
+                    <th class="tab1">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for creation in creation %}
+                <tr href="#" >
+{#                    <td class="tab1" >#}
+{#                        <input type="checkbox" name="chkItem" value="{{ creation.Id }}" class="creationId">#}
+{#                    </td>#}
+                    <td class="tab1">
+                        <a href="crdetails?creationId={{ creation.Id }}" style="cursor :pointer">{{ creation.Name }}</a>
+                    </td>
+                    <td class="tab1">{{ creation.Date }}</td>
+                    <td class="tab1">{{ creation.LastChange }}</td>
+                    <td class="tab1">
+                        <button href="crdetails?creationId={{ creation.Id }}"  class=" btn btn-info" style="cursor :pointer">查看详情</button>
+                        <button style="cursor :pointer;" class="dele btn btn-danger">删 除
+                            <input type="text" value="{{ creation.Id }}" style="display:none;" >
+                        </button>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="dele1">
+            <input type="button" value="添 加" class="btns btn btn-primary" id="addCreation" href="#">
+        </div>
+    </div>
+
+    <div class="pop">
+        <div class="popMain">
+            <div class="popTop"></div>
+            <div class="popMiddle">
+                <p>是否确认删除？</p>
+            </div>
+            <div class="popBottom">
+                <span class="confirm">确认</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div>
+    </div>
+
+{%endblock%}
+{% block script %}
+    <script type="text/javascript" src="{% static 'team/js/jquery-1.12.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/perCreation.js'%}"></script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{%extends 'personal/allFollow.html'%}
+{% load static %}
+{%block title%}
+   <title>即时关注</title>
+{%endblock%}
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/allfollow.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/userfollow.css'%}">
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
+{%endblock%}
+
+{% block followScolumn %}
+    <div class="userClass">
+        <div class="following">
+            <a href="following_user" ><p>我关注的</p></a>
+        </div>
+        <div class="follower">
+            <a href="follower_user" ><p id="followme">关注我的</p></a>
+        </div>
+    </div>
+    <div class="userContent">
+        {% block userFollow %}
+
+        {% endblock %}
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'personal/js/allFollow.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
+    <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
+    <script>
+
+
+    </script>
+    <script>
+
+    </script>
+{% endblock %}

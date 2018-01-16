@@ -1,0 +1,43 @@
+{%extends 'personal/userfollow.html'%}
+{% load static %}
+{%block title%}
+   <title>即时关注</title>
+{%endblock%}
+{%block CSS%}
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/allfollow.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/userfollow.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/follower_user.css'%}">
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
+{%endblock%}
+
+{% block userFollow %}
+{% for follow in follows %}
+    {% if follow.Follower %}
+    <div class="userMessage">
+        <div class="followUserImg">
+            <a href="#">
+                {% if follow.Follower.Img %}
+                <img src="/static/photos/{{ follow.Follower.Img }}">
+                {% else %}
+                <img src="/static/photos/photos/user/None.png">
+                {% endif %}
+            </a>
+        </div>
+        <div class="followUserName">
+            <p>{{ follow.Follower.UserName }}</p>
+        </div>
+    </div>
+
+    {% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'personal/js/allFollow.js' %}"></script>
+    <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
+    <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
+{% endblock %}

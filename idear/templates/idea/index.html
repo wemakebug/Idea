@@ -13,6 +13,7 @@
 
 {%endblock%}
 {%block content%}
+<!--轮播开始-->
 <div id="myCarousel" class="carousel slide top-content-information">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -45,6 +46,8 @@
     <a class="carousel-control left top-content-control-left" href="#myCarousel" data-slide="prev"></a>
     <a class="carousel-control right top-content-control-right" href="#myCarousel" data-slide="next"></a>
 </div>
+<!--轮播结束-->
+    <!--主要内容开始-->
 <div class="middle">
 	<div class="content">
 		<div class="top-content">
@@ -52,73 +55,126 @@
             </div>
         </div>
 		<div class="main-content">
+        <!--介绍开始-->
 			<div class="main-box">
 				<div class="box-one-left">
 					<h2>WHAT<small>are we doing</small></h2>
 				</div>
 				<div class="usage">
-					<div class="usage_one">
-                        <a href="projects?sign=all">
-						    <div class="usage_icon">
+                    <div class="usage_one">
+                        <div class="usage_img_one usage_img">创作</div>
+                        <div class="usage_content">
+                            <div class="contOne">
+                                <p class="smart">人才--|</p>
+                                <p class="purpose">为项目提供所需人才</p>
                             </div>
-                        </a>
-						<div class="usage_details">
-							<div class="detail-name">
-								<p>招募</p>
-							</div>
-							<div class="detail">
-								<p>寻找伙伴，对于共同感兴趣的试验项目，进行一次愉快的合作。</p>
-							</div>
-						</div>
-					</div>
-					<div class="usage_one">
-                        <a href="release">
-						    <div class="usage_icon2"></div>
-                        </a>
-						<div class="usage_details">
-							<div class="detail-name">
-								<p>研发</p>
-							</div>
-							<div class="detail">
-								<p>针对心仪的项目的一次创造实现，因其而展示能力的方方面面。</p>
-							</div>
-						</div>
-					</div>
-					<div class="usage_one">
-                        <a href="creations?sign=all">
-						    <div class="usage_icon3"></div>
-                        </a>
-						<div class="usage_details">
-							<div class="detail-name">
-								<p>分享</p>
-							</div>
-							<div class="detail">
-								<p>一闪而过的灵感与创意，分享众人的快乐，等待发掘的价值。</p>
-							</div>
-						</div>
-					</div>
-					<div class="usage_one">
-                        <a href="/idear/team?sign=all">
-						    <div class="usage_icon4"></div>
-                        </a>
-						<div class="usage_details">
-							<div class="detail-name">
-								<p>团队</p>
-							</div>
-							<div class="detail">
-								<p>团体之间的密切合作，高效率的等待橄榄枝的撒抛。</p>
-							</div>
-						</div>
-					</div>
+                            <div class="contOne">
+                                <p class="smart">资源--|</p>
+                                <p class="purpose">为项目提供所需资源</p>
+                            </div>
+                            <div class="contOne">
+                                <p class="smart">服务--|</p>
+                                <p class="purpose">为项目提供周到服务</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="usage_one">
+                        <div class="usage_img_two usage_img">分享</div>
+                        <div class="usage_content createPropuse">
+                            <p>创意分享</p>
+                            <p>灵感变现</p>
+                            <p>平台推广</p>
+                        </div>
+                    </div>
+                    <div class="usage_one">
+                        <div class="usage_img_three usage_img">合作</div>
+                        <div class="usage_content">
+                            <div class="contOne">
+                                <p class="smart">虚拟平台</p>
+                                <p class="purpose">功能强大的在线平台</p>
+                            </div>
+                            <div class="contOne">
+                                <p class="smart">团队常驻</p>
+                                <p class="purpose">有效利用现有团队</p>
+                            </div>
+                            <div class="contOne">
+                                <p class="smart">资源整合</p>
+                                <p class="purpose">实时提供创作资源</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+{#					<div class="usage_one">#}
+{#                        <a href="projects?sign=all">#}
+{#						    <div class="usage_icon">#}
+{#                            </div>#}
+{#                        </a>#}
+{#						<div class="usage_details">#}
+{#							<div class="detail-name">#}
+{#								<p>招募</p>#}
+{#							</div>#}
+{#							<div class="detail">#}
+{#								<p>寻找伙伴，对于共同感兴趣的试验项目，进行一次愉快的合作。</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="usage_one">#}
+{#                        <a href="/idear/release">#}
+{#						    <div class="usage_icon2"></div>#}
+{#                        </a>#}
+{#						<div class="usage_details">#}
+{#							<div class="detail-name">#}
+{#								<p>研发</p>#}
+{#							</div>#}
+{#							<div class="detail">#}
+{#								<p>针对心仪的项目的一次创造实现，因其而展示能力的方方面面。</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="usage_one">#}
+{#                        <a href="creations?sign=all">#}
+{#						    <div class="usage_icon3"></div>#}
+{#                        </a>#}
+{#						<div class="usage_details">#}
+{#							<div class="detail-name">#}
+{#								<p>分享</p>#}
+{#							</div>#}
+{#							<div class="detail">#}
+{#								<p>一闪而过的灵感与创意，分享众人的快乐，等待发掘的价值。</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="usage_one">#}
+{#                        <a href="/idear/team?sign=all">#}
+{#						    <div class="usage_icon4"></div>#}
+{#                        </a>#}
+{#						<div class="usage_details">#}
+{#							<div class="detail-name">#}
+{#								<p>团队</p>#}
+{#							</div>#}
+{#							<div class="detail">#}
+{#								<p>团体之间的密切合作，高效率的等待橄榄枝的撒抛。</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
 				</div>
 			</div>
+        <!--介绍结束-->
+        <!--项目排名开始-->
             <div class="best_find">
                 <div class="line_one"></div>
+
                 <div class="box-one-left">
 					<h2>WEEKLY<small>praise list</small></h2>
 				</div>
-                <div class="thumbs-up">
 
+                <div class="thumbs-up">
                     <div class="best_project">
                         <div class="pro">
                             <a href="#">
@@ -205,140 +261,52 @@
                     {% endfor %}
                 </div>
             </div>
-
-
-            <div class="best_find">
+        <!--项目排名结束-->
+        <!--创意排名开始-->
+            <div class="best_find_2">
                 <div class="line_one"></div>
                 <div class="box-one-left">
 					<h2>WEEKLY<small>creation list</small></h2>
 				</div>
-                <div class="thumbs-up-1">
-                    <div class="collection_no2">
-                        <div class="best_project">
-                            <div class="pro">
-                                <a href="#">
-                                    <div class="pro_right_img">
-                                        <img src="../../static/idea/imgs/r_bg.jpg">
-                                    </div>
-                                </a>
-                                <div class="pro_no2">
-                                    <a href="#">
-                                        <div class="pro_no2_name">
-                                            <p>众神探秘古埃及   今日神秘归来</p>
-                                        </div>
-                                    </a>
-                                    <div class="pro_no2_label">
-                                        <div class="pro_no2_ln">
-                                            <p>互联网</p>
-                                            <p>数学建模 </p>
-                                            <p>智能应用</p>
-                                        </div>
-                                        <div class="pro_no2_user"><p>by&nbsp;<a href="#">张张</a></p></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="creationContent">
+                    <div class="oneCreaBest">
+                        <a href="#">
+                            <img src="../../static/idea/imgs/crea1.jpg">
+                        </a>
                     </div>
-                    {% for creation in creations %}
-                        <div class="pro_no3">
-                            <p><a href="crdetails?creationId={{ creation.Id}}">{{ creation.Name }}</a></p>
-                            <div class="pro_no3_label">
-                                {%for creationlabel in creationlabels%}
-                                    {% if creationlabel.creation.Id == creation.Id %}
-                                    <p>|{{creationlabel.projectLabel.ProjectLabelName}}</p>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="middle_line"></div>
-                <div class="collection_1">
-                    <div class="creation_name">
-                        <p><a href="#">一个非常好的创意</a></p>
+                    <div class="oneCreaBest">
+                        <a href="#">
+                            <img src="../../static/idea/imgs/crea2.jpg">
+                        </a>
                     </div>
-                    <div class="creation_label">
-                        <p>互联网</p>
-                        <p>大数据</p>
-                        <p>数学建模</p>
+                    <div class="oneCreaBest">
+                        <a href="#">
+                            <img src="../../static/idea/imgs/crea3.jpg">
+                        </a>
                     </div>
-                    <div class="creation_content">
-                        <p>
-                            <a href="#">
-                            Pantsula（潘苏拉），南非第一大民族祖鲁族语言，意即“摇摆如鱼得水”，是近年在南非风头正盛的街头舞种，甚至已经成为了约翰内斯堡贫民区风靡的生活方式。戴着渔夫帽、身着工装套装的舞者们飞快地踢踏、旋转、跳跃，随节奏控制舞步，无规则可循的肢体语言由此带出了特别的律动，时髦又带感。 你再仔细看看，上图这么清新可爱的涂鸦，可不是品牌logo的演变过程。 事情是这样的
-                            </a>
-                        </p>
+                    <div class="oneCreaBest">
+                        <a href="#">
+                            <img src="../../static/idea/imgs/crea4.jpg">
+                        </a>
                     </div>
-                    <div class="creation_line"></div>
-                    <div class="pro_best_1">
-                        <ul>
-                            <li>
-                                <div class="pro_comment"></div>
-                                <div class="comment_num"><p>123</p></div>
-                            </li>
-                            <li>
-                                <div class="pro-thumbs-up"></div>
-                                <div class="thumbs-up-num"><p>123</p></div>
-                            </li>
-                            <li>
-                                <div class="pro-collection"></div>
-                                <div class="collection-num"><p>123</p></div>
-                            </li>
-                        </ul>
-                        <div class="pro_by">
-                            <p>by&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">张张</a></p>
-                        </div>
+                    <div class="oneCreaBest">
+                        <a href="#">
+                            <img src="../../static/idea/imgs/best_img.png">
+                        </a>
                     </div>
                 </div>
             </div>
-			<div class="mainbox_two" >
-                <div class="line_thin"></div>
-                <div class="box-three-left">
-					<h2>ABOUT<small>us</small></h2>
-				</div>
-			</div>
-			<div class="mainbox_three" id="main-box-two">
-                <div id="three_left">
-
-                </div>
-                <div class="three_right">
-                    <div class="example_content">
-                        <p class="title_content">出类拔萃的人才质量</p>
-                        <p>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们对于每一位候选人都会进行严格审核，只有达到一定标准的人才，才会引荐给您。现阶段 GuruDigger 引荐的人才，平均创业前薪水为 25,000 人民币 / 月。
-                        </p>
-                    </div>
-                </div>
-			</div>
-            <div class="new_add">
-                <div id="three_left">
-                    <div class="add_left">
-                        <p class="add_title">出类拔萃的人才质量</p>
-                        <p>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们对于每一位候选人都会进行严格审核，只有达到一定标准的人才，才会引荐给您。现阶段 GuruDigger 引荐的人才，平均创业前薪水为 25,000 人民币 / 月。
-                        </p>
-                    </div>
-                </div>
-                <div class="exam_t">
-
-                </div>
-            </div>
-			<div class="mainbox_four">
-				<div class="mainbox_four_left">
-					<div class="main_open">
-						<div class="open_content" id="open_arrangement">
-							<a href="regist">
-                                <div class="open_bottom">
-                                </div>
-                            </a>
-						</div>
-					</div>
-				</div>
-			</div>
+        <!--创意排名结束-->
 			<a id="gotop" href="#"></a>
 		</div>
 	</div>
+
+    <div class="everyBest">
+        <img src="../../static/idea/imgs/backzz.png">
+    </div>
+
 </div>
+    <!--主要内容结束-->
     <script src="{% static 'base/js/jquery-3.2.1.min.js'%}"></script>
     <script type="text/javascript" src="{% static 'idea/js/index.js'%}"></script>
     <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>

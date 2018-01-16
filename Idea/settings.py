@@ -144,9 +144,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-
-
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -176,3 +174,15 @@ MEDIAFILES_DIRS =[
 ]
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../idear/static/photos/').replace('\\', '/')
 
+
+''' Start of Emial SMTP  Settings '''
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '472303924@qq.com'
+EMAIL_HOST_PASSWORD = 'hslaeagqcgwnbgfa'
+DEFAULT_FROM_EMAIL = '472303924@qq.com'
+# EMAIL_USE_SSL = True
+
+''' End of Email Smtp Settings '''

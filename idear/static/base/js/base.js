@@ -12,14 +12,8 @@ function getCookie(name) {
 }
 
 $(document).ready(function () {
-    // $('.nav_main li a').each(function () {
-    //     $this = $(this);
-    //     if ($this[0].href === String(window.location.href)) {
-    //         $this.addClass('active');
-    //     }
-    // });
     $(function(){
-        var navLi=$('.nav_main li a') ;//此处填写你的导航html对象
+        var navLi=$('.menu_li a') ;//此处填写你的导航html对象
         var proAhref=$('.tag a');
         var windowUrl=String(window.location.href); //获取当前url链接
         navLi.each(function(){
@@ -29,30 +23,16 @@ $(document).ready(function () {
                 $(this).addClass('active');  //添加当前位置样式
             }
         });
-        // proAhref.each(function(){
-        //     $this = $(this);
-        //     var t = $this[0].href;
-        //     if(t === windowUrl) {
-        //         $('.index_recruit').addClass('active');  //添加当前位置样式
-        //     }
-        // });
     });
-
     var user_img = document.getElementById('user_img');
-    var username = getCookie('username');
-    if (username === null || username === '') {
+    var useremail = getCookie('user_email');
+    if (!useremail) {
         var hidden_item = document.getElementById('login_status_false');
         hidden_item.style.display = '';
     } else {
         var hidden_item = document.getElementById('login_status_true');
         hidden_item.style.display = '';
-        var email = $.cookie('email');
-        var username = $.cookie('username');
-        document.getElementById("username").innerHTML = username;
-        var data = {
-            'email': email,
-            'username': username
-        };
+        // 获取用户头像
         $.post('/idear/getimg', {}, function (result) {
             result = JSON.parse(result);
             if (result['status'] === 1) {
@@ -61,8 +41,7 @@ $(document).ready(function () {
                 user_img.src = '/static' + img_path;
                 document.getElementById('user_img').style.src= user_img.src;
             } else if (result['status'] === 0) {
-                // var message = result['message'];
-                // alert(message);
+                alert(result.message)
             } else {}
         });
     }
@@ -153,4 +132,13 @@ $(document).ready(function () {
      }
 
 
-
+var logout = document.getElementById("logout");
+logout.onclick = function () {
+    $.post("/idear/logout",{},function (data) {
+         data = JSON.parse(data);
+         if(data.status === 1){
+             alert("退出成功！");
+             window.location.href  = '/idear/index';
+         }
+    });
+};

@@ -123,7 +123,7 @@
                 if(res.status === 1){
                     document.getElementById("project_detail_img_path").src = "/static/photos/" + res.ImgPath;
                     document.getElementById("ptoject_detail_name").textContent = res.ProjectName;
-                    document.getElementById("project_detail_link").setAttribute("href","/admina/project/" + projectid);
+                    document.getElementById("project_detail_link").setAttribute("href","/admina/project/detail/" + projectid);
                     $("input[id='name']").get(0).value = res.ProjectName;
                     $("input[id='title']").get(0).value = res.ProjsctStartTime;
                     $("input[id='user_number']").get(0).value = res.ProjectUserNumber;
