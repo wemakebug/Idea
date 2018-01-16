@@ -794,6 +794,42 @@ def crreport(req):
             result['message'] = str(e)
             return HttpResponse(json.dumps(result))
 
+@csrf_exempt
+def rdcreport(req):
+    '''
+    创意评论举报
+    :param req:
+    :return:
+    '''
+
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        username = models.User.objects.get(Email=user_email)
+        return HttpResponse("TRUE")
+    if req.method == 'POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+
+            rdcreason = req.POST["rdcreason"]
+            commentId = req.POST["commentId"]
+            print(commentId)
+            comment = models.Comment.objects.get(pk=commentId)
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
+            models.Report.objects.create(user=user, comment=comment, Reason=rdcreason, Uuid=uuid.uuid4())
+
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
+            return HttpResponse(json.dumps(result))
+        except Exception as e:
+            print(e)
+            result['message'] = str(e)
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
