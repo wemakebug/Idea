@@ -467,23 +467,43 @@ def teamdetails(req, teamid):
         except Exception as e:
             return Http404
 
-        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist,"teamstar":teamcounts,"id":comment_id})
+        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist, "teamstar": teamcounts, "id": comment_id, "user": user})
     if req.method == 'POST':
         content = req.POST["string"]
-        username = "chris"
+        print (teamid)
         result = {
-            "status": 1,
+            "status": 0,
             "string": None
         }
         try:
-            user = models.User.objects.get(UserName=username)
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
             userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
+            result["status"] = 1
+            result["string"] = "成功"
         except Exception as e:
             result["status"] = 0
             result["string"] = "空"
             return HttpResponse(json.dumps(result))
         else:
-            models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
+            models.Comment.objects.create(user=user, commited_user=userteam, Content=content, Uuid=uuid.uuid4())
+            return HttpResponse(json.dumps(result))
+
+
+@csrf_exempt
+def team_history_project(req):
+    if req.method == 'POST':
+        team_mark = req.POST["team_mark"]
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            team_history_project = models.ProjectUser.objects.filter(user_id=team_mark)
+            print (team_history_project)
+        except Exception as e:
+            print(e.message)
+        else:
             return HttpResponse(json.dumps(result))
 
 
@@ -493,14 +513,20 @@ def teamcomment(req):
         reply_content = req.POST["strings"]
         teamid = req.POST["team_id"]
         commentid = req.POST["comment_id"]
-        username = "chris"
+        user_email = req.COOKIES.get('user_email')
+        # username = "chris"
         result = {
-            "status": 1
+            'status': 0,
+            'message': '',
         }
         try:
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=user_email)
             userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
             Comment1 = models.Comment.objects.filter(Id=commentid)
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
             print(Comment1[0].Uuid)
         except Exception as e:
             print(e.message)
@@ -509,7 +535,7 @@ def teamcomment(req):
             return HttpResponse(json.dumps(result))
         else:
             # print(locals())
-            models.Comment.objects.create(user=user, commited_user=userteam, Content=reply_content,commentedId=Comment1[0].Uuid)
+            models.Comment.objects.create(user=user, commited_user=userteam, Content=reply_content, commentedId=Comment1[0].Uuid, Uuid=uuid.uuid4())
             return HttpResponse(json.dumps(result))
 
 
