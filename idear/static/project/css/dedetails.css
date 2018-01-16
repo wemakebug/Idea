@@ -46,7 +46,6 @@
     /* overflow: hidden; */
     font-size: 15px;
 }
-
 .home-b-user{
     width:90%;
     height:85px;
@@ -180,7 +179,7 @@
     padding:10px;
 }
 .ribbon3{
-    top:10px;
+    top:15px;
 }
 .pr-detail p{
     display:block;
