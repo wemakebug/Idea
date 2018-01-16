@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^regist$', views.regist),
     url(r'^inCode$', views.inCode),
     url(r'^team$', views.team),
-    url(r'^teamdetails$', views.teamdetails),
+    # url(r'^team_history_project$', views.team_history_project),
     url(r'^praise$',views.creations),
     url(r'^teamdetails/(?P<teamid>\d+)/$', views.teamdetails),
     url(r'^teamhelpapplication/(?P<teamhelpid>\d+)$', views.teamhelpapplication),
@@ -81,6 +81,7 @@ urlpatterns = [
 
     url(r'^editprofile$', views.editprofile),
     url(r'^perCreation$', views.perCreation),
+    url(r'^PM$', views.PM),
     url(r'^get_follow_count$', views.get_follow_count),
     url(r'^get_praise_count$', views.get_praise_count),
     url(r'^get_user_name$', views.get_user_name),

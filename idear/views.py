@@ -450,7 +450,9 @@ def teamdetails(req, teamid):
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
             user = models.User.objects.get(Email=email)
             comment_id = models.Comment.objects.filter(Q(commited_user_id=teamid) & Q(user=user))
-            print (comment_id)
+            team_history_project = models.ProjectUser.objects.filter(Q(user__Id=teamid) & Q(project__Statue=4))
+            print(team_history_project)
+            team_project_label = models.Project2ProjectLabel.objects.all()
             commentlist = []
 
             for comment in comments:
@@ -467,24 +469,44 @@ def teamdetails(req, teamid):
         except Exception as e:
             return Http404
 
-        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels,"counnt":counts,"comments":commentlist,"teamstar":teamcounts,"id":comment_id})
+        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist, "teamstar": teamcounts, "id": comment_id, "user": user, "team_history_project": team_history_project, "team_project_label":team_project_label})
     if req.method == 'POST':
         content = req.POST["string"]
-        username = "chris"
+        print (teamid)
         result = {
-            "status": 1,
+            "status": 0,
             "string": None
         }
         try:
-            user = models.User.objects.get(UserName=username)
+            user_email = req.COOKIES.get('user_email')
+            user = models.User.objects.get(Email=user_email)
             userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
+            result["status"] = 1
+            result["string"] = "成功"
         except Exception as e:
             result["status"] = 0
             result["string"] = "空"
             return HttpResponse(json.dumps(result))
         else:
-            models.Comment.objects.create(user=user, commited_user=userteam, Content=content)
+            models.Comment.objects.create(user=user, commited_user=userteam, Content=content, Uuid=uuid.uuid4())
             return HttpResponse(json.dumps(result))
+
+
+# @csrf_exempt
+# def team_history_project(req):
+#     if req.method == 'POST':
+#         team_mark = req.POST["team_mark"]
+#         result = {
+#             'status': 0,
+#             'message': '',
+#         }
+#         try:
+#             team_history_project = models.ProjectUser.objects.filter(user_id=team_mark)
+#             print (team_history_project)
+#         except Exception as e:
+#             print(e.message)
+#         else:
+#             return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
@@ -493,14 +515,20 @@ def teamcomment(req):
         reply_content = req.POST["strings"]
         teamid = req.POST["team_id"]
         commentid = req.POST["comment_id"]
-        username = "chris"
+        user_email = req.COOKIES.get('user_email')
+        # username = "chris"
         result = {
-            "status": 1
+            'status': 0,
+            'message': '',
         }
         try:
-            user = models.User.objects.get(UserName=username)
+            user = models.User.objects.get(Email=user_email)
             userteam = models.User.objects.get(Q(Id=teamid) & Q(Identity=2))
             Comment1 = models.Comment.objects.filter(Id=commentid)
+            result = {
+                'status': 1,
+                'message': 'success',
+            }
             print(Comment1[0].Uuid)
         except Exception as e:
             print(e.message)
@@ -509,7 +537,7 @@ def teamcomment(req):
             return HttpResponse(json.dumps(result))
         else:
             # print(locals())
-            models.Comment.objects.create(user=user, commited_user=userteam, Content=reply_content,commentedId=Comment1[0].Uuid)
+            models.Comment.objects.create(user=user, commited_user=userteam, Content=reply_content, commentedId=Comment1[0].Uuid, Uuid=uuid.uuid4())
             return HttpResponse(json.dumps(result))
 
 
@@ -1781,6 +1809,25 @@ def perCreation(req):
             result['status'] = 0
             result['message'] = '获取信息失败'
             return HttpResponse(json.dumps(result))
+
+
+
+@csrf_exempt
+def PM(req):
+    '''
+    个人中心项目管理
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        projectUser = models.ProjectUser.objects.filter(user__Email=user_email)
+        project = []
+        for obj in projectUser:
+            project.append(obj.project)
+        return render_to_response('personal/PM.html',{'project':project})
+    if req.method == 'POST':
+        pass
 
 
 @csrf_exempt

@@ -14,7 +14,7 @@
         <div class="teamShow">
             <div class="thisLeft container">
                 {% for team in teams %}
-                    <div class="border_0 row" style="margin-left: 68px">
+                    <div class="border_0 row" style="margin-left: 68px;margin-right: 1px">
                         <div class="row">
                             <div class="photo_0 col-xs-6 col-md-3 " onclick="window.open('teamdetails/{{ team.Id }}')">
                                 <img src="/static/photos/{{ team.Img }}" style=" width: 100% ;height: 100%;border-radius: 6px;"  onerror="this.src='../../static/team/imgs/logo.jpg'" alt="">
@@ -26,7 +26,7 @@
                         </div>
                         <div class="row" style="height: 50%">
                             <div class="leftMatter">
-                                团队标签：
+                                <a>团队标签：</a>
                                 {% for User2 in User2UserLabel  %}
                                         {% if User2.user.Id == team.Id %}
                                             <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
