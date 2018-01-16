@@ -13,9 +13,9 @@ $(function(){
     user_email = user_email[user_email.length - 1];
     var team_mark = $("#team_mark").val();
     //团队的历史项目
-    $.post("/idear/team_history_project",{"team_mark":team_mark},function (team_data) {
-
-    });
+    // $.post("/idear/team_history_project",{"team_mark":team_mark},function (team_data) {
+    //
+    // });
 
     //随机颜色标签圆球
     $('.repo-language-color').each(function() {

@@ -450,7 +450,9 @@ def teamdetails(req, teamid):
             comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
             user = models.User.objects.get(Email=email)
             comment_id = models.Comment.objects.filter(Q(commited_user_id=teamid) & Q(user=user))
-            print (comment_id)
+            team_history_project = models.ProjectUser.objects.filter(Q(user__Id=teamid) & Q(project__Statue=4))
+            print(team_history_project)
+            team_project_label = models.Project2ProjectLabel.objects.all()
             commentlist = []
 
             for comment in comments:
@@ -467,7 +469,7 @@ def teamdetails(req, teamid):
         except Exception as e:
             return Http404
 
-        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist, "teamstar": teamcounts, "id": comment_id, "user": user})
+        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist, "teamstar": teamcounts, "id": comment_id, "user": user, "team_history_project": team_history_project, "team_project_label":team_project_label})
     if req.method == 'POST':
         content = req.POST["string"]
         print (teamid)
@@ -490,21 +492,21 @@ def teamdetails(req, teamid):
             return HttpResponse(json.dumps(result))
 
 
-@csrf_exempt
-def team_history_project(req):
-    if req.method == 'POST':
-        team_mark = req.POST["team_mark"]
-        result = {
-            'status': 0,
-            'message': '',
-        }
-        try:
-            team_history_project = models.ProjectUser.objects.filter(user_id=team_mark)
-            print (team_history_project)
-        except Exception as e:
-            print(e.message)
-        else:
-            return HttpResponse(json.dumps(result))
+# @csrf_exempt
+# def team_history_project(req):
+#     if req.method == 'POST':
+#         team_mark = req.POST["team_mark"]
+#         result = {
+#             'status': 0,
+#             'message': '',
+#         }
+#         try:
+#             team_history_project = models.ProjectUser.objects.filter(user_id=team_mark)
+#             print (team_history_project)
+#         except Exception as e:
+#             print(e.message)
+#         else:
+#             return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
