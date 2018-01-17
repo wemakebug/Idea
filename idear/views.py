@@ -1061,6 +1061,20 @@ def redetails(req):
          pass
 
 
+# @csrf_exempt
+# def prpraise(req):
+#         '''
+#         项目点赞
+#         :param req:
+#         :return:
+#         '''
+
+
+
+
+
+
+
 @csrf_exempt
 def preport(req):
         '''
