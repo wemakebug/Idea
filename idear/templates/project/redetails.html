@@ -32,12 +32,13 @@
                                     class="ribbon1"><span>{{ label.projectLabel.ProjectLabelName }}</span></span></a>
                         {% endfor %}
                         <input type="text" style="display: none" id = "projectId" value="{{project.Id}}">
+                        <input type="text" style="display: none" id = "projectuser.Id" value="{{user.user.Id}}">
                         <div class="title">
                             <h5 id="rdpname"> {{ project.ProjectName }}</h5>
                             {% if project.Statue in 1 %}
                                 <p class="ptime" id="rdptime"> 项目负责人：<span><a href="">  {{ user.user }}</a></span>&nbsp;|&nbsp; 项目状态：初期招募  </p>
                                 {% else %}
-                                    <p class="ptime" id="rdptime"> 项目负责人：<span><a href="">  {{ user.user }}</a></span>&nbsp;|&nbsp; 项目状态：第二次招募 </p>
+                                    <p class="ptime" id="rdptime"> 项目负责人：<span><a href="">  {{ user.user}}</a></span>&nbsp;|&nbsp; 项目状态：第二次招募 </p>
                             {% endif %}
                         </div>
                     </div>
