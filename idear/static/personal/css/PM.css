@@ -1,0 +1,32 @@
+.pm_border{
+    width: 20%;
+    height: 322px;
+    float: left;
+    margin-left: 3%;
+    margin-top: 2%;
+    border-radius: 8px;
+    background-color:rgba(255, 255, 255, 1);
+    box-shadow: 8px 8px 5px #d3e0e2;
+}
+.pm_border:hover{
+    box-shadow: 6px 6px 5px 0 rgba(200, 200, 200, 0.8);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.photo_1{
+    width: 100%;
+    height: 100%;
+}
+.pop{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+.pop .popMain{ width: 600px; min-height: 300px; background: #fff; position: absolute; left: 50%; top: 30%; margin-left: -300px;}
+.popMiddle p{ text-align: center; font-size: 18px; color: #666; padding: 90px 0;}
+.pop .popBottom{ position: absolute; bottom: 0; left: 0; display: flex; width: 100%; height: 80px; text-align: center; background: #488ACC;}
+.pop .popBottom span{ flex: 1; text-align: center; font-size: 24px; color: #fff; line-height: 80px; cursor: pointer;}
+.pop .popBottom span:first-of-type{ border-right: 1px solid #fff;}

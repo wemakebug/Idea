@@ -33,7 +33,11 @@ ul li{
     width: 100%;
     height:66px;
     background:#7495B7;
-    /*background: #4F7EAE;*/
+    /*background-image: url("../imgs/header_2.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center center;*/
+    /*-webkit-background-size: cover;*/
+    /*background-size: cover;*/
 }
 .logo{
     float:left;
@@ -276,22 +280,23 @@ ul li{
     line-height:90px;
 }
 #container_footer{
-    width:25%;
+    width:45%;
     height:100%;
     float: left;
-    margin-left: 21.5%;
+    /*margin-left: 21.5%;*/
     display:block;
 }
 #container_footer>ul{
-    width: 91%;
+    width: 70%;
     height:100%;
     display: block;
     float: right;
 }
 #container_footer>ul>li{
     display: inline-block;
-    width:23%;
+    width:20%;
     height:100%;
+    text-align: right;
     float:left;
     overflow:hidden;
 }
@@ -308,26 +313,27 @@ ul li{
  }
 
 .main_logo{
-    width:8%;
+    width:10%;
     height:100%;
     float: left;
 }
 .main_logo_graph{
-    width:30%;
-    height:51%;
-    margin-left: 31%;
-    margin-top: 15%;
+    width:60px;
+    height:60px;
+    margin-top: 14px;
     overflow: hidden;
     border-radius: 60px;
     border: 1px solid #ccc;
 }
 .right_sentence{
-    width:15%;
-    min-width:204px;
+    width:45%;
+    /*min-width:204px;*/
     height:100%;
     float: left;
 }
 .right_sentence p{
     font-size:0.8em;
     color:gray;
+    float: left;
+    margin-left: 15%;
 }
