@@ -74,9 +74,11 @@ urlpatterns = [
     url(r'^comment',views.comment),
     url(r'^rcomment',views.rcomment),
     url(r'^teamattend$',views.teamattend),
+    url(r'^team_attend$', views.team_attend),
+    url(r'^team_star$', views.team_star),
     url(r'star', views.star),
 
-    url(r'^teamattend1$', views.teamattend1),
+    url(r'^teamstars1$', views.teamstars1),
     url(r'^teamcomment$', views.teamcomment),
 
     url(r'^editprofile$', views.editprofile),
