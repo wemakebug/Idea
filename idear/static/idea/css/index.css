@@ -123,7 +123,7 @@ small {
     background-position: center center;
     -webkit-background-size: cover;
     background-size: cover;
-    color: #fff;
+    color: #1b6d85;
     font-size: 22px;
     line-height: 89px;
     text-align: center;
@@ -132,13 +132,13 @@ small {
     opacity: 1;
 }
 .usage_img_one{
-    background-image: url("../imgs/backzz.png");
+    background-image: url("../imgs/picture_1.jpg");
 }
 .usage_img_two{
-    background-image: url("../imgs/181.jpg");
+    background-image: url("../imgs/picture_2.jpg");
 }
 .usage_img_three{
-    background-image: url("../imgs/backzz.png");
+    background-image: url("../imgs/picture_3.jpg");
 }
 .usage_content{
     width: 100%;
@@ -161,11 +161,15 @@ small {
 }
 .smart{
     width: 40%;
+    height: 100%;
+    overflow: hidden;
     text-align: right;
 }
 .purpose{
     width: 50%;
+    height: 100%;
     margin-left: 10%;
+    overflow: hidden;
 }
 .contOne p{
     float: left;
@@ -606,6 +610,17 @@ small {
 .oneCreaBest img:hover{
     box-shadow: 1px 1px 9px 13px #bbbbbb;
 }
+.creationHover{
+    top: -135px;
+    display: none;
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+    height: 100%;
+    background: #1b6d85;
+    opacity: 0.5;
+}
+
 #gotop{
     display:block;
     width:40px;

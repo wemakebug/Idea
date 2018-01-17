@@ -182,8 +182,9 @@
             return ;
         }
         var numPerson = $("#numPerson").val();
-        if(numPerson < "1"){
-            alert("所需人数请输入大于0的数字！");
+        var re = /^[1-9]+.?[1-9]*$/; //判断数字正则表达式
+        if(!re.test(numPerson)){
+            alert("请输入大于0的数字");
             $("#numPerson").css("border","1px solid red");
             return ;
         }
@@ -251,8 +252,9 @@
             return ;
         }
         var numPerson = $("#numPerson").val();
-        if(numPerson < "1"){
-            alert("所需人数请输入大于0的数字！");
+        var re = /^[1-9]+.?[1-9]*$/; //判断数字正则表达式
+        if(!re.test(numPerson)){
+            alert("请输入大于0的数字");
             $("#numPerson").css("border","1px solid red");
             return ;
         }

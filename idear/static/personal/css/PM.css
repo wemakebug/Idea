@@ -1,18 +1,22 @@
-.tab1{
-    text-align:center
-}
-
-.dele1{
-    width:10%;
-    margin-left: 80%;
+.pm_border{
+    width: 20%;
+    height: 322px;
+    float: left;
+    margin-left: 3%;
     margin-top: 2%;
-
+    border-radius: 8px;
+    background-color:rgba(255, 255, 255, 1);
+    box-shadow: 8px 8px 5px #d3e0e2;
 }
-.btns{
-    margin-left: 85%;
+.pm_border:hover{
+    box-shadow: 6px 6px 5px 0 rgba(200, 200, 200, 0.8);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
-
- .pop{
+.photo_1{
+    width: 100%;
+    height: 100%;
+}
+.pop{
     display: none;
     position: fixed;
     top: 0;
