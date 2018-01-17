@@ -77,8 +77,6 @@ urlpatterns = [
     url(r'^team_attend$', views.team_attend),
     url(r'^team_star$', views.team_star),
     url(r'star', views.star),
-
-    url(r'^teamstars1$', views.teamstars1),
     url(r'^teamcomment$', views.teamcomment),
 
     url(r'^editprofile$', views.editprofile),

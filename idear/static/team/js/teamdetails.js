@@ -23,7 +23,7 @@ $(function(){
     var praise_txt2 = $("#praise-txt11");
 
     //团队点赞异步刷新显示页面
-    $.post("/idear/teamstars1",{team_mark:team_mark},function (data) {
+    $.post("/idear/teamattend",{team_mark:team_mark,type:1},function (data) {
         if(data == 1){
              document.getElementById("praise-img11-dianzan").src="/static/team/imgs/dianzan.png";
         }else if(data == 2){
@@ -34,7 +34,7 @@ $(function(){
 
 
     //团队关注异步刷新显示页面
-    $.post("/idear/teamattend",{team_mark:team_mark},function (data) {
+    $.post("/idear/teamattend",{team_mark:team_mark,type:2},function (data) {
         if(data == 1){
              document.getElementById("praise-img11-guanzhu").src="/static/team/imgs/xinxing.png";
         }else if(data == 2){

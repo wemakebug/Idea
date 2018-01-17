@@ -467,7 +467,7 @@ def teamdetails(req, teamid):
 
             except Exception as e:
                 return Http404
-            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist, "teamstar": teamcounts, "id": comment_id, "user": user, "team_history_project": team_history_project, "team_project_label": team_project_label})
+            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist, "teamcounts": teamcounts, "id": comment_id, "user": user, "team_history_project": team_history_project, "team_project_label": team_project_label})
         else:
             try:
                 this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
@@ -556,44 +556,35 @@ def teamattend(req):
     :return: 
     '''
     if req.method == 'POST':
-        try:
-            team_mark = req.POST['team_mark']
-            email = req.COOKIES.get('user_email')
-            user = models.User.objects.get(Email=email)
-            FollowUser = models.Follow.objects.filter(Follower_id=team_mark, user_id=user.Id)
-            if len(FollowUser) > 0:
-                status = 2
+        type = int(req.POST['type'])
+        if type == 2:
+            try:
+                team_mark = req.POST['team_mark']
+                email = req.COOKIES.get('user_email')
+                user = models.User.objects.get(Email=email)
+                FollowUser = models.Follow.objects.filter(Follower_id=team_mark, user_id=user.Id)
+                if len(FollowUser) > 0:
+                    status = 2
+                else:
+                    status = 1
+            except Exception as e:
+                return HttpResponse('404')
             else:
-                status = 1
-        except Exception as e:
-            return HttpResponse('404')
-        else:
-            return HttpResponse(status)
-    if req.method == 'GET':
-        pass
-
-
-@csrf_exempt
-def teamstars1(req):
-    '''
-    团队详情的点赞显示
-    :param req: 
-    :return: 
-    '''
-    if req.method == 'POST':
-        try:
-            team_mark = req.POST['team_mark']
-            email = req.COOKIES.get('user_email')
-            user = models.User.objects.get(Email=email)
-            FollowUser = models.Praise.objects.filter(user_prised_id=team_mark, user_id=user.Id)
-            if len(FollowUser) > 0:
-                status = 2
+                return HttpResponse(status)
+        elif type == 1:
+            try:
+                team_mark = req.POST['team_mark']
+                email = req.COOKIES.get('user_email')
+                user = models.User.objects.get(Email=email)
+                FollowUser = models.Praise.objects.filter(user_prised_id=team_mark, user_id=user.Id)
+                if len(FollowUser) > 0:
+                    status = 2
+                else:
+                    status = 1
+            except Exception as e:
+                return HttpResponse('404')
             else:
-                status = 1
-        except Exception as e:
-            return HttpResponse('404')
-        else:
-            return HttpResponse(status)
+                return HttpResponse(status)
     if req.method == 'GET':
         pass
 
