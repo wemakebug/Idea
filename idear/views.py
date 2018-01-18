@@ -1172,18 +1172,20 @@ def redetails(req):
             useremail = req.COOKIES.get('user_email')
             preuser = models.User.objects.get(Email=useremail)
             projectfollow = models.Follow.objects.filter(Q(project__Id=projectId)&Q(user=preuser))
-            print(projectfollow)
-
+            projectpraise = models.Praise.objects.filter(Q(project__Id=projectId) & Q(user=preuser))
             if projectfollow.count() is 0 :
                 fstatus = 0
             else:
                 fstatus = 1
-
+            if projectpraise.count() is 0:
+                pstatus = 0
+            else:
+                pstatus = 1
 
             return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "user": user, "recruit": recruit, "EndTime": timeStamp,
-                                    "fstatus":fstatus, "comment": commentlist,"preuser":preuser })
+                                    "fstatus":fstatus,"pstatus":pstatus, "comment": commentlist,"preuser":preuser })
         except:
             return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp, "comment":commentlist,})
@@ -1246,6 +1248,50 @@ def prattenddelete(req):
                 print(e)
                 return HttpResponse(status)
 
+@csrf_exempt
+def prpraiseadd(req):
+        '''
+        项目点赞增加
+        :param req:
+        :return:
+        '''
+        if req.method == 'POST':
+            status = 0
+            try:
+                projectId = req.POST['projectId']
+                project = models.Project.objects.get(Id=projectId)
+                useremail = req.COOKIES.get('user_email')
+                preuser = models.User.objects.get(Email=useremail)
+                models.Praise.objects.create(user=preuser, project=project)
+                status = 1
+                return HttpResponse(status)
+
+            except Exception as e:
+                print(e)
+                return HttpResponse(status)
+
+
+@csrf_exempt
+def prpraisedelete(req):
+        '''
+        项目点赞删除
+        :param req:
+        :return:
+        '''
+        if req.method == 'POST':
+            status = 0
+            try:
+                projectId = req.POST['projectId']
+                project = models.Project.objects.get(Id=projectId)
+                useremail = req.COOKIES.get('user_email')
+                preuser = models.User.objects.get(Email=useremail)
+                models.Praise.objects.filter(user=preuser, project=project).delete()
+                status = 1
+                return HttpResponse(status)
+
+            except Exception as e:
+                print(e)
+                return HttpResponse(status)
 
 
 
@@ -1498,7 +1544,6 @@ def dedetails(req):
         user = models.ProjectUser.objects.get(project_id=projectId)
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
         praises = models.Praise.objects.all()
-        follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
         commentlist = []
         for comment in comments:
@@ -1520,14 +1565,26 @@ def dedetails(req):
         try:
             useremail = req.COOKIES.get('user_email')
             preuser = models.User.objects.get(Email=useremail)
+            projectfollow = models.Follow.objects.filter(Q(project__Id=projectId) & Q(user=preuser))
+            projectpraise = models.Praise.objects.filter(Q(project__Id=projectId) & Q(user=preuser))
+            print(projectpraise)
+            if projectfollow.count() is 0:
+                fstatus = 0
+            else:
+                fstatus = 1
+
+            if projectpraise.count() is 0:
+                pstatus = 0
+            else:
+                pstatus = 1
 
             return render_to_response('project/dedetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "user": user,
-                                   'follows': follows, 'praises': praises, "comment": commentlist,"preuser":preuser })
+                                     'praises': praises, "fstatus":fstatus,"pstatus":pstatus,"comment": commentlist,"preuser":preuser })
         except:
             return render_to_response('project/dedetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "user":user,'follows': follows,'praises': praises,"comment":commentlist,})
+                                   "labels": labels[:3], "user":user,'praises': praises,"comment":commentlist,})
 
 
     if req.method == "POST":

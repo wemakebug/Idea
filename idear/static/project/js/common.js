@@ -2,6 +2,7 @@ $("#comment11-22").click(function () {
     document.getElementById("comment-content1").focus();
 });
 
+
 var rdputcomment  = document.getElementById("rdputcomment");
 rdputcomment.onclick = function(){
                     var reply_comment = document.getElementById("comment-content1").value;
@@ -194,25 +195,6 @@ creport.onclick = function(){
     }
 
 }
-
-                // 评论回复举报
-                // var rcreport = document.getElementById("rdrcreport");
-                // rcreport.onclick = function(){
-                //     layer.open({
-                //         type: 1,
-                //         offset: '200px',
-                //         resize: false,
-                //         move: false,
-                //         area: ['500px', '400px'],
-                //         title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
-                //         shade: 0.6,
-                //         maxmin: false,
-                //         anim: 0//0-6的动画形式，-1不开启
-                //         , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
-                //         '<button class="putreport" id="putreport">提交</button> '
-                //     });
-                // }
-
 function getCookie(name) {
     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
     if (arr = document.cookie.match(reg))
