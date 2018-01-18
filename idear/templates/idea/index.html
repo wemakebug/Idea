@@ -109,66 +109,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-{#					<div class="usage_one">#}
-{#                        <a href="projects?sign=all">#}
-{#						    <div class="usage_icon">#}
-{#                            </div>#}
-{#                        </a>#}
-{#						<div class="usage_details">#}
-{#							<div class="detail-name">#}
-{#								<p>招募</p>#}
-{#							</div>#}
-{#							<div class="detail">#}
-{#								<p>寻找伙伴，对于共同感兴趣的试验项目，进行一次愉快的合作。</p>#}
-{#							</div>#}
-{#						</div>#}
-{#					</div>#}
-{#					<div class="usage_one">#}
-{#                        <a href="/idear/release">#}
-{#						    <div class="usage_icon2"></div>#}
-{#                        </a>#}
-{#						<div class="usage_details">#}
-{#							<div class="detail-name">#}
-{#								<p>研发</p>#}
-{#							</div>#}
-{#							<div class="detail">#}
-{#								<p>针对心仪的项目的一次创造实现，因其而展示能力的方方面面。</p>#}
-{#							</div>#}
-{#						</div>#}
-{#					</div>#}
-{#					<div class="usage_one">#}
-{#                        <a href="creations?sign=all">#}
-{#						    <div class="usage_icon3"></div>#}
-{#                        </a>#}
-{#						<div class="usage_details">#}
-{#							<div class="detail-name">#}
-{#								<p>分享</p>#}
-{#							</div>#}
-{#							<div class="detail">#}
-{#								<p>一闪而过的灵感与创意，分享众人的快乐，等待发掘的价值。</p>#}
-{#							</div>#}
-{#						</div>#}
-{#					</div>#}
-{#					<div class="usage_one">#}
-{#                        <a href="/idear/team?sign=all">#}
-{#						    <div class="usage_icon4"></div>#}
-{#                        </a>#}
-{#						<div class="usage_details">#}
-{#							<div class="detail-name">#}
-{#								<p>团队</p>#}
-{#							</div>#}
-{#							<div class="detail">#}
-{#								<p>团体之间的密切合作，高效率的等待橄榄枝的撒抛。</p>#}
-{#							</div>#}
-{#						</div>#}
-{#					</div>#}
 				</div>
 			</div>
         <!--介绍结束-->
@@ -269,40 +209,24 @@
             </div>
         <!--项目排名结束-->
         <!--创意排名开始-->
+
             <div class="best_find_2">
                 <div class="line_one"></div>
                 <div class="box-one-left">
 					<h2>WEEKLY<small>creation list</small></h2>
 				</div>
                 <div class="creationContent">
+                    {% for creation in creations  %}
                     <div class="oneCreaBest">
                         <a href="#">
-                            <img src="../../static/idea/imgs/crea1.jpg">
+                            <img src="/static/photos/{{ creation.Img}}">
                         </a>
                         <div class="creationHover">
 
                         </div>
                     </div>
-                    <div class="oneCreaBest">
-                        <a href="#">
-                            <img src="../../static/idea/imgs/crea2.jpg">
-                        </a>
-                    </div>
-                    <div class="oneCreaBest">
-                        <a href="#">
-                            <img src="../../static/idea/imgs/crea3.jpg">
-                        </a>
-                    </div>
-                    <div class="oneCreaBest">
-                        <a href="#">
-                            <img src="../../static/idea/imgs/crea4.jpg">
-                        </a>
-                    </div>
-                    <div class="oneCreaBest">
-                        <a href="#">
-                            <img src="../../static/idea/imgs/best_img.png">
-                        </a>
-                    </div>
+                    <div>{{ creation.Praise_Creation_set.count }}</div>
+                    {% endfor %}
                 </div>
             </div>
         <!--创意排名结束-->

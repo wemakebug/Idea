@@ -48,12 +48,22 @@ def index(req):
     :return:
     '''
     if req.method == "GET":
+        array = []
         project = models.Project.objects.all()
         label = models.Project2ProjectLabel.objects.all()
-        creation = models.Creation.objects.all()
+        creations = models.Creation.objects.all()
+
+        for creation in creations:
+            result = {}
+            # count = creation.Praise_Creation_set.count
+            creacount = models.Praise.objects.filter(creation=creation).count()
+            result[0] = creation
+            result[1] = creacount
+            array.append(result)
+        print array
         creationlabel = models.Creation2ProjectLabel.objects.all()
         return render_to_response('idea/index.html',{"projects": project,"labels":label,
-                                                     "creations":creation,"creationlabels":creationlabel
+                                                     "creations":creations,"creationlabels":creationlabel
                                                      })
     if req.method == "POST":
         pass
