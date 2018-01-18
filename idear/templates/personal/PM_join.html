@@ -18,7 +18,7 @@
             <ul class="fa-ul ">
               <li><a class="fa-li fa fa-check-square"></a><a href="/idear/PM">发布项</a></li>
                 <br>
-              <li><a class="fa-li fa fa-spinner fa-spin "></a><a href="/idear/PM_join">参与项</a></li>
+              <li><a class="fa-li fa fa-spinner fa-spin"></a><a href="/idear/PM_join">参与项</a></li>
                 <br>
               <li ><a class="fa-li fa fa-square"></a><a href="/idear/PM_draft">草稿箱</a></li>
             </ul>
@@ -43,18 +43,13 @@
                             {% endif %}
                         </div>
                         <div class="pm_button ">
-                            <button onclick="window.open('crdetails?creationId={{ creation.Id }}')"  class=" btn btn-xs btn-info" style="cursor :pointer">项目更改</button>
-                            <button style="cursor :pointer;" class="dele0 btn btn-xs btn-danger">删 除
+                            <button style="cursor :pointer; margin-left: 50%" class="dele0 btn btn-xs btn-danger">退 出
                                 <input type="text" value="{{ projects.Id }}" style="display:none;" >
                             </button>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-                <div class="col-xs-3 col-md-3 pm_border0 " href="#">
-                    <i class="fa fa-plus" ></i>
-                    <h5>添 加 项 目</h5>
-                </div>
             </div>
         </div>
     </div>
