@@ -58,7 +58,8 @@ urlpatterns = [
     url(r'^recruit_apply$', views.recruit_apply),
     url(r'^prcomment$',views.prcomment),
     url(r'^preport$',views.preport),
-
+    url(r'^prattendadd$',views.prattendadd),
+    url(r'^prattenddelete$',views.prattenddelete),
 
     url(r'^crdetails$', views.crdetails),
     url(r'^crcreate$',views.crcreate),

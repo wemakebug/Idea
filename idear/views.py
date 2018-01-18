@@ -1144,8 +1144,6 @@ def redetails(req):
         project = models.Project.objects.get(Id=projectId)
         user = models.ProjectUser.objects.get(project_id=projectId)
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
-        praises = models.Praise.objects.all()
-        follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
         commentlist = []
         for comment in comments:
@@ -1165,7 +1163,7 @@ def redetails(req):
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
-        print(projectId)
+
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
@@ -1173,14 +1171,22 @@ def redetails(req):
         try:
             useremail = req.COOKIES.get('user_email')
             preuser = models.User.objects.get(Email=useremail)
-            print(preuser.Img)
+            projectfollow = models.Follow.objects.filter(Q(project__Id=projectId)&Q(user=preuser))
+            print(projectfollow)
+
+            if projectfollow.count() is 0 :
+                fstatus = 0
+            else:
+                fstatus = 1
+
+
             return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "user": user, "recruit": recruit, "EndTime": timeStamp,
-                                   'follows': follows, 'praises': praises, "comment": commentlist,"preuser":preuser })
+                                    "fstatus":fstatus, "comment": commentlist,"preuser":preuser })
         except:
             return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
+                                   "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp, "comment":commentlist,})
 
 
     if req.method == "POST":
@@ -1195,7 +1201,50 @@ def redetails(req):
 #         :return:
 #         '''
 
+@csrf_exempt
+def prattendadd(req):
+        '''
+        项目关注增加
+        :param req:
+        :return:
+        '''
+        if req.method == 'POST':
+            status = 0
+            try:
+                projectId = req.POST['projectId']
+                project = models.Project.objects.get(Id=projectId)
+                useremail = req.COOKIES.get('user_email')
+                preuser = models.User.objects.get(Email=useremail)
+                models.Follow.objects.create(user=preuser, project=project)
+                status = 1
+                return HttpResponse(status)
 
+            except Exception as e:
+                print(e)
+                return HttpResponse(status)
+
+
+@csrf_exempt
+def prattenddelete(req):
+        '''
+        项目关注删除
+        :param req:
+        :return:
+        '''
+        if req.method == 'POST':
+            status = 0
+            try:
+                projectId = req.POST['projectId']
+                project = models.Project.objects.get(Id=projectId)
+                useremail = req.COOKIES.get('user_email')
+                preuser = models.User.objects.get(Email=useremail)
+                models.Follow.objects.filter(user=preuser, project=project).delete()
+                status = 1
+                return HttpResponse(status)
+
+            except Exception as e:
+                print(e)
+                return HttpResponse(status)
 
 
 
@@ -1265,12 +1314,8 @@ def project_comment(req):
             return HttpResponse(status)
 
     if req.method == 'GET':
-        content = "hello world"
-        username = "chris"
-        projectid = 3
-        user = models.User.objects.get("UserName=username")
-        project = models.Project.objects.get(pk=projectid)
-        models.Comment.objects.create(user=user, project=project, Content=content)
+
+
         return HttpResponse("TRUE")
 
 @csrf_exempt
@@ -1475,7 +1520,7 @@ def dedetails(req):
         try:
             useremail = req.COOKIES.get('user_email')
             preuser = models.User.objects.get(Email=useremail)
-            print(preuser.Img)
+
             return render_to_response('project/dedetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "user": user,
