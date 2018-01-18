@@ -496,7 +496,7 @@ def teamdetails(req, teamid):
                 return Http404
             return render_to_response('team/teamdetails.html',
                                       {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist,
-                                       "teamstar": teamcounts, "team_history_project": team_history_project, "team_project_label": team_project_label})
+                                       "teamcounts": teamcounts, "team_history_project": team_history_project, "team_project_label": team_project_label})
     if req.method == 'POST':
         content = req.POST["string"]
         result = {
