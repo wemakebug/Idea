@@ -685,7 +685,7 @@ def creations(req):
             else:
                 CreationLabelObjs = models.Creation2ProjectLabel.objects.filter(projectLabel=sign)
                 creations = []
-                for obj in CreationLabelObjs:
+                for obj in CreationLabelObjsF:
                     creations.append(obj.creation)
 
             projectLabels = models.ProjectLabel.objects.all()
@@ -1826,6 +1826,19 @@ def PM(req):
         for obj in projectUser:
             project.append(obj.project)
         return render_to_response('personal/PM.html',{'project':project})
+    if req.method == 'POST':
+        pass
+
+
+@csrf_exempt
+def PM_content(req):
+    '''
+    个人中心项目管理
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        return render_to_response('personal/PM_content.html')
     if req.method == 'POST':
         pass
 

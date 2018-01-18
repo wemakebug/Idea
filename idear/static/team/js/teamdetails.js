@@ -37,7 +37,7 @@ $(function(){
 
     });
 
-    $.post("/idear/teamattend1",{user_email: user_email,Id:Id},function (status) {
+    $.post("/idear/teamattend1",{user_email:user_email , Id:Id},function (status) {
         if(status == 1){
              document.getElementById("praise-img11-dianzan").src="/static/team/imgs/dianzan.png";
         }else if(status == 2){

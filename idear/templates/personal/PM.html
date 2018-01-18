@@ -1,41 +1,52 @@
 {%extends 'personal/homepage.html'%}
 {% load static %}
 {%block title%}
-    <title>个人中心/创意灵感</title>
+    <title>个人中心/项目管理</title>
 {%endblock%}
 
 {%block CSS%}
     <link rel="stylesheet" href="{% static 'personal/css/homepage.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/PM.css'%}">
-    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/css/font-awesome.min.css' %}">
 {%endblock%}
 
 {%block contents%}
-    <div style="width:65%;">
-        {% for projects in project %}
-            <div style="" class="pm_border">
-                <div style="height: 65%">
-                    <img src="/static/photos/{{ projects.Img }}" alt="" class="photo_1">
+    <div style="width: 100%;" >
+        <div style="width: 60%">
+            {% for projects in project %}
+                <div class="pm_border row" style="margin-left: 0;margin-right: 5px">
+                    <div style="height: 65%">
+                        <img src="/static/photos/{{ projects.Img }}" alt="" class="photo_1">
+                    </div>
+                    <h5 style="display:block;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;">{{ projects.ProjectName}}</h5>
+                    <h6  class="pm_time fa fa-calendar"> {{ projects.EndTime }}</h6>
+                    <br>
+                    <div class="row">
+                        <span class="pm_details col-xs-2 col-md-5">
+                            {% if projects.Statue == 0 %}暂存项目
+                            {% elif projects.Statue == 1 %}初期招募
+                            {% elif projects.Statue == 2 %}正在开发
+                            {% elif projects.Statue == 3 %}二次招募
+                            {% elif projects.Statue == 4 %}完成项目
+                            {% endif %}
+                        </span>
+                        <div class="pm_button col-xs-9 col-md-8">
+                            <button onclick="window.open('crdetails?creationId={{ creation.Id }}')"  class=" btn btn-xs btn-info" style="cursor :pointer">查看详情</button>
+                            <button style="cursor :pointer;" class="dele0 btn btn-xs btn-danger">删 除
+                                <input type="text" value="{{ projects.Id }}" style="display:none;" >
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                 <div  style="height: 12%; overflow:hidden;">
-                    <h5>{{ projects.ProjectName}}</h5>
-                </div>
-                <div>项目类型：
-                    {% if projects.Statue == 0 %}暂存项目
-                    {% elif projects.Statue == 1 %}初期招募
-                    {% elif projects.Statue == 2 %}正在开发
-                    {% elif projects.Statue == 3 %}二次招募
-                    {% elif projects.Statue == 4 %}完成项目
-                    {% endif %}
-                </div>
-                <div>
-                    <button onclick="window.open('crdetails?creationId={{ creation.Id }}')"  class=" btn btn-info" style="cursor :pointer">查看详情</button>
-                    <button style="cursor :pointer;" class="dele btn btn-danger">删 除
-                        <input type="text" value="{{ creation.Id }}" style="display:none;" >
-                    </button>
-                </div>
+            {% endfor %}
+             <div style="width:65%;">
+                    <div class="pm_border0" href="#">
+                        <i class="fa fa-plus" ></i>
+                        <h5>添 加 项 目</h5>
+                    </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
     <div class="pop">
         <div class="popMain">
