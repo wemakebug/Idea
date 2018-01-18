@@ -2,6 +2,7 @@ $("#comment11-22").click(function () {
     document.getElementById("comment-content1").focus();
 });
 
+
 var rdputcomment  = document.getElementById("rdputcomment");
 rdputcomment.onclick = function(){
                     var reply_comment = document.getElementById("comment-content1").value;
@@ -128,95 +129,135 @@ preport.onclick = function(){
         });
 
              var projectId = $("#projectId").val()
-             var username = getCookie('user_email');
              var putreport = document.getElementById("putreport");
              putreport.onclick = function(){
              var reason = document.getElementById("comment-content2").value;
-             if(username === null || username ===''){
-                 alert("请您登陆");
-                 window.location.href="/idear/login";
+
+             if (reason == "") {
+                 alert("请您填入举报内容！");
              }
              else {
-                 if (content == "") {
-                     alert("请您填入举报内容！");
-                 }
-                 else {
-                     layer.close(layer.index);
-                     $.post("/idear/preport", {
-                         "reason": reason,
-                         "projectId": projectId
-                     }, function (data) {
+                 layer.close(layer.index);
+                 $.post("/idear/preport", {
+                     "reason": reason,
+                     "projectId": projectId
+                 }, function (data) {
+                     if(data == 1){
                          alert("提交成功")
-                         window.location.reload()
-                     });
-                 }
+                         window.location.reload();
+                     }
+                     else{
+                         alert(wrong);
+                     }
+                 });
              }
+
         };
     }
 };
-
-
  // 评论举报
-
-var creport = document.getElementById("rdcreport");
-creport.onclick = function(){
-    var user = getCookie('user_email');
-    if(user === null || user ===''){
-         layer.open({
+var creport = document.getElementsByClassName("creport");
+for (var i = 0; i < creport.length; i ++) {
+    creport[i].onclick = function () {
+        var user = getCookie('user_email');
+        if (user === null || user === '') {
+            alert("请您登陆！");
+            window.location.href = "/idear/login";
+        }
+        else {
+            layer.open({
                 type: 1,
                 offset: '200px',
                 resize: false,
                 move: false,
-                area: ['250px', '250px'],
-                content: '请您登录',
+                area: ['500px', '400px'],
+                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
                 shade: 0.6,
                 maxmin: false,
                 anim: 0//0-6的动画形式，-1不开启
                 ,
+                content: '<textarea placeholder="" name="" id="comment-content3" class="report-text"></textarea> ' +
+                '<button class="putreport" id="cputreport">提交</button> '
             });
+
+
+            var commentId = document.getElementById("commentId").value;
+            var putreport = document.getElementById("cputreport");
+            putreport.onclick = function () {
+                var reason = document.getElementById("comment-content3").value;
+                if (reason == "") {
+                    alert("请您填入举报内容！");
+                }
+                else {
+                    $.post("/idear/pcreport", {
+                        "reason": reason,
+                        "commentId": commentId
+                    }, function (data) {
+                            alert("提交成功")
+                            window.location.reload();
+
+                    });
+                    layer.close(layer.index);
+                }
+            }
+
+        }
     }
-    else {
-        layer.open({
-            type: 1,
-            offset: '200px',
-            resize: false,
-            move: false,
-            area: ['500px', '400px'],
-            title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
-            shade: 0.6,
-            maxmin: false,
-            anim: 0//0-6的动画形式，-1不开启
-            ,
-            content: '<textarea placeholder="" name="" id="comment-content2" class="report-text"></textarea> ' +
-            '<button class="putreport" id="putreport">提交</button> '
-        });
+}
+//评论回复举报
+    var rcreport = document.getElementsByClassName("rcreport");
+    for (var i = 0; i < rcreport.length; i++) {
+        rcreport[i].onclick = function () {
+            var user = getCookie('user_email');
+            if (user === null || user === '') {
+                alert("请您登陆！")
+                window.location.href = "/idear/login";
+            }
+            else {
+                layer.open({
+                    type: 1,
+                    offset: '200px',
+                    resize: false,
+                    move: false,
+                    area: ['500px', '400px'],
+                    title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+                    shade: 0.6,
+                    maxmin: false,
+                    anim: 0//0-6的动画形式，-1不开启
+                    ,
+                    content: '<textarea placeholder="" name="" id="comment-content4" class="report-text"></textarea> ' +
+                    '<button class="putreport" id="rcputreport">提交</button> '
+                });
 
+                var rcommentId = document.getElementById("rcommentId").value;
+                var putreport = document.getElementById("rcputreport");
+                putreport.onclick = function () {
+                    var reason = document.getElementById("comment-content4").value;
+                    if (reason == "") {
+                        alert("请您填入举报内容！");
+                    }
+                    else {
+                        $.post("/idear/pcreport", {
+                            "reason": reason,
+                            "commentId": rcommentId
+                        }, function (data) {
+                                alert("提交成功")
+                                window.location.reload();
+                        });
+                        layer.close(layer.index);
+                    }
+
+                }
+            }
+        }
     }
 
-}
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
 
-                // 评论回复举报
-                // var rcreport = document.getElementById("rdrcreport");
-                // rcreport.onclick = function(){
-                //     layer.open({
-                //         type: 1,
-                //         offset: '200px',
-                //         resize: false,
-                //         move: false,
-                //         area: ['500px', '400px'],
-                //         title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
-                //         shade: 0.6,
-                //         maxmin: false,
-                //         anim: 0//0-6的动画形式，-1不开启
-                //         , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
-                //         '<button class="putreport" id="putreport">提交</button> '
-                //     });
-                // }
 
-function getCookie(name) {
-    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-    if (arr = document.cookie.match(reg))
-        return unescape(arr[2]);
-    else
-        return null;
-}

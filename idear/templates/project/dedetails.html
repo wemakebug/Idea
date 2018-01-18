@@ -34,10 +34,14 @@
                         </div>
                     </div>
                     <div class="option">
-                        <button class="likebutton" id="rdlikebutton">
-                            <img class="plike" id="rdplike" src="{% static '/project/imgs/like1.svg' %}">
-                            <span class="plikenum">{{project.Praise_Project_set.count}}</span>
-                        </button>
+                         <div class="likebutton" id="rdlikebutton">
+                            {% if pstatus is 1%}
+                                     <img  id="rdpraise" onclick="pchangeImage()" src="{% static '/project/imgs/liked.png' %}" style="width:30px;height:30px;vertical-align:middle;margin-top: 7px;">
+                                {% else %}
+                                    <img   id="rdpraise" onclick="pchangeImage()" src="{% static '/project/imgs/like1.svg' %}" style="width:30px;height:30px;vertical-align:middle;margin-top: 7px;">
+                            {% endif %}
+                            <span class="plikenum"> {{project.Praise_Project_set.count}} </span>
+                        </div>
                         <div class="op-tip">
                             <div class="home-b-more" id="rdmore">
                                 <img src="{% static '/project/imgs/more.png' %}"
@@ -45,10 +49,16 @@
                                 <a>了解更多</a>
                             </div>
                             <div class="home-b-collection" id="rdcollection">
-                                <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
+                                 {% if fstatus is 1%}
+                                    <img src="{% static '/project/imgs/star.png' %}" id="rdcoimg"
                                      onclick="changeImage()"
                                      style="width:25px;height:25px;vertical-align:middle;">
-                                <a>关注</a>
+                                    {% else %}
+                                    <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
+                                     onclick="changeImage()"
+                                     style="width:25px;height:25px;vertical-align:middle;">
+                                {% endif %}
+                                <a>关注 </a>
                             </div>
                             <div class="home-b-share">
                                 <a href="#" class="share-buttons" id="share-qq"></a>
@@ -158,7 +168,7 @@
                             <button class="putcomment" id="rdputcomment">评论</button>
                         </div>
                     </div>
-                    {% for commentlist in comment%}
+                      {% for commentlist in comment%}
                     <div class="c-all" name="c-all">
                         <div class="cmain">
                             <img class="c-img" id="rdimg" src= "/static/photos/{{ commentlist | firstcommentimg }}">
@@ -175,6 +185,7 @@
                                         <img class="creport" id="rdcreport"
                                              src="{% static 'creation/imgs/report.png' %}">
                                     </div>
+                                    <input type="text" style="display: none" id = "commentId" value=" {{commentlist|firstcomment|firstcommentId}}">
                                 </div>
                                 <div class="comment-content">
                                     <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
@@ -187,6 +198,7 @@
                         </div>
                             {%for comment in commentlist|leftcomment%}
                             <div class="c-reply">
+                            <input type="text" style="display: none" id = "rcommentId" value=" {{ comment.Id}}">
                             <img class="rc-img" src= "/static/photos/{{comment.user.Img}}">
                             <div class="rcomment-box">
                                 <div class="rcomment-head">
@@ -245,6 +257,94 @@
             }
 
         })
+
+    function changeImage(){ var user = getCookie('user_email');
+                    if(user === null || user ===''){
+                        alert("请您登陆");
+                        window.location.href="/idear/login";
+                    } else{
+                    element = document.getElementById('rdcoimg');
+                    if (element.src.match("collection0")) {
+
+                        var projectid = document.getElementById("projectId").value;
+                        $.post('/idear/prattendadd', {
+                                "projectId": projectid,
+                                "preuser": user
+                            }, function (data) {
+                                if (data == 1) {
+                                     element.src = '{% static '/project/imgs/star.png' %}';
+                                     alert("关注成功！");
+                                }
+                                else {
+                                    alert("wrong");
+                                }
+                            });
+
+                    }
+                    else {
+
+                        var projectid = document.getElementById("projectId").value;
+                        $.post('/idear/prattenddelete', {
+                                "projectId": projectid,
+                                "preuser": user
+                            }, function (data) {
+                                if (data == 1) {
+                                     element.src = '{% static '/creation/imgs/collection0.png' %}';
+                                     alert("关注取消成功！");
+                                }
+                                else {
+                                    alert("wrong");
+                                }
+                            });
+                    }
+                }
+            }
+    function pchangeImage(){
+                    var user = getCookie('user_email');
+                    if(user === null || user ===''){
+                        alert("请您登陆");
+                        window.location.href="/idear/login";
+                    } else{
+                    element = document.getElementById('rdpraise');
+                    if (element.src.match("like1")) {
+                        var projectid = document.getElementById("projectId").value;
+                        $.post('/idear/prpraiseadd', {
+                                "projectId": projectid,
+                                "preuser": user
+                            }, function (data) {
+                                if (data == 1) {
+                                     element.src = '{% static '/project/imgs/liked.png' %}';
+                                     alert("点赞成功！");
+                                     plikenum = parseInt(plikenum) + 1;
+                                     $(".plikenum").html(plikenum)
+                                }
+                                else {
+                                    alert("wrong");
+                                }
+                            });
+
+                    }
+                    else {
+                        var projectid = document.getElementById("projectId").value;
+                        $.post('/idear/prpraisedelete', {
+                                "projectId": projectid,
+                                "preuser": user
+                            }, function (data) {
+                                if (data == 1) {
+                                     alert("点赞取消成功！");
+                                     element.src = '{% static '/project/imgs/like1.svg' %}';
+                                     plikenum = parseInt(plikenum) - 1;
+                                     var plikenum = document.getElementById("praise.num").value;
+                                     $(".plikenum").html(plikenum)
+                                }
+                                else {
+                                    alert("wrong");
+                                }
+                            });
+
+                    }
+                }
+            }
     </script>
 
 

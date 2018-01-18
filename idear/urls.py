@@ -58,8 +58,13 @@ urlpatterns = [
     url(r'^recruit_apply$', views.recruit_apply),
     url(r'^prcomment$',views.prcomment),
     url(r'^preport$',views.preport),
+    url(r'^prcreport$',views.preport),
+    url(r'^pcreport$',views.pcreport),
     url(r'^prattendadd$',views.prattendadd),
     url(r'^prattenddelete$',views.prattenddelete),
+    url(r'^prpraiseadd$',views.prpraiseadd),
+    url(r'^prpraisedelete$',views.prpraisedelete),
+
 
     url(r'^crdetails$', views.crdetails),
     url(r'^crcreate$',views.crcreate),

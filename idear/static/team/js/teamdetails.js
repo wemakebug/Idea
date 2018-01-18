@@ -1,8 +1,17 @@
 /**
  * Created by admin on 2017/7/23.
  */
-//预加载时判断该用户有没有关注
 
+/*cookie值转码*/
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}
+
+//预加载时判断该用户有没有关注
 
 $(function(){
     var strcookie = document.cookie;
@@ -22,14 +31,10 @@ $(function(){
     var praise_txt1 = $("#praise-txt11-1");
     var praise_txt2 = $("#praise-txt11");
 
-<<<<<<< HEAD
-    $.post("/idear/teamattend1",{user_email:user_email , Id:Id},function (status) {
-        if(status == 1){
-=======
+
     //团队点赞异步刷新显示页面
     $.post("/idear/teamattend",{team_mark:team_mark,type:1},function (data) {
         if(data == 1){
->>>>>>> ab3c8629c213bad78989a2b4fe92366722be378c
              document.getElementById("praise-img11-dianzan").src="/static/team/imgs/dianzan.png";
         }else if(data == 2){
              document.getElementById("praise-img11-dianzan").src="/static/team/imgs/redzan.png";
@@ -198,56 +203,69 @@ $("#comment11-2").click(function () {
 //团队详情关注
 
 $("#praise11-1").click(function () {
+    var user = getCookie('user_email');
     var team_mark = $("#team_mark").val();
     var praise_txt1 = $("#praise-txt11-1");
     var num1=parseInt(praise_txt1.text());
-    $.post("/idear/team_attend", {"team_mark":team_mark}, function (data) {
-        data = JSON.parse(data);
-        if (data.status === 1) {
-            
-            // $(this).html("<img src='/static/team/imgs/redxin.png' id='praise-img11-1' class='animation' />");
-            document.getElementById("praise-img11-guanzhu").setAttribute("src","/static/team/imgs/redxin.png");
-            praise_txt1.addClass("hover");
-            praise_txt1.addClass("hover");
-            num1+=1;
-            praise_txt1.text(num1);
-        } else if (data.status === 0) {
-            alert("操作失败！");
-        //删除记录
-        } else if(data.status === 2){
+    if(user ==="" || user === undefined || user === null) {
+        alert("请您登陆");
+        window.location.href = "/idear/login";
+    } else {
+        $.post("/idear/team_attend", {"team_mark": team_mark}, function (data) {
+            data = JSON.parse(data);
+            if (data.status === 1) {
 
-            document.getElementById("praise-img11-guanzhu").src="/static/team/imgs/xinxing.png";
-            praise_txt1.removeClass("hover");
-            num1-=1;
-            praise_txt1.text(num1);
-        }
-    })
+                // $(this).html("<img src='/static/team/imgs/redxin.png' id='praise-img11-1' class='animation' />");
+                document.getElementById("praise-img11-guanzhu").setAttribute("src", "/static/team/imgs/redxin.png");
+                praise_txt1.addClass("hover");
+                praise_txt1.addClass("hover");
+                num1 += 1;
+                praise_txt1.text(num1);
+            } else if (data.status === 0) {
+                alert("操作失败！");
+                //删除记录
+            } else if (data.status === 2) {
+
+                document.getElementById("praise-img11-guanzhu").src = "/static/team/imgs/xinxing.png";
+                praise_txt1.removeClass("hover");
+                num1 -= 1;
+                praise_txt1.text(num1);
+            }
+        })
+    }
 });
+
 //end
 
 //团队点赞
 
 $("#praise11").click(function () {
+    var user = getCookie('user_email');
     var team_mark = $("#team_mark").val();
     var praise_txt2 = $("#praise-txt11");
     var num2=parseInt(praise_txt2.text());
-    $.post("/idear/team_star", {team_mark:team_mark}, function (data) {
-        data = JSON.parse(data);
-        if (data.status === 1) {
-            document.getElementById("praise-img11-dianzan").setAttribute("src", "/static/team/imgs/redzan.png");
-            praise_txt2.addClass("hover");
-             num2+=1;
-            praise_txt2.text(num2);
-        } else if (data.status === 0) {
-            alert("操作失败！");
-        //删除记录
-        } else if(data.status === 2){
-            document.getElementById("praise-img11-dianzan").src="/static/team/imgs/dianzan.png";
-            praise_txt2.removeClass("hover");
-            num2-=1;
-            praise_txt2.text(num2);
-        }
-    })
+    if(user ==="" || user === undefined || user === null) {
+        alert("请您登陆");
+        window.location.href = "/idear/login";
+    } else {
+        $.post("/idear/team_star", {team_mark: team_mark}, function (data) {
+            data = JSON.parse(data);
+            if (data.status === 1) {
+                document.getElementById("praise-img11-dianzan").setAttribute("src", "/static/team/imgs/redzan.png");
+                praise_txt2.addClass("hover");
+                num2 += 1;
+                praise_txt2.text(num2);
+            } else if (data.status === 0) {
+                alert("操作失败！");
+                //删除记录
+            } else if (data.status === 2) {
+                document.getElementById("praise-img11-dianzan").src = "/static/team/imgs/dianzan.png";
+                praise_txt2.removeClass("hover");
+                num2 -= 1;
+                praise_txt2.text(num2);
+            }
+        })
+    }
 });
 //end
 

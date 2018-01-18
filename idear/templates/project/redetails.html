@@ -48,19 +48,24 @@
                         </div>
                     </div>
                     <div class="option">
-                        <button class="likebutton" id="rdlikebutton">
-                            <img class="plike" id="rdplike" src="{% static '/project/imgs/like1.svg' %}">
-                            <span class="plikenum">{{project.Praise_Project_set.count}} </span>
-                        </button>
+                        <div class="likebutton" id="rdlikebutton">
+                            {% if pstatus is 1%}
+                                     <img  id="rdpraise" onclick="pchangeImage()" src="{% static '/project/imgs/liked.png' %}" style="width:30px;height:30px;vertical-align:middle;margin-top: 7px;">
+                                {% else %}
+                                    <img   id="rdpraise" onclick="pchangeImage()" src="{% static '/project/imgs/like1.svg' %}" style="width:30px;height:30px;vertical-align:middle;margin-top: 7px;">
+                            {% endif %}
+                            <span class="plikenum"> {{project.Praise_Project_set.count}} </span>
+                            <input type="text" style="display: none" id = "praise.num" value="{{project.Praise_Project_set.count}}">
+                        </div>
                         <div class="op-tip">
                             <div class="home-b-collection" id="rdcollection">
                                 {% if fstatus is 1%}
                                     <img src="{% static '/project/imgs/star.png' %}" id="rdcoimg"
-                                     onclick="changeImage()"
+                                     onclick="achangeImage()"
                                      style="width:25px;height:25px;vertical-align:middle;">
                                     {% else %}
                                     <img src="{% static '/creation/imgs/collection0.png' %}" id="rdcoimg"
-                                     onclick="changeImage()"
+                                     onclick="achangeImage()"
                                      style="width:25px;height:25px;vertical-align:middle;">
                                 {% endif %}
                                 <a>关注 </a>
@@ -183,6 +188,7 @@
                                         <img class="creport" id="rdcreport"
                                              src="{% static 'creation/imgs/report.png' %}">
                                     </div>
+                                    <input type="text" style="display: none" id = "commentId" value=" {{commentlist|firstcomment|firstcommentId}}">
                                 </div>
                                 <div class="comment-content">
                                     <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
@@ -195,6 +201,63 @@
                         </div>
                             {%for comment in commentlist|leftcomment%}
                             <div class="c-reply">
+                            <input type="text" style="display: none" id = "rcommentId" value=" {{ comment.Id}}">
+                            <img class="rc-img" src= "/static/photos/{{comment.user.Img}}">
+                            <div class="rcomment-box">
+                                <div class="rcomment-head">
+                                    <h6 class="rcomment-name "><a href=" "> {{comment.user.UserName}}</a> 回复</h6>
+                                    <span class="rcdate">{{comment.Date|date:"Y/m/d"}}</span>
+                                    <div class="r-option">
+{#                                        <img class="rclike" id="rdrclike"#}
+{#                                             src="{% static 'project/imgs/like1.svg' %}"><span#}
+{#                                            class="rclikenum">1111</span>#}
+{#                                        <img class="rcreply" id="rdrcreply" src="{% static 'project/imgs/reply.svg' %}">#}
+                                        <img class="rcreport" id="rdrcreport"
+                                             src="{% static 'creation/imgs/report.png' %}">
+                                    </div>
+                                </div>
+                                <div class="rcomment-content">
+                                    <p id="rdr-content">{{comment.Content}}</p>
+                                </div>
+                                <div class="commentreply" id="rcommentreply">
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomments" id="crputcomment">回复</button>
+                                </div>
+                            </div>
+                        </div>
+                            {% endfor %}
+                    </div>
+                    {% endfor %} {% for commentlist in comment%}
+                    <div class="c-all" name="c-all">
+                        <div class="cmain">
+                            <img class="c-img" id="rdimg" src= "/static/photos/{{ commentlist | firstcommentimg }}">
+                            {#                                  可以加hover点上变成网站logo#}
+                            <div class="comment-box">
+                                <div class="comment-head">
+                                    <h6 class="comment-name " id="rduname"><a href=" ">{{commentlist|firstcomment}}</a></h6>
+                                    <span class="cdate" id="rdcdate">{{commentlist|firstcommenttime|date:"Y/m/d"}}</span>
+                                    <div class="c-option">
+{#                                        <img class="clike" id="rdclike"#}
+{#                                             src="{% static 'project/imgs/like1.svg' %}"><span#}
+{#                                            class="clikenum">1111</span>#}
+                                        <img class="creply" id="rdcreply" src="{% static 'project/imgs/reply.svg' %}">
+                                        <img class="creport" id="rdcreport"
+                                             src="{% static 'creation/imgs/report.png' %}">
+                                    </div>
+                                    <input type="text" style="display: none" id = "commentId" value=" {{commentlist|firstcomment|firstcommentId}}">
+                                </div>
+                                <div class="comment-content">
+                                    <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
+                                </div>
+                                <div class="commentreply" id="commentreply">
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomments" id="cputcomment" backcommentId = {{commentlist|firstcomment|firstcommentUuid}}>回复</button>
+                                </div>
+                            </div>
+                        </div>
+                            {%for comment in commentlist|leftcomment%}
+                            <div class="c-reply">
+                            <input type="text" style="display: none" id = "rcommentId" value=" {{ comment.Id}}">
                             <img class="rc-img" src= "/static/photos/{{comment.user.Img}}">
                             <div class="rcomment-box">
                                 <div class="rcomment-head">
@@ -270,9 +333,7 @@
             var lastday = result/(3600*24);
             $("#rdlastday").text(Math.ceil(lastday));
         });
-
-        function changeImage(){
-                    var user = getCookie('user_email');
+        function achangeImage(){ var user = getCookie('user_email');
                     if(user === null || user ===''){
                         alert("请您登陆");
                         window.location.href="/idear/login";
@@ -304,7 +365,7 @@
                             }, function (data) {
                                 if (data == 1) {
                                      element.src = '{% static '/creation/imgs/collection0.png' %}';
-                                     alert("关注成功！");
+                                     alert("关注取消成功！");
                                 }
                                 else {
                                     alert("wrong");
@@ -313,31 +374,56 @@
                     }
                 }
             }
+        function pchangeImage(){
+                    var plikenum = document.getElementById("praise.num").value;
+                    var user = getCookie('user_email');
+                    if(user === null || user ===''){
+                        alert("请您登陆");
+                        window.location.href="/idear/login";
+                    } else{
+                    element = document.getElementById('rdpraise');
+                    if (element.src.match("like1")) {
+                        var projectid = document.getElementById("projectId").value;
+                        $.post('/idear/prpraiseadd', {
+                                "projectId": projectid,
+                                "preuser": user
+                            }, function (data) {
+                                if (data == 1) {
+                                     element.src = '{% static '/project/imgs/liked.png' %}';
+                                     alert("点赞成功！");
+                                     plikenum = parseInt(plikenum) + 1;
+                                     $(".plikenum").html(plikenum)
 
-        $(function () {
-{#                        $.cookie("user", 3);#}
-{#                        userId = $.cookie("user");#}
+                                }
+                                else {
+                                    alert("wrong");
+                                }
+                            });
+                    }
+                    else {
+                        var projectid = document.getElementById("projectId").value;
 
-                        $("#rdplike").click(function () {
-                            var Id = window.location.href.split("=");
-                            Id = Id[Id.length - 1];
-                            like = $("#rdlikebutton")
-                            $.post("/idear/star",{userId:userId,starType:"2",Id:Id},function(data) {
-                                if (data == 1)    //点赞成功
-                                {
-                                    like.children().attr("src", "/static/project/imgs/liked.png");
-                                    like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) + 1)
+                        $.post('/idear/prpraisedelete', {
+                                "projectId": projectid,
+                                "preuser": user
+                            }, function (data) {
+                                if (data == 1) {
+
+                                     alert("点赞取消成功！");
+                                     element.src = '{% static '/project/imgs/like1.svg' %}';
+                                     var plikenum = document.getElementById("praise.num").value;
+                                     plikenum = parseInt(plikenum) - 1;
+                                     $(".plikenum").html(plikenum)
                                 }
-                                else if (data == 0)
-                                    alert(data)
-                                else    //取消点赞成功
-                                {
-                                    like.children().attr("src", "/static/project/imgs/like1.svg");
-                                    like.children(".plikenum").html(parseInt(like.children(".plikenum").html()) - 1)
+                                else {
+                                    alert("wrong");
                                 }
-                            })
-                        });
-});
+                            });
+                    }
+                }
+
+            }
+
 
 
     </script>
