@@ -22,14 +22,10 @@ $(function(){
     var praise_txt1 = $("#praise-txt11-1");
     var praise_txt2 = $("#praise-txt11");
 
-<<<<<<< HEAD
-    $.post("/idear/teamattend1",{user_email:user_email , Id:Id},function (status) {
-        if(status == 1){
-=======
+
     //团队点赞异步刷新显示页面
     $.post("/idear/teamattend",{team_mark:team_mark,type:1},function (data) {
         if(data == 1){
->>>>>>> ab3c8629c213bad78989a2b4fe92366722be378c
              document.getElementById("praise-img11-dianzan").src="/static/team/imgs/dianzan.png";
         }else if(data == 2){
              document.getElementById("praise-img11-dianzan").src="/static/team/imgs/redzan.png";
