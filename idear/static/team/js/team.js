@@ -62,7 +62,7 @@ $(function() {
          if(user_email == null) {
              alert('请先登录');
          }else {
-            window.location.href="teamhelpapplication/"+he
+            window.location.href="teamhelpapplication/"+help
          }
      });
 //控制介绍字数

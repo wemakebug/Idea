@@ -8,15 +8,13 @@
     <link rel="stylesheet" href="{% static 'team/css/team.css'%}">
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.min.css' %}" />
-    <script type="text/javascript" src="{% static 'creation/js/jquery-1.8.3.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
 {%endblock%}
 {%block content%}
     <div style="width: 100%">
         <div class="teamShow">
             <div class="thisLeft container">
                 {% for team in teams %}
-                    <div class="border_0 row" style="margin-left: 68px">
+                    <div class="border_0 row" style="margin-left: 68px;margin-right: 1px">
                         <div class="row">
                             <div class="photo_0 col-xs-6 col-md-3 " onclick="window.open('teamdetails/{{ team.Id }}')">
                                 <img src="/static/photos/{{ team.Img }}" style=" width: 100% ;height: 100%;border-radius: 6px;"  onerror="this.src='../../static/team/imgs/logo.jpg'" alt="">
@@ -28,13 +26,13 @@
                         </div>
                         <div class="row" style="height: 50%">
                             <div class="leftMatter">
-                                    团队标签：
-                                    {% for User2 in User2UserLabel  %}
-                                            {% if User2.user.Id == team.Id %}
-                                                <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
-                                                <a style=" font-size: 14px;color: #7A8B8B;">{{ User2.userLabel.Name}}</a>
-                                            {% endif %}
-                                    {% endfor %}
+                                <a>团队标签：</a>
+                                {% for User2 in User2UserLabel  %}
+                                        {% if User2.user.Id == team.Id %}
+                                            <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
+                                            <a style=" font-size: 14px;color: #7A8B8B;">{{ User2.userLabel.Name}}</a>
+                                        {% endif %}
+                                {% endfor %}
                             </div>
 
                             <div class="content_0 lead row" onclick="window.open('teamdetails/{{ team.Id }}')" style="margin-left: 43px">
@@ -87,7 +85,8 @@
     </div>
 {% endblock %}
 {%block script%}
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/jquery.cookie.js' %}"></script>
     <script type="text/javascript" src="{% static 'base/js/bootstrap.js' %}"></script>
     <script type="text/javascript" src="{% static 'team/js/team.js'%}"></script>
-
 {%endblock%}

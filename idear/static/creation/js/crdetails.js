@@ -46,21 +46,10 @@ $(document).ready(function () {
 //    }
 //})
 
-
+//创意举报
 document.getElementById('submit-report').onclick = function(){
-    var user = getCookie('u-img');
-    alert(user)
-        if(user === null || user ===''){
-            var conf = confirm("请您登录")
-            if(conf == true)
-                window.location.href(login())
-            else
-                return
-        }
-
     var reason = $("#message-text").val()
     var creationId = $("#creationId").val()
-
     if(reason=="")
         alert("请填入举报理由")
     else
@@ -73,6 +62,7 @@ document.getElementById('submit-report').onclick = function(){
     })
 }
 
+//评论
 $("#putcomment").click(function(){
     var content = $("#comment-content1").val() //获取评论中输入的内容
     var username = getCookie('username');
@@ -89,6 +79,7 @@ $("#putcomment").click(function(){
     })
     })
 
+//回复
 $(".putcomments").click(function(){
   var content = $(this).prev(".commentreply-text").val();
   var username = getCookie('username');
@@ -107,7 +98,7 @@ $(".putcomments").click(function(){
   })
 })
 
-
+//点击评论下拉框
 $('.creply').click(function(){
     var ele = this;
     var parent_div = ele.parentNode.parentNode.parentNode;
@@ -121,19 +112,34 @@ $('.creply').click(function(){
     reply.slideToggle("slow");
  });
 
-$('.rcreply').click(function(){
-    var ele = this;
-    var parent_div = ele.parentNode.parentNode.parentNode;
-    var reply = parent_div.lastChild;
-    if(reply.tagName === undefined){
-        reply = parent_div.childNodes[parent_div.childNodes.length-2];
-    }else {
-        reply = parent_div.lastChild;
-    }
-    reply = $(reply);
-    reply.slideToggle("slow");
- });
+//$('.rcreply').click(function(){
+//    var ele = this;
+//    var parent_div = ele.parentNode.parentNode.parentNode;
+//    var reply = parent_div.lastChild;
+//    if(reply.tagName === undefined){
+//        reply = parent_div.childNodes[parent_div.childNodes.length-2];
+//    }else {
+//        reply = parent_div.lastChild;
+//    }
+//    reply = $(reply);
+//    reply.slideToggle("slow");
+// });
 
+//评论举报
+$("#submit-rdcreport").click(function(){
+  var rdcreason = $("#message-text2").val()
+  var commentId = $(this).attr("commentId");
+    if(rdcreason=="")
+        alert("请填入举报理由")
+    else
+    $.post("rdcreport",{
+        "rdcreason":rdcreason,
+        "commentId":commentId
+    },function(data){
+        alert("提交成功")
+        window.location.reload()
+    })
+})
 //创意关注操作
 $(".home-b-collection").click(function(){
     Id = $(this).attr("creation")
