@@ -63,11 +63,19 @@
     <script type="text/javascript" src="{% static 'personal/js/allFollow.js' %}"></script>
     <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
     <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
-    <script>
-
-
-    </script>
-    <script>
-
+    <script type="text/javascript">
+        $(function() {
+            $(".mainContentPro").slice(0, 10).show();
+            if ($(".mainContentPro").length <= 10) {
+                $(".loadMore").hide();
+            }
+            $(".loadMore").on('click',function(e) {
+                e.preventDefault();
+                $(".mainContentPro:hidden").slice(0, 10).slideDown();
+                if ($(".mainContentPro:hidden").length === 0) {
+                    $(".loadMore").fadeOut('slow');
+                }
+            });
+        });
     </script>
 {% endblock %}
