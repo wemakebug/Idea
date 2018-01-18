@@ -39,14 +39,14 @@
                     </div>
                     <div class="praise11 praise1" >
                          <span id="praise11" class="praise11"><img src="{% static 'team/imgs/dianzan.png' %}" id="praise-img11-dianzan" alt="图片不显示替代的文字内容"> </span>
-                         <span id="praise-txt11" class="praise-txt11">{{ teamstar }}</span>
+                         <span id="praise-txt11" class="praise-txt11">{{ teamcounts }}</span>
                     </div>
                     <div class="teamdetailadddiv">
                         <input type="button" value="申请帮助" class="btn btn-info btn-xs" id="petitionhelp" onclick="window.open('/idear/teamhelpapplication/{{ team.Id }}')">
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-md-4" style="text-align: center;">
+            <div class="col-xs-6 col-md-4">
                 <div class="row">
                     <div class="teamdetailsynopsis1-2">
                         <span class="register1-3">所属学院：</span>
@@ -92,29 +92,31 @@
         <div class="row" style="margin-top: 30px;">
             {% for team_project in team_history_project %}
                 {% if team_project %}
-                    <div class="col-xs-6 col-md-4" style="-webkit-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);-moz-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);min-height: 300px;">
-                        <div class="row">
-                            <div class="col-xs-6 col-md-4" style="width: 90px;height: 90px;border: 1px solid #87CEFA;border-radius: 50px;">
-                                <img src="/static/photos/{{team_project.project.Img}}" style="width: 100%;height: 100%;border-radius: 40px;">
+                    <a href="/idear/dedetails?projectId={{ team_project.project.Id }}" style="text-decoration: none;cursor: pointer;">
+                        <div class="col-xs-6 col-md-4" style="-webkit-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);-moz-box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);box-shadow: 10px 10px 10px 10px rgba(207, 207, 207,0.5);min-height: 300px;">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-4" style="width: 90px;height: 90px;border: 1px solid #87CEFA;border-radius: 50px;">
+                                    <img src="/static/photos/{{team_project.project.Img}}" style="width: 100%;height: 100%;border-radius: 40px;">
+                                </div>
+                                <div class="col-xs-12 col-md-8">
+                                    <div class="row" style="text-align: center;">
+                                         <strong>{{team_project.project.ProjectName}}</strong>
+                                    </div>
+                                    <div class="row">
+                                        {% for team_label in team_project_label %}
+                                            {% if team_label.project.Id == team_project.project.Id %}
+                                                <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
+                                                <a style=" font-size: 14px;color: #7A8B8B;">{{ team_label.projectLabel.ProjectLabelName }}</a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-xs-12 col-md-8">
-                                <div class="row" style="text-align: center;">
-                                     <strong>{{team_project.project.ProjectName}}</strong>
-                                </div>
-                                <div class="row">
-                                    {% for team_label in team_project_label %}
-                                        {% if team_label.project.Id == team_project.project.Id %}
-                                            <span class="repo-language-color pinned-repo-meta" id="manyColor" ></span>
-                                            <a style=" font-size: 14px;color: #7A8B8B;">{{ team_label.projectLabel.ProjectLabelName }}</a>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
+                            <div class="row" style="margin-top: 20px;height: 180px;overflow: auto;">
+                                <p style="text-indent: 1em">{{team_project.project.Description}}</p>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 20px;height: 180px;overflow: auto;">
-                            <p style="text-indent: 1em">{{team_project.project.Description}}</p>
-                        </div>
-                    </div>
+                    </a>
                 {% else %}
                     <div style="width: 100%;height: 150px;">
                         11111111

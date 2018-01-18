@@ -154,7 +154,7 @@ def get_follow_count(req):
     try:
         email = req.COOKIES.get('user_email')
         user = models.User.objects.get(Email=email)
-        userfollow = models.Follow.objects.filter(user=user).count()
+        userfollow = models.Follow.objects.filter(Q(user=user) & Q(Follower_id__isnull=False)).count()
         result['userfollow'] = userfollow
         result['status'] = 1
         result['message'] = '显示数量'
@@ -441,38 +441,64 @@ def teamdetails(req, teamid):
     '''
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
-        # username = "chris"
-        try:
-            this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
-            labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
-            counts = models.Follow.objects.filter(Follower=this_team).count()
-            teamcounts = models.Praise.objects.filter(user_prised=this_team).count()
-            comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
-            user = models.User.objects.get(Email=email)
-            comment_id = models.Comment.objects.filter(Q(commited_user_id=teamid) & Q(user=user))
-            team_history_project = models.ProjectUser.objects.filter(Q(user__Id=teamid) & Q(project__Statue=4))
-            print(team_history_project)
-            team_project_label = models.Project2ProjectLabel.objects.all()
-            commentlist = []
+        if email:
+            try:
+                this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
+                labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
+                counts = models.Follow.objects.filter(Follower=this_team).count()
+                teamcounts = models.Praise.objects.filter(user_prised=this_team).count()
+                comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
+                user = models.User.objects.get(Email=email)
+                comment_id = models.Comment.objects.filter(Q(commited_user_id=teamid) & Q(user=user))
+                team_history_project = models.ProjectUser.objects.filter(Q(user__Id=teamid) & Q(project__Statue=4))
+                team_project_label = models.Project2ProjectLabel.objects.all()
+                commentlist = []
 
-            for comment in comments:
-                if comment.commentedId is None:
-                    newcomment = []
-                    newcomment.append(comment)
-                    commentlist.append(newcomment)
-
-            for comlist in commentlist:
                 for comment in comments:
-                    if str(comlist[0].Uuid)==str(comment.commentedId):
-                        comlist.append(comment)
+                    if comment.commentedId is None:
+                        newcomment = []
+                        newcomment.append(comment)
+                        commentlist.append(newcomment)
 
-        except Exception as e:
-            return Http404
+                for comlist in commentlist:
+                    for comment in comments:
+                        if str(comlist[0].Uuid)==str(comment.commentedId):
+                            comlist.append(comment)
 
-        return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist, "teamstar": teamcounts, "id": comment_id, "user": user, "team_history_project": team_history_project, "team_project_label":team_project_label})
+            except Exception as e:
+                return Http404
+            return render_to_response('team/teamdetails.html', {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist, "teamcounts": teamcounts, "id": comment_id, "user": user, "team_history_project": team_history_project, "team_project_label": team_project_label})
+        else:
+            try:
+                this_team = models.User.objects.get(Q(pk=teamid) & Q(Identity=2))
+                labels = models.User2UserLabel.objects.filter(Q(user__Id=teamid))
+                counts = models.Follow.objects.filter(Follower=this_team).count()
+                teamcounts = models.Praise.objects.filter(user_prised=this_team).count()
+                comments = models.Comment.objects.filter(commited_user_id=teamid).order_by("-Date")
+                # user = models.User.objects.get(Email=email)
+                # comment_id = models.Comment.objects.filter(Q(commited_user_id=teamid) & Q(user=user))
+                team_history_project = models.ProjectUser.objects.filter(Q(user__Id=teamid) & Q(project__Statue=4))
+                team_project_label = models.Project2ProjectLabel.objects.all()
+                commentlist = []
+
+                for comment in comments:
+                    if comment.commentedId is None:
+                        newcomment = []
+                        newcomment.append(comment)
+                        commentlist.append(newcomment)
+
+                for comlist in commentlist:
+                    for comment in comments:
+                        if str(comlist[0].Uuid) == str(comment.commentedId):
+                            comlist.append(comment)
+
+            except Exception as e:
+                return Http404
+            return render_to_response('team/teamdetails.html',
+                                      {"team": this_team, "labels": labels, "counnt": counts, "comments": commentlist,
+                                       "teamstar": teamcounts, "team_history_project": team_history_project, "team_project_label": team_project_label})
     if req.method == 'POST':
         content = req.POST["string"]
-        print (teamid)
         result = {
             "status": 0,
             "string": None
@@ -492,23 +518,6 @@ def teamdetails(req, teamid):
             return HttpResponse(json.dumps(result))
 
 
-# @csrf_exempt
-# def team_history_project(req):
-#     if req.method == 'POST':
-#         team_mark = req.POST["team_mark"]
-#         result = {
-#             'status': 0,
-#             'message': '',
-#         }
-#         try:
-#             team_history_project = models.ProjectUser.objects.filter(user_id=team_mark)
-#             print (team_history_project)
-#         except Exception as e:
-#             print(e.message)
-#         else:
-#             return HttpResponse(json.dumps(result))
-
-
 @csrf_exempt
 def teamcomment(req):
     if req.method == 'POST':
@@ -516,7 +525,6 @@ def teamcomment(req):
         teamid = req.POST["team_id"]
         commentid = req.POST["comment_id"]
         user_email = req.COOKIES.get('user_email')
-        # username = "chris"
         result = {
             'status': 0,
             'message': '',
@@ -529,7 +537,6 @@ def teamcomment(req):
                 'status': 1,
                 'message': 'success',
             }
-            print(Comment1[0].Uuid)
         except Exception as e:
             print(e.message)
             result["status"] = 0
@@ -544,47 +551,40 @@ def teamcomment(req):
 @csrf_exempt
 def teamattend(req):
     '''
-    团队详情的关注
+    团队详情的关注显示
     :param req: 
     :return: 
     '''
     if req.method == 'POST':
-        try:
-            Id = req.POST['Id']
-            userId = req.POST['userId']
-            FollowUser = models.Follow.objects.filter(Follower_id=Id, user_id=userId)
-            if len(FollowUser) > 0:
-                status = 2
+        type = int(req.POST['type'])
+        if type == 2:
+            try:
+                team_mark = req.POST['team_mark']
+                email = req.COOKIES.get('user_email')
+                user = models.User.objects.get(Email=email)
+                FollowUser = models.Follow.objects.filter(Follower_id=team_mark, user_id=user.Id)
+                if len(FollowUser) > 0:
+                    status = 2
+                else:
+                    status = 1
+            except Exception as e:
+                return HttpResponse('404')
             else:
-                status = 1
-        except Exception as e:
-            return HttpResponse('404')
-        else:
-            return HttpResponse(status)
-    if req.method == 'GET':
-        pass
-
-
-@csrf_exempt
-def teamattend1(req):
-    '''
-    团队详情的点赞
-    :param req: 
-    :return: 
-    '''
-    if req.method == 'POST':
-        try:
-            Id = req.POST['Id']
-            userId = req.POST['userId']
-            praiseUser = models.Praise.objects.filter(user_prised_id=Id, user_id=userId)
-            if len(praiseUser) > 0:
-                status = 2
+                return HttpResponse(status)
+        elif type == 1:
+            try:
+                team_mark = req.POST['team_mark']
+                email = req.COOKIES.get('user_email')
+                user = models.User.objects.get(Email=email)
+                FollowUser = models.Praise.objects.filter(user_prised_id=team_mark, user_id=user.Id)
+                if len(FollowUser) > 0:
+                    status = 2
+                else:
+                    status = 1
+            except Exception as e:
+                return HttpResponse('404')
             else:
-                status = 1
-        except Exception as e:
-            return HttpResponse('404')
-        else:
-            return HttpResponse(status)
+                return HttpResponse(status)
     if req.method == 'GET':
         pass
 
@@ -885,7 +885,7 @@ def attend(req):
             else:
                 models.Follow.objects.create(creation_id=Id, user_id=userId)
                 status = 1
-                
+
         elif attendType == 2:
             FollowProject = models.Follow.objects.filter(project_id = Id, user_id = userId)
             if len(FollowProject) > 0:
@@ -908,7 +908,69 @@ def attend(req):
         return HttpResponse(status)
 
 
+@csrf_exempt
+def team_attend(req):
+    '''
+    团队详情关注
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            email = req.COOKIES.get('user_email')
+            team_mark = req.POST["team_mark"]
+            user = models.User.objects.get(Email=email)
+            userId = user.Id
+            FollowUser = models.Follow.objects.filter(Follower_id=team_mark, user_id=userId)
+            if len(FollowUser) > 0:
+                FollowUser.delete()
+                result["status"] = 2
+                result["message"] = "删除记录"
+            else:
+                models.Follow.objects.create(Follower_id=team_mark, user_id=userId).save()
+                result["status"] = 1
+                result["message"] = "创建记录"
+        except Exception as e:
+            print(e.message)
+            return HttpResponse(json.dumps(result))
+        else:
+            return HttpResponse(json.dumps(result))
 
+@csrf_exempt
+def team_star(req):
+    '''
+    团队详情的点赞
+    :param req: 
+    :return: 
+    '''
+    if req.method == 'POST':
+        result = {
+            'status': 0,
+            'message': '',
+        }
+        try:
+            email = req.COOKIES.get('user_email')
+            team_mark = req.POST["team_mark"]
+            user = models.User.objects.get(Email=email)
+            userId = user.Id
+            FollowUser = models.Praise.objects.filter(user_prised_id=team_mark, user_id=userId)
+            if len(FollowUser) > 0:
+                FollowUser.delete()
+                result["status"] = 2
+                result["message"] = "删除记录"
+            else:
+                models.Praise.objects.create(user_prised_id=team_mark, user_id=userId).save()
+                result["status"] = 1
+                result["message"] = "创建记录"
+        except Exception as e:
+            print(e.message)
+            return HttpResponse(json.dumps(result))
+        else:
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
@@ -1082,8 +1144,6 @@ def redetails(req):
         project = models.Project.objects.get(Id=projectId)
         user = models.ProjectUser.objects.get(project_id=projectId)
         labels = models.Project2ProjectLabel.objects.filter(project_id=projectId)
-        praises = models.Praise.objects.all()
-        follows = models.Follow.objects.all()
         comments = models.Comment.objects.filter(project_id=projectId).order_by("-Date")
         commentlist = []
         for comment in comments:
@@ -1103,7 +1163,7 @@ def redetails(req):
         recruit = models.Recruit.objects.filter(project__Id=projectId)
         if recruit.exists():
             recruit = recruit[0]
-        print(projectId)
+
         a = recruit.EndTime.strftime("%Y-%m-%d %H:%M:%S")
         timeArray = time.strptime(a, "%Y-%m-%d %H:%M:%S")
         timeStamp = int(time.mktime(timeArray))
@@ -1111,18 +1171,83 @@ def redetails(req):
         try:
             useremail = req.COOKIES.get('user_email')
             preuser = models.User.objects.get(Email=useremail)
-            print(preuser.Img)
+            projectfollow = models.Follow.objects.filter(Q(project__Id=projectId)&Q(user=preuser))
+            print(projectfollow)
+
+            if projectfollow.count() is 0 :
+                fstatus = 0
+            else:
+                fstatus = 1
+
+
             return render_to_response('project/redetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "user": user, "recruit": recruit, "EndTime": timeStamp,
-                                   'follows': follows, 'praises': praises, "comment": commentlist,"preuser":preuser })
+                                    "fstatus":fstatus, "comment": commentlist,"preuser":preuser })
         except:
             return render_to_response('project/redetails.html',{"project": project, "project2projectLabels": project2projectLabel[:2],
-                                   "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp,'follows': follows,'praises': praises,"comment":commentlist,})
+                                   "labels": labels[:3], "user":user, "recruit": recruit, "EndTime": timeStamp, "comment":commentlist,})
 
 
     if req.method == "POST":
          pass
+
+
+# @csrf_exempt
+# def prpraise(req):
+#         '''
+#         项目点赞
+#         :param req:
+#         :return:
+#         '''
+
+@csrf_exempt
+def prattendadd(req):
+        '''
+        项目关注增加
+        :param req:
+        :return:
+        '''
+        if req.method == 'POST':
+            status = 0
+            try:
+                projectId = req.POST['projectId']
+                project = models.Project.objects.get(Id=projectId)
+                useremail = req.COOKIES.get('user_email')
+                preuser = models.User.objects.get(Email=useremail)
+                models.Follow.objects.create(user=preuser, project=project)
+                status = 1
+                return HttpResponse(status)
+
+            except Exception as e:
+                print(e)
+                return HttpResponse(status)
+
+
+@csrf_exempt
+def prattenddelete(req):
+        '''
+        项目关注删除
+        :param req:
+        :return:
+        '''
+        if req.method == 'POST':
+            status = 0
+            try:
+                projectId = req.POST['projectId']
+                project = models.Project.objects.get(Id=projectId)
+                useremail = req.COOKIES.get('user_email')
+                preuser = models.User.objects.get(Email=useremail)
+                models.Follow.objects.filter(user=preuser, project=project).delete()
+                status = 1
+                return HttpResponse(status)
+
+            except Exception as e:
+                print(e)
+                return HttpResponse(status)
+
+
+
 
 
 @csrf_exempt
@@ -1189,12 +1314,8 @@ def project_comment(req):
             return HttpResponse(status)
 
     if req.method == 'GET':
-        content = "hello world"
-        username = "chris"
-        projectid = 3
-        user = models.User.objects.get("UserName=username")
-        project = models.Project.objects.get(pk=projectid)
-        models.Comment.objects.create(user=user, project=project, Content=content)
+
+
         return HttpResponse("TRUE")
 
 @csrf_exempt
@@ -1399,7 +1520,7 @@ def dedetails(req):
         try:
             useremail = req.COOKIES.get('user_email')
             preuser = models.User.objects.get(Email=useremail)
-            print(preuser.Img)
+
             return render_to_response('project/dedetails.html',
                                   {"project": project, "project2projectLabels": project2projectLabel[:2],
                                    "labels": labels[:3], "user": user,
@@ -1494,7 +1615,6 @@ def release(req):
 def editprofile(req):
     if req.method == 'GET':
         email = req.COOKIES.get('user_email')
-        print(email)
         try:
             user = models.User.objects.get(Email=email)
         except Exception as e:
