@@ -86,6 +86,7 @@ urlpatterns = [
     url(r'^editprofile$', views.editprofile),
     url(r'^perCreation$', views.perCreation),
     url(r'^PM$', views.PM),
+    url(r'^PM_content$', views.PM_content),
     url(r'^get_follow_count$', views.get_follow_count),
     url(r'^get_praise_count$', views.get_praise_count),
     url(r'^get_user_name$', views.get_user_name),
