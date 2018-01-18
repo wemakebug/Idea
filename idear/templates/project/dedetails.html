@@ -168,7 +168,7 @@
                             <button class="putcomment" id="rdputcomment">评论</button>
                         </div>
                     </div>
-                    {% for commentlist in comment%}
+                      {% for commentlist in comment%}
                     <div class="c-all" name="c-all">
                         <div class="cmain">
                             <img class="c-img" id="rdimg" src= "/static/photos/{{ commentlist | firstcommentimg }}">
@@ -185,6 +185,7 @@
                                         <img class="creport" id="rdcreport"
                                              src="{% static 'creation/imgs/report.png' %}">
                                     </div>
+                                    <input type="text" style="display: none" id = "commentId" value=" {{commentlist|firstcomment|firstcommentId}}">
                                 </div>
                                 <div class="comment-content">
                                     <p id="rdc-content">{{commentlist|firstcommentcontent}}</p>
@@ -197,6 +198,7 @@
                         </div>
                             {%for comment in commentlist|leftcomment%}
                             <div class="c-reply">
+                            <input type="text" style="display: none" id = "rcommentId" value=" {{ comment.Id}}">
                             <img class="rc-img" src= "/static/photos/{{comment.user.Img}}">
                             <div class="rcomment-box">
                                 <div class="rcomment-head">

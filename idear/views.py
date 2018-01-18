@@ -48,12 +48,22 @@ def index(req):
     :return:
     '''
     if req.method == "GET":
+        array = []
         project = models.Project.objects.all()
         label = models.Project2ProjectLabel.objects.all()
-        creation = models.Creation.objects.all()
+        creations = models.Creation.objects.all()
+
+        for creation in creations:
+            result = {}
+            # count = creation.Praise_Creation_set.count
+            creacount = models.Praise.objects.filter(creation=creation).count()
+            result[0] = creation
+            result[1] = creacount
+            array.append(result)
+        print array
         creationlabel = models.Creation2ProjectLabel.objects.all()
         return render_to_response('idea/index.html',{"projects": project,"labels":label,
-                                                     "creations":creation,"creationlabels":creationlabel
+                                                     "creations":creations,"creationlabels":creationlabel
                                                      })
     if req.method == "POST":
         pass
@@ -1194,15 +1204,6 @@ def redetails(req):
     if req.method == "POST":
          pass
 
-
-# @csrf_exempt
-# def prpraise(req):
-#         '''
-#         项目点赞
-#         :param req:
-#         :return:
-#         '''
-
 @csrf_exempt
 def prattendadd(req):
         '''
@@ -1294,8 +1295,6 @@ def prpraisedelete(req):
                 return HttpResponse(status)
 
 
-
-
 @csrf_exempt
 def preport(req):
         '''
@@ -1331,6 +1330,41 @@ def preport(req):
                 result['message'] = str(e)
                 return HttpResponse(json.dumps(result))
 
+
+@csrf_exempt
+def pcreport(req):
+        '''
+        项目评论举报
+        :param req:
+        :return:
+        '''
+
+        if req.method == 'GET':
+            user_email = req.COOKIES.get('user_email')
+            username = models.User.objects.get(Email=user_email)
+            return HttpResponse("TRUE")
+        if req.method == 'POST':
+            result = {
+                'status': 0,
+                'message': '',
+            }
+            try:
+                commentId = req.POST["commentId"]
+                comment = models.Comment.objects.get(pk=commentId)
+                reason = req.POST["reason"]
+                user_email = req.COOKIES.get('user_email')
+                user = models.User.objects.get(Email=user_email)
+                models.Report.objects.create(user=user, comment=comment, Reason=reason)
+
+                result = {
+                    'status': 1,
+                    'message': 'success',
+                }
+                return HttpResponse(json.dumps(result))
+            except Exception as e:
+                print(e)
+                result['message'] = str(e)
+                return HttpResponse(json.dumps(result))
 
 @csrf_exempt
 def project_comment(req):
