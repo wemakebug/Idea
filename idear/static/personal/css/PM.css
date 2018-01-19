@@ -1,11 +1,26 @@
 h5{
     text-align: center;
+    margin-top: 5%;
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.pm_border1{
+    margin-top: 2%;
+}
+.pm_border1>ul li a {
+    cursor:pointer;
+    color:gray;
+}
+.pm_border1>ul li a:hover{
+    color: black;
 }
 .pm_border,.pm_border0{
-    width: 18%;
-    height: 25%;
+    height: 280px;
     float: left;
     margin-top: 2%;
+    margin-left: 3%;
     border-radius: 8px;
     box-shadow: 8px 8px 5px #d3e0e2;
 }
@@ -21,24 +36,30 @@ h5{
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 .pm_time{
-    margin-top: 6%;
-    margin-left: 2%;
+    margin-top: 5%;
+    margin-left: 7%;
+    text-align: center;
 }
 .pm_details{
     font-size: 10px;
     margin-top: 8%;
-    margin-left: 2%;
+    margin-left: 10%;
 }
 .pm_button{
-    margin-top: -10%;
-    margin-left: 36%;
+    margin-top: -6%;
+    margin-left: 54%
+}
+.pm_other{
+    margin-top: -1%;
 }
 .photo_1{
     width: 100%;
     height: 100%;
+    display:block;
+    padding: 0;
 }
 .glyphicon{
-   font-size: 155px;
+    font-size: 155px;
     color: white;
     margin-left: auto;
 }
@@ -46,7 +67,10 @@ h5{
     font-size: 80px;
     color: rgba(211, 211, 211, 1);
     margin-top: 50%;
-    margin-left: 33%;
+    margin-left: 37%;
+}
+.addsty{
+    color: black !important;
 }
 .pop{
     display: none;

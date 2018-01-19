@@ -2026,13 +2026,13 @@ def perCreation(req):
 @csrf_exempt
 def PM(req):
     '''
-    个人中心项目管理
+    个人中心发布的项目
     :param req:
     :return:
     '''
     if req.method == 'GET':
         user_email = req.COOKIES.get('user_email')
-        projectUser = models.ProjectUser.objects.filter(user__Email=user_email)
+        projectUser = models.ProjectUser.objects.filter(Q(user__Email=user_email) & Q(Identity=1))
         project = []
         for obj in projectUser:
             project.append(obj.project)
@@ -2040,6 +2040,42 @@ def PM(req):
     if req.method == 'POST':
         pass
 
+
+
+@csrf_exempt
+def PM_join(req):
+    '''
+    个人中心参与的项目
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        projectUser = models.ProjectUser.objects.filter(Q(user__Email=user_email) & Q(Identity=0))
+        project = []
+        for obj in projectUser:
+            project.append(obj.project)
+        return render_to_response('personal/PM_join.html',{'project':project})
+    if req.method == 'POST':
+        pass
+
+
+@csrf_exempt
+def PM_draft(req):
+    '''
+    个人中心参与的项目
+    :param req:
+    :return:
+    '''
+    if req.method == 'GET':
+        user_email = req.COOKIES.get('user_email')
+        projectUser = models.ProjectUser.objects.filter(Q(user__Email=user_email) & Q(project__Statue=0))
+        project = []
+        for obj in projectUser:
+            project.append(obj.project)
+        return render_to_response('personal/PM_draft.html',{'project':project})
+    if req.method == 'POST':
+        pass
 
 @csrf_exempt
 def PM_content(req):
