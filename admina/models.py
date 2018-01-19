@@ -138,11 +138,13 @@ class User2UserLabel(models.Model):
 class ProjectUser(models.Model):    
     '''
     项目-用户表
-    1.项目身份状态
+    1.项目用户身份状态
         0为参与者
         1为项目发起人
         2为指导教师
-        3项目退出成员
+        3为退出状态
+        4为异常状态
+
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='ProjectUser_User_set')
@@ -271,6 +273,7 @@ class Comment(models.Model):
     评论表
     '''
     Id = models.AutoField(primary_key=True)
+
     user = models.ForeignKey(User, related_name='Comment_User_set', null=False)
 
     creation = models.ForeignKey(Creation, related_name='Comment_Creation_set', null=True, blank=True)
@@ -286,7 +289,7 @@ class Comment(models.Model):
     IsAdopt = models.BooleanField(default=False)
 
     Isreply = models.BooleanField(default=False)
-    Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
+    Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()),unique=True)
 
     def __unicode__(self):
         return self.user.__unicode__()
