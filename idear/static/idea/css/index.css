@@ -328,7 +328,7 @@ small {
 }
 .pro_left_img{
     width: 100%;
-    height:60%;
+    height:65%;
 }
 .pro_left_img img{
     width: 100%;
@@ -365,17 +365,19 @@ small {
 }
 .pro_content{
     width: 100%;
-    height: 28%;
+    height: 22%;
 }
 .pro_label{
     width: 100%;
-    height:20%;
+    overflow: hidden;
+    height:25%;
     margin-top: 4%;
 }
 .pro_label p{
     display: block;
     min-width: 13%;
     width: auto;
+    margin-right: 5px;
     float:left;
     height: 100%;
     color:gray;
@@ -383,7 +385,7 @@ small {
 }
 .pro_name{
     width: 100%;
-    height: 26%;
+    height: 35%;
 }
 .pro_name p{
     width: 100%;
@@ -394,7 +396,8 @@ small {
 .pro_introduce{
     width: 100%;
     height:39%;
-    margin-top: 4%;
+    font-size: 0.8em;
+    color:#4a596f;
 }
 #txt{
     display: inline-block;
@@ -407,7 +410,7 @@ small {
 }
 .pro_line{
     width: 100%;
-    height: 0.2%;
+    height: 0.5%;
     background: #e0e0e0;
 }
 .pro_best{
@@ -508,6 +511,7 @@ small {
     height:45%;
     min-width: 214px;
     margin-left: 5%;
+    overflow: hidden;
 }
 .pro_no2_label{
     width: 90%;
@@ -542,7 +546,7 @@ small {
     margin-right: 3%;
     width: auto;
     float: left;
-    line-height: 31.05px;
+    line-height: 21.05px;
     font-size: 0.9em;
     color: gray;
 }
@@ -594,32 +598,52 @@ small {
     width: 100%;
     height: 74%;
 }
+/*.oneCreaBest{*/
+    /*width: 20%;*/
+    /*height: 135px;*/
+    /*float: left;*/
+    /*display: inline-block;*/
+    /*overflow: hidden;*/
+    /*position: relative;*/
+    /*margin-top: 35px;*/
+/*}*/
+/*.oneCreaBest img{*/
+    /*width: 80%;*/
+    /*margin-left: 10%;*/
+    /*height: 100%;*/
+    /*background-size: 100% 100%;*/
+    /*box-shadow: 1px 1px 9px 13px #CCCCCC;*/
+/*}*/
+/*.oneCreaBest img:hover{*/
+    /*box-shadow: 1px 1px 9px 13px #bbbbbb;*/
+/*}*/
+
+
+/*手风琴开始*/
+.box{
+    width:1000px;
+    height: 200px;
+    overflow: hidden;
+}
 .oneCreaBest{
-    width: 20%;
-    height: 135px;
+    width: 10%;
+    height: 100%;
     float: left;
+    transition: all 1s;
     margin-top: 35px;
 }
-.oneCreaBest img{
-    width: 80%;
-    margin-left: 10%;
-    height: 100%;
-    background-size: 100% 100%;
-    box-shadow: 1px 1px 9px 13px #CCCCCC;
+.creaImg{
+    width: 600px;
+    height:100%;
+    background-repeat: no-repeat;
+	background-position: top center;
+    cursor: pointer;
+    float: left;
 }
-.oneCreaBest img:hover{
-    box-shadow: 1px 1px 9px 13px #bbbbbb;
-}
-.creationHover{
-    top: -135px;
-    display: none;
-    position: relative;
-    width: 80%;
-    margin-left: 10%;
-    height: 100%;
-    background: #1b6d85;
-    opacity: 0.5;
-}
+.box:hover oneCreaBest{ width: 5%; }
+.oneCreaBest:hover{ width: 60%; }
+
+/*手风琴结束*/
 
 #gotop{
     display:block;
@@ -633,15 +657,5 @@ small {
     display:none;
     background-image:url('../imgs/top.png');
     background-size:100% 100%;
-}
-.everyBest{
-    width: 100%;
-    height: 200px;
-    margin-bottom: 20px;
-}
-.everyBest img{
-    width: 100%;
-    height: 100%;
-    background-size: 100% 100%;
 }
 

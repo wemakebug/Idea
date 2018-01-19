@@ -49,22 +49,41 @@ def index(req):
     '''
     if req.method == "GET":
         array = []
-        project = models.Project.objects.all()
+        array2 = []
+        arrayFive = []
+        proFive = []
+        projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=2)|Q(Statue=3)|Q(Statue=4))
+        users = models.ProjectUser.objects.all()
+        for user in users:
+            print user.project.Id,user.project.ProjectName
         label = models.Project2ProjectLabel.objects.all()
         creations = models.Creation.objects.all()
-
         for creation in creations:
             result = {}
-            # count = creation.Praise_Creation_set.count
-            creacount = models.Praise.objects.filter(creation=creation).count()
-            result[0] = creation
-            result[1] = creacount
-            array.append(result)
-        print array
-        creationlabel = models.Creation2ProjectLabel.objects.all()
-        return render_to_response('idea/index.html',{"projects": project,"labels":label,
-                                                     "creations":creations,"creationlabels":creationlabel
-                                                     })
+            if creation.IsUse == 1:
+                creacount = models.Praise.objects.filter(creation=creation).count()
+                result[0] = creation
+                result[1] = creacount
+                array.append(result)
+        array = sorted(array, key=lambda array: array[1],reverse=True)
+        creationArray = array[0:5]
+        for c in creationArray:
+            arrayFive.append(c[0])
+        for project in projects:
+            res = {}
+            procount = models.Praise.objects.filter(project=project).count()
+            res[0] = project
+            res[1] = procount
+            array2.append(res)
+        array2 = sorted(array2, key=lambda array2: array2[1],reverse=True)
+        proBest = array2[0][0]
+        proTwo = array2[1][0]
+        print proTwo.Id,proTwo.ProjectName
+        projectArray = array2[2:10]
+        for p in projectArray:
+            proFive.append(p[0])
+        return render_to_response('idea/index.html',{"projects": projects,"labels":label,"proBest":proBest,
+                                                     "proTwo":proTwo,"creationArray":arrayFive,"proArray":proFive,"users":users})
     if req.method == "POST":
         pass
 
@@ -695,7 +714,7 @@ def creations(req):
             else:
                 CreationLabelObjs = models.Creation2ProjectLabel.objects.filter(projectLabel=sign)
                 creations = []
-                for obj in CreationLabelObjsF:
+                for obj in CreationLabelObjs:
                     creations.append(obj.creation)
 
             projectLabels = models.ProjectLabel.objects.all()

@@ -137,7 +137,7 @@ class User2UserLabel(models.Model):
 class ProjectUser(models.Model):    
     '''
     项目-用户表
-    1.项目身份状态
+    1.项目用户身份状态
         0为参与者
         1为项目发起人
         2为指导教师
