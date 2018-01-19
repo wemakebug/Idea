@@ -57,14 +57,13 @@ def index(req):
         for user in users:
             print user.project.Id,user.project.ProjectName
         label = models.Project2ProjectLabel.objects.all()
-        creations = models.Creation.objects.all()
+        creations = models.Creation.objects.filter(IsUse=1)
         for creation in creations:
             result = {}
-            if creation.IsUse == 1:
-                creacount = models.Praise.objects.filter(creation=creation).count()
-                result[0] = creation
-                result[1] = creacount
-                array.append(result)
+            creacount = models.Praise.objects.filter(creation=creation).count()
+            result[0] = creation
+            result[1] = creacount
+            array.append(result)
         array = sorted(array, key=lambda array: array[1],reverse=True)
         creationArray = array[0:5]
         for c in creationArray:

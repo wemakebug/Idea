@@ -9,6 +9,9 @@ body, html {
 .home-content{
     margin-top:66px;
 }
+.index_recruit{
+    background: #2a6496;
+}
 .content-inner{
     padding-left: 30px !important;
     padding-right: 30px !important;
