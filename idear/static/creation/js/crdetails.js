@@ -19,12 +19,11 @@ $(document).ready(function () {
 
     $.post('getimg', function (result) {
         result = JSON.parse(result);
-
         if (result['status'] === 1) {
             var img_path = result['img_path'];
             var message = result['message'];
             user_img.src = '/static' + img_path;
-            document.getElementById('user_img').style.src= user_img.src;
+//            document.getElementById('user_img').style.src= user_img.src;
         } else if (result['status'] === 0) {
             var img_path = 'photos/2017/09/19/user/default.jpg';
             user_img.src = '/static/photos/' + img_path;
@@ -32,6 +31,8 @@ $(document).ready(function () {
         }
     });
 });
+
+
 
 //$("#rdreport").click(function(){
 //    var username = getCookie('username');
@@ -45,7 +46,7 @@ $(document).ready(function () {
 //    }
 //})
 
-
+//创意举报
 document.getElementById('submit-report').onclick = function(){
     var reason = $("#message-text").val()
     var creationId = $("#creationId").val()
@@ -61,10 +62,11 @@ document.getElementById('submit-report').onclick = function(){
     })
 }
 
+//评论
 $("#putcomment").click(function(){
-  var content = $("#comment-content1").val() //获取评论中输入的内容
-  var username = getCookie('username');
-  var creationId = $("#creationId").val()
+    var content = $("#comment-content1").val() //获取评论中输入的内容
+    var username = getCookie('username');
+    var creationId = $("#creationId").val()
     if (content=="")    //内容为空
         alert("您的输入为空")
     else
@@ -75,19 +77,28 @@ $("#putcomment").click(function(){
         },function(data){
             location.reload()
     })
-})
+    })
 
-$("#putcomments").click(function(){
-  rcomment = $("#comment-content2").val()
-  if (rcomment=="")
+//回复
+$(".putcomments").click(function(){
+  var content = $(this).prev(".commentreply-text").val();
+  var username = getCookie('username');
+  var creationId = $("#creationId").val()
+  var commentedId = $(this).attr("backcommentId");
+  if (content == "")
     alert("您的输入为空")
   else
-  $.post("comment",{content:$("#comment-content2").val(),creationId:$("#creationId").val()},function(data){
+  $.post("rcomment",{
+    "content":content,
+    "username":username,
+    "creationId":creationId,
+    "commentedId":commentedId
+    },function(data){
     location.reload()
   })
 })
 
-
+//点击评论下拉框
 $('.creply').click(function(){
     var ele = this;
     var parent_div = ele.parentNode.parentNode.parentNode;
@@ -101,19 +112,34 @@ $('.creply').click(function(){
     reply.slideToggle("slow");
  });
 
-$('.rcreply').click(function(){
-    var ele = this;
-    var parent_div = ele.parentNode.parentNode.parentNode;
-    var reply = parent_div.lastChild;
-    if(reply.tagName === undefined){
-        reply = parent_div.childNodes[parent_div.childNodes.length-2];
-    }else {
-        reply = parent_div.lastChild;
-    }
-    reply = $(reply);
-    reply.slideToggle("slow");
- });
+//$('.rcreply').click(function(){
+//    var ele = this;
+//    var parent_div = ele.parentNode.parentNode.parentNode;
+//    var reply = parent_div.lastChild;
+//    if(reply.tagName === undefined){
+//        reply = parent_div.childNodes[parent_div.childNodes.length-2];
+//    }else {
+//        reply = parent_div.lastChild;
+//    }
+//    reply = $(reply);
+//    reply.slideToggle("slow");
+// });
 
+//评论举报
+$("#submit-rdcreport").click(function(){
+  var rdcreason = $("#message-text2").val()
+  var commentId = $(this).attr("commentId");
+    if(rdcreason=="")
+        alert("请填入举报理由")
+    else
+    $.post("rdcreport",{
+        "rdcreason":rdcreason,
+        "commentId":commentId
+    },function(data){
+        alert("提交成功")
+        window.location.reload()
+    })
+})
 //创意关注操作
 $(".home-b-collection").click(function(){
     Id = $(this).attr("creation")

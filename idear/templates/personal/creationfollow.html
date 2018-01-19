@@ -13,6 +13,7 @@
 {%endblock%}
 
 {% block followScolumn %}
+<div class="proAllFollows">
 {% for follow in follows %}
     {% if follow.creation %}
     <div class="mainContentPro">
@@ -33,7 +34,10 @@
     </div>
     {% endif %}
 {% endfor %}
-
+</div>
+<div class="loadMore">
+    <p>加载更多</p>
+</div>
 {% endblock %}
 
 {% block script %}
@@ -41,11 +45,19 @@
     <script type="text/javascript" src="{% static 'personal/js/allFollow.js' %}"></script>
     <script type="text/javascript" src="{% static 'personal/js/homepage.js' %}"></script>
     <script type="text/javascript" src="{% static  'project/js/layer/layer.js' %}"></script>
-    <script>
-
-
-    </script>
-    <script>
-
+    <script type="text/javascript">
+        $(function() {
+            $(".mainContentPro").slice(0, 10).show();
+            if ($(".mainContentPro").length <= 10) {
+                $(".loadMore").hide();
+            }
+            $(".loadMore").on('click',function(e) {
+                e.preventDefault();
+                $(".mainContentPro:hidden").slice(0, 10).slideDown();
+                if ($(".mainContentPro:hidden").length === 0) {
+                    $(".loadMore").fadeOut('slow');
+                }
+            });
+        });
     </script>
 {% endblock %}

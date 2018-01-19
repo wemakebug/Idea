@@ -21,6 +21,7 @@ $(function(){
         navLi.each(function(){
             $this = $(this);
             var t = $this[0].href;
+            alert(t)
             if(t === windowUrl) {
                 $(this).addClass('addsty');  //添加当前位置样式
             }

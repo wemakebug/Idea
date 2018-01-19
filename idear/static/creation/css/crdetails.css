@@ -167,7 +167,9 @@
     margin-top:24%;
     font-size:15px;
 }
-
+.btn-style{
+    padding: 0px;
+}
 .home-b-comment{
     float:right;
     width:62px;
@@ -501,7 +503,7 @@ h5 {
 .c-all{
     width:100%;
     height:auto;
-    margin-bottom:40px;
+    margin-bottom:50px;
 }
 .ctitle{
     width:100%;
@@ -568,6 +570,8 @@ h5 {
 
 .cmain{
     height:60px;
+    margin-bottom:-22px
+    margin-top:40px
 }
 .c-img{
     display:block;
@@ -630,7 +634,13 @@ h5 {
 	float: left;
 	color: #999;
 	font-size: 13px;
-	margin: 6px 0 10px 20px;
+	margin: 6px 0px 0px 20px;
+}
+.ctime{
+	float: left;
+	color: #999;
+	font-size: 13px;
+	margin: 6px 0px 0px 5px;
 }
 .c-option{
     float:right;
@@ -665,6 +675,7 @@ h5 {
 .comment-content {
 	width:100%;
 	height: auto;
+	word-wrap:break-word;
 	font-size: 15px;
     line-height:30px;
 	color: #595959;
@@ -698,6 +709,7 @@ h5 {
     width:73%;
     float:left;
     margin-left:20px;
+    margin-top:20px;
     height:auto;
 	position: relative;
 }
@@ -745,11 +757,17 @@ h5 {
 	float: left;
 	color: #999;
 	font-size: 13px;
-	margin: 6px 0 10px 20px;
+	margin: 6px 0px 0px 20px;
+}
+.rctime{
+	float: left;
+	color: #999;
+	font-size: 13px;
+	margin: 6px 0px 0px 5px;
 }
 .r-option{
     float:right;
-    width:31%;
+    width:17%;
     height:100%;
 }
 .rclike{
