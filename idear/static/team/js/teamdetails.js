@@ -145,24 +145,24 @@ $(".putcomment_reply").click(function () {
 //end
 
 //回复举报
-var aLi = document.querySelectorAll('.creport');
-for (var i = 0; i < aLi.length; i++) {
-        aLi[i].addEventListener('click', function(){
-            layer.open({
-                type: 1,
-                offset: '200px',
-                resize: false,
-                move: false,
-                area: ['500px', '400px'],
-                title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
-                shade: 0.6,
-                maxmin: false,
-                anim: 0//0-6的动画形式，-1不开启
-                , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
-                '<button class="putreport" id="putreport">提交</button> '
-            });
-        });
-    }
+// var aLi = document.querySelectorAll('.creport');
+// for (var i = 0; i < aLi.length; i++) {
+//         aLi[i].addEventListener('click', function(){
+//             layer.open({
+//                 type: 1,
+//                 offset: '200px',
+//                 resize: false,
+//                 move: false,
+//                 area: ['500px', '400px'],
+//                 title: ['请填入举报理由', 'font-size:18px;text-align:center;'],
+//                 shade: 0.6,
+//                 maxmin: false,
+//                 anim: 0//0-6的动画形式，-1不开启
+//                 , content: '<textarea placeholder="" name="" id="comment-content1" class="report-text"></textarea> ' +
+//                 '<button class="putreport" id="putreport">提交</button> '
+//             });
+//         });
+//     }
 
 $(".putreport").click(function () {
     var report_text = $(".report-text").val();

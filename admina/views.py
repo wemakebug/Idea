@@ -1139,4 +1139,3 @@ def comment_list(req):
         result = zip(users, result)
         return render(req, 'second/UserCommentList.html',{"result":result})
 
-
