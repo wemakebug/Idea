@@ -26,32 +26,33 @@
         <div class="col-xs-16 col-md-10" style="height: auto;float: left; margin-left: -3%">
             <div class="row">
             {% for projects in project %}
-                <div class="col-xs-3 col-md-3 pm_border" style="padding: 0;">
-                    <div style="height: 180px;margin-left: 3%;padding: 0;border: none">
-                        <img src="/static/photos/{{ projects.Img }}" alt="" class="photo_1">
-                    </div>
-                    <h5>{{ projects.ProjectName}}</h5>
-                    <h6  class="pm_time fa fa-calendar"> {{ projects.EndTime }}</h6>
-                    <br>
-                    <div class="row pm_other">
-                        <div class="pm_details fa fa-dot-circle-o ">
-                            {% if projects.Statue == 0 %}暂存项目
-                            {% elif projects.Statue == 1 %}初期招募
-                            {% elif projects.Statue == 2 %}正在开发
-                            {% elif projects.Statue == 3 %}二次招募
-                            {% elif projects.Statue == 4 %}完成项目
-                            {% endif %}
+                {% if projects.Statue != 6 %}
+                    <div class="col-xs-3 col-md-3 pm_border" style="padding: 0;">
+                        <div style="height: 180px;"  class="pm_border2" >
+                            <img src="/static/photos/{{ projects.Img }}" alt="" class="photo_1">
                         </div>
-                        <div class="pm_button ">
-                            <button onclick="window.open('crdetails?creationId={{ creation.Id }}')"  class=" btn btn-xs btn-info" style="cursor :pointer">项目更改</button>
-                            <button style="cursor :pointer;" class="dele0 btn btn-xs btn-danger">删 除
-                                <input type="text" value="{{ projects.Id }}" style="display:none;" >
-                            </button>
+                        <h5  style="cursor :pointer;" onclick="window.open('/idear/redetails/?projectId={{ projects.Id }}')">{{ projects.ProjectName}}</h5>
+                        <h6  class="pm_time fa fa-calendar"> {{ projects.EndTime }}</h6>
+                        <br>
+                        <div class="row pm_other">
+                            <div class="pm_details fa fa-dot-circle-o ">
+                                {% if projects.Statue == 0 %}暂存项目
+                                {% elif projects.Statue == 1 %}初期招募
+                                {% elif projects.Statue == 2 %}正在开发
+                                {% elif projects.Statue == 3 %}二次招募
+                                {% elif projects.Statue == 4 %}完成项目
+                                {% endif %}
+                            </div>
+                            <div class="pm_button ">
+                                <button onclick="window.location.href='/idear/PM_content/{{ projects.Id }}'"  class=" btn btn-xs btn-info" style="cursor :pointer">项目更改</button>
+                                <button style="cursor :pointer;" class="dele0 btn btn-xs btn-danger" id="pm_delete">删 除</button>
+                                <input type="text" value="{{ projects.Id }}" style="display:none;" id="projectId">
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
-                <div class="col-xs-3 col-md-3 pm_border0 " href="#">
+                <div class="col-xs-3 col-md-3 pm_border0" onclick="window.location.href='/idear/release'">
                     <i class="fa fa-plus" ></i>
                     <h5>添 加 项 目</h5>
                 </div>

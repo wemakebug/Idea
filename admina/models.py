@@ -66,6 +66,7 @@ class Project(models.Model):
         3 二次招募
         4. 完成项目
         5 被举报不可用项目
+        6 发布者删除的项目
     '''
     Id = models.AutoField(primary_key=True)
     ProjectName = models.CharField(null=False, max_length=20, unique=True)
@@ -141,6 +142,7 @@ class ProjectUser(models.Model):
         0为参与者
         1为项目发起人
         2为指导教师
+        3项目退出成员
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='ProjectUser_User_set')

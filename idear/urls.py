@@ -88,7 +88,7 @@ urlpatterns = [
     url(r'^editprofile$', views.editprofile),
     url(r'^perCreation$', views.perCreation),
     url(r'^PM$', views.PM),
-    url(r'^PM_content$', views.PM_content),
+    url(r'^PM_content/(?P<projectid>\d+)$', views.PM_content),
     url(r'^PM_join$', views.PM_join),
     url(r'^PM_draft$', views.PM_draft),
     url(r'^get_follow_count$', views.get_follow_count),

@@ -29,11 +29,23 @@ h5{
 }
 .pm_border0{
     background-color: rgba(211, 211, 211, 0.2);
+    color:gray;
     cursor:pointer;
 }
 .pm_border:hover{
     box-shadow: 6px 6px 5px 0 rgba(200, 200, 200, 0.8);
     transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.pm_border0:hover{
+    background-color: rgba(211, 211, 211, 0.3);
+    color: black;
+}
+
+.pm_border2{
+    margin-left: 3%;
+    padding: 0;
+    border: none;
+
 }
 .pm_time{
     margin-top: 5%;
@@ -42,7 +54,7 @@ h5{
 }
 .pm_details{
     font-size: 10px;
-    margin-top: 8%;
+    margin-top: 9%;
     margin-left: 10%;
 }
 .pm_button{

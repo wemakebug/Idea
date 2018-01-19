@@ -2026,20 +2026,34 @@ def perCreation(req):
 @csrf_exempt
 def PM(req):
     '''
-    个人中心发布的项目
+    个人中心发布项目及草稿删除
     :param req:
     :return:
     '''
     if req.method == 'GET':
         user_email = req.COOKIES.get('user_email')
-        projectUser = models.ProjectUser.objects.filter(Q(user__Email=user_email) & Q(Identity=1))
+        projectUser = models.ProjectUser.objects.filter(Q(user__Email=user_email) & Q(Identity=1)&~Q(project__Statue=0))
         project = []
         for obj in projectUser:
             project.append(obj.project)
         return render_to_response('personal/PM.html',{'project':project})
     if req.method == 'POST':
-        pass
-
+        result = {
+            'message': None,
+            'status': 0,
+            'creationId': None,
+            'uuid': None
+        }
+        try:
+            projectId = req.POST['projectId']
+            models.Project.objects.filter(Id=projectId).update(Statue=6)
+            result['status'] = 1
+            result['message'] = '更改成功'
+            return HttpResponse(json.dumps(result))
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
@@ -2049,21 +2063,41 @@ def PM_join(req):
     :param req:
     :return:
     '''
+    user_email = req.COOKIES.get('user_email')
     if req.method == 'GET':
-        user_email = req.COOKIES.get('user_email')
         projectUser = models.ProjectUser.objects.filter(Q(user__Email=user_email) & Q(Identity=0))
         project = []
         for obj in projectUser:
             project.append(obj.project)
-        return render_to_response('personal/PM_join.html',{'project':project})
+        return render_to_response('personal/PM_join.html',{'project':project,})
     if req.method == 'POST':
-        pass
+        result = {
+            'message': None,
+            'status': 0,
+            'creationId': None,
+            'uuid': None
+        }
+        try:
+            projectId = req.POST['projectId']
+            models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(user__Email=user_email)).update(Identity=3)
+            user = models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(Identity=1)).values('user')
+
+            # user0 ={{ProjectUser0.user.Id}}
+            # user = models.User.object.filter(Id=user0)
+            models.Message.objects.create(user=user,Content=123).save()
+            result['status'] = 1
+            result['message'] = '更改成功'
+            return HttpResponse(json.dumps(result))
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
 def PM_draft(req):
     '''
-    个人中心参与的项目
+    个人中心暂存的项目发布
     :param req:
     :return:
     '''
@@ -2075,17 +2109,34 @@ def PM_draft(req):
             project.append(obj.project)
         return render_to_response('personal/PM_draft.html',{'project':project})
     if req.method == 'POST':
-        pass
+        result = {
+            'message': None,
+            'status': 0,
+            'creationId': None,
+            'uuid': None
+        }
+        try:
+            projectId = req.POST['projectId']
+            models.Project.objects.filter(Id=projectId).update(Statue=1)
+            result['status'] = 1
+            result['message'] = '更改成功'
+            return HttpResponse(json.dumps(result))
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+
 
 @csrf_exempt
-def PM_content(req):
+def PM_content(req,projectid):
     '''
     个人中心项目管理
     :param req:
     :return:
     '''
     if req.method == 'GET':
-        return render_to_response('personal/PM_content.html')
+        project = models.Project.objects.get(Id = projectid)
+        return render_to_response('personal/PM_content.html',{'project':project})
     if req.method == 'POST':
         pass
 
