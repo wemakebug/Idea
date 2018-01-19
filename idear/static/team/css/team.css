@@ -3,6 +3,9 @@ html{
     margin:0px;
 	background: #f1f1f1 none repeat scroll 0 0;
 }
+.index_team{
+    background: #2a6496;
+}
 .teamShow {
 	/*position: relative;*/
 	font-family: 宋体;
