@@ -59,6 +59,7 @@
                                      style="width:25px;height:25px;vertical-align:middle;">
                                 {% endif %}
                                 <a>关注 </a>
+                            <input type="text" style="display: none" id = "praise.num" value="{{project.Praise_Project_set.count}}">
                             </div>
                             <div class="home-b-share">
                                 <a href="#" class="share-buttons" id="share-qq"></a>
@@ -315,6 +316,7 @@
                                 if (data == 1) {
                                      element.src = '{% static '/project/imgs/liked.png' %}';
                                      alert("点赞成功！");
+                                     var plikenum = document.getElementById("praise.num").value;
                                      plikenum = parseInt(plikenum) + 1;
                                      $(".plikenum").html(plikenum)
                                 }

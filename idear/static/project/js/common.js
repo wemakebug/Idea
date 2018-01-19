@@ -60,6 +60,7 @@ for (var i = 0; i < putcomments.length; i ++) {
     reply = $(reply);
     var content = reply.children("#commentreplytext").val()
     var commentedId = $(this).attr("backcommentId");
+
     var username = getCookie('user_email');
     var projectId = $("#projectId").val()
 

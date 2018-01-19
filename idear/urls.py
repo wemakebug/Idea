@@ -55,6 +55,7 @@ urlpatterns = [
     url(r'^projects$', views.projects),
     url(r'^recruit$', views.recruit),
     url(r'^starttime$', views.starttime),
+    url(r'^praisecount$', views.praisecount),
     url(r'^recruit_apply$', views.recruit_apply),
     url(r'^prcomment$',views.prcomment),
     url(r'^preport$',views.preport),

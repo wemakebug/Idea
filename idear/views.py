@@ -1142,7 +1142,6 @@ def advice(req):
 招募项目详情
 '''
 
-
 def redetails(req):
     '''
         招募项目详情
@@ -1545,6 +1544,8 @@ def deprojects(req):
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
+
+@csrf_exempt
 def starttime(req):
     '''
     开发项目一级页面项目显示
@@ -1567,6 +1568,36 @@ def starttime(req):
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+
+
+@csrf_exempt
+def praisecount(req):
+    '''
+    开发项目一级页面项目显示
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                projects = models.Project.objects.all()
+                recruit = [1, 3]
+
+
+
+
+            return render_to_response('project/projects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects, "recruit":recruit})
+
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/deprojects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+
 @csrf_exempt
 def dedetails(req):
     '''
