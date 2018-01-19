@@ -218,21 +218,19 @@
                                                  src="{% static 'creation/imgs/report.png' %}">
                                         </div>
                                     </div>
-                                    <div class="rcomment-content">
-                                        <p id="rdr-content">{{comment.Content}}</p>
-                                    </div>
-                                    <div class="commentreply" id="rcommentreply">
-                                        <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
-                                        <button class="putcomments" id="crputcomment">回复</button>
-                                    </div>
+                                 <div class="rcomment-content">
+                                    <p id="rdr-content">{{comment.Content}}</p>
+                                </div>
+                                <div class="commentreply" id="rcommentreply">
+                                    <textarea placeholder=""  id="commentreplytext" class="commentreply-text"></textarea>
+                                    <button class="putcomments" id="crputcomment">回复</button>
                                 </div>
                             </div>
+                        </div>
                             {% endfor %}
-
                     </div>
                     {% endfor %}
 
-                </div>
             </div>
         </div>
     </div>

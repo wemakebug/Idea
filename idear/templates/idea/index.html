@@ -123,23 +123,42 @@
                 <div class="thumbs-up">
                     <div class="best_project">
                         <div class="pro">
-                            <a href="#">
-                                <div class="pro_left_img">
-                                    <img src="../../static/idea/imgs/best_img.png">
-                                </div>
-                            </a>
+                        {% if proBest.Statue == 1 or proBest.Statue == 3 %}
+                        <a href="redetails?projectId={{ proBest.Id }}">
+                            <div class="pro_left_img">
+                                <img src="/static/photos/{{ proBest.Img}}">
+                            </div>
+                        </a>
+                        {% else %}
+                        <a href="dedetails?projectId={{ proBest.Id }}">
+                            <div class="pro_left_img">
+                                <img src="/static/photos/{{ proBest.Img}}">
+                            </div>
+                        </a>
+                        {% endif %}
                             <div class="pro_content">
                                 <div class="pro_label">
                                     <a href="#" >
-                                        <p>大数据</p>
-                                        <p>互联网</p>
+                                    {%for label in labels%}
+                                        {% if label.project.Id == proBest.Id %}
+                                        <p>{{label.projectLabel.ProjectLabelName}}</p>
+                                        {% endif %}
+                                    {% endfor %}
                                     </a>
                                 </div>
-                                <div class="pro_name"><a href="#"><p>一个非常好的项目</p></a></div>
+                                <div class="pro_name">
+                                    {% if proBest.Statue == 1 or proBest.Statue == 3 %}
+                                    <a href="redetails?projectId={{ proBest.Id }}"><p>{{ proBest.ProjectName }}</p></a>
+                                    {% else %}
+                                    <a href="dedetails?projectId={{ proBest.Id }}"><p>{{ proBest.ProjectName }}</p></a>
+                                    {% endif %}
+                                </div>
                                 <div class="pro_introduce">
-                                    <a href="#">
-                                        <p id="txt">今年六月，世界娱乐巨头米高梅集团（MGM Resorts）宣布扩大与麦肯的合作，将旗下多个娱乐场所和度假村纳入了创意清单之中。</p>
-                                    </a>
+                                    {% if proBest.Statue == 1 or proBest.Statue == 3 %}
+                                    <p>招募项目</p>
+                                    {% else %}
+                                    <p>开发项目</p>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="pro_line"></div>
@@ -147,19 +166,23 @@
                                 <ul>
                                     <li>
                                         <div class="pro_comment"></div>
-                                        <div class="comment_num"><p>123</p></div>
+                                        <div class="comment_num"><p>{{ proBest.Comment_Project_set.count  }}</p></div>
                                     </li>
                                     <li>
                                         <div class="pro-thumbs-up"></div>
-                                        <div class="thumbs-up-num"><p>123</p></div>
+                                        <div class="thumbs-up-num"><p>{{ proBest.Praise_Project_set.count  }}</p></div>
                                     </li>
                                     <li>
                                         <div class="pro-collection"></div>
-                                        <div class="collection-num"><p>123</p></div>
+                                        <div class="collection-num"><p>{{ proBest.Follow_Project_set.count  }}</p></div>
                                     </li>
                                 </ul>
                                 <div class="pro_by">
-                                    <p>by&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">张张</a></p>
+                                    {% for user in users %}
+                                        {% if user.project.Id == proBest.Id %}
+                                        <div class="pro_no2_user"><p>by&nbsp;<a href="#">{{ user.user.UserName }}</a></p></div>
+                                        {% endif %}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -170,32 +193,73 @@
                     <div class="collection_no2">
                         <div class="best_project">
                             <div class="pro">
-                                <a href="#">
+                            {% if proTwo.Statue == 1 or proTwo.Statue == 3 %}
+                                <a href="redetails?projectId={{ proTwo.Id }}">
                                     <div class="pro_right_img">
-                                        <img src="../../static/idea/imgs/r_bg.jpg">
+                                        <img src="/static/photos/{{ proTwo.Img}}">
                                     </div>
                                 </a>
                                 <div class="pro_no2">
-                                    <a href="#">
+                                    <a href="redetails?projectId={{ proTwo.Id }}">
                                         <div class="pro_no2_name">
-                                            <p>众神探秘古埃及   今日神秘归来</p>
+                                            <p>{{ proTwo.ProjectName }}</p>
                                         </div>
                                     </a>
                                     <div class="pro_no2_label">
                                         <div class="pro_no2_ln">
-                                            <p>互联网</p>
-                                            <p>数学建模 </p>
-                                            <p>智能应用</p>
+                                            {%for label in labels%}
+                                                {% if label.project.Id == proTwo.Id %}
+                                                <p>{{label.projectLabel.ProjectLabelName}}</p>
+                                                {% endif %}
+                                            {% endfor %}
                                         </div>
-                                        <div class="pro_no2_user"><p>by&nbsp;<a href="#">张张</a></p></div>
+                                    {% for user in users %}
+                                        {% if user.project.Id == proTwo.Id %}
+                                        <div class="pro_no2_user"><p>by&nbsp;<a href="#">{{ user.user.UserName }}</a></p></div>
+                                        {% endif %}
+                                    {% endfor %}
                                     </div>
                                 </div>
+                            {% else %}
+                                <a href="dedetails?projectId={{ proTwo.Id }}">
+                                    <div class="pro_right_img">
+                                        <img src="/static/photos/{{ proTwo.Img}}">
+                                    </div>
+                                </a>
+                                <div class="pro_no2">
+                                    <a href="dedetails?projectId={{ proTwo.Id }}">
+                                        <div class="pro_no2_name">
+                                            <p>{{ proTwo.ProjectName }}</p>
+                                        </div>
+                                    </a>
+                                    <div class="pro_no2_label">
+                                        <div class="pro_no2_ln">
+                                            {%for label in labels%}
+                                                {% if label.project.Id == proTwo.Id %}
+                                                <p>{{label.projectLabel.ProjectLabelName}}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    {% for user in users %}
+                                        {% if user.project.Id == proTwo.Id %}
+                                        <div class="pro_no2_user"><p>by&nbsp;<a href="#">{{ user.user.UserName }}</a></p></div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
                             </div>
                         </div>
                     </div>
-                    {% for project in projects %}
+                    {% for project in proArray %}
                         <div class="pro_no3">
-                            <p><a href="redetails?projectId={{ project.Id }}">{{ project.ProjectName }}</a></p>
+                            <p>
+                            {% if project.Statue == 1 or project.Statue == 3 %}
+                                <a href="redetails?projectId={{ project.Id }}">{{ project.ProjectName }}</a>
+                            {% else %}
+                                <a href="dedetails?projectId={{ project.Id }}">{{ project.ProjectName }}</a>
+                            {% endif %}
+                            </p>
                             <div class="pro_no3_label">
                                 {%for label in labels%}
                                     {% if label.project.Id == project.Id %}
@@ -209,23 +273,18 @@
             </div>
         <!--项目排名结束-->
         <!--创意排名开始-->
-
             <div class="best_find_2">
                 <div class="line_one"></div>
                 <div class="box-one-left">
 					<h2>WEEKLY<small>creation list</small></h2>
 				</div>
-                <div class="creationContent">
-                    {% for creation in creations  %}
+                <div class="creationContent box" >
+                    {% for creation in creationArray  %}
                     <div class="oneCreaBest">
-                        <a href="#">
-                            <img src="/static/photos/{{ creation.Img}}">
+                        <a href="crdetails?creationId={{ creation.Id }}">
+                            <img src="/static/photos/{{ creation.Img}}" class="creaImg">
                         </a>
-                        <div class="creationHover">
-
-                        </div>
                     </div>
-                    <div>{{ creation.Praise_Creation_set.count }}</div>
                     {% endfor %}
                 </div>
             </div>
@@ -233,11 +292,6 @@
 			<a id="gotop" href="#"></a>
 		</div>
 	</div>
-
-{#    <div class="everyBest">#}
-{#        <img src="../../static/idea/imgs/backzz.png">#}
-{#    </div>#}
-
 </div>
     <!--主要内容结束-->
     <script src="{% static 'base/js/jquery-3.2.1.min.js'%}"></script>
