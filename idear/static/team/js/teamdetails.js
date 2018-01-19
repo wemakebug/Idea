@@ -164,8 +164,8 @@ $(".putcomment_reply").click(function () {
 //         });
 //     }
 
-$(".putreport").click(function () {
-    var report_text = $(".report-text").val();
+$(".submit_report").click(function () {
+    var report_text = $(".report_reason").val();
     if(report_text === "" || report_text === undefined || report_text === null){
         swal({
             title: "举报理由为空",
