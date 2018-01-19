@@ -1160,7 +1160,6 @@ def advice(req):
 招募项目详情
 '''
 
-
 def redetails(req):
     '''
         招募项目详情
@@ -1492,16 +1491,36 @@ def projects(req):
             sign = req.GET['sign']
             #  如果是所有项目
             if sign == "all":
-                projects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=2)|Q(Statue=3)|Q(Statue=4)).order_by('Id')
-                # projectLabels = models.ProjectLabel.objects.all()
-                recruit = [1,3]
+                pprojects = models.Project.objects.filter(Q(Statue=1)|Q(Statue=2)|Q(Statue=3)|Q(Statue=4)).order_by('Id')
+                array2 = []
+                projects = []
+                recruit = [1, 3]
+
+                for project in pprojects:
+                    res = {}
+                    procount = models.Praise.objects.filter(project=project).count()
+                    res[0] = project
+                    res[1] = procount
+                    array2.append(res)
+
+                array2 = sorted(array2, key=lambda array2: array2[1], reverse=True)
+                for p in array2:
+                    projects.append(p[0])
+                proBest = array2[0][0]
+                return render_to_response('project/projects.html',
+                                          {'projectLabels': models.ProjectLabel.objects.all(), "projects": projects,
+                                           "recruit": recruit, "proBest": proBest})
+
             else:
+
                 projects = []
                 ProjectLabelObjs = models.Project2ProjectLabel.objects.filter(projectLabel=sign)
                 for obj in ProjectLabelObjs:
                     projects.append(obj.project)
                 recruit = [1, 3]
-            return render_to_response('project/projects.html', {'projectLabels':models.ProjectLabel.objects.all() , "projects":projects, "recruit":recruit})
+
+
+            return render_to_response('project/projects.html', {'projectLabels':models.ProjectLabel.objects.all() , "projects":projects, "recruit":recruit })
         else:
             id = req.POST['projectId']
             project = get_object_or_404(models.Project, pk=id)
@@ -1563,6 +1582,8 @@ def deprojects(req):
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
 
+
+@csrf_exempt
 def starttime(req):
     '''
     开发项目一级页面项目显示
@@ -1585,6 +1606,85 @@ def starttime(req):
     except Exception as e:
         print(e)
         return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+
+
+@csrf_exempt
+def praisecount(req):
+    '''
+    开发项目一级页面项目显示
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                pprojects = models.Project.objects.all()
+                recruit = [1, 3]
+                array2 = []
+                projects=[]
+
+                for project in pprojects:
+                    res = {}
+                    procount = models.Praise.objects.filter(project=project).count()
+                    res[0] = project
+                    res[1] = procount
+                    array2.append(res)
+            array2 = sorted(array2, key=lambda array2: array2[1], reverse=True)
+            for p in array2:
+                projects.append(p[0])
+            proBest = array2[0][0]
+
+            return render_to_response('project/projects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects, "recruit":recruit,"array2":array2})
+
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/deprojects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+
+
+@csrf_exempt
+def commentcount(req):
+    '''
+    开发项目一级页面项目显示
+    '''
+    try:
+        if req.method == 'GET':
+            sign = req.GET['sign']
+            #  如果是所有项目
+            if sign == "all":
+                pprojects = models.Project.objects.all()
+                recruit = [1, 3]
+                array2 = []
+                projects=[]
+
+                for project in pprojects:
+                    res = {}
+                    procount = models.Comment.objects.filter(project=project).count()
+                    res[0] = project
+                    res[1] = procount
+                    array2.append(res)
+            array2 = sorted(array2, key=lambda array2: array2[1], reverse=True)
+            for p in array2:
+                projects.append(p[0])
+
+
+            return render_to_response('project/projects.html', {'projectLabels': models.ProjectLabel.objects.all() , "projects": projects, "recruit":recruit,"array2":array2})
+
+        else:
+            id = req.POST['projectId']
+            project = get_object_or_404(models.Project, pk=id)
+            comments = models.Comment.objects.fitler(project=id).order_by('Date')
+            return render_to_response('project/deprojects.html',
+                                      {'comments': comments})
+    except Exception as e:
+        print(e)
+        return HttpResponse("<script type='text/javascript'>alert('数据有异常，请稍后再试')</script>")
+
 @csrf_exempt
 def dedetails(req):
     '''
