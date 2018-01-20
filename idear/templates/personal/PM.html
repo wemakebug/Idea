@@ -43,8 +43,8 @@
                                 {% elif projects.Statue == 4 %}完成项目
                                 {% endif %}
                             </div>
-                            <div class="pm_button ">
-                                <button onclick="window.location.href='/idear/PM_content/{{ projects.Id }}'"  class=" btn btn-xs btn-info" style="cursor :pointer">项目更改</button>
+                            <div class="pm_button " style="margin-left: 60%">
+                                <button onclick="window.location.href='/idear/PM_content/{{ projects.Id }}'"  class=" btn btn-xs btn-info" style="cursor :pointer;">更 改</button>
                                 <button style="cursor :pointer;" class="dele0 btn btn-xs btn-danger" id="pm_delete">删 除</button>
                                 <input type="text" value="{{ projects.Id }}" style="display:none;" id="projectId">
                             </div>

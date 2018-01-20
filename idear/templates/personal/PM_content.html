@@ -20,39 +20,27 @@
 <div class="main_block">
     <div class="release_pro">
         <div class="pro_edit">
-            <h2>新建项目</h2>
+            <h2>更改项目</h2>
         </div>
-        <div class="useInstr">
-            <div id="agreeing" class="input-use">使用说明</div>
-        </div>
-        <div class="pro_chance">
-            <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>
-            <div class="chance_ownname " id="temporary"><p>暂存</p></div>
-            <div class="chance_ownname chance_release ">
-                <button class="releasePro" id="releasePro">
-                    <p>发布</p>
-                </button>
-            </div>
-        </div>
+{#        <div class="pro_chance">#}
+{#            <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>#}
+{#            <div class="chance_ownname " id="temporary"><p>暂存</p></div>#}
+{#            <div class="chance_ownname chance_release ">#}
+{#                <button class="releasePro" id="releasePro">#}
+{#                    <p>发布</p>#}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
     </div>
+
     <div class="input_pro_title">
         <form enctype="multipart/form-data">
-            <input class="input_title" placeholder="请在这里输入标题" autocomplete="off" type="text">
+            <input class="input_title"  autocomplete="off" type="text" value="{{ project.ProjectName }}">
         </form>
-    </div>
-    <div class="pro_owner">
-        <div class="pro_founder">
-            <p>创建人：</p>
-            <div class="owner_name">
-                <p id="username1">
-                    {{ username }}
-                </p>
-            </div>
-        </div>
     </div>
     <div class="pro_status">
         <div class="now_status">
-            <p>状态：创建中</p>
+            <p>状态：更改中...</p>
         </div>
     </div>
     <div class="main_pro_con" id="main_pro_con">
@@ -78,58 +66,39 @@
         </div>
         <div class="rich_text" id="rich_text">
             <div id="summernote" name="content"></div>
+            <input type="text" value="{{ projects.Description }}" style="display:none;" id="description">
         </div>
         <div class="chance_type">
             <div class="input_num">
-                <p>所需人数</p>
-                <input autocomplete="off" type="text" placeholder="数字" id="numPerson">
+                <p>所需人数:</p>
+                <input autocomplete="off" type="text"  id="numPerson" value="{{ project.Number }}">
             </div>
             <div class="end_time">
-                <p>截止时间</p>
+                <p>截止时间:</p>
                 <div class='wrapper'>
 		            <div class="example" data-desc="A basic datepicker" id="basic">
 			            <p>
-				            <input id="flatpickr-tryme" placeholder="Try me..">
+				            <input id="flatpickr-tryme" value="{{ project.EndTime }}">
 			            </p>
                     </div>
 	            </div>
             </div>
             <div class="pro_label">
                 <div class="chance_label">
-                    <p class="pro_label_exh">项目类型</p>
+                    <p class="pro_label_exh">项目标签</p>
                     <p class="chance_must">必选</p>
                 </div>
                 <div class="label_name">
-                    {% for obj in labels %}
-                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()" value="{{ obj.ProjectLabelName }}">{{ obj.ProjectLabelName}}</div>
+                    {% for projectLable in projectLable %}
+                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()">{{ projectLabel.ProjectLabelName }}</div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     </div>
+
 </div>
-<div class="pop-up">
-    <div class="pop_1">
-        <p> 欢迎您，</p>
-        <p id="username2" class="pop_user">{{ username }}</p>
-    </div>
-    <div class="contInstruc">
-        1.在开始发布项目前，请您认真阅读此说明，这将帮助您更好开启项目之旅。
-        <br>
-        2.系统默认项目公开程度为公开，您也可以选择隐私选项，系统将自动为您加密部分内容。
-        <br>
-        3.请您为项目添加封面，系统默认为无封面状态。
-        <br>
-        4.系统为您提供文本编辑器，秉承所见即所得的理念，为用户呈现你想要的项目展示效果。
-        <br>
-        5.请填写招募人数，截止时间和选择项目的标签类型，这将有助于其他用户高效准确地搜索您的项目。
-        <br>
-        6.检查信息是否填写齐全，必填项若为空系统将进行提醒，您可以选择暂存以方便您进行二次修改，检查无误后选择发布。
-    </div>
-    <div class="pop-up1">
-        <input type="button" value="关闭" id="closing" class="pop-up1input">
-    </div>
-</div>
+
 {% endblock %}
 
 {% block script %}

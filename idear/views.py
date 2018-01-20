@@ -2189,27 +2189,28 @@ def PM_join(req):
             project.append(obj.project)
         return render_to_response('personal/PM_join.html',{'project':project,})
     if req.method == 'POST':
-        result = {
-            'message': None,
-            'status': 0,
-            'creationId': None,
-            'uuid': None
-        }
-        try:
-            projectId = req.POST['projectId']
-            models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(user__Email=user_email)).update(Identity=3)
-            user = models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(Identity=1)).values('user')
-
-            # user0 ={{ProjectUser0.user.Id}}
-            # user = models.User.object.filter(Id=user0)
-            models.Message.objects.create(user=user,Content=123).save()
-            result['status'] = 1
-            result['message'] = '更改成功'
-            return HttpResponse(json.dumps(result))
-        except:
-            result['status'] = 0
-            result['message'] = '获取信息失败'
-            return HttpResponse(json.dumps(result))
+        # result = {
+        #     'message': None,
+        #     'status': 0,
+        #     'creationId': None,
+        #     'uuid': None
+        # }
+        # try:
+        #     projectId = req.POST['projectId']
+        #     models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(user__Email=user_email)).update(Identity=3)
+        #     user = models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(Identity=1)).values('user')
+        #
+        #     user0 ={{ProjectUser0.user.Id}}
+        #     user = models.User.object.filter(Id=user0)
+        #     models.Message.objects.create(user=user,Content=123).save()
+        #     result['status'] = 1
+        #     result['message'] = '更改成功'
+        #     return HttpResponse(json.dumps(result))
+        # except:
+        #     result['status'] = 0
+        #     result['message'] = '获取信息失败'
+        #     return HttpResponse(json.dumps(result))
+        pass
 
 
 @csrf_exempt
@@ -2254,7 +2255,12 @@ def PM_content(req,projectid):
     '''
     if req.method == 'GET':
         project = models.Project.objects.get(Id = projectid)
-        return render_to_response('personal/PM_content.html',{'project':project})
+        lable = models.Project2ProjectLabel.objects.filter(Q(project__Id=projectid))
+        projectLable = []
+
+        for obj in lable :
+            projectLable.append(obj.projectLabel)
+        return render_to_response('personal/PM_content.html',{'project':project,'projectLable':projectLable})
     if req.method == 'POST':
         pass
 
