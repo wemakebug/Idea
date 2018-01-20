@@ -11,9 +11,9 @@
 {%endblock%}
 
 {%block contents%}
-<div class="bigbox container">
+<div class="bigbox container-fluid">
     <div class="row">
-        <div style="width: 75%;">
+        <div style="width: 65%;">
             <table class="table table-hover table-bordered">
             <thead>
                 <tr>
@@ -27,12 +27,12 @@
             {% for message in message_content %}
             <tbody>
                 <tr>
-                    <td><span class="repo-language-color"></span></td>
-                    <td style="width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ message.Content }}</td>
-                    <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ message.Date }}</td>
-                    <td style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ message.Priority }}</td>
-                    <td>
-                        <button value="{{ message.Id }}" class="btn btn-info btn-xs examine" data-toggle="modal" data-target="#myModal">查看</button>
+                    <td style=" width: 5%;"><span class="repo-language-color"></span></td>
+                    <td style=" width: 55%;overflow: hidden;">{{ message.Content }}</td>
+                    <td style=" width: 17%;">{{ message.Date }}</td>
+                    <td style=" width: 5%;">{{ message.Priority }}</td>
+                    <td style=" width: 18%;">
+                        <button value="{{ message.Id }}" class="btn btn-info btn-xs examine" data-toggle="modal" data-target="#myModal">查看详情</button>
                         <button value="{{ message.Id }}" class="btn btn-danger btn-xs delete" >删除</button>
                     </td>
                 </tr>

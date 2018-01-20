@@ -41,3 +41,40 @@ $(function () {
         }
     });
 });
+
+
+ // $("#project_management").click(function () {
+ //        $("#project_management").addClass("add_NavigationBar_style");
+ //        $("#unread_messages").removeClass("add_NavigationBar_style");
+ //        $("#read_message").removeClass("add_NavigationBar_style");
+ //        $("#profollow").removeClass("add_NavigationBar_style");
+ //        $("#creative_inspiration").removeClass("add_NavigationBar_style");
+ //    });
+ //    $("#creative_inspiration").click(function () {
+ //        $("#creative_inspiration").addClass("add_NavigationBar_style");
+ //        $("#unread_messages").removeClass("add_NavigationBar_style");
+ //        $("#read_message").removeClass("add_NavigationBar_style");
+ //        $("#profollow").removeClass("add_NavigationBar_style");
+ //        $("#project_management").removeClass("add_NavigationBar_style");
+ //    });
+ //    $("#unread_messages").click(function () {
+ //        $("#unread_messages").addClass("add_NavigationBar_style");
+ //        $("#project_management").removeClass("add_NavigationBar_style");
+ //        $("#read_message").removeClass("add_NavigationBar_style");
+ //        $("#profollow").removeClass("add_NavigationBar_style");
+ //        $("#creative_inspiration").removeClass("add_NavigationBar_style");
+ //    });
+ //    $("#read_message").click(function () {
+ //        $("#read_message").addClass("add_NavigationBar_style");
+ //        $("#unread_messages").removeClass("add_NavigationBar_style");
+ //        $("#project_management").removeClass("add_NavigationBar_style");
+ //        $("#profollow").removeClass("add_NavigationBar_style");
+ //        $("#creative_inspiration").removeClass("add_NavigationBar_style");
+ //    });
+ //    $("#profollow").click(function () {
+ //        $("#profollow").addClass("add_NavigationBar_style");
+ //        $("#unread_messages").removeClass("add_NavigationBar_style");
+ //        $("#read_message").removeClass("add_NavigationBar_style");
+ //        $("#project_management").removeClass("add_NavigationBar_style");
+ //        $("#creative_inspiration").removeClass("add_NavigationBar_style");
+ //    });
