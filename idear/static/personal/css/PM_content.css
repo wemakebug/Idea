@@ -444,18 +444,25 @@
     text-align: right;
     color:#295E6A;
 }
-.chance_label p{
+
+.chance_label P{
+
     height:100%;
     line-height: 48px;
     float: left;
 }
+
 .chance_label a{
     line-height: 48px;
     margin-top: 10px;
 }
-.label_name{
+.label_name {
     width: 90%;
     min-height: 60px;
+}
+.label_name{
+    width: 90%;
+    min-height: 50px;
     overflow: auto;/*超出显示滚动条*/
 }
 .chance_pro_label{
@@ -463,6 +470,7 @@
     width:auto;
     max-width: 100%;
     overflow: hidden;
+    height: 30px;
     border: 1px solid #bbbbbb;
     color:gray;
     font-size: 0.95em;

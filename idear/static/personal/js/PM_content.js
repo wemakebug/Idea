@@ -177,9 +177,10 @@ $(function () {
         $.post("/idear/PM_content/"+projectId,data,function (result) {
             var result = JSON.parse(result);
             if(result.status){
-                alert("修改成功")
+                alert("修改成功");
             }
-        })
-    })
+        });
+    });
 
 });
+

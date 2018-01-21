@@ -52,6 +52,7 @@
         </div>
         <div class="pro_label">
             <div class="chance_label">
+
             <input type="text" value="{{ project.Statue }}" style="display:none;" id="status">
                 <a class="pro_label_exh">项目进度：
                     {% if project.Statue == 0 %}暂存项目
@@ -66,6 +67,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" > 初期招募
+
                     </label>
                 </div>
                 <div class="radio">
@@ -76,11 +78,13 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios3" value="option2">二次招募
+
                     </label>
                 </div>
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" id="optionsRadios4" value="option2">项目完成
+
                     </label>
                 </div>
             </div>
@@ -105,6 +109,7 @@
             <div class="recruitPost ">
                 <h4>招募贴：</h4>
                 <textarea name="textarea" class="postCon "  id="postCon" cols="21" rows="12" >{{ recruit.Describe }}</textarea>
+
             </div>
         </div>
             <br>
@@ -196,6 +201,4 @@
             document.getElementById("flatpickr-tryme").flatpickr();
         }
 	</script>
-    <script async src={% static "personal/js/flatpickr.js"%} onload="fp_ready()"></script>
-
 {% endblock %}

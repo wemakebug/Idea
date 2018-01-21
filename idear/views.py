@@ -2254,8 +2254,10 @@ def PM_content(req,projectid):
     '''
     if req.method == 'GET':
         project = models.Project.objects.get(Id=projectid)
+
         user = models.ProjectUser.objects.filter(Q(project_id=projectid)&Q(Identity=0))
         firstUser = models.ProjectUser.objects.filter(Q(project_id=projectid)&Q(Identity=1))
+
         labels = models.ProjectLabel.objects.all()
         recruit = models.Recruit.objects.filter(project__Id=projectid)
 
@@ -2282,15 +2284,17 @@ def PM_content(req,projectid):
             picture = req.POST['picture']
             Description = req.POST["rhtml"]
             Description = remove_script(Description)
+
             numPerson = req.POST['numPerson']
-            EndTime = req.POST['endTime']
-            EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
+            EndTime = req.POST["endTime"]
+
             proLabels = req.POST['proLabels'].split('*')
             tlabel = req.POST['tlabel']
             postCon = req.POST['postCon']
             plan = req.POST['plan']
             img = req.FILES.get("coverMap")
 
+            EndTime = datetime.strptime(EndTime,"%Y/%m/%d")
 
         except:
             result['status'] = 0
@@ -2368,7 +2372,6 @@ def delpeople(req):
             result['message'] = '获取信息失败'
             return HttpResponse(json.dumps(result))
     except Exception as e:
-
         return HttpResponse(status)
 
 
