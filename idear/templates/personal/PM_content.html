@@ -11,103 +11,163 @@
     <script src="{% static 'editor/summernote.js' %}" type="text/javascript"></script>
     <!-- include summernote-zn-CN -->
     <script src="{% static 'editor/lang/summernote-zh-CN.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'personal/css/release.css'%}">
+    <link rel="stylesheet" href="{% static 'personal/css/PM_content.css'%}">
     <link rel="stylesheet" id=cal_style type="text/css" href="{% static 'personal/css/flatpickr.min.css'%}">
     <link rel="stylesheet" href="{% static 'personal/css/fileinput.min.css'%}">
+    <link rel="stylesheet" href="{% static 'fonts/css/font-awesome.min.css' %}">
+
 {% endblock %}
 
 {% block content %}
 <div class="main_block">
     <div class="release_pro">
-        <div class="pro_edit">
-            <h2>更改项目</h2>
+        <div class="pro_chance">
+            <div class="chance_ownname " id="temporary"><p>取消</p></div>
+            <div class="chance_ownname chance_release ">
+                <button class="releasePro" id="releasePro">
+                    <p>确定</p>
+                </button>
+            </div>
         </div>
-{#        <div class="pro_chance">#}
-{#            <div class="chance_ownname" id="openness" onclick="getInnerHTML()"><p>公开</p></div>#}
-{#            <div class="chance_ownname " id="temporary"><p>暂存</p></div>#}
-{#            <div class="chance_ownname chance_release ">#}
-{#                <button class="releasePro" id="releasePro">#}
-{#                    <p>发布</p>#}
-{#                </button>#}
-{#            </div>#}
-{#        </div>#}
     </div>
-
     <div class="input_pro_title">
         <form enctype="multipart/form-data">
             <input class="input_title"  autocomplete="off" type="text" value="{{ project.ProjectName }}">
         </form>
     </div>
-    <div class="pro_status">
-        <div class="now_status">
-            <p>状态：更改中...</p>
+    <div class="pm_left">
+         <div class="input_num">
+            <span>所需人数:</span>
+            <input autocomplete="off" type="text"  id="numPerson" value="{{ recruit.PredictNumber }}">
+        </div>
+        <div class="pro_label">
+            <div class="chance_label">
+                <p class="pro_label_exh">项目类型</p>
+            </div>
+            <div class="label_name">
+                {% for obj in labels %}
+                    <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()" value="{{ obj.ProjectLabelName }}">{{ obj.ProjectLabelName}}</div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="pro_label">
+            <div class="chance_label">
+                <p class="pro_label_exh">项目进度</p>
+            </div>
+            <div class="label_name">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 初期招募
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">开发中...
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">二次招募
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">项目完成
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="main_pro_con" id="main_pro_con">
-        <div class="add_img">
-            <div class="chance_add">
-                <div class="pro_cover">
-                    <p>封面图</p>
+    <div class="main_pro_con  " id="main_pro_con">
+         <div class="add_img ">
+            <div class="chance_add ">
+                <div class="original_Img ">
+                    <img src="../../static/photos/{{ project.Img }}" alt="" style="width: 100%;height: 100%">
                 </div>
-                <div id="tbody">
+                <div id="tbody" class="alter_Img">
                     <div>
                         <p>
                             <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
-        data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+        data-show-upload="false" data-show-caption="ture" data-msg-placeholder="Select {files} for upload...">
                             <br>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="recruitPost">
-                <p>招募贴：</p>
-                <textarea name="textarea" class="postCon" cols="21" rows="12" placeholder="请在这里输入文本"></textarea>
+            <div class="recruitPost ">
+                <h4>招募贴：</h4>
+                <textarea name="textarea" class="postCon " cols="21" rows="12" >{{ recruit.Describe }}</textarea>
             </div>
         </div>
-        <div class="rich_text" id="rich_text">
-            <div id="summernote" name="content"></div>
-            <input type="text" value="{{ projects.Description }}" style="display:none;" id="description">
-        </div>
-        <div class="chance_type">
-            <div class="input_num">
-                <p>所需人数:</p>
-                <input autocomplete="off" type="text"  id="numPerson" value="{{ project.Number }}">
-            </div>
-            <div class="end_time">
-                <p>截止时间:</p>
-                <div class='wrapper'>
-		            <div class="example" data-desc="A basic datepicker" id="basic">
-			            <p>
-				            <input id="flatpickr-tryme" value="{{ project.EndTime }}">
-			            </p>
-                    </div>
-	            </div>
-            </div>
-            <div class="pro_label">
-                <div class="chance_label">
-                    <p class="pro_label_exh">项目标签</p>
-                    <p class="chance_must">必选</p>
-                </div>
-                <div class="label_name">
-                    {% for projectLable in projectLable %}
-                        <div class="chance_pro_label" name="chance_pro_label" onclick="Myfunction()">{{ projectLabel.ProjectLabelName }}</div>
-                    {% endfor %}
-                </div>
+            <br>
+        <div class="rich">
+            <div class="rich_text " id="rich_text">
+                <br>
+                <h4 class="">项目介绍:</h4>
+                <div id="summernote" name="content" style="width: 80%"></div>
+                <input type="text" value="{{ project.Description | safe }}" style="display:none;" id="description">
             </div>
         </div>
     </div>
-
+    <div class="chance_type">
+        <div class="end_time">
+            <span>截止时间:</span>
+            <div class='wrapper'>
+                <div class="example" data-desc="A basic datepicker" id="basic">
+                    <p>
+                        <input id="flatpickr-tryme" value="{{ project.EndTime }}">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="people">
+            <table class="table">
+                <tr>
+                  <td>创建者：{{ firstUser.user.UserName }}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                  <td>成员：</td>
+                    <td></td>
+                </tr>
+                {% for user in user %}
+                    <tr>
+                      <td>
+                          {{ user.user.UserName }}
+                          <input type="text" value="{{ project.Id }}" style="display:none;" id="projectId">
+                          <input type="text" value="{{ user.user.Id }}" style="display:none;" id="peopleId">
+                      </td>
+                      <td>
+                          <span class="fa fa-trash-o" style="cursor :pointer;margin-left: 5%;margin-top: 7px" id="people"></span>
+                      </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
-
+<div class="pop">
+    <div class="popMain">
+        <div class="popTop"></div>
+        <div class="popMiddle">
+            <p>是否确认删除？</p>
+        </div>
+        <div class="popBottom">
+            <span class="confirm">确认</span>
+            <span class="cancel">取消</span>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block script %}
     <script type="text/javascript" src={% static "personal/js/fileinput.min.js"%} ></script>
-    <script type="text/javascript" src={% static "personal/js/release.js"%} ></script>
     <script type="text/javascript" src={% static "base/js/base.js"%} ></script>
+    <script type="text/javascript" src={% static "personal/js/PM_content.js"%} ></script>
     <script>
+            var id= $("#description").val();
         $('#summernote').summernote({
-            height: 700,
+            height: 400,
             lang: 'zh-CN',
             focus: true,
             toolbar: [
@@ -122,7 +182,7 @@
             ]
         });
     </script>
-    <script async>
+        <script async>
         function fp_ready(){
             Flatpickr.l10n.firstDayOfWeek = 1;
             document.getElementById("flatpickr-tryme").flatpickr();
@@ -265,5 +325,4 @@
             }
         })
     };
-    </script>
 {% endblock %}

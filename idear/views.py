@@ -2254,16 +2254,51 @@ def PM_content(req,projectid):
     :return:
     '''
     if req.method == 'GET':
-        project = models.Project.objects.get(Id = projectid)
-        lable = models.Project2ProjectLabel.objects.filter(Q(project__Id=projectid))
-        projectLable = []
+        project = models.Project.objects.get(Id=projectid)
+        user = models.ProjectUser.objects.filter(project_id=projectid)
+        firstUser = models.ProjectUser.objects.filter(Q(project_id=projectid),Q(Identity=1))
+        labels = models.ProjectLabel.objects.all()
+        recruit = models.Recruit.objects.filter(project__Id=projectid)
 
-        for obj in lable :
-            projectLable.append(obj.projectLabel)
-        return render_to_response('personal/PM_content.html',{'project':project,'projectLable':projectLable})
-    if req.method == 'POST':
-        pass
+        if recruit.exists():
+            recruit = recruit[0]
+        try:
+            return render_to_response('personal/PM_content.html',{"project": project, "labels": labels,"firstUser":firstUser[0], "user": user, "recruit": recruit,})
+        except:
+            return render_to_response('personal/PM_content.html')
 
+    if req.method == "POST":
+         pass
+
+
+def delpeople(req):
+    '''
+    个人中心项目成员删除
+    :param req:
+    :return:
+    '''
+
+    try:
+        result = {
+            'message': None,
+            'status': 0,
+            'creationId': None,
+            'uuid': None
+        }
+        try:
+            projectId = req.POST['projectId']
+            peopleId = req.POST['peopleId']
+            models.Project.objects.filter(Q(project__Id=projectId)&Q(user__Id=peopleId)).update(Identity=3)
+            result['status'] = 1
+            result['message'] = '更改成功'
+            return HttpResponse(json.dumps(result))
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+    except Exception as e:
+
+        return HttpResponse(status)
 
 @csrf_exempt
 def personal_information(req):
