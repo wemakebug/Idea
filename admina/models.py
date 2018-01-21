@@ -144,7 +144,6 @@ class ProjectUser(models.Model):
         2为指导教师
         3为退出状态
         4为异常状态
-
     '''
     Id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='ProjectUser_User_set')
@@ -154,6 +153,7 @@ class ProjectUser(models.Model):
     Uuid = models.UUIDField(null=True, blank=True, default=str(uuid.uuid1()))
     def __unicode__(self):
         return self.project.__unicode__()
+
 
 class Creation(models.Model):
     '''
