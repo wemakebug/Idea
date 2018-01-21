@@ -166,7 +166,11 @@
 .navigation-link:hover {
 	color: black;
 }
-
+.add_NavigationBar_style{
+    color: black;
+    content: "";
+	border-bottom: solid 2px;
+}
 .navigation-link:hover:before {
 	width: 100%;
 }

@@ -2189,27 +2189,28 @@ def PM_join(req):
             project.append(obj.project)
         return render_to_response('personal/PM_join.html',{'project':project,})
     if req.method == 'POST':
-        result = {
-            'message': None,
-            'status': 0,
-            'creationId': None,
-            'uuid': None
-        }
-        try:
-            projectId = req.POST['projectId']
-            models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(user__Email=user_email)).update(Identity=3)
-            user = models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(Identity=1)).values('user')
-
-            # user0 ={{ProjectUser0.user.Id}}
-            # user = models.User.object.filter(Id=user0)
-            models.Message.objects.create(user=user,Content=123).save()
-            result['status'] = 1
-            result['message'] = '更改成功'
-            return HttpResponse(json.dumps(result))
-        except:
-            result['status'] = 0
-            result['message'] = '获取信息失败'
-            return HttpResponse(json.dumps(result))
+        # result = {
+        #     'message': None,
+        #     'status': 0,
+        #     'creationId': None,
+        #     'uuid': None
+        # }
+        # try:
+        #     projectId = req.POST['projectId']
+        #     models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(user__Email=user_email)).update(Identity=3)
+        #     user = models.ProjectUser.objects.filter(Q(project__Id=projectId)&Q(Identity=1)).values('user')
+        #
+        #     user0 ={{ProjectUser0.user.Id}}
+        #     user = models.User.object.filter(Id=user0)
+        #     models.Message.objects.create(user=user,Content=123).save()
+        #     result['status'] = 1
+        #     result['message'] = '更改成功'
+        #     return HttpResponse(json.dumps(result))
+        # except:
+        #     result['status'] = 0
+        #     result['message'] = '获取信息失败'
+        #     return HttpResponse(json.dumps(result))
+        pass
 
 
 @csrf_exempt
@@ -2230,7 +2231,6 @@ def PM_draft(req):
         result = {
             'message': None,
             'status': 0,
-            'creationId': None,
             'uuid': None
         }
         try:
@@ -2253,10 +2253,123 @@ def PM_content(req,projectid):
     :return:
     '''
     if req.method == 'GET':
-        project = models.Project.objects.get(Id = projectid)
-        return render_to_response('personal/PM_content.html',{'project':project})
-    if req.method == 'POST':
-        pass
+        project = models.Project.objects.get(Id=projectid)
+        user = models.ProjectUser.objects.filter(Q(project_id=projectid)&Q(Identity=0))
+        firstUser = models.ProjectUser.objects.filter(Q(project_id=projectid)&Q(Identity=1))
+        labels = models.ProjectLabel.objects.all()
+        recruit = models.Recruit.objects.filter(project__Id=projectid)
+
+        if recruit.exists():
+            recruit = recruit[0]
+        try:
+            return render_to_response('personal/PM_content.html',{"project": project, "labels": labels,"firstUser":firstUser[0], "user": user, "recruit": recruit,})
+        except:
+            return render_to_response('personal/PM_content.html')
+
+    if req.method == "POST":
+
+        result = {
+            'message': None,
+            'status': 0,
+            'picture':None,
+            "tlabel":None,
+            'uuid': None
+        }
+
+        try:
+
+            proTitle = req.POST['proTitle']
+            picture = req.POST['picture']
+            Description = req.POST["rhtml"]
+            Description = remove_script(Description)
+            numPerson = req.POST['numPerson']
+            EndTime = req.POST['endTime']
+            EndTime = datetime.strptime(EndTime, "%Y/%m/%d")
+            proLabels = req.POST['proLabels'].split('*')
+            tlabel = req.POST['tlabel']
+            postCon = req.POST['postCon']
+            plan = req.POST['plan']
+            img = req.FILES.get("coverMap")
+
+
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+        else:
+            if picture == '0':
+                if tlabel == '0':
+                    print plan
+                    models.Project.objects.filter(Id=projectid).update(ProjectName=proTitle,Statue=plan,Description=Description,EndTime=EndTime)
+                    models.Recruit.objects.filter(project__Id=projectid).update(PredictNumber=numPerson,Describe=postCon)
+                    result['status'] = 1
+                    result['message'] = '成功'
+                    return HttpResponse(json.dumps(result))
+                elif tlabel=='1':
+                    for label in proLabels[:-1]:
+                        Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                        models.Project2ProjectLabel.objects.filter(project__Id=projectid).update(projectLabel=Label)
+                        models.Project.objects.filter(Id=projectid).update(ProjectName=proTitle, Statue=plan,
+                                                                           Description=Description, EndTime=EndTime)
+                        models.Recruit.objects.filter(project__Id=projectid).update(PredictNumber=numPerson,
+                                                                                    Describe=postCon)
+                        result['status'] = 1
+                        result['message'] = '成功'
+                    return HttpResponse(json.dumps(result))
+            elif picture == '1':
+                if tlabel == '0':
+                    models.Project.objects.filter(Id=projectid).update(ProjectName=proTitle,Statue=plan,Description=Description,EndTime=EndTime,Img=img)
+                    models.Recruit.objects.filter(project__Id=projectid).update(PredictNumber=numPerson,Describe=postCon)
+                    result['status'] = 1
+                    result['message'] = '成功'
+                    return HttpResponse(json.dumps(result))
+                elif tlabel=='1':
+                    for label in proLabels[:-1]:
+                        Label = models.ProjectLabel.objects.get(ProjectLabelName=label)
+                        models.Project2ProjectLabel.objects.filter(project__Id=projectid).update(projectLabel=Label)
+                        models.Project.objects.filter(Id=projectid).update(ProjectName=proTitle, Statue=plan,
+                                                                           Description=Description, EndTime=EndTime,
+                                                                           Img=img)
+                        models.Recruit.objects.filter(project__Id=projectid).update(PredictNumber=numPerson,
+                                                                                    Describe=postCon)
+                        result['status'] = 1
+                        result['message'] = '成功'
+                    return HttpResponse(json.dumps(result))
+
+
+
+
+
+
+@csrf_exempt
+def delpeople(req):
+    '''
+    个人中心项目成员删除
+    :param req:
+    :return:
+    '''
+
+    try:
+        result = {
+            'message': None,
+            'status': 0,
+            'creationId': None,
+            'uuid': None
+        }
+        try:
+            projectId = req.POST['projectId']
+            peopleId = req.POST['peopleId']
+            models.ProjectUser.objects.filter(Q(project__Id=projectId) & Q(user__Id=peopleId)).update(Identity=3)
+            result['status'] = 1
+            result['message'] = '更改成功'
+            return HttpResponse(json.dumps(result))
+        except:
+            result['status'] = 0
+            result['message'] = '获取信息失败'
+            return HttpResponse(json.dumps(result))
+    except Exception as e:
+
+        return HttpResponse(status)
 
 
 @csrf_exempt

@@ -86,6 +86,7 @@ urlpatterns = [
     url(r'^team_attend$', views.team_attend),
     url(r'^team_star$', views.team_star),
     url(r'star', views.star),
+
     url(r'^teamcomment$', views.teamcomment),
 
     url(r'^editprofile$', views.editprofile),
@@ -94,6 +95,7 @@ urlpatterns = [
     url(r'^PM_content/(?P<projectid>\d+)$', views.PM_content),
     url(r'^PM_join$', views.PM_join),
     url(r'^PM_draft$', views.PM_draft),
+    url(r'^delpeople$', views.delpeople),
     url(r'^get_follow_count$', views.get_follow_count),
     url(r'^get_praise_count$', views.get_praise_count),
     url(r'^get_user_name$', views.get_user_name),

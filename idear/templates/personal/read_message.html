@@ -10,36 +10,52 @@
 {%endblock%}
 
 {%block contents%}
-<div class="bigbox container">
-{% for message in message_contents %}
+<div class="bigbox container-fluid">
     <div class="row">
-        <div style="float: left;width: 5%;height: 30px;"><span class="repo-language-color"></span></div>
-        <div class="message_column1-1">{{ message.Content }}</div>
-        <div style="width: 18%;line-height: 30px;float: left;">{{ message.Date }}</div>
-        <div style="width: 10%;line-height: 30px;float: left;"><strong>消息等级:{{ message.Priority }}</strong></div>
-        <div class="message_column1-2">
-            <button value="{{ message.Id }}" class="btn btn-info btn-xs examine_read" data-toggle="modal" data-target="#myModal">查看</button>
-            <button value="{{ message.Id }}" class="btn btn-danger btn-xs delete_read">删除</button>
-        </div>
-        <!-- 模态框（Modal） -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close close_read_message" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            消息详情
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
-        </div>
+        <div style="width: 65%;">
+            <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>内容</th>
+                    <th>时间</th>
+                    <th>等级</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            {% for message in message_contents %}
+            <tbody>
+                <tr>
+                    <td style=" width: 5%;"><span class="repo-language-color"></span></td>
+                    <td style=" width: 55%;overflow: hidden;">{{ message.Content }}</td>
+                    <td style=" width: 17%;">{{ message.Date }}</td>
+                    <td style=" width: 5%;">{{ message.Priority }}</td>
+                    <td style=" width: 18%;">
+                        <button value="{{ message.Id }}" class="btn btn-info btn-xs examine" data-toggle="modal" data-target="#myModal">查看详情</button>
+                        <button value="{{ message.Id }}" class="btn btn-danger btn-xs delete" >删除</button>
+                    </td>
+                </tr>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close close_message" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    消息详情
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+            </tbody>
+            {% endfor %}
+        </table>
+       </div>
     </div>
-{% endfor %}
 </div>
 {%endblock%}
 

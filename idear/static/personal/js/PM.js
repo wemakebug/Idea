@@ -63,29 +63,31 @@ $(function () {
         });
     });
 });
-//退出项目
-$(function () {
-    var num;
-    $("#exit").click(function () {
-        var projectId = $("#projectId").val();
-        var data = {'projectId': projectId};
-        num = $(this).index();
-        $(".pop").fadeIn('fast');
-        $(".popBottom").on('click', 'span', function (event) {
-            event.preventDefault();
-            if ($(this).hasClass('confirm')) {
-                $.post('PM_join', data, function (result) {
-                    result = JSON.parse(result);
-                    if (result.status == 1) {
-                        window.location.reload();
-                    } else {
-                        alert("删除错误")
-                    }
-                });
-            } else {
-                $(".pop").fadeOut();
-                num = "";
-            }
-        });
-    });
-});
+// //退出项目
+// $(function () {
+//     var num;
+//     $("#exit").click(function () {
+//         var projectId = $("#projectId").val();
+//         var data = {'projectId': projectId};
+//         num = $(this).index();
+//         $(".pop").fadeIn('fast');
+//         $(".popBottom").on('click', 'span', function (event) {
+//             event.preventDefault();
+//             if ($(this).hasClass('confirm')) {
+//                 $.post('PM_join', data, function (result) {
+//                     result = JSON.parse(result);
+//                     if (result.status == 1) {
+//                         window.location.reload();
+//                     } else {
+//                         alert("删除错误")
+//                     }
+//                 });
+//             } else {
+//                 $(".pop").fadeOut();
+//                 num = "";
+//             }
+//         });
+//     });
+// });
+
+//弹出框
