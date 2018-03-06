@@ -963,7 +963,8 @@ def comment_creation(req):
     :return:
     '''
     if req.method == "GET":
-        return render(req, 'admina/comment_creation.html')
+        Comments = models.Comment.objects.all().order_by('-Id')
+        return render(req, 'admina/comment_creation.html', {"Comments": Comments})
     else:
         pass
 
@@ -977,7 +978,8 @@ def comment_project(req):
     :return:
     '''
     if req.method == "GET":
-        return render(req, 'admina/creation_project.html')
+        Comments = models.Comment.objects.all().order_by('-Id')
+        return render(req, 'admina/comment_project.html', {"Comments": Comments})
     else:
         pass
 
