@@ -980,8 +980,51 @@ def comment_project(req):
     if req.method == "GET":
         Comments = models.Comment.objects.all().order_by('-Id')
         return render(req, 'admina/comment_project.html', {"Comments": Comments})
-    else:
-        pass
+    if req.method == 'POST':
+        lableId = req.POST['lableId']
+        lableName = req.POST['lableName']
+        isUse = req.POST['isUse']
+        ProjectLabelName = req.POST['projectLabel']
+        if isUse == '可用':
+            isUse = True
+        else:
+            isUse = False
+        try:
+            existingLable = models.UserLabel.objects.filter(Id=lableId)
+            projectLabel = models.ProjectLabel.objects.filter(ProjectLabelName=ProjectLabelName)[0]
+            if existingLable:
+                models.UserLabel.objects.filter(Id=lableId).update(projectLabel=projectLabel, IsUse=isUse,
+                                                                   Name=lableName)
+                data = 0  # 0：修改标签
+            else:
+                models.UserLabel.objects.create(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
+                data = 1  # 1: 添加标签成功
+        except Exception as e:
+            print(e)
+            data = -1  # -1: 添加标签失败
+        return HttpResponse(data)
+
+
+@csrf_exempt
+def deleteComment(req):
+    """
+    删除项目评论
+    :param req: 
+    :return: 
+    """
+    if req.method == 'POST':
+        try:
+            project_comment = req.POST['project_comment']
+            Projectcomment = models.Comment.objects.get(Id=project_comment)
+            print(Projectcomment)
+            Projectcomment.IsUse = False
+            Projectcomment.save()
+            data = 1
+        except Exception as e:
+            print (e)
+            data = -1
+        finally:
+            return HttpResponse(data)
 
 @csrf_exempt
 @check_login()
