@@ -968,6 +968,28 @@ def comment_creation(req):
     else:
         pass
 
+
+@csrf_exempt
+def deletecreation(req):
+    """
+    删除创意评论
+    :param req: 
+    :return: 
+    """
+    if req.method == 'POST':
+        try:
+            creation_comment = req.POST['creation_comment']
+            creationcomment = models.Comment.objects.get(Id=creation_comment)
+            print(creationcomment)
+            creationcomment.IsUse = False
+            creationcomment.save()
+            data = 1
+        except Exception as e:
+            print (e)
+            data = -1
+        finally:
+            return HttpResponse(data)
+
 @csrf_exempt
 @check_login()
 @require_http_methods(["GET", "POST"])

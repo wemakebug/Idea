@@ -69,6 +69,7 @@ urlpatterns = [
     url(r'^comment/user', views.comment_user, name='comment_user'),
     url(r'^comment/creation', views.comment_creation, name='comment_creation'),
     url(r'^deletecomment/project$', views.deleteComment),
+    url(r'^deletecomment/creation$', views.deletecreation),
 
     url(r'^score/rank$', views.score_rank, name='score_rank'),
     url(r'^score/record$', views.score_record, name='score_record'),
