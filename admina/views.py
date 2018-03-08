@@ -981,27 +981,22 @@ def comment_project(req):
         Comments = models.Comment.objects.all().order_by('-Id')
         return render(req, 'admina/comment_project.html', {"Comments": Comments})
     if req.method == 'POST':
-        lableId = req.POST['lableId']
-        lableName = req.POST['lableName']
         isUse = req.POST['isUse']
-        ProjectLabelName = req.POST['projectLabel']
+        project_comment_id = req.POST['project_comment_id']
         if isUse == '可用':
             isUse = True
         else:
             isUse = False
         try:
-            existingLable = models.UserLabel.objects.filter(Id=lableId)
-            projectLabel = models.ProjectLabel.objects.filter(ProjectLabelName=ProjectLabelName)[0]
-            if existingLable:
-                models.UserLabel.objects.filter(Id=lableId).update(projectLabel=projectLabel, IsUse=isUse,
-                                                                   Name=lableName)
-                data = 0  # 0：修改标签
+            project_comment = models.Comment.objects.filter(Id=project_comment_id)
+            if project_comment:
+                models.Comment.objects.filter(Id=project_comment_id).update(IsUse=isUse)
+                data = 0  # 0：修改项目评论状态
             else:
-                models.UserLabel.objects.create(projectLabel=projectLabel, IsUse=isUse, Name=lableName)
-                data = 1  # 1: 添加标签成功
+                data = 1  # 1: 不存在此项目
         except Exception as e:
             print(e)
-            data = -1  # -1: 添加标签失败
+            data = -1  # -1: 失败
         return HttpResponse(data)
 
 

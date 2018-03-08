@@ -204,22 +204,19 @@
 {#                        oTable.fnDeleteRow(nRow);#}
                         var row = $('>td', nRow);
                         var project_comment_id = row[4].innerHTML;
-                        alert(project_comment_id);
                         $.post('/admina/deletecomment/project', {"project_comment": project_comment_id}, function (data) {
                             var jsonData = $.parseJSON(data);
                             if(jsonData === 1){
                                 alert("删除成功！");
-                                location.reload();
                             } else {
                                 alert("删除失败！");
-                                location.reload();
                             }
                         } );
                     }
 
                     var nRow = $(this).parents('tr')[0];
                     oTable.fnDeleteRow(nRow);
-                    alert("Deleted! Do not forget to do some ajax to sync with backend :)");
+{#                    alert("Deleted! Do not forget to do some ajax to sync with backend :)");#}
                 });
 
                 $('#editable-sample a.cancel').live('click', function (e) {
@@ -238,7 +235,6 @@
 
                     /* Get the row as a parent of the link that was clicked on */
                     var nRow = $(this).parents('tr')[0];
-
                     if (nEditing !== null && nEditing != nRow) {
                         /* Currently editing - but not this row - restore the old before continuing to edit mode */
                         restoreRow(oTable, nEditing);
@@ -248,7 +244,30 @@
                         /* Editing this row and want to save it */
                         saveRow(oTable, nEditing);
                         nEditing = null;
-                        alert("在这里更新 :)");
+
+
+                        //添加项目标签和编辑项目标签
+                        var jqTds = $('>td', nRow);
+                        var isUse = jqTds[1].innerHTML;
+                        var project_comment_id = jqTds[4].innerHTML;
+                        if(project_comment_id === ""){
+                            project_comment_id = -1;
+                        }
+                        if(project_comment_id !== ""){
+                            $.post('/admina/comment/project', { 'isUse': isUse, 'project_comment_id': project_comment_id}, function (data) {
+                                var jsonData = $.parseJSON(data);
+                                if(jsonData === 1){
+                                    alert("添加标签成功！");
+                                } else if(jsonData === -1){
+                                    alert("添加标签失败！");
+                                } else if(jsonData === 0){
+                                    alert("标签修改成功！");
+                                } else {
+                                    alert("操作失误！");
+                                }
+                            })
+                        }
+
                     } else {
                         /* No edit in progress - let's start one */
                         editRow(oTable, nRow);

@@ -216,7 +216,6 @@
 
                     /* Get the row as a parent of the link that was clicked on */
                     var nRow = $(this).parents('tr')[0];
-
                     if (nEditing !== null && nEditing != nRow) {
                         /* Currently editing - but not this row - restore the old before continuing to edit mode */
                         restoreRow(oTable, nEditing);
