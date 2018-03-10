@@ -67,10 +67,10 @@
                                 <th class="pattern">删除</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tbody-result">
                             {% for Comment in Comments %}
                                 {% if Comment.project.ProjectName %}
-                                    <tr class="">
+                                    <tr>
                                         <td>{{ Comment.user.UserName }}</td>
                                         <td>{{ Comment.project.ProjectName }}</td>
                                             {% if Comment.IsUse%}
@@ -80,7 +80,6 @@
                                             {% endif %}
                                         <td>{{ Comment.Content }}</td>
                                         <td style="display: none">{{ Comment.Id }}</td>
-{#                                        <input type="hidden" value="{{ Comment.Id }}" class="project_comment_id">#}
                                         <td><a class="edit" href="javascript:;">编辑</a></td>
                                         <td><a class="delete" href="javascript:;">删除</a></td>
                                     </tr>
@@ -203,11 +202,26 @@
 {#                        alert(nRow.innerHTML);#}
 {#                        oTable.fnDeleteRow(nRow);#}
                         var row = $('>td', nRow);
-                        var creation_comment_id = row[4].innerHTML;
-                        $.post('/admina/deletecomment/creation', {"creation_comment": creation_comment_id}, function (data) {
-                            var jsonData = $.parseJSON(data);
+                        var project_comment_id = row[4].innerHTML;
+                        var tbody=window.document.getElementById("tbody-result");
+                        $.post('/admina/deletecomment/project', {"project_comment": project_comment_id}, function (data) {
+                            var jsonData = JSON.parse(data);
                             if(jsonData === 1){
-                                alert("删除成功！");
+                                $.post('/admina/showcomment/project',function (result) {
+                                    var status = JSON.parse(result);
+                                    var str = '';
+                                    for(i in status){
+                                        str += "<tr>"+"<td>"+status[i].UserName+"</td>"
+                                                     +"<td>"+status[i].ProjectName+"</td>"
+                                                     +"<td>"+status[i].IsUse+"</td>"
+                                                     +"<td>"+status[i].Content+"</td>"
+                                                     +'<td style="display: none">'+status[i].Id+"</td>"
+                                                     +"<td>"+'<a class="edit" href="javascript:;">'+"编辑"+"</a>"+"</td>"
+                                                     +"<td>"+'<a class="delete" href="javascript:;">'+"删除"+"</a>"+"</td>" +"</tr>"
+                                    }
+                                    tbody.innerHTML = str;
+                                    alert("删除成功！");
+                                });
                             } else {
                                 alert("删除失败！");
                             }

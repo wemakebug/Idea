@@ -1033,7 +1033,7 @@ def deleteComment(req):
         try:
             project_comment = req.POST['project_comment']
             Projectcomment = models.Comment.objects.get(Id=project_comment)
-            print(Projectcomment)
+            print(Projectcomment.user.UserName)
             Projectcomment.IsUse = False
             Projectcomment.save()
             data = 1
@@ -1042,6 +1042,42 @@ def deleteComment(req):
             data = -1
         finally:
             return HttpResponse(data)
+
+
+
+@csrf_exempt
+def show_project_comment(req):
+    '''
+    展示项目评论的变化状态
+    :param req:
+    :return:
+    '''
+    Comments = models.Comment.objects.all().order_by('-Id')
+    status = []
+    for i in Comments:
+        ss = i.project
+        comment_isuse = i.IsUse
+        if ss:
+            if comment_isuse == True:
+                list = {}
+                list['UserName'] = i.user.UserName
+                list['ProjectName'] = i.project.ProjectName
+                list['IsUse'] = "可用"
+                list['Content'] = i.Content
+                list['Id'] = i.Id
+                status.append(list)
+            else:
+                list = {}
+                list['UserName'] = i.user.UserName
+                list['ProjectName'] = i.project.ProjectName
+                list['IsUse'] = "不可用"
+                list['Content'] = i.Content
+                list['Id'] = i.Id
+                status.append(list)
+    return HttpResponse(json.dumps(status))
+
+
+
 
 @csrf_exempt
 @check_login()

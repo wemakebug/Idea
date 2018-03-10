@@ -203,8 +203,8 @@
 {#                        alert(nRow.innerHTML);#}
 {#                        oTable.fnDeleteRow(nRow);#}
                         var row = $('>td', nRow);
-                        var project_comment_id = row[4].innerHTML;
-                        $.post('/admina/deletecomment/project', {"project_comment": project_comment_id}, function (data) {
+                        var creation_comment_id = row[4].innerHTML;
+                        $.post('/admina/deletecomment/creation', {"creation_comment": creation_comment_id}, function (data) {
                             var jsonData = $.parseJSON(data);
                             if(jsonData === 1){
                                 alert("删除成功！");
